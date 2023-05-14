@@ -1,0 +1,73 @@
+{
+    "combat_spell":{
+		"name":"combat spell",
+		"auto_naming":{
+			"base":["spell"],
+		},
+		"usage":"attack",
+		"type":"magic",
+		"attribute":"magic",
+		"damage":{
+			"magic":1.0,
+		},
+		"damage_multiplier":1.5,
+		"delay_multiplier":1.5,
+		"cooldown":1,
+		"target_type":"enemy",
+		"slots":["magic","shape","application","magic_mod"],
+	},
+	"healing_spell":{
+		"name":"healing spell",
+		"auto_naming":{
+			"base":["restoration","regeneration","healing","reconstruction"],
+		},
+		"usage":"heal",
+		"type":"magic",
+		"attribute":"willpower",
+		"healing":{
+			"willpower":1.0,
+		},
+		"duration":8.0,
+		"target_type":"ally",
+		"slots":["magic","application"],
+	},
+	"shielding_spell":{
+		"name":"shielding spell",
+		"auto_naming":{
+			"base":["shield","barrier"],
+		},
+		"cost":{
+			"focus":2,
+		},
+		"usage":"buff",
+		"type":"magic",
+		"attribute":"magic",
+		"shielding":{
+			"magic":1.0,
+		},
+		"cooldown":3.0,
+		"duration":6.0,
+		"target_type":"self",
+		"slots":["magic","defence_mod"],
+	},
+	"summoning_spell":{
+		"name":"summoning spell",
+		"auto_naming":{
+			"base":["summon","summoning","resurection","conjuration"]
+		},
+		"usage":"summon",
+		"type":"magic",
+		"attribute":"willpower",
+		"cost":{
+			"mana":4,
+		},
+		"summoning":{
+			"willpower":1.0,
+		},
+		"cooldown":6.0,
+		"duration":30.0,
+		"delay_multiplier":3.0,
+		"target_type":"summon",
+		"slots":["magic","summon_type","summoning_method"],
+	},
+}

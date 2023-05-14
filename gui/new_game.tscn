@@ -1,0 +1,434 @@
+[gd_scene load_steps=2 format=3 uid="uid://bonh7k6p34cy"]
+
+[ext_resource type="Script" path="res://gui/new_game.gd" id="1_m18te"]
+
+[node name="NewGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_m18te")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Panel" parent="HBoxContainer/VBoxContainer1"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Name"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/Name/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "NAME"
+
+[node name="LabelWarning" type="Label" parent="HBoxContainer/VBoxContainer1/Name/VBoxContainer/Label"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.156863, 0.12549, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "WARNING_OVERWRITTEN"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer1/Name/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "NAME"
+
+[node name="Gender" type="Panel" parent="HBoxContainer/VBoxContainer1"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Gender"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/Gender/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "GENDER"
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer1/Gender/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "GENDER"
+
+[node name="Diet" type="Panel" parent="HBoxContainer/VBoxContainer1"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Diet"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/Diet/VBoxContainer"]
+layout_mode = 2
+text = "DIET"
+
+[node name="CheckButton2" type="CheckButton" parent="HBoxContainer/VBoxContainer1/Diet/VBoxContainer"]
+layout_mode = 2
+text = "VEGAN"
+alignment = 1
+
+[node name="Race" type="Panel" parent="HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Race"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer"]
+layout_mode = 2
+text = "RACE"
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer"]
+layout_mode = 2
+text = "HYBRID"
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Main" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="human" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+layout_mode = 2
+toggle_mode = true
+text = "human"
+
+[node name="halfling" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+layout_mode = 2
+toggle_mode = true
+text = "halfling"
+
+[node name="high_elf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+layout_mode = 2
+toggle_mode = true
+text = "high elf"
+
+[node name="wood_elf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+layout_mode = 2
+toggle_mode = true
+text = "wood elf"
+
+[node name="dwarf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+layout_mode = 2
+toggle_mode = true
+text = "dwarf"
+
+[node name="ogre" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+layout_mode = 2
+toggle_mode = true
+text = "ogre"
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+layout_mode = 2
+placeholder_text = "CUSTOM_RACE"
+alignment = 1
+
+[node name="Alt" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="human" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt"]
+layout_mode = 2
+toggle_mode = true
+text = "human"
+
+[node name="halfling" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt"]
+layout_mode = 2
+toggle_mode = true
+text = "halfling"
+
+[node name="high_elf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt"]
+layout_mode = 2
+toggle_mode = true
+text = "high elf"
+
+[node name="wood_elf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt"]
+layout_mode = 2
+toggle_mode = true
+text = "wood elf"
+
+[node name="dwarf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt"]
+layout_mode = 2
+toggle_mode = true
+text = "dwarf"
+
+[node name="ogre" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt"]
+layout_mode = 2
+toggle_mode = true
+text = "ogre"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Combat" type="Panel" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Combat"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+layout_mode = 2
+text = "COMBAT_ABILITIES"
+
+[node name="LabelNumber" type="Label" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+layout_mode = 2
+text = "0 / 2"
+
+[node name="light_weapons" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "LIGHT_WEAPONS"
+
+[node name="heavy_weapons" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "HEAVY_WEAPONS"
+
+[node name="dirty_fighting" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "DIRTY_FIGHTING"
+
+[node name="brawling" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "BRAWLING"
+
+[node name="shield" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "SHIELD"
+
+[node name="archery" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "ARCHERY"
+
+[node name="elemental_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "ELEMENTAL_MAGIC"
+
+[node name="nature_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "NATURE_MAGIC"
+
+[node name="celestial_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "CELESTIAL_MAGIC"
+
+[node name="summoning" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "SUMMONING"
+
+[node name="necromancy" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "NECROMANCY"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Abilities" type="Panel" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Abilities"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+text = "ABILITIES"
+
+[node name="LabelNumber" type="Label" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+text = "0 / 2"
+
+[node name="armour" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "ARMOUR"
+
+[node name="evasion" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "EVASION"
+
+[node name="trapping" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "TRAPPING"
+
+[node name="defensive_magic" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "DEFENSIVE_MAGIC"
+
+[node name="healing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "HEALING_ABILITY"
+
+[node name="alchemy" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "ALCHEMY"
+
+[node name="weapon_smithing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "WEAPON_SMITHING"
+
+[node name="armour_smithing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "ARMOUR_SMITHING"
+
+[node name="woodwork" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "WOODWORK"
+
+[node name="tayloring" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "TAYLORING"
+
+[node name="cooking" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "COOKING"
+
+[node name="enchanting" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "ENCHANTING"
+
+[node name="Bottom" type="HBoxContainer" parent="."]
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -41.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Button0" type="Button" parent="Bottom"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "BACK"
+
+[node name="Button1" type="Button" parent="Bottom"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "RANDOMIZE"
+
+[node name="Button2" type="Button" parent="Bottom"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "START"
+
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer1/Name/VBoxContainer/LineEdit" to="." method="_name_changed"]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer1/Gender/VBoxContainer/LineEdit" to="." method="_set_gender"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Diet/VBoxContainer/CheckButton2" to="." method="_vegan_toggled"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/CheckButton" to="." method="_hybrid_race_toggled"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/human" to="." method="_race_toggled" binds= ["human"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/halfling" to="." method="_race_toggled" binds= ["halfling"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/high_elf" to="." method="_race_toggled" binds= ["high_elf"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/wood_elf" to="." method="_race_toggled" binds= ["wood_elf"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/dwarf" to="." method="_race_toggled" binds= ["dwarf"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/ogre" to="." method="_race_toggled" binds= ["ogre"]]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/LineEdit" to="." method="_set_custom_race"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt/human" to="." method="_alt_race_toggled" binds= ["human"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt/halfling" to="." method="_alt_race_toggled" binds= ["halfling"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt/high_elf" to="." method="_alt_race_toggled" binds= ["high_elf"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt/wood_elf" to="." method="_race_toggled"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt/dwarf" to="." method="_alt_race_toggled" binds= ["dwarf"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt/ogre" to="." method="_alt_race_toggled" binds= ["ogre"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer2/Combat/VBoxContainer/light_weapons" to="." method="_combat_ability_toggled" binds= ["light_weapons"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer2/Combat/VBoxContainer/heavy_weapons" to="." method="_combat_ability_toggled" binds= ["heavy_weapons"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer2/Combat/VBoxContainer/dirty_fighting" to="." method="_combat_ability_toggled" binds= ["dirty_fighting"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer2/Combat/VBoxContainer/brawling" to="." method="_combat_ability_toggled" binds= ["brawling"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer2/Combat/VBoxContainer/shield" to="." method="_combat_ability_toggled" binds= ["shield"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer2/Combat/VBoxContainer/archery" to="." method="_combat_ability_toggled" binds= ["archery"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer2/Combat/VBoxContainer/elemental_magic" to="." method="_combat_ability_toggled" binds= ["elemental_magic"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer2/Combat/VBoxContainer/nature_magic" to="." method="_combat_ability_toggled" binds= ["nature_magic"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer2/Combat/VBoxContainer/celestial_magic" to="." method="_combat_ability_toggled" binds= ["celestial_magic"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer2/Combat/VBoxContainer/summoning" to="." method="_combat_ability_toggled" binds= ["summoning"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer2/Combat/VBoxContainer/necromancy" to="." method="_combat_ability_toggled" binds= ["necromancy"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/armour" to="." method="_ability_toggled" binds= ["armour"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/evasion" to="." method="_ability_toggled" binds= ["evasion"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/trapping" to="." method="_ability_toggled" binds= ["trapping"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/defensive_magic" to="." method="_ability_toggled" binds= ["defensive_magic"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/healing" to="." method="_ability_toggled" binds= ["healing"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/alchemy" to="." method="_ability_toggled" binds= ["alchemy"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/weapon_smithing" to="." method="_ability_toggled" binds= ["weapon_smithing"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/armour_smithing" to="." method="_ability_toggled" binds= ["armour_smithing"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/woodwork" to="." method="_ability_toggled" binds= ["woodwork"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/tayloring" to="." method="_ability_toggled" binds= ["tayloring"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/cooking" to="." method="_ability_toggled" binds= ["cooking"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/enchanting" to="." method="_ability_toggled" binds= ["enchanting"]]
+[connection signal="pressed" from="Bottom/Button0" to="." method="_back_to_menu"]
+[connection signal="pressed" from="Bottom/Button1" to="." method="_randomize"]
+[connection signal="pressed" from="Bottom/Button2" to="." method="start_game"]

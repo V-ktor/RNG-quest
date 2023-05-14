@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://bme6h4t4qk8jt"]
+
+[sub_resource type="GDScript" id="GDScript_5wwcp"]
+script/source = "extends CanvasLayer
+
+func _input(event: InputEvent):
+	if event is InputEventKey && event.is_pressed():
+#		var skill:= Skills.create_random_skill([\"light_weapons\",\"elemental_magic\",\"infuse_elemental\"])
+#		var skill:= Skills.create_random_skill([\"elemental_magic\",\"nature_magic\",\"celestial_magic\"])
+		var skill:= Skills.create_random_skill([\"celestial_magic\",\"healing\",\"defensive_magic\"])
+#		var skill:= Skills.create_random_skill([\"archery\",\"dirty_fighting\"])
+#		var skill:= Skills.create_random_skill([\"archery\",\"nature_magic\",\"infuse_nature\"])
+#		var skill:= Skills.create_random_skill([\"brawling\",\"dirty_fighting\"])
+#		var skill:= Skills.create_random_skill([\"armour\",\"evasion\"])
+#		var skill:= Skills.create_random_skill([\"summoning\",\"necromancy\"])
+#		var skill:= Skills.create_random_skill(Skills.ABILITY_MODULES.keys())
+#		var skill:= Skills.create_random_skill([\"light_weapons\",\"dirty_fighting\"])
+		$RichTextLabel1.parse_bbcode(skill.description)
+		$RichTextLabel2.text = str(skill)
+"
+
+[node name="Test" type="CanvasLayer"]
+layer = 100
+script = SubResource("GDScript_5wwcp")
+
+[node name="RichTextLabel1" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_right = 0.25
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = 5.0
+bbcode_enabled = true
+threaded = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 0.75
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+focus_mode = 2
+selection_enabled = true
+deselect_on_focus_loss_enabled = false

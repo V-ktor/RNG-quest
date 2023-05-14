@@ -1,0 +1,31 @@
+,en
+AS,as
+MELEE,Melee
+RANGED,Ranged
+COST,Cost
+COOLDOWN,Cooldown
+AREA,Area
+RANGE,Range
+DAMAGEC,Damage
+HEALINGC,Healing
+SHIELDINGC,Shielding
+BUFF,Buff
+SUMMON,Summon
+SKILL,Skill
+ACTION_SPEED,Action speed
+MELEE_RANGE,Melee range
+SHORT_RANGE,Short range
+LONG_RANGE,Long range
+TARGET,Target
+ENEMY,Enemy
+ALL_ENEMIES,All enemies
+ALLY,Ally
+ALL_ALLIES,All allies
+SELF,Self
+SUMMON,Summon
+STATUS,Status
+STUN,Stun
+HEALTH_STEAL,Health steal
+CASTER,caster
+DEFENCE,Defence
+REFLECT_DAMAGE,Reflect damage

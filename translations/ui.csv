@@ -1,0 +1,263 @@
+,en
+CONTINUE,Continue
+CREATE_CHARACTER,Create Character
+OPTIONS,Options
+QUIT,Quit
+SIMULATING,"Simulating..."
+DAY,day
+NAME,Name
+GENDER,Gender
+RACE,Race
+LEVEL,Level
+DIET,Diet
+VEGAN,Vegan
+ABILITIES,Abilities
+COMBAT_ABILITIES,Combat Abilities
+BACK,Back
+RANDOMIZE,Randomize
+START,Start
+HYBRID,Hybrid race?
+GOLD,Gold
+STAMINA,Stamina
+STAMINA_REGEN,Stamina regeneration
+MANA,Mana
+MANA_REGEN,Mana regeneration
+FOCUS,Focus
+STRENGTH,Strength
+CONSTITUTION,Constitution
+DEXTERITY,Dexterity
+INTELLIGENCE,Intelligence
+CUNNING,Cunning
+WISDOM,Wisdom
+ATTACK,Attack
+MAGIC,Magic
+WILLPOWER,Willpower
+ACCURACY,Accuracy
+ARMOUR,Armour
+EVASION,Evasion
+PENETRATION,Penetration
+CRITICAL,Critical
+SPEED,Speed
+LIGHT_WEAPONS,Light Weapons
+HEAVY_WEAPONS,Heavy Weapons
+DIRTY_FIGHTING,Dirty Fighting
+BRAWLING,Brawling
+ARCHERY,Archery
+GUN_SLINGING,Gun Slinging
+TRAPPING,Trapping
+SHIELD,Shield
+SHIELDS,Shields
+ARMOUR,Armour
+EVASION,Evasion
+ELEMENTAL_MAGIC,Elemental Magic
+NATURE_MAGIC,Nature Magic
+CELESTIAL_MAGIC,Celestial Magic
+SUMMONING,Summoning
+NECROMANCY,Necromancy
+DEFENSIVE_MAGIC,Defensive Magic
+HEALING_ABILITY,Healing
+ALCHEMY,Alchemy
+WEAPON_SMITHING,Weapon Smithing
+ARMOUR_SMITHING,Armour Smithing
+WOODWORK,Woodwork
+TAYLORING,Tayloring
+COOKING,Cooking
+ENCHANTING,Enchanting
+INFUSE,Infuse
+INFUSE_ELEMENTAL,Infuse
+INFUSE_NATURE,Infuse
+INFUSE_CLERIC,Cleric
+FANGS,Fangs
+LACERATING_FANGS,Lacerating Fangs
+CLAWS,Claws
+DRAINING_BITE,Draining Bite
+POISONOUS_DAGGER,Poisonous Dagger
+TOXIC_BITE,Toxic Bite
+WEB,Web
+HIGH_TECH_CUTTING,High Tech
+HIGH_TECH_IMPACT,High Tech
+HIGH_TECH_RANGED,High Tech
+FERAL_FIRE_MAGIC,Fire Magic
+FERAL_WATER_MAGIC,Water Magic
+FERAL_EARTH_MAGIC,Earth Magic
+FERAL_WIND_MAGIC,Wind Magic
+FERAL_ICE_MAGIC,Ice Magic
+FERAL_LIGHTNING_MAGIC,Lightning Magic
+FERAL_LIGHT_MAGIC,Light Magic
+FERAL_DARKNESS_MAGIC,Darkness Magic
+FERAL_POISON_MAGIC,Poison Magic
+FERAL_ACID_MAGIC,Acid Magic
+FERAL_IMPACT_FIRE_MAGIC,Fire Magic
+FERAL_IMPACT_WATER_MAGIC,Water Magic
+FERAL_IMPACT_EARTH_MAGIC,Earth Magic
+FERAL_IMPACT_WIND_MAGIC,Wind Magic
+FERAL_IMPACT_ICE_MAGIC,Ice Magic
+FERAL_IMPACT_LIGHTNING_MAGIC,Lightning Magic
+FERAL_IMPACT_LIGHT_MAGIC,Light Magic
+FERAL_IMPACT_DARKNESS_MAGIC,Darkness Magic
+FERAL_IMPACT_POISON_MAGIC,Poison Magic
+FERAL_IMPACT_ACID_MAGIC,Acid Magic
+FERAL_CUTTING_FIRE_MAGIC,Fire Magic
+FERAL_CUTTING_WATER_MAGIC,Water Magic
+FERAL_CUTTING_EARTH_MAGIC,Earth Magic
+FERAL_CUTTING_WIND_MAGIC,Wind Magic
+FERAL_CUTTING_ICE_MAGIC,Ice Magic
+FERAL_CUTTING_LIGHTNING_MAGIC,Lightning Magic
+FERAL_CUTTING_LIGHT_MAGIC,Light Magic
+FERAL_CUTTING_DARKNESS_MAGIC,Darkness Magic
+FERAL_CUTTING_POISON_MAGIC,Poison Magic
+FERAL_CUTTING_ACID_MAGIC,Acid Magic
+HUMAN,Human
+HALFLING,Halfling
+HIGH_ELF,High Elf
+WOOD_ELF,Wood Elf
+DWARF,Dwarf
+OGRE,Ogre
+CUSTOM_RACE,custom race
+ADVENTURER_GUILD,Adventurer Guild
+FIGHTER_GUILD,Fighter Guild
+FIGHT_CLUB,Fight Club
+TRAPPER_GUILD,Trapper Guild
+MAGE_GUILD,Mage Guild
+SUMMONER_GUILD,Summoner Guild
+ALCHEMIST_GUILD,Alchemist Guild
+WAR_CASTER_GUILD,War Caster Guild
+CELESTIAL_CHURCH,Celestial Church
+CELESTIAL_ORDER,Celestial Order
+THIEF_GUILD,Thief Guild
+ASSASSIN_GUILD,Assassin Guild
+CRAFTER_GUILD,Crafter Guild
+RANK,rank
+COPPER,copper
+TIN,tin
+BRONZE,bronze
+IRON,iron
+STEEL,steel
+CHROMIUM,chromium
+SILVER,silver
+GOLD,gold
+TITANIUM,titanium
+PLATINUM,platinum
+YOU,you
+ROOKIE,rookie
+CANNON_FODDER,cannon fodder
+GREENHORN,greenhorn
+BRAWLER,brawler
+COMBATANT,combatant
+FIGHTER,fighter
+BATTLER,battler
+CHALLENGER,challenger
+CHAMPION,champion
+LEGEND,legend
+AMATEUR,amateur
+APPRENTICE,apprentice
+NOVICE,novice
+STUDENT,student
+PHD,PhD
+SPELL_CASTER,spell caster
+WIZARD,wizard
+INTRUCTOR,instructor
+ARCHMAGE,archmage
+LAYMAN,layman
+PREACHER,preacher
+CLERIC,cleric
+PRIEST,priest
+TEMPLE_PRIEST,temple priest
+HIGH_PRIEST,high priest
+SAINT,saint
+INQUISITOR,inquisitor
+HIGH_INQUISITOR,high inquisitor
+HEALTH,health
+HEALTH_REGEN,health regeneration
+HEALTH_DRAIN,health drain
+HEALING,healing
+DURATION,duration
+DELAY,delay
+DAMAGE_TYPE,Damage type
+INCREASES,increases
+DECREASES,decreases
+ARMOUR_PENETRATION,armour penetration
+DAMAGE_STAT,uses
+ATTACK_TYPE,uses
+ATTACK_STAT,uses
+EFFECT_TYPE,uses
+EFFECT_STAT,uses
+HEALING_TYPE,uses
+HEALING_STAT,uses
+ABSORB_DAMAGE,absorb damage
+CUTTING,Cutting
+PIERCING,Piercing
+IMPACT,Impact
+FIRE,Fire
+ICE,Ice
+LIGHTNING,Lightning
+WATER,Water
+WIND,Wind
+EARTH,Earth
+POISON,Poison
+ACID,Acid
+LIGHT,Light
+DARKNESS,Darkness
+TIER0,critter
+TIER1,weak
+TIER2,common
+TIER3,strong
+TIER4,elite
+TIER5,boss
+DAMAGE,damage
+RESISTANCE,resistance
+ENHANCED,enhanced
+SKILLS,skills
+STATS,stats
+ATTRIBUTES,attributes
+EFFECT,effect
+EFFECT_SCALE,effect scale
+LIVING_IN,"Living in {location}."
+LOCATION,location
+FARMLAND,farmland
+ELVEN_FOREST,elven forest
+DWARVEN_MINE,dwarven mine
+TROLL_HILLS,troll hills
+WOLF_FOREST,wolf forest
+COAST,coast
+CAPITAL,capital
+WASTELAND,wasteland
+MOUNTAIN_PASS,mountain pass
+SWAMP,swamp
+LEVITATING_ISLANDS,levitating islands
+ROBOTIC_LAND,robotic land
+NECROTIC_LAND,necrotic land
+VULCANO,vulcano
+DEEP_SEA,deep sea
+JUNGLE,jungle
+OF,of
+THE,the
+EXPERIENCE,Experience
+CRITICAL_HIT,critical hit
+BLOCKED_BY_ARMOUR,Blocked by armour
+BLOCKED_BY_WILLPOWER,Blocked by willpower
+RESISTED,Resisted
+PENETRATED,Penetrated
+TOTAL_DAMAGE,Total damage
+ABSORBED,Absorbed
+WARNING_OVERWRITTEN,"Warning: character will be overwritten!"
+BUFF,buff
+DEBUFF,debuff
+SPLASH_DAMAGE,splash damage
+CITIES,Cities
+LOCATIONS,Locations
+TAVERN,tavern
+BAR,bar
+PUB,pub
+MARKET,market
+GROCERY_STORE,grocery store
+PARK,park
+BATH_HOUSE,bath house
+TOILET,toilet
+BARBER_SHOP,barber shop
+SPA,spa
+DOCTOR,doctor
+DENTIST,dentist
+GOD_OF,God of
+MALE,male
+FEMALE,female

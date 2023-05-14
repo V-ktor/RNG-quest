@@ -1,0 +1,801 @@
+[gd_scene load_steps=8 format=3 uid="uid://cx2f13pqvsvxo"]
+
+[ext_resource type="Script" path="res://gui/main.gd" id="1_7tv8d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxbm7"]
+bg_color = Color(1, 0.12549, 0.0627451, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jwihv"]
+bg_color = Color(0.8, 0.8, 0.188235, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwelv"]
+bg_color = Color(0.25098, 0.564706, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxjd4"]
+bg_color = Color(0.313726, 1, 0.6, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6w06"]
+bg_color = Color(0.12549, 0.752941, 0.188235, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="GDScript" id="GDScript_je55o"]
+script/source = "extends ProgressBar
+
+
+func _process(delta: float):
+	value -= delta
+	if value<=0.0:
+		hide()
+"
+
+[node name="Main" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_7tv8d")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ID" type="Panel" parent="HBoxContainer/VBoxContainer1"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/ID"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelName" type="Label" parent="HBoxContainer/VBoxContainer1/ID/VBoxContainer"]
+layout_mode = 2
+text = "NAME"
+
+[node name="LabelRace" type="Label" parent="HBoxContainer/VBoxContainer1/ID/VBoxContainer"]
+layout_mode = 2
+text = "RACE"
+
+[node name="LabelLevel" type="Label" parent="HBoxContainer/VBoxContainer1/ID/VBoxContainer"]
+layout_mode = 2
+text = "LVL"
+
+[node name="HealthBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer1/ID/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_sxbm7")
+step = 0.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/ID/VBoxContainer/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100 / 100"
+vertical_alignment = 1
+
+[node name="StaminaBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer1/ID/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_jwihv")
+step = 0.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/ID/VBoxContainer/StaminaBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100 / 100"
+vertical_alignment = 1
+
+[node name="ManaBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer1/ID/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_rwelv")
+step = 0.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/ID/VBoxContainer/ManaBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100 / 100"
+vertical_alignment = 1
+
+[node name="FocusBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer1/ID/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_uxjd4")
+max_value = 4.0
+step = 0.0
+value = 2.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/ID/VBoxContainer/FocusBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "4 / 4"
+vertical_alignment = 1
+
+[node name="ExpBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer1/ID/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_a6w06")
+step = 0.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/ID/VBoxContainer/ExpBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXPERIENCE"
+vertical_alignment = 1
+
+[node name="Status" type="Panel" parent="HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer1/Status"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Status/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Status0" type="ProgressBar" parent="HBoxContainer/VBoxContainer1/Status/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+value = 50.0
+show_percentage = false
+script = SubResource("GDScript_je55o")
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/Status/ScrollContainer/VBoxContainer/Status0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "STATUS"
+
+[node name="Stats" type="Panel" parent="HBoxContainer/VBoxContainer1"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Stats"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label0" type="Label" parent="HBoxContainer/VBoxContainer1/Stats/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "STRENGTH"
+vertical_alignment = 1
+
+[node name="Label1" type="Label" parent="HBoxContainer/VBoxContainer1/Stats/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "CONSTITUTION"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer1/Stats/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "DEXTERITY"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer1/Stats/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "INTELLIGENCE"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer1/Stats/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "WISDOM"
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer1/Stats/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "CUNNING"
+vertical_alignment = 1
+
+[node name="Attributes" type="Panel" parent="HBoxContainer/VBoxContainer1"]
+custom_minimum_size = Vector2(0, 230)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Attributes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label0" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "ATTACK"
+vertical_alignment = 1
+
+[node name="Label1" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "MAGIC"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "WILLPOWER"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "ARMOUR"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "ACCURACY"
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "EVASION"
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "PENETRATION"
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "SPEED"
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "CRITICAL"
+vertical_alignment = 1
+
+[node name="Guilds" type="Panel" parent="HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer1/Guilds"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Guilds/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Guild0" type="Control" parent="HBoxContainer/VBoxContainer1/Guilds/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer1/Guilds/ScrollContainer/VBoxContainer/Guild0"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="LabelName" type="Label" parent="HBoxContainer/VBoxContainer1/Guilds/ScrollContainer/VBoxContainer/Guild0"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "GUILD"
+
+[node name="LabelRank" type="Label" parent="HBoxContainer/VBoxContainer1/Guilds/ScrollContainer/VBoxContainer/Guild0"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "RANK"
+horizontal_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="Location" type="Panel" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Location"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="LabelRegion" type="Label" parent="HBoxContainer/VBoxContainer2/Location/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "REGION"
+vertical_alignment = 1
+
+[node name="LabelLocation" type="Label" parent="HBoxContainer/VBoxContainer2/Location/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "LOCATION"
+vertical_alignment = 1
+
+[node name="LabelTime" type="Label" parent="HBoxContainer/VBoxContainer2/Location/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+text = "12:00"
+vertical_alignment = 1
+
+[node name="Log" type="Panel" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Log"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+scroll_following = true
+meta_underlined = false
+hint_underlined = false
+threaded = true
+
+[node name="Action" type="Panel" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Action"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="LabelTask" type="Label" parent="HBoxContainer/VBoxContainer2/Action/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "TASK"
+
+[node name="LabelAction" type="Label" parent="HBoxContainer/VBoxContainer2/Action/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "ACTION"
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer2/Action/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+value = 50.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Equipment" type="Panel" parent="HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Equipment"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Label0" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "MAINHAND"
+vertical_alignment = 1
+
+[node name="Label1" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "OFFHAND"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "TORSO"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "LEGS"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "BELT"
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "HEAD"
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "HANDS"
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "FEET"
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "CAPE"
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "AMULET"
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "RING"
+vertical_alignment = 1
+
+[node name="Label11" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "RING"
+vertical_alignment = 1
+
+[node name="Inventory" type="Panel" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LabelGold" type="Label" parent="HBoxContainer/VBoxContainer3/Inventory"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "GOLD: 0"
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer3/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 30.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Inventory/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Potions" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label0" type="Label" parent="HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Potions"]
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 0
+text = "ITEM"
+
+[node name="Quest" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label0" type="Label" parent="HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Quest"]
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 0
+text = "ITEM"
+
+[node name="Inventory" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label0" type="Label" parent="HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Inventory"]
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 0
+text = "ITEM"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Abilities" type="Panel" parent="HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer4/Abilities"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer4/Abilities/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ability0" type="ProgressBar" parent="HBoxContainer/VBoxContainer4/Abilities/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="LabelLevel" type="Label" parent="HBoxContainer/VBoxContainer4/Abilities/ScrollContainer/VBoxContainer/Ability0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+text = "1"
+horizontal_alignment = 2
+
+[node name="LabelName" type="Label" parent="HBoxContainer/VBoxContainer4/Abilities/ScrollContainer/VBoxContainer/Ability0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+text = "ABILITY"
+
+[node name="Skills" type="Panel" parent="HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer4/Skills"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer4/Skills/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label0" type="Label" parent="HBoxContainer/VBoxContainer4/Skills/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 0
+text = "SKILL"
+
+[node name="Quests" type="Panel" parent="HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer4/Quests"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_following = true

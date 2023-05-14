@@ -1,0 +1,124 @@
+,en
+OLD_ITEM,"An old {name}."
+MADE_OUT_OF,"Made out of {items}."
+DROPPED_BY,"Dropped by a {creature}."
+PRIZED_ARTIFACT,"Prized artifact."
+ARTIFACT_BY_CREATOR,"A powerful artifact created by {creator}."
+UNKNOWN_ORIGIN,"An item of unknown origin."
+PLAYER_CREATION,"One of your own creations."
+PLAYER_ENCHANTED,"Enchanted by yourself."
+BOUGHT_FROM_SHOP,"Bought from a shop in {location}."
+CRAFTED_ITEM,"Crafted."
+GUILD_REWARD,"A reward from the {guild}."
+QUEST_REWARD,"A reward for completing a quest."
+QUEST_REWARD_PERSON,"A reward gained from {person} for completing a quest."
+QUEST_REWARD_LOCATION,"Found in {location}."
+HARVESTED_IN_LOCATION,"Harvested in {location}."
+FOUND_IN_LOCATION,"Found in the {location}."
+APPLIES_STATUS,"Applies {status} status:"
+WRITTEN_BY,"written by {name}"
+OBTAINED_FROM,"obtained from {name}"
+COMMON,common
+UNCOMMON,uncommon
+PROTO,proto
+LETTER,Letter
+PACKAGE,Package
+FOOD,Food
+KNIFE,knife
+BLADE,blade
+POLE,pole
+WHIP,whip
+HILT,hilt
+SHAFT,shaft
+GEM,gem
+FORMULA,formula
+ORB,orb
+STRING,string
+BOW,bow
+LOADER,loader
+BARREL,barrel
+CLOTH_ARMOUR,cloth armour
+LEATHER_ARMOUR,leather armour
+LIGHT_ARMOUR,light armour
+CHAIN_ARMOUR,chain armour
+PLATE_ARMOUR,plate armour
+ROPE_JOINTS,rope joints
+LEATHER_JOINTS,leather joints
+METAL_JOINTS,metal joints
+MAGICAL_COATING,magical coating
+PAINT_COATING,paint coating
+METAL_COATING,metal coating
+GLASS_COATING,glass coating
+ROPE_CHAIN,rope chain
+METAL_CHAIN,metal chain
+LEATHER_STRIP,leather strip
+METAL_STRIP,metal strip
+WEAPON,weapon
+TOOL,tool
+CHEST,chest
+HARNESS,harness
+HELMET,helmet
+BASHER,basher
+SMASHER,smasher
+CUTTER,cutter
+PIERCER,piercer
+THROWER,thrower
+SHOOTER,shooter
+PROJECTOR,projector
+LAUNCHER,launcher
+CARTALYST,catalyst
+INFUSER,infuser
+ARTIFACT,artifact
+DAGGER,dagger
+SWORD,sword
+AXE,axe
+MACE,mace
+BUCKLER,buckler
+KITE_SHIELD,kite shield
+TOWER_SHIELD,tower shield
+SLING,sling
+PISTOL,pistol
+TOME,tome
+AMPLIFIER,amplifier
+ORB,orb
+SPELLBLADE,spellblade
+GREATSWORD,greatsword
+GREATMAUL,greatmaul
+BATTLEAXE,battleaxe
+SPEAR,spear
+SYTHE,scythe
+MORNINGSTAR,morningstar
+BOW,bow
+CROSSBOW,crossbow
+BLUNDERBUSS,blunderbuss
+QUARTERSTAFF,quarterstaff
+MAGESTAFF,mage staff
+SHIRT,shirt
+LEATHER_CHEST,leather chest
+CHAIN_CUIRASS,chain cuirass
+PLATE_CUIRASS,plate cuirass
+PANTS, pants
+CHAIN_GREAVES,chain greaves
+PLATE_GREAVES,plate greaves
+PANTIES,panties
+HAT,hat
+CHAIN_COIF,chain coif
+PLATE_HELM,plate helm
+GLASSES,glasses
+SANDALS,sandals
+BOOTS,boots
+CHAIN_BOOTS,chain boots
+PLATE_BOOTS,plate boots
+SLEEVES,sleeves
+GLOVES,gloves
+CHAIN_GAUNTLETS,chain gauntlets
+PLATE_GAUNTLETS,plate gauntlets
+ROPE_BELT,rope belt
+LEATHER_BELT,leather belt
+CHAIN_BELT,chain belt
+CLOAK,cloak
+CAPE,cape
+AMULET,amulet
+RING,ring
+EARRING,earring
+BRACELET,bracelet

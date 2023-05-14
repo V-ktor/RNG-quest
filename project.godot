@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="RNG Quest"
+run/main_scene="res://gui/menu.tscn"
+config/features=PackedStringArray("4.0", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Items="*res://libraries/items.gd"
+Skills="*res://libraries/skills.gd"
+Enemies="*res://libraries/enemies.gd"
+Regions="*res://libraries/regions.gd"
+Names="*res://libraries/names.gd"
+Characters="*res://libraries/characters.gd"
+Guilds="*res://libraries/guilds.gd"
+Story="*res://libraries/story.gd"
+
+[display]
+
+window/size/mode=2
+window/energy_saving/keep_screen_on=false
+
+[gui]
+
+timers/tooltip_delay_sec=0.2
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://translations/actions.en.translation", "res://translations/ui.en.translation", "res://translations/items.en.translation", "res://translations/skills.en.translation")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
