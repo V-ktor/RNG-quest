@@ -159,9 +159,13 @@ class Character:
 					else:
 						damage[k] = dict.damage[k]*abilities[ability]
 			if dict.has("weapon_subtypes"):
-				valid_weapon_subtypes += dict.weapon_subtypes
+				for t in dict.weapon_subtypes:
+					if !valid_weapon_subtypes.has(t):
+						valid_weapon_subtypes.push_back(t)
 			if dict.has("armour_subtypes"):
-				valid_armour_subtypes += dict.armour_subtypes
+				for t in dict.armour_subtypes:
+					if !valid_armour_subtypes.has(t):
+						valid_armour_subtypes.push_back(t)
 		for item in equipment.values():
 			for k in attributes:
 				if item.has(k):

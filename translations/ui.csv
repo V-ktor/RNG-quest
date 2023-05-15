@@ -2,6 +2,8 @@
 CONTINUE,Continue
 CREATE_CHARACTER,Create Character
 OPTIONS,Options
+ACTION,Action
+SUMMARY,Summary
 QUIT,Quit
 SIMULATING,"Simulating..."
 DAY,day
@@ -261,3 +263,11 @@ DENTIST,dentist
 GOD_OF,God of
 MALE,male
 FEMALE,female
+MAGICAL,Magical
+ONE_HANDED,One-handed
+TWO_HANDED,Two-handed
+MEDIUM,Medium
+HEAVY,Heavy
+WEAPONS,Weapons
+POTIONS,Potions
+HEALTHC,Health

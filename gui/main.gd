@@ -44,7 +44,8 @@ const EQUIPMENT_LR_TYPES = [
 const EQUIPMENT_QUALITY_SCALING = 0.1
 const EQUIPMENT_BASE_PRICE = 30
 const MAX_SUMMONS = 1
-const TIMETABLE = {
+const ACTIONS = ["training","grinding","questing","shopping","crafting","resting"]
+var timetable = {
 	00:"sleeping",
 	05:"shopping",
 	07:"training",
@@ -102,6 +103,10 @@ var player_guild_lvl:= {}
 var player_guild_exp:= {}
 var player_vegan:= false
 var valid_potion_types:= ["health"]
+var weapon_1h_alowed:= true
+var weapon_2h_alowed:= true
+var player_weapon_types:= []
+var player_armour_types:= []
 var max_summons:= MAX_SUMMONS
 var current_action_text: String
 var current_task: String
@@ -127,7 +132,7 @@ var status_update:= false
 @warning_ignore("shadowed_global_identifier")
 @onready var log:= $HBoxContainer/VBoxContainer2/Log/RichTextLabel
 @onready var log_quest:= $HBoxContainer/VBoxContainer4/Quests/RichTextLabel
-
+@onready var log_summary:= $HBoxContainer/VBoxContainer7/Log/RichTextLabel
 
 func set_region(type: String) -> String:
 	current_region = Regions.create_region(type)
@@ -198,8 +203,10 @@ func pick_skill_upgrade() -> Dictionary:
 
 func learn_new_skill(force_type:= "", basic:= false):
 	var skill:= Skills.create_random_skill(player.abilities.keys(), force_type, basic)
+	var text:= tr("LEARNED_SKILL_LOG").format(skill)
 	player.skills.push_back(skill)
-	print_log_msg("\n"+tr("LEARNED_SKILL_LOG").format(skill))
+	print_log_msg("\n" + text)
+	print_summary_msg(text)
 
 func get_level_scaling(level: int, scaling:=1.0):
 	return (1.0 + 0.1*scaling*(level-1)) / (1.0 + 0.1*scaling*(level-2))
@@ -226,6 +233,7 @@ func inc_level(dict, level: int, scaling:= 1.0):
 					inc_level(dict[i], level, scaling)
 
 func upgrade_skill(skill:= {}):
+	var text: String
 	if skill.size()==0:
 		skill = pick_skill_upgrade()
 	if skill.size()==0:
@@ -247,7 +255,9 @@ func upgrade_skill(skill:= {}):
 	if skill.has("cooldown"):
 		skill.cooldown *= get_level_scaling(skill.level, 0.25)
 	skill.description = Skills.create_tooltip(skill)
-	print_log_msg(tr("SKILL_UPGRADE_LOG").format({"name":skill.name,"level":Skills.convert_to_roman_number(skill.level),"description":skill.description}))
+	text = tr("SKILL_UPGRADE_LOG").format({"name":skill.name,"level":Skills.convert_to_roman_number(skill.level),"description":skill.description})
+	print_log_msg(text)
+	print_summary_msg(text)
 
 func pick_ability() -> String:
 	var valid:= []
@@ -315,16 +325,20 @@ func learn_new_ability(type:= ""):
 	if type.length()==0:
 		learn_new_skill()
 		return
+	var text:= tr("LEARNED_ABIlITY_LOG").format({"ability":tr(Skills.ABILITIES[type].name.to_upper())})
 	player.abilities[type] = 1
 	player_ability_exp[type] = 0
 	learn_new_skill()
 	queue_skill_update()
-	print_log_msg(tr("LEARNED_ABIlITY_LOG").format({"ability":tr(Skills.ABILITIES[type].name.to_upper())}))
+	print_log_msg(text)
+	print_summary_msg(text)
 
 func join_guild(guild: String):
+	var text:= tr("JOIN_GUILD").format({"guild":tr(guild.to_upper()),"rank":Guilds.get_rank(1,guild)})
 	player_guild_exp[guild] = 0
 	player_guild_lvl[guild] = 1
-	print_log_msg(tr("JOIN_GUILD").format({"guild":tr(guild.to_upper()),"rank":Guilds.get_rank(1,guild)}))
+	print_log_msg(text)
+	print_summary_msg(text)
 
 func get_preference_bonus(type: String) -> float:
 	var multiplier:= 1.0
@@ -637,17 +651,22 @@ func optimize_equipment():
 	var i:= 0
 	while i<player_inventory.size():
 		var item: Dictionary = player_inventory[i]
+		if item.has("2h") && item["2h"]:
+			if !weapon_2h_alowed:
+				continue
+		elif !weapon_1h_alowed:
+			continue
 		if item.has("subtype"):
 			if typeof(item.subtype)==TYPE_ARRAY:
 				var valid:= false
 				for k in item.subtype:
-					if k in player.valid_weapon_subtypes || k in player.valid_armour_subtypes:
+					if k in player_weapon_types || k in player_armour_types:
 						valid = true
 						break
 				if !valid:
 					i += 1
 					continue
-			elif !(item.subtype in player.valid_weapon_subtypes || item.subtype in player.valid_armour_subtypes || (player.valid_weapon_subtypes.size()==0 && item.type=="weapon")):
+			elif !(item.subtype in player_weapon_types || item.subtype in player_armour_types || (player_weapon_types.size()==0 && item.type=="weapon")):
 				i += 1
 				continue
 		for k in EQUIPMENT_SLOTS:
@@ -663,13 +682,15 @@ func optimize_equipment():
 						equip(item)
 						player_inventory.erase(item)
 						break
-			elif player.equipment[k].has("2h") && player.equipment[k]["2h"]:
+			elif player.equipment[k].has("2h") && player.equipment[k]["2h"] && weapon_1h_alowed:
 				for j in range(player_inventory.size()):
 					if i==j:
 						continue
 					var it: Dictionary = player_inventory[j]
+					if it.has("2h") && it["2h"]:
+						continue
 					if it.has("subtype"):
-						if !(it.subtype in player.valid_weapon_subtypes || it.subtype in player.valid_armour_subtypes || (player.valid_weapon_subtypes.size()==0 && it.type=="weapon")):
+						if !(it.subtype in player_weapon_types || it.subtype in player_armour_types || (player_weapon_types.size()==0 && it.type=="weapon")):
 							continue
 					if it.type!="weapon":
 						continue
@@ -710,9 +731,12 @@ func get_delay_scale(speed: int) -> float:
 	return 10.0/max(10.0 + speed, 1.0)
 
 func level_up():
+	var text: String
 	player.experience -= get_max_exp(player.level)
 	player.level += 1
-	print_log_msg("\n"+tr("LEVEL_UP_LOG").format({"level":player.level}))
+	text = tr("LEVEL_UP_LOG").format({"level":player.level})
+	print_log_msg("\n" + text)
+	print_summary_msg(text)
 	distribute_stat_points()
 	if player.level%20==10:
 		learn_new_ability()
@@ -746,9 +770,12 @@ func add_guild_exp(type: String, exp_scale:= 1.0):
 func guild_level_up(guild: String):
 	var item: Dictionary
 	var amount:= 1
+	var text: String
 	player_guild_exp[guild] -= Guilds.get_max_exp(player_guild_lvl[guild])
 	player_guild_lvl[guild] += 1
-	print_log_msg("\n"+tr("GUILD_LEVEL_UP").format({"guild":tr(Guilds.GUILDS[guild].name.to_upper()),"rank":Guilds.get_rank(player_guild_lvl[guild], guild)}))
+	text = tr("GUILD_LEVEL_UP").format({"guild":tr(Guilds.GUILDS[guild].name.to_upper()),"rank":Guilds.get_rank(player_guild_lvl[guild], guild)})
+	print_log_msg("\n" + text)
+	print_summary_msg(text)
 	
 	match Guilds.GUILDS[guild].equipment_reward.pick_random():
 		"accessoiry":
@@ -826,12 +853,14 @@ func distribute_stat_points():
 				break
 
 func get_task_ID() -> int:
-	var data:= Time.get_time_dict_from_unix_time(int(current_time))
+	var time_zone:= Time.get_time_zone_from_system()
+	var data:= Time.get_time_dict_from_unix_time(int(current_time + 60*time_zone.bias))
 	var hour: int = data.hour
-	for i in range(TIMETABLE.size()-1,-1,-1):
-		if hour>=TIMETABLE.keys()[i]:
-			return i
-	return 0
+	var index:= timetable.size()-1
+	for i in range(timetable.size()-1,-1,-1):
+		if timetable.keys()[i]>=hour && i<=index:
+			index = i
+	return index
 
 func pick_random_materials(dict: Dictionary) -> Array:
 	var materials:= []
@@ -883,7 +912,9 @@ func next_chapter():
 			Story.create_person(current_region.race.pick_random(), current_region.cities.pick_random())
 	if quest_chapter>0:
 		var item:= Items.create_legendary_equipment(player.equipment.values().pick_random().base_type, max(10*(current_region.tier+1) + (player.level+current_region.level)/2, 1))
-		print_log_msg(tr("QUEST_ARTIFACT_REWARD").format({"item":item.name,"description":item.description,"chapter":quest_chapter}))
+		var text:= tr("QUEST_ARTIFACT_REWARD").format({"item":item.name,"description":item.description,"chapter":quest_chapter})
+		print_log_msg(text)
+		print_summary_msg(text)
 		add_item(item)
 		optimize_equipment()
 		queue_inventory_update()
@@ -891,8 +922,10 @@ func next_chapter():
 	if pos>=0:
 		var rpos: = quest_log.find('\n', pos + 1)
 		quest_log = quest_log.left(rpos) + "\n[center]- [color=green]done[/color] -[/center]\n"
+	var text:= tr("CHAPTER_STARTED").format({"title":title})
 	quest_log += "[center]Chapter " + str(quest_chapter+1) + ": [u]" + title + "[/u][/center]"
-	print_log_msg("\n"+tr("CHAPTER_STARTED").format({"title":title}))
+	print_log_msg("\n" + text)
+	print_summary_msg(text)
 	update_quest_log()
 	
 	if abs(player.level-current_region.level)>=4:
@@ -1002,10 +1035,12 @@ func action_done(action: Dictionary):
 		"goto":
 			current_location = action.args.location
 			if current_location in explored_locations:
-				print_log_msg("\n"+tr("GOTO_LOG").format(action.args))
+				print_log_msg("\n" + tr("GOTO_LOG").format(action.args))
 			else:
+				var text:= tr("DISCOVER_LOG").format(action.args)
 				explored_locations.push_back(current_location)
-				print_log_msg("\n"+tr("DISCOVER_LOG").format(action.args))
+				print_log_msg("\n" + text)
+				print_summary_msg(text)
 				add_guild_exp("exploration")
 			if current_location in current_region.cities:
 				for guild in player_guild_exp.keys():
@@ -1396,12 +1431,14 @@ func action_done(action: Dictionary):
 		"steal":
 			player_gold += int(action.args.amount*5.0*(1.0 + 0.1*(player.level-1)*(player.level-1)))
 		"wander":
+			var text:= tr("TRAVEL_LOG").format({"region_type":current_region.name})
 			for k in player_ability_preference.keys():
 				player_ability_preference[k] *= 0.5
 			for k in player_stat_preference.keys():
 				player_stat_preference[k] *= 0.5
 			set_region(action.args.region)
-			print_log_msg(tr("TRAVEL_LOG").format({"region_type":current_region.name}))
+			print_log_msg(text)
+			print_summary_msg(text)
 	queue_info_update()
 	
 	# Next action.
@@ -1644,7 +1681,9 @@ func action_done(action: Dictionary):
 				_:
 					do_action("visit", {"type":tr(HANGOUT_LOCATIONS.pick_random())}, REST_DELAY/2.0)
 		"sleeping":
-			do_action("sleep", {}, SLEEP_DELAY)
+			var time_zone:= Time.get_time_zone_from_system()
+			var time_data:= Time.get_time_dict_from_unix_time(int(current_time + 60*time_zone.bias))
+			do_action("sleep", {}, min(SLEEP_DELAY, 60*60*abs(5.0 - time_data.hour)))
 	
 	
 
@@ -2472,7 +2511,9 @@ func die(enemy: Characters.Enemy):
 
 func start_task(task_ID: int, task:= ""):
 	if task=="":
-		task = TIMETABLE.values()[task_ID]
+		task = timetable.values()[task_ID]
+	if task==current_task:
+		return
 	if task=="crafting":
 		if player_inventory.size()<2:
 			if player_gold>get_potion_gold_limit() || player_inventory.size()>50:
@@ -2787,6 +2828,28 @@ func update_status():
 		bar.show()
 	status_update = false
 
+func update_timetable():
+	for i in range(18):
+		var button: HBoxContainer
+		var time:= i + 5
+		if has_node("HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1/HBoxContainer"+str(i)):
+			button = get_node("HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1/HBoxContainer"+str(i))
+		else:
+			button = $HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1/HBoxContainer0.duplicate(14)
+			button.name = "HBoxContainer"+str(i)
+			$HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1.add_child(button)
+		button.get_node("Label").text = str(time).pad_zeros(2) + ":00"
+		if !button.get_node("OptionButton").is_connected("item_selected", Callable(self, "_set_timetable")):
+			button.get_node("OptionButton").connect("item_selected", Callable(self, "_set_timetable").bind(i))
+		if timetable.has(time):
+			button.get_node("OptionButton").selected = ACTIONS.find(timetable[time])
+		else:
+			button.get_node("OptionButton").selected = 5
+			for j in range(1,time-4):
+				if timetable.has(time-j):
+					button.get_node("OptionButton").selected = ACTIONS.find(timetable[time-j])
+					break
+
 func update_quest_log():
 	log_quest.parse_bbcode(quest_log)
 
@@ -2796,7 +2859,80 @@ func print_log_msg(text: String):
 	if log.get_line_count()>=1000:
 		log.text = log.text.substr(ceil(log.text.length()/2))
 	text[0] = text[0].to_upper()
-	log.append_text(text+"\n")
+	log.append_text(text + "\n")
+
+func print_summary_msg(text: String):
+	var time_zone:= Time.get_time_zone_from_system()
+	var time_data:= Time.get_datetime_dict_from_unix_time(int(current_time + 60*time_zone.bias))
+	if log_summary.get_line_count()>=1000:
+		log_summary.text = log_summary.text.substr(ceil(log_summary.text.length()/2))
+	text[0] = text[0].to_upper()
+	log_summary.append_text(Time.get_datetime_string_from_datetime_dict(time_data, true) + ": " + text + "\n")
+
+
+func show_action():
+	$HBoxContainer/VBoxContainer1.show()
+	$HBoxContainer/VBoxContainer2.show()
+	$HBoxContainer/VBoxContainer3.show()
+	$HBoxContainer/VBoxContainer4.show()
+	$HBoxContainer/VBoxContainer5.hide()
+	$HBoxContainer/VBoxContainer6.hide()
+	$HBoxContainer/VBoxContainer7.hide()
+
+func show_options():
+	$HBoxContainer/VBoxContainer1.hide()
+	$HBoxContainer/VBoxContainer2.hide()
+	$HBoxContainer/VBoxContainer3.hide()
+	$HBoxContainer/VBoxContainer4.hide()
+	$HBoxContainer/VBoxContainer5.show()
+	$HBoxContainer/VBoxContainer6.show()
+	$HBoxContainer/VBoxContainer7.hide()
+	
+	for i in range(4):
+		get_node("HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox"+str(i)).button_pressed = false
+	for i in range(3):
+		get_node("HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox"+str(i)).button_pressed = false
+	for i in range(3):
+		get_node("HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox"+str(i)).button_pressed = false
+	for k in player_weapon_types:
+		match k:
+			"melee":
+				$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox0.button_pressed = true
+			"ranged":
+				$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox1.button_pressed = true
+			"magic":
+				$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox2.button_pressed = true
+			"shield":
+				$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox3.button_pressed = true
+	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox4.button_pressed = weapon_1h_alowed
+	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox5.button_pressed = weapon_2h_alowed
+	for k in player_armour_types:
+		match k:
+			"light":
+				$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox0.button_pressed = true
+			"medium":
+				$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox1.button_pressed = true
+			"heavy":
+				$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox2.button_pressed = true
+	for k in valid_potion_types:
+		match k:
+			"health":
+				$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox0.button_pressed = true
+			"stamina":
+				$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox1.button_pressed = true
+			"mana":
+				$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox2.button_pressed = true
+	
+
+func show_summary():
+	$HBoxContainer/VBoxContainer1.hide()
+	$HBoxContainer/VBoxContainer2.hide()
+	$HBoxContainer/VBoxContainer3.hide()
+	$HBoxContainer/VBoxContainer4.hide()
+	$HBoxContainer/VBoxContainer5.hide()
+	$HBoxContainer/VBoxContainer6.hide()
+	$HBoxContainer/VBoxContainer7.show()
+
 
 
 func time_step(delta: float, time: float):
@@ -2813,6 +2949,13 @@ func time_step(delta: float, time: float):
 						add_ability_exp(a, _exp/skill.slots[s].size())
 		action_done(current_action)
 		return
+	elif current_task=="sleeping":
+		var time_zone:= Time.get_time_zone_from_system()
+		var time_data:= Time.get_time_dict_from_unix_time(int(current_time + 60*time_zone.bias))
+		if time_data.hour>=5 && time_data.hour<23:
+			action_done(current_action)
+			start_task((current_task_ID+1)%timetable.size())
+			return
 	
 	delta = clamp(player.delay, delta, time-current_time)
 	
@@ -2925,6 +3068,7 @@ func _save():
 		"player_summons":summon_data,
 		"enemies":enemy_data,
 		"progress_delay":$HBoxContainer/VBoxContainer2/Action/VBoxContainer/ProgressBar.max_value,
+		"timetable":timetable,
 	}
 	file = FileAccess.open("user://saves/"+player_name+".dat", FileAccess.WRITE)
 	file.store_line(JSON.stringify({"name":player_name,"race":player_race,"level":player.level,"location":current_region.name}))
@@ -2945,6 +3089,11 @@ func _load():
 		print("Can't load save file "+player_name+".dat!")
 	player = Characters.Character.new(data)
 	data = JSON.parse_string(file.get_line())
+	if data.has("timetable"):
+		var dict:= {}
+		for t in data.timetable.keys():
+			dict[int(t)] = data.timetable[t]
+		data.timetable = dict
 	for k in data.keys():
 		set(k, data[k])
 	for i in range(enemies.size()):
@@ -2968,7 +3117,45 @@ func _load():
 	if !current_region.has("enemy"):
 		current_region.enemy = ["goblin"]
 	Story.hostile_factions = current_region.enemy
-	
+
+
+func _set_timetable(ID: int, index: int):
+	var type: String = ACTIONS[ID]
+	index += 5
+	for i in range(1,index-4):
+		if timetable.has(index-i):
+			if timetable[index-i]==type:
+				timetable.erase(index)
+				return
+			break
+	timetable[index] = type
+
+func _toggle_1h_weapons(button_pressed: bool):
+	weapon_1h_alowed = button_pressed
+
+func _toggle_2h_weapons(button_pressed: bool):
+	weapon_2h_alowed = button_pressed
+
+func _toggle_weapon_type(button_pressed: bool, type: String):
+	if button_pressed:
+		if !player_weapon_types.has(type):
+			player_weapon_types.push_back(type)
+	else:
+		player_weapon_types.erase(type)
+
+func _toggle_armour_type(button_pressed: bool, type: String):
+	if button_pressed:
+		if !player_armour_types.has(type):
+			player_armour_types.push_back(type)
+	else:
+		player_armour_types.erase(type)
+
+func _toggle_potion_type(button_pressed: bool, type: String):
+	if button_pressed:
+		if !valid_potion_types.has(type):
+			valid_potion_types.push_back(type)
+	else:
+		valid_potion_types.erase(type)
 
 
 func _notification(what: int):
@@ -2981,6 +3168,12 @@ func _input(event: InputEvent):
 		_save()
 		get_tree().change_scene_to_file("res://gui/menu.tscn")
 		queue_free()
+	elif event.is_action_pressed("show_action"):
+		show_action()
+	elif event.is_action_pressed("show_options"):
+		show_options()
+	elif event.is_action("show_summary"):
+		show_summary()
 
 func _ready():
 	randomize()
@@ -2988,9 +3181,10 @@ func _ready():
 #	debug
 #	current_time -= 24*60*60
 	
-	Story.locations = current_region.locations
-	Story.cities = current_region.cities
-	Story.guilds = player_guild_lvl.keys()
+	if player_weapon_types.size()==0:
+		player_weapon_types = player.valid_weapon_subtypes
+	if player_armour_types.size()==0:
+		player_armour_types = player.valid_armour_subtypes
 	
 	if current_task_ID==-1:
 		current_task_ID = 0
@@ -3003,4 +3197,6 @@ func _ready():
 	update_quest_log()
 	update_info()
 	update_gui()
+	update_timetable()
+	show_action()
 	
