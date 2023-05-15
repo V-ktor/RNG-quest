@@ -1050,6 +1050,18 @@ libraries = {
 "": SubResource("AnimationLibrary_uxs0h")
 }
 
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -24.0
+offset_right = 96.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+text = "v0.0.1"
+vertical_alignment = 1
+
 [connection signal="pressed" from="Panel/VBoxContainer/Button0" to="." method="_show_characters"]
 [connection signal="pressed" from="Panel/VBoxContainer/Button1" to="." method="_new_character"]
 [connection signal="pressed" from="Panel/VBoxContainer/Button3" to="." method="_quit"]
