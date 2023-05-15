@@ -67,7 +67,8 @@ func load_characters():
 					button.connect("pressed", Callable(self, "_load").bind(i))
 				i += 1
 		file_name = dir.get_next()
-	
+	if $Characters/ScrollContainer/VBoxContainer/Character0.visible:
+		$Characters/ScrollContainer/VBoxContainer/Character0.grab_focus()
 
 
 func _quit():
