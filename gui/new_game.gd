@@ -298,6 +298,7 @@ func start_game():
 	main_instance.join_guild("adventurer_guild")
 	main_instance.current_time = Time.get_unix_time_from_system()
 	main_instance.player_vegan = player_vegan
+	main_instance.player_creation_time = main_instance.current_time
 	
 	get_parent().add_child(main_instance)
 	main_instance._save()

@@ -102,6 +102,7 @@ var player_cooking_delay:= 0.0
 var player_guild_lvl:= {}
 var player_guild_exp:= {}
 var player_vegan:= false
+var player_creation_time:= 0
 var valid_potion_types:= ["health"]
 var weapon_1h_alowed:= true
 var weapon_2h_alowed:= true
@@ -2533,6 +2534,8 @@ func start_task(task_ID: int, task:= ""):
 					task = "grinding"
 	elif task=="shopping" && (player_gold<=get_potion_gold_limit() && player_inventory.size()==0):
 		task = "crafting"
+	if task=="sleeping" && current_time-player_creation_time<12*60*60:
+		task = "grinding"
 	current_task = task
 	enemies.clear()
 	player_summons.clear()
@@ -2862,6 +2865,8 @@ func print_log_msg(text: String):
 	log.append_text(text + "\n")
 
 func print_summary_msg(text: String):
+	if log_summary==null:
+		return
 	var time_zone:= Time.get_time_zone_from_system()
 	var time_data:= Time.get_datetime_dict_from_unix_time(int(current_time + 60*time_zone.bias))
 	if log_summary.get_line_count()>=1000:
@@ -3050,6 +3055,7 @@ func _save():
 		"player_guild_lvl":player_guild_lvl,
 		"player_guild_exp":player_guild_exp,
 		"player_vegan":player_vegan,
+		"player_creation_time":player_creation_time,
 		"current_task":current_task,
 		"current_action_text":current_action_text,
 		"current_task_ID":current_task_ID,
