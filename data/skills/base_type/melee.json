@@ -73,6 +73,30 @@
 		"slots":["aim","melee_mod"],
 		"target_type":"enemy",
 	},
+	"backstab":{
+		"name":"backstab",
+		"auto_naming":{
+			"base":["backstab"],
+		},
+		"usage":"attack",
+		"type":"melee",
+		"attribute":"attack",
+		"cost":{
+			"stamina":2,
+		},
+		"damage":{
+			"attack":{
+				"value":1.0,
+				"type":["piercing"],
+			},
+		},
+		"attributes":{
+			"penetration":4,
+			"critical":6,
+		},
+		"slots":["aim","melee_mod"],
+		"target_type":"enemy",
+	},
 	"thrust":{
 		"name":"thrust",
 		"auto_naming":{

@@ -11,7 +11,7 @@
 		"damage":{
 			"impact":0.2,
 		},
-		"cooldown":2,
+		"cooldown":2.0,
 	},
 	"reckless":{
 		"name":"reckless",
@@ -42,7 +42,7 @@
 			    "type":["impact"],
 		    },
 		},
-		"cooldown":2,
+		"cooldown":2.0,
 	},
 	"shred":{
 		"name":"shred",
@@ -210,7 +210,7 @@
 		"cooldown":2.0,
 	},
 	"penetrating":{
-		"name":"dual",
+		"name":"penetrating",
 		"auto_naming":{
 			"prefix":["hidden","silent","piercing","needle"],
 		},
@@ -220,6 +220,20 @@
 		},
 		"armour_penetration":0.3,
 		"cooldown":2.0,
+	},
+	"cleaving":{
+		"name":"cleaving",
+		"auto_naming":{
+			"prefix":["cleaving","wide"],
+		},
+		"type":"melee",
+		"cost":{
+			"stamina":1,
+			"focus":1,
+		},
+		"damage_multiplier":-0.1,
+		"area":1,
+		"cooldown":4.0,
 	},
 	"shielding":{
 		"name":"shielding",

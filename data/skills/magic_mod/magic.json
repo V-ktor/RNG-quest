@@ -142,6 +142,20 @@
 		],
 		"cooldown":2.0,
 	},
+	"split":{
+		"name":"split",
+		"auto_naming":{
+			"prefix":["dual"],
+		},
+		"type":"magic",
+		"cost":{
+			"mana":1,
+			"focus":1,
+		},
+		"damage_multiplier":-0.5,
+		"hits":2,
+		"cooldown":1.0,
+	},
 	"shielding":{
 		"name":"shielding",
 		"auto_naming":{
@@ -169,6 +183,9 @@
 	},
 	"fuse":{
 		"name":"fuse",
+		"auto_naming":{
+			"prefix":["fusion"],
+		},
 		"type":"magic",
 		"cost":{
 			"focus":1,
