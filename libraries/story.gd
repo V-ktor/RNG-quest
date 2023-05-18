@@ -1183,6 +1183,8 @@ func create_quest(region: Dictionary) -> Dictionary:
 		quest.npc = persons[quest.requires["person-quest_giver"]]
 	elif quest.requires.has("person-story"):
 		quest.npc = persons[quest.requires["person-story"]]
+	elif quest.requires.has("person"):
+		quest.npc = persons[quest.requires.person]
 	else:
 		for k in quest.requires:
 			if "person" in k && persons.has(quest.requires[k]):

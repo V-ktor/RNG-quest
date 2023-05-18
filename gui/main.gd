@@ -120,6 +120,7 @@ var quest_chapter:= -1
 var quest_progress:= 0
 var current_quest: Dictionary
 var quest_log:= ""
+var summary_text:= ""
 var action_failures:= 0
 var enemies:= []
 var loot:= []
@@ -2871,8 +2872,13 @@ func print_summary_msg(text: String):
 	var time_data:= Time.get_datetime_dict_from_unix_time(int(current_time + 60*time_zone.bias))
 	if log_summary.get_line_count()>=1000:
 		log_summary.text = log_summary.text.substr(ceil(log_summary.text.length()/2))
+	if summary_text.length()>8000:
+		@warning_ignore("integer_division")
+		summary_text = summary_text.right(summary_text.length() - summary_text.find("\n",summary_text.length()/2) - 1)
 	text[0] = text[0].to_upper()
-	log_summary.append_text(Time.get_datetime_string_from_datetime_dict(time_data, true) + ": " + text + "\n")
+	text = "\n" + Time.get_datetime_string_from_datetime_dict(time_data, true) + ": " + text
+	summary_text += text
+	log_summary.append_text(text)
 
 
 func show_action():
@@ -3075,6 +3081,7 @@ func _save():
 		"enemies":enemy_data,
 		"progress_delay":$HBoxContainer/VBoxContainer2/Action/VBoxContainer/ProgressBar.max_value,
 		"timetable":timetable,
+		"summary_text":summary_text,
 	}
 	file = FileAccess.open("user://saves/"+player_name+".dat", FileAccess.WRITE)
 	file.store_line(JSON.stringify({"name":player_name,"race":player_race,"level":player.level,"location":current_region.name}))
@@ -3110,6 +3117,7 @@ func _load():
 	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/LabelTask.text = tr(current_task.to_upper())
 	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/LabelAction.text = current_action_text
 	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/ProgressBar.max_value = data.progress_delay
+	$HBoxContainer/VBoxContainer7/Log/RichTextLabel.parse_bbcode(summary_text)
 	
 	data = JSON.parse_string(file.get_line())
 	Story.persons = data.persons

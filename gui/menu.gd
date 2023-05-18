@@ -115,5 +115,8 @@ func _process(delta: float):
 func _ready():
 #	set_process(false)
 	
+	if OS.has_feature("web") || OS.has_feature("mobile"):
+		$Panel/VBoxContainer/Button3.hide()
+	
 	for i in range(35):
 		update_tile_map()
