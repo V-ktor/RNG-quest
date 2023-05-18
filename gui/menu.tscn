@@ -1050,7 +1050,7 @@ libraries = {
 "": SubResource("AnimationLibrary_uxs0h")
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="VersionLabel" type="Label" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -1059,7 +1059,7 @@ offset_top = -24.0
 offset_right = 96.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
-text = "v0.0.1"
+text = "v0.0.2"
 vertical_alignment = 1
 
 [connection signal="pressed" from="Panel/VBoxContainer/Button0" to="." method="_show_characters"]
