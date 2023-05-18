@@ -1,6 +1,6 @@
 extends Node
 
-const MAP_SCROLL_SPEED = 40.0
+const MAP_SCROLL_SPEED = 30.0
 
 var characters:= []
 var main:= preload("res://gui/main.tscn")
@@ -15,9 +15,10 @@ var tile_map_line:= 30
 
 func update_tile_map():
 	for k in range(0,15):
+		var pos:= Vector2i(k, tile_map_line)
+		tile_map.set_cell(0, pos+Vector2i(0,35), -1)
 		if randf()<0.5:
 			continue
-		var pos:= Vector2i(k, tile_map_line)
 		var source:= int(randf_range(1,8.5))
 		var p: Vector2i = [Vector2i(-1,0),Vector2i(1,0),Vector2i(0,-1),Vector2i(0,1)].pick_random()
 		if tile_map.get_cell_source_id(0, pos+p)>=0:
