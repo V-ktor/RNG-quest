@@ -1024,7 +1024,7 @@ func add_ability_exp(ability: String, amount: float):
 		player.abilities[ability] += 1
 
 func do_action(action: String, args: Dictionary, delay: float, string:=""):
-	player.delay += delay
+	player.delay = delay
 	current_action = {
 		"action":action,
 		"args":args,
@@ -3109,6 +3109,7 @@ func _load():
 	data = JSON.parse_string(file.get_line())
 	if data==null:
 		print("Can't load save file "+player_name+".dat!")
+	data.delay = max(data.delay, 0.0)
 	player = Characters.Character.new(data)
 	data = JSON.parse_string(file.get_line())
 	if data.has("timetable"):
