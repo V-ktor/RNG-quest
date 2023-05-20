@@ -272,3 +272,4 @@ SCHEDULE,Schedule
 WEAPONS,Weapons
 POTIONS,Potions
 HEALTHC,Health
+BLESSING_OF,"Blessing of the {name}"

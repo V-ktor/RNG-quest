@@ -250,12 +250,17 @@ class Character:
 				else:
 					attributes[k] += dict.attributes[k]
 		status.push_back(dict)
+		recalc_attributes()
 	
 	func remove_status(dict: Dictionary):
 		if dict.has("attributes"):
 			for k in dict.attributes.keys():
-				attributes[k] -= dict.attributes[k].value
+				if typeof(dict.attributes[k])==TYPE_DICTIONARY:
+					attributes[k] -= dict.attributes[k].value
+				else:
+					attributes[k] -= dict.attributes[k]
 		status.erase(dict)
+		recalc_attributes()
 	
 	func update(delta: float):
 		var stun:= 0.0

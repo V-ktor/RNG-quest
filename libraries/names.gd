@@ -4,23 +4,462 @@ const CONS = ["b","c","d","f","g","h","j","k","l","m","n","p","r","s","t","v","w
 const VOVELS = ["a","e","o","u","i"]
 const ONLY_CENTRAL = ["-","'"]
 
-const GOD_PREFIX = [
-	"War","Weapon","Doom","Death","fierce","grumpy","ferocious","wild","dumb","blind","almighty",
-	"ugly","beautiful","cruel","hated","forbidden","shackled","auxiliary","temporary","dead","Sex",
-	"Science","Magic","arcane","illuminated","dreaming","sleeping","hibernating","banned","wild",
-	"Light","Shadow","Life","Fire","Ice","Water","Earth","forgotten","mossy","golden","shining",
-	"Random Number","procedurally generated","Vegetarian","Vegan","rural","knowledgeable","wise",
-	"the one and only","beloved","wicked","Demon","praised","Prime",
-]
-const GOD_SUFFIX = [
-	"War","Warfare","Conflict","Violence","Death","Murder","Harm","Peace","Altruism","Prosperity",
-	"Technology","Ingenuity","Construction","Nature","Hell","Heaven","Science","Knowledge","Life",
-	"Healing","Destruction","Love","Hate","Birth","Fertility","Fortitude","Virtuosity","Rebirth",
-	"Wisdom","Magic","Dedication","Passion","Light","Darkness","Fire","Ice","Water","Earth","Art",
-	"Shadows","Void","the Dead","Space","Time","Fashion","Agriculture","Power","Beauty","Cards",
-	"Random Numbers","Procedural Generation","Segmentation Fault","Bugs","Curses","Doom",
-	"Flora","Fauna","Sleep","Dreams","Gold",
-]
+const GOD_PREFIX = {
+	"War":{
+		"attack":4,
+	},
+	"Weapon":{
+		"attack":4,
+	},
+	"Doom":{
+		"attack":2,
+		"magic":2,
+	},
+	"Death":{
+		"attack":2,
+		"magic":2,
+	},
+	"fierce":{
+		"attack":2,
+		"critical":2,
+	},
+	"ferocious":{
+		"attack":2,
+		"critical":2,
+	},
+	"wild":{
+		"attack":4,
+		"critical":4,
+		"evasion":-2,
+		"accuracy":-2,
+	},
+	"grumpy":{
+		"armour":2,
+		"critical":2,
+	},
+	"dumb":{
+		"attack":-2,
+		"magic":-2,
+		"armour":4,
+		"evasion":4,
+	},
+	"blind":{
+		"accuracy":-4,
+		"evasion":-4,
+		"armour":4,
+		"willpower":8,
+	},
+	"almighty":{
+		"attack":1,
+		"magic":1,
+		"willpower":2,
+	},
+	"ugly":{
+		"willpower":-4,
+		"magic":4,
+		"evasion":4,
+	},
+	"beautiful":{
+		"willpower":4,
+	},
+	"cruel":{
+		"attack":4,
+		"magic":4,
+		"willpower":-4,
+	},
+	"hated":{
+		"willpower":-4,
+		"magic":4,
+		"critical":4,
+	},
+	"forbidden":{
+		"willpower":-4,
+		"attack":2,
+		"magic":2,
+		"critical":4,
+	},
+	"shackled":{
+		"willpower":-2,
+		"armour":-2,
+		"evasion":4,
+		"critical":4,
+	},
+	"auxiliary":{
+		"health":40,
+	},
+	"temporary":{
+		"stamina":20,
+		"mana":20,
+	},
+	"dead":{
+		"health":-20,
+		"willpower":6,
+		"magic":2,
+	},
+	"Science":{
+		"stamina":20,
+		"attack":2,
+	},
+	"Magic":{
+		"magic":4,
+	},
+	"arcane":{
+		"magic":4,
+	},
+	"illuminated":{
+		"willpower":4,
+	},
+	"dreaming":{
+		"willpower":4,
+	},
+	"sleeping":{
+		"willpower":6,
+		"speed":-1,
+	},
+	"hibernating":{
+		"willpower":8,
+		"evasion":-2,
+		"speed":-1,
+	},
+	"banned":{
+		"stamina":20,
+		"mana":20,
+	},
+	"Light":{
+		"health":40,
+	},
+	"Shadow":{
+		"stamina":20,
+		"mana":20,
+	},
+	"Life":{
+		"health_regen":10,
+	},
+	"Fire":{
+		"magic":4,
+	},
+	"Ice":{
+		"willpower":4,
+	},
+	"Water":{
+		"health_regen":10,
+	},
+	"Earth":{
+		"health":20,
+		"armour":2,
+	},
+	"forgotten":{
+		"stamina":-20,
+		"mana":-20,
+		"attack":4,
+		"magic":4,
+	},
+	"mossy":{
+		"health_regen":10,
+	},
+	"golden":{
+		"armour":4,
+	},
+	"shining":{
+		"willpower":2,
+		"armour":2,
+	},
+	"Random Number":{
+		"critical":4,
+	},
+	"procedurally generated":{
+		"accuracy":2,
+		"evasion":2,
+	},
+	"Vegetarian":{
+		"health":20,
+		"health_regen":5,
+	},
+	"Vegan":{
+		"health":20,
+		"health_regen":5,
+	},
+	"rural":{
+		"health":40,
+	},
+	"knowledgeable":{
+		"stamina":20,
+		"mana":20,
+	},
+	"wise":{
+		"mana":20,
+		"willpower":2,
+	},
+	"the one and only":{
+		"stamina_regen":10,
+		"mana_regen":10,
+	},
+	"beloved":{
+		"stamina_regen":10,
+		"mana_regen":10,
+	},
+	"wicked":{
+		"health_regen":10,
+		"stamina_regen":10,
+		"mana_regen":10,
+		"willpower":-4,
+	},
+	"Demon":{
+		"stamina_regen":10,
+		"mana_regen":10,
+	},
+	"praised":{
+		"stamina":20,
+		"mana":20,
+	},
+	"Prime":{
+		"health":40,
+	},
+}
+const GOD_SUFFIX = {
+	"War":{
+		"attack":4,
+	},
+	"Warfare":{
+		"attack":2,
+		"critical":2,
+	},
+	"Conflict":{
+		"accuracy":2,
+		"critical":2,
+	},
+	"Violence":{
+		"evasion":-2,
+		"accuracy":2,
+		"critical":4,
+	},
+	"Death":{
+		"evasion":-2,
+		"accuracy":2,
+		"critical":4,
+	},
+	"Murder":{
+		"evasion":-2,
+		"attack":2,
+		"critical":4,
+	},
+	"Harm":{
+		"evasion":-4,
+		"attack":2,
+		"magic":2,
+		"critical":4,
+	},
+	"Peace":{
+		"attack":-2,
+		"magic":-2,
+		"willpower":4,
+		"armour":4,
+	},
+	"Altruism":{
+		"willpower":2,
+		"armour":2,
+	},
+	"Prosperity":{
+		"health":40,
+	},
+	"Technology":{
+		"stamina":20,
+		"attack":2,
+	},
+	"Ingenuity":{
+		"stamina":20,
+		"mana":20,
+	},
+	"Construction":{
+		"stamina":20,
+		"stamina_regen":10,
+	},
+	"Nature":{
+		"health":20,
+		"health_regen":5,
+	},
+	"Hell":{
+		"health":-40,
+		"stamina":40,
+		"mana":40,
+	},
+	"Heaven":{
+		"health":40,
+	},
+	"Science":{
+		"attack":2,
+		"willpower":2,
+	},
+	"Knowledge":{
+		"willpower":2,
+		"magic":2,
+	},
+	"Life":{
+		"health":20,
+		"health_regen":5,
+	},
+	"Healing":{
+		"health_regen":10,
+	},
+	"Destruction":{
+		"attack":2,
+		"magic":2,
+	},
+	"Love":{
+		"attack":-2,
+		"magic":-2,
+		"health_regen":10,
+	},
+	"Hate":{
+		"health":-40,
+		"attack":4,
+		"magic":4,
+	},
+	"Birth":{
+		"health":20,
+		"health_regen":5,
+	},
+	"Fertility":{
+		"health_regen":10
+	},
+	"Fortitude":{
+		"armour":4,
+	},
+	"Virtuosity":{
+		"willpower":4,
+	},
+	"Rebirth":{
+		"health":40
+	},
+	"Wisdom":{
+		"willpower":4,
+	},
+	"Magic":{
+		"magic":4,
+	},
+	"Dedication":{
+		"accuracy":2,
+		"evasion":2,
+	},
+	"Passion":{
+		"critical":4,
+	},
+	"Light":{
+		"health":40,
+	},
+	"Darkness":{
+		"health":-40,
+		"stamina":40,
+		"mana":40,
+	},
+	"Fire":{
+		"magic":4,
+	},
+	"Ice":{
+		"willpower":4,
+	},
+	"Water":{
+		"health_regen":10,
+	},
+	"Earth":{
+		"health":20,
+		"armour":2,
+	},
+	"Art":{
+		"accuracy":2,
+		"evasion":2,
+	},
+	"Shadows":{
+		"evasion":4,
+	},
+	"Void":{
+		"accuracy":2,
+		"evasion":2,
+	},
+	"the Dead":{
+		"health":-40,
+		"critical":8,
+	},
+	"Space":{
+		"stamina":20,
+		"mana":20,
+	},
+	"Time":{
+		"speed":2,
+	},
+	"Fashion":{
+		"speed":1,
+		"evasion":2,
+	},
+	"Agriculture":{
+		"health":40,
+	},
+	"Power":{
+		"stamina_regen":10,
+		"mana_regen":10,
+	},
+	"Beauty":{
+		"health":20,
+		"stamina":10,
+		"mana":10,
+	},
+	"Cards":{
+		"attack":1,
+		"mana":1,
+		"accuracy":1,
+		"evasion":1,
+	},
+	"Random Numbers":{
+		"critical":4,
+	},
+	"Procedural Generation":{
+		"health":20,
+		"stamina":10,
+		"mana":10,
+	},
+	"Segmentation Fault":{
+		"critical":4,
+	},
+	"Bugs":{
+		"willpower":4,
+	},
+	"Curses":{
+		"willpower":-8,
+		"attack":4,
+		"magic":4,
+		"critical":4,
+	},
+	"Doom":{
+		"willpower":-2,
+		"armour":-4,
+		"attack":4,
+		"magic":4,
+		"critical":2,
+	},
+	"Flora":{
+		"health":20,
+		"health_regen":5,
+	},
+	"Fauna":{
+		"health":40,
+	},
+	"Sleep":{
+		"willpower":6,
+		"speed":-1,
+	},
+	"Dreams":{
+		"willpower":4,
+		"armour":2,
+		"speed":-1,
+	},
+	"Gold":{
+		"accuracy":2,
+		"evasion":2,
+	},
+	"Contemplation":{
+		"focus":3,
+	}
+}
 const ARCHMAGE_PHRASES = [
 	"aire","cele","alt","dore","bumb","lord","snap","pyr","emo","yeno","thor","ileus","inux","dot",
 ]
@@ -301,13 +740,34 @@ const QUEST_DONE = {
 }
 
 
-
-func get_god_name() -> String:
-	var string: String = GOD_PREFIX.pick_random() + " " + tr("GOD_OF") + " "
-	var suffix: String = GOD_SUFFIX.pick_random()
+func get_god() -> Dictionary:
+	var prefix: String = GOD_PREFIX.keys().pick_random()
+	var suffix: String = GOD_SUFFIX.keys().pick_random()
+	var string: String = prefix + " " + tr("GOD_OF") + " "
+	var dict:= {"type":"blessing","duration":24*60*60}
 	while string.to_lower().similarity(suffix.to_lower())>0.5:
-		suffix = GOD_SUFFIX.pick_random()
-	return string + suffix
+		suffix = GOD_SUFFIX.keys().pick_random()
+	string = string + suffix
+	dict.god = string
+	dict.name = tr("BLESSING_OF").format({"name":string})
+	dict.attributes = {}
+	for k in GOD_PREFIX[prefix].keys():
+		if "health" in k || "stamina" in k || "mana" in k || "focus" in k:
+			dict[k] = GOD_PREFIX[prefix][k]
+		else:
+			dict.attributes[k] = GOD_PREFIX[prefix][k]
+	for k in GOD_SUFFIX[suffix].keys():
+		if "health" in k || "stamina" in k || "mana" in k || "focus" in k:
+			if dict.attributes.has(k):
+				dict[k] += GOD_SUFFIX[suffix][k]
+			else:
+				dict[k] = GOD_SUFFIX[suffix][k]
+		else:
+			if dict.attributes.has(k):
+				dict.attributes[k] += GOD_SUFFIX[suffix][k]
+			else:
+				dict.attributes[k] = GOD_SUFFIX[suffix][k]
+	return dict
 
 
 func make_list(array: Array) -> String:

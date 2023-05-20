@@ -1410,6 +1410,18 @@ func action_done(action: Dictionary):
 			player.recover()
 			print_log_msg(tr("VISIT_LOG").format(action.args))
 		"visit_church":
+			if action.args.has("god_dict"):
+				var status:= Characters.create_status(action.args.god_dict, player, player)
+				for dict in player.status:
+					if dict.type=="blessing":
+						player.remove_status(dict)
+				for k in status.keys():
+					if typeof(status[k])==TYPE_FLOAT && !("duration" in k):
+						status[k] *= 1.0 + 0.1*(player.level-1)
+				if status.has("attributes"):
+					for k in status.attributes.keys():
+						status.attributes[k] *= 1.0 + 0.1*(player.level-1)
+				player.add_status(status)
 			player.recover()
 			print_log_msg(tr("VISIT_CHURCH_LOG").format(action.args))
 			add_guild_exp("visit_church")
@@ -1682,7 +1694,8 @@ func action_done(action: Dictionary):
 		"resting":
 			match randi()%4:
 				0:
-					do_action("visit_church", {"god":Names.get_god_name()}, REST_DELAY/2.0)
+					var god_dict:= Names.get_god()
+					do_action("visit_church", {"god":god_dict.god,"god_dict":god_dict}, REST_DELAY/2.0)
 				_:
 					do_action("visit", {"type":tr(HANGOUT_LOCATIONS.pick_random())}, REST_DELAY/2.0)
 		"sleeping":
