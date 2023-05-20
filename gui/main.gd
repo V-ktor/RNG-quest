@@ -730,6 +730,7 @@ func get_ability_exp(lvl: int) -> int:
 	return 100 + 50*lvl + 50*lvl*lvl
 
 func get_delay_scale(speed: int) -> float:
+	speed = int(round(Characters.get_resistance(speed/10.0)*10))
 	return 10.0/max(10.0 + speed, 1.0)
 
 func level_up():
