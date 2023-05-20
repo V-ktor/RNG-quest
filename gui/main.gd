@@ -858,10 +858,12 @@ func get_task_ID() -> int:
 	var time_zone:= Time.get_time_zone_from_system()
 	var data:= Time.get_time_dict_from_unix_time(int(current_time + 60*time_zone.bias))
 	var hour: int = data.hour
-	var index:= timetable.size()-1
+	var index:= timetable.size()
 	for i in range(timetable.size()-1,-1,-1):
 		if timetable.keys()[i]>=hour && i<=index:
 			index = i
+	if index>=timetable.size():
+		index = timetable.size()-2
 	return index
 
 func pick_random_materials(dict: Dictionary) -> Array:
@@ -2960,15 +2962,8 @@ func time_step(delta: float, time: float):
 						add_ability_exp(a, _exp/skill.slots[s].size())
 		action_done(current_action)
 		return
-	elif current_task=="sleeping":
-		var time_zone:= Time.get_time_zone_from_system()
-		var time_data:= Time.get_time_dict_from_unix_time(int(current_time + 60*time_zone.bias))
-		if time_data.hour>=5 && time_data.hour<23:
-			action_done(current_action)
-			start_task((current_task_ID+1)%timetable.size())
-			return
 	
-	delta = clamp(player.delay, delta, time-current_time)
+	delta = clamp(player.delay, delta, abs(time-current_time))
 	
 	current_time += delta
 	player.update(delta)

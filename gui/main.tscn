@@ -135,7 +135,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -496,7 +495,6 @@ text = "RANK"
 horizontal_alignment = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -595,7 +593,6 @@ size_flags_vertical = 3
 value = 50.0
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -746,6 +743,7 @@ horizontal_scroll_mode = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Inventory/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Potions" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -778,7 +776,6 @@ mouse_filter = 0
 text = "ITEM"
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -881,6 +878,7 @@ grow_vertical = 2
 scroll_following = true
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -908,6 +906,12 @@ custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1"]
+layout_mode = 2
+text = "SCHEDULE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer0" type="HBoxContainer" parent="HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1"]
 layout_mode = 2
@@ -942,6 +946,7 @@ popup/item_5/text = "RESTING"
 popup/item_5/id = 5
 
 [node name="VBoxContainer6" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1073,6 +1078,7 @@ layout_mode = 2
 text = "MANA"
 
 [node name="VBoxContainer7" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
