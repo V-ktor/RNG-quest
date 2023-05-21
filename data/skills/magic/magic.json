@@ -139,7 +139,7 @@
 		},
 		"damage":{
 			"magic":-0.4,
-			"cunning":0.2,
+			"cunning":0.4,
 		},
 		"damage_type":["wind"],
 		"latent_damage_type":["cutting","lightning"],
@@ -268,7 +268,7 @@
 		},
 		"damage":{
 			"magic":-0.2,
-			"cunning":0.2,
+			"cunning":0.4,
 		},
 		"healing":{
 			"willpower":-0.2,

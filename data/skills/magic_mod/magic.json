@@ -172,7 +172,7 @@
     			"name":"damage shield",
 	    	    "duration":6.0,
 	    	    "shielding":{
-	    			"wisdom":{
+	    			"willpower":{
 	    				"value":0.2,
 	    				"type":[],
 	    			},

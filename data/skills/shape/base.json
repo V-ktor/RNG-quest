@@ -79,7 +79,7 @@
     			"limit":"attack",
 	    		"damage":{
 		    		"cunning":{
-			    		"value":0.3,
+			    		"value":0.6,
 				    	"type":["cutting"],
     				},
     			},

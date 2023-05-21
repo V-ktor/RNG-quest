@@ -38,7 +38,7 @@
 		},
 		"damage":{
 			"constitution":{
-			    "value":0.3,
+			    "value":0.6,
 			    "type":["impact"],
 		    },
 		},
@@ -61,7 +61,7 @@
 	    		"duration":6.0,
 	    		"damage":{
 	    			"dexterity":{
-	    				"value":0.5,
+	    				"value":0.8,
 	    				"type":["cutting"],
 	    			},
 	    		},
@@ -86,7 +86,7 @@
 	    		"duration":6.0,
 	    		"damage":{
 	    			"dexterity":{
-	    				"value":0.5,
+	    				"value":0.8,
 	    				"type":["piercing"],
 	    			},
 	    		},
@@ -110,7 +110,7 @@
 			    "duration":10.0,
 			    "damage":{
 				    "cunning":{
-					    "value":0.5,
+					    "value":0.8,
 					    "type":["poison"],
 				    },
 			    },
@@ -252,7 +252,7 @@
 	    	    "duration":6.0,
 	    	    "shielding":{
 	    			"constitution":{
-	    				"value":0.2,
+	    				"value":0.5,
 	    				"type":["cutting","piercing","impact"],
 	    			},
 	    		},
@@ -277,7 +277,7 @@
 	    	    "duration":6.0,
 	    	    "shielding":{
 	    			"dexterity":{
-	    				"value":0.2,
+	    				"value":0.5,
 	    				"type":["cutting","piercing","impact"],
 	    			},
 	    		},

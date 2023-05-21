@@ -23,7 +23,7 @@
 		"cost":{
 			"stamina":2,
 		},
-	    "health_steal":0.05,
+	    "health_steal":0.1,
 		"cooldown":2.0,
 	},
 	"reflecting":{

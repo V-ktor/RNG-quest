@@ -95,7 +95,7 @@
 			    "duration":10.0,
 			    "damage":{
 				    "cunning":{
-					    "value":0.5,
+					    "value":0.8,
 					    "type":["poison"],
 				    },
 			    },
@@ -119,7 +119,7 @@
 				"duration":6.0,
 				"damage":{
 					"dexterity":{
-						"value":0.5,
+						"value":0.8,
 						"type":["cutting"],
 					},
 				},
