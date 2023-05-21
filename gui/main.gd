@@ -1651,12 +1651,12 @@ func action_done(action: Dictionary):
 				do_action("sell_potions", {}, SHOPPING_DELAY)
 			elif player_inventory.size()>0 && action_failures<2:
 				do_action("selling", {}, SHOPPING_DELAY)
-			elif player_gold>get_equipment_gold_limit() && action_failures<20:
+			elif player_gold>get_equipment_gold_limit() && action_failures<15:
 				action_failures = max(action_failures, 1)
 				do_action("buy_equipment", {}, SHOPPING_DELAY)
-			elif player_gold>get_potion_gold_limit() && player_potions.size()<MAX_POTIONS && action_failures<30:
+			elif player_gold>get_potion_gold_limit() && player_potions.size()<MAX_POTIONS && action_failures<25:
 				do_action("buy_potions", {}, SHOPPING_DELAY)
-			elif player_gold>get_material_gold_limit() && action_failures<40:
+			elif player_gold>get_material_gold_limit() && action_failures<30:
 				action_failures = max(action_failures, 20)
 				do_action("buy_materials", {}, SHOPPING_DELAY)
 			else:
