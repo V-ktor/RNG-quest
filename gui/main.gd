@@ -3109,7 +3109,7 @@ func _load():
 	data = JSON.parse_string(file.get_line())
 	if data==null:
 		print("Can't load save file "+player_name+".dat!")
-	data.delay = max(data.delay, 0.0)
+	data.delay = min(data.delay, 6*60*60.0)
 	player = Characters.Character.new(data)
 	data = JSON.parse_string(file.get_line())
 	if data.has("timetable"):
