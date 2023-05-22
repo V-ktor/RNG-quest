@@ -227,56 +227,67 @@ text = "0 / 2"
 
 [node name="light_weapons" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "LIGHT_WEAPONS_DESCRIPTION"
 toggle_mode = true
 text = "LIGHT_WEAPONS"
 
 [node name="heavy_weapons" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "HEAVY_WEAPONS_DESCRIPTION"
 toggle_mode = true
 text = "HEAVY_WEAPONS"
 
 [node name="dirty_fighting" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "DIRTY_FIGHTING_DESCRIPTION"
 toggle_mode = true
 text = "DIRTY_FIGHTING"
 
 [node name="brawling" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "BRAWLING_DESCRIPTION"
 toggle_mode = true
 text = "BRAWLING"
 
 [node name="shield" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "SHIELD_DESCRIPTION"
 toggle_mode = true
 text = "SHIELD"
 
 [node name="archery" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "ARCHERY_DESCRIPTION"
 toggle_mode = true
 text = "ARCHERY"
 
 [node name="elemental_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "ELEMENTAL_MAGIC_DESCRIPTION"
 toggle_mode = true
 text = "ELEMENTAL_MAGIC"
 
 [node name="nature_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "NATURE_MAGIC_DESCRIPTION"
 toggle_mode = true
 text = "NATURE_MAGIC"
 
 [node name="celestial_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "CELESTIAL_MAGIC_DESCRIPTION"
 toggle_mode = true
 text = "CELESTIAL_MAGIC"
 
 [node name="summoning" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "SUMMONING_DESCRIPTION"
 toggle_mode = true
 text = "SUMMONING"
 
 [node name="necromancy" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "NECROMANCY_DESCRIPTION"
 toggle_mode = true
 text = "NECROMANCY"
 
@@ -305,61 +316,73 @@ text = "0 / 2"
 
 [node name="armour" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "ARMOUR_DESCRIPTION"
 toggle_mode = true
 text = "ARMOUR"
 
 [node name="evasion" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "EVASION_DESCRIPTION"
 toggle_mode = true
 text = "EVASION"
 
 [node name="trapping" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "TRAPPING_DESCRIPTION"
 toggle_mode = true
 text = "TRAPPING"
 
 [node name="defensive_magic" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "DEFENSIVE_MAGIC_DESCRIPTION"
 toggle_mode = true
 text = "DEFENSIVE_MAGIC"
 
 [node name="healing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "HEALING_ABILITY_DESCRIPTION"
 toggle_mode = true
 text = "HEALING_ABILITY"
 
 [node name="alchemy" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "ALCHEMY_DESCRIPTION"
 toggle_mode = true
 text = "ALCHEMY"
 
 [node name="weapon_smithing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "WEAPON_SMITHING_DESCRIPTION"
 toggle_mode = true
 text = "WEAPON_SMITHING"
 
 [node name="armour_smithing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "ARMOUR_SMITHING_DESCRIPTION"
 toggle_mode = true
 text = "ARMOUR_SMITHING"
 
 [node name="woodwork" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "WOODWORK_DESCRIPTION"
 toggle_mode = true
 text = "WOODWORK"
 
 [node name="tayloring" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "TAYLORING_DESCRIPTION"
 toggle_mode = true
 text = "TAYLORING"
 
 [node name="cooking" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "COOKING_DESCRIPTION"
 toggle_mode = true
 text = "COOKING"
 
 [node name="enchanting" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "ENCHANTING_DESCRIPTION"
 toggle_mode = true
 text = "ENCHANTING"
 

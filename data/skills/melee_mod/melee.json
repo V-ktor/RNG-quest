@@ -126,7 +126,7 @@
 		},
 		"type":"melee",
 		"cost":{
-			"stamina":2,
+			"stamina":1,
 		},
 		"range":1,
 		"cooldown":4.0,

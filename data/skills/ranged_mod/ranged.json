@@ -12,7 +12,7 @@
 			"accuracy":8,
 		},
 	},
-	"fast":{
+	"quick":{
 		"name":"quick",
 		"auto_naming":{
 			"prefix":["quick"],

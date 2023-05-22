@@ -92,7 +92,6 @@ var player: Characters.Character
 var player_ability_exp:= {}
 var player_inventory:= []
 var player_potions:= []
-#var Story.inventory:= {}
 var player_summons:= []
 var player_gold:= 50
 var player_stat_preference:= {}
@@ -108,6 +107,7 @@ var weapon_1h_alowed:= true
 var weapon_2h_alowed:= true
 var player_weapon_types:= []
 var player_armour_types:= []
+var disabled_skill_modules:= []
 var max_summons:= MAX_SUMMONS
 var current_action_text: String
 var current_task: String
@@ -134,7 +134,7 @@ var status_update:= false
 @warning_ignore("shadowed_global_identifier")
 @onready var log:= $HBoxContainer/VBoxContainer2/Log/RichTextLabel
 @onready var log_quest:= $HBoxContainer/VBoxContainer4/Quests/RichTextLabel
-@onready var log_summary:= $HBoxContainer/VBoxContainer7/Log/RichTextLabel
+@onready var log_summary:= $HBoxContainer/VBoxContainer8/Log/RichTextLabel
 
 func set_region(type: String) -> String:
 	current_region = Regions.create_region(type)
@@ -204,7 +204,7 @@ func pick_skill_upgrade() -> Dictionary:
 	return player.skills.pick_random()
 
 func learn_new_skill(force_type:= "", basic:= false):
-	var skill:= Skills.create_random_skill(player.abilities.keys(), force_type, basic)
+	var skill:= Skills.create_random_skill(player.abilities.keys(), force_type, basic, [], disabled_skill_modules)
 	var text:= tr("LEARNED_SKILL_LOG").format(skill)
 	player.skills.push_back(skill)
 	print_log_msg("\n" + text)
@@ -539,7 +539,7 @@ func create_shop_potion(type:="") -> Dictionary:
 		tier_multiplier = sqrt(1.5*current_region.tier)
 	quality = int(100*level_multiplier*tier_multiplier)
 	if type=="":
-		if randf()<0.25:
+		if valid_potion_types.size()>0 && randf()<0.25:
 			type = pick_random_potion_type(valid_potion_types.pick_random())
 		else:
 			type = pick_random_potion_type()
@@ -730,8 +730,8 @@ func get_ability_exp(lvl: int) -> int:
 	return 100 + 50*lvl + 50*lvl*lvl
 
 func get_delay_scale(speed: int) -> float:
-	speed = int(round(Characters.get_resistance(speed/10.0)*10))
-	return 10.0/max(10.0 + speed, 1.0)
+	var s:= Characters.get_resistance(speed/10.0)*10
+	return 10.0/max(10.0 + s, 1.0)
 
 func level_up():
 	var text: String
@@ -959,7 +959,6 @@ func quest_done():
 	var pos:= quest_log.rfind('•') + 1
 	if current_quest.has("log"):
 		print_log_msg(current_quest.log)
-#	print_log_msg(tr("QUEST_FINISHED"))
 	if current_quest.has("npc") && current_quest.npc.location==current_location:
 		print_log_msg("[color=blue][hint=" + Story.get_person_description(current_quest.npc) + "]" + current_quest.npc.name + '[/hint][/color]: "' + Names.QUEST_DONE[current_quest.npc.personality].pick_random() + '"')
 	quest_progress += 1
@@ -2905,15 +2904,19 @@ func show_action():
 	$HBoxContainer/VBoxContainer5.hide()
 	$HBoxContainer/VBoxContainer6.hide()
 	$HBoxContainer/VBoxContainer7.hide()
+	$HBoxContainer/VBoxContainer8.hide()
 
 func show_options():
+	var skill_module_dict:= {}
+	
 	$HBoxContainer/VBoxContainer1.hide()
 	$HBoxContainer/VBoxContainer2.hide()
 	$HBoxContainer/VBoxContainer3.hide()
 	$HBoxContainer/VBoxContainer4.hide()
 	$HBoxContainer/VBoxContainer5.show()
 	$HBoxContainer/VBoxContainer6.show()
-	$HBoxContainer/VBoxContainer7.hide()
+	$HBoxContainer/VBoxContainer7.show()
+	$HBoxContainer/VBoxContainer8.hide()
 	
 	for i in range(4):
 		get_node("HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox"+str(i)).button_pressed = false
@@ -2950,6 +2953,35 @@ func show_options():
 			"mana":
 				$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox2.button_pressed = true
 	
+	for a in player.abilities.keys():
+		if Skills.ABILITY_MODULES.has(a):
+			Skills.merge_dicts(skill_module_dict, Skills.ABILITY_MODULES[a])
+	for c1 in $HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer.get_children():
+		for c2 in c1.get_children():
+			c2.hide()
+		if c1 is Label:
+			c1.hide()
+	for k in skill_module_dict.keys():
+		var n: String = k.capitalize().replace(' ','')
+		if skill_module_dict[k].size()>0:
+			get_node("HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer/Label"+n).show()
+			for i in range(skill_module_dict[k].size()):
+				var panel: Panel
+				if has_node("HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer/"+n+"/Panel"+str(i)):
+					panel = get_node("HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer/"+n+"/Panel"+str(i))
+				else:
+					panel = $HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer/BaseType/Panel0.duplicate(14)
+					panel.name = "Panel"+str(i)
+					get_node("HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer/"+n).add_child(panel)
+				if panel.get_node("CheckButton").is_connected("toggled", Callable(self, "_toggle_skill_module_disabled")):
+					panel.get_node("CheckButton").disconnect("toggled", Callable(self, "_toggle_skill_module_disabled"))
+				panel.get_node("CheckButton").connect("toggled", Callable(self, "_toggle_skill_module_disabled").bind(skill_module_dict[k][i]))
+				panel.get_node("CheckButton").button_pressed = !(skill_module_dict[k][i] in disabled_skill_modules)
+				panel.get_node("CheckButton").text = tr(skill_module_dict[k][i].to_upper())
+				panel.get_node("Label").text = tr(skill_module_dict[k][i].to_upper()+"_DESCRIPTION")
+				panel.show()
+		
+	
 
 func show_summary():
 	$HBoxContainer/VBoxContainer1.hide()
@@ -2958,7 +2990,8 @@ func show_summary():
 	$HBoxContainer/VBoxContainer4.hide()
 	$HBoxContainer/VBoxContainer5.hide()
 	$HBoxContainer/VBoxContainer6.hide()
-	$HBoxContainer/VBoxContainer7.show()
+	$HBoxContainer/VBoxContainer7.hide()
+	$HBoxContainer/VBoxContainer8.show()
 
 
 
@@ -3084,7 +3117,12 @@ func _save():
 		"quest_progress":quest_progress,
 		"current_quest":current_quest,
 		"quest_log":quest_log,
+		"player_weapon_types":player_weapon_types,
+		"player_armour_types":player_armour_types,
 		"valid_potion_types":valid_potion_types,
+		"weapon_1h_alowed":weapon_1h_alowed,
+		"weapon_2h_alowed":weapon_2h_alowed,
+		"disabled_skill_modules":disabled_skill_modules,
 		"loot":loot,
 		"player_summons":summon_data,
 		"enemies":enemy_data,
@@ -3127,7 +3165,7 @@ func _load():
 	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/LabelTask.text = tr(current_task.to_upper())
 	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/LabelAction.text = current_action_text
 	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/ProgressBar.max_value = data.progress_delay
-	$HBoxContainer/VBoxContainer7/Log/RichTextLabel.parse_bbcode(summary_text)
+	$HBoxContainer/VBoxContainer8/Log/RichTextLabel.parse_bbcode(summary_text)
 	
 	data = JSON.parse_string(file.get_line())
 	Story.persons = data.persons
@@ -3180,6 +3218,12 @@ func _toggle_potion_type(button_pressed: bool, type: String):
 			valid_potion_types.push_back(type)
 	else:
 		valid_potion_types.erase(type)
+
+func _toggle_skill_module_disabled(button_pressed: bool, type: String):
+	if button_pressed:
+		disabled_skill_modules.erase(type)
+	else:
+		disabled_skill_modules.push_back(type)
 
 
 func _notification(what: int):

@@ -29,3 +29,268 @@ HEALTH_STEAL,Health steal
 CASTER,caster
 DEFENCE,Defence
 REFLECT_DAMAGE,Reflect damage
+BASE_TYPE,Base Types
+AIM,Aim
+MELEE_MOD,Melee Modifiers
+GRAPPLE_MOD,Grapple Modifiers
+RANGED_MOD,Ranged Modifiers
+DEFENCE_MOD,Defence Modifiers
+MAGIC_MOD,Magic Modifiers
+APPLICATION,Applications
+SHAPE,Shapes
+SUMMONING_METHOD,Summoning Methods
+SUMMON_TYPE,Summon Types
+BODY,Body
+BODY_DESCRIPTION,"No special bonus."
+ARMS,Arms
+ARMS_DESCRIPTION,"Reduces the target's attack and magic."
+LEGS,Legs
+LEGS_DESCRIPTION,"Reduces the target's accuracy and evasion."
+HEAD,Head
+HEAD_DESCRIPTION,"Increased critical hit chance."
+NECK,Neck
+NECK_DESCRIPTION,"Greatly increased critical hit chance but reduced accuracy."
+EYES,Eyes
+EYED_DESCRIPTION,"Reduces the target's accuracy and evasion."
+WEAKPOINT,Weakpoint
+WEAKPOINT_DESCRIPTION,"Increased armour penetration."
+ORGANS,Organs
+ORGANS_DESCRIPTION,"Increased armour penetration and critical hit chance."
+UNAIMED,Unaimed
+UNAIMED_DESCRIPTION,"Faster but less accurate attack."
+ROCKET,Rocket
+ROCKET_DESCRIPTION,"Hurl a projectile at the target."
+BEAM,Beam
+BEAM_DESCRIPTION,"Concentrate magic into a beam."
+CHAIN,Chain
+CHAIN_DESCRIPTION,"Beam attack that can damage additional targets."
+EXPLOSION,Explosion
+EXPLOSION_DESCRIPTION,"Causes area damage."
+SHIELDING_STANCE,Shielding Stance
+SHIELDING_STANCE_DESCRIPTION,"Grants a shield absorbing physical damage."
+EVASIVE_STANCE,Evasive Stance
+EVASIVE_STANCE_DESCRIPTION,"Grants a buff increasing evasion."
+ENGAGING_STANCE,Engaging Stance
+ENGAGING_STANCE_DESCRIPTION,"Grants a buff increasing accuracy."
+FANGS,Fangs
+FANGS_DESCRIPTION,"Bite the target with sharp fangs."
+CLAWS,Claws
+CLAWS_DESCRIPTION,"Scratch the target with sharp claws."
+FERAL_IMPACT,Impact
+FERAL_IMPACT_DESCRIPTION,"Feral physical attack that causes impact damage."
+FERAL_CUTTING,Cut
+FERAL_CUTTING_DESCRIPTION,"Feral physical attack that causes cutting damage."
+CHAINSAW,Chainsaw
+CHAINSAW_DESCRIPTION,"Brutally attack the target with a chainsaw."
+CRUSHER,Crusher
+CRUSHER_DESCRIPTION,"Crush the target with brute force."
+BOLTGUN,Bolt gun
+BOLTGUN_DESCRIPTION,"High-range single-shot bolt gun."
+COMBAT_SPELL,Combat Spell
+COMBAT_SPELL_DESCRIPTION,"Cast a damage spell upon the target."
+HEALING_SPELL,Healing Spell
+HEALING_SPELL_DESCRIPTION,"Cast a healing spell on an ally."
+SHIELDING_SPELL,Shielding Spell
+SHIELDING_SPELL_DESCRIPTION,"Create a damage shield absorbing damage."
+SUMMONING_SPELL,Summoning Spell
+SUMMONING_SPELL_DESCRIPTION,"Summon a friendly monster to your side."
+STRIKE,Strike
+STRIKE_DESCRIPTION,"Basic melee attack doing cutting and impact damage."
+SLASH,Slash
+SLASH_DESCRIPTION,"Basic melee attack doing cutting damage."
+DUAL_STRIKE,Dual Strike
+DUAL_STRIKE_DESCRIPTION,"Attack the target twice to deal cutting damage."
+STAB,Stab
+STAB_DESCRIPTION,"Basic melee attack doing piercing damage."
+BACKSTAB,Backstab
+BACKSTAB_DESCRIPTION,"Melee attack with increased critical hit chance and armour penetration."
+THRUST,Thrust
+THRUST_DESCRIPTION,"Melee attack with increased attack range."
+BASH,Bash
+BASH_DESCRIPTION,"Basic melee attack doing impact damage."
+CLEAVE,Cleave
+CLEAVE_DESCRIPTION,"Attack all target in a wide arc doing impact and cutting damage."
+THROWING_KNIFE,Throwing Knife
+THROWING_KNIFE_DESCRIPTION,"Attack a nearby target with a throwing knife doing cutting damage."
+ARROW,Arrow
+ARROW_DESCRIPTION,"Basic ranged attack doing piercing damage."
+SHOT,Shot
+SHOT_DESCRIPTION,"Basic ranged attack doing impact damage."
+CANNON,Cannon
+CANNON_DESCRIPTION,"Strong ranged attack doing impact damage."
+DUAL_SHOT,Dual Shot
+DUAL_SHOT_DESCRIPTION,"Hit the target twice doing piercing damage."
+BARRAGE,Barrage
+BARRAGE_DESCRIPTION,"Hit the target three times doing impact damage."
+VOLLEY,Volley
+VOLLEY_DESCRIPTION,"Ranged attack against all enemies."
+PUNCH,Punch
+PUNCH_DESCRIPTION,"Melee attack doing impact damage based on strength and constitution."
+SLAM,Slam
+SLAM_DESCRIPTION,"Melee attack doing impact damage based on strength and constitution."
+KICK,Kick
+KICK_DESCRIPTION,"Attack a nearby target doing impact damage based on strength and constitution."
+GRAPPLE,Grapple
+GRAPPLE_DESCRIPTION,"Melee attack with an additional effect."
+DEFENCIVE,Defensive
+DEFENCIVE_DESCRIPTION,"Improved damage shield strength and enhanced protection against impact damage."
+ABSORBING,Absorbing
+ABSORBING_DESCRIPTION,"Restore health based on damage received."
+REFLECTING,Reflecting
+REFLECTING_DESCRIPTION,"Reflect some damage back to the attacker."
+NIMBLE,Nimble
+NIMBLE_DESCRIPTION,"Increases the caster's evasion bonus."
+ENGAGING,Engaging
+ENGAGING_DESCRIPTION,"Increases the caster's accuracy bonus."
+PHYSICAL_SHIELDING,Physical Shielding
+PHYSICAL_SHIELDING_DESCRIPTION,"Enhances the shield's protection against physical attacks."
+SPELL_SHIELDING,Spell Shielding
+SPELL_SHIELDING_DESCRIPTION,"Enhances the shield's protection against elemental attacks."
+NATURE_SHIELDING,Nature Shielding
+NATURE_SHIELDING_DESCRIPTION,"Enhances the shield's protection against nature attacks."
+CELESTIAL_SHIELDING,Celestial Shielding
+CELESTIAL_SHIELDING_DESCRIPTION,"Enhances the shield's protection against celestial attacks."
+CHOKING,Choking
+CHOKING_DESCRIPTION,"Does impact damage over time."
+IMMOBILIZING,Immobilizing
+IMMOBILIZING_DESCRIPTION,"Reduces the target's evasion."
+SHIELDING,Shielding
+SHIELDING_DESCRIPTION,"Grants a weak damage shield which is more effective against physical damage."
+FIRE,Fire
+FIRE_DESCRIPTION,"Fire magic."
+WATER,Water
+WATER_DESCRIPTION,"Water magic."
+ICE,Ice
+ICE_DESCRIPTION,"Ice magic."
+WIND,Wind
+WIND_DESCRIPTION,"Wind magic."
+EARTH,Earth
+EARTH_DESCRIPTION,"Earth magic."
+LIGHTNING,Lightning
+LIGHTNING_DESCRIPTION,"Lightning magic."
+LIGHT,Light
+LIGHT_DESCRIPTION,"Light magic."
+DARKNESS,Darkness
+DARKNESS_DESCRIPTION,"Darkness magic."
+POISON,Poison
+POISON_DESCRIPTION,"Poison magic."
+ACID,Acid
+ACID_DESCRIPTION,"Acid magic."
+VAMPIRIC,Vampiric
+VAMPIRIC_DESCRIPTION,"Restore some of the damage done as health."
+HOMING,Homing
+HOMING_DESCRIPTION,"The spell is resolved with increased accuracy."
+PUMPED,Pumped
+PUMPED_DESCRIPTION,"The spell is resolved with increased magic and willpower."
+HIGH_YIELD,High-Yield
+HIGH_YIELD_DESCRIPTION,"Increased damage and armour penetration but the spell takes longer to cast."
+EXPLOSIVE,Explosive
+EXPLOSIVE_DESCRIPTION,"Increased spell area."
+SUPERSONIC,Supersonic
+SUPERSONIC_DESCRIPTION,"The spell causes additional impact and piercing damage."
+SWIFT,Swift
+SWIFT_DESCRIPTION,"The spell takes less time to cast but does slightly less damage."
+RESTORATIVE,Restorative
+RESTORATIVE_DESCRIPTION,"The caster restores some health over time."
+MANA_BURN,Mana Burn
+MANA_BURN_DESCRIPTION,"The target loses some mana over time."
+SPLIT,Split
+SPLIT_DESCRIPTION,"Does two instances of damage with lower damage."
+MAGIC_SHIELDING,Magic Shielding
+MAGIC_SHIELDING_DESCRIPTION,"Grants the caster a weak damage shield absorbing damage."
+FUSE,Fuse
+FUSE_DESCRIPTION,"Combine two types of magic into a more powerful but expensive spell."
+FUSION,Fusion
+FUSION_DESCRIPTION,"Enhanced melee attack."
+LASER,Laser
+LASER_DESCRIPTION,"Enhances the attack with lasers."
+OVERCHARGED,Overcharged
+OVERCHARGED_DESCRIPTION,"Additional electrical discharge for extra damage."
+GRINDING,Grinding
+GRINDING_DESCRIPTION,"Increases armour penetration."
+CONE,Cone
+CONE_DESCRIPTION,"Attack in a wide arc hitting additional targets."
+REPEATED,Repeated
+REPEATED_DESCRIPTION,"Faster attack."
+FORCE,Force
+FORCE_DESCRIPTION,"Increased damage."
+RECKLESS,Reckless
+RECKLESS_DESCRIPTION,"Reduces the caster's health to increase the attack's damage."
+BRUTAL,Brutal
+BRUTAL_DESCRIPTION,"Does additional impact damage based on the caster's constitution."
+SHRED,Shred
+SHRED_DESCRIPTION,"Inflicts bleeding causing cutting damage over time based on dexterity."
+PIERCE,Pierce
+PIERCE_DESCRIPTION,"Inflicts bleeding causing cutting damage over time based on dexterity."
+POISONED,Poisoned
+POISONED_DESCRIPTION,"Inflicts poison causing poison damage over time based on cutting."
+RUSH,Rush
+RUSH_DESCRIPTION,"Increases the attack's range."
+QUICK,Quick
+QUICK_DESCRIPTION,"Increases attack speed."
+CHARGED,Charged
+CHARGED_DESCRIPTION,"Does additional cutting damage but reduces attack speed."
+STUNNING,Stunning
+STUNNING_DESCRIPTION,"Inflicts stun slowing the target down."
+CONCUSSIVE,Concussive
+CONCUSSIVE_DESCRIPTION,"Inflicts stun slowing the target down."
+DUAL,Dual
+DUAL_DESCRIPTION,"Does two instances of damage but reduces attack damage."
+PENETRATING,Penetrating
+PENETRATING_DESCRIPTION,"Increases armour penetration."
+CLEAVING,Cleaving
+CLEAVING_DESCRIPTION,"Attacks in a wide arc hitting additional targets."
+PARRY,Parry
+PARRY_DESCRIPTION,"Grants a weak damage shield which is more effective against physical damage."
+CHANNELED,Channeled
+CHANNELED_DESCRIPTION,"Infuse the attack with magic doing additional elemental damage."
+ACIDIC,Acidic
+ACIDIC_DESCRIPTION,"Infuse the attack with magic doing additional acid and poison damage."
+LIGHT_INFUSED,Light-Infused
+LIGHT_INFUSED_DESCRIPTION,"The caster restores some health over time."
+INFUSE,Infuse
+INFUSE_DESCRIPTION,"Infuse the attack with magic."
+LONG_RANGE,Long Range
+LONG_RANGE_DESCRIPTION,"Greatly increases the attack range of the attack."
+AIMED,Aimed
+AIMED_DESCRIPTION,"The attack resolves with increased accuracy."
+POWER,Power
+POWER_DESCRIPTION,"Does additional impact damage."
+TRICK,Trick
+TRICK_DESCRIPTION,"Adjust the projectiles angle to glance additional targets."
+HEAVY_CALIBER,Heavy Caliber
+HEAVY_CALIBER_DESCRIPTION,"Increases armour penetration."
+BULK_CALIBER,Bulk Caliber
+BULK_CALIBER_DESCRIPTION,"Increases armour penetration."
+VILE,Vile
+VILE_DESCRIPTION,"Causes additional poison damage over time based on cunning."
+SHARP,Sharp
+SHARP_DESCRIPTION,"Inflicts bleeding causing cutting damage over time based on dexterity."
+BOLT,Bolt
+BOLT_DESCRIPTION,"High range single-target spell."
+BALL,Ball
+BALL_DESCRIPTION,"Mid-range spell with increased area."
+SPHERE,Sphere
+SPHERE_DESCRIPTION,"Short-range spell with increased area."
+PILLAR,Pillar
+PILLAR_DESCRIPTION,"Single-target spell with increased damage."
+DISC,Disc
+DISC_DESCRIPTION,"Increased critical hit chance."
+BLADE,Blade
+BLADE_DESCRIPTION,"Does additional cutting damage based on cunning."
+SPIRAL,Spiral
+SPIRAL_DESCRIPTION,"Resolves with increased critical hit chance and accuracy."
+UNDEAD,Undead
+UNDEAD_DESCRIPTION,"Summon an undead creature."
+BEAST,Beast
+BEAST_DESCRIPTION,"Summon a beast."
+CELESTIAL,Celestial
+CELESTIAL_DESCRIPTION,"Summon a celestial construct."
+ELEMENTAL,Elemental
+ELEMENTAL_DESCRIPTION,"Summon an elemental construct."
+REVIVE,Revive
+REVIVE_DESCRIPTION,"Use necromancy to revive an undead creature."
+TAME,Tame
+TAME_DESCRIPTION,"Tame a wild beast."
+CONJURATION,Conjuration
+CONJURATION_DESCRIPTION,"Conjures a magical being."

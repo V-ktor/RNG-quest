@@ -34,7 +34,7 @@
 		"latent_damage_type":["ice","earth"],
 		"range":-1,
 		"area":1,
-		"cooldown":4,
+		"cooldown":4.0,
 	},
 	"pillar":{
 		"name":"pillar",

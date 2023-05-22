@@ -135,6 +135,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -495,6 +496,7 @@ text = "RANK"
 horizontal_alignment = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -593,6 +595,7 @@ size_flags_vertical = 3
 value = 50.0
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -776,6 +779,7 @@ mouse_filter = 0
 text = "ITEM"
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -878,7 +882,6 @@ grow_vertical = 2
 scroll_following = true
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -946,7 +949,6 @@ popup/item_5/text = "RESTING"
 popup/item_5/id = 5
 
 [node name="VBoxContainer6" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -974,6 +976,8 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
+tooltip_text = "WEAPONS_DESCRIPTION"
+mouse_filter = 0
 text = "WEAPONS"
 horizontal_alignment = 1
 
@@ -1025,6 +1029,8 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
+tooltip_text = "ARMOUR_DESCRIPTION"
+mouse_filter = 0
 text = "ARMOUR"
 horizontal_alignment = 1
 
@@ -1062,6 +1068,8 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
+tooltip_text = "POTIONS_DESCRIPTION"
+mouse_filter = 0
 text = "POTIONS"
 horizontal_alignment = 1
 
@@ -1078,16 +1086,198 @@ layout_mode = 2
 text = "MANA"
 
 [node name="VBoxContainer7" type="VBoxContainer" parent="HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SkillModules" type="Panel" parent="HBoxContainer/VBoxContainer7"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer7/SkillModules"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 31.0
+grow_horizontal = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
+mouse_filter = 0
+text = "SKILL_MODULES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer7/SkillModules"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 35.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelBaseType" type="Label" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "BASE_TYPE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BaseType" type="VBoxContainer" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel0" type="Panel" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer/BaseType"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer/BaseType/Panel0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+text = "NAME"
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer/BaseType/Panel0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.74902, 0.74902, 0.74902, 1)
+theme_override_font_sizes/font_size = 14
+text = "DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 4
+
+[node name="LabelAim" type="Label" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "AIM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Aim" type="VBoxContainer" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelMeleeMod" type="Label" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "MELEE_MOD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MeleeMod" type="VBoxContainer" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelGrappleMod" type="Label" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "GRAPPLE_MOD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GrappleMod" type="VBoxContainer" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelRangedMod" type="Label" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "RANGED_MOD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RangedMod" type="VBoxContainer" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelDefenceMod" type="Label" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "DEFENCE_MOD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefenceMod" type="VBoxContainer" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelMagic" type="Label" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAGIC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Magic" type="VBoxContainer" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelMagicMod" type="Label" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAGIC_MOD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagicMod" type="VBoxContainer" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelApplication" type="Label" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "APPLICATION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Application" type="VBoxContainer" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelShape" type="Label" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "SHAPE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shape" type="VBoxContainer" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelSummoningMethod" type="Label" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "SUMMONING_METHOD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SummoningMethod" type="VBoxContainer" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelSummonType" type="Label" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "SUMMON_TYPE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SummonType" type="VBoxContainer" parent="HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer8" type="VBoxContainer" parent="HBoxContainer"]
 visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Log" type="Panel" parent="HBoxContainer/VBoxContainer7"]
+[node name="Log" type="Panel" parent="HBoxContainer/VBoxContainer8"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer7/Log"]
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer8/Log"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0

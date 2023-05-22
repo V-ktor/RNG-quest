@@ -40,35 +40,56 @@ EVASION,Evasion
 PENETRATION,Penetration
 CRITICAL,Critical
 SPEED,Speed
-LIGHT_WEAPONS,Light Weapons
-HEAVY_WEAPONS,Heavy Weapons
-DIRTY_FIGHTING,Dirty Fighting
-BRAWLING,Brawling
-ARCHERY,Archery
-GUN_SLINGING,Gun Slinging
-TRAPPING,Trapping
-SHIELD,Shield
 SHIELDS,Shields
+LIGHT_WEAPONS,Light Weapons
+LIGHT_WEAPONS_DESCRIPTION,"Master the usage of light weapons, focusing on quick strikes and multi-hit attacks."
+HEAVY_WEAPONS,Heavy Weapons
+HEAVY_WEAPONS_DESCRIPTION,"Master the usage of heavy weapons, focusing on brute force."
+DIRTY_FIGHTING,Dirty Fighting
+DIRTY_FIGHTING_DESCRIPTION,"Inflict bleeding wounds and poison."
+BRAWLING,Brawling
+BRAWLING_DESCRIPTION,"Allows you to use punches and kicks in combat and enables grappling."
+ARCHERY,Archery
+ARCHERY_DESCRIPTION,"Master the usage of bows and slings."
+GUN_SLINGING,Gun Slinging
+GUN_SLINGING_DESCRIPTION,"Allows you to wield guns in combat."
+TRAPPING,Trapping
+TRAPPING_DESCRIPTION,"Allows you to set up traps when engaging enemies in combat."
+SHIELD,Shield
+SHIELD_DESCRIPTION,"Master the usage of shields."
 ARMOUR,Armour
+ARMOUR_DESCRIPTION,"Improves your abilities to block attacks by armour."
 EVASION,Evasion
+EVASION_DESCRIPTION,"Improves your abilities to dodge attacks."
 ELEMENTAL_MAGIC,Elemental Magic
+ELEMENTAL_MAGIC_DESCRIPTION,"Learn offensive spells and master fire, ice, and lightning magic."
 NATURE_MAGIC,Nature Magic
+NATURE_MAGIC_DESCRIPTION,"Learn offensive spells and master water, wind, and earth magic."
 CELESTIAL_MAGIC,Celestial Magic
+CELESTIAL_MAGIC_DESCRIPTION,"Learn offensive spells and master light and darkness magic."
 SUMMONING,Summoning
+SUMMONING_DESCRIPTION,"Learn to summon wild beasts."
 NECROMANCY,Necromancy
+NECROMANCY_DESCRIPTION,"Learn to resurrect undead creatures."
 DEFENSIVE_MAGIC,Defensive Magic
+DEFENSIVE_MAGIC_DESCRIPTION,"Learn defensive magic like damage absorbing shields."
 HEALING_ABILITY,Healing
+HEALING_ABILITY_DESCRIPTION,"Learn healing magic."
 ALCHEMY,Alchemy
+ALCHEMY_DESCRIPTION,"Allows you to craft of potions."
 WEAPON_SMITHING,Weapon Smithing
+WEAPON_SMITHING_DESCRIPTION,"llows you to craft melee weapons."
 ARMOUR_SMITHING,Armour Smithing
+ARMOUR_SMITHING_DESCRIPTION,"llows you to craft heavy armour."
 WOODWORK,Woodwork
+WOODWORK_DESCRIPTION,"llows you to craft ranged weapons and magic weapons."
 TAYLORING,Tayloring
+TAYLORING_DESCRIPTION,"llows you to craft light and medium armour."
 COOKING,Cooking
+COOKING_DESCRIPTION,"Allows you to cook meals before going into battle granting buffs."
 ENCHANTING,Enchanting
+ENCHANTING_DESCRIPTION,"Allows you to enchant non-magical equipment."
 INFUSE,Infuse
-INFUSE_ELEMENTAL,Infuse
-INFUSE_NATURE,Infuse
-INFUSE_CLERIC,Cleric
 FANGS,Fangs
 LACERATING_FANGS,Lacerating Fangs
 CLAWS,Claws
@@ -271,5 +292,10 @@ HEAVY,Heavy
 SCHEDULE,Schedule
 WEAPONS,Weapons
 POTIONS,Potions
+SKILL_MODULES,Skill Modules
 HEALTHC,Health
 BLESSING_OF,"Blessing of the {name}"
+SKILL_MODULES_DESCRIPTION,"Select which skill modules are allowed when a new skill is created. These settings do not affect existing skills."
+WEAPONS_DESCRIPTION,"Select which weapons your character is allowed to equip."
+ARMOUR_DESCRIPTION,"Select which types of armour your character is allowed to equip."
+POTIONS_DESCRIPTION,"Select which types of potions your character is allowed to craft or buy. Forbidden potions will be sold while shopping."

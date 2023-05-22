@@ -231,7 +231,7 @@ const ABILITY_MODULES = {
 	
 	"archery":{
 		"base_type":["arrow","shot","dual_shot","volley"],
-		"ranged_mod":["aimed","fast","power","heavy_caliber"],
+		"ranged_mod":["aimed","quick","power","heavy_caliber"],
 		"aim":["body","head","unaimed"],
 	},
 	"gun_slinging":{
@@ -287,7 +287,7 @@ const ABILITY_MODULES = {
 	"defensive_magic":{
 		"base_type":["shielding_spell"],
 		"magic":["ice"],
-		"magic_mod":["shielding"],
+		"magic_mod":["magic_shielding"],
 		"defence_mod":["physical_shielding","spell_shielding","nature_shielding","celestial_shielding"],
 	},
 	"healing":{
@@ -840,7 +840,7 @@ func convert_to_roman_number(number: int) -> String:
 
 # skills #
 
-func get_modules(type: String, abilities: Array) -> Array:
+func get_modules(type: String, abilities: Array, exceptions:= []) -> Array:
 	var modules:= []
 	for s in abilities:
 		if !ABILITY_MODULES.has(s):
@@ -848,7 +848,10 @@ func get_modules(type: String, abilities: Array) -> Array:
 		
 		var dict: Dictionary = ABILITY_MODULES[s]
 		if dict.has(type):
-			modules += dict[type]
+			for k in dict[type]:
+				if k in exceptions:
+					continue
+				modules.push_back(k)
 	return modules
 
 func add_entry(dict: Dictionary, key: String, data) -> void:
@@ -973,13 +976,13 @@ func create_skill(type: String) -> Dictionary:
 	skill = add_module(skill, dict)
 	return skill
 
-func fill_slots(skill: Dictionary, abilities: Array) -> Dictionary:
+func fill_slots(skill: Dictionary, abilities: Array, exceptions:= []) -> Dictionary:
 	var i:= -1
 	while i<skill.slots.size()-1:
 		i += 1
 		
 		var s = skill.slots.keys()[i]
-		var modules:= get_modules(s, abilities)
+		var modules:= get_modules(s, abilities, exceptions)
 		if modules.size()==0:
 			continue
 		for j in range(skill.slots[s].size()):
@@ -1313,15 +1316,15 @@ func create_tooltip(skill: Dictionary) -> String:
 	
 	return text
 
-func create_random_skill(abilities: Array, force_type:= "", basic:= false, invalid_names:= []) -> Dictionary:
+func create_random_skill(abilities: Array, force_type:= "", basic:= false, invalid_names:= [], exceptions:= []) -> Dictionary:
 	var type:= force_type
 	var skill_name: String
 	if !module_data.type.has(type):
-		type = get_modules("base_type", abilities).pick_random()
+		type = get_modules("base_type", abilities, exceptions).pick_random()
 	var skill:= create_skill(type)
 	if !basic:
-		skill = fill_slots(skill, abilities)
-		skill = fill_slots(skill, abilities)
+		skill = fill_slots(skill, abilities, exceptions)
+		skill = fill_slots(skill, abilities, exceptions)
 	for i in range(20):
 		skill_name = create_name(skill)
 		if !(skill_name in invalid_names):

@@ -88,7 +88,7 @@
 		},
 		"type":"magic",
 		"cost":{
-			"focus":2,
+			"focus":1,
 		},
 		"damage_multiplier":-0.2,
 		"delay_multiplier":-0.4,
@@ -156,8 +156,8 @@
 		"hits":2,
 		"cooldown":1.0,
 	},
-	"shielding":{
-		"name":"shielding",
+	"magic_shielding":{
+		"name":"magic_shielding",
 		"auto_naming":{
 			"prefix":["shielding","shield","barrier"],
 		},

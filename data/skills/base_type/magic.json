@@ -64,8 +64,8 @@
 		"summoning":{
 			"willpower":1.0,
 		},
-		"cooldown":6.0,
-		"duration":30.0,
+		"cooldown":30.0,
+		"duration":20.0,
 		"delay_multiplier":3.0,
 		"target_type":"summon",
 		"slots":["magic","summon_type","summoning_method"],
