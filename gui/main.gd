@@ -2955,7 +2955,12 @@ func show_options():
 	
 	for a in player.abilities.keys():
 		if Skills.ABILITY_MODULES.has(a):
-			Skills.merge_dicts(skill_module_dict, Skills.ABILITY_MODULES[a])
+			for c in Skills.ABILITY_MODULES[a].keys():
+				if !skill_module_dict.has(c):
+					skill_module_dict[c] = []
+				for k in Skills.ABILITY_MODULES[a][c]:
+					if !skill_module_dict[c].has(k):
+						skill_module_dict[c].push_back(k)
 	for c1 in $HBoxContainer/VBoxContainer7/SkillModules/ScrollContainer/VBoxContainer.get_children():
 		for c2 in c1.get_children():
 			c2.hide()
