@@ -2,14 +2,16 @@
 
 ## v0.0.2
 ### Content
-* add blessings received by praying to a god
+* add blessings received by praying to a god during resting
 
 ### Balancing
 * slightly reduced maximum number of shopping attempts
 * modified some skill modules
 
 ### Interface
+* add ability to select which skill modules are allowed when creating new skills
 * make summary persistent
+* more tooltips
 * minor changes
 
 ### Bug fixes
