@@ -603,24 +603,24 @@ const TRAPS = {
 		"duration":30.0,
 	},
 }
-const FIRE_PREFIX = ["fire","fiery","blazing","flare"]
-const ICE_PREFIX = ["ice","cryo","cold","freezing","frost"]
-const LIGHTNING_PREFIX = ["lightning","electro","thunder","storm"]
-const WATER_PREFIX = ["water","aqua","hydro"]
-const EARTH_PREFIX = ["earth","rock","sand","geo"]
-const WIND_PREFIX = ["wind","air","pressure","vacuum"]
-const LIGHT_PREFIX = ["light","solar","star","bright","day"]
-const DARKNESS_PREFIX = ["dark","nocturnal","darkness","black","night"]
-const POISON_PREFIX = ["poison","toxic"]
-const ACID_PREFIX = ["acid","corrosive"]
-const BOLT_NAMES = ["arrow","bolt","dart","shot","blast"]
-const BEAM_NAMES = ["beam","blast","jet","ray","arc"]
-const EXPLOSION_NAMES = ["explosion","nova","wave","storm","fall","sphere"]
-const SEEKER_NAMES = ["seeker","missile","smart sphere"]
-const MELEE_NAMES = ["slash","strike","cutter","attack","thrust"]
-const FERAL_MAGIC_NAMES = ["blast","blow","wave","strike","attack"]
-const FERAL_IMPACT_MAGIC_NAMES = ["blow","strike","punch","slam","impact"]
-const FERAL_CUTTING_MAGIC_NAMES = ["strike","slash","cut","roundcut","claw","fangs"]
+#const FIRE_PREFIX = ["fire","fiery","blazing","flare"]
+#const ICE_PREFIX = ["ice","cryo","cold","freezing","frost"]
+#const LIGHTNING_PREFIX = ["lightning","electro","thunder","storm"]
+#const WATER_PREFIX = ["water","aqua","hydro"]
+#const EARTH_PREFIX = ["earth","rock","sand","geo"]
+#const WIND_PREFIX = ["wind","air","pressure","vacuum"]
+#const LIGHT_PREFIX = ["light","solar","star","bright","day"]
+#const DARKNESS_PREFIX = ["dark","nocturnal","darkness","black","night"]
+#const POISON_PREFIX = ["poison","toxic"]
+#const ACID_PREFIX = ["acid","corrosive"]
+#const BOLT_NAMES = ["arrow","bolt","dart","shot","blast"]
+#const BEAM_NAMES = ["beam","blast","jet","ray","arc"]
+#const EXPLOSION_NAMES = ["explosion","nova","wave","storm","fall","sphere"]
+#const SEEKER_NAMES = ["seeker","missile","smart sphere"]
+#const MELEE_NAMES = ["slash","strike","cutter","attack","thrust"]
+#const FERAL_MAGIC_NAMES = ["blast","blow","wave","strike","attack"]
+#const FERAL_IMPACT_MAGIC_NAMES = ["blow","strike","punch","slam","impact"]
+#const FERAL_CUTTING_MAGIC_NAMES = ["strike","slash","cut","roundcut","claw","fangs"]
 
 const ROMAN_NUMBERS = {
 	"I":1,
@@ -1134,10 +1134,33 @@ func create_name(skill: Dictionary) -> String:
 		string = module_data.type[skill.slots.base_type[0]].name
 	if skill.auto_naming.has("type"):
 		var t:= ""
+		var used:= []
 		for i in range(skill.auto_naming.type.size()):
-			t += skill.auto_naming.type[i].pick_random()
-			if i<skill.auto_naming.type.size()-1:
-				t += "-"
+			var type1: String = skill.slots.magic[i]
+			var o:= false
+			if i in used:
+				continue
+			for j in range(skill.auto_naming.type.size()):
+				if i==j || j in used:
+					continue
+				var array:= [type1, skill.slots.magic[j]]
+				if !Names.DUAL_MAGIC_NAMES.has(array):
+					array = [skill.slots.magic[j], type1]
+				if Names.DUAL_MAGIC_NAMES.has(array):
+					t += Names.DUAL_MAGIC_NAMES[array].pick_random()
+					if i<skill.auto_naming.type.size()-1-float(j>i):
+						t += "-"
+					o = true
+					used += [i,j]
+					break
+			if o:
+				continue
+			t = skill.auto_naming.type[i].pick_random() + "-" + t
+#			if i<skill.auto_naming.type.size()-1:
+#				t += "-"
+			used.push_back(i)
+		if t[t.length()-1]=='-':
+			t = t.left(t.length()-1)
 		string = t + " " + string
 	if skill.auto_naming.has("prefix"):
 		var n: String

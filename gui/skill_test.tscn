@@ -6,8 +6,8 @@ script/source = "extends CanvasLayer
 func _input(event: InputEvent):
 	if event is InputEventKey && event.is_pressed():
 #		var skill:= Skills.create_random_skill([\"light_weapons\",\"elemental_magic\",\"infuse_elemental\"])
-#		var skill:= Skills.create_random_skill([\"elemental_magic\",\"nature_magic\",\"celestial_magic\"])
-		var skill:= Skills.create_random_skill([\"celestial_magic\",\"healing\",\"defensive_magic\"])
+		var skill:= Skills.create_random_skill([\"elemental_magic\",\"nature_magic\",\"celestial_magic\"], \"\", false, [], [\"vampiric\",\"pumped\",\"homing\",\"high_yield\",\"explosive\",\"supersonic\",\"swift\",\"restorative\",\"mana_burn\",\"split\",\"magic_shielding\"])
+#		var skill:= Skills.create_random_skill([\"celestial_magic\",\"healing\",\"defensive_magic\"])
 #		var skill:= Skills.create_random_skill([\"archery\",\"dirty_fighting\"])
 #		var skill:= Skills.create_random_skill([\"archery\",\"nature_magic\",\"infuse_nature\"])
 #		var skill:= Skills.create_random_skill([\"brawling\",\"dirty_fighting\"])

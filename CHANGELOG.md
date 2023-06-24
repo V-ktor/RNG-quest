@@ -11,7 +11,7 @@
 ### Interface
 * add ability to select which skill modules are allowed when creating new skills
 * make summary persistent
-* more tooltips
+* more tool tips
 * minor changes
 
 ### Bug fixes

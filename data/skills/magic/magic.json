@@ -188,7 +188,7 @@
 	"lightning":{
 		"name":"lightning",
 		"auto_naming":{
-			"type":[["lightning","electro","thunder","storm"]],
+			"type":[["lightning","electro","thunder"]],
 		},
 		"auto_naming_healing":{
 			"type":[["energizing"]],
