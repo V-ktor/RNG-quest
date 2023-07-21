@@ -1,5 +1,13 @@
 # Change log
 
+## v0.0.3
+### Interface
+* some combinations of multi magic element skills have special names
+
+### Bug fixes
+* more auto saves
+* fixed a missing translation string
+
 ## v0.0.2
 ### Content
 * add blessings received by praying to a god during resting
