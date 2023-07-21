@@ -738,35 +738,7 @@ const QUEST_DONE = {
 		"Transient parent has another exclusive child.",
 	],
 }
-const DUAL_MAGIC_NAMES = {
-	["fire","water"]:["steam"],
-	["fire","wind"]:["steam"],
-	["fire","earth"]:["lava","magma"],
-	["fire","lightning"]:["plasma"],
-	["fire","light"]:["heat"],
-	["fire","darkness"]:["hellfire","fearfire"],
-	["fire","acid"]:["napalm"],
-	["water","ice"]:["glacier"],
-	["water","wind"]:["foam"],
-	["water","earth"]:["mud"],
-	["water","darkness"]:["filth"],
-	["water","poison"]:["slime"],
-	["water","acid"]:["slime"],
-	["ice","wind"]:["hail"],
-	["ice","earth"]:["crystal"],
-	["ice","poison"]:["cryo-poison"],
-	["wind","earth"]:["sand"],
-	["wind","lightning"]:["storm"],
-	["earth","light"]:["scorch"],
-	["earth","darkness"]:["filth"],
-	["earth","poison"]:["lithophage","geo-stigma"],
-	["earth","acid"]:["bleach"],
-	["lightning","water"]:["storm"],
-	["light","darkness"]:["twilight"],
-	["poison","darkness"]:["blight","vile"],
-	["acid","wind"]:["acid-spray"],
-	["acid","darkness"]:["decay"],
-}
+var dual_magic_names = {}
 
 
 func get_god() -> Dictionary:

@@ -1136,7 +1136,7 @@ func create_name(skill: Dictionary) -> String:
 		var t:= ""
 		var used:= []
 		for i in range(skill.auto_naming.type.size()):
-			var type1: String = skill.slots.magic[i]
+			var type1: String = skill.auto_naming.type[i].pick_random()
 			var o:= false
 			if i in used:
 				continue
@@ -1144,10 +1144,8 @@ func create_name(skill: Dictionary) -> String:
 				if i==j || j in used:
 					continue
 				var array:= [type1, skill.slots.magic[j]]
-				if !Names.DUAL_MAGIC_NAMES.has(array):
-					array = [skill.slots.magic[j], type1]
-				if Names.DUAL_MAGIC_NAMES.has(array):
-					t += Names.DUAL_MAGIC_NAMES[array].pick_random()
+				if Names.dual_magic_names.has(array):
+					t += Names.dual_magic_names[array].pick_random()
 					if i<skill.auto_naming.type.size()-1-float(j>i):
 						t += "-"
 					o = true
@@ -1155,9 +1153,7 @@ func create_name(skill: Dictionary) -> String:
 					break
 			if o:
 				continue
-			t = skill.auto_naming.type[i].pick_random() + "-" + t
-#			if i<skill.auto_naming.type.size()-1:
-#				t += "-"
+			t = type1 + "-" + t
 			used.push_back(i)
 		if t[t.length()-1]=='-':
 			t = t.left(t.length()-1)
@@ -1419,6 +1415,10 @@ func load_data(paths: Array, type: String):
 			continue
 		for k in data.keys():
 			module_data[type][k] = data[k]
+			if data[k].has("dual_type_names") && data[k].has("auto_naming") && data[k].auto_naming.has("type"):
+				for t2 in data[k].dual_type_names.keys():
+					for t1 in data[k].auto_naming.type[0]:
+						Names.dual_magic_names[[t1,t2]] = data[k].dual_type_names[t2]
 		file.close()
 
 func load_skill_data(path: String):
