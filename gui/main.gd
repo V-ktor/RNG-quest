@@ -2572,6 +2572,7 @@ func start_task(task_ID: int, task:= ""):
 			else:
 				var target_location: String = current_region.cities.pick_random()
 				do_action("goto", {"location":target_location}, TRAVEL_DELAY)
+	_save()
 
 
 func make_desc_list(array: Array) -> String:
