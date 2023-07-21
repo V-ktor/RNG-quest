@@ -1107,7 +1107,7 @@ offset_top = -24.0
 offset_right = 96.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
-text = "v0.0.2"
+text = "v0.0.3"
 vertical_alignment = 1
 
 [connection signal="pressed" from="Panel/VBoxContainer/Button0" to="." method="_show_characters"]
