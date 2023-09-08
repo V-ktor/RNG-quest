@@ -655,8 +655,10 @@ func optimize_equipment():
 		var item: Dictionary = player_inventory[i]
 		if item.has("2h") && item["2h"]:
 			if !weapon_2h_alowed:
+				i += 1
 				continue
 		elif !weapon_1h_alowed:
+			i += 1
 			continue
 		if item.has("subtype"):
 			if typeof(item.subtype)==TYPE_ARRAY:
