@@ -1872,6 +1872,8 @@ func use_attack(skill: Dictionary, actor: Characters.Character, target: Characte
 				var status:= Characters.create_status(st, actor, target)
 				target.add_status(status)
 				result.debuff += 1
+		if skill.has("push"):
+			target.position -= skill.push*sign(actor.position-target.position)
 	if result.has("reflected"):
 		actor.health -= result.reflected
 	result.total_damage = int(result.total_damage)
@@ -1947,6 +1949,8 @@ func use_buff(skill: Dictionary, actor: Characters.Character, target: Characters
 			var status:= Characters.create_status(dict, actor, target, duration_multiplier)
 			target.add_status(status)
 			result.buff += 1
+	if skill.has("push"):
+		target.position -= skill.push*sign(actor.position-target.position)
 	if actor is Characters.Enemy || actor is Characters.Summon:
 		result.actor_description = actor.description
 	if target is Characters.Enemy || actor is Characters.Summon:
@@ -2022,6 +2026,15 @@ func use_skill(actor: Characters.Character, skill: Dictionary) -> Dictionary:
 		var status:= Characters.create_status(st, actor, actor)
 		actor.add_status(status)
 		result.buff += 1
+	if skill.has("move"):
+		var to_pos: int
+		if typeof(target)==TYPE_ARRAY:
+			for t in target:
+				to_pos += t.position
+			to_pos /= target.size()
+		else:
+			to_pos = target.position
+		actor.position += skill.move*sign(to_pos-actor.position)
 	match skill.usage:
 		"attack":
 			if typeof(target)==TYPE_ARRAY:

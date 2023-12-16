@@ -100,7 +100,7 @@ const ABILITIES = {
 	"evasion":{
 		"name":"evasion",
 		"evasion":2,
-		"armour_subtypes":["light","mediun"],
+		"armour_subtypes":["light","medium"],
 	},
 	"elemental_magic":{
 		"name":"elemental_magic",
@@ -231,12 +231,12 @@ const ABILITY_MODULES = {
 	
 	"archery":{
 		"base_type":["arrow","shot","dual_shot","volley"],
-		"ranged_mod":["aimed","quick","power","heavy_caliber"],
+		"ranged_mod":["aimed","quick","power","heavy_caliber","heavy"],
 		"aim":["body","head","unaimed"],
 	},
 	"gun_slinging":{
 		"base_type":["shot","cannon","barrage"],
-		"ranged_mod":["aimed","trick","bulk_caliber"],
+		"ranged_mod":["aimed","trick","bulk_caliber","heavy"],
 		"aim":["body","head","weakpoint"],
 	},
 	
@@ -257,8 +257,8 @@ const ABILITY_MODULES = {
 		"shape":["bolt","ball","pillar","disc","spiral"],
 		"application":["rocket","chain","explosion"],
 		"magic_mod":["homing","pumped","high_yield","mana_burn","split","fuse"],
-		"melee_mod":["infuse","channeled"],
-		"ranged_mod":["infuse","channeled"],
+		"melee_mod":["infuse","channeled","flaming","frost","lightning_blade"],
+		"ranged_mod":["infuse","channeled","flaming","frost","lightning_arrow"],
 		"summon_type":["elemental"],
 		"summoning_method":["conjuration"],
 	},
@@ -268,8 +268,8 @@ const ABILITY_MODULES = {
 		"shape":["bolt","ball","disc","blade","spiral"],
 		"application":["rocket","beam","explosion"],
 		"magic_mod":["homing","pumped","explosive","supersonic","split","fuse"],
-		"melee_mod":["infuse","acidic"],
-		"ranged_mod":["infuse","acidic"],
+		"melee_mod":["infuse","acidic","water_blade","swift","crag_blade"],
+		"ranged_mod":["infuse","acidic","water_arrow","swift","rock_shot"],
 		"summon_type":["beast"],
 		"summoning_method":["conjuration"],
 	},
@@ -279,8 +279,8 @@ const ABILITY_MODULES = {
 		"shape":["bolt","sphere","pillar","disc","blade"],
 		"application":["rocket","beam","explosion"],
 		"magic_mod":["vampiric","pumped","restorative","swift","split","fuse"],
-		"melee_mod":["infuse","light_infused"],
-		"ranged_mod":["infuse","light_infused"],
+		"melee_mod":["infuse","light_infused","light_blade","shadow_step"],
+		"ranged_mod":["infuse","light_infused","light_arrow","shadow_step"],
 		"summon_type":["celestial"],
 		"summoning_method":["conjuration"],
 	},
@@ -294,7 +294,7 @@ const ABILITY_MODULES = {
 		"base_type":["healing_spell"],
 		"magic":["water"],
 		"application":["rocket","beam","explosion"],
-		"magic_mod":["restorative"],
+		"magic_mod":["restorative","vampiric"],
 	},
 	
 	"summoning":{
@@ -603,24 +603,6 @@ const TRAPS = {
 		"duration":30.0,
 	},
 }
-#const FIRE_PREFIX = ["fire","fiery","blazing","flare"]
-#const ICE_PREFIX = ["ice","cryo","cold","freezing","frost"]
-#const LIGHTNING_PREFIX = ["lightning","electro","thunder","storm"]
-#const WATER_PREFIX = ["water","aqua","hydro"]
-#const EARTH_PREFIX = ["earth","rock","sand","geo"]
-#const WIND_PREFIX = ["wind","air","pressure","vacuum"]
-#const LIGHT_PREFIX = ["light","solar","star","bright","day"]
-#const DARKNESS_PREFIX = ["dark","nocturnal","darkness","black","night"]
-#const POISON_PREFIX = ["poison","toxic"]
-#const ACID_PREFIX = ["acid","corrosive"]
-#const BOLT_NAMES = ["arrow","bolt","dart","shot","blast"]
-#const BEAM_NAMES = ["beam","blast","jet","ray","arc"]
-#const EXPLOSION_NAMES = ["explosion","nova","wave","storm","fall","sphere"]
-#const SEEKER_NAMES = ["seeker","missile","smart sphere"]
-#const MELEE_NAMES = ["slash","strike","cutter","attack","thrust"]
-#const FERAL_MAGIC_NAMES = ["blast","blow","wave","strike","attack"]
-#const FERAL_IMPACT_MAGIC_NAMES = ["blow","strike","punch","slam","impact"]
-#const FERAL_CUTTING_MAGIC_NAMES = ["strike","slash","cut","roundcut","claw","fangs"]
 
 const ROMAN_NUMBERS = {
 	"I":1,
@@ -943,7 +925,8 @@ func add_module(skill: Dictionary, module: Dictionary) -> Dictionary:
 			for k in ["summoning","summon_stats","summon_attributes","summon_abilities","summon_damage","summon_resistance"]:
 				if module.has(k):
 					add_entry(skill, k, module[k])
-	for k in ["cost","area","range","cooldown","hits","status_self","health_steal","reflect_damage","attributes","delay_multiplier","duration","summon_name"]:
+	# Common stats that every skill can have
+	for k in ["cost","area","range","move","push","cooldown","hits","status_self","health_steal","reflect_damage","attributes","delay_multiplier","duration","summon_name"]:
 		if module.has(k):
 			add_entry(skill, k, module[k])
 	for k in ["status","status_self"]:
@@ -1267,6 +1250,11 @@ func create_tooltip(skill: Dictionary) -> String:
 			text += "\n" + tr("RANGE") + ": " + tr("LONG_RANGE")
 	else:
 		text += "\n" + tr("RANGE") + ": " + tr("MELEE_RANGE")
+	if skill.has("move") && skill.move!=0:
+		if skill.move>0:
+			text += "\n" + tr("ENGAGING") + ": " + str(skill.move)
+		else:
+			text += "\n" + tr("DISENGAGING") + ": " + str(-skill.move)
 	if skill.has("target_type"):
 		text += "\n" + tr("TARGET") + ": " + tr(skill.target_type.to_upper())
 	if skill.has("splash_damage"):

@@ -6,6 +6,10 @@ COST,Cost
 COOLDOWN,Cooldown
 AREA,Area
 RANGE,Range
+ENGAGING,Engaging
+DISENGAGING,Disengaging
+PULL,Pull
+PUSH,Push
 DAMAGEC,Damage
 HEALINGC,Healing
 SHIELDINGC,Shielding

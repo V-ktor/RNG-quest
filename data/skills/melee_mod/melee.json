@@ -1,5 +1,5 @@
 {
-    "force":{
+	"force":{
 		"name":"force",
 		"auto_naming":{
 			"prefix":["force","strong","power"],
@@ -38,9 +38,9 @@
 		},
 		"damage":{
 			"constitution":{
-			    "value":0.6,
-			    "type":["impact"],
-		    },
+				"value":0.6,
+				"type":["impact"],
+			},
 		},
 		"cooldown":2.0,
 	},
@@ -55,17 +55,17 @@
 			"stamina":2,
 		},
 		"status":[
-		    {
+			{
 				"type":"debuff",
-    			"name":"bleeding",
-	    		"duration":6.0,
-	    		"damage":{
-	    			"dexterity":{
-	    				"value":0.8,
-	    				"type":["cutting"],
-	    			},
-	    		},
-	    	},
+				"name":"bleeding",
+				"duration":6.0,
+				"damage":{
+					"dexterity":{
+						"value":0.8,
+						"type":["cutting"],
+					},
+				},
+			},
 		],
 		"cooldown":2.0,
 	},
@@ -80,17 +80,17 @@
 			"stamina":2,
 		},
 		"status":[
-		    {
+			{
 				"type":"debuff",
-    			"name":"bleeding",
-	    		"duration":6.0,
-	    		"damage":{
-	    			"dexterity":{
-	    				"value":0.8,
-	    				"type":["piercing"],
-	    			},
-	    		},
-	    	},
+				"name":"bleeding",
+				"duration":6.0,
+				"damage":{
+					"dexterity":{
+						"value":0.8,
+						"type":["piercing"],
+					},
+				},
+			},
 		],
 		"cooldown":2.0,
 	},
@@ -104,16 +104,16 @@
 			"stamina":2,
 		},
 		"status":[
-		    {
+			{
 				"type":"debuff",
-			    "name":"poisoned",
-			    "duration":10.0,
-			    "damage":{
-				    "cunning":{
-					    "value":0.8,
-					    "type":["poison"],
-				    },
-			    },
+				"name":"poisoned",
+				"duration":10.0,
+				"damage":{
+					"cunning":{
+						"value":0.8,
+						"type":["poison"],
+					},
+				},
 			},
 		],
 		"cooldown":2.0,
@@ -129,6 +129,7 @@
 			"stamina":1,
 		},
 		"range":1,
+		"move":1,
 		"cooldown":4.0,
 	},
 	"quick":{
@@ -168,13 +169,13 @@
 			"stamina":2,
 		},
 		"status":[
-		    {
+			{
 				"type":"debuff",
-    			"name":"stunned",
-	    		"duration":2.0,
-	    		"stun":0.5,
-	    	},
-	    ],
+				"name":"stunned",
+				"duration":2.0,
+				"stun":0.5,
+			},
+		],
 		"cooldown":4.0,
 	},
 	"concussive":{
@@ -187,12 +188,12 @@
 			"stamina":2,
 		},
 		"status":[
-		    {
+			{
 				"type":"debuff",
-			    "name":"stunned",
-			    "duration":2.0,
-			    "stun":0.5,
-		    },
+				"name":"stunned",
+				"duration":2.0,
+				"stun":0.5,
+			},
 		],
 		"cooldown":4.0,
 	},
@@ -246,17 +247,17 @@
 			"focus":1,
 		},
 		"status_self":[
-		    {
+			{
 				"type":"buff",
-    			"name":"damage shield",
-	    	    "duration":6.0,
-	    	    "shielding":{
-	    			"constitution":{
-	    				"value":0.5,
-	    				"type":["cutting","piercing","impact"],
-	    			},
-	    		},
-	    	},
+				"name":"damage shield",
+				"duration":6.0,
+				"shielding":{
+					"constitution":{
+						"value":0.5,
+						"type":["cutting","piercing","impact"],
+					},
+				},
+			},
 		],
 		"cooldown":2.0,
 	},
@@ -271,17 +272,17 @@
 			"focus":1,
 		},
 		"status_self":[
-		    {
+			{
 				"type":"buff",
-    			"name":"damage shield",
-	    	    "duration":6.0,
-	    	    "shielding":{
-	    			"dexterity":{
-	    				"value":0.5,
-	    				"type":["cutting","piercing","impact"],
-	    			},
-	    		},
-	    	},
+				"name":"damage shield",
+				"duration":6.0,
+				"shielding":{
+					"dexterity":{
+						"value":0.5,
+						"type":["cutting","piercing","impact"],
+					},
+				},
+			},
 		],
 		"cooldown":2.0,
 	},
@@ -329,17 +330,17 @@
 			"mana":2,
 		},
 		"status_self":[
-		    {
+			{
 				"type":"buff",
-    			"name":"healing",
-	    	    "duration":6.0,
-	    	    "healing":{
-	    			"willpower":{
-	    				"value":0.2,
-	    				"type":["health"],
-	    			},
-	    		},
-	    	},
+				"name":"healing",
+				"duration":6.0,
+				"healing":{
+					"willpower":{
+						"value":0.2,
+						"type":["health"],
+					},
+				},
+			},
 		],
 		"cooldown":2.0,
 	},
@@ -352,8 +353,225 @@
 		"cost":{
 			"mana":2,
 		},
-	    "health_steal":0.1,
+		"health_steal":0.1,
 		"cooldown":1.0,
+	},
+	"flaming":{
+		"name":"flaming",
+		"auto_naming":{
+			"prefix":["flaming","flare","blaze"],
+		},
+		"type":"melee",
+		"cost":{
+			"mana":2,
+		},
+		"status":[
+			{
+				"type":"debuff",
+				"name":"burning",
+				"duration":8.0,
+				"damage":{
+					"magic":{
+						"value":0.4,
+						"type":["fire"],
+					},
+				},
+			},
+		],
+		"cooldown":2.0,
+	},
+	"water_blade":{
+		"name":"water_blade",
+		"auto_naming":{
+			"prefix":["water","hydro"],
+		},
+		"type":"melee",
+		"cost":{
+			"mana":2,
+		},
+		"damage":{
+			"magic":{
+				"value":0.1,
+				"type":["water"],
+			},
+		},
+		"status_self":[
+			{
+				"type":"buff",
+				"name":"regeneration",
+				"duration":8.0,
+				"healing":{
+					"magic":{
+						"value":0.25,
+						"type":["stamina"],
+					},
+				},
+			},
+		],
+		"cooldown":4.0,
+	},
+	"frost":{
+		"name":"frost",
+		"auto_naming":{
+			"prefix":["frost","frozen"],
+		},
+		"type":"melee",
+		"cost":{
+			"mana":2,
+		},
+		"damage":{
+			"magic":{
+				"value":0.1,
+				"type":["ice"],
+			},
+		},
+		"status":[
+			{
+				"type":"debuff",
+				"limit":"attack",
+				"name":"frozen",
+				"duration":4.0,
+				"stun":0.5,
+			},
+		],
+		"cooldown":4.0,
+	},
+	"swift":{
+		"name":"swift",
+		"auto_naming":{
+			"prefix":["swift","airborne"],
+		},
+		"type":"melee",
+		"cost":{
+			"mana":2,
+		},
+		"delay_multiplier":-0.25,
+		"attributes":{
+			"accuracy":4,
+		},
+		"status_self":[
+			{
+				"type":"buff",
+				"name":"swift",
+				"limit":"buff",
+				"duration":4.0,
+				"attributes":{
+					"evasion":8,
+				},
+			},
+		],
+		"cooldown":2.0,
+	},
+	"crag_blade":{
+		"name":"crag_blade",
+		"auto_naming":{
+			"prefix":["crag","earth"],
+		},
+		"type":"melee",
+		"cost":{
+			"mana":2,
+		},
+		"damage":{
+			"magic":{
+				"value":0.1,
+				"type":["earth"],
+			},
+		},
+		"status":[
+			{
+				"type":"debuff",
+				"name":"bleeding",
+				"duration":6.0,
+				"damage":{
+					"magic":{
+						"value":0.25,
+						"type":["cutting"],
+					},
+				},
+			},
+		],
+		"cooldown":2.0,
+	},
+	"lightning_blade":{
+		"name":"lightning_blade",
+		"auto_naming":{
+			"prefix":["lightning","thunder","spark"],
+		},
+		"type":"melee",
+		"cost":{
+			"mana":2,
+		},
+		"damage":{
+			"magic":{
+				"value":0.1,
+				"type":["lightning"],
+			},
+		},
+		"status":[
+			{
+				"type":"debuff",
+				"name":"charged",
+				"limit":"attack",
+				"duration":6.0,
+				"damage":{
+					"magic":{
+						"value":0.25,
+						"type":["lightning"],
+					},
+				},
+			},
+		],
+		"cooldown":2.0,
+	},
+	"light_blade":{
+		"name":"light_blade",
+		"auto_naming":{
+			"prefix":["light","flash"],
+		},
+		"type":"melee",
+		"cost":{
+			"mana":2,
+		},
+		"status":[
+			{
+				"type":"debuff",
+				"name":"blinded",
+				"limit":"effect",
+				"duration":6.0,
+				"attributes":{
+					"accuracy":-4,
+					"evasion":-4,
+				},
+			},
+		],
+		"status_self":[
+			{
+				"type":"buff",
+				"name":"shield",
+				"limit":"effect",
+				"duration":6.0,
+				"shield":{
+					"magic":{
+						"value":0.2,
+						"type":["light"],
+					},
+				},
+			},
+		],
+		"cooldown":2.0,
+	},
+	"shadow_step":{
+		"name":"shadow_step",
+		"auto_naming":{
+			"prefix":["concealed","veiled"],
+			"base":["shadow step"],
+		},
+		"type":"melee",
+		"cost":{
+			"mana":1,
+		},
+		"range":1,
+		"cooldown":4.0,
 	},
 	"infuse":{
 		"name":"infuse",
