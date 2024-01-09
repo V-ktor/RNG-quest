@@ -135,7 +135,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -316,46 +315,58 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="Label0" type="Label" parent="HBoxContainer/VBoxContainer1/Stats/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "STRENGTH"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label1" type="Label" parent="HBoxContainer/VBoxContainer1/Stats/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "CONSTITUTION"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer1/Stats/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "DEXTERITY"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer1/Stats/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "INTELLIGENCE"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer1/Stats/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "WISDOM"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer1/Stats/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "CUNNING"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Attributes" type="Panel" parent="HBoxContainer/VBoxContainer1"]
 custom_minimum_size = Vector2(0, 230)
@@ -376,67 +387,85 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="Label0" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "ATTACK"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label1" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "MAGIC"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "WILLPOWER"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "ARMOUR"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "ACCURACY"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "EVASION"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label6" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "PENETRATION"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label7" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "SPEED"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label8" type="Label" parent="HBoxContainer/VBoxContainer1/Attributes/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 text = "CRITICAL"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Guilds" type="Panel" parent="HBoxContainer/VBoxContainer1"]
 layout_mode = 2
@@ -496,7 +525,6 @@ text = "RANK"
 horizontal_alignment = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -595,7 +623,6 @@ size_flags_vertical = 3
 value = 50.0
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -618,100 +645,124 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 
 [node name="Label0" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 text = "MAINHAND"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label1" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 text = "OFFHAND"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 text = "TORSO"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 text = "LEGS"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 text = "BELT"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 text = "HEAD"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label6" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 text = "HANDS"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label7" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 text = "FEET"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label8" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 text = "CAPE"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label9" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 text = "AMULET"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label10" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 text = "RING"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label11" type="Label" parent="HBoxContainer/VBoxContainer3/Equipment/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 text = "RING"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Inventory" type="Panel" parent="HBoxContainer/VBoxContainer3"]
 layout_mode = 2
@@ -753,33 +804,38 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Label0" type="Label" parent="HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Potions"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 6
 mouse_filter = 0
 text = "ITEM"
+autowrap_mode = 3
 
 [node name="Quest" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Label0" type="Label" parent="HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Quest"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 6
 mouse_filter = 0
 text = "ITEM"
+autowrap_mode = 3
 
 [node name="Inventory" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Label0" type="Label" parent="HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Inventory"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 6
 mouse_filter = 0
 text = "ITEM"
+autowrap_mode = 3
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -823,6 +879,7 @@ grow_vertical = 2
 size_flags_vertical = 6
 text = "1"
 horizontal_alignment = 2
+clip_text = true
 
 [node name="LabelName" type="Label" parent="HBoxContainer/VBoxContainer4/Abilities/ScrollContainer/VBoxContainer/Ability0"]
 layout_mode = 1
@@ -833,6 +890,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 6
 text = "ABILITY"
+clip_text = true
 
 [node name="Skills" type="Panel" parent="HBoxContainer/VBoxContainer4"]
 layout_mode = 2
@@ -858,10 +916,12 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="Label0" type="Label" parent="HBoxContainer/VBoxContainer4/Skills/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 6
 mouse_filter = 0
 text = "SKILL"
+autowrap_mode = 3
 
 [node name="Quests" type="Panel" parent="HBoxContainer/VBoxContainer4"]
 layout_mode = 2
@@ -882,6 +942,7 @@ grow_vertical = 2
 scroll_following = true
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -949,6 +1010,7 @@ popup/item_5/text = "RESTING"
 popup/item_5/id = 5
 
 [node name="VBoxContainer6" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1086,6 +1148,7 @@ layout_mode = 2
 text = "MANA"
 
 [node name="VBoxContainer7" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
