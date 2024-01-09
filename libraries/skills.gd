@@ -280,7 +280,7 @@ const ABILITY_MODULES = {
 		"application":["rocket","beam","explosion"],
 		"magic_mod":["vampiric","pumped","restorative","swift","split","fuse"],
 		"melee_mod":["infuse","light_infused","light_blade","shadow_step"],
-		"ranged_mod":["infuse","light_infused","light_arrow","shadow_step"],
+		"ranged_mod":["infuse","light_infused","light_arrow","shadow_backstep"],
 		"summon_type":["celestial"],
 		"summoning_method":["conjuration"],
 	},

@@ -365,8 +365,8 @@
 		],
 		"cooldown":2.0,
 	},
-	"shadow_step":{
-		"name":"shadow_step",
+	"shadow_backstep":{
+		"name":"shadow_backstep",
 		"auto_naming":{
 			"prefix":["concealed","veiled"],
 		},

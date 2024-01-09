@@ -246,6 +246,32 @@ CLEAVING,Cleaving
 CLEAVING_DESCRIPTION,"Attacks in a wide arc hitting additional targets."
 PARRY,Parry
 PARRY_DESCRIPTION,"Grants a weak damage shield which is more effective against physical damage."
+FLAMING,Flaming
+FLAMING_DESCRIPTION,"Inflicts additional fire burn damage over time."
+WATER_BLADE,Water Blade
+WATER_BLADE_DESCRIPTION,"Deals additional water damage and restores stamina to the caster."
+WATER_ARROW,Water Arrow
+WATER_ARROW_DESCRIPTION,"Deals additional water damage and restores stamina to the caster."
+FROST,Frost
+FROST_DESCRIPTION,"Deals additional ice damage and slows the target."
+SWIFT,Swift
+SWIFT_DESCRIPTION,"Faster attack speed and boosts the casters evasion."
+CRAG_BLADE,Crag Blade
+CRAG_BLADE_DESCRIPTION,"Deals additional earth damage and applies bleed."
+ROCK_SHOT,Rock Shot
+ROCK_SHOT_DESCRIPTION,"Deals additional earth damage and applies bleed."
+LIGHTNING_BLADE,Lightning Blade
+LIGHTNING_BLADE_DESCRIPTION,"Deals additional lightning damage."
+LIGHTNING_ARROW,Lightning Arrow
+LIGHTNING_ARROW_DESCRIPTION,"Deals additional lightning damage."
+LIGHT_BLADE,Light Blade
+LIGHT_BLADE_DESCRIPTION,"Blinds the target while applying a damage shield to the caster."
+LIGHT_ARROW,Light Arrow
+LIGHT_ARROW_DESCRIPTION,"Blinds the target while applying a damage shield to the caster."
+SHADOW_STEP,Shadow Step
+SHADOW_STEP_DESCRIPTION,"Allows to hit distant targets with melee attacks."
+SHADOW_BACKSTEP,Shadow Step
+SHADOW_BACKSTEP_DESCRIPTION,"Perform a ranged attack while disengaging from the target."
 CHANNELED,Channeled
 CHANNELED_DESCRIPTION,"Infuse the attack with magic doing additional elemental damage."
 ACIDIC,Acidic
