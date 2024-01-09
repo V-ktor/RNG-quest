@@ -2714,16 +2714,34 @@ func update_info():
 		c.hide()
 	for i in range(player.abilities.size()):
 		var bar: ProgressBar
+		var ability: String = player.abilities.keys()[i]
+		var dict: Dictionary = Skills.ABILITIES[ability]
 		if has_node("HBoxContainer/VBoxContainer4/Abilities/ScrollContainer/VBoxContainer/Ability"+str(i)):
 			bar = get_node("HBoxContainer/VBoxContainer4/Abilities/ScrollContainer/VBoxContainer/Ability"+str(i))
 		else:
 			bar = $HBoxContainer/VBoxContainer4/Abilities/ScrollContainer/VBoxContainer/Ability0.duplicate()
 			bar.name = "Ability"+str(i)
 			$HBoxContainer/VBoxContainer4/Abilities/ScrollContainer/VBoxContainer.add_child(bar)
-		bar.get_node("LabelName").text = tr(Skills.ABILITIES[player.abilities.keys()[i]].name.to_upper())
+		bar.get_node("LabelName").text = tr(dict.name.to_upper())
 		bar.get_node("LabelLevel").text = str(player.abilities.values()[i])
 		bar.max_value = get_ability_exp(player.abilities.values()[i])
-		bar.value = player_ability_exp[player.abilities.keys()[i]]
+		bar.value = player_ability_exp[ability]
+		bar.tooltip_text = str(bar.value) + " / " + str(bar.max_value) + " (" + str(int(100 * bar.value / bar.max_value)) + "%)\n"
+		for k in Characters.ATTRIBUTES:
+			if dict.has(k):
+				bar.tooltip_text += tr(k.to_upper()) + ": +" + str(int(dict[k]*player.abilities[ability])) + "\n"
+		for k in Characters.RESOURCES:
+			if dict.has(k):
+				bar.tooltip_text += tr(k.to_upper()) + ": +" + dict[k] + "\n"
+			if dict.has(k+"_regen"):
+				bar.tooltip_text += tr(k.to_upper() + "_REGEN") + ": +" + dict[k+"_regen"] + "\n"
+		if dict.has("resistance"):
+			bar.tooltip_text += tr("RESISTANCE") + ":\n"
+			for k in dict.resistance:
+				bar.tooltip_text += "  " + tr(k.to_upper()) + ": +" + str(100*dict.resistance[k]*player.abilities[ability]) + "%\n"
+		if dict.has("damage"):
+			for k in dict.damage:
+				bar.tooltip_text += "  " + tr(k.to_upper()) + ": +" + str(100*dict.damage[k]*player.abilities[ability]) + "%\n"
 		bar.show()
 	info_update = false
 

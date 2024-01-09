@@ -1,6 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://cx2f13pqvsvxo"]
+[gd_scene load_steps=11 format=3 uid="uid://cx2f13pqvsvxo"]
 
 [ext_resource type="Script" path="res://gui/main.gd" id="1_7tv8d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32gvm"]
+content_margin_left = 8.0
+content_margin_top = 2.0
+content_margin_right = 8.0
+content_margin_bottom = 2.0
+bg_color = Color(0.0313726, 0.0313726, 0.0313726, 0.752941)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_bhc07"]
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_32gvm")
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_nvdim"]
 
@@ -59,6 +74,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_bhc07")
 
 [node name="Buttons" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
