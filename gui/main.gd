@@ -325,7 +325,9 @@ func learn_new_ability(type:= ""):
 	if type.length()==0:
 		type = pick_ability()
 	if type.length()==0:
-		learn_new_skill()
+#		learn_new_skill()
+		for i in range(2):
+			upgrade_skill()
 		return
 	var text:= tr("LEARNED_ABIlITY_LOG").format({"ability":tr(Skills.ABILITIES[type].name.to_upper())})
 	player.abilities[type] = 1
