@@ -2576,6 +2576,7 @@ func start_task(task_ID: int, task:= ""):
 	player.position = 1
 	action_failures = 0
 	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/LabelTask.text = tr(task.to_upper())
+	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/LabelTask.tooltip_text = tr(task.to_upper()+"_TOOLTIP")
 	if log.get_line_count()>500:
 		log.text = log.text.substr(int(log.text.length()/2))
 	optimize_equipment()
@@ -3204,6 +3205,7 @@ func _load():
 	recalc_attributes()
 	
 	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/LabelTask.text = tr(current_task.to_upper())
+	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/LabelTask.tooltip_text = tr(current_task.to_upper()+"_TOOLTIP")
 	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/LabelAction.text = current_action_text
 	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/ProgressBar.max_value = data.progress_delay
 	$HBoxContainer/VBoxContainer8/Log/RichTextLabel.parse_bbcode(summary_text)
@@ -3298,6 +3300,13 @@ func _ready():
 	if current_task_ID==-1:
 		current_task_ID = 0
 		start_task(current_task_ID)
+	
+	$HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1/HBoxContainer0/OptionButton.set_item_tooltip(0, tr("TRAINING_TOOLTIP"))
+	$HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1/HBoxContainer0/OptionButton.set_item_tooltip(1, tr("GRINDING_TOOLTIP"))
+	$HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1/HBoxContainer0/OptionButton.set_item_tooltip(2, tr("QUESTING_TOOLTIP"))
+	$HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1/HBoxContainer0/OptionButton.set_item_tooltip(3, tr("SHOPPING_TOOLTIP"))
+	$HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1/HBoxContainer0/OptionButton.set_item_tooltip(4, tr("CRAFTING_TOOLTIP"))
+	$HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1/HBoxContainer0/OptionButton.set_item_tooltip(5, tr("RESTING_TOOLTIP"))
 	
 	update_skills()
 	update_inventory()

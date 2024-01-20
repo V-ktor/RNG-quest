@@ -1146,7 +1146,7 @@ size = Vector2i(320, 128)
 cancel_button_text = "CANCEL"
 
 [node name="LineEdit" type="LineEdit" parent="ConfirmationDialog"]
-anchors_preset = -1
+anchors_preset = 10
 anchor_right = 1.0
 offset_left = 8.0
 offset_top = 8.0

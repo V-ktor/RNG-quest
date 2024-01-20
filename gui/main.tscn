@@ -626,11 +626,13 @@ theme_override_constants/separation = 0
 [node name="LabelTask" type="Label" parent="HBoxContainer/VBoxContainer2/Action/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 0
 text = "TASK"
 
 [node name="LabelAction" type="Label" parent="HBoxContainer/VBoxContainer2/Action/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 0
 text = "ACTION"
 
 [node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer2/Action/VBoxContainer"]
