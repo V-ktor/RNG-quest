@@ -1,5 +1,23 @@
 # Change log
 
+## v0.0.4
+### Content
+* some new skill modules
+* new high level regions
+* new enemies
+
+### Interface
+* character import/export function for the web version
+* added tooltips for tasks and abilities
+
+### Balancing
+* more skill level ups
+* stronger enemy scaling
+* enemy skills get level ups
+
+### Internal changes
+* Moved to Godot version 4.2.1
+
 ## v0.0.3
 ### Interface
 * some combinations of multi magic element skills have special names
