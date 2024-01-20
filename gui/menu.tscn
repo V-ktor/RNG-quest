@@ -1139,6 +1139,42 @@ theme_override_colors/font_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
 text = "v0.0.3"
 vertical_alignment = 1
 
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "IMPORT_CHARACTER"
+initial_position = 2
+size = Vector2i(320, 128)
+cancel_button_text = "CANCEL"
+
+[node name="LineEdit" type="LineEdit" parent="ConfirmationDialog"]
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 79.0
+grow_horizontal = 2
+placeholder_text = "NAME"
+
+[node name="LabelWarning" type="Label" parent="ConfirmationDialog"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.156863, 0.12549, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "WARNING_OVERWRITTEN"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [connection signal="pressed" from="Panel/VBoxContainer/Button0" to="." method="_show_characters"]
 [connection signal="pressed" from="Panel/VBoxContainer/Button1" to="." method="_new_character"]
 [connection signal="pressed" from="Panel/VBoxContainer/Button3" to="." method="_quit"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_import"]
+[connection signal="text_changed" from="ConfirmationDialog/LineEdit" to="." method="_import_name_override_changed"]

@@ -5,7 +5,9 @@ OPTIONS,Options
 ACTION,Action
 SUMMARY,Summary
 QUIT,Quit
+CANCEL,Cancel
 EXPORT,Export
+IMPORT_CHARACTER,Import character
 SIMULATING,"Simulating..."
 DAY,day
 NAME,Name
