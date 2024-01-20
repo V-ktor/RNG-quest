@@ -1,5 +1,5 @@
 {
-    "fire":{
+	"fire":{
 		"name":"fire",
 		"auto_naming":{
 			"type":[["fire","blazing","flare"]],
@@ -30,30 +30,30 @@
 		"latent_shielding_type":["ice","water"],
 		"summon_abilities":["feral_cutting_fire_magic"],
 		"status":[
-		    {
-    			"type":"debuff",
-    			"name":"burning",
-    			"limit":"attack",
-	    		"duration":8.0,
-	    		"damage":{
-	    			"magic":{
-	    				"value":0.4,
-	    				"type":["fire"],
-	    			},
-	    		},
-	    	},
-	    	{
-	    	    "type":"buff",
-	    	    "name":"damage shield",
-	    	    "limit":"buff",
-	    	    "duration":6,
-	    	    "damage":{
-	    			"magic":{
-	    				"value":0.2,
-	    				"type":["fire"],
-	    			},
-	    		},
-	    	},
+			{
+				"type":"debuff",
+				"name":"burning",
+				"limit":"attack",
+				"duration":8.0,
+				"damage":{
+					"magic":{
+						"value":0.4,
+						"type":["fire"],
+					},
+				},
+			},
+			{
+				"type":"buff",
+				"name":"damage shield",
+				"limit":"buff",
+				"duration":6,
+				"damage":{
+					"magic":{
+						"value":0.2,
+						"type":["fire"],
+					},
+				},
+			},
 		],
 	},
 	"water":{
@@ -87,24 +87,24 @@
 		"latent_shielding_type":["impact","ice"],
 		"summon_abilities":["feral_impact_water_magic"],
 		"status":[
-		    {
-		    	"type":"debuff",
-    			"name":"wet",
-    			"limit":"attack",
-	    		"duration":4.0,
-    		},
-    		{
-    			"type":"buff",
-    		    "name":"regeneration",
-    		    "limit":"buff",
-    		    "duration":8.0,
-    		    "healing":{
-    		        "magic":{
-    		            "value":0.5,
-    		            "type":["health"],
-    		        },
-    		    },
-    		},
+			{
+				"type":"debuff",
+				"name":"wet",
+				"limit":"attack",
+				"duration":4.0,
+			},
+			{
+				"type":"buff",
+				"name":"regeneration",
+				"limit":"buff",
+				"duration":8.0,
+				"healing":{
+					"magic":{
+						"value":0.5,
+						"type":["health"],
+					},
+				},
+			},
 		],
 	},
 	"ice":{
@@ -135,18 +135,18 @@
 		"latent_shielding_type":["piercing","water"],
 		"summon_abilities":["feral_cutting_ice_magic"],
 		"status":[
-		    {
-		    	"type":"debuff",
-		    	"limit":"attack",
-			    "name":"frozen",
-    			"duration":4.0,
-    			"attributes":{
+			{
+				"type":"debuff",
+				"limit":"attack",
+				"name":"frozen",
+				"duration":4.0,
+				"attributes":{
 					"accuracy":-4,
 					"evasion":-4,
-			    },
-			    "stun":0.5,
-    		},
-    	],
+				},
+				"stun":0.5,
+			},
+		],
 	},
 	"wind":{
 		"name":"wind",
@@ -180,16 +180,16 @@
 		"latent_shielding_type":["cutting","lightning"],
 		"summon_abilities":["feral_cutting_wind_magic"],
 		"status":[
-    		{
-    			"type":"buff",
-    		    "name":"swift",
-    		    "limit":"buff",
-    		    "duration":6.0,
-    		    "attributes":{
-    		        "accuracy":8,
-    		        "evasion":8,
-    		    },
-    		},
+			{
+				"type":"buff",
+				"name":"swift",
+				"limit":"buff",
+				"duration":6.0,
+				"attributes":{
+					"accuracy":8,
+					"evasion":8,
+				},
+			},
 		],
 	},
 	"earth":{
@@ -257,26 +257,26 @@
 		"latent_shielding_type":["fire","light"],
 		"summon_abilities":["feral_cutting_lightning_magic"],
 		"status":[
-		    {
-		    	"type":"debuff",
-			    "name":"charged",
-			    "limit":"attack",
-			    "duration":6.0,
-    			"damage":{
-    				"magic":0.1
-    			}
-    		},
-    		{
-    			"type":"buff",
-    		    "type":"regeneration",
-    		    "limit":"buff",
-    		    "duration":8.0,
-    		    "healing":{
-    		        "magic":0.5,
-    		    },
-    		    "healing_type":["mana"],
-    		},
-    	],
+			{
+				"type":"debuff",
+				"name":"charged",
+				"limit":"attack",
+				"duration":6.0,
+				"damage":{
+					"magic":0.1
+				}
+			},
+			{
+				"type":"buff",
+				"type":"regeneration",
+				"limit":"buff",
+				"duration":8.0,
+				"healing":{
+					"magic":0.5,
+				},
+				"healing_type":["mana"],
+			},
+		],
 	},
 	"light":{
 		"name":"light",
@@ -372,18 +372,18 @@
 		"latent_shielding_type":["water","darkness"],
 		"summon_abilities":["feral_cutting_poison_magic"],
 		"status":[
-		    {
-    			"type":"debuff",
-    			"name":"poison",
-    			"limit":"attack",
-	    		"duration":10.0,
-	    		"damage":{
-	    			"magic":{
-	    				"value":0.4,
-	    				"type":["poison"],
-	    			},
-	    		},
-	    	},
+			{
+				"type":"debuff",
+				"name":"poison",
+				"limit":"attack",
+				"duration":10.0,
+				"damage":{
+					"magic":{
+						"value":0.4,
+						"type":["poison"],
+					},
+				},
+			},
 		],
 	},
 	"acid":{
@@ -415,14 +415,14 @@
 		"latent_shielding_type":["water","earth"],
 		"summon_abilities":["feral_impact_acid_magic"],
 		"status":[
-		    {
-		    	"type":"debuff",
-			    "name":"corrosion",
-    			"duration":8.0,
-    			"attributes":{
+			{
+				"type":"debuff",
+				"name":"corrosion",
+				"duration":8.0,
+				"attributes":{
 					"armour":-8,
-			    },
-    		},
-    	],
+				},
+			},
+		],
 	},
 }

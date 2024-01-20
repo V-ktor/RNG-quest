@@ -1,5 +1,5 @@
 {
-    "fusion":{
+	"fusion":{
 		"name":"fusion",
 		"auto_naming":{
 			"prefix":["fusion","overheated"],
@@ -16,7 +16,7 @@
 		},
 		"cooldown":2.0,
 	},
-    "laser":{
+	"laser":{
 		"name":"laser",
 		"auto_naming":{
 			"prefix":["laser","plasma"],
@@ -65,7 +65,7 @@
 	"cone":{
 		"name":"cone",
 		"auto_naming":{
-            "base":["sweep"],
+			"base":["sweep"],
 			"prefix":["cone","area","swivel"],
 		},
 		"type":"ranged",

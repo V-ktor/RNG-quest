@@ -9,17 +9,17 @@
 			"stamina":2,
 		},
 		"status":[
-		    {
+			{
 				"type":"debuff",
-    			"name":"choking",
-	    		"duration":4.0,
-	    		"damage":{
-	    			"constitution":{
-	    				"value":1.0,
-	    				"type":["impact"],
-	    			},
-	    		},
-	    	},
+				"name":"choking",
+				"duration":4.0,
+				"damage":{
+					"constitution":{
+						"value":1.0,
+						"type":["impact"],
+					},
+				},
+			},
 		],
 		"cooldown":2.0,
 	},
@@ -33,16 +33,16 @@
 			"focus":2,
 		},
 		"status":[
-		    {
+			{
 				"type":"debuff",
-    			"name":"immobilized",
-	    		"duration":8.0,
-	    		"attributes":{
-	    			"evasion":-0.5,
-	    		},
-	    		"scaling":1.0,
-                "scaling_stat":"strength",
-	    	},
+				"name":"immobilized",
+				"duration":8.0,
+				"attributes":{
+					"evasion":-0.5,
+				},
+				"scaling":1.0,
+				"scaling_stat":"strength",
+			},
 		],
 		"cooldown":2.0,
 	},
@@ -56,17 +56,17 @@
 			"stamina":2,
 		},
 		"status_self":[
-		    {
+			{
 				"type":"buff",
-    			"name":"damage shield",
-	    	    "duration":6.0,
-	    	    "shielding":{
-	    			"constitution":{
-	    				"value":0.2,
-	    				"type":["cutting","piercing","impact"],
-	    			},
-	    		},
-	    	},
+				"name":"damage shield",
+				"duration":6.0,
+				"shielding":{
+					"constitution":{
+						"value":0.2,
+						"type":["cutting","piercing","impact"],
+					},
+				},
+			},
 		],
 		"cooldown":3.0,
 	},

@@ -1,5 +1,5 @@
 {
-    "shielding_stance":{
+	"shielding_stance":{
 		"name":"shielding stance",
 		"auto_naming":{
 			"base":["stance","cover"],
@@ -8,8 +8,8 @@
 		"type":"defence",
 		"attribute":"armour",
 		"cost":{
-            "stamina":2,
-            "focus":1,
+			"stamina":2,
+			"focus":1,
 		},
 		"shielding":{
 			"constitution":1.0,
@@ -29,20 +29,20 @@
 		"type":"defence",
 		"attribute":"evasion",
 		"cost":{
-            "stamina":2,
-            "focus":1,
+			"stamina":2,
+			"focus":1,
 		},
 		"status":[
-            {
-                "type":"buff",
-                "focus":2,
-                "attributes":{
-                    "evasion":8,
-                },
-                "scaling":0.5,
-                "scaling_attribute":"evasion",
-                "duration":4.0,
-            },
+			{
+				"type":"buff",
+				"focus":-2,
+				"attributes":{
+					"evasion":8,
+				},
+				"scaling":0.5,
+				"scaling_attribute":"evasion",
+				"duration":4.0,
+			},
 		],
 		"reflect_missed":true,
 		"duration":4.0,
@@ -60,19 +60,19 @@
 		"type":"defence",
 		"attribute":"accuracy",
 		"cost":{
-            "stamina":1,
+			"stamina":1,
 		},
 		"status":[
-            {
-                "type":"buff",
-                "focus":2,
-                "attributes":{
-                    "accuracy":8,
-                },
-                "scaling":0.5,
-                "scaling_attribute":"accuracy",
-                "duration":4.0,
-            },
+			{
+				"type":"buff",
+				"focus":-2,
+				"attributes":{
+					"accuracy":8,
+				},
+				"scaling":0.5,
+				"scaling_attribute":"accuracy",
+				"duration":4.0,
+			},
 		],
 		"reflect_missed":true,
 		"duration":4.0,

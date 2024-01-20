@@ -1,5 +1,5 @@
 {
-    "bolt":{
+	"bolt":{
 		"name":"bolt",
 		"auto_naming_attack":{
 			"base":["bolt","blast","arrow","dart"],
@@ -73,17 +73,17 @@
 		},
 		"latent_damage_type":["cutting","piercing"],
 		"status":[
-		    {
-    			"type":"bleeding",
-    			"duration":6.0,
-    			"limit":"attack",
-	    		"damage":{
-		    		"cunning":{
-			    		"value":0.6,
-				    	"type":["cutting"],
-    				},
-    			},
-    		},
+			{
+				"type":"bleeding",
+				"duration":6.0,
+				"limit":"attack",
+				"damage":{
+					"cunning":{
+						"value":0.6,
+						"type":["cutting"],
+					},
+				},
+			},
 		],
 		"area":-1,
 		"range":1,

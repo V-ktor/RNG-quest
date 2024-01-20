@@ -1,5 +1,5 @@
 {
-    "vampiric":{
+	"vampiric":{
 		"name":"vampiric",
 		"auto_naming":{
 			"prefix":["vampiric","leaching"],
@@ -8,10 +8,10 @@
 		"cost":{
 			"mana":2,
 		},
-	    "health_steal":0.1,
+		"health_steal":0.1,
 		"cooldown":1.0,
 	},
-    "homing":{
+	"homing":{
 		"name":"homing",
 		"auto_naming":{
 			"prefix":["homing"]
@@ -104,17 +104,17 @@
 			"mana":2,
 		},
 		"status_self":[
-		    {
+			{
 				"type":"buff",
-    			"name":"healing",
-	    	    "duration":6.0,
-	    	    "healing":{
-	    			"willpower":{
-	    				"value":0.2,
-	    				"type":["health"],
-	    			},
-	    		},
-	    	},
+				"name":"healing",
+				"duration":6.0,
+				"healing":{
+					"willpower":{
+						"value":0.2,
+						"type":["health"],
+					},
+				},
+			},
 		],
 		"cooldown":1.0,
 	},
@@ -128,17 +128,17 @@
 			"mana":2,
 		},
 		"status":[
-		    {
+			{
 				"type":"debuff",
-    			"name":"mana burn",
-	    	    "duration":6.0,
-	    	    "damage":{
-	    			"magic":{
-	    				"value":0.2,
-	    				"type":["mana"],
-	    			},
-	    		},
-	    	},
+				"name":"mana burn",
+				"duration":6.0,
+				"damage":{
+					"magic":{
+						"value":0.2,
+						"type":["mana"],
+					},
+				},
+			},
 		],
 		"cooldown":2.0,
 	},
@@ -167,17 +167,17 @@
 			"focus":1,
 		},
 		"status_self":[
-		    {
+			{
 				"type":"buff",
-    			"name":"damage shield",
-	    	    "duration":6.0,
-	    	    "shielding":{
-	    			"willpower":{
-	    				"value":0.2,
-	    				"type":[],
-	    			},
-	    		},
-	    	},
+				"name":"damage shield",
+				"duration":6.0,
+				"shielding":{
+					"willpower":{
+						"value":0.2,
+						"type":[],
+					},
+				},
+			},
 		],
 		"cooldown":3.0,
 	},

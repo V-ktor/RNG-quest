@@ -1,110 +1,110 @@
 {
-    "undead":{
-        "name":"undead",
-        "auto_naming":{
-            "prefix":["undead","necrotic"],
-        },
-        "summon_name":{
+	"undead":{
+		"name":"undead",
+		"auto_naming":{
+			"prefix":["undead","necrotic"],
+		},
+		"summon_name":{
 			"base":["zombie","skeletton","ghoul","ghost"],
 		},
-        "type":"summon",
-        "cost":{
-            "mana":2,
-        },
-        "summon_stats":{
-            "strength":7,
+		"type":"summon",
+		"cost":{
+			"mana":2,
+		},
+		"summon_stats":{
+			"strength":7,
 			"constitution":6,
 			"dexterity":7,
 			"intelligence":7,
 			"wisdom":7,
 			"cunning":6,
-        },
-        "summon_damage":{
-            "darkness":0.2,
-            "light":-0.2,
-        },
-         "summon_abilities":[
-            "claws",
-            "celestial_magic",
-        ],
-        "cooldown":2.0,
+		},
+		"summon_damage":{
+			"darkness":0.2,
+			"light":-0.2,
+		},
+		 "summon_abilities":[
+			"claws",
+			"celestial_magic",
+		],
+		"cooldown":2.0,
 	},
-    "beast":{
-        "name":"beast",
-        "auto_naming":{
-            "prefix":["wild","feral","beast"],
-        },
-        "summon_name":{
+	"beast":{
+		"name":"beast",
+		"auto_naming":{
+			"prefix":["wild","feral","beast"],
+		},
+		"summon_name":{
 			"base":["familiar","beast","wolf","turtle","falcon"],
 		},
-        "type":"summon",
-        "cost":{
-            "mana":2,
-        },
-        "summon_stats":{
-            "strength":8,
+		"type":"summon",
+		"cost":{
+			"mana":2,
+		},
+		"summon_stats":{
+			"strength":8,
 			"constitution":6,
 			"dexterity":8,
 			"intelligence":5,
 			"wisdom":6,
 			"cunning":7,
-        },
-        "summon_abilities":[
-            "claws",
-            "lacerating_fangs",
-        ],
-        "cooldown":2.0,
+		},
+		"summon_abilities":[
+			"claws",
+			"lacerating_fangs",
+		],
+		"cooldown":2.0,
 	},
 	"celestial":{
-        "name":"celestial",
-        "auto_naming":{
-            "prefix":["celestial","holy","angelic","blessed"],
-        },
-        "summon_name":{
+		"name":"celestial",
+		"auto_naming":{
+			"prefix":["celestial","holy","angelic","blessed"],
+		},
+		"summon_name":{
 			"base":["familiar","elemental","angel","orb"],
 		},
-        "type":"summon",
-        "cost":{
-            "mana":2,
-        },
-        "summon_stats":{
-            "strength":5,
+		"type":"summon",
+		"cost":{
+			"mana":2,
+		},
+		"summon_stats":{
+			"strength":5,
 			"constitution":6,
 			"dexterity":6,
 			"intelligence":7,
 			"wisdom":8,
 			"cunning":8,
-        },
-        "summon_abilities":[
-            "healing",
-            "celestial_magic",
-        ],
-        "cooldown":2.0,
+		},
+		"summon_abilities":[
+			"healing",
+			"celestial_magic",
+		],
+		"cooldown":2.0,
 	},
 	"elemental":{
-        "name":"elemental",
-        "auto_naming":{
-            "prefix":["elemental","magical","conjured"],
-        },
-        "summon_name":{
+		"name":"elemental",
+		"auto_naming":{
+			"prefix":["elemental","magical","conjured"],
+		},
+		"summon_name":{
 			"base":["elemental","orb","sphere"],
 		},
-        "type":"summon",
-        "cost":{
-            "mana":2,
-        },
-        "summon_stats":{
-            "strength":5,
+		"type":"summon",
+		"cost":{
+			"mana":2,
+		},
+		"summon_stats":{
+			"strength":5,
 			"constitution":6,
 			"dexterity":6,
 			"intelligence":8,
 			"wisdom":7,
 			"cunning":8,
-        },
-        "summon_abilities":[
-            "elemental_magic",
-            "nature_magic",
-        ],
-        "cooldown":2.0,
+		},
+		"summon_abilities":[
+			"elemental_magic",
+			"nature_magic",
+		],
+		"cooldown":2.0,
 	},
 }
