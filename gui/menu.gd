@@ -60,10 +60,14 @@ func load_characters():
 					button.name = "Character"+str(i)
 					$Characters/ScrollContainer/VBoxContainer.add_child(button)
 				button.show()
-				button.get_node("LabelName").text = data.name
-				button.get_node("LabelRace").text = data.race
-				button.get_node("LabelLevel").text = tr("LEVEL")+" "+str(data.level)
-				button.get_node("LabelLocation").text = data.location
+				button.get_node("HBoxContainer/Info/LabelName").text = data.name
+				button.get_node("HBoxContainer/Info/LabelRace").text = data.race
+				button.get_node("HBoxContainer/Info/LabelLevel").text = tr("LEVEL")+" "+str(data.level)
+				button.get_node("HBoxContainer/Info/LabelLocation").text = data.location
+				if !OS.has_feature("web"):
+					button.get_node("HBoxContainer/ButtonExport").hide()
+				elif !button.get_node("HBoxContainer/ButtonExport").is_connected("pressed", Callable(self, "_export")):
+					button.get_node("HBoxContainer/ButtonExport").connect("pressed", Callable(self, "_export").bind(i))
 				if !button.is_connected("pressed", Callable(self, "_load")):
 					button.connect("pressed", Callable(self, "_load").bind(i))
 				i += 1
@@ -92,6 +96,16 @@ func _load(ID: int):
 	progress_label.text = tr("DAY") + " 1 / 1"
 	create_instance(characters[ID].left(characters[ID].rfind('.')))
 
+func _export(ID: int):
+	var file:= FileAccess.open("user://saves/" + characters[ID], FileAccess.READ)
+	if FileAccess.get_open_error()!=OK:
+		print("Can't open save file " + characters[ID])
+		return
+	
+	var text:= file.get_as_text()
+	file.close()
+	JavaScriptBridge.download_buffer(text.to_utf8_buffer(), characters[ID], "text/plain")
+
 func create_instance(player_name: String):
 	main_instance = main.instantiate()
 	main_instance.player_name = player_name
@@ -114,7 +128,6 @@ func _process(delta: float):
 		set_process(false)
 
 func _ready():
-#	set_process(false)
 	
 	if OS.has_feature("web") || OS.has_feature("mobile"):
 		$Panel/VBoxContainer/Button3.hide()

@@ -5,6 +5,7 @@ OPTIONS,Options
 ACTION,Action
 SUMMARY,Summary
 QUIT,Quit
+EXPORT,Export
 SIMULATING,"Simulating..."
 DAY,day
 NAME,Name

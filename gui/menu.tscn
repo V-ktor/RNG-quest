@@ -987,44 +987,68 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Character0" type="Button" parent="Characters/ScrollContainer/VBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="LabelName" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Characters/ScrollContainer/VBoxContainer/Character0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Info" type="Control" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="LabelName" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer/Info"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 5.0
+offset_left = 1.0
+offset_top = -4.0
+offset_right = -4.0
+offset_bottom = -2.0
 grow_vertical = 2
 text = "NAME"
 vertical_alignment = 1
 
-[node name="LabelRace" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0"]
+[node name="LabelRace" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer/Info"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+offset_top = -4.0
 offset_right = -5.0
+offset_bottom = -2.0
 grow_vertical = 2
 text = "RACE"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="LabelLevel" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0"]
+[node name="LabelLevel" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer/Info"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 5.0
+offset_left = 1.0
+offset_right = -4.0
+offset_bottom = 2.0
 grow_vertical = 2
 text = "LEVEL"
 vertical_alignment = 1
 
-[node name="LabelLocation" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0"]
+[node name="LabelLocation" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer/Info"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -1032,10 +1056,15 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
+offset_bottom = 2.0
 grow_vertical = 2
 text = "LOCATION"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="ButtonExport" type="Button" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer"]
+layout_mode = 2
+text = "EXPORT"
 
 [node name="Loading" type="Panel" parent="."]
 visible = false
