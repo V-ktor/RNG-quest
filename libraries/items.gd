@@ -30,6 +30,13 @@ const EQUIPMENT_COMPONENTS = {
 		"damage_type":"impact",
 		"material":["leather"],
 	},
+	"chain_saw":{
+		"subtype":"melee",
+		"attack":4,
+		"penetration":2,
+		"damage_type":"cutting",
+		"material":["metal"],
+	},
 	
 	"hilt":{
 		"attack":4,
@@ -255,6 +262,15 @@ const MATERIALS = {
 		"tags":["magical"],
 		"add":{
 			"magic":0.5,
+		},
+		"price":10,
+	},
+	"oil":{
+		"name":["{base_name} oil", "{name_prefix} oil"],
+		"tags":["liquid","elemental"],
+		"add":{
+			"attack":0.25,
+			"magic":0.25,
 		},
 		"price":10,
 	},
@@ -861,6 +877,10 @@ const EQUIPMENT_RECIPES = {
 		"type":"weapon",
 		"components":["whip","shaft"],
 	},
+	"chain_saw":{
+		"type":"weapon",
+		"components":["chain_saw","hilt"],
+	},
 	"buckler":{
 		"type":"weapon",
 		"subtype":"shield",
@@ -884,6 +904,10 @@ const EQUIPMENT_RECIPES = {
 	"pistol":{
 		"type":"weapon",
 		"components":["barrel","hilt"],
+	},
+	"gun_blade":{
+		"type":"weapon",
+		"components":["barrel","knife"],
 	},
 	
 	"tome":{

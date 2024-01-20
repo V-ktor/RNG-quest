@@ -73,11 +73,13 @@ DAGGER,dagger
 SWORD,sword
 AXE,axe
 MACE,mace
+CHAIN_SAW,chain saw
 BUCKLER,buckler
 KITE_SHIELD,kite shield
 TOWER_SHIELD,tower shield
 SLING,sling
 PISTOL,pistol
+GUN_BLADE,gun blade
 TOME,tome
 AMPLIFIER,amplifier
 ORB,orb

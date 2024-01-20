@@ -321,6 +321,11 @@ const ABILITY_MODULES = {
 		"aim":["body","arms","legs","unaimed"],
 		"melee_mod":["pierce","reckless"],
 	},
+	"horn":{
+		"base_type":["horn"],
+		"aim":["body","head","unaimed"],
+		"melee_mod":["pierce","rush","shred"],
+	},
 	"lacerating_fangs":{
 		"base_type":["fangs"],
 		"aim":["body","weakpoint"],

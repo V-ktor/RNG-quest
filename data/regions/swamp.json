@@ -5,7 +5,7 @@
 	"enemy":["orc","gnoll","undead"],
 	"base_name":["swamp","badlands"],
 	"name_prefix":["humid ","toxic ","poison","orcish ","polluted ","backwater"],
-	"enemies":["elemental","zombie","ghoul","skeletton","orc","plant","snap_turtle"],
+	"enemies":["elemental","zombie","ghoul","skeleton","orc","plant","snap_turtle"],
 	"enemy_amount":[1,3],
 	"city_name":[
 		{
@@ -20,9 +20,9 @@
 	"location_name":["river","swamp","cavern","lake","forest"],
 	"location_prefix":["dangerous ","deadly ","poisonous ","backwater","purple","dark","pulp"],
 	"location_enemies":{
-		"river":["crab","zombie","ghoul","skeletton","troll","orc"],
-		"cave":["elemental","zombie","ghoul","skeletton","bat","spider"],
-		"lake":["elemental","crab","zombie","ghoul","skeletton","orc","snap_turtle"],
+		"river":["crab","zombie","ghoul","skeleton","troll","orc"],
+		"cave":["elemental","zombie","ghoul","skeleton","bat","spider"],
+		"lake":["elemental","crab","zombie","ghoul","skeleton","orc","snap_turtle"],
 	},
 	"enchantment_chance":0.1,
 	"resources":["flower","herb","cabbage","mushroom","root","wood","pebble","ore","cotton"],
@@ -34,117 +34,117 @@
 	"resource_chance":0.1,
 	"resource_amount":[1,4],
 	"local_materials":{
-        "wood":[
-            {
-                "name":"rotten",
-                "quality":0.75,
-            },
-            {
-                "name":"bamboo",
-                "quality":1.0,
-            },
-            {
-                "name":"green cedar",
-                "quality":1.25,
-            },
-        ],
-        "metal":[
-            {
-                "name":"silicon",
-                "quality":0.75,
-            },
-            {
-                "name":"iron",
-                "quality":1.0,
-            },
-            {
-                "name":"shadow steel",
-                "quality":1.25,
-            },
-        ],
-        "leather":[
-            {
-                "name":"rotten",
-                "quality":0.75,
-            },
-            {
-                "name":"rough",
-                "quality":1.0,
-            },
-            {
-                "name":"necrotic",
-                "quality":1.25,
-            },
-        ],
-        "cloth":[
-            {
-                "name":"rotten",
-                "quality":0.75,
-            },
-            {
-                "name":"linen",
-                "quality":1.0,
-            },
-            {
-                "name":"swamp silk",
-                "quality":1.25,
-            },
-        ],
-        "stone":[
-            {
-                "name":"mud",
-                "quality":0.75,
-            },
-            {
-                "name":"sand",
-                "quality":1.0,
-            },
-            {
-                "name":"basalt",
-                "quality":1.25,
-            },
-        ],
-        "gem":[
-            {
-                "name":"turquoise",
-                "quality":0.75,
-            },
-            {
-                "name":"black",
-                "quality":1.0,
-            },
-            {
-                "name":"hematite",
-                "quality":1.25,
-            },
-        ],
-        "alchemy":[
-            {
-                "name":"swamp",
-                "quality":0.75,
-            },
-            {
-                "name":"necrotic",
-                "quality":1.0,
-            },
-            {
-                "name":"cleansing",
-                "quality":1.25,
-            },
-        ],
-        "cooking":[
-            {
-                "name":"swamp",
-                "quality":0.75,
-            },
-            {
-                "name":"clean",
-                "quality":1.0,
-            },
-            {
-                "name":"wine",
-                "quality":1.25,
-            },
-        ],
-    },
+		"wood":[
+			{
+				"name":"rotten",
+				"quality":0.75,
+			},
+			{
+				"name":"bamboo",
+				"quality":1.0,
+			},
+			{
+				"name":"green cedar",
+				"quality":1.25,
+			},
+		],
+		"metal":[
+			{
+				"name":"silicon",
+				"quality":0.75,
+			},
+			{
+				"name":"iron",
+				"quality":1.0,
+			},
+			{
+				"name":"shadow steel",
+				"quality":1.25,
+			},
+		],
+		"leather":[
+			{
+				"name":"rotten",
+				"quality":0.75,
+			},
+			{
+				"name":"rough",
+				"quality":1.0,
+			},
+			{
+				"name":"necrotic",
+				"quality":1.25,
+			},
+		],
+		"cloth":[
+			{
+				"name":"rotten",
+				"quality":0.75,
+			},
+			{
+				"name":"linen",
+				"quality":1.0,
+			},
+			{
+				"name":"swamp silk",
+				"quality":1.25,
+			},
+		],
+		"stone":[
+			{
+				"name":"mud",
+				"quality":0.75,
+			},
+			{
+				"name":"sand",
+				"quality":1.0,
+			},
+			{
+				"name":"basalt",
+				"quality":1.25,
+			},
+		],
+		"gem":[
+			{
+				"name":"turquoise",
+				"quality":0.75,
+			},
+			{
+				"name":"black",
+				"quality":1.0,
+			},
+			{
+				"name":"hematite",
+				"quality":1.25,
+			},
+		],
+		"alchemy":[
+			{
+				"name":"swamp",
+				"quality":0.75,
+			},
+			{
+				"name":"necrotic",
+				"quality":1.0,
+			},
+			{
+				"name":"cleansing",
+				"quality":1.25,
+			},
+		],
+		"cooking":[
+			{
+				"name":"swamp",
+				"quality":0.75,
+			},
+			{
+				"name":"clean",
+				"quality":1.0,
+			},
+			{
+				"name":"wine",
+				"quality":1.25,
+			},
+		],
+	},
 }

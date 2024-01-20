@@ -1,5 +1,5 @@
 {
-    "fangs":{
+	"fangs":{
 		"name":"fangs",
 		"auto_naming":{
 			"base":["bite","hit","fangs"],
@@ -30,6 +30,25 @@
 			"attack":{
 				"value":0.5,
 				"type":["cutting"],
+			},
+		},
+		"armour_penetration":0.25,
+		"delay_scale":-0.25,
+		"slots":["aim","melee_mod"],
+		"target_type":"enemy",
+	},
+	"horn":{
+		"name":"horn",
+		"auto_naming":{
+			"base":["horn","stab"],
+		},
+		"usage":"attack",
+		"type":"melee",
+		"attribute":"attack",
+		"damage":{
+			"attack":{
+				"value":0.5,
+				"type":["piercing"],
 			},
 		},
 		"armour_penetration":0.25,
