@@ -1324,7 +1324,7 @@ func create_tooltip(skill: Dictionary) -> String:
 	if skill.has("delay_multiplier"):
 		text += "\n" + tr("ACTION_SPEED") + ": " + str(int(100.0/max(1.0 + skill.delay_multiplier, 0.01) - 1.0)) + "%"
 	if skill.has("cooldown"):
-		text += "\n" + tr("COOLDOWN") + ": " + str(skill.cooldown)
+		text += "\n" + tr("COOLDOWN") + ": " + str(skill.cooldown).pad_decimals(1)
 	
 	return text
 

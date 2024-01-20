@@ -216,7 +216,7 @@ func get_level_scaling(level: int, scaling:=1.0):
 func inc_level(dict, level: int, scaling:= 1.0):
 	if typeof(dict)==TYPE_DICTIONARY:
 		for k in dict.keys():
-			var s:= scaling*(1.0 - 0.5*float(k=="focus"))
+			var s:= scaling*(1.0 - 0.5*float(k=="focus") + 1.0*float(k=="mana" || k=="stamina" || k=="health"))
 			match typeof(dict[k]):
 				TYPE_FLOAT:
 					dict[k] *= get_level_scaling(level, s)
@@ -257,9 +257,10 @@ func upgrade_skill(skill:= {}):
 	if skill.has("cooldown"):
 		skill.cooldown *= get_level_scaling(skill.level, 0.25)
 	skill.description = Skills.create_tooltip(skill)
-	text = tr("SKILL_UPGRADE_LOG").format({"name":skill.name,"level":Skills.convert_to_roman_number(skill.level),"description":skill.description})
-	print_log_msg(text)
-	print_summary_msg(text)
+	if skill in player.skills:
+		text = tr("SKILL_UPGRADE_LOG").format({"name":skill.name,"level":Skills.convert_to_roman_number(skill.level),"description":skill.description})
+		print_log_msg(text)
+		print_summary_msg(text)
 
 func pick_ability() -> String:
 	var valid:= []
@@ -749,8 +750,7 @@ func level_up():
 		learn_new_ability()
 	elif player.level%5==0:
 		learn_new_skill()
-	else:
-		upgrade_skill()
+	upgrade_skill()
 	valid_potion_types = ["health"]
 	for skill in player.skills:
 		if !skill.has("cost"):
@@ -921,9 +921,9 @@ func next_chapter():
 			Story.create_person(current_region.race.pick_random(), current_region.cities.pick_random())
 	if quest_chapter>0:
 		var item:= Items.create_legendary_equipment(player.equipment.values().pick_random().base_type, max(10*(current_region.tier+1) + (player.level+current_region.level)/2, 1))
-		var text:= tr("QUEST_ARTIFACT_REWARD").format({"item":item.name,"description":item.description,"chapter":quest_chapter})
-		print_log_msg(text)
-		print_summary_msg(text)
+		var log_text:= tr("QUEST_ARTIFACT_REWARD").format({"item":item.name,"description":item.description,"chapter":quest_chapter})
+		print_log_msg(log_text)
+		print_summary_msg(log_text)
 		add_item(item)
 		optimize_equipment()
 		queue_inventory_update()
@@ -1025,6 +1025,7 @@ func add_ability_exp(ability: String, amount: float):
 	if player_ability_exp[ability]>get_ability_exp(player.abilities[ability]):
 		player_ability_exp[ability] -= get_ability_exp(player.abilities[ability])
 		player.abilities[ability] += 1
+		upgrade_skill()
 
 func do_action(action: String, args: Dictionary, delay: float, string:=""):
 	player.delay = delay
@@ -1657,7 +1658,7 @@ func action_done(action: Dictionary):
 			elif player_gold>get_equipment_gold_limit() && action_failures<15:
 				action_failures = max(action_failures, 1)
 				do_action("buy_equipment", {}, SHOPPING_DELAY)
-			elif player_gold>get_potion_gold_limit() && player_potions.size()<MAX_POTIONS && action_failures<25:
+			elif player_gold>get_potion_gold_limit() && player_potions.size()<MAX_POTIONS + sqrt(player.level) && action_failures<25:
 				do_action("buy_potions", {}, SHOPPING_DELAY)
 			elif player_gold>get_material_gold_limit() && action_failures<30:
 				action_failures = max(action_failures, 20)
@@ -2029,7 +2030,7 @@ func use_skill(actor: Characters.Character, skill: Dictionary) -> Dictionary:
 		actor.add_status(status)
 		result.buff += 1
 	if skill.has("move"):
-		var to_pos: int
+		var to_pos:= 0
 		if typeof(target)==TYPE_ARRAY:
 			for t in target:
 				to_pos += t.position
@@ -3074,6 +3075,9 @@ func time_step(delta: float, time: float):
 			enemy_attack(enemy)
 	
 	for summon in player_summons:
+		if !(summon is Characters.Summon):
+			player_summons.erase(summon)
+			continue
 		summon.update(delta)
 		summon.duration -= delta
 		if summon.duration<=0.0 || enemies.size()==0:

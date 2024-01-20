@@ -3170,8 +3170,8 @@ func create_enemy(type: String, level: int, tier:= 0) -> Characters.Enemy:
 		"position":-1,
 	}
 	var tier_multiplier:= 1.0
-	var level_multiplier:= 1.0 + 0.1*(level-1)
-	var num_skills: int = max(tier, -1)
+	var level_multiplier: float = 1.0 + min(0.1 + 0.001*level, 0.2)*(level-1)
+	var num_skills: int = max(1 + 2*tier, -1)
 	var max_range:= 0
 	var ret: Characters.Enemy
 	enemy.base_name = enemy.name
@@ -3218,12 +3218,16 @@ func create_enemy(type: String, level: int, tier:= 0) -> Characters.Enemy:
 		enemy.attributes_add[k] = int(enemy.attributes_add[k]*(0.5 + 0.5*tier_multiplier*level_multiplier))
 	enemy.attributes_add.attack += int(enemy.level)
 	enemy.attributes_add.magic += int(enemy.level)
-	enemy.attributes_add.willpower += int(enemy.level)
-	enemy.attributes_add.armour += int(enemy.level)
+	enemy.attributes_add.willpower += int(1.5*enemy.level)
+	enemy.attributes_add.armour += int(1.5*enemy.level)
 	if enemy.abilities.size()>0:
 		num_skills = max(num_skills, 1)
 		for i in range(num_skills):
-			enemy.skills.push_back(Skills.create_random_skill(enemy.abilities))
+			var skill:= Skills.create_random_skill(enemy.abilities)
+			skill.level = int(max(level/6 + 4*tier, 1))
+			if has_node("/root/Main"):
+				get_node("/root/Main").upgrade_skill(skill)
+			enemy.skills.push_back(skill)
 	if dict.has("materials"):
 		enemy.materials = dict.materials
 	if dict.has("equipment_drop_chance"):

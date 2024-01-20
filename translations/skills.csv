@@ -290,6 +290,8 @@ TRICK,Trick
 TRICK_DESCRIPTION,"Adjust the projectiles angle to glance additional targets."
 HEAVY_CALIBER,Heavy Caliber
 HEAVY_CALIBER_DESCRIPTION,"Increases armour penetration."
+HEAVY,Heavy
+HEAVY_DESCRIPTION,"Your attack pushes the target back."
 BULK_CALIBER,Bulk Caliber
 BULK_CALIBER_DESCRIPTION,"Increases armour penetration."
 VILE,Vile

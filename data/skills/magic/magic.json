@@ -9,10 +9,11 @@
 		},
 		"dual_type_names":{
 			"water":["steam"],
+			"ice":["thermal"],
 			"wind":["steam"],
 			"earth":["lava","magma"],
 			"lightning":["plasma"],
-			"light":["heat"],
+			"light":["heat","starfire"],
 			"darkness":["hellfire","fearfire"],
 			"acid":["napalm"],
 		},
@@ -67,8 +68,10 @@
 		"dual_type_names":{
 			"fire":["steam"],
 			"ice":["glacier"],
+			"lightning":["electrolysis"],
 			"wind":["foam"],
 			"earth":["mud"],
+			"light":["holy water"],
 			"darkness":["filth"],
 			"poison":["slime"],
 			"acid":["slime"],
@@ -116,6 +119,7 @@
 			"type":[["cooling","calming"]]
 		},
 		"dual_type_names":{
+			"fire":["thermal"],
 			"water":["glacier"],
 			"wind":["hail"],
 			"earth":["crystal"],
@@ -237,6 +241,7 @@
 		},
 		"dual_type_names":{
 			"fire":["plasma"],
+			"water":["electrolysis"],
 			"wind":["storm"],
 			"water":["storm"],
 		},
@@ -284,7 +289,8 @@
 			"type":[["light","solar","star","bright","day"]],
 		},
 		"dual_type_names":{
-			"fire":["heat"],
+			"fire":["heat","starfire"],
+			"water":["holy water"],
 			"earth":["scorch"],
 			"darkness":["twilight"],
 		},
