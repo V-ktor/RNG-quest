@@ -630,7 +630,7 @@ func merge_dicts(dict: Dictionary, add: Dictionary) -> Dictionary:
 					for s in add[k]:
 						if !dict[k].has(s):
 							dict[k][s] = null
-				else:
+				elif typeof(add[k])==TYPE_DICTIONARY:
 					dict[k] = merge_dicts(dict[k], add[k])
 			elif typeof(dict[k])!=TYPE_STRING:
 				if typeof(add[k])==TYPE_DICTIONARY:

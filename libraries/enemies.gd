@@ -352,6 +352,58 @@ const BASE_ENEMIES = {
 			"condensate","residue","resin","magic_salt",
 		],
 	},
+	"nanite_swarm":{
+		"base_name":["nanite swarm"],
+		"lesser_prefix":["lesser","weak","thin"],
+		"greater_prefix":["greater","energized","dense"],
+		"base_stats":{
+			"strength":6,
+			"constitution":7,
+			"dexterity":10,
+			"intelligence":12,
+			"wisdom":12,
+			"cunning":10,
+		},
+		"attributes":{
+			"attack":10,
+			"magic":20,
+			"willpower":15,
+			"armour":-5,
+			"evasion":20,
+			"accuracy":10,
+			"penetration":8,
+			"speed":0,
+			"critical":0,
+		},
+		"resistance":{
+			"poison":0.75,
+			"acid":-0.25,
+		},
+		"abilities":["elemental_magic","evasion"],
+		"variants":{
+			"charged":{
+				"name_prefix":["charged","sparkling","energized"],
+				"abilities":["feral_cutting_lightning_magic","high_tech_ranged","defensive_magic"],
+				"resistance":{
+					"wind":0.5,
+					"lightning":0.5,
+				},
+			},
+			"metallic":{
+				"name_prefix":["metallic","solid"],
+				"abilities":["high_tech_cutting","dirty_fighting"],
+				"resistance":{
+					"impact":0.4,
+					"light":0.5,
+					"darkness":0.5,
+				},
+			},
+		},
+		"exp":15,
+		"materials":[
+			"condensate","residue","resin","magic_salt",
+		],
+	},
 	"nanite_slime":{
 		"base_name":["slime","anomaly"],
 		"lesser_prefix":["lesser","weak","small"],
@@ -708,6 +760,7 @@ const BASE_ENEMIES = {
 			"critical":-6,
 		},
 		"resistance":{
+			"poison":0.5,
 			"impact":0.25,
 			"fire":-0.5,
 			"ice":0.5,
@@ -741,6 +794,128 @@ const BASE_ENEMIES = {
 		"exp":18,
 		"materials":[
 			"pebble","gem","residue","resin","paper","parchement",
+		],
+	},
+	"fearfire_golem":{
+		"base_name":["golem"],
+		"lesser_prefix":["lesser","tiny","small"],
+		"greater_prefix":["greater","great","large"],
+		"base_stats":{
+			"strength":11,
+			"constitution":13,
+			"dexterity":6,
+			"intelligence":10,
+			"wisdom":7,
+			"cunning":4,
+		},
+		"attributes":{
+			"attack":15,
+			"magic":15,
+			"willpower":20,
+			"armour":20,
+			"evasion":0,
+			"accuracy":25,
+			"penetration":0,
+			"speed":-2,
+			"critical":-4,
+		},
+		"resistance":{
+			"poison":0.5,
+			"impact":0.3,
+			"fire":0.3,
+			"darkness":0.3,
+		},
+		"abilities":["armour","dirty_fighting"],
+		"variants":{
+			"lava":{
+				"name_prefix":["lava","magma","molten "],
+				"abilities":["feral_fire_magic","feral_impact_fire_magic","feral_impact_earth_magic"],
+				"resistance":{
+					"fire":0.75,
+					"earth":0.75,
+					"water":-0.25,
+					"ice":-0.25,
+				},
+			},
+			"fear":{
+				"name_prefix":["fear","fearfire","black "],
+				"abilities":["feral_darkness_magic","feral_impact_darkness_magic","feral_impact_fire_magic"],
+				"resistance":{
+					"fire":0.75,
+					"darkness":0.75,
+					"light":-0.25,
+					"earth":-0.25,
+				},
+			},
+		},
+		"equipment_drop_chance":0.1,
+		"equipment_enchantment_chance":0.2,
+		"equipment_quality":0.75,
+		"exp":18,
+		"materials":[
+			"pebble","stone","gem","residue","resin","dust","oil",
+		],
+	},
+	"nanite_golem":{
+		"base_name":["golem"],
+		"lesser_prefix":["lesser","tiny","small"],
+		"greater_prefix":["greater","great","large"],
+		"base_stats":{
+			"strength":11,
+			"constitution":15,
+			"dexterity":6,
+			"intelligence":7,
+			"wisdom":7,
+			"cunning":4,
+		},
+		"attributes":{
+			"attack":15,
+			"magic":15,
+			"willpower":10,
+			"armour":20,
+			"evasion":5,
+			"accuracy":30,
+			"penetration":0,
+			"speed":-2,
+			"critical":-4,
+		},
+		"resistance":{
+			"poison":0.5,
+			"impact":0.3,
+			"light":0.3,
+			"darkness":0.3,
+			"water":-0.2,
+			"lightning":-0.2,
+		},
+		"abilities":["armour","high_tech_impact"],
+		"variants":{
+			"nanite":{
+				"name_prefix":["nanite","high-tech"],
+				"abilities":["feral_impact_lightning_magic","high_tech_cutting","shield"],
+				"resistance":{
+					"cutting":0.5,
+					"piercing":0.5,
+					"impact":0.5,
+					"lightning":-0.5,
+				},
+			},
+			"electrified":{
+				"name_prefix":["eletronic","high-tech"],
+				"abilities":["feral_impact_lightning_magic","high_tech_ranged","defensive_magic"],
+				"resistance":{
+					"earth":0.3,
+					"wind":0.3,
+					"lightning":0.2,
+					"water":-0.5,
+				},
+			},
+		},
+		"equipment_drop_chance":0.1,
+		"equipment_enchantment_chance":0.2,
+		"equipment_quality":0.75,
+		"exp":18,
+		"materials":[
+			"stone","gem","oil","battery","processing_unit","scrap","wires","ram_module",
 		],
 	},
 	"zombie":{
@@ -2967,7 +3142,7 @@ const BASE_ENEMIES = {
 		},
 		"exp":15,
 		"materials":[
-			"cog","scrap","ingot","paper","cloth","tissue","shell","battery","processing_unit",
+			"cog","scrap","ingot","paper","cloth","tissue","shell","battery","processing_unit","wires",
 		],
 	},
 	"robot":{
@@ -3034,7 +3209,7 @@ const BASE_ENEMIES = {
 		"equipment_quality":1.0,
 		"materials":[
 			"cog","scrap","paper","synth_skin","cloth","tissue","shell","battery",
-			"processing_unit","heart",
+			"processing_unit","heart","ram_module",
 		],
 	},
 	"cyborg":{
@@ -3071,7 +3246,7 @@ const BASE_ENEMIES = {
 		"equipment_quality":1.0,
 		"materials":[
 			"cog","scrap","paper","skin","synth_skin","cloth","tissue","shell",
-			"processing_unit","heart",
+			"processing_unit","heart","ram_module",
 		],
 	},
 	"mech":{
@@ -3123,7 +3298,7 @@ const BASE_ENEMIES = {
 		"equipment_quality":1.25,
 		"materials":[
 			"cog","scrap","paper","synth_skin","cloth","tissue","shell","battery",
-			"processing_unit","heart",
+			"processing_unit","heart","wires",
 		],
 	},
 }
@@ -3154,6 +3329,8 @@ func create_tooltip(creature: Characters.Character) -> String:
 
 
 func create_enemy(type: String, level: int, tier:= 0) -> Characters.Enemy:
+	if !BASE_ENEMIES.has(type):
+		type = BASE_ENEMIES.keys().pick_random()
 	var dict: Dictionary = BASE_ENEMIES[type]
 	var enemy:= {
 		"name":dict.base_name.pick_random(),

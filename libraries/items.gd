@@ -854,6 +854,24 @@ const MATERIALS = {
 		},
 		"price":15,
 	},
+	"wires":{
+		"name":["{base_name} wires"],
+		"tags":["cloth"],
+		"quality":1.1,
+		"add":{
+			"critical":0.6,
+		},
+		"price":15,
+	},
+	"ram_module":{
+		"name":["{base_name} RAM module"],
+		"quality":1.1,
+		"tags":["gem"],
+		"add":{
+			"willpower":0.5,
+		},
+		"price":15,
+	},
 	
 }
 const EQUIPMENT_RECIPES = {
@@ -904,10 +922,6 @@ const EQUIPMENT_RECIPES = {
 	"pistol":{
 		"type":"weapon",
 		"components":["barrel","hilt"],
-	},
-	"gun_blade":{
-		"type":"weapon",
-		"components":["barrel","knife"],
 	},
 	
 	"tome":{
@@ -972,6 +986,11 @@ const EQUIPMENT_RECIPES = {
 		"type":"weapon",
 		"2h":true,
 		"components":["barrel","barrel","loader","hilt"],
+	},
+	"gun_blade":{
+		"type":"weapon",
+		"2h":true,
+		"components":["knife","barrel","loader","shaft"],
 	},
 	
 	"quarterstaff":{

@@ -4,7 +4,7 @@
 	"race":["dwarf","ogre"],
 	"enemy":["orc","demon"],
 	"base_name":[" vulcano"," plains"," scape"],
-	"name_prefix":["heallfire","fearfire","demonic","ash"],
+	"name_prefix":["hellfire","fearfire","demonic","ash"],
 	"enemies":["golem","lava_elemental","scorpion","goblin","gnoll","imp","demon"],
 	"enemy_amount":[1,4],
 	"city_name":[
@@ -17,7 +17,7 @@
 			"prefix":["ash","fire","lava","magma"],
 		},
 	],
-	"location_name":["canyon","cave","cavern","vulcano","sands","mountain"],
+	"location_name":["canyon","cave","cavern","volcano","sands","mountain"],
 	"location_prefix":["dangerous ","deadly ","burning ","barren ","fiery ","ash","lava","pyre"],
 	"enchantment_chance":0.25,
 	"resources":["mushroom","flower","moss","wood","pebble","stone","ore","ingot","gem","jewel"],
