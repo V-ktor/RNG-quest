@@ -55,7 +55,7 @@ HEAD_DESCRIPTION,"Increased critical hit chance."
 NECK,Neck
 NECK_DESCRIPTION,"Greatly increased critical hit chance but reduced accuracy."
 EYES,Eyes
-EYED_DESCRIPTION,"Reduces the target's accuracy and evasion."
+EYES_DESCRIPTION,"Reduces the target's accuracy and evasion."
 WEAKPOINT,Weakpoint
 WEAKPOINT_DESCRIPTION,"Increased armour penetration."
 ORGANS,Organs

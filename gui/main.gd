@@ -691,9 +691,9 @@ func optimize_equipment():
 						break
 			elif player.equipment[k].has("2h") && player.equipment[k]["2h"] && weapon_1h_alowed:
 				for j in range(player_inventory.size()):
-					if i==j:
-						continue
 					var it: Dictionary = player_inventory[j]
+					if item==it:
+						continue
 					if it.has("2h") && it["2h"]:
 						continue
 					if it.has("subtype"):

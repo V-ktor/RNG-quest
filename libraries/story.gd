@@ -671,6 +671,7 @@ const TITLE = [
 		"Bound to {element}","A Glimpse of {theme}","{prefix} Revolution","Meet the {person}",
 		"Of {element} and {theme}","{theme} of {element}","Rise of {element}","Bound by {elements}",
 		"Embraced by {elements}","The Road to {theme}","{prefix} {person} Rising",
+		"Exposed to {element}","The Impressive {theme}","The {person} And The {theme}",
 	],
 	[
 		"{prefix} Matters","A Matter of {theme}","{prefix} Affairs","Affairs of {theme}",
@@ -684,28 +685,30 @@ const TITLE = [
 		"Legacy of {theme}","The {person} Bathing in {elements}","The {person} of {theme}",
 		"On the Border to {theme}","{prefix} Evolution","Evolution of {theme}","Die for {theme}",
 		"{theme} of {elements}","{element}{person}","Attitude of {theme}","Epiphany of {theme}",
+		"Yet You Remain {person}less","Too Much {theme}","Torn Appart by {elements}",
 	],
 	[
 		"The {person}'s Fall","{prefix} Aftermath","{prefix} Crisis","{prefix} Dawn",
-		"{prefix} Fate","Fate of the {person}","{prefix} Destiny","{prefix} End","End of {theme}",
+		"{prefix} Fate","Fate of The {person}","{prefix} Destiny","{prefix} End","End of {theme}",
 		"The {person}'s End","{prefix} Epilogue","{prefix} Findings","{prefix} Conclusion",
 		"{prefix} Answers","The {person}'s Answer","{prefix} Whispers","Whispers of {theme}",
 		"A {person}'s Consequences","The {person}'s Death","{theme}'s Consequences",
 		"The Answer to {theme}","Remarks of {theme}","Remarks of a {person}","Eternal {theme}",
 		"The Next Chapter of {theme}","Help! I turned into a {person}!","Divided by {elements}",
-		"Death of the {element}{person}","The Cleansing {elements}","No More {theme}",
-		"Sealed with {elements}",
+		"Death of The {element}{person}","The Cleansing {elements}","No More {theme}",
+		"Sealed with {elements}","The Power of {element}","{theme}, Finally",
 	],
 ]
 const TITLE_PREFIX = [
 	"Mysterious","Mythical","Ancient","Ominous","Dubious","Critical","Well Timed","Late","Early",
-	"Spontaneous","Unexpected","Forgotten","Relevant","Urgent","Pressing","Night Time",
+	"Spontaneous","Unexpected","Forgotten","Relevant","Urgent","Pressing","Night Time","Unilateral",
 	"Spooky","Serious","Light","Heavy","Blighted","Holy","Sacred","Divine","Abysmal","Overwhelming",
 	"Underrated","Overrated","Invisible","Overarching","Bad","Badass","Unbelievable","Unknown",
 	"Lost","Undiscovered","Fateful","Draconic","Feral","Barbaric","New","Old","Renewed","Emotional",
 	"Relentless","Restless","Stressful","Random","Determined","Lucky","Alarming","Heartless",
 	"{element}bound","{element}born","Unholy","Peaceful","Timid","Heroic","Astral","Forged","Deep",
 	"Rural","Industrial","Neo","Grand","Undefined","Faithful","Rising","Falling","Determined",
+	"{element}forged",
 ]
 const THEME = [
 	"Conflict","War","Destruction","Redemption","Forgiveness","Obliteration","Sky","Aether",
