@@ -2957,40 +2957,18 @@ func show_options():
 	$HBoxContainer/VBoxContainer7.show()
 	$HBoxContainer/VBoxContainer8.hide()
 	
-	for i in range(4):
-		get_node("HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox"+str(i)).button_pressed = false
-	for i in range(3):
-		get_node("HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox"+str(i)).button_pressed = false
-	for i in range(3):
-		get_node("HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox"+str(i)).button_pressed = false
-	for k in player_weapon_types:
-		match k:
-			"melee":
-				$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox0.button_pressed = true
-			"ranged":
-				$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox1.button_pressed = true
-			"magic":
-				$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox2.button_pressed = true
-			"shield":
-				$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox3.button_pressed = true
+	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox0.button_pressed = "melee" in player_weapon_types
+	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox1.button_pressed = "ranged" in player_weapon_types
+	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox2.button_pressed = "magic" in player_weapon_types
+	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox3.button_pressed = "shield" in player_weapon_types
 	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox4.button_pressed = weapon_1h_alowed
 	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox5.button_pressed = weapon_2h_alowed
-	for k in player_armour_types:
-		match k:
-			"light":
-				$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox0.button_pressed = true
-			"medium":
-				$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox1.button_pressed = true
-			"heavy":
-				$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox2.button_pressed = true
-	for k in valid_potion_types:
-		match k:
-			"health":
-				$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox0.button_pressed = true
-			"stamina":
-				$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox1.button_pressed = true
-			"mana":
-				$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox2.button_pressed = true
+	$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox0.button_pressed = "light" in player_armour_types
+	$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox1.button_pressed = "medium" in player_armour_types
+	$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox2.button_pressed = "heavy" in player_armour_types
+	$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox0.button_pressed = "health" in valid_potion_types
+	$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox1.button_pressed = "stamina" in valid_potion_types
+	$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox2.button_pressed = "mana" in valid_potion_types
 	
 	for a in player.abilities.keys():
 		if Skills.ABILITY_MODULES.has(a):
