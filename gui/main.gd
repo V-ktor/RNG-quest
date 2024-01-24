@@ -327,8 +327,8 @@ func learn_new_ability(type:= ""):
 		type = pick_ability()
 	if type.length()==0:
 #		learn_new_skill()
-		for i in range(2):
-			upgrade_skill()
+		for ability in player.abilities.keys():
+			player.abilities[ability] += 1
 		return
 	var text:= tr("LEARNED_ABIlITY_LOG").format({"ability":tr(Skills.ABILITIES[type].name.to_upper())})
 	player.abilities[type] = 1
@@ -732,7 +732,7 @@ func get_max_exp(lvl: int) -> int:
 	return 50 + 25*lvl + 25*lvl*lvl
 
 func get_ability_exp(lvl: int) -> int:
-	return 100 + 50*lvl + 50*lvl*lvl
+	return 100 + 75*lvl + 25*lvl*lvl
 
 func get_delay_scale(speed: int) -> float:
 	var s:= Characters.get_resistance(speed/10.0)*10
@@ -1025,7 +1025,8 @@ func add_ability_exp(ability: String, amount: float):
 	if player_ability_exp[ability]>get_ability_exp(player.abilities[ability]):
 		player_ability_exp[ability] -= get_ability_exp(player.abilities[ability])
 		player.abilities[ability] += 1
-		upgrade_skill()
+		if player.abilities[ability]>10:
+			upgrade_skill()
 
 func do_action(action: String, args: Dictionary, delay: float, string:=""):
 	player.delay = delay
