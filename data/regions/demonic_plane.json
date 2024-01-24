@@ -3,7 +3,7 @@
 	"tier":0,
 	"race":["human","demon","ogre"],
 	"enemy":["orc","undead"],
-	"base_name":[" plane"," world","scape"],
+	"base_name":[" plane"," world","scape"," hell"],
 	"name_prefix":["hellfire","fearfire","demon"],
 	"enemies":["golem","shadow_elemental","imp","demon","skeleton","undead"],
 	"enemy_amount":[1,4],
