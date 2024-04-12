@@ -130,6 +130,7 @@ var skill_update:= false
 var equipment_update:= false
 var inventory_update:= false
 var status_update:= false
+var time_offset:= 0
 
 @warning_ignore("shadowed_global_identifier")
 @onready var log:= $HBoxContainer/VBoxContainer2/Log/RichTextLabel
@@ -862,7 +863,7 @@ func distribute_stat_points():
 func get_task_ID() -> int:
 	var time_zone:= Time.get_time_zone_from_system()
 	var data:= Time.get_time_dict_from_unix_time(int(current_time + 60*time_zone.bias))
-	var hour: int = data.hour
+	var hour: int = posmod(data.hour + time_offset, 24)
 	var index:= timetable.size()
 	for i in range(timetable.size()-1,-1,-1):
 		if timetable.keys()[i]>=hour && i<=index:
@@ -2896,7 +2897,7 @@ func update_timetable():
 			button = $HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1/HBoxContainer0.duplicate(14)
 			button.name = "HBoxContainer"+str(i)
 			$HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1.add_child(button)
-		button.get_node("Label").text = str(time).pad_zeros(2) + ":00"
+		button.get_node("Label").text = str(posmod(time + time_offset, 24)).pad_zeros(2) + ":00"
 		if !button.get_node("OptionButton").is_connected("item_selected", Callable(self, "_set_timetable")):
 			button.get_node("OptionButton").connect("item_selected", Callable(self, "_set_timetable").bind(i))
 		if timetable.has(time):
@@ -3250,6 +3251,10 @@ func _toggle_skill_module_disabled(button_pressed: bool, type: String):
 		disabled_skill_modules.erase(type)
 	else:
 		disabled_skill_modules.push_back(type)
+
+func _set_time_offset(value: int):
+	time_offset = value
+	update_timetable()
 
 
 func _notification(what: int):

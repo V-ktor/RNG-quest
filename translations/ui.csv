@@ -310,3 +310,5 @@ SHOPPING_TOOLTIP,"Sell loot or buy new equipment. Proceed with crafting if you h
 CRAFTING_TOOLTIP,"Craft new equipment using collected materials. Crafting gives ability EXP for crafting abilities. Proceed with shopping or grinding if you have no materials left."
 RESTING_TOOLTIP,"Chance to receive a long lasting blessing by praying."
 SLEEPING_TOOLTIP,"Sleep is essential. Make sure to sleep long enough and to stay healthy! 7 to 9 hours per day recommended."
+TIME_OFFSET,time offset
+TIME_OFFSET_TOOLTIP,"Offsets the sleeping time of the character, e.g. with a value of 2 your character goes to bed at 1 am instead the default 23 pm."

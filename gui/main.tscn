@@ -151,6 +151,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -541,6 +542,7 @@ text = "RANK"
 horizontal_alignment = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -641,6 +643,7 @@ size_flags_vertical = 3
 value = 50.0
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -854,6 +857,7 @@ text = "ITEM"
 autowrap_mode = 3
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -960,7 +964,6 @@ grow_vertical = 2
 scroll_following = true
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -995,6 +998,21 @@ text = "SCHEDULE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1/HBoxContainer"]
+layout_mode = 2
+text = "TIME_OFFSET"
+
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "TIME_OFFSET_TOOLTIP"
+min_value = -12.0
+max_value = 12.0
+
 [node name="HBoxContainer0" type="HBoxContainer" parent="HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1028,7 +1046,6 @@ popup/item_5/text = "RESTING"
 popup/item_5/id = 5
 
 [node name="VBoxContainer6" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1166,7 +1183,6 @@ layout_mode = 2
 text = "MANA"
 
 [node name="VBoxContainer7" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1378,6 +1394,7 @@ threaded = true
 [connection signal="pressed" from="HBoxContainer/Buttons/Button0" to="." method="show_action"]
 [connection signal="pressed" from="HBoxContainer/Buttons/Button1" to="." method="show_options"]
 [connection signal="pressed" from="HBoxContainer/Buttons/Button2" to="." method="show_summary"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1/HBoxContainer/SpinBox" to="." method="_set_time_offset"]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox0" to="." method="_toggle_weapon_type" binds= ["melee"]]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox1" to="." method="_toggle_weapon_type" binds= ["ranged"]]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox2" to="." method="_toggle_weapon_type" binds= ["magic"]]
