@@ -92,6 +92,7 @@ func _race_toggled(button_pressed: bool, race: String):
 			if !(c is Button) || c.name==player_race:
 				continue
 			c.set_pressed_no_signal(false)
+	$HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/LineEdit/CheckButton.set_pressed_no_signal(false)
 
 func _alt_race_toggled(button_pressed: bool, race: String):
 	if !hybrid_race:
@@ -102,6 +103,7 @@ func _alt_race_toggled(button_pressed: bool, race: String):
 			if !(c is Button) || c.name==player_alt_race:
 				continue
 			c.set_pressed_no_signal(false)
+	$HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/LineEdit/CheckButton.set_pressed_no_signal(false)
 
 func _set_custom_race(string: String):
 	hybrid_race = false
@@ -112,6 +114,14 @@ func _set_custom_race(string: String):
 		if !(c is Button):
 			continue
 		c.set_pressed_no_signal(false)
+	$HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/LineEdit/CheckButton.set_pressed_no_signal(true)
+
+func _custom_race_toggled(toggled_on: bool):
+	if toggled_on:
+		_set_custom_race($HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/LineEdit.text)
+	else:
+		player_race = ""
+		player_alt_race = ""
 
 func _vegan_toggled(button_pressed: bool):
 	player_vegan = button_pressed
@@ -171,9 +181,6 @@ func _randomize():
 		while !(button is BaseButton && !button.button_pressed):
 			button = $HBoxContainer/VBoxContainer3/Abilities/VBoxContainer.get_child(randi()%$HBoxContainer/VBoxContainer3/Abilities/VBoxContainer.get_child_count())
 		button.button_pressed = true
-	
-	# TODO
-	pass
 
 func check_character_existance() -> bool:
 	var dir:= DirAccess.open("user://saves")
@@ -307,4 +314,3 @@ func start_game():
 
 func _back_to_menu():
 	get_tree().change_scene_to_file("res://gui/menu.tscn")
-

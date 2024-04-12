@@ -167,6 +167,16 @@ layout_mode = 2
 placeholder_text = "CUSTOM_RACE"
 alignment = 1
 
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/LineEdit"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+
 [node name="Alt" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
@@ -423,6 +433,7 @@ text = "START"
 [connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/dwarf" to="." method="_race_toggled" binds= ["dwarf"]]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/ogre" to="." method="_race_toggled" binds= ["ogre"]]
 [connection signal="text_changed" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/LineEdit" to="." method="_set_custom_race"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/LineEdit/CheckButton" to="." method="_custom_race_toggled"]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt/human" to="." method="_alt_race_toggled" binds= ["human"]]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt/halfling" to="." method="_alt_race_toggled" binds= ["halfling"]]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt/high_elf" to="." method="_alt_race_toggled" binds= ["high_elf"]]
