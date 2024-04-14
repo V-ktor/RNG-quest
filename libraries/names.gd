@@ -215,6 +215,9 @@ const GOD_PREFIX = {
 	"Prime":{
 		"health":40,
 	},
+	"censored":{
+		"penetration":6,
+	},
 }
 const GOD_SUFFIX = {
 	"War":{

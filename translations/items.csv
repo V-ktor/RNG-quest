@@ -124,3 +124,39 @@ AMULET,amulet
 RING,ring
 EARRING,earring
 BRACELET,bracelet
+SHARP,Sharp
+ARCANE,Arcane
+ACCURATE,Accurate
+PROTECTIVE,Protective
+ARMOURED,Armoured
+DETERMINED,Determined
+WISE,Wise
+AGILE,Agile
+DODGING,Dodging
+PIERCING,Piercing
+PENETRATING,Penetrating
+QUICK,Quick
+FAST,Fast
+VITAL,Vital
+HEALING,Healing
+TENACIOUS,Tenacious
+REJUVENATING,Rejuvenating
+MANABOUND,Manabound
+FOCUSED,Focused
+OF_ELEMENTAL_RESISTANCE,"of Elemental Resistance"
+OF_NATURE_RESISTANCE,"of Nature Resistance"
+OF_CELESTIAL_RESISTANCE,"of Celestial Resistance"
+OF_PHYSICAL_RESISTANCE,"of Physical Resistance"
+OF_ELEMENTAL_MIGHT,"of Elemental Might"
+OF_NATURE,"of Nature"
+OF_TWILIGHT,"of Twilight"
+OF_WARMASTER,"of Warmaster"
+OF_STRENGTH,"of Strength"
+OF_CONSTITUTION,"of Constitution"
+OF_DEXTERITY,"of Dexterity"
+OF_INTELLIGENCE,"of Intelligence"
+OF_WISDOM,"of Wisdom"
+OF_CUNNING,"of Cunning"
+LESSER,lesser
+INSIGNIFICANT,insignificant
+COMMON,common

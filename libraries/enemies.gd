@@ -26,6 +26,7 @@ const BASE_ENEMIES = {
 			"speed":-5,
 			"critical":0,
 		},
+		"soul_rarity":-4,
 	},
 	"elemental":{
 		"base_name":["slime","elemental"],
@@ -97,6 +98,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"slime","condensate","residue","magic_salt"
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":-2,
 	},
 	"water_elemental":{
 		"base_name":["elemental","anomaly"],
@@ -160,6 +163,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"condensate","residue","resin","magic_salt",
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":-2,
 	},
 	"lava_elemental":{
 		"base_name":["elemental","anomaly"],
@@ -225,6 +230,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"condensate","residue","resin","magic_salt",
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":-2,
 	},
 	"shadow_elemental":{
 		"base_name":["elemental","anomaly"],
@@ -288,6 +295,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"condensate","residue","resin","magic_salt",
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":-2,
 	},
 	"cloud_elemental":{
 		"base_name":["elemental","anomaly"],
@@ -351,6 +360,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"condensate","residue","resin","magic_salt",
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":-2,
 	},
 	"nanite_swarm":{
 		"base_name":["nanite swarm"],
@@ -403,6 +414,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"condensate","residue","resin","magic_salt",
 		],
+		"soul_prefix":["digital","virtual","cyber"],
+		"soul_rarity":-2,
 	},
 	"nanite_slime":{
 		"base_name":["slime","anomaly"],
@@ -450,6 +463,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"condensate","resin","tissue","scrap",
 		],
+		"soul_prefix":["digital","virtual","cyber"],
+		"soul_rarity":-2,
 	},
 	"mud_slime":{
 		"base_name":["slime","anomaly"],
@@ -516,6 +531,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"condensate","residue","resin","magic_salt",
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":-2,
 	},
 	"spirit":{
 		"base_name":["spirit","ghost"],
@@ -592,6 +609,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"slime","condensate","residue","plasma",
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":-1,
 	},
 	"ghost":{
 		"base_name":["ghost","spirit"],
@@ -647,6 +666,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"slime","condensate","residue","plasma",
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":-1,
 	},
 	"golem":{
 		"base_name":["golem"],
@@ -735,6 +756,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"pebble","stone","gem","residue","resin",
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":-1,
 	},
 	"paper_golem":{
 		"base_name":["golem"],
@@ -795,6 +818,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"pebble","gem","residue","resin","paper","parchement",
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":0,
 	},
 	"fearfire_golem":{
 		"base_name":["golem"],
@@ -855,6 +880,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"pebble","stone","gem","residue","resin","dust","oil",
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":0,
 	},
 	"nanite_golem":{
 		"base_name":["golem"],
@@ -917,6 +944,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"stone","gem","oil","battery","processing_unit","scrap","wires","ram_module",
 		],
+		"soul_prefix":["digital","virtual","cyber"],
+		"soul_rarity":0,
 	},
 	"zombie":{
 		"base_name":["zombie"],
@@ -953,6 +982,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"bone","skin","nail","insistine","meat","hair","parchement",
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":-1,
 	},
 	"ghoul":{
 		"base_name":["ghoul"],
@@ -990,6 +1021,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"skin","nail","insistine","meat","hair","parchement",
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":0,
 	},
 	"skeleton":{
 		"base_name":["skeleton"],
@@ -1055,6 +1088,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"skull","ore","cloth","paper","parchement","dust",
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":0,
 	},
 	"mummy":{
 		"base_name":["mummy"],
@@ -1122,6 +1157,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"heart","ore","cloth","paper","parchement","wrapping","dust",
 		],
+		"soul_prefix":["etheral","bound","ancient"],
+		"soul_rarity":1,
 	},
 	"vampire":{
 		"base_name":["vampire"],
@@ -1185,6 +1222,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"heart","ore","cloth","paper","parchement","wrapping","dust",
 		],
+		"soul_prefix":["eternal","bound","ancient"],
+		"soul_rarity":1,
 	},
 	"undead":{
 		"base_name":["necromancer","thrall master","undead fiend"],
@@ -1223,6 +1262,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"heart","ore","cloth","paper","parchement","dust","hair",
 		],
+		"soul_prefix":["ethereal","eternal","bound","ancient"],
+		"soul_rarity":0,
 	},
 	"lich":{
 		"base_name":["lich"],
@@ -1262,6 +1303,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"ore","cloth","paper","parchement","dust","hair","bone","skin",
 		],
+		"soul_prefix":["eternal","bound","ancient"],
+		"soul_rarity":2,
 	},
 	"goblin":{
 		"base_name":["goblin"],
@@ -1323,6 +1366,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"bone","skin","nail","tongue","ear","hair","eye_ball","wood","ore","paper"
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":0,
 	},
 	"hobgoblin":{
 		"base_name":["hobgoblin"],
@@ -1367,6 +1412,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"bone","skin","nail","tongue","ear","hair","eye_ball","wood","ore","paper"
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":1,
 	},
 	"gnoll":{
 		"base_name":["gnoll"],
@@ -1426,6 +1473,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"bone","skin","nail","tongue","ear","hair","eye_ball","wood","ore","paper"
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":0,
 	},
 	"troll":{
 		"base_name":["troll"],
@@ -1500,6 +1549,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"skin","hide","insistine","nail","eye_ball","wood","ore","paper","testicle",
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":1,
 	},
 	"wolf":{
 		"base_name":["wolf","hound","dog"],
@@ -1528,6 +1579,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"fur","tail","fang","bone","eye_ball","meat"
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":-1,
 	},
 	"strong_wolf":{
 		"base_name":["wolf","hound","beast"],
@@ -1576,6 +1629,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"fur","tail","fang","bone","eye_ball","meat"
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":-1,
 	},
 	"elemental_wolf":{
 		"base_name":["wolf","hound","beast"],
@@ -1639,6 +1694,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"fur","tail","fang","bone","meat","residue",
 		],
+		"soul_prefix":["lesser","mundane","fierce","wild"],
+		"soul_rarity":-1,
 	},
 	"tiger":{
 		"base_name":["tiger","lion","panther"],
@@ -1691,6 +1748,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"fur","tail","fang","eye_ball","meat","ear"
 		],
+		"soul_prefix":["lesser","mundane","fierce","wild"],
+		"soul_rarity":-1,
 	},
 	"boar":{
 		"base_name":["boar"],
@@ -1719,6 +1778,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"fur","leather","bone","meat",
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":-1,
 	},
 	"snap_turtle":{
 		"base_name":["snap turtle"],
@@ -1747,6 +1808,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"shell","leather","bone","meat",
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":-1,
 	},
 	"yeti":{
 		"base_name":["yeti"],
@@ -1802,6 +1865,8 @@ const BASE_ENEMIES = {
 		"equipment_drop_chance":0.2,
 		"equipment_enchantment_chance":0.1,
 		"equipment_quality":1.0,
+		"soul_prefix":["lesser","mundane","shy"],
+		"soul_rarity":1,
 	},
 	"minotaur":{
 		"base_name":["minotaur"],
@@ -1872,6 +1937,8 @@ const BASE_ENEMIES = {
 		"equipment_drop_chance":0.2,
 		"equipment_enchantment_chance":0.1,
 		"equipment_quality":1.0,
+		"soul_prefix":["mundane","fierce","wild"],
+		"soul_rarity":1,
 	},
 	"crab":{
 		"base_name":["crab"],
@@ -1930,6 +1997,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"meat","pincer","shell","pebble",
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":-1,
 	},
 	"scorpion":{
 		"base_name":["scorpion"],
@@ -1989,6 +2058,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"bone","meat","pincer","shell",
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":-1,
 	},
 	"snake":{
 		"base_name":["snake"],
@@ -2064,6 +2135,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"leather","meat","fang","venom","scale",
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":-2,
 	},
 	"water_snake":{
 		"base_name":["water snake","sea snake"],
@@ -2099,6 +2172,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"leather","meat","fang","venom","scale",
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":-1,
 	},
 	"sky_snake":{
 		"base_name":["sky snake","air snake"],
@@ -2134,6 +2209,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"leather","meat","fang","venom","scale",
 		],
+		"soul_prefix":["lesser","mundane","floating"],
+		"soul_rarity":-1,
 	},
 	"bat":{
 		"base_name":["bat"],
@@ -2182,6 +2259,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"fang","wing","claw"
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":-2,
 	},
 	"spider":{
 		"base_name":["spider"],
@@ -2234,6 +2313,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"fang","silk","venom","hair"
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":-2,
 	},
 	"harpy":{
 		"base_name":["harpy"],
@@ -2300,6 +2381,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"fang","wing","claw","heart","hair","feather",
 		],
+		"soul_prefix":["lesser","mundane","floating"],
+		"soul_rarity":1,
 	},
 	"drake":{
 		"base_name":["drake"],
@@ -2353,6 +2436,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"scale","scale","fang","bone","wing","gem",
 		],
+		"soul_prefix":["lesser","mundane","fierce"],
+		"soul_rarity":-1,
 	},
 	"imp":{
 		"base_name":["imp"],
@@ -2404,6 +2489,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"skin","leather","nail","paper","tail","heart",
 		],
+		"soul_prefix":["demonic","evil","vile","fiery"],
+		"soul_rarity":0,
 	},
 	"demon":{
 		"base_name":["demon"],
@@ -2464,6 +2551,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"skin","leather","nail","paper","tail","heart","kidney","horn","ingot",
 		],
+		"soul_prefix":["demonic","evil","vile","fiery"],
+		"soul_rarity":2,
 	},
 	"plant":{
 		"base_name":["plant","tree"],
@@ -2524,6 +2613,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"wood","wood","leaf","cotton","root","cabbage"
 		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":-2,
 	},
 	"thug":{
 		"base_name":["thug","thief","rogue","robber"],
@@ -2585,6 +2676,8 @@ const BASE_ENEMIES = {
 		"equipment_drop_chance":0.3,
 		"equipment_enchantment_chance":0.1,
 		"equipment_quality":1.0,
+		"soul_prefix":["mundane","guilty","profane"],
+		"soul_rarity":1,
 	},
 	"guard":{
 		"base_name":["guard","vanguard","fighter","body guard"],
@@ -2654,6 +2747,8 @@ const BASE_ENEMIES = {
 		"equipment_drop_chance":0.3,
 		"equipment_enchantment_chance":0.1,
 		"equipment_quality":1.0,
+		"soul_prefix":["mundane","valiant","though"],
+		"soul_rarity":1,
 	},
 	"fighter":{
 		"base_name":["fighter","battler","brawler"],
@@ -2716,6 +2811,8 @@ const BASE_ENEMIES = {
 		"equipment_drop_chance":0.2,
 		"equipment_enchantment_chance":0.1,
 		"equipment_quality":1.0,
+		"soul_prefix":["mundane","valiant","though"],
+		"soul_rarity":1,
 	},
 	"human":{
 		"base_name":["swordsman","human"],
@@ -2745,6 +2842,8 @@ const BASE_ENEMIES = {
 		"equipment_drop_chance":0.3,
 		"equipment_enchantment_chance":0.1,
 		"equipment_quality":1.0,
+		"soul_prefix":["mundane","common","unremarkable"],
+		"soul_rarity":1,
 	},
 	"halfling":{
 		"base_name":["halfling"],
@@ -2774,6 +2873,8 @@ const BASE_ENEMIES = {
 		"equipment_drop_chance":0.3,
 		"equipment_enchantment_chance":0.1,
 		"equipment_quality":1.0,
+		"soul_prefix":["mundane","common","unremarkable"],
+		"soul_rarity":1,
 	},
 	"elf":{
 		"base_name":["elf"],
@@ -2803,6 +2904,8 @@ const BASE_ENEMIES = {
 		"equipment_drop_chance":0.3,
 		"equipment_enchantment_chance":0.1,
 		"equipment_quality":1.0,
+		"soul_prefix":["mundane","common","unremarkable"],
+		"soul_rarity":1,
 	},
 	"dwarf":{
 		"base_name":["dwarf","hammerdwarf","dwarven fighter"],
@@ -2832,6 +2935,8 @@ const BASE_ENEMIES = {
 		"equipment_drop_chance":0.3,
 		"equipment_enchantment_chance":0.1,
 		"equipment_quality":1.0,
+		"soul_prefix":["mundane","common","unremarkable"],
+		"soul_rarity":1,
 	},
 	"naga":{
 		"base_name":["naga"],
@@ -2907,6 +3012,8 @@ const BASE_ENEMIES = {
 		"equipment_drop_chance":0.3,
 		"equipment_enchantment_chance":0.1,
 		"equipment_quality":1.0,
+		"soul_prefix":["mundane","common","unremarkable"],
+		"soul_rarity":1,
 	},
 	"orc":{
 		"base_name":["orc"],
@@ -2991,6 +3098,8 @@ const BASE_ENEMIES = {
 		"equipment_drop_chance":0.3,
 		"equipment_enchantment_chance":0.1,
 		"equipment_quality":1.0,
+		"soul_prefix":["mundane","common","unremarkable"],
+		"soul_rarity":1,
 	},
 	"ogre":{
 		"base_name":["ogre"],
@@ -3047,6 +3156,8 @@ const BASE_ENEMIES = {
 		"equipment_drop_chance":0.3,
 		"equipment_enchantment_chance":0.1,
 		"equipment_quality":1.0,
+		"soul_prefix":["mundane","common","unremarkable"],
+		"soul_rarity":1,
 	},
 	"wale":{
 		"base_name":["wale"],
@@ -3093,6 +3204,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"leather","leather","meat","meat","bone","oil",
 		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":0,
 	},
 	"drone":{
 		"base_name":["drone"],
@@ -3144,6 +3257,8 @@ const BASE_ENEMIES = {
 		"materials":[
 			"cog","scrap","ingot","paper","cloth","tissue","shell","battery","processing_unit","wires",
 		],
+		"soul_prefix":["digital","virtual","cyber"],
+		"soul_rarity":-2,
 	},
 	"robot":{
 		"base_name":["robot","android"],
@@ -3211,6 +3326,8 @@ const BASE_ENEMIES = {
 			"cog","scrap","paper","synth_skin","cloth","tissue","shell","battery",
 			"processing_unit","heart","ram_module",
 		],
+		"soul_prefix":["digital","virtual","cyber"],
+		"soul_rarity":-1,
 	},
 	"cyborg":{
 		"base_name":["cyborg"],
@@ -3248,6 +3365,8 @@ const BASE_ENEMIES = {
 			"cog","scrap","paper","skin","synth_skin","cloth","tissue","shell",
 			"processing_unit","heart","ram_module",
 		],
+		"soul_prefix":["digital","assimilated","cyber"],
+		"soul_rarity":1,
 	},
 	"mech":{
 		"base_name":["mech"],
@@ -3300,8 +3419,13 @@ const BASE_ENEMIES = {
 			"cog","scrap","paper","synth_skin","cloth","tissue","shell","battery",
 			"processing_unit","heart","wires",
 		],
+		"soul_prefix":["digital","virtual","cyber"],
+		"soul_rarity":2,
 	},
 }
+const BASE_SOUL_PREFIX = [
+	"LESSER","INSIGNIFICANT","COMMON",
+]
 
 
 func create_tooltip(creature: Characters.Character) -> String:
@@ -3381,6 +3505,17 @@ func create_enemy(type: String, level: int, tier:= 0) -> Characters.Enemy:
 		if variant.has("resistance"):
 			for k in variant.resistance.keys():
 				enemy.resistance[k] = variant.resistance[k]
+		if variant.has("soul_prefix"):
+			if variant.soul_prefix is Array:
+				enemy.soul_prefix = tr(variant.soul_prefix.pick_random())
+			else:
+				enemy.soul_prefix = tr(variant.soul_prefix)
+	if !dict.has("soul_prefix"):
+		enemy.soul_prefix = tr(BASE_SOUL_PREFIX.pick_random())
+	if dict.has("soul_rarity"):
+		enemy.soul_rarity = dict.soul_rarity
+	else:
+		enemy.soul_rarity = -2
 	if tier<0:
 		enemy.name = dict.lesser_prefix.pick_random()+" "+enemy.name
 		tier_multiplier = 1.0/pow(1.5, -tier)

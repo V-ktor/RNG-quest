@@ -195,6 +195,10 @@ const ABILITIES = {
 		"name":"enchanting",
 		"magic":2,
 	},
+	"soul_binding":{
+		"name":"soul_binding",
+		"willpower":2,
+	},
 	
 }
 const CRAFTING_ABILITIES = [
@@ -1332,7 +1336,10 @@ func create_random_skill(abilities: Array, force_type:= "", basic:= false, inval
 	var type:= force_type
 	var skill_name: String
 	if !module_data.type.has(type):
-		type = get_modules("base_type", abilities, exceptions).pick_random()
+		var modules:= get_modules("base_type", abilities, exceptions)
+		if modules.size() == 0:
+			modules = get_modules("base_type", abilities)
+		type = modules.pick_random()
 	var skill:= create_skill(type)
 	if !basic:
 		skill = fill_slots(skill, abilities, exceptions)

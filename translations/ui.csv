@@ -92,6 +92,8 @@ COOKING,Cooking
 COOKING_DESCRIPTION,"Allows you to cook meals before going into battle granting buffs."
 ENCHANTING,Enchanting
 ENCHANTING_DESCRIPTION,"Allows you to enchant non-magical equipment."
+SOUL_BINDING,Soul Binding
+SOUL_BINDING_DESCRIPTION,"Increases your chance to find soul stones and allows you to use soul stones to enhance skills."
 INFUSE,Infuse
 FANGS,Fangs
 LACERATING_FANGS,Lacerating Fangs
@@ -197,7 +199,7 @@ HIGH_INQUISITOR,high inquisitor
 HEALTH,health
 HEALTH_REGEN,health regeneration
 HEALTH_DRAIN,health drain
-HEALING,healing
+HEALING,Healing
 DURATION,duration
 DELAY,delay
 DAMAGE_TYPE,Damage type
@@ -310,5 +312,5 @@ SHOPPING_TOOLTIP,"Sell loot or buy new equipment. Proceed with crafting if you h
 CRAFTING_TOOLTIP,"Craft new equipment using collected materials. Crafting gives ability EXP for crafting abilities. Proceed with shopping or grinding if you have no materials left."
 RESTING_TOOLTIP,"Chance to receive a long lasting blessing by praying."
 SLEEPING_TOOLTIP,"Sleep is essential. Make sure to sleep long enough and to stay healthy! 7 to 9 hours per day recommended."
-TIME_OFFSET,time offset
+TIME_OFFSET,sleeping time offset
 TIME_OFFSET_TOOLTIP,"Offsets the sleeping time of the character, e.g. with a value of 2 your character goes to bed at 1 am instead the default 23 pm."

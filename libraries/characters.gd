@@ -87,6 +87,7 @@ class Character:
 	var focus: int
 	var max_focus: int
 	var stats: Dictionary
+	var effective_stats: Dictionary
 	var attributes: Dictionary
 	var abilities: Dictionary
 	var skills: Array
@@ -126,14 +127,9 @@ class Character:
 		attributes.clear()
 		valid_weapon_subtypes.clear()
 		valid_armour_subtypes.clear()
+		effective_stats = stats.duplicate(true)
 		for k in ATTRIBUTES:
 			attributes[k] = 0
-		for s in STATS_ATTRIBUTES.keys():
-			for k in STATS_ATTRIBUTES[s].keys():
-				attributes[k] += int(stats[s]*STATS_ATTRIBUTES[s][k])
-		for s in STATS_METERS.keys():
-			for k in STATS_METERS[s].keys():
-				set(k, get(k) + stats[s]*STATS_METERS[s][k])
 		for ability in abilities.keys():
 			if !Skills.ABILITIES.has(ability):
 				continue
@@ -166,6 +162,9 @@ class Character:
 				for t in dict.armour_subtypes:
 					if !valid_armour_subtypes.has(t):
 						valid_armour_subtypes.push_back(t)
+			for k in stats:
+				if dict.has(k):
+					effective_stats[k] += int(dict[k])
 		for item in equipment.values():
 			for k in attributes:
 				if item.has(k):
@@ -187,6 +186,9 @@ class Character:
 						damage[k] += item.damage[k]
 					else:
 						damage[k] = item.damage[k]
+			for k in stats:
+				if item.has(k):
+					effective_stats[k] += int(item[k])
 		for dict in status:
 			if dict.has("attributes"):
 				for k in dict.attributes:
@@ -194,11 +196,20 @@ class Character:
 						attributes[k] = int(attributes[k] + dict.attributes[k].value)
 					else:
 						attributes[k] = int(attributes[k] + dict.attributes[k])
+			for k in stats:
+				if dict.has(k):
+					effective_stats[k] += int(dict[k])
 			for k in RESOURCES:
 				if dict.has(k):
 					set("max_"+k, get("max_"+k) + dict[k])
 				if dict.has(k+"_regen"):
 					set(k+"_regen", get(k+"_regen") + dict[k+"_regen"])
+		for s in STATS_ATTRIBUTES.keys():
+			for k in STATS_ATTRIBUTES[s].keys():
+				attributes[k] += int(effective_stats[s]*STATS_ATTRIBUTES[s][k])
+		for s in STATS_METERS.keys():
+			for k in STATS_METERS[s].keys():
+				set(k, get(k) + effective_stats[s]*STATS_METERS[s][k])
 		for k in attributes:
 			attributes[k] = max(attributes[k], 1)
 		if health>max_health:
@@ -311,9 +322,11 @@ class Enemy:
 	var base_name: String
 	var name_prefix: String
 	var name_suffix: String
+	var soul_prefix: String
 	var description: String
 	var attributes_add: Dictionary
 	var tier: int
+	var soul_rarity: int
 	var materials: Array
 	var equipment_drop_chance: float
 	var equipment_quality: float
@@ -370,8 +383,10 @@ class Enemy:
 			"base_name":base_name,
 			"name_prefix":name_prefix,
 			"name_suffix":name_suffix,
+			"soul_prefix":soul_prefix,
 			"description":description,
 			"tier":tier,
+			"soul_rarity":soul_rarity,
 			"level":level,
 			"experience":experience,
 			"health":health,

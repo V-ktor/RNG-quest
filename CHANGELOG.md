@@ -1,5 +1,24 @@
 # Change log
 
+## v0.0.5
+### Content
+* more complex enchanting system
+* most equipment can be enchanted multiple times
+* higher chance to find enchanted items
+* items can increase stats
+* new ability used for acquiring enchantment materials
+* added cooking recipe for mayonnaise
+
+### Interface
+* ability to change the sleeping time
+* minor GUI improvements
+
+### Balancing
+* better scaling for summoning skills
+
+### Bug fixes
+* restore summoned creatures on loading a game
+
 ## v0.0.4
 ### Content
 * some new skill modules

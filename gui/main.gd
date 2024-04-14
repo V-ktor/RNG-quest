@@ -247,6 +247,12 @@ func upgrade_skill(skill:= {}):
 		inc_level(skill.cost, skill.level)
 	if skill.has("attributes"):
 		inc_level(skill.attributes, skill.level)
+	if skill.has("summon_damage"):
+		inc_level(skill.summon_damage, skill.level)
+	if skill.has("summon_resistance"):
+		inc_level(skill.summon_resistance, skill.level)
+	if skill.has("summoning"):
+		inc_level(skill.summoning, skill.level)
 	if skill.has("status"):
 		inc_level(skill.status, skill.level)
 	if skill.has("damage"):
@@ -303,6 +309,8 @@ func pick_ability() -> String:
 		valid.push_back("alchemy")
 	if !player.abilities.has("enchanting") && magical:
 		valid.push_back("enchanting")
+	if !player.abilities.has("soul_binding") && magical && player.abilities.has("enchanting"):
+		valid.push_back("soul_binding")
 	if !player.abilities.has("weapon_smithing") && (player.abilities.has("light_weapons") || player.abilities.has("heavy_weapons")):
 		valid.push_back("weapon_smithing")
 	if !player.abilities.has("armour_smithing") && (player.abilities.has("armour") || player.abilities.has("shield")):
@@ -515,8 +523,12 @@ func pick_random_potion_type(type:= "health") -> String:
 
 func create_shop_equipment(type: String, quality_mod:= 1.0) -> Dictionary:
 	var item: Dictionary
+	var num_enchantments:= 0
 	item = Items.create_random_standard_equipment(type, current_region, 0, quality_mod)
-	if !(item.has("enchanted") && item.enchanted) && randf()<current_region.enchantment_chance:
+	for i in range(3):
+		if randf()<current_region.enchantment_chance:
+			num_enchantments += 1
+	for i in range(num_enchantments):
 		var quality: int
 		var tier_multiplier:= 1.0
 		var level_multiplier: float = 1.0 + 0.05*(current_region.level + player.level - 2)
@@ -585,6 +597,8 @@ func create_shop_material(material:="") -> Dictionary:
 		for mat in Items.MATERIALS.keys():
 			if type in Items.MATERIALS[mat].tags:
 				valid.push_back(mat)
+		if player.abilities.has("soul_binding"):
+			valid.push_back("empty_soul_stone")
 		if valid.size()>0:
 			material = valid.pick_random()
 		else:
@@ -611,6 +625,18 @@ func calc_item_score(item: Dictionary, preference: Dictionary) -> int:
 	for k in player.attributes.keys():
 		if item.has(k):
 			score += item[k]*preference[k]
+	for k in player.stats.keys():
+		if !item.has(k):
+			continue
+		if Characters.STATS_ATTRIBUTES.has(k):
+			for attr in Characters.STATS_ATTRIBUTES[k]:
+				score += item[k]*Characters.STATS_ATTRIBUTES[k][attr]*preference[attr]
+		if Characters.STATS_METERS.has(k):
+			for meter in Characters.STATS_METERS[k]:
+				var factor:= 0.2
+				if "regen" in meter:
+					factor = 0.5
+				score += item[k]*Characters.STATS_METERS[k][meter]*factor
 	for k in ["health","stamina","mana"]:
 		if item.has(k):
 			score += item[k]/5.0
@@ -680,13 +706,13 @@ func optimize_equipment():
 		for k in EQUIPMENT_SLOTS:
 			if get_slot_type(k)!=item.type:
 				continue
-			if !player.equipment.has(k) && !(item.has("2h") && item["2h"]):
+			if !player.equipment.has(k) && !(item.has("2h") && item["2h"]) && player_inventory.has(item):
 				equip(item)
 				player_inventory.erase(item)
 				break
 			elif item.has("2h") && item["2h"]:
 				if k=="weapon" || k=="offweapon":
-					if player.equipment.has("offweapon") && compare_items([item], [player.equipment[k], player.equipment.offweapon])>0:
+					if player.equipment.has("offweapon") && player_inventory.has(item) && compare_items([item], [player.equipment[k], player.equipment.offweapon])>0:
 						equip(item)
 						player_inventory.erase(item)
 						break
@@ -702,17 +728,17 @@ func optimize_equipment():
 							continue
 					if it.type!="weapon":
 						continue
-					if compare_items([player.equipment[k]], [item, it])<0:
+					if compare_items([player.equipment[k]], [item, it])<0 && player_inventory.has(item) && player_inventory.has(it):
 						equip(item)
 						equip(it)
 						player_inventory.erase(item)
 						player_inventory.erase(it)
 						break
-			elif k=="weapon" && !player.equipment.has("offweapon"):
+			elif k=="weapon" && !player.equipment.has("offweapon") && player_inventory.has(item):
 				equip(item)
 				player_inventory.erase(item)
 				break
-			elif compare_items([item], [player.equipment[k]])>0:
+			elif compare_items([item], [player.equipment[k]])>0 && player_inventory.has(item):
 				equip(item)
 				player_inventory.erase(item)
 				break
@@ -738,6 +764,37 @@ func get_ability_exp(lvl: int) -> int:
 func get_delay_scale(speed: int) -> float:
 	var s:= Characters.get_resistance(speed/10.0)*10
 	return 10.0/max(10.0 + s, 1.0)
+
+func get_soul_stone_drop_chance() -> float:
+	if player.abilities.has("soul_binding"):
+		return min(0.05 + 0.005*player.abilities.soul_binding, 0.25)
+	return 0.05
+
+func get_empty_soul_stone():
+	for item in player_inventory:
+		if item.type == "material" && item.has("tags") && "cage" in item.tags:
+			return item
+
+func extract_soul() -> float:
+	for item in player_inventory:
+		if item.type == "material" && item.has("tags") && "soul" in item.tags:
+			var scaling: float = max(sqrt(1.0 + float(item.quality)/200.0 + 0.01*player.abilities.soul_binding) - 1.0, 0.0)
+			item.name = Items.MATERIALS.empty_soul_stone.name.pick_random().capitalize()
+			item.tags = ["cage"]
+			item.quality = int(item.quality*0.75)
+			item.price /= 4
+			use_ability("soul_binding", 2.0)
+			add_ability_exp("soul_binding", 10.0)
+			return scaling
+	return 0.0
+
+func pick_enchantment(item: Dictionary) -> String:
+	if item.has("enchantments"):
+		if item.enchantments.has("minor") && !item.enchantments.has("greater"):
+			return Items.enchantments_by_slot.greater.pick_random()
+		elif item.enchantments.has("greater") && !item.enchantments.has("minor"):
+			return Items.enchantments_by_slot.minor.pick_random()
+	return Items.ENCHANTMENTS.keys().pick_random()
 
 func level_up():
 	var text: String
@@ -1193,10 +1250,13 @@ func action_done(action: Dictionary):
 			print_log_msg("\n"+tr("RECOVER_LOG").format(action.args))
 			use_stat("constitution", 2)
 		"selling":
-			var item: Dictionary = player_inventory.pick_random()
-			var price:= sell_item(item)
-			print_log_msg(tr("SOLD_LOG").format({"name":item.name,"description":item.description,"amount":1,"price":price}))
-			add_guild_exp("sell")
+			if player_inventory.size() > 0:
+				var item: Dictionary = player_inventory.pick_random()
+				var price:= sell_item(item)
+				print_log_msg(tr("SOLD_LOG").format({"name":item.name,"description":item.description,"amount":1,"price":price}))
+				add_guild_exp("sell")
+			else:
+				action_failures += 1
 		"sell_potions":
 			var sold:= false
 			for potion in player_potions:
@@ -1317,20 +1377,21 @@ func action_done(action: Dictionary):
 		"enchanting":
 			var crafted:= false
 			for k in player.equipment.keys():
-				if player.equipment[k].has("enchanted") && player.equipment[k].enchanted:
+				if player.equipment[k].has("enchantment_potential") && player.equipment[k].enchantment_potential <= 0:
 					continue
 				var item: Dictionary = player.equipment[k]
-				var enchantment: String = Items.ENCHANTMENTS.keys().pick_random()
+				var enchantment:= pick_enchantment(item)
 				var dict: Dictionary = Items.ENCHANTMENTS[enchantment]
 				var materials:= pick_random_materials(dict)
 				if materials.size()==dict.material_types.size():
 					item = Items.enchant_equipment_material(item, enchantment, materials, 10.0*(action.args.level-1.0))
-					item.source += "\n" + tr("PLAYER_ENCHANTED")
+					if tr("PLAYER_ENCHANTED") not in item.source:
+						item.source += "\n" + tr("PLAYER_ENCHANTED")
 					item.description = Items.create_tooltip(item)
 					player.equipment[k] = item
 					queue_equipment_update()
 					print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({"name":item.name,"description":item.description,"quality":str(int(item.quality))}))
-					add_ability_exp(action.args.ability, 40.0)
+					add_ability_exp(action.args.ability, 50.0)
 					for mat in materials:
 						remove_item(mat)
 					add_guild_exp("enchant")
@@ -1343,7 +1404,7 @@ func action_done(action: Dictionary):
 				for item in player_inventory:
 					if item.type=="material" || (item.has("enchanted") && item.enchanted):
 						continue
-					var enchantment: String = Items.ENCHANTMENTS.keys().pick_random()
+					var enchantment:= pick_enchantment(item)
 					var dict: Dictionary = Items.ENCHANTMENTS[enchantment]
 					var materials:= pick_random_materials(dict)
 					if materials.size()==dict.material_types.size():
@@ -1355,7 +1416,7 @@ func action_done(action: Dictionary):
 						print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({"name":item.name,"description":item.description,"quality":str(int(item.quality))}))
 						optimize_equipment()
 						queue_inventory_update()
-						add_ability_exp(action.args.ability, 40.0)
+						add_ability_exp(action.args.ability, 50.0)
 						for mat in materials:
 							remove_item(mat)
 						add_guild_exp("enchant")
@@ -1965,7 +2026,7 @@ func use_buff(skill: Dictionary, actor: Characters.Character, target: Characters
 		result.total_heal[k] = int(result.total_heal[k])
 	return result
 
-func use_summon(skill: Dictionary, actor: Characters.Character) -> Dictionary:
+func use_summon(skill: Dictionary, actor: Characters.Character, attribute_scale:= 1.0) -> Dictionary:
 	var result:= {
 		"skill":skill.name,
 		"skill_description":skill.description,
@@ -1977,7 +2038,7 @@ func use_summon(skill: Dictionary, actor: Characters.Character) -> Dictionary:
 		"total_damage":0,
 		"total_heal":{},
 	}
-	var creature:= Characters.create_summon(skill, actor)
+	var creature:= Characters.create_summon(skill, actor, attribute_scale)
 	if actor is Characters.Enemy || actor is Characters.Summon:
 		result.actor_description = actor.description
 		enemies.push_back(creature)
@@ -1993,6 +2054,7 @@ func use_skill(actor: Characters.Character, skill: Dictionary) -> Dictionary:
 		"effectiveness":0.0,
 	}
 	var target
+	var effectiveness_bonus:= 0.0
 	# Select target(s).
 	match skill.target_type:
 		"self":
@@ -2027,6 +2089,11 @@ func use_skill(actor: Characters.Character, skill: Dictionary) -> Dictionary:
 		for k in skill.cost.keys():
 			actor.set(k, max(actor.get(k) - skill.cost[k], 0))
 	
+	if actor is Characters.Character && actor.abilities.has("soul_binding") && randf() < min(0.01 + 0.005*actor.abilities.soul_binding, 0.2):
+		effectiveness_bonus += extract_soul()
+		result.soul_enchantment = true
+		result.soul_bonus = effectiveness_bonus
+	
 	for st in skill.combat.status_self:
 		var status:= Characters.create_status(st, actor, actor)
 		actor.add_status(status)
@@ -2044,7 +2111,7 @@ func use_skill(actor: Characters.Character, skill: Dictionary) -> Dictionary:
 		"attack":
 			if typeof(target)==TYPE_ARRAY:
 				for t in target:
-					var r:= use_attack(skill, actor, t)
+					var r:= use_attack(skill, actor, t, 1.0 + effectiveness_bonus)
 					result = merge_dicts(result, r)
 					if typeof(result.total_damage)==TYPE_ARRAY:
 						for d in result.total_damage:
@@ -2053,7 +2120,7 @@ func use_skill(actor: Characters.Character, skill: Dictionary) -> Dictionary:
 						result.effectiveness += float(result.total_damage) / max(float(t.max_health), 1.0)
 				result.effectiveness /= max(target.size(), 1.0)
 			else:
-				var rr:= use_attack(skill, actor, target)
+				var rr:= use_attack(skill, actor, target, 1.0 + effectiveness_bonus)
 				result = merge_dicts(result, rr)
 				result.effectiveness = float(result.total_damage) / max(float(target.max_health), 1.0)
 				if skill.has("splash_damage"):
@@ -2061,23 +2128,23 @@ func use_skill(actor: Characters.Character, skill: Dictionary) -> Dictionary:
 						for t in [player]+player_summons:
 							if t==target:
 								continue
-							var r:= use_attack(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25), true)
+							var r:= use_attack(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25) + 0.5*effectiveness_bonus, true)
 							result = merge_dicts(result, r)
 					else:
 						for t in enemies:
 							if t==target:
 								continue
-							var r:= use_attack(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25), true)
+							var r:= use_attack(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25) + 0.5*effectiveness_bonus, true)
 							result = merge_dicts(result, r)
 		"heal":
 			if typeof(target)==TYPE_ARRAY:
 				for t in target:
-					var r:= use_heal(skill, actor, t)
+					var r:= use_heal(skill, actor, t, 1.0 + effectiveness_bonus)
 					result = merge_dicts(result, r)
 					result.effectiveness += float(skill.total_heal) / max(float(t.max_health), 1.0)
 				result.effectiveness /= max(target.size(), 1.0)
 			else:
-				var rr:= use_heal(skill, actor, target)
+				var rr:= use_heal(skill, actor, target, 1.0 + effectiveness_bonus)
 				result = merge_dicts(result, rr)
 				for k in result.total_heal:
 					if target.get("max_"+k)==null:
@@ -2088,38 +2155,38 @@ func use_skill(actor: Characters.Character, skill: Dictionary) -> Dictionary:
 						for t in [player]+player_summons:
 							if t==target:
 								continue
-							var r:= use_heal(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25))
+							var r:= use_heal(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25) + 0.5*effectiveness_bonus)
 							result = merge_dicts(result, r)
 					else:
 						for t in enemies:
 							if t==target:
 								continue
-							var r:= use_heal(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25))
+							var r:= use_heal(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25) + 0.5*effectiveness_bonus)
 							result = merge_dicts(result, r)
 		"buff":
 			if typeof(target)==TYPE_ARRAY:
 				for t in target:
-					var r:= use_buff(skill, actor, t)
+					var r:= use_buff(skill, actor, t, 1.0 + effectiveness_bonus)
 					result = merge_dicts(result, r)
 			else:
-				var rr:= use_buff(skill, actor, target)
+				var rr:= use_buff(skill, actor, target, 1.0 + effectiveness_bonus)
 				result = merge_dicts(result, rr)
 				if skill.has("splash_damage"):
 					if actor is Characters.Enemy:
 						for t in [player]+player_summons:
 							if t==target:
 								continue
-							var r:= use_buff(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25))
+							var r:= use_buff(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25) + 0.5*effectiveness_bonus)
 							result = merge_dicts(result, r)
 					else:
 						for t in enemies:
 							if t==target:
 								continue
-							var r:= use_buff(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25))
+							var r:= use_buff(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25) + 0.5*effectiveness_bonus)
 							result = merge_dicts(result, r)
 			result.effectiveness = 0.5
 		"summon":
-			result = use_summon(skill, actor)
+			result = use_summon(skill, actor, 1.0 + effectiveness_bonus)
 	result.target_data = target
 	if !result.has("actor_description"):
 		if actor is Characters.Enemy || actor is Characters.Summon:
@@ -2148,6 +2215,8 @@ func fight():
 		if n>0:
 			queue_status_update()
 			break
+	if result.has("soul_enchantment") && result.soul_enchantment:
+		print_log_msg(tr("SKILL_SOUL_ENCHANTMENT").format({"soul_bonus":int(100*result.soul_bonus)}))
 	match skill.usage:
 		"attack":
 			add_guild_exp("attack")
@@ -2530,6 +2599,9 @@ func die(enemy: Characters.Enemy):
 		return
 	
 	var dict:= enemy.to_dict()
+	var soul_rng:= randf()
+	var soul_chance:= get_soul_stone_drop_chance()
+	var soul_cage = get_empty_soul_stone()
 	print_log_msg(tr("DIE_LOG").format(dict))
 	add_exp(enemy.experience)
 	add_guild_exp("kill")
@@ -2539,6 +2611,27 @@ func die(enemy: Characters.Enemy):
 		var item:= Items.create_equipment_drop(dict)
 		if !EQUIPMENT_LEVEL_RESTRICTION.has(item.type) || player.level>=EQUIPMENT_LEVEL_RESTRICTION[item.type]:
 			loot.push_back(item)
+	if soul_rng<soul_chance:
+		if player.abilities.has("soul_binding"):
+			use_ability("soul_binding", soul_rng/soul_chance)
+			add_ability_exp("soul_binding", 8.0*soul_rng/soul_chance)
+		loot.push_back(Items.create_soul_stone_drop(dict))
+	if player.abilities.has("soul_binding") && soul_cage!=null && soul_cage is Dictionary:
+		var charge: int = max(4 + enemy.soul_rarity, 1)
+		if player.abilities.has("soul_binding"):
+			charge += round(randf_range(0.05, 0.2) * player.abilities.soul_binding)
+		if soul_cage.has("charges"):
+			soul_cage.charges += charge
+		else:
+			soul_cage.charges = charge
+		if soul_cage.charges>=50 + randi()%40 + randi()%40 + randi()%40:
+			remove_item(soul_cage)
+			dict.soul_rarity = int(clamp(round(soul_cage.charges/25.0 - 2.75), -1, 2))
+			add_item(Items.create_soul_stone_drop(dict))
+			use_ability("soul_binding", 2.0)
+			add_ability_exp("soul_binding", 6.0 + 2.0*max(dict.soul_rarity, 0.0))
+		else:
+			add_ability_exp("soul_binding", 0.25)
 	enemies.erase(enemy)
 	
 	if enemies.size()==0:
@@ -2648,22 +2741,22 @@ func update_info():
 	
 	for c in $HBoxContainer/VBoxContainer1/Stats/VBoxContainer.get_children():
 		c.hide()
-	for i in range(player.stats.size()):
+	for i in range(player.effective_stats.size()):
 		var label: Label
-		var stat: String = player.stats.keys()[i]
+		var stat: String = player.effective_stats.keys()[i]
 		if has_node("HBoxContainer/VBoxContainer1/Stats/VBoxContainer/Label"+str(i)):
 			label = get_node("HBoxContainer/VBoxContainer1/Stats/VBoxContainer/Label"+str(i))
 		else:
 			label = $HBoxContainer/VBoxContainer1/Stats/VBoxContainer/Label0.duplicate()
 			label.name = "Label"+str(i)
 			$HBoxContainer/VBoxContainer1/Stats/VBoxContainer.add_child(label)
-		label.text = tr(stat.to_upper()) + ": " + str(player.stats[stat])
+		label.text = tr(stat.to_upper()) + ": " + str(player.effective_stats[stat])
 		label.tooltip_text = ""
 		if STAT_ATTRIBUTES.has(stat):
 			for k in STAT_ATTRIBUTES[stat].keys():
-				label.tooltip_text += k + ": +" + str(int(player.stats[stat]*STAT_ATTRIBUTES[stat][k])) + "\n"
+				label.tooltip_text += k + ": +" + str(int(player.effective_stats[stat]*STAT_ATTRIBUTES[stat][k])) + "\n"
 		if stat=="constitution":
-			label.tooltip_text += tr("HEALTHC") + ": +" + str(int(10*max(player.stats.constitution, 1)))
+			label.tooltip_text += tr("HEALTHC") + ": +" + str(int(10*max(player.effective_stats.constitution, 1)))
 		label.show()
 	for c in $HBoxContainer/VBoxContainer1/Attributes/VBoxContainer.get_children():
 		c.hide()
@@ -3064,7 +3157,7 @@ func time_step(delta: float, time: float):
 			print_log_msg(tr("SUMMON_EXPIRED_LOG").format({"name":summon.name, "description":summon.description}))
 			player_summons.erase(summon)
 		elif summon.health<=0.0:
-			print_log_msg(tr("SUMMON_DEFEATED_LOG").format(summon))
+			print_log_msg(tr("SUMMON_DEFEATED_LOG").format({"name":summon.name, "description":summon.description}))
 			player_summons.erase(summon)
 		elif summon.delay<=0.0:
 			summon.reset_focus()
@@ -3185,6 +3278,8 @@ func _load():
 		set(k, data[k])
 	for i in range(enemies.size()):
 		enemies[i] = Characters.Enemy.new(enemies[i])
+	for i in range(player_summons.size()):
+		player_summons[i] = Characters.Summon.new(player_summons[i])
 	Items.is_vegan = player_vegan
 	recalc_attributes()
 	

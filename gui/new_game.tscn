@@ -396,6 +396,12 @@ tooltip_text = "ENCHANTING_DESCRIPTION"
 toggle_mode = true
 text = "ENCHANTING"
 
+[node name="soul_binding" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "ENCHANTING_DESCRIPTION"
+toggle_mode = true
+text = "SOUL_BINDING"
+
 [node name="Bottom" type="HBoxContainer" parent="."]
 layout_mode = 0
 anchor_top = 1.0
@@ -463,6 +469,7 @@ text = "START"
 [connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/tayloring" to="." method="_ability_toggled" binds= ["tayloring"]]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/cooking" to="." method="_ability_toggled" binds= ["cooking"]]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/enchanting" to="." method="_ability_toggled" binds= ["enchanting"]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/soul_binding" to="." method="_ability_toggled" binds= ["soul_binding"]]
 [connection signal="pressed" from="Bottom/Button0" to="." method="_back_to_menu"]
 [connection signal="pressed" from="Bottom/Button1" to="." method="_randomize"]
 [connection signal="pressed" from="Bottom/Button2" to="." method="start_game"]

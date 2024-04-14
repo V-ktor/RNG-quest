@@ -873,6 +873,49 @@ const MATERIALS = {
 		"price":15,
 	},
 	
+	"soul_splinter":{
+		"name":["{soul_prefix} soul splinter", "soul splinter of {base_name}", "{soul_prefix} soul splinter of {base_name}"],
+		"quality":0.6,
+		"tags":["soul"],
+		"price":2,
+	},
+	"soul_shard":{
+		"name":["{soul_prefix} soul shard", "soul shard of {base_name}", "{soul_prefix} soul shard of {base_name}"],
+		"quality":0.8,
+		"tags":["soul"],
+		"price":5,
+	},
+	"soul_stone":{
+		"name":["{soul_prefix} soul stone", "soul stone of {base_name}", "{soul_prefix} soul stone of {base_name}"],
+		"quality":1.0,
+		"tags":["soul"],
+		"price":10,
+	},
+	"soul_gem":{
+		"name":["{soul_prefix} soul gem", "soul gem of {base_name}", "{soul_prefix} soul gem of {base_name}"],
+		"quality":1.2,
+		"tags":["soul"],
+		"price":20,
+	},
+	"soul_jewel":{
+		"name":["{soul_prefix} soul jewel", "soul jewel of {base_name}", "{soul_prefix} soul jewel of {base_name}"],
+		"quality":1.4,
+		"tags":["soul"],
+		"price":30,
+	},
+	"soul_orb":{
+		"name":["{soul_prefix} soul orb", "soul orb of {base_name}", "{soul_prefix} soul orb of {base_name}"],
+		"quality":1.6,
+		"tags":["soul"],
+		"price":45,
+	},
+	
+	"empty_soul_stone":{
+		"name":["empty soul stone"],
+		"quality":1.0,
+		"tags":["cage"],
+		"price":10,
+	},
 }
 const EQUIPMENT_RECIPES = {
 	"dagger":{
@@ -1211,83 +1254,124 @@ const EQUIPMENT_SUBTYPE_NAME = {
 }
 const ENCHANTMENTS = {
 	"attack":{
-		"name":["of Attack"],
+		"slot":"minor",
+		"prefix":["SHARP"],
 		"attack":2,
 		"price":20,
-		"material_types":[["magical","bone"],["magical","gem"]],
+		"material_types":[["soul"]],
 	},
 	"magic":{
-		"name":["of Magic"],
+		"slot":"minor",
+		"prefix":["ARCANE"],
 		"magic":2,
 		"price":20,
-		"material_types":[["magical","elemental"],["magical","gem"]],
+		"material_types":[["soul"]],
 	},
 	"accuracy":{
-		"name":["of Accuracy"],
+		"slot":"minor",
+		"prefix":["ACCURATE"],
 		"accuracy":2,
 		"price":20,
-		"material_types":[["magical","bone"],["magical","gem"]],
+		"material_types":[["soul"]],
 	},
 	"armour":{
-		"name":["of Protection","of Defence"],
+		"slot":"minor",
+		"prefix":["PROTECTIVE","ARMOURED"],
 		"armour":2,
 		"price":20,
-		"material_types":[["magical","metal"],["magical","gem"]],
+		"material_types":[["soul"]],
 	},
 	"willpower":{
-		"name":["of Will"],
+		"slot":"minor",
+		"prefix":["DETERMINED","WISE"],
 		"willpower":2,
 		"price":20,
-		"material_types":[["magical","elemental"],["magical","gem"]],
+		"material_types":[["soul"]],
 	},
 	"evasion":{
-		"name":["of Evasion","of Agility"],
+		"slot":"minor",
+		"prefix":["AGILE","DODGING"],
 		"evasion":2,
 		"price":20,
-		"material_types":[["magical","bone"],["magical","gem"]],
+		"material_types":[["soul"]],
+	},
+	"penetration":{
+		"slot":"minor",
+		"prefix":["PIERCING","PENETRATING"],
+		"penetration":3,
+		"price":20,
+		"material_types":[["soul"]],
 	},
 	"speed":{
-		"name":["of Speed","of Quickness"],
+		"slot":"minor",
+		"prefix":["QUICK","FAST"],
 		"speed":1,
 		"price":20,
-		"material_types":[["magical","gem"],["magical","gem"]],
+		"material_types":[["soul"]],
 	},
 	"health":{
-		"name":["of Health","of Life"],
+		"slot":"minor",
+		"prefix":["VITAL"],
 		"health":20,
 		"price":20,
-		"material_types":[["elemental","bone"],["magical","gem"]],
+		"material_types":[["soul"]],
+	},
+	"health_regen":{
+		"slot":"minor",
+		"prefix":["HEALING"],
+		"health_regen":2,
+		"price":20,
+		"material_types":[["soul"]],
 	},
 	"stamina":{
-		"name":["of Endurance"],
+		"slot":"minor",
+		"prefix":["TENACIOUS"],
 		"stamina":10,
 		"price":20,
-		"material_types":[["elemental","bone"],["magical","gem"]],
+		"material_types":[["soul"]],
+	},
+	"stamina_regen":{
+		"slot":"minor",
+		"prefix":["REJUVENATING"],
+		"stamina_regen":3,
+		"price":20,
+		"material_types":[["soul"]],
 	},
 	"mana":{
-		"name":["of Mana","of Aether"],
+		"slot":"minor",
+		"prefix":["MANABOUND"],
 		"mana":10,
 		"price":20,
-		"material_types":[["magical","bone"],["magical","gem"]],
+		"material_types":[["soul"]],
+	},
+	"mana_regen":{
+		"slot":"minor",
+		"prefix":["REJUVENATING"],
+		"mana_regen":3,
+		"price":20,
+		"material_types":[["soul"]],
 	},
 	"focus":{
-		"name":["of Focus","of Concentration"],
+		"slot":"minor",
+		"prefix":["FOCUSED"],
 		"focus":1,
 		"price":20,
-		"material_types":[["elemental","bone"],["magical","gem"]],
+		"material_types":[["soul"]],
 	},
 	"elemental_resistance":{
-		"name":["of Elemental Resistance"],
+		"slot":"greater",
+		"suffix":["OF_ELEMENTAL_RESISTANCE"],
 		"resistance":{
 			"fire":0.04,
 			"ice":0.04,
 			"lightning":0.04,
 		},
 		"price":20,
-		"material_types":[["magical","elemental"],["magical","gem"]],
+		"material_types":[["soul"]],
 	},
 	"nature_resistance":{
-		"name":["of Nature Resistance"],
+		"slot":"greater",
+		"suffix":["OF_NATURE_RESISTANCE"],
 		"resistance":{
 			"wind":0.04,
 			"water":0.04,
@@ -1296,39 +1380,43 @@ const ENCHANTMENTS = {
 			"acid":0.035,
 		},
 		"price":20,
-		"material_types":[["magical","elemental"],["magical","gem"]],
+		"material_types":[["soul"]],
 	},
 	"celestial_resistance":{
-		"name":["of Celestial Resistance"],
+		"slot":"greater",
+		"suffix":["OF_CELESTIAL_RESISTANCE"],
 		"resistance":{
 			"light":0.05,
 			"darkness":0.05,
 		},
 		"price":20,
-		"material_types":[["magical","elemental"],["magical","gem"]],
+		"material_types":[["soul"]],
 	},
 	"physical_resistance":{
-		"name":["of Physical Resistance"],
+		"slot":"greater",
+		"suffix":["OF_PHYSICAL_RESISTANCE"],
 		"resistance":{
 			"impact":0.035,
 			"cutting":0.035,
 			"piercing":0.035,
 		},
 		"price":20,
-		"material_types":[["magical","metal"],["magical","gem"]],
+		"material_types":[["soul"]],
 	},
 	"elemental_damage":{
-		"name":["of Elemental Might"],
+		"slot":"greater",
+		"suffix":["OF_ELEMENTAL_MIGHT"],
 		"damage":{
 			"fire":0.04,
 			"ice":0.04,
 			"lightning":0.04,
 		},
 		"price":20,
-		"material_types":[["magical","elemental"],["magical","gem"]],
+		"material_types":[["soul"]],
 	},
 	"nature_damage":{
-		"name":["of Nature"],
+		"slot":"greater",
+		"suffix":["OF_NATURE"],
 		"damage":{
 			"wind":0.04,
 			"water":0.04,
@@ -1337,26 +1425,70 @@ const ENCHANTMENTS = {
 			"acid":0.04,
 		},
 		"price":20,
-		"material_types":[["magical","elemental"],["magical","gem"]],
+		"material_types":[["soul"]],
 	},
 	"celestial_damage":{
-		"name":["of Twilight"],
+		"slot":"greater",
+		"suffix":["OF_TWILIGHT"],
 		"damage":{
 			"light":0.05,
 			"darkness":0.05,
 		},
 		"price":20,
-		"material_types":[["magical","elemental"],["magical","gem"]],
+		"material_types":[["soul"]],
 	},
 	"physical_damage":{
-		"name":["of Warmaster"],
+		"slot":"greater",
+		"suffix":["OF_WARMASTER"],
 		"damage":{
 			"impact":0.035,
 			"cutting":0.035,
 			"piercing":0.035,
 		},
 		"price":20,
-		"material_types":[["magical","metal"],["magical","gem"]],
+		"material_types":[["soul"]],
+	},
+	"strength":{
+		"slot":"greater",
+		"suffix":["OF_STRENGTH"],
+		"strength":1,
+		"price":20,
+		"material_types":[["soul"]],
+	},
+	"constitution":{
+		"slot":"greater",
+		"suffix":["OF_CONSTITUTION"],
+		"constitution":1,
+		"price":20,
+		"material_types":[["soul"]],
+	},
+	"dexterity":{
+		"slot":"greater",
+		"suffix":["OF_DEXTERITY"],
+		"dexterity":1,
+		"price":20,
+		"material_types":[["soul"]],
+	},
+	"cunning":{
+		"slot":"greater",
+		"suffix":["OF_CUNNING"],
+		"cunning":1,
+		"price":20,
+		"material_types":[["soul"]],
+	},
+	"intelligence":{
+		"slot":"greater",
+		"suffix":["OF_INTELLIGENCE"],
+		"intelligence":1,
+		"price":20,
+		"material_types":[["soul"]],
+	},
+	"wisdom":{
+		"slot":"greater",
+		"suffix":["OF_WISDOM"],
+		"wisdom":1,
+		"price":20,
+		"material_types":[["soul"]],
 	},
 }
 const POTIONS = {
@@ -1570,6 +1702,20 @@ const FOOD = {
 		},
 		"price":20,
 		"material_types":[["cooking"],["cooking"]],
+	},
+	"mayonnaise":{
+		"name":"mayonnaise",
+		"type":"food",
+		"stamina":30,
+		"status":{
+			"type":"buff",
+			"name":"mayonnaise",
+			"mana_regen":8,
+			"stamina_regen":8,
+			"duration":20*60,
+		},
+		"price":15,
+		"material_types":[["cooking","liquid"]],
 	},
 }
 const SPECIAL_ITEM_TYPE_NAME = {
@@ -5771,6 +5917,10 @@ const LEGENDARY_MATERIALS = {
 		},
 	],
 }
+const SOUL_STONES = ["soul_splinter", "soul_shard", "soul_stone", "soul_gem", "soul_jewel", "soul_orb"]
+
+var enchantments_by_slot:= {}
+
 var is_vegan:= false
 
 
@@ -5825,6 +5975,13 @@ func create_tooltip(item: Dictionary) -> String:
 		text += item.components + "\n"
 	text += item.source + "\n\n" + "quality: " + str(int(item.quality)) + "%\n"
 	for k in ATTRIBUTES:
+		if !item.has(k) || int(item[k])==0:
+			continue
+		if item[k]>0:
+			text += k + ": +" + str(int(item[k])) + "\n"
+		else:
+			text += k + ": -" + str(-int(item[k])) + "\n"
+	for k in Characters.DEFAULT_STATS.keys():
 		if !item.has(k) || int(item[k])==0:
 			continue
 		if item[k]>0:
@@ -6012,6 +6169,7 @@ func create_equipment(type: String, components: Array, materials: Array, info:= 
 		item.base_type = type
 	item.quality = 0
 	item.price = 0
+	item.enchantment_potential = randi_range(1, 4)
 	for i in range(components.size()):
 		var dict: Dictionary = EQUIPMENT_COMPONENTS[components[i]]
 		var mat: Dictionary = materials[i]
@@ -6068,11 +6226,18 @@ func craft_equipment(type: String, materials: Array, quality_bonus:= 0) -> Dicti
 func create_equipment_drop(creature: Dictionary) -> Dictionary:
 	var item: Dictionary
 	var quality:= 100
+	var num_enchantments:= 0
 	if creature.has("equipment_quality"):
 		quality *= creature.equipment_quality
 	item = create_random_standard_equipment(EQUIPMENT_RECIPES.keys().pick_random(), {"level":creature.level,"tier":creature.tier,"local_materials":DEFAULT_MATERIALS}, int(creature.tier*randf_range(0.25,0.75) + randf_range(0.0,0.5)), float(quality)/100.0)
-	if !(item.has("enchanted") && item.enchanted) && creature.has("equipment_enchantment_chance") && randf()<creature.equipment_enchantment_chance:
-		item = enchant_equipment(item, ENCHANTMENTS.keys().pick_random(), int(quality*randf_range(0.75,1.25)))
+	num_enchantments -= int(item.has("enchanted") && item.enchanted)
+	if creature.has("equipment_enchantment_chance"):
+		for i in range(3):
+			if randf()<creature.equipment_enchantment_chance:
+				num_enchantments += 1
+	if num_enchantments > 0:
+		for i in range(num_enchantments):
+			item = enchant_equipment(item, ENCHANTMENTS.keys().pick_random(), int(quality*randf_range(0.75,1.25)))
 	item.source = Story.sanitize_string(tr("DROPPED_BY").format({"creature":creature.name}))
 	item.description = create_tooltip(item)
 	return item
@@ -6087,10 +6252,11 @@ func create_legendary_equipment(type: String, level: int, quality:= 150) -> Dict
 	dict = get_artifact_name(type)
 	if dict.has("quality"):
 		add_quality = 100*dict.quality*(1.0 + 0.1*(level-1))
-	item = create_random_standard_equipment(type, {"level":10+int(1.25*level),"tier":0,"local_materials":LEGENDARY_MATERIALS}, 2, 1.5, add_quality)
-	for i in range(2):
-		item = enchant_equipment(item, ENCHANTMENTS.keys().pick_random(), quality + add_quality + 10*level)
+	item = create_random_standard_equipment(type, {"level":10+int(1.2*level),"tier":0,"local_materials":LEGENDARY_MATERIALS}, 2, 1.5, add_quality)
+	for i in range(3):
+		item = enchant_equipment(item, ENCHANTMENTS.keys().pick_random(), quality + add_quality + 10*level, str(i+1))
 	item = merge_dicts(item, dict, scale)
+	item.enchantment_potential = 0
 	item.name = dict.name
 	item.description = dict.description
 	if dict.has("creator"):
@@ -6177,13 +6343,25 @@ func create_regional_material(type: String, region: Dictionary, quality_mod:= 1.
 	material.description = create_tooltip(material)
 	return material
 
+func create_soul_stone_drop(creature: Dictionary) -> Dictionary:
+	var tier: int = min(creature.soul_rarity + randi_range(-1, 1) + 2, SOUL_STONES.size())
+	var type: String = SOUL_STONES[tier]
+	return create_material_drop(type, creature)
 
-func enchant_equipment_material(item: Dictionary, enchantment_type: String, materials: Array, quality_bonus:= 0) -> Dictionary:
-	return enchant_equipment(item, enchantment_type, get_material_quality(materials) + quality_bonus)
 
-func enchant_equipment(item: Dictionary, enchantment_type: String, quality: int) -> Dictionary:
+func enchant_equipment_material(item: Dictionary, enchantment_type: String, materials: Array, quality_bonus:= 0, enchantment_slot:= "") -> Dictionary:
+	return enchant_equipment(item, enchantment_type, get_material_quality(materials) + quality_bonus, enchantment_slot)
+
+func enchant_equipment(item: Dictionary, enchantment_type: String, quality: int, enchantment_slot:= "") -> Dictionary:
 	var dict: Dictionary = ENCHANTMENTS[enchantment_type]
 	var scale:= float(quality)/100.0
+	var total_quality:= quality
+	var slot: String = dict.slot + enchantment_slot
+	if item.has("enchantments") && item.enchantments.has(slot):
+		if item.enchantments[slot].quality > quality:
+			return item
+		quality -= item.enchantments[slot].quality
+		scale -= float(item.enchantments[slot].quality)/100.0
 	for k in ATTRIBUTES:
 		if dict.has(k):
 			var value: int
@@ -6191,6 +6369,13 @@ func enchant_equipment(item: Dictionary, enchantment_type: String, quality: int)
 				value = ceil(dict[k])
 			else:
 				value = ceil(dict[k]*scale)
+			if item.has(k):
+				item[k] += value
+			else:
+				item[k] = value
+	for k in Characters.DEFAULT_STATS.keys():
+		if dict.has(k):
+			var value: int = ceil(dict[k]*scale)
 			if item.has(k):
 				item[k] += value
 			else:
@@ -6203,9 +6388,9 @@ func enchant_equipment(item: Dictionary, enchantment_type: String, quality: int)
 				item[k] = int(ceil(dict[k]*scale))
 		if dict.has(k+"_regen"):
 			if item.has(k+"_regen"):
-				item[k+"_regen"] += dict[k+"_regen"]*scale
+				item[k+"_regen"] += int(ceil(dict[k+"_regen"]*scale))
 			else:
-				item[k+"_regen"] = dict[k+"_regen"]*scale
+				item[k+"_regen"] = int(ceil(dict[k+"_regen"]*scale))
 	if dict.has("damage"):
 		if item.has("damage"):
 			for k in dict.damage.keys():
@@ -6228,10 +6413,24 @@ func enchant_equipment(item: Dictionary, enchantment_type: String, quality: int)
 			item.resistance = {}
 			for k in dict.resistance.keys():
 				item.resistance[k] = dict.resistance[k]*scale
-	item.name = item.name + " " + dict.name.pick_random()
+	if item.name.length() < 25:
+		if dict.has("prefix"):
+			item.name = tr(dict.prefix.pick_random()) + " " + item.name
+		elif dict.has("suffix"):
+			item.name = item.name + " " + tr(dict.suffix.pick_random())
 	item.price += int(ceil(dict.price*(0.75 + 0.25*float(quality)/100.0*float(quality)/100.0)))
-	item.quality = (item.quality + quality)/2
+	item.quality = (item.quality + total_quality)/2
 	item.enchanted = true
+	if !item.has("enchantments"):
+		item.enchantments = {}
+	item.enchantments[slot] = {
+		"type":enchantment_type,
+		"quality":total_quality,
+	}
+	if item.has("enchantment_potential"):
+		item.enchantment_potential -= 1
+	else:
+		item.enchantment_potential = 0
 	item.description = create_tooltip(item)
 	return item
 
@@ -6466,3 +6665,14 @@ func get_artifact_name(type: String) -> Dictionary:
 	stats.description = Story.sanitize_string(Story.format_string(Story.sanitize_string(desc_dict.description.format(format_dict))))
 	stats.description[0] = stats.description[0].to_upper()
 	return stats
+
+
+func _set_enchantment_by_slot():
+	enchantments_by_slot.minor = []
+	enchantments_by_slot.greater = []
+	for type in ENCHANTMENTS.keys():
+		if ENCHANTMENTS[type].has("slot"):
+			enchantments_by_slot[ENCHANTMENTS[type].slot].push_back(type)
+
+func _ready():
+	_set_enchantment_by_slot()
