@@ -131,6 +131,7 @@ var equipment_update:= false
 var inventory_update:= false
 var status_update:= false
 var time_offset:= 0
+var autosave_delay:= 30.0
 
 @warning_ignore("shadowed_global_identifier")
 @onready var log:= $HBoxContainer/VBoxContainer2/Log/RichTextLabel
@@ -783,6 +784,8 @@ func extract_soul() -> float:
 			item.tags = ["cage"]
 			item.quality = int(item.quality*0.75)
 			item.price /= 4
+			item.erase("add")
+			item.description = Items.create_tooltip(item)
 			use_ability("soul_binding", 2.0)
 			add_ability_exp("soul_binding", 10.0)
 			return scaling
@@ -2624,12 +2627,12 @@ func die(enemy: Characters.Enemy):
 			soul_cage.charges += charge
 		else:
 			soul_cage.charges = charge
-		if soul_cage.charges>=50 + randi()%40 + randi()%40 + randi()%40:
+		if soul_cage.charges>=33 + randi()%25 + randi()%25 + randi()%25:
 			remove_item(soul_cage)
-			dict.soul_rarity = int(clamp(round(soul_cage.charges/25.0 - 2.75), -1, 2))
+			dict.soul_rarity = int(clamp(round(soul_cage.charges/15.0 - 2.75), -1, 2))
 			add_item(Items.create_soul_stone_drop(dict))
 			use_ability("soul_binding", 2.0)
-			add_ability_exp("soul_binding", 6.0 + 2.0*max(dict.soul_rarity, 0.0))
+			add_ability_exp("soul_binding", 5.0 + 2.0*max(dict.soul_rarity, 0.0))
 		else:
 			add_ability_exp("soul_binding", 0.25)
 	enemies.erase(enemy)
@@ -2686,7 +2689,7 @@ func start_task(task_ID: int, task:= ""):
 			else:
 				var target_location: String = current_region.cities.pick_random()
 				do_action("goto", {"location":target_location}, TRAVEL_DELAY)
-	_save()
+#	_save()
 
 
 func make_desc_list(array: Array) -> String:
@@ -3175,6 +3178,10 @@ func _process(delta: float):
 		time_step(delta, time)
 		steps += 1
 	
+	autosave_delay -= delta
+	if autosave_delay <= 0.0:
+		_save()
+	
 	update_gui()
 	if info_update:
 		update_info()
@@ -3254,6 +3261,9 @@ func _save():
 	file.store_line(JSON.stringify(player_data))
 	file.store_line(JSON.stringify(data))
 	file.store_line(JSON.stringify({"persons":Story.persons,"story":Story.story,"inventory":Story.inventory,"current_state":Story.current_state}))
+	
+	print("Game saved")
+	autosave_delay = 120.0
 
 func _load():
 	var file:= FileAccess.open("user://saves/"+player_name+".dat", FileAccess.READ)
@@ -3313,12 +3323,15 @@ func _set_timetable(ID: int, index: int):
 				return
 			break
 	timetable[index] = type
+	autosave_delay = 10.0
 
 func _toggle_1h_weapons(button_pressed: bool):
 	weapon_1h_alowed = button_pressed
+	autosave_delay = 10.0
 
 func _toggle_2h_weapons(button_pressed: bool):
 	weapon_2h_alowed = button_pressed
+	autosave_delay = 10.0
 
 func _toggle_weapon_type(button_pressed: bool, type: String):
 	if button_pressed:
@@ -3326,6 +3339,7 @@ func _toggle_weapon_type(button_pressed: bool, type: String):
 			player_weapon_types.push_back(type)
 	else:
 		player_weapon_types.erase(type)
+	autosave_delay = 10.0
 
 func _toggle_armour_type(button_pressed: bool, type: String):
 	if button_pressed:
@@ -3333,6 +3347,7 @@ func _toggle_armour_type(button_pressed: bool, type: String):
 			player_armour_types.push_back(type)
 	else:
 		player_armour_types.erase(type)
+	autosave_delay = 10.0
 
 func _toggle_potion_type(button_pressed: bool, type: String):
 	if button_pressed:
@@ -3340,16 +3355,19 @@ func _toggle_potion_type(button_pressed: bool, type: String):
 			valid_potion_types.push_back(type)
 	else:
 		valid_potion_types.erase(type)
+	autosave_delay = 10.0
 
 func _toggle_skill_module_disabled(button_pressed: bool, type: String):
 	if button_pressed:
 		disabled_skill_modules.erase(type)
 	else:
 		disabled_skill_modules.push_back(type)
+	autosave_delay = 10.0
 
 func _set_time_offset(value: int):
 	time_offset = value
 	update_timetable()
+	autosave_delay = 10.0
 
 
 func _notification(what: int):
