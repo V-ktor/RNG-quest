@@ -327,6 +327,7 @@ class Enemy:
 	var attributes_add: Dictionary
 	var tier: int
 	var soul_rarity: int
+	var soul_add: Dictionary
 	var materials: Array
 	var equipment_drop_chance: float
 	var equipment_quality: float
@@ -387,6 +388,7 @@ class Enemy:
 			"description":description,
 			"tier":tier,
 			"soul_rarity":soul_rarity,
+			"soul_add":soul_add,
 			"level":level,
 			"experience":experience,
 			"health":health,
