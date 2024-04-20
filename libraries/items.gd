@@ -6073,16 +6073,18 @@ func create_tooltip(item: Dictionary) -> String:
 					text += tr(k.to_upper()) + ":\n"
 					for s in item.add[k].keys():
 						var value: int
+						var unit:= ""
 						if k in ["damage", "resistance"]:
 							value = int(100*item.add[k][s])
+							unit = "%"
 						else:
 							value = int(item.add[k][s])
 						if value==0:
 							continue
 						if item.add[k][s]>=0.0:
-							text += "    " + tr(s.to_upper()) + ": +" + str(value) + "\n"
+							text += "    " + tr(s.to_upper()) + ": +" + str(value) + unit + "\n"
 						else:
-							text += "    " + tr(s.to_upper()) + ": -" + str(-value) + "\n"
+							text += "    " + tr(s.to_upper()) + ": -" + str(-value) + unit + "\n"
 	text += "price: " + str(int(item.price))
 	return text
 
