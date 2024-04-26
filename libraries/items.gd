@@ -2829,7 +2829,7 @@ const SPECIAL_JUWELERY_NAME = {
 	},
 	"marble":{
 		"description":[
-			"A {adjective} {base_name} decorated by the marble of theme {theme}.",
+			"A {adjective} {base_name} decorated by the marble of {theme}.",
 			"A large {material} marble resembling {theme} decorates this {adjective} {base_name}.",
 		],
 		"theme":[

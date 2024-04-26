@@ -3404,8 +3404,6 @@ func _load():
 	if !current_region.has("enemy"):
 		current_region.enemy = ["goblin"]
 	Story.hostile_factions = current_region.enemy
-	
-	printt(valid_potion_types)
 
 
 func _set_timetable(ID: int, index: int):
@@ -3555,7 +3553,7 @@ func _ready():
 	randomize()
 	
 #	debug
-#	current_time -= 24*60*60
+#	current_time -= 7*24*60*60
 	
 	if player_weapon_types.size()==0:
 		player_weapon_types = player.valid_weapon_subtypes
