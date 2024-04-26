@@ -293,6 +293,8 @@ func start_game():
 		else:
 			item.source = tr("OLD_ITEM").format({"name":tr(type.to_upper())})
 		item.description = Items.create_tooltip(item)
+		item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+		item.component_description = Items.create_component_tooltip(item)
 		main_instance.equip(item)
 	
 	if "elf" in player_race && (player_alt_race=="" || "elf" in player_alt_race):
