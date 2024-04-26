@@ -173,6 +173,8 @@ func _import():
 	file.store_string(import_data)
 	file.close()
 	print("Imported file " + import_file)
+	
+	load_characters()
 
 func create_instance(player_name: String):
 	main_instance = main.instantiate()
