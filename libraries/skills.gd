@@ -674,7 +674,10 @@ func create_status_tooltip(status: Dictionary) -> String:
 		text += tr("SHIELDINGC") + ": "
 		for i in range(status.shielding.size()):
 			for j in range(status.shielding[i].size()):
-				text += str(int(status.shielding[i].value)) + " " + tr(status.shielding[i].type.to_upper())
+				var value:= int(status.shielding[i].value)
+				if value==0:
+					continue
+				text += str(value) + " " + format_damage_type(status.shielding[i].type)
 				if j<status.shielding[i].size()-1:
 					text += " / "
 			text += "\n"
@@ -1060,6 +1063,11 @@ func create_name(skill: Dictionary) -> String:
 		string = string + " " + n
 	return string.capitalize()
 
+func format_damage_type(type: String) -> String:
+	if type in DAMAGE_COLOR:
+		return "[color=" + DAMAGE_COLOR[type] + "]" + tr(type.to_upper()) + "[/color]"
+	return tr(type.to_upper())
+
 func format_damage(array: Array, attribute: String, left:= "    ") -> String:
 	var text:= ""
 	text += "\n" + left
@@ -1072,10 +1080,7 @@ func format_damage(array: Array, attribute: String, left:= "    ") -> String:
 			text += tr("OF") + " " + tr(data.scaling.to_upper()) + " "
 		else:
 			text += tr("OF") + " " + tr(attribute.to_upper()) + " "
-		if DAMAGE_COLOR.has(data.type):
-			text += tr("AS") + " " + "[color=" + DAMAGE_COLOR[data.type] + "]" + tr(data.type.to_upper()) + "[/color]"
-		else:
-			text += tr("AS") + " " + tr(data.type.to_upper())
+		text += tr("AS") + " " + format_damage_type(data.type)
 	return text
 
 func format_resource(type: String, add:= "") -> String:
