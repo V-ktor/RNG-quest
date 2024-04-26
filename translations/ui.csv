@@ -14,6 +14,7 @@ NAME,Name
 GENDER,Gender
 RACE,Race
 LEVEL,Level
+AVERAGE_LEVEL,Average level
 DIET,Diet
 VEGAN,Vegan
 ABILITIES,Abilities
@@ -196,16 +197,16 @@ HIGH_PRIEST,high priest
 SAINT,saint
 INQUISITOR,inquisitor
 HIGH_INQUISITOR,high inquisitor
-HEALTH,health
-HEALTH_REGEN,health regeneration
-HEALTH_DRAIN,health drain
+HEALTH,Health
+HEALTH_REGEN,Health regeneration
+HEALTH_DRAIN,Health drain
 HEALING,Healing
-DURATION,duration
-DELAY,delay
+DURATION,Duration
+DELAY,Delay
 DAMAGE_TYPE,Damage type
-INCREASES,increases
-DECREASES,decreases
-ARMOUR_PENETRATION,armour penetration
+INCREASES,Increases
+DECREASES,Decreases
+ARMOUR_PENETRATION,Armour penetration
 DAMAGE_STAT,uses
 ATTACK_TYPE,uses
 ATTACK_STAT,uses
@@ -213,7 +214,7 @@ EFFECT_TYPE,uses
 EFFECT_STAT,uses
 HEALING_TYPE,uses
 HEALING_STAT,uses
-ABSORB_DAMAGE,absorb damage
+ABSORB_DAMAGE,Absorb damage
 CUTTING,Cutting
 PIERCING,Piercing
 IMPACT,Impact
@@ -233,14 +234,14 @@ TIER2,common
 TIER3,strong
 TIER4,elite
 TIER5,boss
-DAMAGE,damage
-RESISTANCE,resistance
-ENHANCED,enhanced
-SKILLS,skills
-STATS,stats
-ATTRIBUTES,attributes
-EFFECT,effect
-EFFECT_SCALE,effect scale
+DAMAGE,Damage
+RESISTANCE,Resistance
+ENHANCED,Enhanced
+SKILLS,Skills
+STATS,Stats
+ATTRIBUTES,Attributes
+EFFECT,Effect
+EFFECT_SCALE,Effect scale
 LIVING_IN,"Living in {location}."
 LOCATION,location
 FARMLAND,farmland
@@ -273,6 +274,7 @@ WARNING_OVERWRITTEN,"Warning: character will be overwritten!"
 BUFF,buff
 DEBUFF,debuff
 SPLASH_DAMAGE,splash damage
+REGION,Region
 CITIES,Cities
 LOCATIONS,Locations
 TAVERN,tavern
@@ -299,7 +301,6 @@ SCHEDULE,Schedule
 WEAPONS,Weapons
 POTIONS,Potions
 SKILL_MODULES,Skill Modules
-HEALTHC,Health
 BLESSING_OF,"Blessing of the {name}"
 SKILL_MODULES_DESCRIPTION,"Select which skill modules are allowed when a new skill is created. These settings do not affect existing skills."
 WEAPONS_DESCRIPTION,"Select which weapons your character is allowed to equip."
@@ -314,3 +315,5 @@ RESTING_TOOLTIP,"Chance to receive a long lasting blessing by praying."
 SLEEPING_TOOLTIP,"Sleep is essential. Make sure to sleep long enough and to stay healthy! 7 to 9 hours per day recommended."
 TIME_OFFSET,sleeping time offset
 TIME_OFFSET_TOOLTIP,"Offsets the sleeping time of the character, e.g. with a value of 2 your character goes to bed at 1 am instead the default 23 pm."
+MODULES,Modules
+PRICE,Price

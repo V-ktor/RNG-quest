@@ -33,6 +33,7 @@ HEALTH_STEAL,Health steal
 CASTER,caster
 DEFENCE,Defence
 REFLECT_DAMAGE,Reflect damage
+TYPE,Type
 BASE_TYPE,Base Types
 AIM,Aim
 MELEE_MOD,Melee Modifiers

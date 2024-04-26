@@ -1,6 +1,15 @@
 extends Node
 
 const ATTRIBUTES = ["attack","magic","willpower","accuracy","armour","evasion","penetration","speed"]
+const RANK_COLORS = [
+	Color(0.6,0.6,0.6),
+	Color(1.0,1.0,1.0),
+	Color(0.3,1.0,0.2),
+	Color(0.2,0.6,1.0),
+	Color(1.0,1.0,0.2),
+	Color(0.6,0.2,1.0),
+	Color(0.6,0.5,0.1),
+]
 const EQUIPMENT_COMPONENTS = {
 	"knife":{
 		"subtype":"melee",
@@ -5981,63 +5990,79 @@ func make_list(array: Array) -> String:
 				string += ", and "
 	return string
 
+func format_damage_type(type: String) -> String:
+	if type in Skills.DAMAGE_COLOR:
+		return "[color=" + Skills.DAMAGE_COLOR[type] + "]" + tr(type.to_upper()) + "[/color]"
+	return tr(type.to_upper())
+
+func format_resource(type: String, add:= "") -> String:
+	if type in Skills.RESOURCE_COLOR:
+		return "[color=" + Skills.RESOURCE_COLOR[type] + "]" + tr(type.to_upper() + add) + "[/color]"
+	if type.right(6)=="_regen":
+		var t:= type.left(type.length()-6)
+		if t in Skills.RESOURCE_COLOR:
+			return "[color=" + Skills.RESOURCE_COLOR[t] + "]" + tr(type.to_upper() + add) + "[/color]"
+	return tr(type.to_upper() + add)
+
+func format_item_name(item: Dictionary) -> String:
+	item.rank = get_item_rank(item)
+	return "[color=" + RANK_COLORS[item.rank].to_html(false) + "]" + item.name + "[/color]"
+
 func create_tooltip(item: Dictionary) -> String:
-	if !item.has("source"):
+	if "source" not in item:
 		item.source = tr("UNKNOWN_ORIGIN")
-	var text: String = item.name + "\n" + item.type + "\n"
-	if item.has("components"):
-		text += item.components + "\n"
+	var text: String = format_item_name(item) + "\n" + item.type + "\n"
 	text += item.source + "\n\n" + "quality: " + str(int(item.quality)) + "%\n"
 	for k in ATTRIBUTES:
 		if !item.has(k) || int(item[k])==0:
 			continue
 		if item[k]>0:
-			text += k + ": +" + str(int(item[k])) + "\n"
+			text += tr(k.to_upper()) + ": +" + str(int(item[k])) + "\n"
 		else:
-			text += k + ": -" + str(-int(item[k])) + "\n"
+			text += tr(k.to_upper()) + ": -" + str(-int(item[k])) + "\n"
 	for k in Characters.DEFAULT_STATS.keys():
 		if !item.has(k) || int(item[k])==0:
 			continue
 		if item[k]>0:
-			text += k + ": +" + str(int(item[k])) + "\n"
+			text += tr(k.to_upper()) + ": +" + str(int(item[k])) + "\n"
 		else:
-			text += k + ": -" + str(-int(item[k])) + "\n"
+			text += tr(k.to_upper()) + ": -" + str(-int(item[k])) + "\n"
 	if item.has("healing"):
-		text += "healing: " + str(int(item.healing)) + " " + tr(item.effect.to_upper()) + "\n"
+		text += tr("HEALING") + ": " + str(int(item.healing)) + " " + format_resource(item.effect) + "\n"
 	if item.has("damage"):
-		text += "damage:\n"
+		text += tr("DAMAGE") + ":\n"
 		for k in item.damage.keys():
 			var value:= int(100*item.damage[k])
 			if value==0:
 				continue
 			if item.damage[k]>=0.0:
-				text += "  " + k + ": +" + str(value) + "%\n"
+				text += "  " + format_damage_type(k) + ": +" + str(value) + "%\n"
 			else:
-				text += "  " + k + ": -" + str(-value) + "%\n"
+				text += "  " + format_damage_type(k) + ": -" + str(-value) + "%\n"
 	for k in Characters.RESOURCES:
 		if item.has(k):
 			if item[k]>=0:
-				text += tr(k.to_upper()) + ": +" + str(int(item[k])) + "\n"
+				text += format_resource(k) + ": +" + str(int(item[k])) + "\n"
 			else:
-				text += tr(k.to_upper()) + ": -" + str(-int(item[k])) + "\n"
+				text += format_resource(k) + ": -" + str(-int(item[k])) + "\n"
 		if item.has(k+"_regen") && item[k+"_regen"]!=0:
 			var value:= int(item[k+"_regen"])
 			if value==0:
 				continue
 			if item[k+"_regen"]>0:
-				text += tr(k.to_upper()+"_REGEN") + ": +" + str(value) + "\n"
+				text += format_resource(k, "_REGEN") + ": +" + str(value) + "\n"
 			else:
-				text += tr(k.to_upper()+"_REGEN") + ": -" + str(-value) + "\n"
+				text += format_resource(k, "_REGEN") + ": -" + str(-value) + "\n"
 	if item.has("resistance"):
-		text += "resistance:\n"
+		text += tr("RESISTANCE") + ":\n"
 		for k in item.resistance.keys():
 			var value:= int(100*item.resistance[k])
 			if value==0:
 				continue
 			if item.resistance[k]>=0.0:
-				text += "  " + k + ": +" + str(value) + "%\n"
+				text += "  " + format_damage_type(k) + ": +" + str(value) + "%\n"
 			else:
-				text += "  " + k + ": -" + str(-value) + "%\n"
+				text += "  " + format_damage_type(k) + ": -" + str(-value) + "%\n"
 	if item.has("status"):
 		text += tr("APPLIES_STATUS").format({"status":item.status.name}) + "\n  " + item.status.type + "\n"
 		for k in item.status.keys():
@@ -6050,15 +6075,15 @@ func create_tooltip(item: Dictionary) -> String:
 					text += "  " + tr("INCREASES") + " " + item.status.effect + "\n"
 				continue
 			if typeof(item.status[k])==TYPE_ARRAY:
-				text += "  " + tr(k.to_upper()) + ": " + Names.make_list(item.status[k]) + "\n"
+				text += "  " + format_resource(k) + ": " + Names.make_list(item.status[k]) + "\n"
 			else:
-				text += "  " + tr(k.to_upper()) + ": " + str(int(item.status[k])) + "\n"
+				text += "  " + format_resource(k) + ": " + str(int(item.status[k])) + "\n"
 	if item.has("mod"):
 		for k in item.mod.keys():
 			if item.mod[k]>=0.0:
-				text += tr(k.to_upper()) + ": +" + str(int(100*item.mod[k])) + "%\n"
+				text += format_resource(k) + ": +" + str(int(100*item.mod[k])) + "%\n"
 			else:
-				text += tr(k.to_upper()) + ": -" + str(-int(100*item.mod[k])) + "%\n"
+				text += format_resource(k) + ": -" + str(-int(100*item.mod[k])) + "%\n"
 	if item.has("add"):
 		for k in item.add.keys():
 			match typeof(item.add[k]):
@@ -6066,11 +6091,11 @@ func create_tooltip(item: Dictionary) -> String:
 					var value:= int(item.add[k])
 					if value!=0:
 						if item.add[k]>=0.0:
-							text += tr(k.to_upper()) + ": +" + str(value) + "\n"
+							text += format_resource(k) + ": +" + str(value) + "\n"
 						else:
-							text += tr(k.to_upper()) + ": -" + str(-value) + "\n"
+							text += format_resource(k) + ": -" + str(-value) + "\n"
 				TYPE_DICTIONARY:
-					text += tr(k.to_upper()) + ":\n"
+					text += format_resource(k) + ":\n"
 					for s in item.add[k].keys():
 						var value: int
 						var unit:= ""
@@ -6082,10 +6107,24 @@ func create_tooltip(item: Dictionary) -> String:
 						if value==0:
 							continue
 						if item.add[k][s]>=0.0:
-							text += "    " + tr(s.to_upper()) + ": +" + str(value) + unit + "\n"
+							text += "    " + format_damage_type(s) + ": +" + str(value) + unit + "\n"
 						else:
-							text += "    " + tr(s.to_upper()) + ": -" + str(-value) + unit + "\n"
-	text += "price: " + str(int(item.price))
+							text += "    " + format_damage_type(s) + ": -" + str(-value) + unit + "\n"
+	text += tr("PRICE") + ": " + str(int(item.price))
+	return text
+
+func create_component_tooltip(item: Dictionary) -> String:
+	if "components" not in item:
+		return ""
+	if "source" not in item:
+		item.source = tr("UNKNOWN_ORIGIN")
+	var text: String = format_item_name(item) + "\n" + item.type + "\n" + item.source + "\n\n" + tr("COMPONENTS") + ":"
+	if item.components is Array:
+		for c in item.components:
+			text += "\n  " + c
+	else:
+		text += "\n" + item.components
+	
 	return text
 
 
@@ -6106,6 +6145,21 @@ func merge_dicts(dict: Dictionary, add: Dictionary, multiplier:= 1.0) -> Diction
 		else:
 			dict[k] = add[k]
 	return dict
+
+func get_item_rank(item: Dictionary) -> int:
+	var rank:= 0
+	if "enchantments" in item:
+		rank += item.enchantments.size()
+	elif "enchantment_potential" in item && item.enchantment_potential > 1:
+		rank += 1
+	if "legendary" in item and item.legendary:
+		rank += 2
+	if "mod" in item:
+		rank += 1
+	if "add" in item:
+		rank += 1
+	rank += int(log(1.0 + item.quality/100.0 + 0.1*item.quality/100.0*item.quality/100.0))
+	return min(rank, RANK_COLORS.size()-1)
 
 func pick_random_material(type: String) -> String:
 	var valid:= []
@@ -6232,7 +6286,7 @@ func create_equipment(type: String, components: Array, materials: Array, info:= 
 		for k in item.keys():
 			if typeof(item[k])==TYPE_FLOAT:
 				item[k] = int(round(item[k]))
-	item.components = Names.make_list(component_list)
+	item.components = component_list
 	item.erase("material")
 	if materials.size()>0:
 		var prefix: String = materials.pick_random().name
@@ -6246,6 +6300,8 @@ func create_equipment(type: String, components: Array, materials: Array, info:= 
 		item.name = prefix + " " + item.name
 	item.name = sanitize_name(item.name)
 	item.description = create_tooltip(item)
+	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+	item.component_description = create_component_tooltip(item)
 	return item
 
 func craft_equipment(type: String, materials: Array, quality_bonus:= 0) -> Dictionary:
@@ -6255,6 +6311,8 @@ func craft_equipment(type: String, materials: Array, quality_bonus:= 0) -> Dicti
 	item = create_equipment(dict.type, dict.components, materials, dict, quality_bonus)
 	item.source = tr("CRAFTED_ITEM")
 	item.description = create_tooltip(item)
+	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+	item.component_description = create_component_tooltip(item)
 	return item
 
 func create_equipment_drop(creature: Dictionary) -> Dictionary:
@@ -6274,6 +6332,8 @@ func create_equipment_drop(creature: Dictionary) -> Dictionary:
 			item = enchant_equipment(item, ENCHANTMENTS.keys().pick_random(), int(quality*randf_range(0.75,1.25)))
 	item.source = Story.sanitize_string(tr("DROPPED_BY").format({"creature":creature.name}))
 	item.description = create_tooltip(item)
+	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+	item.component_description = create_component_tooltip(item)
 	return item
 
 func create_legendary_equipment(type: String, level: int, quality:= 150) -> Dictionary:
@@ -6292,13 +6352,15 @@ func create_legendary_equipment(type: String, level: int, quality:= 150) -> Dict
 	item = merge_dicts(item, dict, scale)
 	item.enchantment_potential = 0
 	item.name = dict.name
-	item.description = dict.description
 	if dict.has("creator"):
 		item.source = tr("ARTIFACT_BY_CREATOR").format({"creator":dict.creator}) + "\n"
 		item.source += dict.description
 	else:
 		item.source = dict.description
 	item.description = create_tooltip(item)
+	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+	item.component_description = create_component_tooltip(item)
+	item.legendary = true
 	return item
 
 func create_material_drop(type: String, creature: Dictionary, add_data:= {}) -> Dictionary:
@@ -6326,11 +6388,14 @@ func create_material_drop(type: String, creature: Dictionary, add_data:= {}) -> 
 			TYPE_INT:
 				material.add[k] = int(material.add[k]*quality/100)
 			TYPE_DICTIONARY:
+				if k in ["damage","resistance"]:
+					continue
 				for c in material.add[k].keys():
 					material.add[k][c] *= float(quality)/100.0
-	material.price = int(ceil(material.price*(0.5 + float(quality)/100.0*float(quality)/100.0)))
+	material.price = int(ceil(material.price*(0.5 + float(quality)/100.0*float(quality)/100.0) + 0.25*float(material.add.size()>0)))
 	material.source = Story.sanitize_string(tr("DROPPED_BY").format({"creature":creature.name}))
 	material.description = create_tooltip(material)
+	material.description_plain = Skills.tooltip_remove_bb_code(material.description)
 	return material
 
 func create_regional_material(type: String, region: Dictionary, quality_mod:= 1.0) -> Dictionary:
@@ -6378,6 +6443,7 @@ func create_regional_material(type: String, region: Dictionary, quality_mod:= 1.
 	material.price = int(material.price*(0.5 + 0.5*float(quality)/100.0*float(quality)/100.0))
 	material.quality = quality
 	material.description = create_tooltip(material)
+	material.description_plain = Skills.tooltip_remove_bb_code(material.description)
 	return material
 
 func create_soul_stone_drop(creature: Dictionary) -> Dictionary:
@@ -6399,7 +6465,7 @@ func enchant_equipment(item: Dictionary, enchantment_type: String, quality: int,
 	var total_quality:= quality
 	var slot: String = dict.slot + enchantment_slot
 	merge_dicts(dict, add_data)
-	if item.has("enchantments") && item.enchantments.has(slot):
+	if "enchantments" in item && item.enchantments.has(slot):
 		if item.enchantments[slot].quality > quality:
 			return item
 		quality -= item.enchantments[slot].quality
@@ -6437,9 +6503,9 @@ func enchant_equipment(item: Dictionary, enchantment_type: String, quality: int,
 		if item.has("damage"):
 			for k in dict.damage.keys():
 				if item.damage.has(k):
-					item.damage[k] += dict.damage[k]*scale
+					item.damage[k] += dict.damage[k]*(sqrt(1.0 + scale) - 1.0)
 				else:
-					item.damage[k] = dict.damage[k]*scale
+					item.damage[k] = dict.damage[k]*(sqrt(1.0 + scale) - 1.0)
 		else:
 			item.damage = {}
 			for k in dict.damage.keys():
@@ -6448,9 +6514,9 @@ func enchant_equipment(item: Dictionary, enchantment_type: String, quality: int,
 		if item.has("resistance"):
 			for k in dict.resistance.keys():
 				if item.resistance.has(k):
-					item.resistance[k] += dict.resistance[k]*scale
+					item.resistance[k] += dict.resistance[k]*(sqrt(1.0 + scale) - 1.0)
 				else:
-					item.resistance[k] = dict.resistance[k]*scale
+					item.resistance[k] = dict.resistance[k]*(sqrt(1.0 + scale) - 1.0)
 		else:
 			item.resistance = {}
 			for k in dict.resistance.keys():
@@ -6469,11 +6535,13 @@ func enchant_equipment(item: Dictionary, enchantment_type: String, quality: int,
 		"type":enchantment_type,
 		"quality":total_quality,
 	}
-	if item.has("enchantment_potential"):
+	if "enchantment_potential" in item:
 		item.enchantment_potential -= 1
 	else:
 		item.enchantment_potential = 0
 	item.description = create_tooltip(item)
+	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+	item.component_description = create_component_tooltip(item)
 	return item
 
 
@@ -6481,6 +6549,7 @@ func craft_potion(type: String, materials: Array, quality_bonus:= 0) -> Dictiona
 	var item:= create_potion(type, materials.pick_random().name, get_material_quality(materials) + quality_bonus)
 	item.source = tr("MADE_OUT_OF").format({"items":make_list(materials)})
 	item.description = create_tooltip(item)
+	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 	return item
 
 func create_potion(type: String, name_prefix: String, quality: int) -> Dictionary:
@@ -6512,6 +6581,7 @@ func create_potion(type: String, name_prefix: String, quality: int) -> Dictionar
 func cook(type: String, materials: Array, quality_bonus:= 0) -> Dictionary:
 	var item:= create_food(type, materials.pick_random().name, get_material_quality(materials) + quality_bonus)
 	item.description = create_tooltip(item)
+	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 	return item
 
 func create_food(type: String, name_prefix: String, quality: int) -> Dictionary:
@@ -6538,6 +6608,7 @@ func create_food(type: String, name_prefix: String, quality: int) -> Dictionary:
 				item.status[k] = scale*item.status[k]
 	item.price = int(FOOD[type].price*(0.5 + 0.5*float(quality)/100.0*float(quality)/100.0))
 	item.description = create_tooltip(item)
+	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 	return item
 
 

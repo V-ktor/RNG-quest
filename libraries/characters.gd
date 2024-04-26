@@ -88,6 +88,7 @@ class Character:
 	var max_focus: int
 	var stats: Dictionary
 	var effective_stats: Dictionary
+	var base_attributes: Dictionary
 	var attributes: Dictionary
 	var abilities: Dictionary
 	var skills: Array
@@ -128,15 +129,20 @@ class Character:
 		valid_weapon_subtypes.clear()
 		valid_armour_subtypes.clear()
 		effective_stats = stats.duplicate(true)
+		
 		for k in ATTRIBUTES:
 			attributes[k] = 0
+			base_attributes[k] = 0
+		
 		for ability in abilities.keys():
 			if !Skills.ABILITIES.has(ability):
 				continue
+			
 			var dict: Dictionary = Skills.ABILITIES[ability]
 			for k in attributes:
 				if dict.has(k):
 					attributes[k] = int(ceil(attributes[k] + dict[k]*abilities[ability]))
+					base_attributes[k] = attributes[k]
 			for k in RESOURCES:
 				if dict.has(k):
 					set("max_"+k, get("max_"+k) + dict[k])
@@ -165,6 +171,7 @@ class Character:
 			for k in stats:
 				if dict.has(k):
 					effective_stats[k] += int(dict[k])
+		
 		for item in equipment.values():
 			for k in attributes:
 				if item.has(k):
@@ -189,6 +196,7 @@ class Character:
 			for k in stats:
 				if item.has(k):
 					effective_stats[k] += int(item[k])
+		
 		for dict in status:
 			if dict.has("attributes"):
 				for k in dict.attributes:
@@ -204,14 +212,19 @@ class Character:
 					set("max_"+k, get("max_"+k) + dict[k])
 				if dict.has(k+"_regen"):
 					set(k+"_regen", get(k+"_regen") + dict[k+"_regen"])
+		
 		for s in STATS_ATTRIBUTES.keys():
 			for k in STATS_ATTRIBUTES[s].keys():
 				attributes[k] += int(effective_stats[s]*STATS_ATTRIBUTES[s][k])
+				base_attributes[k] += int(stats[s]*STATS_ATTRIBUTES[s][k])
+		
 		for s in STATS_METERS.keys():
 			for k in STATS_METERS[s].keys():
 				set(k, get(k) + effective_stats[s]*STATS_METERS[s][k])
+		
 		for k in attributes:
 			attributes[k] = max(attributes[k], 1)
+		
 		if health>max_health:
 			health = max_health
 		if mana>max_mana:
@@ -347,16 +360,20 @@ class Enemy:
 		attributes.clear()
 		valid_weapon_subtypes.clear()
 		valid_armour_subtypes.clear()
+		
 		for k in ATTRIBUTES:
 			attributes[k] = 0
 		for k in attributes_add.keys():
 			attributes[k] += attributes_add[k]
+		
 		for s in STATS_ATTRIBUTES.keys():
 			for k in STATS_ATTRIBUTES[s].keys():
 				attributes[k] += int(stats[s]*STATS_ATTRIBUTES[s][k])
+		
 		for s in STATS_METERS.keys():
 			for k in STATS_METERS[s].keys():
 				set(k, get(k) + stats[s]*STATS_METERS[s][k])
+		
 		for dict in status:
 			if dict.has("attributes"):
 				for k in dict.attributes:
@@ -364,8 +381,11 @@ class Enemy:
 						attributes[k] = int(attributes[k] + dict.attributes[k].value)
 					else:
 						attributes[k] = int(attributes[k] + dict.attributes[k])
+		
 		for k in attributes:
 			attributes[k] = max(attributes[k], 1)
+			base_attributes[k] = attributes[k]
+		
 		if health>max_health:
 			health = max_health
 		if mana>max_mana:
@@ -433,16 +453,20 @@ class Summon:
 		attributes.clear()
 		valid_weapon_subtypes.clear()
 		valid_armour_subtypes.clear()
+		
 		for k in ATTRIBUTES:
 			attributes[k] = 0
 		for k in attributes_add.keys():
 			attributes[k] += attributes_add[k]
+		
 		for s in STATS_ATTRIBUTES.keys():
 			for k in STATS_ATTRIBUTES[s].keys():
 				attributes[k] += int(stats[s]*STATS_ATTRIBUTES[s][k])
+		
 		for s in STATS_METERS.keys():
 			for k in STATS_METERS[s].keys():
 				set(k, get(k) + stats[s]*STATS_METERS[s][k])
+		
 		for dict in status:
 			if dict.has("attributes"):
 				for k in dict.attributes:
@@ -450,8 +474,11 @@ class Summon:
 						attributes[k] = int(attributes[k] + dict.attributes[k].value)
 					else:
 						attributes[k] = int(attributes[k] + dict.attributes[k])
+		
 		for k in attributes:
 			attributes[k] = max(attributes[k], 1)
+			base_attributes[k] = attributes[k]
+		
 		if health>max_health:
 			health = max_health
 		if mana>max_mana:
@@ -712,18 +739,18 @@ func create_status(dict: Dictionary, actor: Character, target: Character, durati
 		if dict.has("scaling"):
 			for k in status.attributes.keys():
 				if typeof(status.attributes[k])==TYPE_DICTIONARY:
-					status.attributes[k].value = status.attributes[k].value + dict.scaling*actor.attributes[status.attributes[k].attribute]
+					status.attributes[k].value = status.attributes[k].value + dict.scaling*actor.base_attributes[status.attributes[k].attribute]
 				else:
 					var value:= 0.0
 					if dict.has("scaling_attribute"):
-						value += status.attributes[k] + dict.scaling*actor.attributes[dict.scaling_attribute]
+						value += status.attributes[k] + dict.scaling*actor.base_attributes[dict.scaling_attribute]
 					if dict.has("scaling_stat"):
 						value += status.attributes[k] + dict.scaling*actor.stats[dict.scaling_stat]
 					status.attributes[k] = value
 		else:
 			for k in status.attributes.keys():
 				if typeof(status.attributes[k])==TYPE_DICTIONARY:
-					status.attributes[k].value = status.attributes[k].value + dict.scaling*actor.attributes[status.attributes[k].attribute]
+					status.attributes[k].value = status.attributes[k].value + dict.scaling*actor.base_attributes[status.attributes[k].attribute]
 	if dict.has("damage"):
 		var total_damage:= 0
 		var attack_multiplier:= 1.0

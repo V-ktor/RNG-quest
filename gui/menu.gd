@@ -2,6 +2,8 @@ extends Node
 
 const MAP_SCROLL_SPEED = 30.0
 
+var version:= "0.0.6"
+
 var characters:= []
 var main:= preload("res://gui/main.tscn")
 var main_instance: Node
@@ -178,6 +180,7 @@ func _import():
 
 func create_instance(player_name: String):
 	main_instance = main.instantiate()
+	main_instance.version = version
 	main_instance.player_name = player_name
 	main_instance._load()
 	progress_bar.max_value = Time.get_unix_time_from_system() - main_instance.current_time
@@ -198,6 +201,7 @@ func _process(delta: float):
 		set_process(false)
 
 func _ready():
+	$VersionLabel.text = version
 	
 	if OS.has_feature("web") || OS.has_feature("mobile"):
 		$Panel/VBoxContainer/Button3.hide()

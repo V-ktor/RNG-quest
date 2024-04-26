@@ -681,116 +681,6 @@ func create_status_tooltip(status: Dictionary) -> String:
 	text += tr("DURATION") + ": " + str(status.duration).pad_decimals(1) + " / " + str(status.max_duration).pad_decimals(1)
 	return text
 
-func _create_tooltip(skill: Dictionary) -> String:
-	var text: String = skill.name + " " + convert_to_roman_number(skill.level) + "\n"
-	if ABILITIES.has(skill.ability):
-		text += tr(ABILITIES[skill.ability].name.to_upper())
-	else:
-		text += tr(skill.ability.to_upper())
-	text += " " + skill.type + " skill\n\n"
-	if skill.has("damage_type"):
-		var _scale:= 100
-		if skill.has("damage_scale"):
-			_scale = 100*skill.damage_scale
-		for k in ["attack_type","attack_stat"]:
-			if !skill.has(k):
-				continue
-			if typeof(skill[k])==TYPE_ARRAY:
-				text += tr(k.to_upper()) + ": " + str(_scale) + "% " + Names.make_list(skill[k]) + "\n"
-			else:
-				text += tr(k.to_upper()) + ": " + str(_scale) + "% " + skill[k] + "\n"
-	if skill.has("damage_stat"):
-		var _scale:= 100
-		if skill.has("damage_scale"):
-			_scale = 100*skill.damage_scale
-		if typeof(skill.damage_stat)==TYPE_ARRAY:
-			text += tr("DAMAGE_STAT") + ": " + str(_scale) + "% " + Names.make_list(skill.damage_stat) + "\n"
-		else:
-			text += tr("DAMAGE_STAT") + ": " + str(_scale) + "% " + skill.damage_stat + "\n"
-	if skill.has("damage_type"):
-		text += tr("DAMAGE_TYPE") + ": " + tr(skill.damage_type.to_upper()) + "\n"
-	if skill.has("armour_penetration"):
-		text += tr("ARMOUR_PENETRATION") + ": " + str(int(100*Characters.get_resistance(skill.armour_penetration))) + "%\n"
-	if skill.has("effect"):
-		if typeof(skill.effect)==TYPE_ARRAY:
-			if skill.type=="debuff":
-				text += tr("DECREASES") + ": " + Names.make_list(skill.effect) + "\n"
-			else:
-				text += tr("INCREASES") + ": " + Names.make_list(skill.effect) + "\n"
-		else:
-			if skill.type=="debuff":
-				text += tr("DECREASES") + ": " + skill.effect + "\n"
-			else:
-				text += tr("INCREASES") + ": " + skill.effect + "\n"
-	if skill.has("absorb_damage"):
-		text += tr("ABSORB_DAMAGE") + ": " + str(int(100*skill.absorb_damage)) + "%\n"
-	if skill.has("accuracy"):
-		if skill.has("effect_scale"):
-			text += tr("INCREASES") + " " + "accuracy: " + "\n" + str(int(100*skill.effect_scale)) + "%\n"
-		else:
-			text += tr("INCREASES") + " " + "accuracy: 100%\n"
-	if skill.has("health_regen"):
-		if skill.health_regen>=0 && skill.type!="debuff":
-			text += tr("HEALTH_REGEN") + ": " + str(skill.health_regen).pad_decimals(2) + "\n"
-		else:
-			text += tr("HEALTH_DRAIN") + ": " + str(abs(skill.health_regen)).pad_decimals(2) + "\n"
-	for c in ["effect","healing"]:
-		var _scale:= 100
-		if skill.has(c+"_scale"):
-			_scale = 100*skill[c+"_scale"]
-		if c=="attack" && skill.has("damage_scale"):
-			_scale = 100*skill.damage_scale
-		for k in [c+"_type",c+"_stat"]:
-			if !skill.has(k):
-				continue
-			if typeof(skill[k])==TYPE_ARRAY:
-				text += tr(k.to_upper()) + ": " + str(_scale) + "% " + Names.make_list(skill[k]) + "\n"
-			else:
-				text += tr(k.to_upper()) + ": " + str(_scale) + "% " + skill[k] + "\n"
-	if skill.has("duration"):
-		text += tr("DURATION") + ": " + str(skill.duration).pad_decimals(1) + "\n"
-	if skill.has("debuff"):
-		var _scale:= 100
-		if skill.has("effect_scale"):
-			_scale = 100*skill.effect_scale
-		text += tr(skill.debuff.type) + ":\n  " + skill.debuff.name + "\n"
-		if skill.debuff.has("effect"):
-			if typeof(skill.debuff.effect)==TYPE_ARRAY:
-				text += "  " + tr("DECREASES") + ": " + Names.make_list(skill.debuff.effect) + "\n"
-			else:
-				text += "  " + tr("DECREASES") + ": " + skill.debuff.effect + "\n"
-		if skill.debuff.has("effect_type"):
-			text += "  " + tr("EFFECT_TYPE") + ": " + str(_scale) + "% " + skill.debuff.effect_type + "\n"
-		if skill.debuff.has("effect_stat"):
-			text += "  " + tr("EFFECT_STAT") + ": " + str(_scale) + "% " + skill.debuff.effect_stat + "\n"
-		if skill.debuff.has("health"):
-			text += "  " + tr("HEALTH") + ": -" + str(skill.debuff.health) + "\n"
-		if skill.debuff.has("health_regen"):
-			text += "  " + tr("HEALTH_DRAIN") + ": " + str(skill.debuff.health_regen).pad_decimals(2) + "\n"
-		text += "  " + tr("DURATION") + ": " + str(skill.debuff.duration).pad_decimals(1) + "\n"
-	if skill.has("status"):
-		var _scale:= 100
-		if skill.has("effect_scale"):
-			_scale = 100*skill.effect_scale
-		text += tr(skill.status.type) + ":\n  " + skill.status.name + "\n"
-		if skill.status.has("effect"):
-			if typeof(skill.status.effect)==TYPE_ARRAY:
-				text += "  " + tr("INCREASES") + ": " + Names.make_list(skill.status.effect) + "\n"
-			else:
-				text += "  " + tr("INCREASES") + ": " + skill.status.effect + "\n"
-		if skill.status.has("effect_type"):
-			text += "  " + tr("EFFECT_TYPE") + ": " + str(_scale) + "% " + skill.status.effect_type + "\n"
-		if skill.status.has("effect_stat"):
-			text += "  " + tr("EFFECT_STAT") + ": " + str(_scale) + "% " + skill.status.effect_stat + "\n"
-		if skill.status.has("health"):
-			text += "  " + tr("HEALTH") + ": +" + str(skill.status.health) + "\n"
-		if skill.status.has("health_regen"):
-			text += "  " + tr("HEALTH_REGEN") + ": " + str(skill.status.health_regen).pad_decimals(2) + "\n"
-		text += "  " + tr("DURATION") + ": " + str(skill.status.duration).pad_decimals(1) + "\n"
-	if skill.has("delay"):
-		text += tr("DELAY") + ": " + str(skill.delay).pad_decimals(1)
-	return text
-
 
 func convert_to_roman_number(number: int) -> String:
 	var string:= ""
@@ -826,7 +716,6 @@ func convert_to_roman_number(number: int) -> String:
 					number -= 900
 		i -= 1
 	return string
-
 
 
 # skills #
@@ -1183,18 +1072,22 @@ func format_damage(array: Array, attribute: String, left:= "    ") -> String:
 			text += tr("OF") + " " + tr(data.scaling.to_upper()) + " "
 		else:
 			text += tr("OF") + " " + tr(attribute.to_upper()) + " "
-#		if DAMAGE_COLOR.has(data.type):
-#			text += tr("AS") + " " + "[color=" + DAMAGE_COLOR[data.type] + "]" + tr(data.type.to_upper()) + "[/color]"
-#		else:
-		text += tr("AS") + " " + tr(data.type.to_upper())
+		if DAMAGE_COLOR.has(data.type):
+			text += tr("AS") + " " + "[color=" + DAMAGE_COLOR[data.type] + "]" + tr(data.type.to_upper()) + "[/color]"
+		else:
+			text += tr("AS") + " " + tr(data.type.to_upper())
 	return text
+
+func format_resource(type: String, add:= "") -> String:
+	if type in RESOURCE_COLOR:
+		return "[color=" + RESOURCE_COLOR[type] + "]" + tr(type.to_upper() + add) + "[/color]"
+	return tr(type.to_upper() + add)
 
 func format_status(status: Dictionary, attribute: String, left:= "    ") -> String:
 	var text:= ""
 	text += "\n" + left + status.name + ":\n    " + left + status.type
 	if status.has("focus"):
-#		text += "\n" + left + "    [color=" + RESOURCE_COLOR.focus + "]" + tr("FOCUS") + ": " + str(status.focus) + "[/color]"
-		text += "\n" + left + "    " + tr("FOCUS") + ": " + str(status.focus)
+		text += "\n" + left + "    [color=" + RESOURCE_COLOR.focus + "]" + tr("FOCUS") + ": " + str(status.focus) + "[/color]"
 	if status.has("stun"):
 		text += "\n" + left + "    " + tr("STUN") + ": " + str(int(100*status.stun)) + "%"
 	for type in ["damage","healing","shielding"]:
@@ -1217,15 +1110,21 @@ func format_status(status: Dictionary, attribute: String, left:= "    ") -> Stri
 							else:
 								text += "\n" + left + "    " + tr(k.to_upper()) + ": -" + str(-int(status.attributes[k].value)) + " - " + str(-int(100*status.attributes[k].scaling)) + "% " + tr("OF") + " " + status.attributes[k].attribute
 					else:
+						var value:= int(status.attributes[k].value)
+						if value==0:
+							continue
 						if status.attributes[k].value>=0:
-							text += "\n" + left + "    " + tr(k.to_upper()) + ": +" + str(int(status.attributes[k].value))
+							text += "\n" + left + "    " + tr(k.to_upper()) + ": +" + str(value)
 						else:
-							text += "\n" + left + "    " + tr(k.to_upper()) + ": -" + str(-int(status.attributes[k].value))
+							text += "\n" + left + "    " + tr(k.to_upper()) + ": -" + str(-value)
 				TYPE_FLOAT, TYPE_INT:
+					var value:= int(status.attributes[k])
+					if value==0:
+						continue
 					if status.attributes[k]>=0:
-						text += "\n" + left + "    " + tr(k.to_upper()) + ": +" + str(int(status.attributes[k]))
+						text += "\n" + left + "    " + tr(k.to_upper()) + ": +" + str(value)
 					else:
-						text += "\n" + left + "    " + tr(k.to_upper()) + ": -" + str(-int(status.attributes[k]))
+						text += "\n" + left + "    " + tr(k.to_upper()) + ": -" + str(-value)
 				_:
 					text += "\n" + left + "    " + tr(k.to_upper()) + ": " + str(status.attributes[k])
 	if status.has("reflect_damage"):
@@ -1271,8 +1170,7 @@ func create_tooltip(skill: Dictionary) -> String:
 	if skill.has("cost") && skill.cost.size()>0:
 		text += "\n" + tr("COST") + ":"
 		for k in skill.cost.keys():
-#			text += "\n    [color=" + RESOURCE_COLOR[k] + "]" + tr(k.to_upper()) + ": " + str(skill.cost[k]) + "[/color]"
-			text += "\n    " + tr(k.to_upper()) + ": " + str(skill.cost[k]).pad_decimals(1)
+			text += "\n    " + format_resource(k) + ": " + str(skill.cost[k]).pad_decimals(1)
 	
 	for type in ["damage","healing","shielding"]:
 		if !skill.has("combat") || !skill.combat.has(type):
@@ -1283,7 +1181,6 @@ func create_tooltip(skill: Dictionary) -> String:
 	if skill.has("summoning") && skill.summoning.size()>0:
 		text += "\n" + tr("SUMMONING") + ":"
 		for k in skill.summoning.keys():
-#			text += "\n    [color=" + ATTRIBUTE_COLOR[k] + "]" + tr(k.to_upper()) + ": " + str(skill.summoning[k]) + "[/color]"
 			text += "\n    " + str(int(100*skill.summoning[k])) + "% " + tr("OF") + " " + tr(k.to_upper())
 		text += "\n    " + tr("STATS") + ":"
 		for k in skill.summon_stats.keys():
@@ -1332,6 +1229,60 @@ func create_tooltip(skill: Dictionary) -> String:
 	
 	return text
 
+func create_module_tooltip(skill: Dictionary) -> String:
+	var text: String = skill.name + "\n" + tr(skill.type.to_upper()) + " "
+	var abilities:= []
+	if skill.has("usage"):
+		match skill.usage:
+			"attack":
+				text += tr("ATTACK")
+			"heal":
+				text += tr("HEALING")
+			"buff":
+				text += tr("BUFF")
+			"summon":
+				text += tr("SUMMON")
+			_:
+				text += tr("SKILL")
+	else:
+		text += tr("SKILL")
+	text += "\n\n" + tr("MODULES") + ":"
+	
+	for s in skill.slots.keys():
+		var cat: String = s
+		if s=="base_type":
+			cat = "type"
+		for j in range(skill.slots[s].size()):
+			var t = skill.slots[s][j]
+			if t==null:
+				continue
+			text += "\n  " + tr(cat.to_upper()) + " - " + tr(t.to_upper())
+	
+	text += "\n" + tr("ABILITIES") + ":"
+	for s in skill.slots.keys():
+		for t in skill.slots[s]:
+			for a in ABILITIES.keys():
+				if a in abilities || a not in ABILITY_MODULES || s not in ABILITY_MODULES[a] || t not in ABILITY_MODULES[a][s]:
+					continue
+				abilities.push_back(a)
+				text += "\n  " + tr(ABILITIES[a].name.to_upper())
+	
+	return text
+
+func tooltip_remove_bb_code(input: String) -> String:
+	var output:= ""
+	var pos:= 0
+	var regex:= RegEx.new()
+	var result: Array[RegExMatch]
+	regex.compile(r'\[[\w0-9=",./#]+\]')
+	result = regex.search_all(input)
+	for m in result:
+		output += input.substr(pos, m.get_start() - pos)
+		pos = m.get_end()
+	output += input.substr(pos)
+	return output
+
+
 func create_random_skill(abilities: Array, force_type:= "", basic:= false, invalid_names:= [], exceptions:= []) -> Dictionary:
 	var type:= force_type
 	var skill_name: String
@@ -1357,6 +1308,8 @@ func create_random_skill(abilities: Array, force_type:= "", basic:= false, inval
 	skill.erase("shielding")
 	skill.erase("auto_naming")
 	skill.description = create_tooltip(skill)
+	skill.description_plain = tooltip_remove_bb_code(skill.description)
+	skill.module_description = create_module_tooltip(skill)
 	return skill
 
 
@@ -1367,7 +1320,7 @@ func get_file_paths(path: String) -> Array:
 	var dir:= DirAccess.open(path)
 	var error:= DirAccess.get_open_error()
 	if error!=OK:
-		print("Error when accessing "+path+"!")
+		print("Error when accessing " + path + "!")
 		return array
 	
 	dir.list_dir_begin()
@@ -1384,7 +1337,7 @@ func get_sub_dirs(path: String) -> Array:
 	var dir:= DirAccess.open(path)
 	var error:= DirAccess.get_open_error()
 	if error!=OK:
-		print("Error when accessing "+path+"!")
+		print("Error when accessing " + path + "!")
 		return array
 	
 	dir.list_dir_begin()

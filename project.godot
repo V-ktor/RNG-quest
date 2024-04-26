@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="RNG Quest"
+config/version="0.0.6"
 run/main_scene="res://gui/menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"

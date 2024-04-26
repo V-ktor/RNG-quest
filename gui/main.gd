@@ -85,6 +85,7 @@ const HANGOUT_LOCATIONS = [
 	"BATH_HOUSE","TOILET","BARBER_SHOP","SPA","DOCTOR","DENTIST",
 ]
 
+var version:= ""
 var player_name:= "Player"
 var player_gender:= "None"
 var player_race:= "Unknown"
@@ -130,6 +131,7 @@ var skill_update:= false
 var equipment_update:= false
 var inventory_update:= false
 var status_update:= false
+var auto_update_options:= true
 var time_offset:= 0
 var autosave_delay:= 30.0
 
@@ -137,6 +139,7 @@ var autosave_delay:= 30.0
 @onready var log:= $HBoxContainer/VBoxContainer2/Log/RichTextLabel
 @onready var log_quest:= $HBoxContainer/VBoxContainer4/Quests/RichTextLabel
 @onready var log_summary:= $HBoxContainer/VBoxContainer8/Log/RichTextLabel
+@onready var tooltip:= $Tooltip
 
 func set_region(type: String) -> String:
 	current_region = Regions.create_region(type)
@@ -265,8 +268,9 @@ func upgrade_skill(skill:= {}):
 	if skill.has("cooldown"):
 		skill.cooldown *= get_level_scaling(skill.level, 0.25)
 	skill.description = Skills.create_tooltip(skill)
+	skill.description_plain = Skills.tooltip_remove_bb_code(skill.description)
 	if skill in player.skills:
-		text = tr("SKILL_UPGRADE_LOG").format({"name":skill.name,"level":Skills.convert_to_roman_number(skill.level),"description":skill.description})
+		text = tr("SKILL_UPGRADE_LOG").format({"name":skill.name,"level":Skills.convert_to_roman_number(skill.level),"description":skill.description_plain})
 		print_log_msg(text)
 		print_summary_msg(text)
 
@@ -336,7 +340,6 @@ func learn_new_ability(type:= ""):
 	if type.length()==0:
 		type = pick_ability()
 	if type.length()==0:
-#		learn_new_skill()
 		for ability in player.abilities.keys():
 			player.abilities[ability] += 1
 		return
@@ -399,10 +402,9 @@ func add_item(item: Dictionary, amount:= 1):
 	for i in range(amount):
 		player_inventory.push_back(item)
 
-func remove_item(item: Dictionary, amount:= 1) -> bool:
+func remove_item(item: Dictionary, amount:= 1):
 	for i in range(amount):
 		player_inventory.erase(item)
-	return false
 
 func sell_item(item: Dictionary, amount:= 1) -> int:
 	if !(item in player_inventory):
@@ -541,6 +543,7 @@ func create_shop_equipment(type: String, quality_mod:= 1.0) -> Dictionary:
 		item = Items.enchant_equipment(item, Items.ENCHANTMENTS.keys().pick_random(), quality)
 	item.source = tr("BOUGHT_FROM_SHOP").format({"location":current_location})
 	item.description = Items.create_tooltip(item)
+	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 	return item
 
 func create_shop_potion(type:="") -> Dictionary:
@@ -570,6 +573,7 @@ func create_shop_potion(type:="") -> Dictionary:
 	item = Items.craft_potion(type, [material])
 	item.source = tr("BOUGHT_FROM_SHOP").format({"location":current_location})
 	item.description = Items.create_tooltip(item)
+	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 	return item
 
 func create_shop_material(material:="") -> Dictionary:
@@ -608,6 +612,7 @@ func create_shop_material(material:="") -> Dictionary:
 	item = Items.create_regional_material(material, dict)
 	item.source = tr("BOUGHT_FROM_SHOP").format({"location":current_location})
 	item.description = Items.create_tooltip(item)
+	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 	return item
 
 func can_do_damage_type(type: String) -> bool:
@@ -786,6 +791,8 @@ func extract_soul() -> float:
 			item.price /= 4
 			item.erase("add")
 			item.description = Items.create_tooltip(item)
+			item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+			queue_inventory_update()
 			use_ability("soul_binding", 2.0)
 			add_ability_exp("soul_binding", 10.0)
 			return scaling
@@ -812,15 +819,16 @@ func level_up():
 	elif player.level%5==0:
 		learn_new_skill()
 	upgrade_skill()
-	valid_potion_types = ["health"]
-	for skill in player.skills:
-		if !skill.has("cost"):
-			continue
-		for k in skill.cost.keys():
-			if k=="focus":
+	if auto_update_options:
+		valid_potion_types = ["health"]
+		for skill in player.skills:
+			if !skill.has("cost"):
 				continue
-			if !(k in valid_potion_types):
-				valid_potion_types.push_back(k)
+			for k in skill.cost.keys():
+				if k=="focus":
+					continue
+				if !(k in valid_potion_types):
+					valid_potion_types.push_back(k)
 	queue_skill_update()
 	queue_info_update()
 	print_log_msg("\n")
@@ -895,6 +903,7 @@ func guild_level_up(guild: String):
 			amount = randi_range(10,14)
 	item.source = tr("GUILD_REWARD").format({"guild":tr(Guilds.GUILDS[guild].name.to_upper())})
 	item.description = Items.create_tooltip(item)
+	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 	add_item(item, amount)
 	optimize_equipment()
 	print_log_msg(tr("GUILD_ITEM_REWARD").format(item))
@@ -982,7 +991,7 @@ func next_chapter():
 			Story.create_person(current_region.race.pick_random(), current_region.cities.pick_random())
 	if quest_chapter>0:
 		var item:= Items.create_legendary_equipment(player.equipment.values().pick_random().base_type, max(10*(current_region.tier+1) + (player.level+current_region.level)/2, 1))
-		var log_text:= tr("QUEST_ARTIFACT_REWARD").format({"item":item.name,"description":item.description,"chapter":quest_chapter})
+		var log_text:= tr("QUEST_ARTIFACT_REWARD").format({"item":item.name,"description":item.description_plain,"chapter":quest_chapter})
 		print_log_msg(log_text)
 		print_summary_msg(log_text)
 		add_item(item)
@@ -1017,6 +1026,7 @@ func start_quest():
 			var item:= create_shop_equipment(k, randf_range(0.9,1.1))
 			item.source = tr("FOUND_IN_LOCATION").format({"location":current_location})
 			item.description = Items.create_tooltip(item)
+			item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 			loot.push_back(item)
 	update_quest_log()
 
@@ -1041,6 +1051,7 @@ func quest_done():
 			else:
 				item.source = tr("QUEST_REWARD")
 			item.description = Items.create_tooltip(item)
+			item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 			print_log_msg(tr("QUEST_ITEM_REWARD").format(item))
 			add_item(item)
 			optimize_equipment()
@@ -1054,6 +1065,7 @@ func quest_done():
 			else:
 				item.source = tr("QUEST_REWARD")
 			item.description = Items.create_tooltip(item)
+			item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 			print_log_msg(tr("QUEST_ITEM_REWARD").format(item))
 			player_potions.push_back(item)
 			queue_inventory_update()
@@ -1131,6 +1143,7 @@ func action_done(action: Dictionary):
 					var item:= Items.create_regional_material(dict.location_resources[current_location].pick_random(), dict)
 					item.source = tr("HARVESTED_IN_LOCATION").format({"location":current_location})
 					item.description = Items.create_tooltip(item)
+					item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 					loot.push_back(item)
 				print_log_msg("\n"+tr("FIND_RESOURCE_LOG"))
 				add_guild_exp("harvest",loot.size())
@@ -1160,7 +1173,7 @@ func action_done(action: Dictionary):
 					var dict:= status.duplicate()
 					trap.level = 2*player.abilities.trapping - 1
 					dict.name = dict.name.capitalize()
-					dict.description = Skills.create_tooltip(trap)
+					dict.description = Skills.tooltip_remove_bb_code(Skills.create_tooltip(trap))
 					print_log_msg(tr("TRAPPING_LOG").format(dict))
 					target.add_status(status)
 					use_ability("trapping", 1.0)
@@ -1256,7 +1269,8 @@ func action_done(action: Dictionary):
 			if player_inventory.size() > 0:
 				var item: Dictionary = player_inventory.pick_random()
 				var price:= sell_item(item)
-				print_log_msg(tr("SOLD_LOG").format({"name":item.name,"description":item.description,"amount":1,"price":price}))
+				var description: String = item.get("description_plain", item.get("description", ""))
+				print_log_msg(tr("SOLD_LOG").format({"name":item.name,"description":description,"amount":1,"price":price}))
 				add_guild_exp("sell")
 			else:
 				action_failures += 1
@@ -1265,8 +1279,9 @@ func action_done(action: Dictionary):
 			for potion in player_potions:
 				if !(potion.effect in valid_potion_types):
 					var price:= sell_item(potion)
+					var description: String = potion.get("description_plain", potion.get("description", ""))
 					player_potions.erase(potion)
-					print_log_msg(tr("SOLD_LOG").format({"name":potion.name,"description":potion.description,"amount":1,"price":price}))
+					print_log_msg(tr("SOLD_LOG").format({"name":potion.name,"description":description,"amount":1,"price":price}))
 					sold = true
 					break
 			if !sold:
@@ -1314,7 +1329,7 @@ func action_done(action: Dictionary):
 				if !player.equipment.has(replace) || compare_items([item], [player.equipment[replace]])>0:
 					var bought:= buy_item(item)
 					if bought:
-						print_log_msg(tr("BUY_LOG").format({"name":item.name,"description":item.description,"amount":1,"price":item.price}))
+						print_log_msg(tr("BUY_LOG").format({"name":item.name,"description":item.description_plain,"amount":1,"price":item.price}))
 						equip(item)
 						queue_inventory_update()
 						add_guild_exp("buy",2.0)
@@ -1331,7 +1346,7 @@ func action_done(action: Dictionary):
 			var item:= create_shop_potion()
 			var bought:= buy_item(item)
 			if bought:
-				print_log_msg(tr("BUY_LOG").format({"name":item.name,"description":item.description,"amount":1,"price":item.price}))
+				print_log_msg(tr("BUY_LOG").format({"name":item.name,"description":item.description_plain,"amount":1,"price":item.price}))
 				player_potions.push_back(item)
 				queue_inventory_update()
 				add_guild_exp("buy")
@@ -1346,7 +1361,7 @@ func action_done(action: Dictionary):
 			else:
 				var bought:= buy_item(item)
 				if bought:
-					print_log_msg(tr("BUY_LOG").format({"name":item.name,"description":item.description,"amount":1,"price":item.price}))
+					print_log_msg(tr("BUY_LOG").format({"name":item.name,"description":item.description_plain,"amount":1,"price":item.price}))
 					add_item(item)
 					queue_inventory_update()
 					add_guild_exp("buy",0.5)
@@ -1367,8 +1382,9 @@ func action_done(action: Dictionary):
 				item = Items.craft_equipment(type, materials, 10.0*(action.args.level-1.0))
 				item.source += "\n" + tr("PLAYER_CREATION")
 				item.description = Items.create_tooltip(item)
+				item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 				add_item(item)
-				print_log_msg(tr("CRAFT_EQUIPMENT_LOG").format({"name":item.name,"description":item.description,"quality":str(int(item.quality))}))
+				print_log_msg(tr("CRAFT_EQUIPMENT_LOG").format({"name":item.name,"description":item.description_plain,"quality":str(int(item.quality))}))
 				queue_inventory_update()
 				add_ability_exp(action.args.ability, 20.0)
 				for mat in materials:
@@ -1391,9 +1407,10 @@ func action_done(action: Dictionary):
 					if tr("PLAYER_ENCHANTED") not in item.source:
 						item.source += "\n" + tr("PLAYER_ENCHANTED")
 					item.description = Items.create_tooltip(item)
+					item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 					player.equipment[k] = item
 					queue_equipment_update()
-					print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({"name":item.name,"description":item.description,"quality":str(int(item.quality))}))
+					print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({"name":item.name,"description":item.description_plain,"quality":str(int(item.quality))}))
 					add_ability_exp(action.args.ability, 50.0)
 					for mat in materials:
 						remove_item(mat)
@@ -1415,8 +1432,9 @@ func action_done(action: Dictionary):
 						item = Items.enchant_equipment_material(item, enchantment, materials, 10.0*(action.args.level-1.0))
 						item.source += "\n" + tr("PLAYER_ENCHANTED")
 						item.description = Items.create_tooltip(item)
+						item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 						add_item(item)
-						print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({"name":item.name,"description":item.description,"quality":str(int(item.quality))}))
+						print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({"name":item.name,"description":item.description_plain,"quality":str(int(item.quality))}))
 						optimize_equipment()
 						queue_inventory_update()
 						add_ability_exp(action.args.ability, 50.0)
@@ -1435,9 +1453,10 @@ func action_done(action: Dictionary):
 				item = Items.craft_potion(type, materials, 10.0*(action.args.level-1.0))
 				item.source += "\n" + tr("PLAYER_CREATION")
 				item.description = Items.create_tooltip(item)
+				item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 				player_potions.push_back(item)
 				queue_inventory_update()
-				print_log_msg(tr("CRAFT_POTION_LOG").format({"name":item.name,"description":item.description,"quality":str(int(item.quality))}))
+				print_log_msg(tr("CRAFT_POTION_LOG").format({"name":item.name,"description":item.description_plain,"quality":str(int(item.quality))}))
 				add_ability_exp(action.args.ability, 20.0)
 				for mat in materials:
 					remove_item(mat)
@@ -1451,7 +1470,7 @@ func action_done(action: Dictionary):
 			if materials.size()==Items.FOOD[type].material_types.size():
 				var item: Dictionary
 				item = Items.cook(type, materials, 10.0*(action.args.level-1.0))
-				print_log_msg(tr("COOKING_LOG").format({"name":item.name,"description":item.description,"quality":str(int(item.quality))}))
+				print_log_msg(tr("COOKING_LOG").format({"name":item.name,"description":item.description_plain,"quality":str(int(item.quality))}))
 				add_ability_exp("cooking", 40.0)
 				if item.has("status"):
 					var status:= Characters.create_status(item.status, player, player)
@@ -1682,6 +1701,7 @@ func action_done(action: Dictionary):
 								var item:= Items.create_regional_material(Items.MATERIALS.keys().pick_random(), dict, 1.1)
 								item.source = tr("FOUND_IN_LOCATION").format({"location":current_location})
 								item.description = Items.create_tooltip(item)
+								item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 								loot.push_back(item)
 								do_action("loot", {}, QUESTING_DELAY)
 							2:
@@ -1900,7 +1920,7 @@ func merge_dicts(dict: Dictionary, add: Dictionary) -> Dictionary:
 func use_attack(skill: Dictionary, actor: Characters.Character, target: Characters.Character, dam_multiplier:= 1.0, splash:= false) -> Dictionary:
 	var result:= {
 		"skill":skill.name,
-		"skill_description":skill.description,
+		"skill_description":skill.description_plain,
 		"actor":actor.name,
 		"actor_description":"",
 		"target":target.name,
@@ -1953,7 +1973,7 @@ func use_attack(skill: Dictionary, actor: Characters.Character, target: Characte
 func use_heal(skill: Dictionary, actor: Characters.Character, target: Characters.Character, heal_multiplier:= 1.0, splash:= false) -> Dictionary:
 	var result:= {
 		"skill":skill.name,
-		"skill_description":skill.description,
+		"skill_description":skill.description_plain,
 		"actor":actor.name,
 		"actor_description":"",
 		"target":target.name,
@@ -1989,7 +2009,7 @@ func use_heal(skill: Dictionary, actor: Characters.Character, target: Characters
 func use_buff(skill: Dictionary, actor: Characters.Character, target: Characters.Character, duration_multiplier:= 1.0) -> Dictionary:
 	var result:= {
 		"skill":skill.name,
-		"skill_description":skill.description,
+		"skill_description":skill.description_plain,
 		"actor":actor.name,
 		"actor_description":"",
 		"target":target.name,
@@ -2032,7 +2052,7 @@ func use_buff(skill: Dictionary, actor: Characters.Character, target: Characters
 func use_summon(skill: Dictionary, actor: Characters.Character, attribute_scale:= 1.0) -> Dictionary:
 	var result:= {
 		"skill":skill.name,
-		"skill_description":skill.description,
+		"skill_description":skill.description_plain,
 		"actor":actor.name,
 		"actor_description":"",
 		"hit":0,
@@ -2631,6 +2651,7 @@ func die(enemy: Characters.Enemy):
 			remove_item(soul_cage)
 			dict.soul_rarity = int(clamp(round(soul_cage.charges/15.0 - 2.75), -1, 2))
 			add_item(Items.create_soul_stone_drop(dict))
+			queue_inventory_update()
 			use_ability("soul_binding", 2.0)
 			add_ability_exp("soul_binding", 5.0 + 2.0*max(dict.soul_rarity, 0.0))
 		else:
@@ -2689,18 +2710,38 @@ func start_task(task_ID: int, task:= ""):
 			else:
 				var target_location: String = current_region.cities.pick_random()
 				do_action("goto", {"location":target_location}, TRAVEL_DELAY)
-#	_save()
 
 
 func make_desc_list(array: Array) -> String:
+	if array.size()==0:
+		return ""
 	var string:= ""
+	var description: String
+	if "description_plain" in array[0]:
+		description = array[0].description_plain
+	elif "description" in array[0]:
+		description = Skills.tooltip_remove_bb_code(array[0].description)
+	else:
+		description = ""
 	if array.size()==1:
-		string = Story.get_a_an(array[0].name) + "[hint=" + array[0].description + "]" + array[0].name + "[/hint]"
+		string = Story.get_a_an(array[0].name) + "[hint=" + description + "]" + array[0].name + "[/hint]"
 	elif array.size()==2:
-		string = Story.get_a_an(array[0].name) + "[hint=" + array[0].description + "]" + array[0].name + "[/hint] and " + Story.get_a_an(array[1].name) + "[hint=" + array[1].description + "]" + array[1].name + "[/hint]"
+		if "description_plain" in array[1]:
+			description = array[1].description_plain
+		elif "description" in array[1]:
+			description = Skills.tooltip_remove_bb_code(array[1].description)
+		else:
+			description = ""
+		string = Story.get_a_an(array[0].name) + "[hint=" + description + "]" + array[0].name + "[/hint] and " + Story.get_a_an(array[1].name) + "[hint=" + description + "]" + array[1].name + "[/hint]"
 	else:
 		for i in range(array.size()):
-			string += Story.get_a_an(array[i].name) + "[hint=" + array[i].description + "]" + array[i].name + "[/hint]"
+			if "description_plain" in array[i]:
+				description = array[i].description_plain
+			elif "description" in array[i]:
+				description = Skills.tooltip_remove_bb_code(array[i].description)
+			else:
+				description = ""
+			string += Story.get_a_an(array[i].name) + "[hint=" + description + "]" + array[i].name + "[/hint]"
 			if i<array.size()-2:
 				string += ", "
 			elif i==array.size()-2:
@@ -2737,9 +2778,6 @@ func queue_info_update():
 
 func update_info():
 	$HBoxContainer/VBoxContainer2/Location/VBoxContainer/LabelRegion.text = current_region.name
-	if !current_region.has("description"):
-		current_region.description = Regions.get_region_description(current_region)
-	$HBoxContainer/VBoxContainer2/Location/VBoxContainer/LabelRegion.tooltip_text = current_region.description
 	$HBoxContainer/VBoxContainer2/Location/VBoxContainer/LabelLocation.text = current_location
 	
 	for c in $HBoxContainer/VBoxContainer1/Stats/VBoxContainer.get_children():
@@ -2747,6 +2785,7 @@ func update_info():
 	for i in range(player.effective_stats.size()):
 		var label: Label
 		var stat: String = player.effective_stats.keys()[i]
+		var tooltip_text:= ""
 		if has_node("HBoxContainer/VBoxContainer1/Stats/VBoxContainer/Label"+str(i)):
 			label = get_node("HBoxContainer/VBoxContainer1/Stats/VBoxContainer/Label"+str(i))
 		else:
@@ -2754,18 +2793,22 @@ func update_info():
 			label.name = "Label"+str(i)
 			$HBoxContainer/VBoxContainer1/Stats/VBoxContainer.add_child(label)
 		label.text = tr(stat.to_upper()) + ": " + str(player.effective_stats[stat])
-		label.tooltip_text = ""
 		if STAT_ATTRIBUTES.has(stat):
 			for k in STAT_ATTRIBUTES[stat].keys():
-				label.tooltip_text += k + ": +" + str(int(player.effective_stats[stat]*STAT_ATTRIBUTES[stat][k])) + "\n"
+				tooltip_text += k + ": +" + str(int(player.effective_stats[stat]*STAT_ATTRIBUTES[stat][k])) + "\n"
 		if stat=="constitution":
-			label.tooltip_text += tr("HEALTHC") + ": +" + str(int(10*max(player.effective_stats.constitution, 1)))
+			tooltip_text += tr("HEALTH") + ": +" + str(int(10*max(player.effective_stats.constitution, 1)))
+		if label.is_connected("mouse_entered", Callable(self, "_show_stat_tooltip")):
+			label.disconnect("mouse_entered", Callable(self, "_show_stat_tooltip"))
+		if tooltip_text.length() > 0:
+			label.connect("mouse_entered", Callable(self, "_show_stat_tooltip").bind(tooltip_text))
 		label.show()
 	for c in $HBoxContainer/VBoxContainer1/Attributes/VBoxContainer.get_children():
 		c.hide()
 	for i in range(player.attributes.size()):
 		var label: Label
 		var attribute: String = player.attributes.keys()[i]
+		var tooltip_text:= ""
 		if has_node("HBoxContainer/VBoxContainer1/Attributes/VBoxContainer/Label"+str(i)):
 			label = get_node("HBoxContainer/VBoxContainer1/Attributes/VBoxContainer/Label"+str(i))
 		else:
@@ -2775,25 +2818,27 @@ func update_info():
 		label.text = tr(attribute.to_upper()) + ": " + str(player.attributes.values()[i])
 		match attribute:
 			"attack", "magic":
-				if player.damage.size()==0:
-					label.tooltip_text = ""
-				else:
-					label.tooltip_text = "damage:\n"
+				if player.damage.size()!=0:
+					tooltip_text = "damage:\n"
 					for k in player.damage.keys():
-						label.tooltip_text += "  " + k + ": " + str(int(100*player.damage[k])) + "%\n"
+						tooltip_text += "  " + Items.format_damage_type(k) + ": " + str(int(100*player.damage[k])) + "%\n"
 			"armour", "willpower":
 				if player.resistance.size()==0:
-					label.tooltip_text = ""
+					tooltip_text = ""
 				else:
-					label.tooltip_text = "resistance:\n"
+					tooltip_text = "resistance:\n"
 					for k in player.resistance.keys():
-						label.tooltip_text += "  " + k + ": " + str(int(100*player.resistance[k])) + "%\n"
+						tooltip_text += "  " + Items.format_damage_type(k) + ": " + str(int(100*player.resistance[k])) + "%\n"
 			"speed":
 				var delay_scale:= get_delay_scale(player.attributes.speed)
 				if delay_scale>1.0:
-					label.tooltip_text = "action speed: -" + str(int(100-100/get_delay_scale(player.attributes.speed))) + "%"
+					tooltip_text = "action speed: -" + str(int(100-100/get_delay_scale(player.attributes.speed))) + "%"
 				else:
-					label.tooltip_text = "action speed: +" + str(int(100/get_delay_scale(player.attributes.speed)-100)) + "%"
+					tooltip_text = "action speed: +" + str(int(100/get_delay_scale(player.attributes.speed)-100)) + "%"
+		if label.is_connected("mouse_entered", Callable(self, "_show_stat_tooltip")):
+			label.disconnect("mouse_entered", Callable(self, "_show_stat_tooltip"))
+		if tooltip_text.length() > 0:
+			label.connect("mouse_entered", Callable(self, "_show_stat_tooltip").bind(tooltip_text))
 		label.show()
 	for c in $HBoxContainer/VBoxContainer1/Guilds/ScrollContainer/VBoxContainer.get_children():
 		c.hide()
@@ -2821,29 +2866,15 @@ func update_info():
 		if has_node("HBoxContainer/VBoxContainer4/Abilities/ScrollContainer/VBoxContainer/Ability"+str(i)):
 			bar = get_node("HBoxContainer/VBoxContainer4/Abilities/ScrollContainer/VBoxContainer/Ability"+str(i))
 		else:
-			bar = $HBoxContainer/VBoxContainer4/Abilities/ScrollContainer/VBoxContainer/Ability0.duplicate()
+			bar = $HBoxContainer/VBoxContainer4/Abilities/ScrollContainer/VBoxContainer/Ability0.duplicate(14)
 			bar.name = "Ability"+str(i)
 			$HBoxContainer/VBoxContainer4/Abilities/ScrollContainer/VBoxContainer.add_child(bar)
+		if !bar.is_connected("mouse_entered", Callable(self, "_show_ability_tooltip")):
+			bar.connect("mouse_entered", Callable(self, "_show_ability_tooltip").bind(i))
 		bar.get_node("LabelName").text = tr(dict.name.to_upper())
 		bar.get_node("LabelLevel").text = str(player.abilities.values()[i])
 		bar.max_value = get_ability_exp(player.abilities.values()[i])
 		bar.value = player_ability_exp[ability]
-		bar.tooltip_text = str(bar.value) + " / " + str(bar.max_value) + " (" + str(int(100 * bar.value / bar.max_value)) + "%)\n"
-		for k in Characters.ATTRIBUTES:
-			if dict.has(k):
-				bar.tooltip_text += tr(k.to_upper()) + ": +" + str(int(dict[k]*player.abilities[ability])) + "\n"
-		for k in Characters.RESOURCES:
-			if dict.has(k):
-				bar.tooltip_text += tr(k.to_upper()) + ": +" + dict[k] + "\n"
-			if dict.has(k+"_regen"):
-				bar.tooltip_text += tr(k.to_upper() + "_REGEN") + ": +" + dict[k+"_regen"] + "\n"
-		if dict.has("resistance"):
-			bar.tooltip_text += tr("RESISTANCE") + ":\n"
-			for k in dict.resistance:
-				bar.tooltip_text += "  " + tr(k.to_upper()) + ": +" + str(100*dict.resistance[k]*player.abilities[ability]) + "%\n"
-		if dict.has("damage"):
-			for k in dict.damage:
-				bar.tooltip_text += "  " + tr(k.to_upper()) + ": +" + str(100*dict.damage[k]*player.abilities[ability]) + "%\n"
 		bar.show()
 	info_update = false
 
@@ -2859,11 +2890,13 @@ func update_equipment():
 		if has_node("HBoxContainer/VBoxContainer3/Equipment/VBoxContainer/Label"+str(i)):
 			label = get_node("HBoxContainer/VBoxContainer3/Equipment/VBoxContainer/Label"+str(i))
 		else:
-			label = $HBoxContainer/VBoxContainer3/Equipment/VBoxContainer/Label0.duplicate()
+			label = $HBoxContainer/VBoxContainer3/Equipment/VBoxContainer/Label0.duplicate(14)
 			label.name = "Label"+str(i)
 			$HBoxContainer/VBoxContainer3/Equipment/VBoxContainer.add_child(label)
+		if !label.is_connected("mouse_entered", Callable(self, "_show_equipment_tooltip")):
+			label.connect("mouse_entered", Callable(self, "_show_equipment_tooltip").bind(i))
 		label.text = item.name
-		label.tooltip_text = item.description
+		label.modulate = Items.RANK_COLORS[item.rank]
 		label.show()
 	$HBoxContainer/VBoxContainer3/Equipment.custom_minimum_size.y = 10+30*player.equipment.size()
 	equipment_update = false
@@ -2889,11 +2922,12 @@ func update_skills():
 		if has_node("HBoxContainer/VBoxContainer4/Skills/ScrollContainer/VBoxContainer/Label"+str(i)):
 			label = get_node("HBoxContainer/VBoxContainer4/Skills/ScrollContainer/VBoxContainer/Label"+str(i))
 		else:
-			label = $HBoxContainer/VBoxContainer4/Skills/ScrollContainer/VBoxContainer/Label0.duplicate()
+			label = $HBoxContainer/VBoxContainer4/Skills/ScrollContainer/VBoxContainer/Label0.duplicate(14)
 			label.name = "Label"+str(i)
 			$HBoxContainer/VBoxContainer4/Skills/ScrollContainer/VBoxContainer.add_child(label)
+		if !label.is_connected("mouse_entered", Callable(self, "_show_skill_tooltip")):
+			label.connect("mouse_entered", Callable(self, "_show_skill_tooltip").bind(i))
 		label.text = dict.name+" "+Skills.convert_to_roman_number(dict.level)
-		label.tooltip_text = dict.description
 		label.show()
 	skill_update = false
 
@@ -2917,11 +2951,15 @@ func update_inventory():
 		if has_node("HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Potions/Label"+str(i)):
 			label = get_node("HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Potions/Label"+str(i))
 		else:
-			label = $HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Potions/Label0.duplicate()
+			label = $HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Potions/Label0.duplicate(14)
 			label.name = "Label"+str(i)
 			$HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Potions.add_child(label)
+		if !label.is_connected("mouse_entered", Callable(self, "_show_potion_tooltip")):
+			label.connect("mouse_entered", Callable(self, "_show_potion_tooltip").bind(i))
 		label.text = str(potions.values()[i]) + "x " + _name
-		label.tooltip_text = item.description
+		if "rank" not in item:
+			item.rank = Items.get_item_rank(item)
+		label.modulate = Items.RANK_COLORS[item.rank]
 		label.show()
 	for c in $HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Quest.get_children():
 		c.hide()
@@ -2930,35 +2968,42 @@ func update_inventory():
 		if has_node("HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Quest/Label"+str(i)):
 			label = get_node("HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Quest/Label"+str(i))
 		else:
-			label = $HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Quest/Label0.duplicate()
+			label = $HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Quest/Label0.duplicate(14)
 			label.name = "Label"+str(i)
 			$HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Quest.add_child(label)
+		if !label.is_connected("mouse_entered", Callable(self, "_show_story_inventory_tooltip")):
+			label.connect("mouse_entered", Callable(self, "_show_story_inventory_tooltip").bind(i))
 		if Story.inventory[i].amount!=1:
 			label.text = str(Story.inventory[i].amount) + "x " + Story.inventory[i].name
 		else:
 			label.text = Story.inventory[i].name
-		label.tooltip_text = Story.inventory[i].description
 		label.show()
 	for c in $HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Inventory.get_children():
 		c.hide()
 	for i in range(inventory.size()):
 		var label: Label
 		var item: Dictionary
-		var _name: String = inventory.keys()[i]
+		var item_name: String = inventory.keys()[i]
 		for it in player_inventory:
-			if it.name==_name:
+			if it.name==item_name:
 				item = it
 				break
 		if has_node("HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Inventory/Label"+str(i)):
 			label = get_node("HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Inventory/Label"+str(i))
 		else:
-			label = $HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Inventory/Label0.duplicate()
+			label = $HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Inventory/Label0.duplicate(14)
 			label.name = "Label"+str(i)
 			$HBoxContainer/VBoxContainer3/Inventory/ScrollContainer/VBoxContainer/Inventory.add_child(label)
-		label.text = str(inventory.values()[i]) + "x " + _name
+		if label.is_connected("mouse_entered", Callable(self, "_show_inventory_tooltip")):
+			label.disconnect("mouse_entered", Callable(self, "_show_inventory_tooltip"))
+		label.connect("mouse_entered", Callable(self, "_show_inventory_tooltip").bind(item))
+		label.text = str(inventory.values()[i]) + "x " + item_name
 		if !item.has("description"):
 			item.description = Items.create_tooltip(item)
-		label.tooltip_text = item.description
+			item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+		if "rank" not in item:
+			item.rank = Items.get_item_rank(item)
+		label.modulate = Items.RANK_COLORS[item.rank]
 		label.show()
 	inventory_update = false
 
@@ -3054,18 +3099,18 @@ func show_options():
 	$HBoxContainer/VBoxContainer7.show()
 	$HBoxContainer/VBoxContainer8.hide()
 	
-	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox0.button_pressed = "melee" in player_weapon_types
-	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox1.button_pressed = "ranged" in player_weapon_types
-	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox2.button_pressed = "magic" in player_weapon_types
-	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox3.button_pressed = "shield" in player_weapon_types
-	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox4.button_pressed = weapon_1h_alowed
-	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox5.button_pressed = weapon_2h_alowed
-	$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox0.button_pressed = "light" in player_armour_types
-	$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox1.button_pressed = "medium" in player_armour_types
-	$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox2.button_pressed = "heavy" in player_armour_types
-	$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox0.button_pressed = "health" in valid_potion_types
-	$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox1.button_pressed = "stamina" in valid_potion_types
-	$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox2.button_pressed = "mana" in valid_potion_types
+	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox0.set_pressed_no_signal("melee" in player_weapon_types)
+	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox1.set_pressed_no_signal("ranged" in player_weapon_types)
+	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox2.set_pressed_no_signal("magic" in player_weapon_types)
+	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox3.set_pressed_no_signal("shield" in player_weapon_types)
+	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox4.set_pressed_no_signal(weapon_1h_alowed)
+	$HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox5.set_pressed_no_signal(weapon_2h_alowed)
+	$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox0.set_pressed_no_signal("light" in player_armour_types)
+	$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox1.set_pressed_no_signal("medium" in player_armour_types)
+	$HBoxContainer/VBoxContainer6/ArmourPreference/VBoxContainer1/CheckBox2.set_pressed_no_signal("heavy" in player_armour_types)
+	$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox0.set_pressed_no_signal("health" in valid_potion_types)
+	$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox1.set_pressed_no_signal("stamina" in valid_potion_types)
+	$HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1/CheckBox2.set_pressed_no_signal("mana" in valid_potion_types)
 	
 	for a in player.abilities.keys():
 		if Skills.ABILITY_MODULES.has(a):
@@ -3095,7 +3140,7 @@ func show_options():
 				if panel.get_node("CheckButton").is_connected("toggled", Callable(self, "_toggle_skill_module_disabled")):
 					panel.get_node("CheckButton").disconnect("toggled", Callable(self, "_toggle_skill_module_disabled"))
 				panel.get_node("CheckButton").connect("toggled", Callable(self, "_toggle_skill_module_disabled").bind(skill_module_dict[k][i]))
-				panel.get_node("CheckButton").button_pressed = !(skill_module_dict[k][i] in disabled_skill_modules)
+				panel.get_node("CheckButton").set_pressed_no_signal(!(skill_module_dict[k][i] in disabled_skill_modules))
 				panel.get_node("CheckButton").text = tr(skill_module_dict[k][i].to_upper())
 				panel.get_node("Label").text = tr(skill_module_dict[k][i].to_upper()+"_DESCRIPTION")
 				panel.show()
@@ -3249,6 +3294,7 @@ func _save():
 		"weapon_1h_alowed":weapon_1h_alowed,
 		"weapon_2h_alowed":weapon_2h_alowed,
 		"disabled_skill_modules":disabled_skill_modules,
+		"auto_update_options":auto_update_options,
 		"loot":loot,
 		"player_summons":summon_data,
 		"enemies":enemy_data,
@@ -3257,10 +3303,21 @@ func _save():
 		"summary_text":summary_text,
 	}
 	file = FileAccess.open("user://saves/"+player_name+".dat", FileAccess.WRITE)
-	file.store_line(JSON.stringify({"name":player_name,"race":player_race,"level":player.level,"location":current_region.name}))
-	file.store_line(JSON.stringify(player_data))
-	file.store_line(JSON.stringify(data))
-	file.store_line(JSON.stringify({"persons":Story.persons,"story":Story.story,"inventory":Story.inventory,"current_state":Story.current_state}))
+	file.store_line(JSON.stringify({
+		"version":version,
+		"name":player_name,
+		"race":player_race,
+		"level":player.level,
+		"location":current_region.name
+	}, "\t"))
+	file.store_line(JSON.stringify(player_data, "\t"))
+	file.store_line(JSON.stringify(data, "\t"))
+	file.store_line(JSON.stringify({
+		"persons":Story.persons,
+		"story":Story.story,
+		"inventory":Story.inventory,
+		"current_state":Story.current_state
+	}, "\t"))
 	
 	print("Game saved")
 	autosave_delay = 120.0
@@ -3272,11 +3329,27 @@ func _load():
 		return
 	
 	var data: Dictionary
-	file.get_line()
+	var first_line:= file.get_line()
+	# TODO: check version info
 	data = JSON.parse_string(file.get_line())
 	if data==null:
-		print("Can't load save file "+player_name+".dat!")
+		print("Can't load save file " + player_name + ".dat!")
 	data.delay = min(data.delay, 6*60*60.0)
+	
+	# compatibility with older versions: update skill descriptions
+	for skill in data.skills:
+		if skill.has("description_plain"):
+			continue
+		skill.description = Skills.create_tooltip(skill)
+		skill.description_plain = Skills.tooltip_remove_bb_code(skill.description)
+		skill.module_description = Skills.create_module_tooltip(skill)
+	for item in data.equipment.values():
+		if item.has("description_plain") && item.has("component_description"):
+			continue
+		item.description = Items.create_tooltip(item)
+		item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+		item.component_description = Items.create_component_tooltip(item)
+	
 	player = Characters.Character.new(data)
 	data = JSON.parse_string(file.get_line())
 	if data.has("timetable"):
@@ -3287,11 +3360,29 @@ func _load():
 	for k in data.keys():
 		set(k, data[k])
 	for i in range(enemies.size()):
+		for skill in enemies[i].skills:
+			if skill.has("description_plain"):
+				continue
+			skill.description = Skills.create_tooltip(skill)
+			skill.description_plain = Skills.tooltip_remove_bb_code(skill.description)
 		enemies[i] = Characters.Enemy.new(enemies[i])
 	for i in range(player_summons.size()):
+		for skill in player_summons[i].skills:
+			if skill.has("description_plain"):
+				continue
+			skill.description = Skills.create_tooltip(skill)
+			skill.description_plain = Skills.tooltip_remove_bb_code(skill.description)
 		player_summons[i] = Characters.Summon.new(player_summons[i])
 	Items.is_vegan = player_vegan
 	recalc_attributes()
+	
+	# compatibility with older versions: update item descriptions
+	for item in player_inventory:
+		if item.has("description_plain") && item.has("component_description"):
+			continue
+		item.description = Items.create_tooltip(item)
+		item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+		item.component_description = Items.create_component_tooltip(item)
 	
 	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/LabelTask.text = tr(current_task.to_upper())
 	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/LabelTask.tooltip_text = tr(current_task.to_upper()+"_TOOLTIP")
@@ -3311,6 +3402,8 @@ func _load():
 	if !current_region.has("enemy"):
 		current_region.enemy = ["goblin"]
 	Story.hostile_factions = current_region.enemy
+	
+	printt(valid_potion_types)
 
 
 func _set_timetable(ID: int, index: int):
@@ -3326,14 +3419,17 @@ func _set_timetable(ID: int, index: int):
 	autosave_delay = 10.0
 
 func _toggle_1h_weapons(button_pressed: bool):
+	auto_update_options = false
 	weapon_1h_alowed = button_pressed
 	autosave_delay = 10.0
 
 func _toggle_2h_weapons(button_pressed: bool):
+	auto_update_options = false
 	weapon_2h_alowed = button_pressed
 	autosave_delay = 10.0
 
 func _toggle_weapon_type(button_pressed: bool, type: String):
+	auto_update_options = false
 	if button_pressed:
 		if !player_weapon_types.has(type):
 			player_weapon_types.push_back(type)
@@ -3342,6 +3438,7 @@ func _toggle_weapon_type(button_pressed: bool, type: String):
 	autosave_delay = 10.0
 
 func _toggle_armour_type(button_pressed: bool, type: String):
+	auto_update_options = false
 	if button_pressed:
 		if !player_armour_types.has(type):
 			player_armour_types.push_back(type)
@@ -3350,6 +3447,7 @@ func _toggle_armour_type(button_pressed: bool, type: String):
 	autosave_delay = 10.0
 
 func _toggle_potion_type(button_pressed: bool, type: String):
+	auto_update_options = false
 	if button_pressed:
 		if !valid_potion_types.has(type):
 			valid_potion_types.push_back(type)
@@ -3368,6 +3466,67 @@ func _set_time_offset(value: int):
 	time_offset = value
 	update_timetable()
 	autosave_delay = 10.0
+
+
+func _show_ability_tooltip(index: int):
+	var ability: String = player.abilities.keys()[index]
+	var dict: Dictionary = Skills.ABILITIES[ability]
+	var ability_level: int = player.abilities.values()[index]
+	var description:= tr(Skills.ABILITIES[ability].name.to_upper()) + "\n" + tr("LEVEL") + " " + str(ability_level) + "\n\n"
+	description += tr("EXPERIENCE") + ": " + str(int(player_ability_exp[ability])) + " / " + str(get_ability_exp(ability_level))
+	for k in Characters.ATTRIBUTES:
+		if dict.has(k):
+			description += "\n" + tr(k.to_upper()) + ": +" + str(int(dict[k]*player.abilities[ability]))
+	for k in Characters.RESOURCES:
+		if dict.has(k):
+			description += "\n" + tr(k.to_upper()) + ": +" + dict[k]
+		if dict.has(k+"_regen"):
+			description += "\n" + tr(k.to_upper() + "_REGEN") + ": +" + dict[k+"_regen"]
+	if dict.has("resistance"):
+		description += "\n" + tr("RESISTANCE") + ":"
+		for k in dict.resistance:
+			description += "\n  " + tr(k.to_upper()) + ": +" + str(100*dict.resistance[k]*player.abilities[ability]) + "%"
+	if dict.has("damage"):
+		for k in dict.damage:
+			description += "\n  " + tr(k.to_upper()) + ": +" + str(100*dict.damage[k]*player.abilities[ability]) + "%"
+	
+	tooltip.show_text(description)
+
+func _show_skill_tooltip(index: int):
+	var skill: Dictionary = player.skills[index]
+	tooltip.show_texts([skill.description, skill.module_description], [tr("SKILL"),tr("MODULES")])
+
+func _show_equipment_tooltip(index: int):
+	var item: Dictionary = player.equipment.values()[index]
+	tooltip.show_texts([item.description, item.component_description], [tr("PROPERTIES"), tr("COMPONENTS")])
+
+func _show_inventory_tooltip(item: Dictionary):
+	if "component_description" in item:
+		tooltip.show_texts([item.description, item.component_description], [tr("PROPERTIES"), tr("COMPONENTS")])
+	else:
+		tooltip.show_text(item.description)
+
+func _show_potion_tooltip(index: int):
+	var item: Dictionary = player_potions[index]
+	tooltip.show_text(item.description)
+
+func _show_story_inventory_tooltip(index: int):
+	var item: Dictionary = Story.inventory[index]
+	tooltip.show_text(item.description)
+
+func _show_region_tooltip():
+	var description: String = current_region.name + "\n\n" + tr("RACE") + ": " + Names.make_list(current_region.race) + "\n" + tr("AVERAGE_LEVEL") + ": " + str(current_region.level)
+	var cities: String = current_region.name + "\n\n" + tr("CITIES") + ":"
+	var locations: String = current_region.name + "\n\n" + tr("LOCATIONS") + ":"
+	for c in current_region.cities:
+		cities += "\n  " + c
+	for l in current_region.locations:
+		locations += "\n  " + l
+	
+	tooltip.show_texts([description, cities, locations], [tr("REGION"), tr("CITIES"), tr("LOCATIONS")])
+
+func _show_stat_tooltip(text: String):
+	tooltip.show_text(text)
 
 
 func _notification(what: int):
@@ -3419,3 +3578,4 @@ func _ready():
 	update_timetable()
 	show_action()
 	
+

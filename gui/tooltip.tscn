@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxb635fm2610y"]
+
+[ext_resource type="Script" path="res://gui/tooltip.gd" id="1_vmwux"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idr5f"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 0.878431)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0784314, 0.0784314, 0.0784314, 0.968627)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_q6wl8"]
+
+[node name="Tooltip" type="Panel"]
+offset_right = 256.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_idr5f")
+script = ExtResource("1_vmwux")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_constants/separation = 4
+
+[node name="Tabs" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Button0" type="Button" parent="VBoxContainer/Tabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q6wl8")
+text = "TAB0"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+fit_content = true
+scroll_active = false

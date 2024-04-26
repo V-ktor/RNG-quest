@@ -898,7 +898,7 @@ func create_person(race: String, location: String) -> Dictionary:
 		dict.display_name = dict.position.capitalize() + " " + dict.name#.split(' ')[1]
 	else:
 		dict.display_name = dict.name
-	dict.description = dict.name + "\n" + race + " " + dict.position
+	dict.description = dict.name + "\n" + race + " " + dict.position + "\n"
 	if dict.has("home") && dict.home:
 		dict.description += "\n" + tr("LIVING_IN").format({"location":location})
 	if !dict.has("tags"):

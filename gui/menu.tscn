@@ -987,6 +987,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Character0" type="Button" parent="Characters/ScrollContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
@@ -1136,7 +1137,7 @@ offset_top = -24.0
 offset_right = 96.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
-text = "v0.0.5"
+text = "v0.0.6"
 vertical_alignment = 1
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]

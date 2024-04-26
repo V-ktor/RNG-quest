@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cx2f13pqvsvxo"]
+[gd_scene load_steps=12 format=3 uid="uid://cx2f13pqvsvxo"]
 
 [ext_resource type="Script" path="res://gui/main.gd" id="1_7tv8d"]
+[ext_resource type="PackedScene" uid="uid://dxb635fm2610y" path="res://gui/tooltip.tscn" id="2_e0cdc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32gvm"]
 content_margin_left = 8.0
@@ -151,7 +152,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -542,7 +542,6 @@ text = "RANK"
 horizontal_alignment = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -643,7 +642,6 @@ size_flags_vertical = 3
 value = 50.0
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -857,7 +855,6 @@ text = "ITEM"
 autowrap_mode = 3
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -964,6 +961,7 @@ grow_vertical = 2
 scroll_following = true
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1046,6 +1044,7 @@ popup/item_5/text = "RESTING"
 popup/item_5/id = 5
 
 [node name="VBoxContainer6" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1172,7 +1171,7 @@ horizontal_alignment = 1
 
 [node name="CheckBox0" type="CheckBox" parent="HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1"]
 layout_mode = 2
-text = "HEALTHC"
+text = "HEALTH"
 
 [node name="CheckBox1" type="CheckBox" parent="HBoxContainer/VBoxContainer6/PotionPreference/VBoxContainer1"]
 layout_mode = 2
@@ -1183,6 +1182,7 @@ layout_mode = 2
 text = "MANA"
 
 [node name="VBoxContainer7" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1391,9 +1391,13 @@ meta_underlined = false
 hint_underlined = false
 threaded = true
 
+[node name="Tooltip" parent="." instance=ExtResource("2_e0cdc")]
+visible = false
+
 [connection signal="pressed" from="HBoxContainer/Buttons/Button0" to="." method="show_action"]
 [connection signal="pressed" from="HBoxContainer/Buttons/Button1" to="." method="show_options"]
 [connection signal="pressed" from="HBoxContainer/Buttons/Button2" to="." method="show_summary"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer2/Location/VBoxContainer/LabelRegion" to="." method="_show_region_tooltip"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer5/Timetable/ScrollContainer/VBoxContainer1/HBoxContainer/SpinBox" to="." method="_set_time_offset"]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox0" to="." method="_toggle_weapon_type" binds= ["melee"]]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer6/WeaponPreference/VBoxContainer1/CheckBox1" to="." method="_toggle_weapon_type" binds= ["ranged"]]
