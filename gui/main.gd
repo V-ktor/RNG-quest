@@ -3021,8 +3021,10 @@ func update_status():
 			bar = $HBoxContainer/VBoxContainer1/Status/ScrollContainer/VBoxContainer/Status0.duplicate()
 			bar.name = "Status"+str(i)
 			$HBoxContainer/VBoxContainer1/Status/ScrollContainer/VBoxContainer.add_child(bar)
+		if bar.is_connected("mouse_entered", Callable(self, "_show_status_tooltip")):
+			bar.disconnect("mouse_entered", Callable(self, "_show_status_tooltip"))
+		bar.connect("mouse_entered", Callable(self, "_show_status_tooltip").bind(Skills.create_status_tooltip(player.status[i])))
 		bar.get_node("Label").text = player.status[i].name
-		bar.tooltip_text = Skills.create_status_tooltip(player.status[i])
 		bar.max_value = player.status[i].max_duration
 		bar.value = player.status[i].duration
 		bar.show()
@@ -3526,6 +3528,9 @@ func _show_region_tooltip():
 	tooltip.show_texts([description, cities, locations], [tr("REGION"), tr("CITIES"), tr("LOCATIONS")])
 
 func _show_stat_tooltip(text: String):
+	tooltip.show_text(text)
+
+func _show_status_tooltip(text: String):
 	tooltip.show_text(text)
 
 
