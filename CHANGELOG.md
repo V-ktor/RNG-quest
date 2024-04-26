@@ -11,9 +11,6 @@
 * changed accuracy/evasion buff to scale only on base attribute values
 * soul stones can have additional stats
 
-### Internal
-* nicer formatting for save files
-
 ### Bug fixes
 * update character list on import
 

@@ -3309,15 +3309,15 @@ func _save():
 		"race":player_race,
 		"level":player.level,
 		"location":current_region.name
-	}, "\t"))
-	file.store_line(JSON.stringify(player_data, "\t"))
-	file.store_line(JSON.stringify(data, "\t"))
+	}))
+	file.store_line(JSON.stringify(player_data))
+	file.store_line(JSON.stringify(data))
 	file.store_line(JSON.stringify({
 		"persons":Story.persons,
 		"story":Story.story,
 		"inventory":Story.inventory,
 		"current_state":Story.current_state
-	}, "\t"))
+	}))
 	
 	print("Game saved")
 	autosave_delay = 120.0
