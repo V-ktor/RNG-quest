@@ -1,5 +1,22 @@
 # Change log
 
+## v0.0.6
+### Interface
+* improved tooltips for items, skills, region
+* improved autosave
+* character settings are no longer automatically updated once changed by user at least once
+
+### Balancing
+* chanced damage/resistance bonus quality scaling for enchanting
+* changed accuracy/evasion buff to scale only on base attribute values
+* soul stones can have additional stats
+
+### Internal
+* nicer formatting for save files
+
+### Bug fixes
+* update character list on import
+
 ## v0.0.5
 ### Content
 * more complex enchanting system
