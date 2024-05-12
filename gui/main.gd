@@ -3242,6 +3242,17 @@ func _process(delta: float):
 		update_inventory()
 
 
+func get_dict_text(file: FileAccess) -> String:
+	var text:= ""
+	var brackets:= 0
+	while true:
+		var new_line:= file.get_line()
+		text += new_line
+		brackets += clamp(int(new_line.find("{") >= 0), 0, 1) - clamp(int(new_line.find("}") >= 0), 0, 1)
+		if brackets <= 0:
+			break
+	return text
+
 func _save():
 	var dir:= DirAccess.open("user://saves")
 	if dir==null || DirAccess.get_open_error()!=OK:
@@ -3262,7 +3273,7 @@ func _save():
 	for summon in player_summons:
 		summon_data.push_back(summon.to_dict())
 	var data:= {
-		"player_name":player_name,
+		"player_name":player_name.replace("{", "").replace("}", ""),
 		"player_gender":player_gender,
 		"player_race":player_race,
 		"player_ability_exp":player_ability_exp,
@@ -3311,15 +3322,15 @@ func _save():
 		"race":player_race,
 		"level":player.level,
 		"location":current_region.name
-	}))
-	file.store_line(JSON.stringify(player_data))
-	file.store_line(JSON.stringify(data))
+	}, "\t"))
+	file.store_line(JSON.stringify(player_data, "\t"))
+	file.store_line(JSON.stringify(data, "\t"))
 	file.store_line(JSON.stringify({
 		"persons":Story.persons,
 		"story":Story.story,
 		"inventory":Story.inventory,
 		"current_state":Story.current_state
-	}))
+	}, "\t"))
 	
 	print("Game saved")
 	autosave_delay = 120.0
@@ -3331,9 +3342,9 @@ func _load():
 		return
 	
 	var data: Dictionary
-	var first_line:= file.get_line()
+	var first_line:= get_dict_text(file)
 	# TODO: check version info
-	data = JSON.parse_string(file.get_line())
+	data = JSON.parse_string(get_dict_text(file))
 	if data==null:
 		print("Can't load save file " + player_name + ".dat!")
 	data.delay = min(data.delay, 6*60*60.0)
@@ -3353,7 +3364,7 @@ func _load():
 		item.component_description = Items.create_component_tooltip(item)
 	
 	player = Characters.Character.new(data)
-	data = JSON.parse_string(file.get_line())
+	data = JSON.parse_string(get_dict_text(file))
 	if data.has("timetable"):
 		var dict:= {}
 		for t in data.timetable.keys():
@@ -3392,7 +3403,7 @@ func _load():
 	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/ProgressBar.max_value = data.progress_delay
 	$HBoxContainer/VBoxContainer8/Log/RichTextLabel.parse_bbcode(summary_text)
 	
-	data = JSON.parse_string(file.get_line())
+	data = JSON.parse_string(get_dict_text(file))
 	Story.persons = data.persons
 	Story.story = data.story
 	Story.inventory = data.inventory

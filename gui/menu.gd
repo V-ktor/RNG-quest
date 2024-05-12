@@ -33,6 +33,18 @@ func update_tile_map():
 	tile_map_line -= 1
 
 
+func get_dict_text(file: FileAccess) -> String:
+	var text:= ""
+	var brackets:= 0
+	while true:
+		var new_line:= file.get_line()
+		text += new_line
+		brackets += clamp(int(new_line.find("{") >= 0), 0, 1) - clamp(int(new_line.find("}") >= 0), 0, 1)
+		if brackets <= 0:
+			break
+	printt(text)
+	return text
+
 func create_save_dir() -> DirAccess:
 	var dir:= DirAccess.open("user://")
 	var error:= dir.make_dir_recursive("user://saves")
@@ -60,7 +72,7 @@ func load_characters():
 			if FileAccess.get_open_error()!=OK:
 				print("Can't open save file "+file_name+"!")
 			else:
-				var data: Dictionary = JSON.parse_string(file.get_line())
+				var data: Dictionary = JSON.parse_string(get_dict_text(file))
 				characters.push_back(file_name)
 				if has_node("Characters/ScrollContainer/VBoxContainer/Character"+str(i)):
 					button = get_node("Characters/ScrollContainer/VBoxContainer/Character"+str(i))
@@ -122,7 +134,7 @@ func _files_dropped(file_names: Array[String]):
 			print("Can't open file " + file_name)
 			continue
 		
-		var data: Dictionary = JSON.parse_string(file.get_line())
+		var data: Dictionary = JSON.parse_string(get_dict_text(file))
 		if !data.has("level") || !data.has("location") || !data.has("name") || !data.has("race"):
 			print("File " + file_name + " is not a valid save file")
 			continue
