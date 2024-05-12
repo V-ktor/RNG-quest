@@ -47,5 +47,3 @@ text = "TAB0"
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-fit_content = true
-scroll_active = false

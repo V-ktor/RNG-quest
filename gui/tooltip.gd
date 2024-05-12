@@ -38,7 +38,7 @@ func _get_max_line_length(text: String) -> int:
 func _set_pos_scale(text: String):
 	position = get_global_mouse_position() + Vector2(8, 0)
 	size.x = clamp(16 + 8*_get_max_line_length(text), 192, 448)
-	size.y = max(32 + 16*text.count("\n"), 64)
+	size.y = clamp(64 + 23*text.count("\n"), 64, 512)
 
 func show_text(text: String):
 	text_label.clear()
@@ -84,7 +84,7 @@ func _process(_delta: float):
 	if mouse_pos.x < -MOUSE_LIMIT || mouse_pos.y < -MOUSE_LIMIT || mouse_pos.x > size.x + MOUSE_LIMIT || mouse_pos.y > size.y + MOUSE_LIMIT:
 		hide()
 		return
-	size.y = text_label.size.y + 4 + (tabs_container.size.y + 4)*int(tabs_container.visible)
+#	size.y = text_label.size.y + 4 + (tabs_container.size.y + 4)*int(tabs_container.visible)
 	position.x = min(position.x, DisplayServer.window_get_size().x - size.x - 16)		# leave extra space for scroll bar
 	position.y = clamp(position.y, 0, DisplayServer.window_get_size().y - size.y)
 	
