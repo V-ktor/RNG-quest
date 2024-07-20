@@ -1,0 +1,21 @@
+{
+	"pasta": {
+		"name": [
+			"{pasta} {sauce}",
+		],
+		"components": [
+			"pasta",
+			"sauce",
+		],
+	},
+	"pizza": {
+		"name": [
+			"lasagna",
+			"pizza",
+		],
+		"components": [
+			"dough",
+			"sauce",
+		],
+	},
+}

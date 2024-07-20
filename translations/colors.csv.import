@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dywrb883k2t43"
+
+[deps]
+
+files=["res://translations/colors.en.translation"]
+
+source_file="res://translations/colors.csv"
+dest_files=["res://translations/colors.en.translation"]
+
+[params]
+
+compress=true
+delimiter=0

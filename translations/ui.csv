@@ -44,6 +44,7 @@ EVASION,Evasion
 PENETRATION,Penetration
 CRITICAL,Critical
 SPEED,Speed
+LVL,Lv.
 SHIELDS,Shields
 LIGHT_WEAPONS,Light Weapons
 LIGHT_WEAPONS_DESCRIPTION,"Master the usage of light weapons, focusing on quick strikes and multi-hit attacks."
@@ -243,7 +244,7 @@ ATTRIBUTES,Attributes
 EFFECT,Effect
 EFFECT_SCALE,Effect scale
 LIVING_IN,"Living in {location}."
-LOCATION,location
+LOCATION,Location
 FARMLAND,farmland
 ELVEN_FOREST,elven forest
 DWARVEN_MINE,dwarven mine
@@ -300,6 +301,7 @@ HEAVY,Heavy
 SCHEDULE,Schedule
 WEAPONS,Weapons
 POTIONS,Potions
+JOURNAL,Journal
 SKILL_MODULES,Skill Modules
 BLESSING_OF,"Blessing of the {name}"
 SKILL_MODULES_DESCRIPTION,"Select which skill modules are allowed when a new skill is created. These settings do not affect existing skills."
@@ -315,5 +317,12 @@ RESTING_TOOLTIP,"Chance to receive a long lasting blessing by praying."
 SLEEPING_TOOLTIP,"Sleep is essential. Make sure to sleep long enough and to stay healthy! 7 to 9 hours per day recommended."
 TIME_OFFSET,sleeping time offset
 TIME_OFFSET_TOOLTIP,"Offsets the sleeping time of the character, e.g. with a value of 2 your character goes to bed at 1 am instead the default 23 pm."
+TIMETABLE,Timetable
 MODULES,Modules
 PRICE,Price
+OVERVIEW,Overview
+LOG,Log
+TODO_LIST,TODO List
+MODS,Mods
+CHARACTER,Character
+INVENTORY,Inventory

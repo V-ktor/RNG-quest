@@ -1,0 +1,20 @@
+[
+	{
+		"type": "addition",
+		"sentence":[
+		],
+		"text": [
+			"like {stains.plural} on {theme.singular}",
+		],
+		"required": [
+			"stains",
+			"theme",
+		],
+		"remove": [
+			"stains",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+]

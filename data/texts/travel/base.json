@@ -1,0 +1,111 @@
+[
+	{
+		"type":"embark",
+		"text":[
+			"You decide to leave {region}.",
+			"You decide to leave {region} and travel to {target_region}.",
+			"And so you embark on a journey to {target_region}.",
+			"You start preparing for your journey to {target_region}.",
+		],
+		"required":[
+			"region",
+			"target_region",
+		],
+		"transitions":[
+			"gather_belongings",
+			"buy_rations",
+			"walk_past_marketplace",
+		],
+	},
+	{
+		"type":"gather_belongings",
+		"text":[
+			"You gather your belongings.",
+			"You grab your bags and prepare to leave.",
+			"You gather your stuff, ready to leave.",
+		],
+		"transitions":[
+			"leave_city",
+		],
+	},
+	{
+		"type":"gather_belongings",
+		"text":[
+			"You check-out your hotel room. {the_price_is}",
+			"A surprise awaits you at the hotel reception. {the_price_is}",
+			"You pay the tavern owner for renting a room. {the_price_is}",
+		],
+		"format_methods":[
+			"the_price_is",
+		],
+		"transitions":[
+			"leave_city",
+		],
+	},
+	{
+		"type":"buy_rations",
+		"text":[
+			"You buy some rations for your travel: {ration_list}.",
+			"You prepare some food for your travels: {ration_list}",
+		],
+		"format_methods":[
+			"add_ration_list",
+		],
+		"transitions":[
+			"leave_city",
+		],
+	},
+	{
+		"type":"walk_past_marketplace",
+		"text":[
+			"You walk past the bustling marketplace.",
+		],
+		"transitions":[
+			"leave_city",
+		],
+	},
+	{
+		"type":"leave_city",
+		"text":[
+			"You leave {location}.",
+			"You leave {location} behind.",
+			"You are ready to leave {location}.",
+			"You step through {location}'s gates.",
+			"You make your way to {location}'s gates.",
+			"You walk down the street leading out of the city of {location}.",
+		],
+		"required":[
+			"location",
+		],
+		"transitions":[
+			"guards_pass",
+			"walk_over_bridge",
+		],
+	},
+	{
+		"type":"guards_pass",
+		"text":[
+			"The guards let you pass.",
+			"You walk past the city guards.",
+		],
+		"required":[
+			"guards",
+		],
+		"transitions":[
+		],
+	},
+	{
+		"type":"walk_over_bridge",
+		"text":[
+			"You walk over a drawbridge.",
+			"You leave the city of {location} through its bridge.",
+			"The fastest way is the bridge leading to the other side of the river.",
+		],
+		"required":[
+			"bridge",
+		],
+		"transitions":[
+		],
+	},
+
+]

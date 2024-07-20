@@ -1,5 +1,12 @@
 # Change log
 
+## v0.0.7
+### Content
+* increased the level range of all regions
+
+### Interface
+* the tooltip popup now has a maximum size and has a scroll bar if content does not fit inside
+
 ## v0.0.6
 ### Interface
 * improved tooltips for items, skills, region

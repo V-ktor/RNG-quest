@@ -1,0 +1,447 @@
+[
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {object.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+		},
+		"required": [
+			"object",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {color.adjective} {object.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"color",
+		],
+		"remove":[
+			"color",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {shape.adjective} {object.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"shape",
+		],
+		"replace":{
+			"shape": "quality",
+		},
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {object.singular}'s {component.singular}",
+		],
+		"sentence":{
+			"subject": "component",
+		},
+		"required": [
+			"object",
+			"component",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {object.singular}'s {color.adjective} {component.singular}",
+		],
+		"sentence":{
+			"subject": "component",
+		},
+		"required": [
+			"object",
+			"component",
+			"color",
+		],
+		"remove":[
+			"color",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {object.singular}'s {shape.adjective} {component.singular}",
+		],
+		"sentence":{
+			"subject": "component",
+		},
+		"required": [
+			"object",
+			"component",
+			"shape",
+		],
+		"replace":{
+			"shape": "quality",
+		},
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {object.singular}'s {material.adjective} {component.singular}",
+		],
+		"sentence":{
+			"subject": "component",
+		},
+		"required": [
+			"object",
+			"component",
+			"material",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {element.adjective} {object.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"element",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {element.adjective} {component.singular}",
+		],
+		"sentence":{
+			"subject": "component",
+		},
+		"required": [
+			"component",
+			"element",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {curse.adjective} {object.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"curse",
+		],
+		"replace":{
+			"curse": "theme",
+		},
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {curse.adjective} {component.singular}",
+		],
+		"sentence":{
+			"subject": "component",
+		},
+		"required": [
+			"component",
+			"curse",
+		],
+		"replace":{
+			"curse": "theme",
+		},
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {quality.adjective} {object.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"quality",
+		],
+		"replace":{
+			"quality": "shape",
+		},
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {quality.adjective} {component.singular}",
+		],
+		"sentence":{
+			"subject": "component",
+		},
+		"required": [
+			"component",
+			"quality",
+		],
+		"replace":{
+			"quality": "shape",
+		},
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {craftmanship.adverb} crafted {object.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"craftmanship",
+		],
+		"remove":[
+			"craftmanship",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {craftmanship.adverb} crafted {component.singular}",
+		],
+		"sentence":{
+			"subject": "component",
+		},
+		"required": [
+			"component",
+			"craftmanship",
+		],
+		"remove":[
+			"craftmanship",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {stains.adjective} {object.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"stains",
+		],
+		"remove":[
+			"stains",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {stains.adjective} {component.singular}",
+		],
+		"sentence":{
+			"subject": "component",
+		},
+		"required": [
+			"component",
+			"stains",
+		],
+		"remove":[
+			"stains",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {stains.adjective} {shape.plural}",
+		],
+		"sentence":{
+			"subject": "shape",
+		},
+		"required": [
+			"shape",
+			"stains",
+		],
+		"remove":[
+			"stains",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {enemy.adjective} {object.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"enemy",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {theme.adjective} {object.singular} of {prophecy.plural}",
+			"the {object.singular} of {theme.adjective} {prophecy.plural}",
+			"the {theme.adjective} of the {prophecy.singular} of {theme.plural}",
+		],
+		"sentence": {
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"prophecy",
+			"theme",
+		],
+		"replace": {
+			"prophecy": "curse",
+		},
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {emotion.adjective} {object.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"emotion",
+		],
+		"remove": [
+			"emotion",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {emotion.adjective} {component.singular}",
+		],
+		"sentence":{
+			"subject": "component",
+		},
+		"required": [
+			"component",
+			"emotion",
+		],
+		"remove": [
+			"emotion",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {emotion.adverb} crafted {object.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"emotion",
+			"craftmanship",
+		],
+		"remove": [
+			"emotion",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {emotion.adverb} crafted {component.singular}",
+		],
+		"sentence":{
+			"subject": "component",
+		},
+		"required": [
+			"component",
+			"emotion",
+			"craftmanship",
+		],
+		"remove": [
+			"emotion",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+]

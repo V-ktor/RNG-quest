@@ -1,0 +1,1832 @@
+[gd_scene load_steps=31 format=3 uid="uid://s10031v8frul"]
+
+[ext_resource type="Script" path="res://gui/main/scripts/main_gui.gd" id="1_rxg50"]
+[ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://default_theme.tres" id="2_ck100"]
+[ext_resource type="Script" path="res://gui/main/scripts/character_panel.gd" id="3_3wpsb"]
+[ext_resource type="Script" path="res://gui/main_log.gd" id="4_sxg1u"]
+[ext_resource type="PackedScene" uid="uid://ilahmpkq8huy" path="res://gui/main/scenes/character_panel.tscn" id="5_wpjmd"]
+[ext_resource type="Script" path="res://gui/stat_display.gd" id="6_cw8x1"]
+[ext_resource type="Script" path="res://gui/main/scripts/attributes.gd" id="7_be5rh"]
+[ext_resource type="Script" path="res://gui/main/scripts/mods.gd" id="8_xxonq"]
+[ext_resource type="Script" path="res://gui/main/scripts/equipment.gd" id="9_p5fy4"]
+[ext_resource type="Script" path="res://gui/main/scripts/inventory.gd" id="11_4ftob"]
+[ext_resource type="Script" path="res://gui/main/scripts/abilities.gd" id="11_rginl"]
+[ext_resource type="Texture2D" uid="uid://2q6idpe7wgl5" path="res://images/gui/arrows_right.svg" id="12_6ewli"]
+[ext_resource type="Script" path="res://gui/main/scripts/skills.gd" id="12_nx1dh"]
+[ext_resource type="Texture2D" uid="uid://cics21jodet7p" path="res://images/icons/overview.svg" id="13_0vtos"]
+[ext_resource type="Script" path="res://gui/main/scripts/timetable.gd" id="13_hltwl"]
+[ext_resource type="Texture2D" uid="uid://iydd5obvkaw5" path="res://images/icons/character.svg" id="14_4iy3k"]
+[ext_resource type="Script" path="res://gui/main/scripts/weapon_preference.gd" id="14_6ovlx"]
+[ext_resource type="Script" path="res://gui/main/scripts/armour_preference.gd" id="15_bpsop"]
+[ext_resource type="Texture2D" uid="uid://cqjvar71exxv7" path="res://images/icons/journal.svg" id="15_xy43e"]
+[ext_resource type="Texture2D" uid="uid://dqsr4uq5f6ucf" path="res://images/icons/settings.svg" id="16_15y0b"]
+[ext_resource type="Script" path="res://gui/main/scripts/potion_preference.gd" id="16_nncd2"]
+[ext_resource type="PackedScene" uid="uid://dxb635fm2610y" path="res://gui/tooltip.tscn" id="17_6m177"]
+[ext_resource type="Script" path="res://gui/main/scripts/skill_modules.gd" id="17_prvid"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w674s"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0117647, 0.0392157, 0.0705882, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64y7e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7hsw0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qskvj"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_g737p"]
+
+[sub_resource type="Shader" id="Shader_5jyo5"]
+code = "shader_type canvas_item;
+
+void fragment() {
+	COLOR.a *= clamp(100.0*(1.0 - 0.1*UV.y - UV.x), 0.0, 1.0);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_buju4"]
+shader = SubResource("Shader_5jyo5")
+
+[node name="MainGUI" type="CanvasLayer"]
+layer = 15
+script = ExtResource("1_rxg50")
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0105, 0.04025, 0.07, 1)
+
+[node name="Overview" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ck100")
+
+[node name="Enemy" type="Control" parent="Overview"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+script = ExtResource("3_3wpsb")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Overview/Enemy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Overview/Enemy/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Overview"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_ck100")
+alignment = 1
+
+[node name="Placeholder1" type="Panel" parent="Overview/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Overview/HBoxContainer/Placeholder1"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "LOCATION"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Log" type="Panel" parent="Overview/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+script = ExtResource("4_sxg1u")
+
+[node name="Label" type="Label" parent="Overview/HBoxContainer/Log"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "LOG"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Overview/HBoxContainer/Log"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+scroll_following = true
+
+[node name="Placeholder2" type="Panel" parent="Overview/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Overview/HBoxContainer/Placeholder2"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "TODO_LIST"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Player" type="Control" parent="Overview"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+script = ExtResource("3_3wpsb")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Overview/Player"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Overview/Player/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="CharacterPanel0" parent="Overview/Player/ScrollContainer/HBoxContainer" instance=ExtResource("5_wpjmd")]
+layout_mode = 2
+
+[node name="Character" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ck100")
+
+[node name="Stats" type="VBoxContainer" parent="Character"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stats" type="Panel" parent="Character/Stats"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Character/Stats/Stats"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "STATS"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Chart" type="Control" parent="Character/Stats/Stats"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ck100")
+script = ExtResource("6_cw8x1")
+
+[node name="Attributes" type="Panel" parent="Character/Stats"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("7_be5rh")
+
+[node name="Label" type="Label" parent="Character/Stats/Attributes"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "ATTRIBUTES"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Stats/Attributes"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="Attack" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Attack"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "ATTACK"
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Attack"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "0"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Magic" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Magic"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "MAGIC"
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Magic"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "0"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Willpower" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Willpower"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "WILLPOWER"
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Willpower"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "0"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Armour" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Armour"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "ARMOUR"
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Armour"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "0"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Accuracy" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Accuracy"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "ACCURACY"
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Accuracy"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "0"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Evasion" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Evasion"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "EVASION"
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Evasion"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "0"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Penetration" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Penetration"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "PENETRATION"
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Penetration"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "0"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Speed" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Speed"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "SPEED"
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Speed"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "0"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Critical" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Critical"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "CRITICAL"
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Critical"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "0"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Mods" type="Panel" parent="Character/Stats"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("8_xxonq")
+
+[node name="Label" type="Label" parent="Character/Stats/Mods"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "MODS"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Character/Stats/Mods"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Stats/Mods/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="Mod0" type="HBoxContainer" parent="Character/Stats/Mods/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Character/Stats/Mods/ScrollContainer/VBoxContainer/Mod0"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "MOD"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Value" type="Label" parent="Character/Stats/Mods/ScrollContainer/VBoxContainer/Mod0"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "0%"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Equipment" type="VBoxContainer" parent="Character"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Equipment" type="Panel" parent="Character/Equipment" node_paths=PackedStringArray("tooltip")]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("9_p5fy4")
+tooltip = NodePath("../../../Tooltip")
+
+[node name="Label" type="Label" parent="Character/Equipment/Equipment"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "EQUIPMENT"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Character/Equipment/Equipment"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Weapons" type="HBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Weapons"]
+modulate = Color(1, 1, 1, 0.74902)
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "WEAPONS"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Weapons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Weapon" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Weapons/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "MAINHAND"
+
+[node name="Offweapon" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Weapons/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "OFFHAND"
+
+[node name="Armour" type="HBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour"]
+modulate = Color(1, 1, 1, 0.74902)
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "ARMOUR"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Head" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "HEAD"
+
+[node name="Torso" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "TORSO"
+
+[node name="Belt" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "BELT"
+
+[node name="Hands" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "HANDS"
+
+[node name="Legs" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "LEGS"
+
+[node name="Feet" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "FEET"
+
+[node name="Cape" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "CAPE"
+
+[node name="Accessoires" type="HBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires"]
+modulate = Color(1, 1, 1, 0.74902)
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "ACCESSOIRES"
+clip_text = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Amulet" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "AMULET"
+
+[node name="RingLeft" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "RING"
+
+[node name="RingRight" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "RING"
+
+[node name="BraceletLeft" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "BRACELET"
+
+[node name="BraceletRight" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "BRACELET"
+
+[node name="EarringLeft" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "EARRING"
+
+[node name="EarringRight" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+text = "EARRING"
+
+[node name="Skills" type="VBoxContainer" parent="Character"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Abilities" type="Panel" parent="Character/Skills"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("11_rginl")
+
+[node name="Label" type="Label" parent="Character/Skills/Abilities"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "ABILITIES"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Character/Skills/Abilities"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Skills/Abilities/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Ability0" type="HBoxContainer" parent="Character/Skills/Abilities/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Character/Skills/Abilities/ScrollContainer/VBoxContainer/Ability0"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "ABILITY"
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="Character/Skills/Abilities/ScrollContainer/VBoxContainer/Ability0"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+text = "0"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Skills" type="Panel" parent="Character/Skills" node_paths=PackedStringArray("tooltip")]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("12_nx1dh")
+tooltip = NodePath("../../../Tooltip")
+
+[node name="Label" type="Label" parent="Character/Skills/Skills"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "SKILLS"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Character/Skills/Skills"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Skills/Skills/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Skill0" type="Label" parent="Character/Skills/Skills/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+text = "SKILL"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Journal" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ck100")
+
+[node name="Journal" type="Panel" parent="Journal"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Journal/Journal"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "JOURNAL"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Journal/Journal"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Journal/Journal/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Inventory" type="Panel" parent="Journal" node_paths=PackedStringArray("tooltip")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("11_4ftob")
+tooltip = NodePath("../../Tooltip")
+
+[node name="Label" type="Label" parent="Journal/Inventory"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "INVENTORY"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Journal/Inventory"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Journal/Inventory/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="LabelGold" type="Label" parent="Journal/Inventory/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "GOLD: 0"
+vertical_alignment = 1
+
+[node name="Potions" type="VBoxContainer" parent="Journal/Inventory/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label0" type="Label" parent="Journal/Inventory/ScrollContainer/VBoxContainer/Potions"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 0
+text = "ITEM"
+autowrap_mode = 3
+
+[node name="Quest" type="VBoxContainer" parent="Journal/Inventory/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label0" type="Label" parent="Journal/Inventory/ScrollContainer/VBoxContainer/Quest"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 0
+text = "ITEM"
+autowrap_mode = 3
+
+[node name="Inventory" type="VBoxContainer" parent="Journal/Inventory/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label0" type="Label" parent="Journal/Inventory/ScrollContainer/VBoxContainer/Inventory"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 0
+text = "ITEM"
+autowrap_mode = 3
+
+[node name="Options" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ck100")
+
+[node name="Timetable" type="VBoxContainer" parent="Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Timetable" type="Panel" parent="Options/Timetable"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("13_hltwl")
+
+[node name="Label" type="Label" parent="Options/Timetable/Timetable"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "TIMETABLE"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Options/Timetable/Timetable"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/Timetable/Timetable/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Preferences" type="VBoxContainer" parent="Options"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WeaponPreference" type="Panel" parent="Options/Preferences"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.75
+script = ExtResource("14_6ovlx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/Preferences/WeaponPreference"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "WEAPONS"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CheckBoxMelee" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
+layout_mode = 2
+text = "MELEE"
+
+[node name="CheckBoxRanged" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
+layout_mode = 2
+text = "RANGED"
+
+[node name="CheckBoxMagic" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
+layout_mode = 2
+text = "MAGICAL"
+
+[node name="CheckBoxShield" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
+layout_mode = 2
+text = "SHIELD"
+
+[node name="CheckBox1h" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "ONE_HANDED"
+
+[node name="CheckBox2h" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "TWO_HANDED"
+
+[node name="ArmourPreference" type="Panel" parent="Options/Preferences"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("15_bpsop")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/Preferences/ArmourPreference"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Options/Preferences/ArmourPreference/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "ARMOUR"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CheckBoxLight" type="CheckBox" parent="Options/Preferences/ArmourPreference/VBoxContainer"]
+layout_mode = 2
+text = "LIGHT"
+
+[node name="CheckBoxMedium" type="CheckBox" parent="Options/Preferences/ArmourPreference/VBoxContainer"]
+layout_mode = 2
+text = "MEDIUM"
+
+[node name="CheckBoxHeavy" type="CheckBox" parent="Options/Preferences/ArmourPreference/VBoxContainer"]
+layout_mode = 2
+text = "HEAVY"
+
+[node name="PotionPreference" type="Panel" parent="Options/Preferences"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("16_nncd2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/Preferences/PotionPreference"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Options/Preferences/PotionPreference/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "POTIONS"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CheckBoxHealth" type="CheckBox" parent="Options/Preferences/PotionPreference/VBoxContainer"]
+layout_mode = 2
+text = "HEALTH"
+
+[node name="CheckBoxStamina" type="CheckBox" parent="Options/Preferences/PotionPreference/VBoxContainer"]
+layout_mode = 2
+text = "STAMINA"
+
+[node name="CheckBoxMana" type="CheckBox" parent="Options/Preferences/PotionPreference/VBoxContainer"]
+layout_mode = 2
+text = "MANA"
+
+[node name="SkillModules" type="VBoxContainer" parent="Options"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SkillModules" type="Panel" parent="Options/SkillModules"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("17_prvid")
+
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 19.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "SKILL_MODULES"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Options/SkillModules/SkillModules"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 35.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BaseType" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "BASE_TYPE"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel0" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer/Panel0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+text = "NAME"
+alignment = 1
+
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer/Panel0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.74902, 0.74902, 0.74902, 1)
+theme_override_font_sizes/font_size = 14
+text = "DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 4
+
+[node name="Aim" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Aim"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Aim/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "AIM"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MeleeMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/MeleeMod"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/MeleeMod/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "MELEE_MOD"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="GrappleMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/GrappleMod"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/GrappleMod/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "GRAPPLE_MOD"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="RangedMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/RangedMod"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/RangedMod/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "RANGED_MOD"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="DefenceMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/DefenceMod"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/DefenceMod/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "DEFENCE_MOD"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Magic" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Magic"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Magic/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "MAGIC"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MagicMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/MagicMod"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/MagicMod/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "MAGIC_MOD"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Application" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Application"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Application/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "APPLICATION"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Shape" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Shape"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Shape/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "SHAPE"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SummoningMethod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/SummoningMethod"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/SummoningMethod/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "SUMMONING_METHOD"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SummonType" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/SummonType"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/SummonType/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "SUMMON_TYPE"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SideMenu" type="Panel" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 56.0
+grow_vertical = 2
+theme = ExtResource("2_ck100")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SideMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpaceTop" type="Control" parent="SideMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="SideMenu/VBoxContainer/SpaceTop"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64y7e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7hsw0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qskvj")
+toggle_mode = true
+
+[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/SpaceTop/Button"]
+self_modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("12_6ewli")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button0" type="Button" parent="SideMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+tooltip_text = "OVERVIEW"
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_g737p")
+
+[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button0"]
+self_modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_0vtos")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Overview"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Button1" type="Button" parent="SideMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+tooltip_text = "CHARACTER"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g737p")
+
+[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button1"]
+self_modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("14_4iy3k")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Character"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Button2" type="Button" parent="SideMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g737p")
+
+[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button2"]
+self_modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("15_xy43e")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Character"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Button3" type="Button" parent="SideMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g737p")
+
+[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button3"]
+self_modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_15y0b")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Character"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Title" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_buju4")
+anchors_preset = -1
+anchor_right = 0.1
+offset_left = 56.0
+offset_right = 128.0
+offset_bottom = 34.0
+theme = ExtResource("2_ck100")
+
+[node name="Label" type="Label" parent="Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = -16.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "OVERVIEW"
+vertical_alignment = 1
+
+[node name="Tooltip" parent="." instance=ExtResource("17_6m177")]
+visible = false
+theme = ExtResource("2_ck100")
+
+[connection signal="toggled" from="Options/Preferences/WeaponPreference/VBoxContainer/CheckBoxMelee" to="." method="_toggle_weapon_type" binds= ["melee"]]
+[connection signal="toggled" from="Options/Preferences/WeaponPreference/VBoxContainer/CheckBoxRanged" to="." method="_toggle_weapon_type" binds= ["ranged"]]
+[connection signal="toggled" from="Options/Preferences/WeaponPreference/VBoxContainer/CheckBoxMagic" to="." method="_toggle_weapon_type" binds= ["magic"]]
+[connection signal="toggled" from="Options/Preferences/WeaponPreference/VBoxContainer/CheckBoxShield" to="." method="_toggle_weapon_type" binds= ["shield"]]
+[connection signal="toggled" from="Options/Preferences/WeaponPreference/VBoxContainer/CheckBox1h" to="." method="_toggle_1h_weapons"]
+[connection signal="toggled" from="Options/Preferences/WeaponPreference/VBoxContainer/CheckBox2h" to="." method="_toggle_2h_weapons"]
+[connection signal="toggled" from="Options/Preferences/ArmourPreference/VBoxContainer/CheckBoxLight" to="." method="_toggle_armour_type" binds= ["light"]]
+[connection signal="toggled" from="Options/Preferences/ArmourPreference/VBoxContainer/CheckBoxMedium" to="." method="_toggle_armour_type" binds= ["medium"]]
+[connection signal="toggled" from="Options/Preferences/ArmourPreference/VBoxContainer/CheckBoxHeavy" to="." method="_toggle_armour_type" binds= ["heavy"]]
+[connection signal="toggled" from="Options/Preferences/PotionPreference/VBoxContainer/CheckBoxHealth" to="." method="_toggle_potion_type" binds= ["health"]]
+[connection signal="toggled" from="Options/Preferences/PotionPreference/VBoxContainer/CheckBoxStamina" to="." method="_toggle_potion_type" binds= ["stamina"]]
+[connection signal="toggled" from="Options/Preferences/PotionPreference/VBoxContainer/CheckBoxMana" to="." method="_toggle_potion_type" binds= ["mana"]]
+[connection signal="settings_changed" from="Options/SkillModules/SkillModules" to="." method="_settings_changed"]
+[connection signal="toggled" from="SideMenu/VBoxContainer/SpaceTop/Button" to="." method="_side_menu_expand_toggled"]
+[connection signal="pressed" from="SideMenu/VBoxContainer/Button0" to="." method="_show_overview"]
+[connection signal="pressed" from="SideMenu/VBoxContainer/Button1" to="." method="_show_character"]
+[connection signal="pressed" from="SideMenu/VBoxContainer/Button2" to="." method="_show_journal"]
+[connection signal="pressed" from="SideMenu/VBoxContainer/Button3" to="." method="_show_options"]

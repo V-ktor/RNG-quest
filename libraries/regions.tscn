@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba5opu7oene6u"]
+
+[ext_resource type="Script" path="res://libraries/regions.gd" id="1_h1ibj"]
+[ext_resource type="Script" path="res://libraries/region_description.gd" id="2_nvttf"]
+
+[node name="Regions" type="Node"]
+script = ExtResource("1_h1ibj")
+
+[node name="RegionDescription" type="Node" parent="."]
+script = ExtResource("2_nvttf")

@@ -98,6 +98,9 @@ class Character:
 	var status: Array
 	var delay: float
 	var position:= 1
+	var min_dist:= 0
+	var action_duration: float
+	var current_action: String
 	var valid_weapon_subtypes:= []
 	var valid_armour_subtypes:= []
 	
@@ -286,6 +289,9 @@ class Character:
 		status.erase(dict)
 		recalc_attributes()
 	
+	func get_max_exp() -> int:
+		return 50 + 25*level + 25*level*level
+	
 	func update(delta: float):
 		var stun:= 0.0
 		health = clamp(health + delta*float(health_regen)/100.0, 0, max_health)
@@ -311,21 +317,23 @@ class Character:
 	
 	func to_dict() -> Dictionary:
 		return {
-			"name":name,
-			"level":level,
-			"experience":experience,
-			"health":health,
-			"mana":mana,
-			"stamina":stamina,
-			"stats":stats,
-			"attributes":attributes,
-			"abilities":abilities,
-			"skills":skills,
-			"damage":damage,
-			"resistance":resistance,
-			"equipment":equipment,
-			"status":status,
-			"delay":delay,
+			"name": name,
+			"level": level,
+			"experience": experience,
+			"health": health,
+			"mana": mana,
+			"stamina": stamina,
+			"stats": stats,
+			"attributes": attributes,
+			"abilities": abilities,
+			"skills": skills,
+			"damage": damage,
+			"resistance": resistance,
+			"equipment": equipment,
+			"status": status,
+			"delay": delay,
+			"action_duration": action_duration,
+			"current_action": current_action,
 		}
 	
 
@@ -511,6 +519,31 @@ class Summon:
 			"duration":duration,
 		}
 	
+
+class CharacterSettings:
+	var weapon_1h_alowed:= true
+	var weapon_2h_alowed:= true
+	var valid_weapon_types:= []
+	var valid_armour_types:= []
+	var valid_potion_types:= ["health"]
+	var disabled_skill_modules:= []
+	var auto_update_options:= true
+	
+	func _init(dict: Dictionary = {}):
+		for k in dict.keys():
+			set(k, dict[k])
+	
+	func to_dict() -> Dictionary:
+		return {
+			"weapon_1h_alowed": weapon_1h_alowed,
+			"weapon_2h_alowed": weapon_2h_alowed,
+			"valid_weapon_types": valid_weapon_types,
+			"valid_armour_types": valid_armour_types,
+			"valid_potion_types": valid_potion_types,
+			"disabled_skill_modules": disabled_skill_modules,
+			"auto_update_options": true,
+		}
+
 
 
 

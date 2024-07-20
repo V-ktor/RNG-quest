@@ -221,11 +221,17 @@ const MATERIALS = {
 	"slime":{
 		"name":["{name_prefix} slime"],
 		"tags":["liquid"],
+		"attributes":{
+			"adjective":["slimy"],
+		},
 		"price":5,
 	},
 	"condensate":{
 		"name":["{base_name} condensate", "{name_prefix} condensate"],
-		"tags":["liquid","elemental"],
+		"tags":["liquid", "elemental"],
+		"attributes":{
+			"adjective":["slimy"],
+		},
 		"add":{
 			"willpower":0.5,
 		},
@@ -233,7 +239,10 @@ const MATERIALS = {
 	},
 	"residue":{
 		"name":["{base_name} residue", "{name_prefix} residue"],
-		"tags":["liquid","magical"],
+		"tags":["liquid", "magical"],
+		"attributes":{
+			"adjective":["slimy"],
+		},
 		"add":{
 			"magic":0.5,
 		},
@@ -242,7 +251,10 @@ const MATERIALS = {
 	"resin":{
 		"name":["{name_prefix} resin"],
 		"quality":1.1,
-		"tags":["crafting","magical"],
+		"tags":["crafting", "magical"],
+		"attributes":{
+			"adjective":["slimy"],
+		},
 		"add":{
 			"magic":0.5,
 		},
@@ -251,7 +263,10 @@ const MATERIALS = {
 	"plasma":{
 		"name":["{base_name} plasma", "{name_prefix} plasma"],
 		"quality":1.1,
-		"tags":["liquid","elemental"],
+		"tags":["liquid", "elemental"],
+		"attributes":{
+			"adjective":["slimy"],
+		},
 		"add":{
 			"willpower":0.5,
 		},
@@ -260,7 +275,10 @@ const MATERIALS = {
 	"magic_salt":{
 		"name":["{base_name} salt", "{name_prefix} salt"],
 		"quality":1.1,
-		"tags":["magical","elemental","cooking"],
+		"tags":["magical", "elemental", "cooking"],
+		"attributes":{
+			"adjective":["salty", "magical"],
+		},
 		"add":{
 			"magic":0.5,
 		},
@@ -269,6 +287,9 @@ const MATERIALS = {
 	"dust":{
 		"name":["{base_name} dust"],
 		"tags":["magical"],
+		"attributes":{
+			"adjective":["dusty"],
+		},
 		"add":{
 			"magic":0.5,
 		},
@@ -276,7 +297,10 @@ const MATERIALS = {
 	},
 	"oil":{
 		"name":["{base_name} oil", "{name_prefix} oil"],
-		"tags":["liquid","elemental"],
+		"tags":["liquid", "elemental"],
+		"attributes":{
+			"adjective":["oily", "well-oiled"],
+		},
 		"add":{
 			"attack":0.25,
 			"magic":0.25,
@@ -285,7 +309,10 @@ const MATERIALS = {
 	},
 	"herb":{
 		"name":["{base_name} herb"],
-		"tags":["alchemy","plant","healing"],
+		"tags":["alchemy", "plant", "healing"],
+		"attributes":{
+			"adjective":["fresh", "herbal"],
+		},
 		"add":{
 			"health":2.5,
 		},
@@ -294,7 +321,10 @@ const MATERIALS = {
 	"venom":{
 		"name":["{base_name} venom"],
 		"quality":1.1,
-		"tags":["toxic","alchemy"],
+		"tags":["toxic", "alchemy"],
+		"attributes":{
+			"adjective":["toxic", "poisonous"],
+		},
 		"add":{
 			"stamina":1.5,
 			"mana":1.5,
@@ -303,7 +333,10 @@ const MATERIALS = {
 	},
 	"mold":{
 		"name":["{base_name} mold"],
-		"tags":["toxic","alchemy"],
+		"tags":["toxic", "alchemy"],
+		"attributes":{
+			"adjective":["moldy"],
+		},
 		"add":{
 			"health":2.5,
 		},
@@ -311,7 +344,10 @@ const MATERIALS = {
 	},
 	"flower":{
 		"name":["{base_name} flower"],
-		"tags":["alchemy","healing"],
+		"tags":["alchemy", "healing"],
+		"attributes":{
+			"adjective":["flowering", "floral"],
+		},
 		"add":{
 			"health":2.5,
 		},
@@ -320,7 +356,10 @@ const MATERIALS = {
 	"moss":{
 		"name":["{base_name} moss"],
 		"quality":1.1,
-		"tags":["alchemy","healing","toxic"],
+		"tags":["alchemy", "healing", "toxic"],
+		"attributes":{
+			"adjective":["green", "mossy", "overgrown"],
+		},
 		"add":{
 			"stamina":1.5,
 			"mana":1.5,
@@ -329,7 +368,10 @@ const MATERIALS = {
 	},
 	"leaf":{
 		"name":["{base_name} leaf"],
-		"tags":["alchemy","plant","cooking"],
+		"tags":["alchemy", "plant", "cooking"],
+		"attributes":{
+			"adjective":["fresh", "refreshing"],
+		},
 		"add":{
 			"health":2.5,
 		},
@@ -337,7 +379,10 @@ const MATERIALS = {
 	},
 	"carrot":{
 		"name":["{base_name} carrot"],
-		"tags":["alchemy","plant","cooking"],
+		"tags":["alchemy", "plant", "cooking"],
+		"attributes":{
+			"adjective":["fresh", "healthy", "orange"],
+		},
 		"add":{
 			"health":2.5,
 		},
@@ -346,7 +391,10 @@ const MATERIALS = {
 	"root":{
 		"name":["{base_name} root"],
 		"quality":1.1,
-		"tags":["alchemy","plant","cooking"],
+		"tags":["alchemy", "plant", "cooking"],
+		"attributes":{
+			"adjective":["gnarly", "brown"],
+		},
 		"add":{
 			"health":2.5,
 		},
@@ -355,7 +403,10 @@ const MATERIALS = {
 	"mushroom":{
 		"name":["{base_name} mushroom"],
 		"quality":1.1,
-		"tags":["cooking","alchemy","poison"],
+		"tags":["cooking", "alchemy", "poison"],
+		"attributes":{
+			"adjective":["poisonous", "healthy"],
+		},
 		"add":{
 			"health":2.5,
 		},
@@ -364,13 +415,19 @@ const MATERIALS = {
 	"algae":{
 		"name":["{base_name} algae"],
 		"quality":1.1,
-		"tags":["cooking","plant"],
+		"tags":["cooking", "plant"],
+		"attributes":{
+			"adjective":["salty", "sea green"],
+		},
 		"price":15,
 	},
 	"plankton":{
 		"name":["{base_name} plankton"],
 		"quality":1.1,
-		"tags":["cooking","alchemy"],
+		"tags":["cooking", "alchemy"],
+		"attributes":{
+			"adjective":["salty", "sea green"],
+		},
 		"add":{
 			"health":2.5,
 		},
@@ -379,7 +436,10 @@ const MATERIALS = {
 	"spice":{
 		"name":["{base_name} spice"],
 		"quality":1.1,
-		"tags":["alchemy","cooking"],
+		"tags":["alchemy", "cooking"],
+		"attributes":{
+			"adjective":["spicy", "hot"],
+		},
 		"add":{
 			"health":2.5,
 		},
@@ -388,13 +448,19 @@ const MATERIALS = {
 	"fruit":{
 		"name":["{base_name} fruit"],
 		"quality":1.1,
-		"tags":["cooking","plant"],
+		"tags":["cooking", "plant"],
+		"attributes":{
+			"adjective":["fruity", "juicy"],
+		},
 		"price":15,
 	},
 	"berry":{
 		"name":["{base_name} berry"],
 		"quality":1.1,
-		"tags":["alchemy","cooking","plant"],
+		"tags":["alchemy", "cooking", "plant"],
+		"attributes":{
+			"adjective":["fruity", "juicy"],
+		},
 		"add":{
 			"health":2.5,
 		},
@@ -402,18 +468,27 @@ const MATERIALS = {
 	},
 	"cabbage":{
 		"name":["{base_name} cabbage"],
-		"tags":["cooking","plant"],
+		"tags":["cooking", "plant"],
+		"attributes":{
+			"adjective":["fresh", "green"],
+		},
 		"price":10,
 	},
 	"bean":{
 		"name":["{base_name} bean"],
 		"quality":1.1,
 		"tags":["cooking"],
+		"attributes":{
+			"adjective":["healthy", "brown", "white", "red"],
+		},
 		"price":15,
 	},
 	"pebble":{
 		"name":["{base_name} pebble"],
 		"tags":["stone"],
+		"attributes":{
+			"adjective":["rocky", "lithic", "stone"],
+		},
 		"add":{
 			"armour":0.5,
 		},
@@ -423,6 +498,9 @@ const MATERIALS = {
 		"name":["{base_name} stone", "{base_name} rock"],
 		"quality":1.1,
 		"tags":["stone"],
+		"attributes":{
+			"adjective":["rocky", "lithic", "stone"],
+		},
 		"add":{
 			"armour":0.5,
 		},
@@ -431,11 +509,17 @@ const MATERIALS = {
 	"sand":{
 		"name":["{base_name} sand"],
 		"tags":["sand"],
+		"attributes":{
+			"adjective":["sandy", "yellow", "grey"],
+		},
 		"price":10,
 	},
 	"glass":{
 		"name":["{base_name} glass"],
 		"tags":["glass"],
+		"attributes":{
+			"adjective":["translucent", "glass"],
+		},
 		"add":{
 			"penetration":0.75,
 		},
@@ -444,6 +528,9 @@ const MATERIALS = {
 	"gem":{
 		"name":["{base_name} gem", "{base_name} crystal"],
 		"tags":["gem"],
+		"attributes":{
+			"adjective":["expensive", "crystaline"],
+		},
 		"add":{
 			"magic":0.5,
 		},
@@ -453,6 +540,9 @@ const MATERIALS = {
 		"name":["{base_name} jewel", "{base_name} gem stone"],
 		"quality":1.1,
 		"tags":["gem"],
+		"attributes":{
+			"adjective":["expensive", "crystaline"],
+		},
 		"add":{
 			"magic":0.5,
 		},
@@ -461,6 +551,9 @@ const MATERIALS = {
 	"wood":{
 		"name":["{base_name} wood"],
 		"tags":["wood"],
+		"attributes":{
+			"adjective":["wooden"],
+		},
 		"add":{
 			"accuracy":0.5,
 		},
@@ -470,6 +563,9 @@ const MATERIALS = {
 		"name":["{base_name} plank"],
 		"quality":1.1,
 		"tags":["wood"],
+		"attributes":{
+			"adjective":["wooden"],
+		},
 		"add":{
 			"accuracy":0.5,
 		},
@@ -478,6 +574,9 @@ const MATERIALS = {
 	"ore":{
 		"name":["{base_name} ore"],
 		"tags":["metal"],
+		"attributes":{
+			"adjective":["metallic"],
+		},
 		"add":{
 			"attack":0.5,
 		},
@@ -487,6 +586,9 @@ const MATERIALS = {
 		"name":["{base_name} ingot"],
 		"quality":1.1,
 		"tags":["metal"],
+		"attributes":{
+			"adjective":["metallic"],
+		},
 		"add":{
 			"attack":0.5,
 		},
@@ -496,6 +598,9 @@ const MATERIALS = {
 		"name":["{base_name} bar"],
 		"quality":1.1,
 		"tags":["metal"],
+		"attributes":{
+			"adjective":["metallic"],
+		},
 		"add":{
 			"attack":0.5,
 		},
@@ -505,6 +610,9 @@ const MATERIALS = {
 		"name":["{base_name} cog"],
 		"quality":1.1,
 		"tags":["metal"],
+		"attributes":{
+			"adjective":["metallic"],
+		},
 		"add":{
 			"attack":0.5,
 		},
@@ -513,12 +621,18 @@ const MATERIALS = {
 	"scrap":{
 		"name":["{base_name} scrap"],
 		"quality":0.9,
-		"tags":["metal","stone"],
+		"tags":["metal", "stone"],
+		"attributes":{
+			"adjective":["metallic", "rusty"],
+		},
 		"price":5,
 	},
 	"coin":{
 		"name":["{base_name} coin"],
 		"tags":["metal"],
+		"attributes":{
+			"adjective":["metallic"],
+		},
 		"add":{
 			"armour":0.5,
 		},
@@ -527,6 +641,9 @@ const MATERIALS = {
 	"paper":{
 		"name":["{base_name} paper"],
 		"tags":["paper"],
+		"attributes":{
+			"adjective":["thin"],
+		},
 		"add":{
 			"willpower":0.5,
 		},
@@ -536,6 +653,9 @@ const MATERIALS = {
 		"name":["{base_name} parchement"],
 		"veggie_name":["{base_name} paper"],
 		"tags":["paper"],
+		"attributes":{
+			"adjective":["thin", "parched"],
+		},
 		"add":{
 			"magic":0.5,
 		},
@@ -545,6 +665,9 @@ const MATERIALS = {
 		"name":["{base_name} skin"],
 		"veggie_name":["{base_name} polymere"],
 		"tags":["leather"],
+		"attributes":{
+			"adjective":["leather", "smooth"],
+		},
 		"add":{
 			"accuracy":0.5,
 		},
@@ -555,6 +678,9 @@ const MATERIALS = {
 		"veggie_name":["{base_name} synthetic leather"],
 		"quality":1.1,
 		"tags":["leather"],
+		"attributes":{
+			"adjective":["leather", "robust"],
+		},
 		"add":{
 			"accuracy":0.5,
 		},
@@ -564,7 +690,10 @@ const MATERIALS = {
 		"name":["{base_name} hide"],
 		"veggie_name":["{base_name} wool"],
 		"quality":1.1,
-		"tags":["leather","cloth"],
+		"tags":["leather", "cloth"],
+		"attributes":{
+			"adjective":["leather"],
+		},
 		"add":{
 			"accuracy":0.5,
 		},
@@ -574,6 +703,9 @@ const MATERIALS = {
 		"name":["{base_name} synth skin"],
 		"quality":1.1,
 		"tags":["leather"],
+		"attributes":{
+			"adjective":["synthetic", "fake", "smooth"],
+		},
 		"add":{
 			"accuracy":0.5,
 		},
@@ -582,7 +714,10 @@ const MATERIALS = {
 	"wing":{
 		"name":["{base_name} wing"],
 		"veggie_name":["{base_name} foil"],
-		"tags":["leather","alchemy"],
+		"tags":["leather", "alchemy"],
+		"attributes":{
+			"adjective":["smooth", "thin"],
+		},
 		"add":{
 			"accuracy":0.5,
 		},
@@ -591,6 +726,9 @@ const MATERIALS = {
 	"cotton":{
 		"name":["{base_name} cotton"],
 		"tags":["cloth"],
+		"attributes":{
+			"adjective":["cloth"],
+		},
 		"add":{
 			"evasion":0.5,
 		},
@@ -600,6 +738,9 @@ const MATERIALS = {
 		"name":["{base_name} cloth"],
 		"quality":1.1,
 		"tags":["cloth"],
+		"attributes":{
+			"adjective":["woven"],
+		},
 		"add":{
 			"evasion":0.5,
 		},
@@ -609,6 +750,9 @@ const MATERIALS = {
 		"name":["{base_name} silk"],
 		"quality":1.1,
 		"tags":["cloth"],
+		"attributes":{
+			"adjective":["elegant"],
+		},
 		"add":{
 			"evasion":0.5,
 		},
@@ -617,6 +761,9 @@ const MATERIALS = {
 	"foil":{
 		"name":["{base_name} foil"],
 		"tags":["cloth"],
+		"attributes":{
+			"adjective":["foil", "thin"],
+		},
 		"add":{
 			"evasion":0.5,
 		},
@@ -626,6 +773,9 @@ const MATERIALS = {
 		"name":["{base_name} tissue"],
 		"quality":1.1,
 		"tags":["cloth"],
+		"attributes":{
+			"adjective":["cloth"],
+		},
 		"add":{
 			"evasion":0.5,
 		},
@@ -635,6 +785,9 @@ const MATERIALS = {
 		"name":["{base_name} wrapping"],
 		"quality":1.1,
 		"tags":["cloth"],
+		"attributes":{
+			"adjective":["wrapped"],
+		},
 		"add":{
 			"evasion":0.5,
 		},
@@ -644,6 +797,9 @@ const MATERIALS = {
 		"name":["{base_name} fur"],
 		"veggie_name":["{base_name} polyester"],
 		"tags":["cloth"],
+		"attributes":{
+			"adjective":["hairy", "furry"],
+		},
 		"add":{
 			"evasion":0.5,
 		},
@@ -653,7 +809,10 @@ const MATERIALS = {
 		"name":["{base_name} scale"],
 		"veggie_name":["{base_name} plate"],
 		"quality":1.1,
-		"tags":["cloth","leather"],
+		"tags":["cloth", "leather"],
+		"attributes":{
+			"adjective":["shimmering", "smooth"],
+		},
 		"add":{
 			"armour":0.5,
 		},
@@ -662,6 +821,9 @@ const MATERIALS = {
 	"feather":{
 		"name":["{base_name} feather"],
 		"tags":["cloth"],
+		"attributes":{
+			"adjective":["feathered"],
+		},
 		"add":{
 			"evasion":0.5,
 		},
@@ -670,6 +832,9 @@ const MATERIALS = {
 	"hair":{
 		"name":["{base_name} hair"],
 		"tags":["cloth"],
+		"attributes":{
+			"adjective":["hairy"],
+		},
 		"add":{
 			"evasion":0.5,
 		},
@@ -680,6 +845,9 @@ const MATERIALS = {
 		"veggie_name":["{base_name} cloth"],
 		"quality":1.1,
 		"tags":["cloth"],
+		"attributes":{
+			"adjective":["cloth"],
+		},
 		"add":{
 			"evasion":0.5,
 		},
@@ -689,6 +857,9 @@ const MATERIALS = {
 		"name":["{base_name} tooth"],
 		"veggie_name":["{base_name} ceramic"],
 		"tags":["bone"],
+		"attributes":{
+			"adjective":["bony"],
+		},
 		"add":{
 			"penetration":0.75,
 		},
@@ -698,6 +869,9 @@ const MATERIALS = {
 		"name":["{base_name} nail"],
 		"veggie_name":["{base_name} iron nail"],
 		"tags":["bone"],
+		"attributes":{
+			"adjective":["hard"],
+		},
 		"add":{
 			"penetration":0.75,
 		},
@@ -707,6 +881,9 @@ const MATERIALS = {
 		"name":["{base_name} claw"],
 		"veggie_name":["{base_name} ceramic"],
 		"tags":["bone"],
+		"attributes":{
+			"adjective":["clawed"],
+		},
 		"add":{
 			"penetration":0.75,
 		},
@@ -716,7 +893,10 @@ const MATERIALS = {
 		"name":["{base_name} shell"],
 		"veggie_name":["{base_name} lime"],
 		"quality":1.1,
-		"tags":["stone","bone"],
+		"tags":["stone", "bone"],
+		"attributes":{
+			"adjective":["hard", "armoured"],
+		},
 		"add":{
 			"armour":0.5,
 		},
@@ -727,6 +907,9 @@ const MATERIALS = {
 		"veggie_name":["{base_name} ceramic"],
 		"quality":1.1,
 		"tags":["bone"],
+		"attributes":{
+			"adjective":["fanged"],
+		},
 		"add":{
 			"penetration":0.75,
 		},
@@ -737,6 +920,9 @@ const MATERIALS = {
 		"veggie_name":["{base_name} ceramic"],
 		"quality":1.1,
 		"tags":["bone"],
+		"attributes":{
+			"adjective":["hard", "thick"],
+		},
 		"add":{
 			"penetration":0.75,
 		},
@@ -747,6 +933,9 @@ const MATERIALS = {
 		"veggie_name":["{base_name} ceramic"],
 		"quality":1.1,
 		"tags":["bone"],
+		"attributes":{
+			"adjective":["bone", "skeletal"],
+		},
 		"add":{
 			"penetration":0.75,
 		},
@@ -757,6 +946,9 @@ const MATERIALS = {
 		"veggie_name":["{base_name} casing"],
 		"quality":1.1,
 		"tags":["bone"],
+		"attributes":{
+			"adjective":["bone", "hard"],
+		},
 		"add":{
 			"armour":0.5,
 		},
@@ -765,13 +957,19 @@ const MATERIALS = {
 	"meat":{
 		"name":["{base_name} meat"],
 		"veggie_name":["{base_name} tofu"],
-		"tags":["cooking","meat"],
+		"tags":["cooking", "meat"],
+		"attributes":{
+			"adjective":["meaty"],
+		},
 		"price":10,
 	},
 	"tongue":{
 		"name":["{base_name} tongue"],
 		"veggie_name":["{base_name} B12 pill"],
-		"tags":["alchemy","cooking","meat"],
+		"tags":["alchemy", "cooking", "meat"],
+		"attributes":{
+			"adjective":["meaty"],
+		},
 		"add":{
 			"health":2.5,
 		},
@@ -781,7 +979,10 @@ const MATERIALS = {
 		"name":["{base_name} pincer"],
 		"veggie_name":["{base_name} pea"],
 		"quality":1.1,
-		"tags":["alchemy","cooking","meat"],
+		"tags":["alchemy", "cooking", "meat"],
+		"attributes":{
+			"adjective":["meaty"],
+		},
 		"add":{
 			"health":2.5,
 		},
@@ -790,7 +991,10 @@ const MATERIALS = {
 	"insistine":{
 		"name":["{base_name} insistine"],
 		"veggie_name":["{base_name} soy"],
-		"tags":["cooking","alchemy","meat"],
+		"tags":["cooking", "alchemy", "meat"],
+		"attributes":{
+			"adjective":["meaty"],
+		},
 		"add":{
 			"stamina":1.5,
 			"mana":1.5,
@@ -800,7 +1004,10 @@ const MATERIALS = {
 	"testicle":{
 		"name":["{base_name} testicle"],
 		"veggie_name":["{base_name} nut"],
-		"tags":["cooking","alchemy","meat"],
+		"tags":["cooking", "alchemy", "meat"],
+		"attributes":{
+			"adjective":["meaty"],
+		},
 		"add":{
 			"stamina":1.5,
 			"mana":1.5,
@@ -810,7 +1017,10 @@ const MATERIALS = {
 	"ear":{
 		"name":["{base_name} ear"],
 		"veggie_name":["{base_name} poison"],
-		"tags":["alchemy","poison"],
+		"tags":["alchemy", "poison"],
+		"attributes":{
+			"adjective":["meaty", "poisonous"],
+		},
 		"add":{
 			"stamina":1.5,
 			"mana":1.5,
@@ -821,7 +1031,10 @@ const MATERIALS = {
 		"name":["{base_name} eye ball"],
 		"veggie_name":["{base_name} marble"],
 		"quality":1.1,
-		"tags":["alchemy","gem"],
+		"tags":["alchemy", "gem"],
+		"attributes":{
+			"adjective":["meaty"],
+		},
 		"add":{
 			"willpower":0.5,
 		},
@@ -831,14 +1044,20 @@ const MATERIALS = {
 		"name":["{base_name} kidney"],
 		"veggie_name":["{base_name} kidney bean"],
 		"quality":1.1,
-		"tags":["cooking","meat"],
+		"tags":["cooking", "meat"],
+		"attributes":{
+			"adjective":["meaty"],
+		},
 		"price":15,
 	},
 	"heart":{
 		"name":["{base_name} heart"],
 		"veggie_name":["{base_name} heartstone"],
 		"quality":1.1,
-		"tags":["alchemy","meat","gem"],
+		"tags":["alchemy", "meat", "gem"],
+		"attributes":{
+			"adjective":["meaty", "hearty"],
+		},
 		"add":{
 			"willpower":0.5,
 		},
@@ -848,6 +1067,9 @@ const MATERIALS = {
 		"name":["{base_name} battery"],
 		"quality":1.1,
 		"tags":["alchemy"],
+		"attributes":{
+			"adjective":["acidic", "toxic", "metallic"],
+		},
 		"add":{
 			"stamina":1.5,
 			"mana":1.5,
@@ -858,6 +1080,9 @@ const MATERIALS = {
 		"name":["{base_name} processing unit"],
 		"quality":1.1,
 		"tags":["gem"],
+		"attributes":{
+			"adjective":["metallic", "silicon"],
+		},
 		"add":{
 			"magic":0.5,
 		},
@@ -867,6 +1092,9 @@ const MATERIALS = {
 		"name":["{base_name} wires"],
 		"tags":["cloth"],
 		"quality":1.1,
+		"attributes":{
+			"adjective":["metallic"],
+		},
 		"add":{
 			"critical":0.6,
 		},
@@ -876,6 +1104,9 @@ const MATERIALS = {
 		"name":["{base_name} RAM module"],
 		"quality":1.1,
 		"tags":["gem"],
+		"attributes":{
+			"adjective":["metallic", "computational"],
+		},
 		"add":{
 			"willpower":0.5,
 		},
@@ -930,130 +1161,157 @@ const EQUIPMENT_RECIPES = {
 	"dagger":{
 		"type":"weapon",
 		"components":["knife","hilt"],
+		"icon":"dagger",
 	},
 	"sword":{
 		"type":"weapon",
 		"components":["blade","hilt"],
+		"icon":"sword",
 	},
 	"axe":{
 		"type":"weapon",
 		"components":["blade","shaft"],
+		"icon":"axe",
 	},
 	"mace":{
 		"type":"weapon",
 		"components":["metal_coating","hilt"],
+		"icon":"mace",
 	},
 	"whip":{
 		"type":"weapon",
 		"components":["whip","shaft"],
+		"icon":"whip",
 	},
 	"chain_saw":{
 		"type":"weapon",
 		"components":["chain_saw","hilt"],
+		"icon":"chain_saw",
 	},
 	"buckler":{
 		"type":"weapon",
 		"subtype":"shield",
 		"components":["light_armour","shaft"],
+		"icon":"buckler",
 	},
 	"kite_shield":{
 		"type":"weapon",
 		"subtype":"shield",
 		"components":["chain_armour","shaft"],
+		"icon":"kite_shield",
 	},
 	"tower_shield":{
 		"type":"weapon",
 		"subtype":"shield",
 		"components":["plate_armour","shaft"],
+		"icon":"tower_shield",
 	},
 	
 	"sling":{
 		"type":"weapon",
 		"components":["string","shaft"],
+		"icon":"sling",
 	},
 	"pistol":{
 		"type":"weapon",
 		"components":["barrel","hilt"],
+		"icon":"pistol",
 	},
 	
 	"tome":{
 		"type":"weapon",
 		"components":["formula","gem"],
+		"icon":"tome",
 	},
 	"amplifier":{
 		"type":"weapon",
 		"components":["magical_coating","gem"],
+		"icon":"amplifier",
 	},
 	"orb":{
 		"type":"weapon",
 		"components":["magical_coating","orb"],
+		"icon":"orb",
 	},
 	"spellblade":{
 		"type":"weapon",
 		"components":["blade","gem"],
+		"icon":"spellblade",
 	},
 	
 	"greatsword":{
 		"type":"weapon",
 		"2h":true,
 		"components":["blade","blade","knife","hilt"],
+		"icon":"greatsword",
 	},
 	"greatmaul":{
 		"type":"weapon",
 		"2h":true,
 		"components":["metal_coating","metal_coating","pole","hilt"],
+		"icon":"greatmaul",
 	},
 	"battleaxe":{
 		"type":"weapon",
 		"2h":true,
 		"components":["blade","blade","pole","shaft"],
+		"icon":"battleaxe",
 	},
 	"spear":{
 		"type":"weapon",
 		"2h":true,
 		"components":["knife","pole","pole","shaft"],
+		"icon":"spear",
 	},
 	"scythe":{
 		"type":"weapon",
 		"2h":true,
 		"components":["blade","pole","pole","hilt"],
+		"icon":"scythe",
 	},
 	"morningstar":{
 		"type":"weapon",
 		"2h":true,
 		"components":["metal_coating","whip","whip","shaft"],
+		"icon":"morningstar",
 	},
 	
 	"bow":{
 		"type":"weapon",
 		"2h":true,
 		"components":["string","bow","bow","shaft"],
+		"icon":"bow",
 	},
 	"crossbow":{
 		"type":"weapon",
 		"2h":true,
 		"components":["string","bow","loader","shaft"],
+		"icon":"crossbow",
 	},
 	"blunderbuss":{
 		"type":"weapon",
 		"2h":true,
 		"components":["barrel","barrel","loader","hilt"],
+		"icon":"blunderbuss",
 	},
 	"gun_blade":{
 		"type":"weapon",
 		"2h":true,
 		"components":["knife","barrel","loader","shaft"],
+		"icon":"gunblade",
 	},
 	
 	"quarterstaff":{
 		"type":"weapon",
 		"2h":true,
 		"components":["gem","pole","pole","shaft"],
+		"icon":"quarterstaff",
 	},
 	"magestaff":{
 		"type":"weapon",
 		"2h":true,
 		"components":["gem","orb","shaft","shaft"],
+		"icon":"magestaff",
 	},
 	
 	"cloth_shirt":{
@@ -5946,6 +6204,9 @@ var enchantments_by_slot:= {}
 
 var is_vegan:= false
 
+@onready
+var Descriptions:= $ItemDescriptions
+
 
 func pick_random_equipment(type: String) -> String:
 	var valid:= []
@@ -6120,8 +6381,11 @@ func create_component_tooltip(item: Dictionary) -> String:
 		item.source = tr("UNKNOWN_ORIGIN")
 	var text: String = format_item_name(item) + "\n" + item.type + "\n" + item.source + "\n\n" + tr("COMPONENTS") + ":"
 	if item.components is Array:
-		for c in item.components:
-			text += "\n  " + c
+		for dict in item.components:
+			if typeof(dict) == TYPE_DICTIONARY:
+				text += "\n  " + dict.name
+			else:
+				text += "\n  " + str(dict)
 	else:
 		text += "\n" + item.components
 	
@@ -6211,9 +6475,12 @@ func create_random_equipment(type: String, components: Array, region: Dictionary
 	return item
 
 func create_random_standard_equipment(type: String, region: Dictionary, tier:= 0, quality_mod:= 1.0, quality_bonus:= 0) -> Dictionary:
+	var item: Dictionary
 	var dict: Dictionary = EQUIPMENT_RECIPES[type].duplicate(true)
 	dict.base_type = type
-	return create_random_equipment(dict.type, dict.components, region, dict, tier, quality_mod, quality_bonus)
+	item = create_random_equipment(dict.type, dict.components, region, dict, tier, quality_mod, quality_bonus)
+	item.recipe = type
+	return item
 
 func create_randomized_equipment(type: String, slot: String, subtype: String, num_components: int, region: Dictionary, tier:= 0, quality_mod:= 1.0, quality_bonus:= 0) -> Dictionary:
 	var item: Dictionary
@@ -6265,7 +6532,10 @@ func create_equipment(type: String, components: Array, materials: Array, info:= 
 		merge_dicts(item, dict, quality)
 		if mat.has("add"):
 			merge_dicts(item, mat.add)
-		component_list.push_back(mat.name + " " + tr(components[i].to_upper()))
+		component_list.push_back({
+			"name": mat.name.to_lower(),
+#			"name": tr(components[i].to_upper()),
+			"attributes": mat.get("attributes", {})})
 		item.quality += quality
 		item.price += DEFAULT_MATERIAL_PRICE
 	item.quality /= components.size()
@@ -6309,6 +6579,7 @@ func craft_equipment(type: String, materials: Array, quality_bonus:= 0) -> Dicti
 	var dict: Dictionary = EQUIPMENT_RECIPES[type].duplicate(true)
 	dict.base_type = type
 	item = create_equipment(dict.type, dict.components, materials, dict, quality_bonus)
+	item.recipe = type
 	item.source = tr("CRAFTED_ITEM")
 	item.description = create_tooltip(item)
 	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
@@ -6319,9 +6590,11 @@ func create_equipment_drop(creature: Dictionary) -> Dictionary:
 	var item: Dictionary
 	var quality:= 100
 	var num_enchantments:= 0
+	var recipe: String = EQUIPMENT_RECIPES.keys().pick_random()
 	if creature.has("equipment_quality"):
 		quality *= creature.equipment_quality
-	item = create_random_standard_equipment(EQUIPMENT_RECIPES.keys().pick_random(), {"level":creature.level,"tier":creature.tier,"local_materials":DEFAULT_MATERIALS}, int(creature.tier*randf_range(0.25,0.75) + randf_range(0.0,0.5)), float(quality)/100.0)
+	item = create_random_standard_equipment(recipe, {"level":creature.level,"tier":creature.tier,"local_materials":DEFAULT_MATERIALS}, int(creature.tier*randf_range(0.25,0.75) + randf_range(0.0,0.5)), float(quality)/100.0)
+	item.recipe = recipe
 	num_enchantments -= int(item.has("enchanted") && item.enchanted)
 	if creature.has("equipment_enchantment_chance"):
 		for i in range(3):
@@ -6341,12 +6614,13 @@ func create_legendary_equipment(type: String, level: int, quality:= 150) -> Dict
 	var add_quality:= 0
 	var dict: Dictionary
 	var scale:= (1.0 + 0.1*(level-1))*quality/100.0
-	if !(EQUIPMENT_RECIPES.has("type")):
+	if type not in EQUIPMENT_RECIPES:
 		type = EQUIPMENT_RECIPES.keys().pick_random()
 	dict = get_artifact_name(type)
 	if dict.has("quality"):
 		add_quality = 100*dict.quality*(1.0 + 0.1*(level-1))
 	item = create_random_standard_equipment(type, {"level":10+int(1.2*level),"tier":0,"local_materials":LEGENDARY_MATERIALS}, 2, 1.5, add_quality)
+	item.recipe = type
 	for i in range(3):
 		item = enchant_equipment(item, ENCHANTMENTS.keys().pick_random(), quality + add_quality + 10*level, str(i+1))
 	item = merge_dicts(item, dict, scale)
@@ -6474,16 +6748,16 @@ func enchant_equipment(item: Dictionary, enchantment_type: String, quality: int,
 		if dict.has(k):
 			var value: int
 			if k=="speed":
-				value = ceil(dict[k])
+				value = ceil(max(dict[k], 0.0))
 			else:
-				value = ceil(dict[k]*scale)
+				value = ceil(max(dict[k]*scale, 0.0))
 			if item.has(k):
 				item[k] += value
 			else:
 				item[k] = value
 	for k in Characters.DEFAULT_STATS.keys():
 		if dict.has(k):
-			var value: int = ceil(dict[k]*scale)
+			var value: int = ceil(max(dict[k]*scale, 0.0))
 			if item.has(k):
 				item[k] += value
 			else:
@@ -6491,9 +6765,9 @@ func enchant_equipment(item: Dictionary, enchantment_type: String, quality: int,
 	for k in Characters.RESOURCES:
 		if dict.has(k):
 			if item.has(k):
-				item[k] += int(ceil(dict[k]*scale))
+				item[k] += int(ceil(max(dict[k]*scale, 0.0)))
 			else:
-				item[k] = int(ceil(dict[k]*scale))
+				item[k] = int(ceil(max(dict[k]*scale, 0.0)))
 		if dict.has(k+"_regen"):
 			if item.has(k+"_regen"):
 				item[k+"_regen"] += int(ceil(dict[k+"_regen"]*scale))

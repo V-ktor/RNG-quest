@@ -18,14 +18,16 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Items="*res://libraries/items.gd"
+Utils="*res://libraries/utils.gd"
+Items="*res://libraries/items.tscn"
 Skills="*res://libraries/skills.gd"
 Enemies="*res://libraries/enemies.gd"
-Regions="*res://libraries/regions.gd"
+Regions="*res://libraries/regions.tscn"
 Names="*res://libraries/names.gd"
 Characters="*res://libraries/characters.gd"
 Guilds="*res://libraries/guilds.gd"
 Story="*res://libraries/story.gd"
+TextGeneration="*res://libraries/text_generation.gd"
 
 [display]
 
@@ -56,7 +58,7 @@ show_summary={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translations/actions.en.translation", "res://translations/ui.en.translation", "res://translations/items.en.translation", "res://translations/skills.en.translation")
+locale/translations=PackedStringArray("res://translations/actions.en.translation", "res://translations/ui.en.translation", "res://translations/items.en.translation", "res://translations/skills.en.translation", "res://translations/texts.en.translation", "res://translations/colors.en.translation")
 
 [rendering]
 

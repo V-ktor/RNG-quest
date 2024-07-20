@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://yhamv2ut50o6"]
+
+[ext_resource type="Script" path="res://libraries/items.gd" id="1_nevmv"]
+[ext_resource type="Script" path="res://libraries/item_description.gd" id="2_mgjri"]
+
+[node name="Items" type="Node"]
+script = ExtResource("1_nevmv")
+
+[node name="ItemDescriptions" type="Node" parent="."]
+script = ExtResource("2_mgjri")

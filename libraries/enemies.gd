@@ -3738,7 +3738,7 @@ func create_enemy(type: String, level: int, tier:= 0) -> Characters.Enemy:
 	for skill in enemy.skills:
 		if skill.range>max_range:
 			max_range = skill.range
-	enemy.position = -max_range
+	enemy.position = -max_range - 1
 	ret = Characters.Enemy.new(enemy)
 	ret.recover()
 	ret.description = create_tooltip(ret)

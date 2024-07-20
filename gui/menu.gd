@@ -2,11 +2,13 @@ extends Node
 
 const MAP_SCROLL_SPEED = 30.0
 
-var version:= "0.0.6"
+var version:= "0.1.0"
 
 var characters:= []
 var main:= preload("res://gui/main.tscn")
+var main_gui:= preload("res://gui/main/scenes/main_gui.tscn")
 var main_instance: Node
+var main_gui_instance: Node
 var thread: Thread
 var tile_map_line:= 30
 var import_file:= ""
@@ -42,7 +44,6 @@ func get_dict_text(file: FileAccess) -> String:
 		brackets += clamp(int(new_line.find("{") >= 0), 0, 1) - clamp(int(new_line.find("}") >= 0), 0, 1)
 		if brackets <= 0:
 			break
-	printt(text)
 	return text
 
 func create_save_dir() -> DirAccess:
@@ -197,6 +198,10 @@ func create_instance(player_name: String):
 	main_instance._load()
 	progress_bar.max_value = Time.get_unix_time_from_system() - main_instance.current_time
 	get_parent().add_child(main_instance)
+	
+	main_gui_instance = main_gui.instantiate()
+	get_parent().add_child(main_gui_instance)
+	main_gui_instance.connect_to_main(main_instance)
 
 func _process(delta: float):
 	if main_instance==null:

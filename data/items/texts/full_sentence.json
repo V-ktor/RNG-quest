@@ -1,0 +1,955 @@
+[
+	{
+		"type": "sentence_full",
+		"text": [
+			"{curse.adjective} {material.singular} {forms/form} a {shape.adjective} {component.singular} as",
+		],
+		"sentence":{
+			"subject": "material",
+			"object": "component",
+			"predicate": "",
+		},
+		"required": [
+			"curse",
+			"material",
+			"shape",
+			"component",
+		],
+		"replace":{
+			"curse": "theme",
+			"shape": "quality",
+		},
+		"transition": [
+			"sentence_subject",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {object.singular} {bears/bear} the blessing of the {theme.singular}",
+			"the {object.singular} {bears/bear} the blessing of {theme.plural}",
+		],
+		"sentence":{
+			"subject": "object",
+			"predicate": "",
+			"object": "theme",
+		},
+		"required": [
+			"object",
+			"theme",
+		],
+		"replace":{
+			"theme": "quality",
+		},
+		"transition": [
+			"sentence_end",
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {object.singular} {is/are} covered in {liquid.singular}",
+			"the {object.singular} {is/are} covered in {liquid.color} {liquid.singular}",
+			"the {object.singular} {is/are} covered in {liquid.thickness} {liquid.singular}",
+			"the {object.singular} {is/are} engulfed by {liquid.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+			"predicate": "",
+			"object": "liquid",
+		},
+		"required": [
+			"object",
+			"liquid",
+		],
+		"replace":{
+			"liquid": "theme",
+		},
+		"transition": [
+			"sentence_end",
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {object.singular} {is/are} filled with {theme.singular}",
+			"the {object.singular} {is/are} fueled by {theme.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+			"predicate": "",
+			"object": "theme",
+		},
+		"required": [
+			"object",
+			"theme",
+		],
+		"replace":{
+			"theme": "quality",
+		},
+		"transition": [
+			"sentence_end",
+			"sentence_predicate",
+			"sentence_of_object",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {liquid.singular} of {theme.singular} {runs/run} down the {object.singular}'s {component.singular}",
+			"{theme.adjective} {liquid.singular} {runs/run} down the {object.singular}'s {component.singular}",
+		],
+		"sentence":{
+			"subject": "liquid",
+			"predicate": "",
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"component",
+			"liquid",
+			"theme",
+		],
+		"replace":{
+			"liquid": "shape",
+			"theme": "quality",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {object.singular} {bears/bear} the {curse.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+			"predicate": "",
+			"object": "curse",
+		},
+		"required": [
+			"object",
+			"curse",
+		],
+		"replace":{
+			"curse": "quality",
+		},
+		"transition": [
+			"sentence_of_object",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{quality.adjective} {material.singular} {hides/hide} the {theme.singular} beneath",
+			"the {quality.adjective} {material.singular} cannot hide the {theme.singular} beneath",
+		],
+		"sentence":{
+			"subject": "material",
+			"predicate": "",
+			"object": "theme",
+		},
+		"required": [
+			"material",
+			"theme",
+			"quality",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the craftmanship is {craftmanship.adjective}",
+		],
+		"sentence":{
+			"subject": "craftmanship",
+			"predicate": "",
+		},
+		"required": [
+			"craftmanship",
+		],
+		"remove": [
+			"craftmanship",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{material.adjective} {shape.plural} {overlays/overlay} the {color.adjective} {material.singular}",
+			"{material.adjective} {shape.plural} {covers/cover} the {color.adjective} {material.singular}",
+			"{color.adjective} {shape.plural} {overlays/overlay} the bare {material.singular}",
+			"{color.adjective} {shape.plural} {covers/cover} the bare {material.singular}",
+		],
+		"sentence":{
+			"subject": "shape",
+			"object": "material",
+			"predicate": "",
+		},
+		"required": [
+			"material",
+			"shape",
+			"color",
+		],
+		"remove": [
+			"color",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{material.adjective} {shape.plural} {overlays/overlay} the {quality.adjective} {material.singular}",
+			"{material.adjective} {shape.plural} {covers/cover} the {quality.adjective} {material.singular}",
+			"{quality.adjective} {shape.plural} {overlays/overlay} the bare {material.singular}",
+			"{quality.adjective} {shape.plural} {covers/cover} the bare {material.singular}",
+		],
+		"sentence":{
+			"subject": "shape",
+			"object": "material",
+			"predicate": "",
+		},
+		"required": [
+			"material",
+			"shape",
+			"quality",
+		],
+		"remove": [
+			"quality",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"a {craftmanship.singular} envisioned a {object.singular} with a {component.singular} made of {shape.plural}",
+		],
+		"sentence":{
+			"subject": "craftmanship",
+			"object": "object",
+			"predicate": "",
+		},
+		"required": [
+			"craftmanship",
+			"object",
+			"component",
+			"shape",
+		],
+		"remove": [
+			"craftmanship",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {object.singular}{'s/'} {component.singular} in shape of {shape.plural} has been designed by a {craftmanship.singular}",
+			"the {object.singular}{'s/'} {shape.adjective} {component.singular} has been designed by a {craftmanship.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+			"object": "craftmanship",
+			"predicate": "",
+		},
+		"required": [
+			"craftmanship",
+			"object",
+			"component",
+			"shape",
+		],
+		"remove": [
+			"craftmanship",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"a {craftmanship.singular} envisioned a {object.singular} with a {component.singular} made of {material.singular}",
+		],
+		"sentence":{
+			"subject": "craftmanship",
+			"object": "object",
+			"predicate": "",
+		},
+		"required": [
+			"craftmanship",
+			"object",
+			"component",
+			"material",
+		],
+		"remove": [
+			"craftmanship",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {object.singular}{'s/'} {material.adjective} {component.singular} {has/have} been designed by a {craftmanship.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+			"object": "craftmanship",
+			"predicate": "",
+		},
+		"required": [
+			"craftmanship",
+			"object",
+			"component",
+			"material",
+		],
+		"remove": [
+			"craftmanship",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"under the influence of {theme.singular} the {craftmanship.singular} has crafted a {theme.adjective} {object.singular}",
+			"the {craftmanship.singular} was influenced by {theme.singular} when they created the {object.singular}",
+			"the {craftmanship.singular}, driven by {theme.singular}, created a {theme.adjective} {object.singular}",
+			"the {craftmanship.singular} has been struck by {theme.singular} when they created the {theme.adjective} {object.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+		},
+		"required": [
+			"craftmanship",
+			"theme",
+			"object",
+		],
+		"remove": [
+			"craftmanship",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {theme.adjective} {object.singular} {fights/fight} against the {enemy.plural}",
+		],
+		"sentence":{
+			"subject": "object",
+			"object": "enemy",
+			"predicate": "",
+		},
+		"required": [
+			"object",
+			"enemy",
+			"theme",
+		],
+		"replace": {
+			"enemy": "curse",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {object.singular} {defies/defy} the {theme.singular} of {enemy.plural}",
+			"cursed by {enemy.plural}, the {object.singular} {stand/stand} against the {enemy.adjective} {theme.singular}",
+		],
+		"sentence":{
+			"subject": "object",
+			"object": "theme",
+			"predicate": "",
+		},
+		"required": [
+			"object",
+			"enemy",
+			"theme",
+		],
+		"replace": {
+			"enemy": "curse",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {object.singular} emerged from a {theme.adjective} war against {enemy.plural}",
+		],
+		"sentence":{
+			"subject": "object",
+			"object": "enemy",
+			"predicate": "",
+		},
+		"required": [
+			"object",
+			"enemy",
+			"theme",
+		],
+		"replace": {
+			"enemy": "element",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {stains.adjective} {object.singular} emerged from a war against {enemy.plural}",
+		],
+		"sentence":{
+			"subject": "object",
+			"object": "enemy",
+			"predicate": "",
+		},
+		"required": [
+			"object",
+			"enemy",
+			"stains",
+		],
+		"replace": {
+			"enemy": "element",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{material.singular} {has/have} been crafted into the {object.singular}{'s/'} {component.singular}",
+			"{material.singular} {has/have} been used to craft the {object.singular}{'s/'} {component.singular}",
+			"{material.singular} turned into the {object.singular}{'s/'} {component.singular}",
+		],
+		"sentence":{
+			"subject": "material",
+			"object": "component",
+			"predicate": "",
+		},
+		"required": [
+			"material",
+			"component",
+			"object",
+		],
+		"replace": {
+			"material": "quality",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{weakness.adjective} {material.singular} {has/have} been crafted into a {curse.adjective} {component.singular}",
+			"{weakness.adjective} {material.singular} turned into a {curse.adjective} {component.singular}",
+		],
+		"sentence":{
+			"subject": "material",
+			"object": "component",
+			"predicate": "",
+		},
+		"required": [
+			"material",
+			"component",
+			"weakness",
+			"curse",
+		],
+		"remove": [
+			"weakness",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{quality.adjective} {material.singular} {has/have} been crafted into a {material.adjective} {component.singular}",
+			"{quality.adjective} {material.singular} {has/have} been used to craft a {material.adjective} {component.singular}",
+			"{quality.adjective} {material.singular} turned into a {material.adjective} {component.singular}",
+		],
+		"sentence":{
+			"subject": "material",
+			"object": "component",
+			"predicate": "",
+		},
+		"required": [
+			"material",
+			"component",
+			"quality",
+		],
+		"replace": {
+			"quality": "shape",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{material.singular} {has/have} been crafted into a {element.adjective} {component.singular}",
+			"{material.singular} {has/have} been used to craft a {element.adjective} {component.singular}",
+			"{material.singular} turned into a {element.adjective} {component.singular}",
+		],
+		"sentence":{
+			"subject": "material",
+			"object": "component",
+			"predicate": "",
+		},
+		"required": [
+			"material",
+			"component",
+			"element",
+		],
+		"replace": {
+			"material": "quality",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{liquid.adjective} {material.singular} {has/have} been crafted into a {stains.adjective} {component.singular}",
+			"{liquid.adjective} {material.singular} {has/have} been used to craft a {stains.adjective} {component.singular}",
+			"{liquid.adjective} {material.singular} turned into a {stains.adjective} {component.singular}",
+		],
+		"sentence":{
+			"subject": "material",
+			"object": "component",
+			"predicate": "",
+		},
+		"required": [
+			"material",
+			"component",
+			"liquid",
+			"stains",
+		],
+		"replace": {
+			"liquid": "color",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {prophecy.adjective} {object.singular} will one day overcome the curse of {theme.plural}",
+			"the {curse.adjective} {object.singular} will one day overcome the curse of {theme.plural}",
+			"the {prophecy.adjective} {object.singular} {is/are} bound by the curse of {theme.plural}",
+			"the {curse.adjective} {object.singular} {is/are} bound by the curse of {theme.plural}",
+			"will the {prophecy.adjective} {object.singular} be able to overcome the curse of {theme.plural}?",
+			"will the {curse.adjective} {object.singular} be able to overcome the curse of {theme.plural}?",
+		],
+		"sentence":{
+			"subject": "object",
+			"object": "curse",
+			"predicate": "",
+		},
+		"required": [
+			"object",
+			"prophecy",
+			"curse",
+			"theme",
+		],
+		"replace": {
+			"theme": "element",
+			"curse": "weakness",
+		},
+		"remove": [
+			"prophecy",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"but at which price?",
+			"but what is the price to pay?",
+			"but is it worth the sacrifice?",
+			"are you willing to pay the price?",
+		],
+		"sentence":{
+			"predicate": "",
+		},
+		"required": [
+			"weakness",
+			"curse",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {object.singular} {was/were} crafted with {emotion.adjective} craftmanship",
+			"the {object.singular} {was/were} crafted {emotion.adverb}",
+			"the {craftmanship.adjective} {object.singular} {was/were} crafted {emotion.adverb}",
+			"the {emotion.adverb} crafted {object.singular} {is/are} {craftmanship.adjective}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "object",
+			"object": "craftmanship",
+		},
+		"required": [
+			"object",
+			"emotion",
+			"craftmanship",
+		],
+		"replace": {
+			"emotion": "weakness",
+			"craftmanship": "quality",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {shape.adjective} {component.singular} {defines/define} the {object.singular}",
+			"the {shape.singular} shaped {component.singular} {defines/define} the {object.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "object",
+			"object": "component",
+		},
+		"required": [
+			"object",
+			"component",
+			"shape",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {material.adjective} {component.singular} {defines/define} the {object.singular}",
+			"the {component.singular} made of {material.singular} {defines/define} the {object.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "object",
+			"object": "component",
+		},
+		"required": [
+			"object",
+			"component",
+			"material",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {curse.adjective} {object.singular} {ravages/ravage} with {mental_illness.adjective} {emotion.singular}",
+			"the {curse.adjective} {object.singular} {is/are} filled with {mental_illness.adjective} {emotion.singular}",
+			"the {object.singular} {ravages/ravage} with {mental_illness.adjective} {emotion.singular}",
+			"the {object.singular} {is/are} filled with {mental_illness.adjective} {emotion.singular}",
+			"the {curse.adjective} {object.singular} {ravages/ravage} with {emotion.singular}",
+			"the {curse.adjective} {object.singular} {is/are} filled with {emotion.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "object",
+			"object": "emotion",
+		},
+		"required": [
+			"object",
+			"emotion",
+			"mental_illness",
+			"curse",
+		],
+		"remove": [
+			"emotion",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {object.singular} {is/are} filled with {emotion.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "object",
+			"object": "emotion",
+		},
+		"required": [
+			"object",
+			"emotion",
+		],
+		"remove": [
+			"emotion",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {weakness.adjective} {material.singular} {contrasts/contrast} the {element.adjective} {shape.singular}",
+		],
+		"sentence": {
+			"predicate": "",
+			"subject": "material",
+			"object": "shape",
+		},
+		"required": [
+			"material",
+			"weakness",
+			"shape",
+			"element",
+		],
+		"remove": [
+			"weakness",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {weakness.adjective} {material.singular} {contrasts/contrast} the {theme.singular}",
+		],
+		"sentence": {
+			"predicate": "",
+			"subject": "material",
+			"object": "theme",
+		},
+		"required": [
+			"material",
+			"weakness",
+			"theme",
+		],
+		"replace": {
+			"theme": "emotion",
+		},
+		"transition": [
+			"sentence_end",
+			"sentence_of_object",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {component.singular} {was/were} crafted from {material.singular}",
+			"the {component.singular} {is/are} made of {material.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "material",
+		},
+		"required": [
+			"component",
+			"material",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {component.singular} {was/were} crafted from {quality.adjective} {material.singular}",
+			"the {component.singular} {is/are} made of {quality.adjective} {material.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "material",
+		},
+		"required": [
+			"component",
+			"material",
+			"quality",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {component.singular} {was/were} crafted from {color.adjective} {material.singular}",
+			"the {component.singular} {is/are} made of {color.adjective} {material.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "material",
+		},
+		"required": [
+			"component",
+			"material",
+			"color",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {component.singular} {was/were} crafted from {element.adjective} {material.singular}",
+			"the {component.singular} {is/are} made of {element.adjective} {material.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "material",
+		},
+		"required": [
+			"component",
+			"material",
+			"element",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {component.singular} {was/were} crafted from {theme.adjective} {material.singular}",
+			"the {component.singular} {is/are} made of {theme.adjective} {material.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "material",
+		},
+		"required": [
+			"component",
+			"material",
+			"theme",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {component.singular} {was/were} {emotion.adverb} crafted from {material.singular}",
+			"with {emotion.singular}, the {component.singular} {was/were} crafted from {material.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "material",
+		},
+		"required": [
+			"component",
+			"material",
+			"emotion",
+		],
+		"remove": [
+			"emotion",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{material.singular} {was/were} forged into {component.singular}",
+			"{material.singular} {is/are} formed into {component.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "material",
+			"object": "component",
+		},
+		"required": [
+			"material",
+			"component",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{material.singular} {was/were} forged into {shape.adjective} {component.singular}",
+			"{material.singular} {is/are} formed into {shape.adjective} {component.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "material",
+			"object": "component",
+		},
+		"required": [
+			"material",
+			"component",
+			"shape",
+		],
+		"remove": [
+			"shape",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{material.singular} {was/were} forged into {quality.adjective} {component.singular}",
+			"{material.singular} {is/are} formed into {quality.adjective} {component.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "material",
+			"object": "component",
+		},
+		"required": [
+			"material",
+			"component",
+			"quality",
+		],
+		"remove": [
+			"quality",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+]

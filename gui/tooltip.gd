@@ -38,7 +38,7 @@ func _get_max_line_length(text: String) -> int:
 func _set_pos_scale(text: String):
 	position = get_global_mouse_position() + Vector2(8, 0)
 	size.x = clamp(16 + 8*_get_max_line_length(text), 192, 448)
-	size.y = clamp(64 + 23*text.count("\n"), 64, 512)
+	size.y = clamp(48 + 17*text.count("\n"), 64, 512)
 
 func show_text(text: String):
 	text_label.clear()

@@ -1,0 +1,747 @@
+[
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{shimmers/shimmer} in shades of {color.singular}",
+			"{is/are} painted {color.adjective}",
+		],
+		"sentence":{
+			"predicate": "",
+		},
+		"required": [
+			"color",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} painted in a {theme.adjective} shade of {color.singular}",
+			"{is/are} tinted in a {theme.adjective} shade of {color.singular}",
+			"{emits/emit} a {theme.adjective} {color.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "color",
+		},
+		"required": [
+			"color",
+			"theme",
+		],
+		"replace":{
+			"theme": "quality",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{bears/bear} the {color.singular} of {theme.singular}",
+			"{is/are} painted in a deep {color.singular} of {theme.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "theme",
+		},
+		"required": [
+			"color",
+			"theme",
+		],
+		"replace":{
+			"theme": "quality",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} painted in {emotion.adjective} {color.singular}",
+			"{is/are} painted in a {emotion.adjective} shade of {color.singular}",
+			"{is/are} {emotion.adverb} painted in {color.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "color",
+		},
+		"required": [
+			"color",
+			"emotion",
+		],
+		"replace":{
+			"emotion": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{has/have} a {shape.adjective} shape",
+			"{is/are} of a {shape.adjective} shape",
+			"{is/are} shaped in the form of a {shape.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+		},
+		"required": [
+			"shape",
+		],
+		"replace":{
+			"shape": "quality",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} made of {material.singular}",
+			"{is/are} composed of {material.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "material",
+		},
+		"required": [
+			"material",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} {element.adjective}",
+		],
+		"sentence":{
+			"predicate": "",
+		},
+		"required": [
+			"element",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{features/feature} {color.adjective} {shape.plural}",
+			"{is/are} covered in {color.adjective} {shape.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "shape",
+		},
+		"required": [
+			"shape",
+			"color",
+		],
+		"replace":{
+			"shape": "quality",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} made of {color.adjective} {material.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "material",
+		},
+		"required": [
+			"material",
+			"color",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{extends/extend} to a {component.singular}",
+			"{has/have} a {component.singular}",
+			"{brings/bring} forth a {component.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "component",
+		},
+		"required": [
+			"component",
+		],
+		"add": [
+			"quality",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{extends/extend} to a {material.adjective} {component.singular}",
+			"{has/have} a {material.adjective} {component.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "component",
+		},
+		"required": [
+			"component",
+			"material",
+		],
+		"add": [
+			"quality",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} engulfed by {element.singular}",
+			"{emits/emit} {element.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "element",
+		},
+		"required": [
+			"element",
+		],
+		"replace":{
+			"element": "theme",
+		},
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{radiates/radiate} with the {curse.singular}",
+			"{is/are} affected by the {curse.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "curse",
+		},
+		"required": [
+			"curse",
+		],
+		"replace":{
+			"curse": "theme",
+		},
+		"transition": [
+			"sentence_of_object",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} held back by the {weakness.singular}",
+			"{is/are} only limited by the {weakness.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "weakness",
+		},
+		"required": [
+			"weakness",
+		],
+		"remove": [
+			"weakness",
+		],
+		"transition": [
+			"sentence_of_object",
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} {weakness.adjective}",
+			"{is/are} rather {weakness.adjective}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "weakness",
+		},
+		"required": [
+			"weakness",
+		],
+		"remove": [
+			"weakness",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{demonstrates/demonstrate} {craftmanship.adjective} craftmanship",
+			"{has/have} {craftmanship.adjective} quality",
+			"{has/have} been crafted {craftmanship.adverb}",
+			"{has/have} been crafted by a {craftmanship.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+		},
+		"required": [
+			"craftmanship",
+		],
+		"remove": [
+			"craftmanship",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{spreads/spread} {mental_illness.singular} among your foes",
+			"{induces/induce} {mental_illness.singular}",
+			"{is/are} tainted by {mental_illness.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "mental_illness",
+		},
+		"required": [
+			"mental_illness",
+		],
+		"remove": [
+			"mental_illness",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{fails/fail} to match the {component.singular}",
+			"{does/do} not align with the {component.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "component",
+		},
+		"required": [
+			"component",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} formed by {theme.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "theme",
+		},
+		"required": [
+			"theme",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{represents/represent} the end of all {theme.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "theme",
+		},
+		"required": [
+			"theme",
+			"curse",
+		],
+		"remove": [
+			"theme",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{represents/represent} the end of all {theme.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "theme",
+		},
+		"required": [
+			"theme",
+			"mental_illness",
+		],
+		"remove": [
+			"theme",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} stained with {stains.adjective} {liquid.singular}",
+			"{bears/bear} {stains.adjective} stains of {liquid.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "liquid",
+		},
+		"required": [
+			"liquid",
+			"stains",
+		],
+		"remove": [
+			"stains",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} mightier than {theme.singular}",
+			"{is/are} stronger than {theme.singular}",
+			"{is/are} greater than {theme.singular}",
+			"{is/are} darker than {theme.singular}",
+			"{is/are} brighter than {theme.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "theme",
+		},
+		"required": [
+			"theme",
+		],
+		"remove": [
+			"theme",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{declares/declare} the end of the {theme.singular} of {enemy.plural}",
+			"{bears/bear} the end of the {theme.singular} of {enemy.plural}",
+			"{bears/bear} the will to end the {theme.singular} of {enemy.plural}",
+			"{is/are} capable of ending the {theme.singular} of {enemy.plural}",
+			"{is/are} destined to end the {theme.singular} of {enemy.plural}",
+			"{defies/defy} the {theme.singular} of {enemy.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "theme",
+		},
+		"required": [
+			"theme",
+			"enemy",
+		],
+		"remove": [
+			"enemy",
+		],
+		"replace":{
+			"theme": "craftmanship",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{declares/declare} the end of the {curse.adjective} {theme.singular}",
+			"{bears/bear} the end of the {curse.adjective} {theme.singular}",
+			"{bears/bear} the will to end the {curse.adjective} {theme.singular}",
+			"{is/are} capable of ending the {curse.adjective} {theme.singular}",
+			"{is/are} destined to end the {curse.adjective} {theme.singular}",
+			"{defies/defy} the {curse.adjective} {theme.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "theme",
+		},
+		"required": [
+			"theme",
+			"curse",
+		],
+		"remove": [
+			"curse",
+		],
+		"replace":{
+			"theme": "craftmanship",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} {prophecy.adjective} to defeat the {enemy.plural}",
+			"{is/are} {prophecy.adjective} to stand against the {enemy.plural}",
+			"{is/are} guided by {prophecy.plural} to defeat the {enemy.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "enemy",
+		},
+		"required": [
+			"prophecy",
+			"enemy",
+		],
+		"remove": [
+			"prophecy",
+		],
+		"replace": {
+			"enemy": "stains",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} {prophecy.adjective} to emerge from {element.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "element",
+		},
+		"required": [
+			"prophecy",
+			"element",
+		],
+		"remove": [
+			"prophecy",
+		],
+		"replace": {
+			"element": "liquid",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} stained with {liquid.thickness} {liquid.singular}",
+			"{is/are} stained with {liquid.color} {liquid.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "liquid",
+		},
+		"required": [
+			"liquid",
+			"stains",
+		],
+		"remove": [
+			"liquid",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{resents/resent} the {prophecy.singular} of {weakness.singular}",
+		],
+		"sentence": {
+			"subject": "",
+			"object": "prophecy",
+		},
+		"required": [
+			"prophecy",
+			"weakness",
+		],
+		"replace": {
+			"prophecy": "curse",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{was/were} crafted with {emotion.singular}",
+		],
+		"sentence": {
+			"subject": "",
+			"object": "emotion",
+		},
+		"required": [
+			"emotion",
+			"craftmanship",
+		],
+		"replace": {
+			"emotion": "theme",
+		},
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{was/were} crafted with {emotion.adjective} craftmanship",
+		],
+		"sentence": {
+			"subject": "",
+			"object": "craftmanship",
+		},
+		"required": [
+			"emotion",
+			"craftmanship",
+		],
+		"replace": {
+			"emotion": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{was/were} crafted {emotion.adverb}",
+		],
+		"sentence": {
+			"subject": "",
+		},
+		"required": [
+			"emotion",
+			"craftmanship",
+		],
+		"replace": {
+			"emotion": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} empowered by {emotion.singular}",
+			"{is/are} filled with {emotion.singular}",
+			"{is/are} driven by {emotion.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "emotion",
+		},
+		"required": [
+			"emotion",
+		],
+		"remove": [
+			"emotion",
+		],
+		"transition": [
+			"sentence_of_object",
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} filled with {mental_illness.adjective} {emotion.singular}",
+			"{is/are} driven by {mental_illness.adjective} {emotion.singular}",
+			"{is/are} defined by {mental_illness.adjective} {emotion.singular}",
+			"{is/are} tainted by {mental_illness.adjective} {emotion.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "emotion",
+		},
+		"required": [
+			"emotion",
+			"mental_illness",
+		],
+		"remove": [
+			"emotion",
+		],
+		"replace": {
+			"mental_illness": "weakness",
+		},
+		"transition": [
+			"sentence_of_object",
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} empowered by {element.adjective} {emotion.singular}",
+			"{is/are} filled with {element.adjective} {emotion.singular}",
+			"{is/are} driven by {element.adjective} {emotion.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "emotion",
+		},
+		"required": [
+			"emotion",
+			"element",
+		],
+		"remove": [
+			"emotion",
+		],
+		"replace": {
+			"element": "theme",
+		},
+		"transition": [
+			"sentence_of_object",
+			"sentence_end",
+			"addition",
+		],
+	},
+]

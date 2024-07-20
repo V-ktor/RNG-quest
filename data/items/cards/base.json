@@ -1,0 +1,43 @@
+{
+	"object": {
+	},
+	"component": {
+	},
+	"material": {
+		"attributes": [
+			"adjective",
+		],
+	},
+	"shape": {
+	},
+	"quality": {
+	},
+	"color": {
+	},
+	"liquid": {
+		"attributes": [
+			"color",
+			"thickness",
+		],
+	},
+	"theme": {
+	},
+	"element": {
+	},
+	"curse": {
+	},
+	"mental_illness": {
+	},
+	"weakness": {
+	},
+	"craftmanship": {
+	},
+	"stains": {
+	},
+	"enemy": {
+	},
+	"prophecy": {
+	},
+	"emotion": {
+	},
+}

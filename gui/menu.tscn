@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c4e5fnc1mtooq"]
+[gd_scene load_steps=27 format=3 uid="uid://c4e5fnc1mtooq"]
 
 [ext_resource type="Script" path="res://gui/menu.gd" id="1_mwg2g"]
 [ext_resource type="Texture2D" uid="uid://b78hnhrtssfg1" path="res://data/backgrounds/paper.png" id="2_c37em"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bu5843byioeol" path="res://data/tilesets/vulcano.png" id="8_g6vb4"]
 [ext_resource type="Texture2D" uid="uid://cncjactbf8gbe" path="res://data/tilesets/dunes.png" id="9_bdivd"]
 [ext_resource type="Texture2D" uid="uid://b38sphh1r07ee" path="res://data/tilesets/cities.png" id="11_sq1n7"]
+[ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://default_theme.tres" id="12_4c3ch"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwadm"]
 texture = ExtResource("2_w7fqm")
@@ -921,6 +922,7 @@ offset_bottom = 150.0
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
+theme = ExtResource("12_4c3ch")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -937,22 +939,26 @@ grow_vertical = 2
 [node name="Button0" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 14
 text = "CONTINUE"
 
 [node name="Button1" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 14
 text = "CREATE_CHARACTER"
 
 [node name="Button2" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 14
 disabled = true
 text = "OPTIONS"
 
 [node name="Button3" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 14
 text = "QUIT"
 
 [node name="Characters" type="Panel" parent="."]
@@ -967,6 +973,7 @@ offset_right = 200.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("12_4c3ch")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Characters"]
 layout_mode = 1
@@ -1079,6 +1086,7 @@ offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("12_4c3ch")
 
 [node name="Label" type="Label" parent="Loading"]
 layout_mode = 1
@@ -1090,6 +1098,7 @@ offset_right = -5.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 14
 text = "SIMULATING"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1105,6 +1114,7 @@ offset_right = -5.0
 offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 14
 value = 50.0
 
 [node name="LabelProgress" type="Label" parent="Loading"]
@@ -1119,6 +1129,7 @@ offset_right = -5.0
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 14
 text = "PROGRESS"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1136,14 +1147,16 @@ offset_left = 16.0
 offset_top = -24.0
 offset_right = 96.0
 grow_vertical = 0
+theme = ExtResource("12_4c3ch")
 theme_override_colors/font_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
 text = "v0.0.6"
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 title = "IMPORT_CHARACTER"
 initial_position = 2
 size = Vector2i(320, 128)
+theme = ExtResource("12_4c3ch")
 cancel_button_text = "CANCEL"
 
 [node name="LineEdit" type="LineEdit" parent="ConfirmationDialog"]
@@ -1152,7 +1165,7 @@ anchor_right = 1.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = -8.0
-offset_bottom = 79.0
+offset_bottom = 93.0
 grow_horizontal = 2
 placeholder_text = "NAME"
 
@@ -1163,7 +1176,7 @@ anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = -8.0
-offset_bottom = -49.0
+offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 1

@@ -1,0 +1,441 @@
+[
+	{
+		"type": "sentence_start",
+		"text": [
+			"even if the {object.singular} {is/are} {weakness.adjective},",
+			"although the {object.singular} {is/are} {weakness.adjective},",
+			"due to the {object.singular} being {weakness.adjective},",
+			"the {object.singular} {is/are} {weakness.adjective}, but",
+			"the {object.singular} might be {weakness.adjective}, but",
+		],
+		"sentence": {
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"weakness",
+		],
+		"remove": [
+			"weakness",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"even if the {shape.adjective} {object.singular} {is/are} {weakness.adjective},",
+			"although the {shape.adjective} {object.singular} {is/are} {weakness.adjective},",
+			"due to the {shape.adjective} {object.singular} being {weakness.adjective},",
+			"the {shape.adjective} {object.singular} {is/are} {weakness.adjective}, but",
+			"the {shape.adjective} {object.singular} might be {weakness.adjective}, but",
+		],
+		"sentence": {
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"weakness",
+			"shape",
+		],
+		"remove": [
+			"weakness",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"even if the {color.adjective} {object.singular} {is/are} {weakness.adjective},",
+			"although the {color.adjective} {object.singular} {is/are} {weakness.adjective},",
+			"due to the {color.adjective} {object.singular} being {weakness.adjective},",
+			"the {color.adjective} {object.singular} {is/are} {weakness.adjective}, but",
+			"the {color.adjective} {object.singular} might be {weakness.adjective}, but",
+		],
+		"sentence": {
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"weakness",
+			"color",
+		],
+		"remove": [
+			"weakness",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"even if the {theme.adjective} {object.singular} {is/are} {weakness.adjective},",
+			"although the {theme.adjective} {object.singular} {is/are} {weakness.adjective},",
+			"due to the {theme.adjective} {object.singular} being {weakness.adjective},",
+			"the {theme.adjective} {object.singular} {is/are} {weakness.adjective}, but",
+			"the {theme.adjective} {object.singular} might be {weakness.adjective}, but",
+		],
+		"sentence": {
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"weakness",
+			"theme",
+		],
+		"remove": [
+			"weakness",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"even if the {curse.adjective} {object.singular} {is/are} {weakness.adjective},",
+			"although the {curse.adjective} {object.singular} {is/are} {weakness.adjective},",
+			"due to the {curse.adjective} {object.singular} being {weakness.adjective},",
+			"the {curse.adjective} {object.singular} {is/are} {weakness.adjective}, but",
+			"the {curse.adjective} {object.singular} might be {weakness.adjective}, but",
+		],
+		"sentence": {
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"weakness",
+			"curse",
+		],
+		"remove": [
+			"weakness",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"even if the {component.singular} {is/are} {weakness.adjective},",
+			"although the {component.singular} {is/are} {weakness.adjective},",
+			"due to the {component.singular} being {weakness.adjective},",
+			"the {component.singular} {is/are} {weakness.adjective}, but",
+			"the {component.singular} might be {weakness.adjective}, but",
+		],
+		"sentence": {
+			"subject": "component",
+		},
+		"required": [
+			"component",
+			"weakness",
+		],
+		"remove": [
+			"weakness",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"even if the {material.adjective} {component.singular} {is/are} {weakness.adjective},",
+			"although the {material.adjective} {component.singular} {is/are} {weakness.adjective},",
+			"due to the {material.adjective} {component.singular} being {weakness.adjective},",
+			"the {material.adjective} {component.singular} {is/are} {weakness.adjective}, but",
+			"the {material.adjective} {component.singular} might be {weakness.adjective}, but",
+		],
+		"sentence": {
+			"subject": "component",
+		},
+		"required": [
+			"component",
+			"weakness",
+			"material",
+		],
+		"remove": [
+			"weakness",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"even if the {object.singular}{'s/'} {component.singular} {is/are} {weakness.adjective},",
+			"although the {object.singular}{'s/'} {component.singular} {is/are} {weakness.adjective},",
+			"due to the {object.singular}{'s/'} {component.singular} being {weakness.adjective},",
+			"the {object.singular}{'s/'} {component.singular} {is/are} {weakness.adjective}, but",
+			"the {object.singular}{'s/'} {component.singular} might be {weakness.adjective}, but",
+		],
+		"sentence": {
+			"subject": "component",
+		},
+		"required": [
+			"component",
+			"object",
+			"weakness",
+		],
+		"remove": [
+			"weakness",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"with {element.adjective} {theme.singular},",
+		],
+		"sentence": {
+		},
+		"required": [
+			"theme",
+			"element",
+		],
+		"replace": {
+			"theme": "curse",
+		},
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"with {curse.adjective} {theme.singular},",
+		],
+		"sentence": {
+		},
+		"required": [
+			"theme",
+			"curse",
+		],
+		"replace": {
+			"curse": "element",
+		},
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"the {material.singular} might be {weakness.adjective}, but",
+		],
+		"sentence": {
+		},
+		"required": [
+			"material",
+			"weakness",
+		],
+		"remove": [
+			"weakness",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"{mental_illness.adjective} thoughts arise as",
+			"{mental_illness.adjective} thoughts manifest themselves as",
+			"{mental_illness.adjective} voices echo through your mind as",
+			"you can hear {mental_illness.adjective} voices as",
+		],
+		"sentence": {
+		},
+		"required": [
+			"mental_illness",
+		],
+		"replace":{
+			"mental_illness": "curse",
+		},
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"reluctantly,",
+		],
+		"sentence": {
+		},
+		"required": [
+			"weakness",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"forcefully,",
+		],
+		"sentence": {
+		},
+		"required": [
+			"emotion",
+			"mental_illness",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"with ease,",
+		],
+		"sentence": {
+		},
+		"required": [
+			"theme",
+			"element",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"despite the weakness,",
+			"nevertheless,",
+		],
+		"sentence": {
+		},
+		"required": [
+			"curse",
+			"weakness",
+			"mental_illness",
+		],
+		"replace": {
+			"weakness": "theme",
+		},
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"nevertheless,",
+		],
+		"sentence": {
+		},
+		"required": [
+			"weakness",
+			"stains",
+			"enemy",
+		],
+		"replace": {
+			"weakness": "emotion",
+		},
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"empowered by the fury of {theme.singular},",
+			"with the fury of {theme.singular},",
+		],
+		"sentence": {
+		},
+		"required": [
+			"theme",
+		],
+		"replace": {
+			"theme": "element",
+		},
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"destined to face the {enemy.plural},",
+		],
+		"sentence": {
+		},
+		"required": [
+			"theme",
+			"element",
+			"enemy",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"{emotion.adverb} crafted,",
+			"with {emotion.adjective} craftmanship,",
+			"drawing from the power of {emotion.singular},"
+		],
+		"sentence": {
+		},
+		"required": [
+			"emotion",
+			"craftmanship",
+		],
+		"replace": {
+			"emotion": "theme",
+			"craftmanship": "quality",
+		},
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+]

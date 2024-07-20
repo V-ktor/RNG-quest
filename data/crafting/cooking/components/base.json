@@ -1,0 +1,132 @@
+{
+	"salad": {
+		"name": [
+			"{plant} salad",
+			"{plant} salad",
+			"{plant} salad",
+			"diced {plant}",
+			"sliced {plant}",
+		],
+		"status":{
+			"health_regen": 5,
+			"duration": 100,
+		},
+		"material_types": [
+			"plant",
+		],
+	},
+	"soup": {
+		"name": [
+			"{liquid} soup",
+			"{liquid} stew",
+		],
+		"status":{
+			"stamina_regen": 5,
+			"mana_regen": 5,
+			"duration": 100,
+		},
+		"material_types": [
+			"liquid",
+		],
+	},
+	"pasta": {
+		"name": [
+			"spaghetti",
+			"linguine",
+			"fettuccine",
+			"tagliatelle",
+			"macaroni",
+			"cavatappi",
+			"conchiglie",
+			"farfalle",
+			"fusilli",
+			"penne",
+			"orecchiette",
+			"{grain} spaghetti",
+			"{grain} linguine",
+			"{grain} tagliatelle",
+			"{grain} macaroni",
+			"{grain} farfalle",
+			"{grain} fusilli",
+			"{grain} penne",
+		],
+		"status": {
+			"effect": ["attack", "magic"],
+			"effect_scale": 2.0,
+			"duration": 120,
+		},
+		"material_types": [
+			"grain",
+		],
+	},
+	"sauce": {
+		"name": [
+			"{plant} sauce",
+			"{plant} Bolognese",
+		],
+		"status":{
+			"effect": ["accuracy"],
+			"effect_scale": 2.0,
+			"duration": 100,
+		},
+		"material_types": [
+			"plant",
+		],
+	},
+	"mayonnaise": {
+		"name": [
+			"{liquid} mayonnaise",
+		],
+		"status":{
+			"stamina_regen": 5,
+			"mana_regen": 5,
+			"duration": 100,
+		},
+		"material_types": [
+			"liquid",
+		],
+	},
+	"bread": {
+		"name": [
+			"bread",
+			"{grain} bread",
+			"flatbread",
+		],
+		"status": {
+			"effect": ["armour"],
+			"effect_scale": 2.0,
+			"duration": 120,
+		},
+		"material_types": [
+			"grain",
+		],
+	},
+	"sugar": {
+		"name": [
+			"{sweet} sugar",
+		],
+		"status":{
+			"effect": ["speed"],
+			"effect_scale": 1.0,
+			"duration": 60,
+		},
+		"material_types": [
+			"sweet",
+		],
+	},
+	"cake": {
+		"name": [
+			"{sweet} cake",
+			"{grain} cake",
+		],
+		"status":{
+			"effect": ["willpower", "accuracy"],
+			"effect_scale": 3.0,
+			"duration": 90,
+		},
+		"material_types": [
+			"grain",
+			"sweet",
+		],
+	},
+}

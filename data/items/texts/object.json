@@ -1,0 +1,872 @@
+[
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {object.singular}",
+		],
+		"sentence": {
+			"object": "object",
+		},
+		"required": [
+			"object",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {color.adjective} {object.singular}",
+		],
+		"sentence": {
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"color",
+		],
+		"remove":[
+			"color",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {shape.adjective} {object.singular}",
+		],
+		"sentence": {
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"shape",
+		],
+		"replace": {
+			"shape": "quality",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {object.singular}'s {component.singular}",
+		],
+		"sentence": {
+			"object": "component",
+		},
+		"required": [
+			"object",
+			"component",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {object.singular}'s {color.adjective} {component.singular}",
+		],
+		"sentence": {
+			"object": "component",
+		},
+		"required": [
+			"object",
+			"component",
+			"color",
+		],
+		"remove":[
+			"color",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {object.singular}'s {material.adjective} {component.singular}",
+		],
+		"sentence": {
+			"object": "component",
+		},
+		"required": [
+			"object",
+			"component",
+			"material",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {component.singular}",
+		],
+		"sentence": {
+			"object": "component",
+		},
+		"required": [
+			"component",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {color.adjective} {component.singular}",
+		],
+		"sentence": {
+			"object": "component",
+		},
+		"required": [
+			"component",
+			"color",
+		],
+		"remove":[
+			"color",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {shape.adjective} {component.singular}",
+		],
+		"sentence": {
+			"object": "component",
+		},
+		"required": [
+			"component",
+			"shape",
+		],
+		"replace": {
+			"shape": "quality",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {element.adjective} {object.singular}",
+			"the {element.singular}bound {object.singular}",
+			"the {element.singular}born {object.singular}",
+		],
+		"sentence": {
+			"object": "component",
+		},
+		"required": [
+			"object",
+			"element",
+		],
+		"replace": {
+			"element": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {curse.adjective} {component.singular}",
+		],
+		"sentence": {
+			"object": "component",
+		},
+		"required": [
+			"component",
+			"curse",
+		],
+		"replace": {
+			"curse": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {curse.adjective} {object.singular}",
+		],
+		"sentence": {
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"curse",
+		],
+		"replace": {
+			"curse": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {object.singular} of the {element.adjective} {curse.singular}",
+			"the {object.singular} of the {curse.singular} of {element.plural}",
+		],
+		"sentence": {
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"curse",
+			"element",
+		],
+		"replace": {
+			"curse": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {object.singular} of the {theme.adjective} {curse.singular}",
+		],
+		"sentence": {
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"curse",
+			"theme",
+		],
+		"replace": {
+			"theme": "element",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {object.singular} of the {enemy.adjective} {curse.singular}",
+		],
+		"sentence": {
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"curse",
+			"enemy",
+		],
+		"replace": {
+			"enemy": "weakness",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {quality.adjective} {object.singular}",
+		],
+		"sentence": {
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"quality",
+		],
+		"replace": {
+			"quality": "shape",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {quality.adjective} {component.singular}",
+		],
+		"sentence": {
+			"object": "component",
+		},
+		"required": [
+			"component",
+			"quality",
+		],
+		"replace": {
+			"quality": "shape",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"{quality.adjective} {quality.plural}",
+		],
+		"sentence": {
+			"object": "quality",
+		},
+		"required": [
+			"quality",
+		],
+		"replace": {
+			"quality": "shape",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {weakness.adjective} {component.singular}",
+		],
+		"sentence": {
+			"object": "component",
+		},
+		"required": [
+			"component",
+			"weakness",
+		],
+		"remove":[
+			"weakness",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"{weakness.adjective} {material.singular}",
+		],
+		"sentence": {
+			"object": "material",
+		},
+		"required": [
+			"material",
+			"weakness",
+		],
+		"remove":[
+			"weakness",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"{quality.adjective} {material.singular}",
+		],
+		"sentence": {
+			"object": "material",
+		},
+		"required": [
+			"material",
+			"quality",
+		],
+		"replace": {
+			"quality": "shape",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"{curse.adjective} {material.singular}",
+		],
+		"sentence": {
+			"object": "material",
+		},
+		"required": [
+			"material",
+			"curse",
+		],
+		"replace": {
+			"curse": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"{enemy.adjective} {material.singular}",
+		],
+		"sentence": {
+			"object": "material",
+		},
+		"required": [
+			"material",
+			"curse",
+			"enemy",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"{element.adjective} {material.singular}",
+			"{element.singular}bound {material.singular}",
+			"{element.singular}born {material.singular}",
+		],
+		"sentence": {
+			"object": "material",
+		},
+		"required": [
+			"material",
+			"element",
+		],
+		"replace": {
+			"element": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object_predicate",
+		"text": [
+			"the {object.singular} is met by",
+		],
+		"sentence": {
+			"object": "object",
+			"predicate": "",
+		},
+		"required": [
+			"object",
+		],
+		"transition": [
+			"sentence_subject",
+		],
+	},
+	{
+		"type": "sentence_object_predicate",
+		"text": [
+			"the {component.singular} is met by",
+		],
+		"sentence": {
+			"object": "component",
+			"predicate": "",
+		},
+		"required": [
+			"component",
+		],
+		"transition": [
+			"sentence_subject",
+		],
+	},
+	{
+		"type": "sentence_of_object",
+		"text": [
+			"of the {theme.singular}",
+			"of {theme.plural}",
+		],
+		"sentence": {
+			"object": "theme",
+		},
+		"required": [
+			"theme",
+		],
+		"replace": {
+			"theme": "quality",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_of_object",
+		"text": [
+			"of the {enemy.plural}",
+		],
+		"sentence": {
+			"object": "enemy",
+		},
+		"required": [
+			"enemy",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_of_object",
+		"text": [
+			"of the {stains.adjective} {prophecy.singular}",
+		],
+		"sentence": {
+			"object": "prophecy",
+		},
+		"required": [
+			"prophecy",
+			"stains",
+		],
+		"replace": {
+			"prophecy": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_of_object",
+		"text": [
+			"of the {mental_illness.adjective} {prophecy.singular}",
+		],
+		"sentence": {
+			"object": "prophecy",
+		},
+		"required": [
+			"prophecy",
+			"mental_illness",
+		],
+		"replace": {
+			"prophecy": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {stains.adjective} {object.singular}",
+		],
+		"sentence":{
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"stains",
+		],
+		"remove": [
+			"stains",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {stains.adjective} {component.singular}",
+		],
+		"sentence":{
+			"object": "component",
+		},
+		"required": [
+			"component",
+			"stains",
+		],
+		"remove": [
+			"stains",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {stains.adjective} {material.singular}",
+		],
+		"sentence":{
+			"object": "material",
+		},
+		"required": [
+			"material",
+			"stains",
+		],
+		"remove": [
+			"stains",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {stains.adjective} {shape.plural}",
+		],
+		"sentence":{
+			"object": "shape",
+		},
+		"required": [
+			"shape",
+			"stains",
+		],
+		"remove": [
+			"stains",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {emotion.adjective} {shape.plural}",
+		],
+		"sentence":{
+			"object": "shape",
+		},
+		"required": [
+			"shape",
+			"emotion",
+		],
+		"remove": [
+			"emotion",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"{material.adjective} and {emotion.adjective} {material.singular}",
+		],
+		"sentence":{
+			"object": "material",
+		},
+		"required": [
+			"material",
+			"emotion",
+		],
+		"remove": [
+			"emotion",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {curse.adjective} {stains.singular}",
+		],
+		"sentence":{
+			"object": "stains",
+		},
+		"required": [
+			"curse",
+			"stains",
+		],
+		"remove": [
+			"stains",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {mental_illness.adjective} {stains.singular}",
+		],
+		"sentence":{
+			"object": "stains",
+		},
+		"required": [
+			"mental_illness",
+			"stains",
+		],
+		"remove": [
+			"stains",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {mental_illness.singular} of {enemy.plural}",
+		],
+		"sentence":{
+			"object": "mental_illness",
+		},
+		"required": [
+			"mental_illness",
+			"enemy",
+		],
+		"replace": {
+			"mental_illness": "weakness",
+		},
+		"remove": [
+			"enemy",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {theme.singular} of {enemy.plural}",
+		],
+		"sentence":{
+			"object": "theme",
+		},
+		"required": [
+			"theme",
+			"enemy",
+		],
+		"replace": {
+			"enemy": "curse",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {prophecy.singular} of {weakness.singular}",
+		],
+		"sentence": {
+			"object": "prophecy",
+		},
+		"required": [
+			"prophecy",
+			"weakness",
+		],
+		"replace": {
+			"prophecy": "curse",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {emotion.adjective} {weakness.singular}",
+			"the {weakness.singular} of {emotion.singular}",
+		],
+		"sentence": {
+			"object": "weakness",
+		},
+		"required": [
+			"emotion",
+			"weakness",
+		],
+		"replace": {
+			"weakness": "curse",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {theme.adjective} {object.singular} of {prophecy.plural}",
+			"the {object.singular} of {theme.adjective} {prophecy.plural}",
+			"the {theme.adjective} of the {prophecy.singular} of {theme.plural}",
+		],
+		"sentence": {
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"prophecy",
+			"theme",
+		],
+		"replace": {
+			"prophecy": "curse",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"{element.adjective} {liquid.singular}",
+			"{element.singular}bound {liquid.singular}",
+			"{element.singular}born {liquid.singular}",
+		],
+		"sentence": {
+			"object": "liquid",
+		},
+		"required": [
+			"liquid",
+			"element",
+		],
+		"replace": {
+			"liquid": "stains",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"{emotion.singular} granted by {theme.singular}",
+			"{emotion.singular} originating from {theme.singular}",
+		],
+		"sentence": {
+			"object": "emotion",
+		},
+		"required": [
+			"emotion",
+			"theme",
+		],
+		"remove": [
+			"emotion",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"{emotion.singular} inflicted by {mental_illness.singular}",
+			"{emotion.singular} afflicted with {mental_illness.singular}",
+			"{emotion.singular} tainted by {mental_illness.singular}",
+			"{emotion.singular} originating from {mental_illness.singular}",
+		],
+		"sentence": {
+			"object": "emotion",
+		},
+		"required": [
+			"emotion",
+			"mental_illness",
+		],
+		"remove": [
+			"emotion",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+]

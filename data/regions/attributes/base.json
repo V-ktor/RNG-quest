@@ -1,0 +1,170 @@
+{
+	"height": [
+		{
+			"adjective": "flat",
+		},
+		{
+			"adjective": "tall",
+		},
+		{
+			"adjective": "large",
+		},
+		{
+			"adjective": "steep",
+		},
+	],
+	"material": [
+		{
+			"singular": "dirt", "adjective": "dirty",
+		},
+		{
+			"singular": "sand", "adjective": "sandy",
+		},
+		{
+			"singular": "rock", "plural": "rocks", "adjective": "rocky",
+		},
+		{
+			"singular": "mud", "adjective": "muddy",
+		},
+	],
+	"width": [
+		{
+			"adjective": "wide",
+		},
+		{
+			"adjective": "vast",
+		},
+		{
+			"adjective": "narrow",
+		},
+	],
+	"size": [
+		{
+			"adjective": "tiny",
+		},
+		{
+			"adjective": "small",
+		},
+		{
+			"adjective": "large",
+		},
+		{
+			"adjective": "huge",
+		},
+		{
+			"adjective": "vast",
+		},
+		{
+			"adjective": "endless",
+		},
+	],
+	"color": [
+		{
+			"singular": "white", "adjective": "white",
+		},
+		{
+			"singular": "grey", "adjective": "grey",
+		},
+		{
+			"singular": "black", "adjective": "black",
+		},
+		{
+			"singular": "brown", "plural": "browns", "adjective": "brown",
+		},
+		{
+			"singular": "red", "adjective": "red",
+		},
+		{
+			"singular": "orange", "adjective": "orange",
+		},
+		{
+			"singular": "yellow", "adjective": "yellow",
+		},
+		{
+			"singular": "green", "adjective": "green",
+		},
+		{
+			"singular": "cyan", "adjective": "cyan",
+		},
+		{
+			"singular": "blue", "adjective": "blue",
+		},
+		{
+			"singular": "violet", "adjective": "violet",
+		},
+		{
+			"singular": "purple", "adjective": "purple",
+		},
+		{
+			"singular": "pink", "adjective": "pink",
+		},
+		{
+			"singular": "magenta", "adjective": "magenta",
+		},
+		{
+			"singular": "crimson", "adjective": "crimson",
+		},
+		{
+			"singular": "indigo", "adjective": "indigo",
+		},
+		{
+			"singular": "silver", "adjective": "silver",
+		},
+		{
+			"singular": "beige", "adjective": "beige",
+		},
+		{
+			"singular": "aquamarine", "adjective": "aquamarine",
+		},
+		{
+			"singular": "orchid", "adjective": "orchid",
+		},
+		{
+			"singular": "turquoise", "adjective": "turquoise",
+		},
+		{
+			"singular": "teal", "adjective": "teal",
+		},
+		{
+			"singular": "gold", "adjective": "golden",
+		},
+		{
+			"adjective": "colorless",
+		},
+	],
+	"density": [
+		{
+			"adjective": "scarce",
+		},
+		{
+			"adjective": "dense",
+		},
+		{
+			"adjective": "lush",
+		},
+	],
+	"depth": [
+		{
+			"adjective": "deep",
+		},
+		{
+			"adjective": "shallow",
+		},
+	],
+	"darkness": [
+		{
+			"adjective": "dark",
+		},
+	],
+	"distance": [
+		{
+			"adjective": "close",
+		},
+		{
+			"adjective": "distant",
+		},
+		{
+			"adjective": "far",
+		},
+	],
+}

@@ -672,6 +672,7 @@ const TITLE = [
 		"Of {element} and {theme}","{theme} of {element}","Rise of {element}","Bound by {elements}",
 		"Embraced by {elements}","The Road to {theme}","{prefix} {person} Rising",
 		"Exposed to {element}","The Impressive {theme}","The {person} And The {theme}",
+		"{theme} Prelude","{prefix} Prelude"
 	],
 	[
 		"{prefix} Matters","A Matter of {theme}","{prefix} Affairs","Affairs of {theme}",
@@ -696,7 +697,7 @@ const TITLE = [
 		"The Answer to {theme}","Remarks of {theme}","Remarks of a {person}","Eternal {theme}",
 		"The Next Chapter of {theme}","Help! I turned into a {person}!","Divided by {elements}",
 		"Death of The {element}{person}","The Cleansing {elements}","No More {theme}",
-		"Sealed with {elements}","The Power of {element}","{theme}, Finally",
+		"Sealed with {elements}","The Power of {element}","{theme}, Finally","{theme} FTW",
 	],
 ]
 const TITLE_PREFIX = [

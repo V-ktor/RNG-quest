@@ -1,0 +1,127 @@
+[
+	{
+		"type": "sentence_subject_predicate",
+		"text": [
+			"{material.adjective} {shape.plural} emerge from",
+			"{material.adjective} {shape.plural} extrude from",
+		],
+		"sentence":{
+			"subject": "shape",
+			"predicate": "",
+		},
+		"required": [
+			"material",
+			"shape",
+		],
+		"replace":{
+			"shape": "quality",
+		},
+		"transition": [
+			"sentence_object",
+		],
+	},
+	{
+		"type": "sentence_subject_predicate",
+		"text": [
+			"a {theme.adjective} {component.singular} {is/are} attached to",
+		],
+		"sentence":{
+			"subject": "component",
+			"predicate": "",
+		},
+		"required": [
+			"component",
+			"theme",
+		],
+		"transition": [
+			"sentence_object",
+		],
+	},
+	{
+		"type": "sentence_subject_predicate",
+		"text": [
+			"a {shape.adjective} {component.singular} {is/are} attached to",
+			"a {shape.singular} shaped {component.singular} {is/are} attached to",
+		],
+		"sentence":{
+			"subject": "component",
+			"predicate": "",
+		},
+		"required": [
+			"component",
+			"shape",
+		],
+		"replace":{
+			"shape": "quality",
+		},
+		"transition": [
+			"sentence_object",
+		],
+	},
+	{
+		"type": "sentence_subject_predicate",
+		"text": [
+			"{theme.singular} {mixes/mix} with {liquid.singular} and brings forth",
+			"{theme.singular} {turns/turn} {liquid.singular} into",
+		],
+		"sentence":{
+			"subject": "theme",
+			"predicate": "",
+		},
+		"required": [
+			"liquid",
+			"theme",
+		],
+		"replace":{
+			"liquid": "shape",
+		},
+		"transition": [
+			"sentence_object",
+		],
+	},
+	{
+		"type": "sentence_subject_predicate",
+		"text": [
+			"{liquid.singular} {drips/drip} down the",
+			"{liquid.singular} {runs/run} over the",
+			"{liquid.color} {liquid.singular} {drips/drip} down the",
+			"{liquid.color} {liquid.singular} {runs/run} over the",
+			"{liquid.thickness} {liquid.singular} {drips/drip} down the",
+			"{liquid.thickness} {liquid.singular} {runs/run} over the",
+		],
+		"sentence":{
+			"subject": "liquid",
+			"predicate": "",
+		},
+		"required": [
+			"liquid",
+		],
+		"replace":{
+			"liquid": "theme",
+		},
+		"transition": [
+			"sentence_object",
+		],
+	},
+	{
+		"type": "sentence_subject_predicate",
+		"text": [
+			"{element.singular} {opposes/oppose} {theme.singular} as",
+			"{element.singular} {defies/defy} {theme.singular} as",
+		],
+		"sentence":{
+			"subject": "element",
+			"object": "theme",
+		},
+		"required": [
+			"element",
+			"theme",
+		],
+		"replace":{
+			"element": "quality",
+		},
+		"transition": [
+			"sentence_subject",
+		],
+	},
+]

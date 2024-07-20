@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4h04wll7qn4h"]
+
+[ext_resource type="Shader" path="res://shaders/item.gdshader" id="1_4i58x"]
+[ext_resource type="Texture2D" uid="uid://c4axo707jo625" path="res://images/icons/sword.svg" id="1_flx4i"]
+[ext_resource type="Texture2D" uid="uid://rsq30f81bquw" path="res://images/gui/transparent_pixel.png" id="2_ijjk6"]
+
+[sub_resource type="Shader" id="Shader_24jnx"]
+code = "shader_type canvas_item;
+
+void fragment() {
+	vec2 uv = 2.0*(UV-vec2(0.5));
+	COLOR.a = 100.0*clamp(max(abs(uv.x), abs(uv.y))-0.875, 0.0, 1.0);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vg64"]
+shader = SubResource("Shader_24jnx")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uwimt"]
+frequency = 0.05
+fractal_type = 3
+fractal_octaves = 4
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 10.0
+domain_warp_fractal_octaves = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rbpn6"]
+width = 64
+height = 64
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_uwimt")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o3wt7"]
+noise_type = 5
+seed = 2
+frequency = 0.225
+fractal_type = 2
+fractal_octaves = 1
+cellular_distance_function = 2
+domain_warp_type = 2
+domain_warp_amplitude = -5.0
+domain_warp_fractal_octaves = 2
+domain_warp_fractal_lacunarity = 4.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wq5mc"]
+width = 64
+height = 64
+invert = true
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_o3wt7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dvcx0"]
+shader = ExtResource("1_4i58x")
+shader_parameter/border_width = 3
+shader_parameter/widen = 0.0
+shader_parameter/mask_strength = 0.0
+shader_parameter/effect_weight = 0.0
+shader_parameter/effect_offset = Vector2(0, 0.05)
+shader_parameter/effect_size = 0.0
+shader_parameter/effect_width = 4
+shader_parameter/inside_filled = true
+shader_parameter/color_outer = Color(0.470833, 0.45, 0.5, 1)
+shader_parameter/color_inner = Color(0.7, 0.7, 0.7, 1)
+shader_parameter/color_effect = Color(0.941176, 0.184314, 0.0588235, 1)
+shader_parameter/overlay_texture = ExtResource("2_ijjk6")
+shader_parameter/mask_texture = SubResource("NoiseTexture2D_wq5mc")
+shader_parameter/effect_texture = SubResource("NoiseTexture2D_rbpn6")
+
+[node name="Item" type="ColorRect"]
+material = SubResource("ShaderMaterial_6vg64")
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Icon" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_dvcx0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_flx4i")
+expand_mode = 1
+stretch_mode = 5

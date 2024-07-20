@@ -21,6 +21,10 @@ OBTAINED_FROM,"obtained from {name}"
 COMMON,common
 UNCOMMON,uncommon
 PROTO,proto
+WEAPONS,Weapons
+ARMOUR,Armour
+ACCESSOIRES,Accessoires
+EQUIPMENT,Equipment
 LETTER,Letter
 PACKAGE,Package
 FOOD,Food
@@ -88,7 +92,7 @@ GREATSWORD,greatsword
 GREATMAUL,greatmaul
 BATTLEAXE,battleaxe
 SPEAR,spear
-SYTHE,scythe
+SCYTHE,scythe
 MORNINGSTAR,morningstar
 BOW,bow
 CROSSBOW,crossbow
@@ -96,23 +100,32 @@ BLUNDERBUSS,blunderbuss
 QUARTERSTAFF,quarterstaff
 MAGESTAFF,mage staff
 SHIRT,shirt
+CLOTH_SHIRT,cloth shirt
 LEATHER_CHEST,leather chest
 CHAIN_CUIRASS,chain cuirass
 PLATE_CUIRASS,plate cuirass
 PANTS, pants
+CLOTH_PANTS,cloth pants
+LEATHER_PANTS,leather pants
 CHAIN_GREAVES,chain greaves
 PLATE_GREAVES,plate greaves
 PANTIES,panties
 HAT,hat
+CLOTH_HAT,cloth hat
+LEATHER_HAT,leather hat
 CHAIN_COIF,chain coif
 PLATE_HELM,plate helm
 GLASSES,glasses
 SANDALS,sandals
 BOOTS,boots
+CLOTH_SANDALS,cloth sandals
+LEATHER_BOOTS,leather boots
 CHAIN_BOOTS,chain boots
 PLATE_BOOTS,plate boots
 SLEEVES,sleeves
 GLOVES,gloves
+CLOTH_SLEEVES,cloth sleeves
+LEATHER_GLOVES,leather gloves
 CHAIN_GAUNTLETS,chain gauntlets
 PLATE_GAUNTLETS,plate gauntlets
 ROPE_BELT,rope belt
@@ -124,6 +137,18 @@ AMULET,amulet
 RING,ring
 EARRING,earring
 BRACELET,bracelet
+MAGICAL_CAPE,magical cape
+CLOTH_CAPE,cloth cape
+METAL_CAPE,metal cape
+ROPE_AMULET,rope amulet
+METAL_AMULET,metal amulet
+LEATHER_RING,leather ring
+METAL_RING,metal ring
+METAL_EARRING,metal earring
+GEM_EARRING,gem earring
+ORB_EARRING,orb earring
+METAL_BRACELET,metal bracelet
+WOOD_BRACELET,wood bracelet
 SHARP,Sharp
 ARCANE,Arcane
 ACCURATE,Accurate
@@ -162,3 +187,98 @@ INSIGNIFICANT,insignificant
 COMMON,common
 PROPERTIES,Properties
 COMPONENTS,Components
+WATER,water
+POISON,poison
+ACID,acid
+BLOOD,blood
+OIL,oil
+SYRUP,syrup
+RESIN,resin
+HEAVY,heavy
+MASSIVE,massive
+LIGHT,light
+LIGHTWEIGHT,lightweight
+LIFE,life
+HOPE,hope
+DETERMINATION,determination
+WILL,will
+BRAVERY,bravery
+DAY,day
+HARMONY,harmony
+DEATH,death
+TORMENT,torment
+PAIN,pain
+AGONY,agony
+DESPAIR,despair
+TORMENT,torment
+DEVASTATION,devastation
+NIGHT,night
+DISCORD,discord
+WAR,war
+DESTRUCTION,destruction
+OBLITERATION,obliteration
+ENTROPY,entropy
+CHAOS,chaos
+ORDER,order
+SKY,sky
+SPACE,space
+HEAVENS,heavens
+AETHER,aether
+ABYSS,abyss
+OCEANS,oceans
+DEEP_SEA,deep sea
+DAWN,dawn
+TWILIGHT,twilight
+LIGHT,light
+DARKNESS,darkness
+VITAL,vital
+HOPING,hoping
+DETERMINED,determined
+WILLFUL,willful
+BRAVE,brave
+ILLUMINATED,illuminated
+HARMONIOUS,harmonious
+UNDEAD,undead
+TORMENTED,tormented
+PAINFUL,painful
+AGONIZING,agonizing
+HOPELESS,hopeless
+DEVASTATING,devastating
+DARK,dark
+QUARRELSOME,quarrelsome
+SAVAGE,savage
+OBLITERATING,obliterating
+ENTROPIC,entropic
+CHAOTIC,chaotic
+ORDERED,ordered
+SKYWARD,skyward
+CELESTIAL,celestial
+HEAVENLY,heavenly
+AETHEREAL,aethereal
+ABYSSAL,abyssal
+OCEANIC,oceanic
+SUBMERGED,submerged
+DAWNING,dawning
+BRIGHT,bright
+DARK,dark
+VISCOUS,viscous
+THICK,thick
+THIN,thin
+BALL,ball
+ROUND,round
+SPHERE,sphere
+SPHERICAL,spherical
+CUBE,cube
+CUBIC,cubic
+TRIANGLE,triangle
+TRIANGULAR,triangular
+RECTANGLE,rectangle
+RECTANGULAR,rectangular
+PENTAGON,pentagon
+PENTAGONAL,pentagonal
+HEXAGON,hexagon
+HEXAGONAL,hexagonal
+OCTAGON,octagon
+OCTAGONAL,octagonal
+ODD_SHAPE,odd shape
+IRREGULAR,irregular

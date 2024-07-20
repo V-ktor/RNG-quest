@@ -1,0 +1,285 @@
+[gd_scene load_steps=11 format=3 uid="uid://ilahmpkq8huy"]
+
+[ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://default_theme.tres" id="1_kdwa0"]
+[ext_resource type="Texture2D" uid="uid://dtgblnp2uvyls" path="res://images/gui/black_rectangle_16.png" id="2_8weer"]
+[ext_resource type="Script" path="res://gui/progress_count_down.gd" id="3_iu7di"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enhnj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mep5y"]
+bg_color = Color(1, 0.12549, 0.0627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jljo"]
+bg_color = Color(0.8, 0.8, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4skgj"]
+bg_color = Color(0.25098, 0.564706, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es5q4"]
+bg_color = Color(0.313726, 1, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lycf7"]
+bg_color = Color(0.12549, 0.752941, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfy1o"]
+bg_color = Color(0.599893, 0.599893, 0.599893, 1)
+
+[node name="CharacterPanel" type="Panel"]
+custom_minimum_size = Vector2(256, 0)
+offset_right = 256.0
+offset_bottom = 128.0
+theme = ExtResource("1_kdwa0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="TopContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Level" type="Label" parent="VBoxContainer/TopContainer"]
+custom_minimum_size = Vector2(0, 17)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Lv. 111"
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="VBoxContainer/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Name"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Status" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Status0" type="Panel" parent="VBoxContainer/Status"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Status/Status0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="VBoxContainer/Status/Status0"]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 10.0
+step = 0.0
+value = 7.0
+fill_mode = 5
+texture_progress = ExtResource("2_8weer")
+script = ExtResource("3_iu7di")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="LeftColumn" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/LeftColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Line1" type="Panel" parent="VBoxContainer/HBoxContainer/LeftColumn/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_enhnj")
+
+[node name="Line2" type="Panel" parent="VBoxContainer/HBoxContainer/LeftColumn/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.372549)
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_enhnj")
+
+[node name="Line3" type="Panel" parent="VBoxContainer/HBoxContainer/LeftColumn/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.372549)
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_enhnj")
+
+[node name="Action" type="Panel" parent="VBoxContainer/HBoxContainer/LeftColumn"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="HealthBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_mep5y")
+step = 0.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HealthBar"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "HEALTH"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="StaminaBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_7jljo")
+step = 0.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/StaminaBar"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "STAMINA"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="ManaBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_4skgj")
+step = 0.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/ManaBar"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "MANA"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="FocusBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_es5q4")
+max_value = 4.0
+step = 0.0
+value = 2.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/FocusBar"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "FOCUS"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="ExpBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_lycf7")
+step = 0.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/ExpBar"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "EXPERIENCE"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_mfy1o")
+step = 0.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/ProgressBar"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "ACTION"
+vertical_alignment = 1
+text_overrun_behavior = 3
