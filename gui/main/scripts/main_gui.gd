@@ -38,6 +38,8 @@ var weapon_preference_panel: Control = $Options/Preferences/WeaponPreference
 var armour_preference_panel: Control = $Options/Preferences/ArmourPreference
 @onready
 var potion_preference_panel: Control = $Options/Preferences/PotionPreference
+@onready
+var location_label: RichTextLabel = $Overview/HBoxContainer/Location/RichTextLabel
 
 
 signal settings_changed
@@ -106,6 +108,10 @@ func _characters_updated(player: Array[Characters.Character], enemy: Array[Chara
 	enemy_panel.update_characters()
 
 
+func _show_status_tooltip(text: String):
+	tooltip.show_text(text)
+
+
 func _gold_changed(value: int):
 	gold_label.text = Utils.format_number(value) + " " + tr("GOLD")
 
@@ -114,6 +120,12 @@ func update_preferences():
 	weapon_preference_panel.update()
 	armour_preference_panel.update()
 	potion_preference_panel.update()
+
+
+func update_location(region: Dictionary, current_location: String):
+	var list:= Regions.get_location_list(region, current_location)
+	var description:= Regions.get_region_description(region)
+	$Overview/HBoxContainer/Region.update(list, region.name, description, current_location)
 
 
 func _show_overview():
@@ -164,6 +176,7 @@ func connect_to_main(main: Node):
 	main.connect("inventory_changed", Callable(inventory_panel, "update_inventory"))
 	main.connect("potion_inventory_changed", Callable(inventory_panel, "update_potion_inventory"))
 	main.connect("story_inventory_changed", Callable(inventory_panel, "update_story_inventory"))
+	main.connect("location_changed", Callable(self, "update_location"))
 	main.connect("freed", Callable(self, "queue_free"))
 	
 	connect("settings_changed", Callable(main, "_settings_changed"))
@@ -187,4 +200,3 @@ func connect_to_main(main: Node):
 
 func _ready():
 	_show_overview()
-

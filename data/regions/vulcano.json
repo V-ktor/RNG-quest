@@ -7,21 +7,52 @@
 	"name_prefix":["hellfire","fearfire","demonic","ash"],
 	"enemies":["golem","lava_elemental","scorpion","goblin","gnoll","imp","demon"],
 	"enemy_amount":[1,4],
-	"city_name":[
+	"cities":[
 		{
-			"base":[" settlement"," outpost"," village"],
+			"base":[" settlement"," village"],
 			"prefix":["barren","forgotten","run-down","ash-covered"],
+			"type":["settlement"],
+		},
+		{
+			"base":[" outpost"],
+			"prefix":["barren","forgotten","run-down","ash-covered"],
+			"type":["outpost"],
 		},
 		{
 			"base":["keep","fortress","ville"],
 			"prefix":["ash","fire","lava","magma"],
+			"type":["castle"],
+		},
+		{
+			"base":["ville"],
+			"prefix":["ash","fire","lava","magma"],
+			"type":["town"],
 		},
 	],
-	"location_name":["canyon","cave","cavern","volcano","sands","mountain"],
-	"location_prefix":["dangerous ","deadly ","burning ","barren ","fiery ","ash","lava","pyre"],
+	"locations":[
+		{
+			"base":["cave","cavern"],
+			"prefix":["dangerous ","deadly ","barren ","fiery ","ash","lava","pyre"],
+			"type":["cave"],
+		},
+		{
+			"base":["canyon","mountain"],
+			"prefix":["dangerous ","deadly ","burning ","barren ","fiery ","ash","lava","pyre"],
+			"type":["mountain"],
+		},
+		{
+			"base":["volcano","peak"],
+			"prefix":["dangerous ","deadly ","burning ","barren ","fiery ","ash","lava","pyre"],
+			"type":["volcano"],
+		},
+		{
+			"base":["sands"],
+			"prefix":["dangerous ","deadly ","burning ","barren ","fiery ","ash","lava","pyre"],
+			"type":["dunes"],
+		},
+	],
 	"enchantment_chance":0.25,
 	"resources":["mushroom","flower","moss","wood","pebble","stone","ore","ingot","gem","jewel"],
-	"location_resources":{},
 	"resource_chance":0.1,
 	"resource_amount":[2,4],
 	"local_materials":{

@@ -7,14 +7,50 @@
 	"name_prefix":["deep","dark","feral","untamed"],
 	"enemies":["tiger","mud_slime","snake","harpy","gnoll","imp","naga"],
 	"enemy_amount":[1,4],
-	"city_name":[
+	"cities":[
 		{
-			"base":["town"," city"," settlement","tower","camp"],
+			"base":["town"," settlement"],
 			"prefix":["jungle","mud","rain","rainy ","expedition "],
+			"type":["settlement"],
+		},
+		{
+			"base":["town"," city"],
+			"prefix":["jungle ","mud ","rain ","rainy "],
+			"type":["town"],
+		},
+		{
+			"base":["camp"],
+			"prefix":["jungle ","mud ","rainy ","expedition "],
+			"type":["camp"],
+		},
+		{
+			"base":["tower","fort"],
+			"prefix":["jungle ","mud ","rainy ","expedition "],
+			"type":["outpost"],
 		},
 	],
-	"location_name":["cavern","forest","woods","thicket"," treetop","hills"],
-	"location_prefix":["rainy","rain","wet ","green ","dark ","snake","ant"],
+	"locations":[
+		{
+			"base":["forest","woods","thicket"],
+			"prefix":["rainy","rain","wet ","green ","dark ","snake","ant"],
+			"type":["forest"],
+		},
+		{
+			"base":["cavern","cave"],
+			"prefix":["wet ","green ","dark ","snake","ant","overgrown "],
+			"type":["cave"],
+		},
+		{
+			"base":[" treetop"," overgrowth"],
+			"prefix":["rainy","wet","green","bright","slippery"],
+			"type":["forest"],
+		},
+		{
+			"base":["hills"],
+			"prefix":["rainy","rain","wet ","green ","dark ","snake","ant"],
+			"type":["mountain"],
+		},
+	],
 	"enchantment_chance":0.25,
 	"resources":["leaf","moss","flower","root","carrot","wood","plank","pebble","stone","ore","gem","jewel"],
 	"location_resources":{},

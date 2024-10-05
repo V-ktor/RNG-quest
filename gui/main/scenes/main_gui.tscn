@@ -1,12 +1,15 @@
-[gd_scene load_steps=31 format=3 uid="uid://s10031v8frul"]
+[gd_scene load_steps=36 format=3 uid="uid://s10031v8frul"]
 
 [ext_resource type="Script" path="res://gui/main/scripts/main_gui.gd" id="1_rxg50"]
 [ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://default_theme.tres" id="2_ck100"]
 [ext_resource type="Script" path="res://gui/main/scripts/character_panel.gd" id="3_3wpsb"]
+[ext_resource type="Script" path="res://gui/main/scripts/location_panel.gd" id="4_7xkbg"]
 [ext_resource type="Script" path="res://gui/main_log.gd" id="4_sxg1u"]
 [ext_resource type="PackedScene" uid="uid://ilahmpkq8huy" path="res://gui/main/scenes/character_panel.tscn" id="5_wpjmd"]
+[ext_resource type="Texture2D" uid="uid://be6a3wwf20ybd" path="res://images/gui/waiting.svg" id="6_4mtbn"]
 [ext_resource type="Script" path="res://gui/stat_display.gd" id="6_cw8x1"]
 [ext_resource type="Script" path="res://gui/main/scripts/attributes.gd" id="7_be5rh"]
+[ext_resource type="Texture2D" uid="uid://ofnjrxwgqikj" path="res://images/gui/house.svg" id="7_lm0bd"]
 [ext_resource type="Script" path="res://gui/main/scripts/mods.gd" id="8_xxonq"]
 [ext_resource type="Script" path="res://gui/main/scripts/equipment.gd" id="9_p5fy4"]
 [ext_resource type="Script" path="res://gui/main/scripts/inventory.gd" id="11_4ftob"]
@@ -24,6 +27,25 @@
 [ext_resource type="PackedScene" uid="uid://dxb635fm2610y" path="res://gui/tooltip.tscn" id="17_6m177"]
 [ext_resource type="Script" path="res://gui/main/scripts/skill_modules.gd" id="17_prvid"]
 
+[sub_resource type="Shader" id="Shader_t5fec"]
+code = "shader_type canvas_item;
+
+uniform float speed = 4.0;
+
+void fragment() {
+	vec2 uv = 2.0 * (UV - vec2(0.5));
+	float alpha = speed * TIME;
+	float c = cos(alpha);
+	float s = sin(alpha);
+	uv = 0.5 * (uv * mat2(vec2(c, -s), vec2(s, c))) + vec2(0.5);
+	COLOR = texture(TEXTURE, uv);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1cgrk"]
+shader = SubResource("Shader_t5fec")
+shader_parameter/speed = 8.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w674s"]
 draw_center = false
 border_width_left = 4
@@ -32,11 +54,11 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.0117647, 0.0392157, 0.0705882, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64y7e"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qskvj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7hsw0"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qskvj"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64y7e"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_g737p"]
 
@@ -64,7 +86,6 @@ grow_vertical = 2
 color = Color(0.0105, 0.04025, 0.07, 1)
 
 [node name="Overview" type="VBoxContainer" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -102,11 +123,12 @@ size_flags_vertical = 3
 theme = ExtResource("2_ck100")
 alignment = 1
 
-[node name="Placeholder1" type="Panel" parent="Overview/HBoxContainer"]
+[node name="Region" type="Panel" parent="Overview/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("4_7xkbg")
 
-[node name="Label" type="Label" parent="Overview/HBoxContainer/Placeholder1"]
+[node name="Label" type="Label" parent="Overview/HBoxContainer/Region"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -117,9 +139,72 @@ offset_right = -2.0
 offset_bottom = 16.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 10
-text = "LOCATION"
+text = "REGION"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Overview/HBoxContainer/Region"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overview/HBoxContainer/Region/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+text = "REGION"
+
+[node name="Location0" type="HBoxContainer" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Inactive" type="Control" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Staying" type="TextureRect" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("12_6ewli")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Traveling" type="TextureRect" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0"]
+visible = false
+material = SubResource("ShaderMaterial_1cgrk")
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("6_4mtbn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+text = "LOCATION"
+
+[node name="Icon" type="TextureRect" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("7_lm0bd")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Log" type="Panel" parent="Overview/HBoxContainer"]
 layout_mode = 2
@@ -1012,6 +1097,7 @@ text = "ITEM"
 autowrap_mode = 3
 
 [node name="Options" type="HBoxContainer" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1615,9 +1701,9 @@ offset_top = 2.0
 offset_right = -2.0
 offset_bottom = -2.0
 grow_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_64y7e")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_7hsw0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_qskvj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7hsw0")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64y7e")
 toggle_mode = true
 
 [node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/SpaceTop/Button"]
@@ -1812,6 +1898,8 @@ vertical_alignment = 1
 visible = false
 theme = ExtResource("2_ck100")
 
+[connection signal="status_entered" from="Overview/Enemy" to="." method="_show_status_tooltip"]
+[connection signal="status_entered" from="Overview/Player" to="." method="_show_status_tooltip"]
 [connection signal="toggled" from="Options/Preferences/WeaponPreference/VBoxContainer/CheckBoxMelee" to="." method="_toggle_weapon_type" binds= ["melee"]]
 [connection signal="toggled" from="Options/Preferences/WeaponPreference/VBoxContainer/CheckBoxRanged" to="." method="_toggle_weapon_type" binds= ["ranged"]]
 [connection signal="toggled" from="Options/Preferences/WeaponPreference/VBoxContainer/CheckBoxMagic" to="." method="_toggle_weapon_type" binds= ["magic"]]

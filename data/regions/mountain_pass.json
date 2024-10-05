@@ -7,30 +7,51 @@
 	"name_prefix":["mountain","frost","frozen ","glacier"],
 	"enemies":["elemental","yeti","goblin","gnoll","drake","elemental_wolf"],
 	"enemy_amount":[1,3],
-	"city_name":[
+	"cities":[
 		{
 			"base":["settlement","inn"],
 			"prefix":["frozen ","cozy ","winter","frost","warm "],
+			"type":["settlement"],
 		},
 		{
-			"base":["keep","wall","well"],
-			"prefix":["spring","winter","frost","rock"],
+			"base":["keep","wall"],
+			"prefix":["frozen ","winter","frost","rock"],
+			"type":["outpost"],
+		},
+		{
+			"base":["well"],
+			"prefix":["spring","winter","frost"],
+			"type":["town"],
 		},
 	],
-	"location_name":["cave","mountain","hills","plain","river","forest"],
-	"location_prefix":["dangerous ","deadly ","frozen ","glacial ","glazier","white ","ice","frost","frostbite "],
-	"location_enemies":{
-		"river":["crab","gnoll","troll","thug","elemental_wolf"],
-		"cave":["elemental","zombie","ghoul","skeleton","bat","spider"],
-		"forest":["wolf","strong_wolf","elemental_wolf","boar","golem","troll","plant"],
-	},
+	"locations":[
+		{
+			"base":["cave"],
+			"prefix":["dangerous ","deadly ","frozen ","glacial ","glazier","white ","ice","frost","frostbite "],
+			"type":["cave"],
+			"enemies":["elemental","zombie","ghoul","skeleton","bat","spider"],
+			"resources":["pebble","stone","ore","ingot","gem","mushroom"],
+		},
+		{
+			"base":["mountain","hills","peak"],
+			"prefix":["dangerous ","deadly ","frozen ","glacial ","glazier","white ","ice","frost","frostbite "],
+			"type":["mountain"],
+		},
+		{
+			"base":["glacier"],
+			"prefix":["dangerous ","deadly ","white ","cyan ","frost","frostbite "],
+			"type":["mountain"],
+		},
+		{
+			"base":["forest"],
+			"prefix":["dangerous ","deadly ","frozen ","glacial ","glazier","white ","ice","frost","frostbite "],
+			"type":["forest"],
+			"enemies":["wolf","strong_wolf","elemental_wolf","boar","golem","troll","plant"],
+			"resources":["flower","wood","plank","cotton","mushroom"],
+		},
+	],
 	"enchantment_chance":0.1,
 	"resources":["carrot","wood","plank","pebble","ore","cotton","cloth","mushroom"],
-	"location_resources":{
-		"river":["herb","flower","cabbage","wood","cotton"],
-		"cave":["pebble","stone","ore","ingot","gem","mushroom"],
-		"forest":["flower","wood","plank","cotton","mushroom"],
-	},
 	"resource_chance":0.1,
 	"resource_amount":[1,4],
 	"local_materials":{

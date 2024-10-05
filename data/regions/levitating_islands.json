@@ -5,32 +5,53 @@
 	"enemy":["orc","gnoll","undead"],
 	"base_name":[" sky islands"," rift"," islands"],
 	"name_prefix":["floating","levitating","heavenly","cloudy"],
-	"enemies":["elemental","drake","harpy","bat","elemental_wolf"],
+	"enemies":["elemental","drake","harpy","sky_shark","elemental_wolf"],
 	"enemy_amount":[2,3],
-	"city_name":[
+	"cities":[
 		{
 			"base":["town","dale","ville"],
 			"prefix":["sky","cloud","rise","rain","star"],
+			"type":["town"],
 		},
 		{
-			"base":[" town"," tower"],
+			"base":[" town"],
 			"prefix":["skyward","floating","skybound","aerial"],
+			"type":["town"],
+		},
+		{
+			"base":[" tower"," outpost"],
+			"prefix":["skyward","floating","skybound","aerial"],
+			"type":["outpost"],
 		},
 	],
-	"location_name":["river","lake","sea","island","rift","forest"],
-	"location_prefix":["sky","cloud","foggy ","floating ","levitating ","rising ","skyward"],
-	"location_enemies":{
-		"river":["crab","elemental","golem","harpy","orc","ogre"],
-		"lake":["crab","elemental","golem","harpy","orc","snap_turtle","ogre"],
-		"sea":["crab","elemental","golem","harpy","orc","snap_turtle"],
-	},
+	"locations":[
+		{
+			"base":["river"],
+			"prefix":["sky","cloud","foggy ","floating ","levitating ","rising ","skyward"],
+			"type":["river"],
+			"enemies":["crab","elemental","golem","harpy","orc","ogre"],
+			"resources":["herb","flower","wood","cotton","silk","pebble","stone"],
+		},
+		{
+			"base":["lake","sea"],
+			"prefix":["sky","cloud","foggy ","floating ","levitating ","rising ","skyward"],
+			"type":["sea"],
+			"enemies":["crab","elemental","golem","harpy","orc","snap_turtle","shark"],
+			"resources":["herb","flower","wood","cotton","silk","pebble","stone"],
+		},
+		{
+			"base":["island","rift"],
+			"prefix":["sky","cloud","foggy ","floating ","levitating ","rising ","skyward"],
+			"type":["floating_island"],
+		},
+		{
+			"base":["forest"],
+			"prefix":["sky","cloud","foggy ","floating ","levitating ","rising ","skyward"],
+			"type":["forest"],
+		},
+	],
 	"enchantment_chance":0.2,
 	"resources":["flower","herb","cabbage","mushroom","root","wood","plank","pebble","ore","cotton","silk"],
-	"location_resources":{
-		"river":["herb","flower","wood","cotton","silk","pebble","stone"],
-		"lake":["herb","flower","wood","cotton","silk","pebble","stone"],
-		"sea":["herb","flower","wood","cotton","silk","pebble","stone"],
-	},
 	"resource_chance":0.1,
 	"resource_amount":[1,4],
 	"local_materials":{

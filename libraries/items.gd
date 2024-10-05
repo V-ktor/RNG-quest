@@ -723,6 +723,19 @@ const MATERIALS = {
 		},
 		"price":10,
 	},
+	"fin":{
+		"name":["{base_name} fin"],
+		"veggie_name":["{base_name} synthetic leather"],
+		"quality":1.1,
+		"tags":["leather"],
+		"attributes":{
+			"adjective":["leather", "robust"],
+		},
+		"add":{
+			"evasion":0.5,
+		},
+		"price":15,
+	},
 	"cotton":{
 		"name":["{base_name} cotton"],
 		"tags":["cloth"],

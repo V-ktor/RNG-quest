@@ -7,26 +7,49 @@
 	"name_prefix":["blue","bright","golden","aquamarine","azur"],
 	"enemies":["elemental","water_elemental","goblin","gnoll","crab","snap_turtle"],
 	"enemy_amount":[1,3],
-	"city_name":[
+	"cities":[
 		{
-			"base":["town","post","harbour"],
+			"base":["town","harbour"],
 			"prefix":["golden ","trading","coast","pearl","dune","quite "],
+			"type":["town"],
+		},
+		{
+			"base":["post"],
+			"prefix":["trading","coastal ","pearl","dune","sea"],
+			"type":["outpost"],
 		},
 	],
-	"location_name":["river","cavern","dunes","coast","shoal"],
-	"location_prefix":["aquamarine","blue","golden ","dangerous ","sandy ","white","crab"],
-	"location_enemies":{
-		"river":["crab","crab","goblin","hobgoblin","wolf","elemental"],
-		"cavern":["elemental","goblin","hobgoblin","gnoll","bat","spider"],
-		"dunes":["goblin","hobgoblin","gnoll","troll","wolf","strong_wolf","bat"],
-	},
+	"locations":[
+		{
+			"base":["river"],
+			"prefix":["aquamarine","blue","golden ","dangerous ","sandy ","white"],
+			"type":["river"],
+			"enemies":["crab","crab","goblin","hobgoblin","wolf","elemental"],
+			"resources":["herb","flower","wood","gem","pebble"],
+		},
+		{
+			"base":["cavern","cave"],
+			"prefix":["aquamarine","blue","golden ","dangerous ","sandy ","white"],
+			"type":["cave"],
+			"enemies":["elemental","goblin","hobgoblin","gnoll","bat","spider"],
+			"resources":["herb","pebble","ore","gem","mushroom"],
+		},
+		{
+			"base":["dunes"],
+			"prefix":["aquamarine","blue","golden ","dangerous ","sandy ","white","crab"],
+			"type":["dunes"],
+			"enemies":["goblin","hobgoblin","gnoll","troll","wolf","strong_wolf","bat"],
+			"resources":["pebble","shell","plank","cotton"],
+		},
+		{
+			"base":["coast","shoal"],
+			"prefix":["aquamarine","blue","golden ","dangerous ","sandy ","white","crab"],
+			"type":["coast"],
+			"enemies":["elemental","water_elemental","crab","snap_turtle","shark"],
+		},
+	],
 	"enchantment_chance":0.1,
 	"resources":["herb","flower","fruit","wood","pebble","shell","ore","cotton"],
-	"location_resources":{
-		"river":["herb","flower","wood","gem","pebble"],
-		"cavern":["herb","pebble","ore","gem","mushroom"],
-		"dunes":["pebble","shell","plank","cotton"],
-	},
 	"resource_chance":0.1,
 	"resource_amount":[1,3],
 	"local_materials":{

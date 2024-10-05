@@ -7,30 +7,56 @@
 	"name_prefix":["deepest","darkest","endless","eternal","vile"],
 	"enemies":["skeleton","mummy","vampire","undead","lich","elemental_wolf","yeti","minotaur"],
 	"enemy_amount":[1,3],
-	"city_name":[
+	"cities":[
 		{
-			"base":["post","keep","gate","bane"],
+			"base":["post","bane","barrier"],
 			"prefix":["shadow","light","flame","safe","blood","bone"],
+			"type":["outpost"],
 		},
 		{
-			"base":["refuge","outpost","barrier","barricade","tower"],
+			"base":["keep","gate","sanctum"],
+			"prefix":["light","flame","safe","holy","sky"],
+			"type":["castle"],
+		},
+		{
+			"base":["refuge","outpost"],
 			"prefix":["last ","run-down ","crimson ","remote ","great "],
+			"type":["settlement"],
+		},
+		{
+			"base":["barrier","barricade","tower"],
+			"prefix":["last ","run-down ","crimson ","remote ","great "],
+			"type":["outpost"],
 		},
 	],
-	"location_name":["maze","tower","dungeon","yard","library","outskirts"],
-	"location_prefix":["blood","shadow","vile ","bone","necrotic ","clouded ","fear"],
-	"location_enemies":{
-		"dungeon":["skeleton","mummy","ghoul","vampire","undead","lich"],
-		"library":["skeleton","mummy","ghost","spirit","paper_golem","vampire"],
-		"outskirts":["zombie","skeleton","mummy","ghoul","vampire","undead"],
-		"maze":["bat","shadow_elemental","elemental_wolf","yeti","minotaur"],
-		"yard":["ghost","elemental_wolf","yeti","minotaur","thug"],
-	},
+	"locations":[
+		{
+			"base":["tower"],
+			"prefix":["blood","shadow","vile ","bone","necro","clouded ","dark ","crimson "],
+			"type":["outpost"],
+		},
+		{
+			"base":["maze","dungeon"],
+			"prefix":["blood","shadow","vile ","bone","necro","dark "],
+			"type":["dungeon"],
+			"enemies":["skeleton","mummy","ghoul","undead","lich","yeti","minotaur"],
+		},
+		{
+			"base":["library","keep"],
+			"prefix":["blood","shadow","vile ","bone","necrotic ","clouded ","fear"],
+			"type":["castle"],
+			"enemies":["skeleton","mummy","ghost","spirit","paper_golem","vampire"],
+		},
+		{
+			"base":["yard","outskirts"],
+			"prefix":["blood","shadow","vile ","bone","necrotic ","bloody ","death"],
+			"type":["outpost"],
+			"enemies":["zombie","skeleton","mummy","ghoul","undead","minotaur","thug"],
+			"resources":["herb","flower","moss","fruit","cabbage","carrot","wood","pebble","ore","cotton"],
+		},
+	],
 	"enchantment_chance":0.25,
 	"resources":["herb","mushroom","moss","root","wood","pebble","stone","ore","ingot","cotton","silk"],
-	"location_resources":{
-		"outskirts":["herb","flower","moss","fruit","cabbage","carrot","wood","pebble","ore","cotton"],
-	},
 	"resource_chance":0.1,
 	"resource_amount":[2,4],
 	"local_materials":{

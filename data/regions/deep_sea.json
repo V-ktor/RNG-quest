@@ -7,14 +7,41 @@
 	"name_prefix":["deep","dark","blue","azur"],
 	"enemies":["golem","water_elemental","water_snake","snap_turtle","gnoll","imp","naga"],
 	"enemy_amount":[1,4],
-	"city_name":[
+	"cities":[
 		{
-			"base":["bottom","post","keep"," city"],
+			"base":[" city"],
+			"prefix":["rock","sea","salt","azur"],
+			"type":["town"],
+		},
+		{
+			"base":["bottom","post"],
 			"prefix":["flood","rock","sea","salt","azur"],
+			"type":["settlement"],
+		},
+		{
+			"base":["keep"],
+			"prefix":["flood","rock","sea","salt","azur"],
+			"type":["castle"],
 		},
 	],
-	"location_name":["cave","cavern","beach","ground","sea","ocean"],
-	"location_prefix":["under-water ","flooded ","deep ","rockbed","sea","salt","azur"],
+	"locations":[
+		{
+			"base":["cave","cavern"],
+			"prefix":["under-water ","flooded ","deep ","rockbed","sea","salt","azur"],
+			"type":["cave"],
+		},
+		{
+			"base":["beach","ground"],
+			"prefix":["under-water ","flooded ","deep ","rockbed","sea","salt","azur"],
+			"type":["coast"],
+		},
+		{
+			"base":["sea","ocean"],
+			"prefix":["deep ","salt","azur","aqua","dark ","black"],
+			"type":["sea"],
+			"enemies":["water_elemental","water_snake","snap_turtle","shark","naga"],
+		},
+	],
 	"enchantment_chance":0.25,
 	"resources":["algae","plankton","moss","shell","wood","plank","pebble","stone","ore","gem","jewel"],
 	"location_resources":{},

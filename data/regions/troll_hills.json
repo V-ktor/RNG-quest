@@ -7,31 +7,53 @@
 	"name_prefix":["troll","goblin","wild ","green "],
 	"enemies":["golem","goblin","gnoll","wolf","spider"],
 	"enemy_amount":[1,3],
-	"city_name":[
+	"cities":[
 		{
 			"base":[" town","ville"," outpost"," farm"," farmland"],
 			"prefix":["crop","sunset","mountain","green","quite "],
+			"type":["settlement"],
 		},
 		{
-			"base":["town","farm","tower"],
-			"prefix":["crop","gold","hill"],
+			"base":[" outpost"," tower"],
+			"prefix":["crop","sunset","mountain","green","quite "],
+			"type":["outpost"],
+		},
+		{
+			"base":["town","farm","ton"],
+			"prefix":["crop","gold","hill","calm"],
+			"type":["town"],
 		},
 	],
-	"location_name":["river","cave","fields","hills","hill"],
-	"location_prefix":["green ","golden ","steep ","dangerous ","great ","troll","goblin"],
-	"location_enemies":{
-		"river":["crab","crab","elemental","troll","wolf","boar","ogre"],
-		"cave":["goblin","goblin","hobgoblin","gnoll","elemental","bat","spider"],
-		"hills":["goblin","hobgoblin","gnoll","troll","wolf","strong_wolf","bat","ogre"],
-		"hill":["goblin","hobgoblin","gnoll","troll","wolf","strong_wolf","bat","ogre"],
-	},
+	"locations":[
+		{
+			"base":["river"],
+			"prefix":["blue ","golden ","dangerous ","great ","troll","goblin"],
+			"type":["river"],
+			"enemies":["crab","crab","elemental","troll","wolf","boar","ogre"],
+			"resources":["herb","flower","wood","gem","pebble"],
+		},
+		{
+			"base":["cave"],
+			"prefix":["dark ","golden ","dangerous ","great ","troll","goblin"],
+			"type":["cave"],
+			"enemies":["goblin","goblin","hobgoblin","gnoll","elemental","bat","spider"],
+			"resources":["pebble","ore","ore","gem"],
+		},
+		{
+			"base":["hills","hill"],
+			"prefix":["green ","golden ","steep ","dangerous ","great ","troll","goblin"],
+			"type":["mountain"],
+			"enemies":["goblin","hobgoblin","gnoll","troll","wolf","strong_wolf","bat","ogre"],
+		},
+		{
+			"base":["fields"],
+			"prefix":["green ","golden ","steep ","dangerous ","great ","troll","goblin"],
+			"type":["field"],
+			"resources":["herb","flower","fruit","wood","cotton","cabbage"],
+		},
+	],
 	"enchantment_chance":0.1,
 	"resources":["herb","flower","fruit","cabbage","wood","pebble","ore","cotton","cloth"],
-	"location_resources":{
-		"river":["herb","flower","wood","gem","pebble"],
-		"cave":["pebble","ore","ore","gem"],
-		"fields":["herb","flower","fruit","wood","cotton","cabbage"],
-	},
 	"resource_chance":0.1,
 	"resource_amount":[1,3],
 	"local_materials":{

@@ -775,8 +775,8 @@ const PACKAGE_ADJECTIVE = [
 	"heavy","large","small","ordinary","common",
 ]
 var story:= []
-var locations:= []
-var cities:= []
+var locations:= {}
+var cities:= {}
 var guilds:= []
 var persons:= {}
 var inventory:= []
@@ -999,9 +999,9 @@ func create_required(type: String, dict: Dictionary):
 				match array[1]:
 					"dungeon":
 						return get_dungeon_name()
-			return locations.pick_random()
+			return locations.keys().pick_random()
 		"city":
-			return cities.pick_random()
+			return cities.keys().pick_random()
 		"person":
 			if array.size()>0:
 				var valid:= []
@@ -1012,7 +1012,7 @@ func create_required(type: String, dict: Dictionary):
 				if valid.size()>0:
 					return valid.pick_random()
 			if persons.size()<20:
-				create_person(Names.NAME_DATA.keys().pick_random(), cities.pick_random())
+				create_person(Names.NAME_DATA.keys().pick_random(), cities.keys().pick_random())
 			return persons.keys().pick_random()
 		"loot":
 			var loot:= []
@@ -1191,7 +1191,7 @@ func create_quest(region: Dictionary) -> Dictionary:
 		if persons.has("quest.requires.person"):
 			quest.npc = persons[quest.requires.person]
 		else:
-			quest.npc = create_person(Names.NAME_DATA.keys().pick_random(), cities.pick_random())
+			quest.npc = create_person(Names.NAME_DATA.keys().pick_random(), cities.keys().pick_random())
 			quest.requires.person = quest.npc.key
 	else:
 		for k in quest.requires:
@@ -1257,4 +1257,3 @@ func create_quest(region: Dictionary) -> Dictionary:
 func next_quest(region: Dictionary) -> Dictionary:
 	next()
 	return create_quest(region)
-

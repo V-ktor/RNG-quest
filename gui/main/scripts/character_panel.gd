@@ -8,6 +8,9 @@ var scene_character_panel:= preload("res://gui/main/scenes/character_panel.tscn"
 var container_node:= $ScrollContainer/HBoxContainer
 
 
+signal status_entered(status: String)
+
+
 func update_characters():
 	for c in container_node.get_children():
 		c.hide()
@@ -23,15 +26,33 @@ func update_characters():
 			panel.set_name("CharacterPanel" + str(i))
 			container_node.add_child(panel)
 		
-		# TODO: skill
-		
-		for c in panel.get_node("VBoxContainer/Status").get_children():
+		var status_container: Container = panel.get_node("VBoxContainer/Status")
+		for c in status_container.get_children():
 			c.hide()
 		for j in range(character.status.size()):
 			var status_panel: Panel
+			var status: Dictionary = character.status[j]
+			
+			if status_container.has_node("Status" + str(j)):
+				status_panel = status_container.get_node("Status" + str(j))
+			else:
+				status_panel = status_container.get_node("Status0").duplicate(14)
+				status_panel.name = "Status" + str(j)
+				status_container.add_child(status_panel)
+			if status_panel.is_connected("mouse_entered", Callable(self, "_status_entered")):
+				status_panel.disconnect("mouse_entered", Callable(self, "_status_entered"))
+			status_panel.connect("mouse_entered", Callable(self, "_status_entered").bind(Skills.create_status_tooltip(status)))
+			status_panel.get_node("TextureProgressBar").max_value = status.max_duration
+			status_panel.get_node("TextureProgressBar").value = status.max_duration - status.duration
+			status_panel.get_node("Label").text = status.name.left(2)
+			
+			status_panel.show()
 			
 		
 		panel.show()
+
+func _status_entered(status: String):
+	emit_signal("status_entered", status)
 
 func _process(_delta: float):
 	for i in range(characters.size()):

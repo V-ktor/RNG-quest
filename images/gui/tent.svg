@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 16.933333 16.933333"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+   sodipodi:docname="tent.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="1.4645623"
+     inkscape:cx="-29.360308"
+     inkscape:cy="12.290362"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showgrid="false" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#b2b2b2;fill-opacity:1;stroke:none;stroke-width:2.11667;stroke-linejoin:bevel;stroke-dasharray:16.9333, 2.11667, 6.35, 2.11667, 4.23333, 2.11667, 2.11667, 2.11667, 2.11667, 4.23333"
+       d="M 7.7373915,11.688553 10.611626,6.8342903 C 8.4186298,6.7519423 5.7285107,5.9349675 5.0547729,4.4390951 L 2.1166666,8.5588308 Z"
+       id="path2"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:#b2b2b2;fill-opacity:1;stroke:none;stroke-width:2.11667;stroke-linejoin:bevel;stroke-dasharray:16.9333, 2.11667, 6.35, 2.11667, 4.23333, 2.11667, 2.11667, 2.11667, 2.11667, 4.23333"
+       d="M 8.2424727,11.90625 11.111096,6.9095926 V 11.90625 Z"
+       id="path3"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:#b2b2b2;fill-opacity:1;stroke:none;stroke-width:2.11667;stroke-linejoin:bevel;stroke-dasharray:16.9333, 2.11667, 6.35, 2.11667, 4.23333, 2.11667, 2.11667, 2.11667, 2.11667, 4.23333"
+       d="M 14.418481,11.90625 11.549856,6.9095926 V 11.90625 Z"
+       id="path4"
+       sodipodi:nodetypes="cccc" />
+  </g>
+</svg>

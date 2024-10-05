@@ -7,26 +7,42 @@
 	"name_prefix":["hellfire","fearfire","demon"],
 	"enemies":["golem","shadow_elemental","imp","demon","skeleton","undead"],
 	"enemy_amount":[1,4],
-	"city_name":[
+	"cities":[
 		{
 			"base":[" town"," city"," village"],
 			"prefix":["ancient","demonic","molten","fierce"],
+			"type":["town"],
 		},
 		{
 			"base":["keep","castle","ville"],
 			"prefix":["ash","shadow","fearfire","blood"],
+			"type":["castle"],
 		},
 	],
-	"location_name":["hills","cave","cavern","volcano","sands","mountain"],
-	"location_prefix":["ancient ","deadly ","molten ","barren ","fiery ","pyre","infested ","shadow","blood"],
-	"location_enemies":{
-		"cavern":["gnoll","hobgoblin","orc","ogre","golem","fearfire_golem"],
-		"cave":["ghost","skeleton","mummy","ghoul","undead","lich"],
-	},
-	"location_resources":{
-		"cavern":["mushroom","herb","root","ingot","coin","gem","jewel","dust","foil"],
-		"cave":["mushroom","herb","root","ingot","coin","gem","jewel","dust","foil"],
-	},
+	"locations":[
+		{
+			"base":["hills","mountain","peak"],
+			"prefix":["ancient ","deadly ","molten ","barren ","fiery ","pyre","infested ","shadow","blood"],
+			"type":["mountain"],
+		},
+		{
+			"base":["cave","hole"],
+			"prefix":["ancient ","deadly ","molten ","barren ","fiery ","pyre","infested ","shadow","blood"],
+			"type":["cave"],
+			"enemies":["ghost","skeleton","mummy","ghoul","undead","lich","fearfire_golem"],
+			"resources":["mushroom","herb","root","ingot","coin","gem","jewel","dust","foil"],
+		},
+		{
+			"base":["volcano"],
+			"prefix":["ancient ","deadly ","molten ","barren ","fiery ","pyre","infested ","shadow","blood"],
+			"type":["volcano"],
+		},
+		{
+			"base":["sands","dunes"],
+			"prefix":["ancient ","deadly ","molten ","barren ","fiery ","pyre","infested ","shadow","blood"],
+			"type":["dunes"],
+		},
+	],
 	"enchantment_chance":0.25,
 	"resources":["mushroom","herb","flower","moss","wood","plank","stone","ingot","gem","jewel","cotton","silk"],
 	"resource_chance":0.1,

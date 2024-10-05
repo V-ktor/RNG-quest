@@ -86,4 +86,3 @@ func format_number(number: int) -> String:
 		prefix_index += 1
 		prefix = UNIT_PREFIXES[prefix_index]
 	return str(number) + " " + prefix
-

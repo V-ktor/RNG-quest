@@ -5,34 +5,65 @@
 	"enemy":["orc","naga","demon"],
 	"base_name":[" sky sea"," sky land"," skies"],
 	"name_prefix":["floating","levitating","heavenly","cloudy","astral"],
-	"enemies":["cloud_elemental","drake","sky_snake","wale"],
+	"enemies":["cloud_elemental","drake","sky_shark","sky_snake","wale"],
 	"enemy_amount":[2,3],
-	"city_name":[
+	"cities":[
 		{
-			"base":["town","camp","ville"],
+			"base":["town","ville","ton"],
 			"prefix":["sky","cloud","rise","rain","star"],
+			"type":["town"],
 		},
 		{
-			"base":[" town"," keep"],
+			"base":["camp","post"],
+			"prefix":["sky","cloud","rain","star"],
+			"type":["outpost"],
+		},
+		{
+			"base":["town"],
+			"prefix":["skyward ","floating ","skybound ","aerial ","astral ","space","air"],
+			"type":["town"],
+		},
+		{
+			"base":[" keep"," fort"],
 			"prefix":["skyward","floating","skybound","aerial","astral","space"],
+			"type":["castle"],
 		},
 	],
-	"location_name":["river","fall","sea","island","rift","forest","stairway","cloud"],
-	"location_prefix":["sky","space","astral ","vertical ","cloud","floating ","rising ","skybound "],
-	"location_enemies":{
-		"cloud":["elemental","harpy","cloud_elemental","wale"],
-		"island":["crab","elemental","golem","harpy","naga","snap_turtle","ogre"],
-		"sea":["crab","elemental","golem","harpy","naga","snap_turtle"],
-		"rift":["elemental","cloud_elemental","shadow_elemental","sky_snake","demon","wale"],
-	},
+	"locations":[
+		{
+			"base":["river","fall"],
+			"prefix":["sky","space","astral ","vertical ","cloud","floating ","rising ","skybound "],
+			"type":["river"],
+		},
+		{
+			"base":["island","rift"],
+			"prefix":["sky","space","astral ","vertical ","cloud","floating ","rising ","skybound "],
+			"type":["floating_island"],
+			"enemies":["crab","elemental","golem","harpy","naga","snap_turtle","ogre"],
+			"resources":["herb","flower","wood","cotton","silk","pebble","stone"],
+		},
+		{
+			"base":["sea","pond"],
+			"prefix":["sky","space","astral ","vertical ","cloud","floating ","rising ","skybound "],
+			"type":["sea"],
+			"enemies":["crab","elemental","golem","harpy","naga","snap_turtle"],
+			"resources":["herb","flower","wood","cotton","silk","pebble","stone"],
+		},
+		{
+			"base":["stairway","cloud"],
+			"prefix":["sky","space","astral ","vertical ","cloud","floating ","rising ","skybound "],
+			"type":["cloud"],
+			"enemies":["elemental","harpy","cloud_elemental","wale"],
+			"resources":["condensate","residue","plasma","dust","mold","algae","plankton","sand"],
+		},
+		{
+			"base":["forest"],
+			"prefix":["sky","space","astral ","helium tree ","cloud","floating ","rising ","skybound "],
+			"type":["forest"],
+		},
+	],
 	"enchantment_chance":0.25,
 	"resources":["flower","herb","cabbage","mushroom","root","wood","plank","pebble","ore","cotton","silk"],
-	"location_resources":{
-		"cloud":["condensate","residue","plasma","dust","mold","algae","plankton","sand"],
-		"island":["herb","flower","wood","cotton","silk","pebble","stone"],
-		"sea":["herb","flower","wood","cotton","silk","pebble","stone"],
-		"rift":["condensate","residue","plasma","dust","mold","algae","plankton","sand"],
-	},
 	"resource_chance":0.1,
 	"resource_amount":[2,4],
 	"local_materials":{

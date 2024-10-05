@@ -7,26 +7,53 @@
 	"name_prefix":["forbidden","necrotic","vampire","infested","undead","revenant"],
 	"enemies":["shadow_elemental","zombie","ghoul","skeleton","vampire","spirit","ghost"],
 	"enemy_amount":[2,3],
-	"city_name":[
+	"cities":[
 		{
 			"base":["keep","fortress","hold"],
 			"prefix":["crimson","shadow","blessed "],
+			"type":["castle"],
 		},
 		{
-			"base":["shelter","citadel","chapel","town"],
+			"base":["citadel","chapel","town"],
 			"prefix":["holy ","unholy ","sacred ","last "],
+			"type":["town"],
+		},
+		{
+			"base":["shelter","town"],
+			"prefix":["holy ","unholy ","sacred ","last "],
+			"type":["settlement"],
 		},
 		{
 			"base":["shelter","chapel","bastion"],
 			"suffix":[" of Light"," of Life"," of the Savior"],
+			"type":["town"],
 		},
 	],
-	"location_name":["river","woods","field","pit","mountains"],
-	"location_prefix":["pitch black","infested","undead","necrotic","necromantic","deadly ","blood","crimson"],
-	"location_enemies":{},
+	"locations":[
+		{
+			"base":["river"],
+			"prefix":["pitch black ","infested ","necrotic ","deadly ","blood","crimson ","poison"],
+			"type":["river"],
+			"enemies":["shadow_elemental","zombie","ghoul","skeleton","imp","undead_shark"],
+		},
+		{
+			"base":["woods"],
+			"prefix":["black","infested ","cursed ","necrotic ","deadly ","blood","crimson"],
+			"type":["forest"],
+		},
+		{
+			"base":["pit","dungeon","hole"],
+			"prefix":["pitch black ","infested ","undead ","necrotic ","deadly ","blood","crimson","death","ruined "],
+			"type":["cave"],
+		},
+		{
+			"base":["field","yard","graveyard"],
+			"prefix":["pitch black ","infested ","undead ","necrotic ","deadly ","blood","crimson","necro"],
+			"type":["graveyard"],
+		},
+	],
 	"enchantment_chance":0.2,
 	"resources":["mold","moss","mushroom","wood","pebble","ore","cotton","gem","jewel"],
-	"location_resources":{},
 	"resource_chance":0.1,
 	"resource_amount":[1,4],
 	"local_materials":{

@@ -7,29 +7,55 @@
 	"name_prefix":["deep","wolf","haunted ","dark","cursed ","spirit","feral "],
 	"enemies":["spirit","goblin","gnoll","wolf","strong_wolf","elemental_wolf","plant"],
 	"enemy_amount":[1,3],
-	"city_name":[
+	"cities":[
 		{
-			"base":["village","town","keep"],
+			"base":["village","town"],
 			"prefix":["green ","deepwood","forest","leaf","elven "],
+			"type":["town"],
+		},
+		{
+			"base":["keep"],
+			"prefix":["green ","deepwood","forest","leaf","elven "],
+			"type":["castle"],
 		},
 		{
 			"base":["ville","dale","post","keep"," outpost"],
 			"prefix":["green","brightwood","deepwood","leaf"],
+			"type":["town"],
+		},
+		{
+			"base":["post"," outpost"],
+			"prefix":["green","brightwood","deepwood","leaf"],
+			"type":["outpost"],
 		},
 	],
-	"location_name":["river","cavern","hills","forest","woods"],
-	"location_prefix":["green ","moss","dangerous ","great ","dark","witching ","haunted ","overgrown "],
-	"location_enemies":{
-		"river":["crab","crab","goblin","hobgoblin","wolf","elemental"],
-		"cavern":["elemental","goblin","hobgoblin","gnoll","bat","spider"],
-		"hills":["goblin","hobgoblin","gnoll","troll","wolf","strong_wolf","bat"],
-	},
+	"locations":[
+		{
+			"base":["river"],
+			"prefix":["blue ","moss","dangerous ","great ","dark","witching ","haunted "],
+			"type":["river"],
+			"enemies":["crab","crab","goblin","hobgoblin","wolf","elemental"],
+			"resources":["herb","flower","wood","gem","pebble"],
+		},
+		{
+			"base":["forest","woods"],
+			"prefix":["green ","moss","dangerous ","great ","dark","witching ","haunted ","overgrown "],
+			"type":["forest"],
+		},
+		{
+			"base":["hills"],
+			"prefix":["green ","moss","dangerous ","great ","dark","witching ","haunted ","overgrown "],
+			"type":["mountain"],
+			"enemies":["goblin","hobgoblin","gnoll","troll","wolf","strong_wolf","bat"],
+		},
+		{
+			"base":["swamp"],
+			"prefix":["black ","moss","dangerous ","putrid ","dark ","witching ","haunted ","overgrown "],
+			"type":["swamp"],
+		},
+	],
 	"enchantment_chance":0.1,
 	"resources":["herb","moss","fruit","wood","plank","pebble","ore","cotton"],
-	"location_resources":{
-		"river":["herb","flower","wood","gem","pebble"],
-		"cavern":["herb","moss","pebble","ore","gem","mushroom"],
-	},
 	"resource_chance":0.1,
 	"resource_amount":[1,3],
 	"local_materials":{

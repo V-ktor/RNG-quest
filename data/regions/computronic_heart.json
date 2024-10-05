@@ -7,18 +7,42 @@
 	"name_prefix":["computronic ","nanite","steel","positronic "],
 	"enemies":["nanite_slime","nanite_swarm","nanite_golem","robot","drone","mech","cyborg"],
 	"enemy_amount":[2,3],
-	"city_name":[
+	"cities":[
 		{
-			"base":["city","town","keep","tower","hold","center"],
-			"prefix":["scrap","rust","steel","synth","computronic ","memory","processor"],
+			"base":["city","town"],
+			"prefix":["scrap","rust","steel","synth","memory","processor"],
+			"type":["town"],
+		},
+		{
+			"base":["keep","hold","center"],
+			"prefix":["scrap","rust","steel","synth","memory","processor"],
+			"type":["castle"],
+		},
+		{
+			"base":["tower"],
+			"prefix":["scrap","rust","steel","synth","memory","processor"],
+			"type":["outpost"],
 		},
 	],
-	"location_name":["yard","field","pit","hive","factory","hideout","core","pillars"],
-	"location_prefix":["steel","titanium","nanite","robot","artificial ","computronic ","memory","processing"],
-	"location_enemies":{},
+	"locations":[
+		{
+			"base":["yard","field"],
+			"prefix":["steel","titanium","nanite","robot","computronic ","memory"],
+			"type":["field"],
+		},
+		{
+			"base":["pit","hideout"],
+			"prefix":["steel","titanium","nanite","robot","artificial ","computronic ","memory","processing"],
+			"type":["outpost"],
+		},
+		{
+			"base":["hive","factory","core","pillars"],
+			"prefix":["steel","titanium","nanite","robot","artificial ","computronic ","memory","processing"],
+			"type":["factory"],
+		},
+	],
 	"enchantment_chance":0.25,
 	"resources":["moss","herb","carrot","wood","pebble","stone","scrap","ore","ingot","cotton","silk","gem"],
-	"location_resources":{},
 	"resource_chance":0.1,
 	"resource_amount":[1,4],
 	"local_materials":{

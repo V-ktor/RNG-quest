@@ -7,18 +7,47 @@
 	"name_prefix":["robotic","nanite","nanite-infested","steel","rusted"],
 	"enemies":["elemental","scorpion","nanite_slime","robot","drone","mech","cyborg"],
 	"enemy_amount":[2,3],
-	"city_name":[
+	"cities":[
 		{
-			"base":["city","town","keep","fort","hold"],
+			"base":["city","town"],
 			"prefix":["scrap","rust","steel","deviance","synth","steam"],
+			"type":["town"],
+		},
+		{
+			"base":["keep","fort","hold"],
+			"prefix":["scrap","rust","steel","deviance","synth","steam"],
+			"type":["castle"],
+		},
+		{
+			"base":["spire","watch"],
+			"prefix":["scrap","rust","steel","synth","steam"],
+			"type":["outpost"],
 		},
 	],
-	"location_name":["river","forest","scrapyard","yard","field","pit","hive"],
-	"location_prefix":["scrap","rust","iron","steel","titanium","nanite","robotic ","artificial "],
-	"location_enemies":{},
+	"locations":[
+		{
+			"base":["scrapyard","yard","field"],
+			"prefix":["rust","iron","steel","titanium","nanite","robotic ","lifeless "],
+			"type":["field"],
+		},
+		{
+			"base":["pit","hole"],
+			"prefix":["scrap","rust","iron","steel","titanium","nanite","robotic "],
+			"type":["cave"],
+		},
+		{
+			"base":["forest","woods"],
+			"prefix":["scrap","rust","iron","steel","titanium","nanite","robotic ","artificial "],
+			"type":["forest"],
+		},
+		{
+			"base":["hive","complex"],
+			"prefix":["scrap","rust","iron","steel","titanium","nanite","robotic "],
+			"type":["factory"],
+		},
+	],
 	"enchantment_chance":0.2,
 	"resources":["moss","herb","carrot","wood","pebble","stone","scrap","ore","ingot","cotton","silk","gem"],
-	"location_resources":{},
 	"resource_chance":0.1,
 	"resource_amount":[1,4],
 	"local_materials":{

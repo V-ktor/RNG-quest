@@ -7,29 +7,51 @@
 	"name_prefix":["dry","barren","deadly","forgotten","molten","singed"],
 	"enemies":["golem","scorpion","goblin","gnoll","drake","thug","skeleton","ogre"],
 	"enemy_amount":[1,3],
-	"city_name":[
+	"cities":[
 		{
 			"base":[" settlement"," outpost"," oasis"],
 			"prefix":["barren","forgotten","run-down","dusty","hot"],
+			"type":["settlement"],
+		},
+		{
+			"base":[" outpost"," garrison"],
+			"prefix":["barren","forgotten","run-down","dusty","hot"],
+			"type":["outpost"],
 		},
 		{
 			"base":["post","well","town"],
 			"prefix":["dry","singe","heat","pyre","cool"],
+			"type":["town"],
 		},
 	],
-	"location_name":["canyon","cave","cavern","dunes","sands","oasis"],
-	"location_prefix":["dangerous ","deadly ","dusty ","barren ","dried-up ","uncharted ","pyre","singed "],
-	"location_enemies":{
-		"oasis":["crab","gnoll","troll","thug","plant"],
-		"cave":["elemental","zombie","ghoul","skeleton","bat","spider"],
-	},
+	"locations":[
+		{
+			"base":["canyon","peak"],
+			"prefix":["dangerous ","deadly ","dusty ","barren ","uncharted ","pyre","singed "],
+			"type":["mountain"],
+		},
+		{
+			"base":["dunes","sands"],
+			"prefix":["dangerous ","deadly ","dusty ","barren ","dry ","uncharted ","pyre","singed "],
+			"type":["dunes"],
+		},
+		{
+			"base":["oasis"],
+			"prefix":["the last ","dusty ","barren ","dried-up ","uncharted ","hidden "],
+			"type":["sea"],
+			"enemies":["crab","gnoll","troll","thug","plant"],
+			"resources":["herb","flower","carrot","root","wood","cotton"],
+		},
+		{
+			"base":["cave","cavern"],
+			"prefix":["dangerous ","deadly ","dusty ","barren ","uncharted ","pyre","singed "],
+			"type":["cave"],
+			"enemies":["elemental","zombie","ghoul","skeleton","bat","spider"],
+			"resources":["pebble","stone","ore","ingot","gem","mushroom"],
+		},
+	],
 	"enchantment_chance":0.1,
 	"resources":["wood","pebble","stone","ore","ingot","gem"],
-	"location_resources":{
-		"oasis":["herb","flower","carrot","root","wood","cotton"],
-		"cave":["pebble","stone","ore","ingot","gem","mushroom"],
-		"cavern":["pebble","moss","stone","ore","ingot","gem","mushroom"],
-	},
 	"resource_chance":0.1,
 	"resource_amount":[1,4],
 	"local_materials":{

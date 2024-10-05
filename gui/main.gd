@@ -142,6 +142,7 @@ signal gold_changed(value: int)
 signal inventory_changed(inventory: Array)
 signal potion_inventory_changed(inventory: Array)
 signal story_inventory_changed(inventory: Array)
+signal location_changed(region: Dictionary, current_location: String)
 signal freed
 
 
@@ -778,7 +779,7 @@ func get_ability_exp(lvl: int) -> int:
 
 func get_delay_scale(speed: int) -> float:
 	var s:= Characters.get_resistance(speed/10.0)*10
-	return 10.0/max(10.0 + s, 1.0)
+	return 20.0/max(10.0 + s, 1.0)
 
 func get_min_character_dist(character: Characters.Character, opponents: Array[Characters.Character]) -> int:
 	var min_dist:= 9
@@ -1006,9 +1007,9 @@ func next_chapter():
 	Story.persons = npcs
 	for i in range(max(randi_range(15,30) - Story.persons.size(), 0)):
 		if randf()<0.1:
-			Story.create_person(Names.NAME_DATA.keys().pick_random(), current_region.cities.pick_random())
+			Story.create_person(Names.NAME_DATA.keys().pick_random(), current_region.cities.keys().pick_random())
 		else:
-			Story.create_person(current_region.race.pick_random(), current_region.cities.pick_random())
+			Story.create_person(current_region.race.pick_random(), current_region.cities.keys().pick_random())
 	if quest_chapter>0:
 		var item:= Items.create_legendary_equipment(player.equipment.values().pick_random().base_type, max(10*(current_region.tier+1) + (player.level+current_region.level)/2, 1))
 		var log_text:= tr("QUEST_ARTIFACT_REWARD").format({"item":item.name, "description":item.description_plain, "chapter":quest_chapter})
@@ -1157,6 +1158,7 @@ func action_done(action: Dictionary):
 					var guild:= Guilds.pick_guild(player.abilities.keys(), player_guild_lvl.keys())
 					if guild!="":
 						join_guild(guild)
+			emit_signal("location_changed", current_region, current_location)
 		"engage":
 			for c in enemies:
 				c.position += sign(player.position-c.position)
@@ -2751,13 +2753,13 @@ func start_task(task_ID: int, task:= ""):
 	optimize_equipment()
 	match task:
 		"grinding":
-			var target_location: String = current_region.locations.pick_random()
+			var target_location: String = current_region.locations.keys().pick_random()
 			do_action("goto", {"location":target_location}, TRAVEL_DELAY)
 		"training", "questing", "shopping", "crafting", "resting", "sleeping":
 			if current_location in current_region.cities:
 				do_action("goto", {"location": current_location}, 0.1)
 			else:
-				var target_location: String = current_region.cities.pick_random()
+				var target_location: String = current_region.cities.keys().pick_random()
 				do_action("goto", {"location":target_location}, TRAVEL_DELAY)
 
 
@@ -3468,6 +3470,18 @@ func _load():
 	$HBoxContainer/VBoxContainer2/Action/VBoxContainer/ProgressBar.max_value = data.progress_delay
 	$HBoxContainer/VBoxContainer8/Log/RichTextLabel.parse_bbcode(summary_text)
 	
+	# compatibility fixes
+	if typeof(current_region.cities) != TYPE_DICTIONARY:
+		var dict:= {}
+		for city_name in current_region.cities:
+			dict[city_name] = {"name": city_name, "type": "town"}
+		current_region.cities = dict
+	if typeof(current_region.locations) != TYPE_DICTIONARY:
+		var dict:= {}
+		for location_name in current_region.locations:
+			dict[location_name] = {"name": location_name, "type": "field"}  # TODO: type
+		current_region.locations = dict
+	
 	data = JSON.parse_string(get_dict_text(file))
 	Story.persons = data.persons
 	Story.story = data.story
@@ -3477,7 +3491,8 @@ func _load():
 	Story.cities = current_region.cities
 	Story.guilds = player_guild_lvl.keys()
 	Story.factions = current_region.race
-	if !current_region.has("enemy"):
+	# compatibility fixes
+	if "enemy" not in current_region:
 		current_region.enemy = ["goblin"]
 	Story.hostile_factions = current_region.enemy
 
@@ -3487,6 +3502,7 @@ func gui_ready():
 	emit_signal("inventory_changed", player_inventory)
 	emit_signal("potion_inventory_changed", player_potions)
 	emit_signal("story_inventory_changed", Story.inventory)
+	emit_signal("location_changed", current_region, current_location)
 
 
 func _set_timetable(ID: int, index: int):
@@ -3608,7 +3624,7 @@ func _show_region_tooltip():
 	var locations: String = current_region.name + "\n\n" + tr("LOCATIONS") + ":"
 	for c in current_region.cities:
 		cities += "\n  " + c
-	for l in current_region.locations:
+	for l in current_region.locations.keys():
 		locations += "\n  " + l
 	
 	tooltip.show_texts([description, cities, locations], [tr("REGION"), tr("CITIES"), tr("LOCATIONS")])
