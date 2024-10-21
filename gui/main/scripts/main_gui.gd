@@ -173,6 +173,7 @@ func connect_to_main(main: Node):
 	main.connect("text_printed", Callable(main_log, "print_log_msg"))
 	main.connect("characters_updated", Callable(self, "_characters_updated"))
 	main.connect("gold_changed", Callable(self, "_gold_changed"))
+	main.connect("inventory_changed", Callable(equipment_panel, "update"))
 	main.connect("inventory_changed", Callable(inventory_panel, "update_inventory"))
 	main.connect("potion_inventory_changed", Callable(inventory_panel, "update_potion_inventory"))
 	main.connect("story_inventory_changed", Callable(inventory_panel, "update_story_inventory"))

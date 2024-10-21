@@ -17,4 +17,39 @@
 			"sentence_end",
 		],
 	},
+	{
+		"type": "addition",
+		"sentence":[
+		],
+		"text": [
+			"like {color.adjective} {theme.singular}",
+		],
+		"required": [
+			"color",
+			"theme",
+		],
+		"remove": [
+			"theme",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "addition",
+		"sentence":[
+		],
+		"text": [
+			"with {force.adjective} force",
+		],
+		"required": [
+			"force",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
 ]

@@ -313,22 +313,22 @@ func load_relation_data(path: String):
 	load_data(path, relations)
 
 
-func _process(_delta: float):
-	var card_set:= CardSet.new()
-	var hill:= add_card(card_set, "hill", Vector2i(0, 0))
-	var vegetation:= add_card(card_set, "vegetation", Vector2i(0, 1))
-	var horizon:= add_card(card_set, "horizon", Vector2i(-1, 0))
-	connect_cards(vegetation, hill)
-	connect_cards(hill, horizon)
-	
-	place_random_card(card_set, Vector2i(1, 0))
-	place_random_card(card_set, Vector2i(1, 1))
-	place_random_card(card_set, Vector2i(0, -1))
-	place_random_card(card_set, Vector2i(-1, -1))
-	
-	printt(card_set.generate_description(3))
-	
-	set_process(false)
+#func _process(_delta: float):
+	#var card_set:= CardSet.new()
+	#var hill:= add_card(card_set, "hill", Vector2i(0, 0))
+	#var vegetation:= add_card(card_set, "vegetation", Vector2i(0, 1))
+	#var horizon:= add_card(card_set, "horizon", Vector2i(-1, 0))
+	#connect_cards(vegetation, hill)
+	#connect_cards(hill, horizon)
+	#
+	#place_random_card(card_set, Vector2i(1, 0))
+	#place_random_card(card_set, Vector2i(1, 1))
+	#place_random_card(card_set, Vector2i(0, -1))
+	#place_random_card(card_set, Vector2i(-1, -1))
+	#
+	#printt(card_set.generate_description(3))
+	#
+	#set_process(false)
 
 func _ready():
 	load_card_data("res://data/regions/cards")

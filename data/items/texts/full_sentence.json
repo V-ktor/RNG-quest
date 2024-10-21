@@ -952,4 +952,346 @@
 			"addition",
 		],
 	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{theme.singular} {falls/fall} to {prophecy.adjective} {force.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "theme",
+			"object": "force",
+		},
+		"required": [
+			"theme",
+			"force",
+			"prophecy",
+		],
+		"remove": [
+			"force",
+		],
+		"replace": {
+			"prophecy": "curse",
+		},
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{theme.singular} {falls/fall} to {enemy.adjective} {force.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "theme",
+			"object": "force",
+		},
+		"required": [
+			"theme",
+			"force",
+			"enemy",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{theme.singular} {falls/fall} to {mental_illness.adjective} {force.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "theme",
+			"object": "force",
+		},
+		"required": [
+			"theme",
+			"force",
+			"mental_illness",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"more of a glorified {care.adjective} {quality.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "quality",
+		},
+		"required": [
+			"care",
+			"quality",
+			"object",
+		],
+		"remove": [
+			"quality",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the amount of {care.singular} on the {object.singular} {becomes/become} apparent",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "care",
+			"object": "object",
+		},
+		"required": [
+			"care",
+			"object",
+			"quality",
+		],
+		"remove": [
+			"care",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the amount of {care.singular} on the {object.singular} {becomes/become} apparent",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "care",
+			"object": "object",
+		},
+		"required": [
+			"care",
+			"object",
+			"weakness",
+		],
+		"remove": [
+			"care",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the amount of {care.singular} on the {object.singular} {becomes/become} apparent",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "care",
+			"object": "object",
+		},
+		"required": [
+			"care",
+			"object",
+			"craftmanship",
+		],
+		"remove": [
+			"care",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"worn by a {enemy.singular} - and now by you",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "enemy",
+		},
+		"required": [
+			"enemy",
+		],
+		"remove": [
+			"enemy",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {mental_illness.adjective} {object.singular} committed many {crime.plural} in the name of {enemy.plural}",
+			"the {object.singular} committed many {crime.plural} in the name of the {mental_illness.adjective} {enemy.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "object",
+			"object": "crime",
+		},
+		"required": [
+			"object",
+			"crime",
+			"enemy",
+			"mental_illness",
+		],
+		"remove": [
+			"enemy",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {force.adjective} {object.singular} committed many {crime.plural} in the name of {enemy.plural}",
+			"the {object.singular} committed many {force.adjective} {crime.plural} in the name of {enemy.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "object",
+			"object": "crime",
+		},
+		"required": [
+			"object",
+			"crime",
+			"enemy",
+			"force",
+		],
+		"remove": [
+			"enemy",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {quality.adjective} {object.singular} committed many {crime.plural} in the name of {enemy.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "object",
+			"object": "crime",
+		},
+		"required": [
+			"object",
+			"crime",
+			"enemy",
+			"quality",
+		],
+		"remove": [
+			"enemy",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {curse.adjective} {object.singular} committed many {crime.plural} in the name of {enemy.plural}",
+			"the {object.singular} committed many {crime.plural} in the name of the {curse.adjective} {enemy.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "object",
+			"object": "crime",
+		},
+		"required": [
+			"object",
+			"crime",
+			"enemy",
+			"curse",
+		],
+		"remove": [
+			"enemy",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"just a particularly {quality.adjective} {object.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"quality",
+		],
+		"remove": [
+			"quality",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"just a particularly {care.adjective} {object.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"care",
+		],
+		"remove": [
+			"care",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{craftmanship.adjective} craftmanship brought forth a {care.adjective} {object.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"care",
+			"craftmanship",
+		],
+		"remove": [
+			"care",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
 ]

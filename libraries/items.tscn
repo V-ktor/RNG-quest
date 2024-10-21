@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://yhamv2ut50o6"]
+[gd_scene load_steps=4 format=3 uid="uid://yhamv2ut50o6"]
 
 [ext_resource type="Script" path="res://libraries/items.gd" id="1_nevmv"]
 [ext_resource type="Script" path="res://libraries/item_description.gd" id="2_mgjri"]
+[ext_resource type="Script" path="res://libraries/item_enchantment.gd" id="3_8ax1f"]
 
 [node name="Items" type="Node"]
 script = ExtResource("1_nevmv")
 
-[node name="ItemDescriptions" type="Node" parent="."]
+[node name="Description" type="Node" parent="."]
 script = ExtResource("2_mgjri")
+
+[node name="Enchantment" type="Node" parent="."]
+script = ExtResource("3_8ax1f")

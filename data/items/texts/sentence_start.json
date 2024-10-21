@@ -438,4 +438,166 @@
 			"sentence_full",
 		],
 	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"{craftmanship.adverb} crafted by {craftmanship.singular},",
+		],
+		"sentence": {
+		},
+		"required": [
+			"craftmanship",
+		],
+		"remove": [
+			"craftmanship",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"a product of {craftmanship.singular}'s {curse.adjective} craftmanship,",
+		],
+		"sentence": {
+		},
+		"required": [
+			"craftmanship",
+			"curse",
+		],
+		"remove": [
+			"craftmanship",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"from {curse.adjective} origin,",
+		],
+		"sentence": {
+		},
+		"required": [
+			"origin",
+			"curse",
+		],
+		"replace": {
+			"curse": "mental_illness",
+		},
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"from {prophecy.adjective} origin,",
+			"rising from {prophecy.adjective} origin,",
+		],
+		"sentence": {
+		},
+		"required": [
+			"origin",
+			"prophecy",
+		],
+		"replace": {
+			"prophecy": "theme",
+		},
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"surrounded by {element.adjective} {force.singular},",
+			"wrapped in {element.adjective} {force.plural},",
+		],
+		"sentence": {
+		},
+		"required": [
+			"force",
+			"element",
+			"object",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"with the power of {force.singular},",
+		],
+		"sentence": {
+		},
+		"required": [
+			"force",
+			"theme",
+			"element",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"composed of {shape.adjective} {material.singular},",
+		],
+		"sentence": {
+		},
+		"required": [
+			"shape",
+			"material",
+		],
+		"remove": [
+			"shape",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"based on {science.singular},",
+			"utilizing {science.singular},",
+			"based on the {science.adjective} effect,",
+			"based on the {science.adjective} theory,",
+		],
+		"sentence": {
+		},
+		"required": [
+			"science",
+		],
+		"remove": [
+			"science",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
 ]

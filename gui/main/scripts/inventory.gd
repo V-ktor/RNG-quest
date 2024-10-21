@@ -113,20 +113,25 @@ func _show_inventory_tooltip(item: Dictionary):
 	if tooltip == null:
 		return
 	
-	if "component_description" in item:
+	if "story" in item:
+		if "component_description" in item:
+			tooltip.show_texts([item.description, item.story, item.component_description], [tr("PROPERTIES"), tr("DESCRIPTION"), tr("COMPONENTS")])
+		else:
+			tooltip.show_texts([item.description, item.story], [tr("PROPERTIES"), tr("DESCRIPTION")])
+	elif "component_description" in item:
 		tooltip.show_texts([item.description, item.component_description], [tr("PROPERTIES"), tr("COMPONENTS")])
 	else:
 		tooltip.show_text(item.description)
 
 func _show_potion_tooltip(index: int):
-	if tooltip == null:
+	if tooltip == null or index >= potion_inventory.size():
 		return
 	
 	var item: Dictionary = potion_inventory[index]
 	tooltip.show_text(item.description)
 
 func _show_story_inventory_tooltip(index: int):
-	if tooltip == null:
+	if tooltip == null or index >= story_inventory.size():
 		return
 	
 	var item: Dictionary = story_inventory[index]

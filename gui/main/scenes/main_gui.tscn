@@ -123,10 +123,11 @@ size_flags_vertical = 3
 theme = ExtResource("2_ck100")
 alignment = 1
 
-[node name="Region" type="Panel" parent="Overview/HBoxContainer"]
+[node name="Region" type="Panel" parent="Overview/HBoxContainer" node_paths=PackedStringArray("tooltip")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4_7xkbg")
+tooltip = NodePath("../../../Tooltip")
 
 [node name="Label" type="Label" parent="Overview/HBoxContainer/Region"]
 modulate = Color(1, 1, 1, 0.74902)
@@ -170,16 +171,18 @@ text = "REGION"
 
 [node name="Location0" type="HBoxContainer" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-mouse_filter = 2
+mouse_filter = 0
 
 [node name="Inactive" type="Control" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Staying" type="TextureRect" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0"]
 visible = false
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("12_6ewli")
 expand_mode = 1
 stretch_mode = 5
@@ -189,6 +192,7 @@ visible = false
 material = SubResource("ShaderMaterial_1cgrk")
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("6_4mtbn")
 expand_mode = 1
 stretch_mode = 5
@@ -196,12 +200,12 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0"]
 layout_mode = 2
 size_flags_horizontal = 3
-mouse_filter = 0
 text = "LOCATION"
 
 [node name="Icon" type="TextureRect" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("7_lm0bd")
 expand_mode = 1
 stretch_mode = 5
@@ -1065,6 +1069,7 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Label0" type="Label" parent="Journal/Inventory/ScrollContainer/VBoxContainer/Potions"]
+visible = false
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 6
@@ -1077,6 +1082,7 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Label0" type="Label" parent="Journal/Inventory/ScrollContainer/VBoxContainer/Quest"]
+visible = false
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 6
@@ -1089,6 +1095,7 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Label0" type="Label" parent="Journal/Inventory/ScrollContainer/VBoxContainer/Inventory"]
+visible = false
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_vertical = 6
@@ -1899,6 +1906,7 @@ visible = false
 theme = ExtResource("2_ck100")
 
 [connection signal="status_entered" from="Overview/Enemy" to="." method="_show_status_tooltip"]
+[connection signal="mouse_entered" from="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Label" to="Overview/HBoxContainer/Region" method="_show_region_tooltip"]
 [connection signal="status_entered" from="Overview/Player" to="." method="_show_status_tooltip"]
 [connection signal="toggled" from="Options/Preferences/WeaponPreference/VBoxContainer/CheckBoxMelee" to="." method="_toggle_weapon_type" binds= ["melee"]]
 [connection signal="toggled" from="Options/Preferences/WeaponPreference/VBoxContainer/CheckBoxRanged" to="." method="_toggle_weapon_type" binds= ["ranged"]]

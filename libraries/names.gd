@@ -5,467 +5,464 @@ const VOVELS = ["a","e","o","u","i"]
 const ONLY_CENTRAL = ["-","'"]
 
 const GOD_PREFIX = {
-	"War":{
+	"War": {
 		"attack":4,
 	},
-	"Weapon":{
+	"Weapon": {
 		"attack":4,
 	},
-	"Doom":{
+	"Doom": {
 		"attack":2,
 		"magic":2,
 	},
-	"Death":{
+	"Death": {
 		"attack":2,
 		"magic":2,
 	},
-	"fierce":{
+	"fierce": {
 		"attack":2,
 		"critical":2,
 	},
-	"ferocious":{
+	"ferocious": {
 		"attack":2,
 		"critical":2,
 	},
-	"wild":{
+	"wild": {
 		"attack":4,
 		"critical":4,
 		"evasion":-2,
 		"accuracy":-2,
 	},
-	"grumpy":{
+	"grumpy": {
 		"armour":2,
 		"critical":2,
 	},
-	"dumb":{
+	"dumb": {
 		"attack":-2,
 		"magic":-2,
 		"armour":4,
 		"evasion":4,
 	},
-	"blind":{
+	"blind": {
 		"accuracy":-4,
 		"evasion":-4,
 		"armour":4,
 		"willpower":8,
 	},
-	"almighty":{
+	"almighty": {
 		"attack":1,
 		"magic":1,
 		"willpower":2,
 	},
-	"ugly":{
+	"ugly": {
 		"willpower":-4,
 		"magic":4,
 		"evasion":4,
 	},
-	"beautiful":{
+	"beautiful": {
 		"willpower":4,
 	},
-	"cruel":{
+	"cruel": {
 		"attack":4,
 		"magic":4,
 		"willpower":-4,
 	},
-	"hated":{
+	"hated": {
 		"willpower":-4,
 		"magic":4,
 		"critical":4,
 	},
-	"forbidden":{
+	"forbidden": {
 		"willpower":-4,
 		"attack":2,
 		"magic":2,
 		"critical":4,
 	},
-	"shackled":{
+	"shackled": {
 		"willpower":-2,
 		"armour":-2,
 		"evasion":4,
 		"critical":4,
 	},
-	"auxiliary":{
+	"auxiliary": {
 		"health":40,
 	},
-	"temporary":{
+	"temporary": {
 		"stamina":20,
 		"mana":20,
 	},
-	"dead":{
+	"dead": {
 		"health":-20,
 		"willpower":6,
 		"magic":2,
 	},
-	"Science":{
+	"Science": {
 		"stamina":20,
 		"attack":2,
 	},
-	"Magic":{
+	"Magic": {
 		"magic":4,
 	},
-	"arcane":{
+	"arcane": {
 		"magic":4,
 	},
-	"illuminated":{
+	"illuminated": {
 		"willpower":4,
 	},
-	"dreaming":{
+	"dreaming": {
 		"willpower":4,
 	},
-	"sleeping":{
+	"sleeping": {
 		"willpower":6,
 		"speed":-1,
 	},
-	"hibernating":{
+	"hibernating": {
 		"willpower":8,
 		"evasion":-2,
 		"speed":-1,
 	},
-	"banned":{
+	"banned": {
 		"stamina":20,
 		"mana":20,
 	},
-	"Light":{
+	"Light": {
 		"health":40,
 	},
-	"Shadow":{
+	"Shadow": {
 		"stamina":20,
 		"mana":20,
 	},
-	"Life":{
+	"Life": {
 		"health_regen":10,
 	},
-	"Fire":{
+	"Fire": {
 		"magic":4,
 	},
-	"Ice":{
+	"Ice": {
 		"willpower":4,
 	},
-	"Water":{
+	"Water": {
 		"health_regen":10,
 	},
-	"Earth":{
+	"Earth": {
 		"health":20,
 		"armour":2,
 	},
-	"forgotten":{
+	"forgotten": {
 		"stamina":-20,
 		"mana":-20,
 		"attack":4,
 		"magic":4,
 	},
-	"mossy":{
+	"mossy": {
 		"health_regen":10,
 	},
-	"golden":{
+	"golden": {
 		"armour":4,
 	},
-	"shining":{
+	"shining": {
 		"willpower":2,
 		"armour":2,
 	},
-	"Random Number":{
+	"Random Number": {
 		"critical":4,
 	},
-	"procedurally generated":{
+	"procedurally generated": {
 		"accuracy":2,
 		"evasion":2,
 	},
-	"Vegetarian":{
+	"Vegetarian": {
 		"health":20,
 		"health_regen":5,
 	},
-	"Vegan":{
+	"Vegan": {
 		"health":20,
 		"health_regen":5,
 	},
-	"rural":{
+	"rural": {
 		"health":40,
 	},
-	"knowledgeable":{
+	"knowledgeable": {
 		"stamina":20,
 		"mana":20,
 	},
-	"wise":{
+	"wise": {
 		"mana":20,
 		"willpower":2,
 	},
-	"the one and only":{
+	"the one and only": {
 		"stamina_regen":10,
 		"mana_regen":10,
 	},
-	"beloved":{
+	"beloved": {
 		"stamina_regen":10,
 		"mana_regen":10,
 	},
-	"wicked":{
+	"wicked": {
 		"health_regen":10,
 		"stamina_regen":10,
 		"mana_regen":10,
 		"willpower":-4,
 	},
-	"Demon":{
+	"Demon": {
 		"stamina_regen":10,
 		"mana_regen":10,
 	},
-	"praised":{
+	"praised": {
 		"stamina":20,
 		"mana":20,
 	},
-	"Prime":{
+	"Prime": {
 		"health":40,
 	},
-	"censored":{
+	"censored": {
 		"penetration":6,
 	},
 }
 const GOD_SUFFIX = {
-	"War":{
+	"War": {
 		"attack":4,
 	},
-	"Warfare":{
+	"Warfare": {
 		"attack":2,
 		"critical":2,
 	},
-	"Conflict":{
+	"Conflict": {
 		"accuracy":2,
 		"critical":2,
 	},
-	"Violence":{
+	"Violence": {
 		"evasion":-2,
 		"accuracy":2,
 		"critical":4,
 	},
-	"Death":{
+	"Death": {
 		"evasion":-2,
 		"accuracy":2,
 		"critical":4,
 	},
-	"Murder":{
+	"Murder": {
 		"evasion":-2,
 		"attack":2,
 		"critical":4,
 	},
-	"Harm":{
+	"Harm": {
 		"evasion":-4,
 		"attack":2,
 		"magic":2,
 		"critical":4,
 	},
-	"Peace":{
+	"Peace": {
 		"attack":-2,
 		"magic":-2,
 		"willpower":4,
 		"armour":4,
 	},
-	"Altruism":{
+	"Altruism": {
 		"willpower":2,
 		"armour":2,
 	},
-	"Prosperity":{
+	"Prosperity": {
 		"health":40,
 	},
-	"Technology":{
+	"Technology": {
 		"stamina":20,
 		"attack":2,
 	},
-	"Ingenuity":{
+	"Ingenuity": {
 		"stamina":20,
 		"mana":20,
 	},
-	"Construction":{
+	"Construction": {
 		"stamina":20,
 		"stamina_regen":10,
 	},
-	"Nature":{
+	"Nature": {
 		"health":20,
 		"health_regen":5,
 	},
-	"Hell":{
+	"Hell": {
 		"health":-40,
 		"stamina":40,
 		"mana":40,
 	},
-	"Heaven":{
+	"Heaven": {
 		"health":40,
 	},
-	"Science":{
+	"Science": {
 		"attack":2,
 		"willpower":2,
 	},
-	"Knowledge":{
+	"Knowledge": {
 		"willpower":2,
 		"magic":2,
 	},
-	"Life":{
+	"Life": {
 		"health":20,
 		"health_regen":5,
 	},
-	"Healing":{
+	"Healing": {
 		"health_regen":10,
 	},
-	"Destruction":{
+	"Destruction": {
 		"attack":2,
 		"magic":2,
 	},
-	"Love":{
+	"Love": {
 		"attack":-2,
 		"magic":-2,
 		"health_regen":10,
 	},
-	"Hate":{
+	"Hate": {
 		"health":-40,
 		"attack":4,
 		"magic":4,
 	},
-	"Birth":{
+	"Birth": {
 		"health":20,
 		"health_regen":5,
 	},
-	"Fertility":{
+	"Fertility": {
 		"health_regen":10
 	},
-	"Fortitude":{
+	"Fortitude": {
 		"armour":4,
 	},
-	"Virtuosity":{
+	"Virtuosity": {
 		"willpower":4,
 	},
-	"Rebirth":{
+	"Rebirth": {
 		"health":40
 	},
-	"Wisdom":{
+	"Wisdom": {
 		"willpower":4,
 	},
-	"Magic":{
+	"Magic": {
 		"magic":4,
 	},
-	"Dedication":{
+	"Dedication": {
 		"accuracy":2,
 		"evasion":2,
 	},
-	"Passion":{
+	"Passion": {
 		"critical":4,
 	},
-	"Light":{
+	"Light": {
 		"health":40,
 	},
-	"Darkness":{
+	"Darkness": {
 		"health":-40,
 		"stamina":40,
 		"mana":40,
 	},
-	"Fire":{
+	"Fire": {
 		"magic":4,
 	},
-	"Ice":{
+	"Ice": {
 		"willpower":4,
 	},
-	"Water":{
+	"Water": {
 		"health_regen":10,
 	},
-	"Earth":{
+	"Earth": {
 		"health":20,
 		"armour":2,
 	},
-	"Art":{
+	"Art": {
 		"accuracy":2,
 		"evasion":2,
 	},
-	"Shadows":{
+	"Shadows": {
 		"evasion":4,
 	},
-	"Void":{
+	"Void": {
 		"accuracy":2,
 		"evasion":2,
 	},
-	"the Dead":{
+	"the Dead": {
 		"health":-40,
 		"critical":8,
 	},
-	"Space":{
+	"Space": {
 		"stamina":20,
 		"mana":20,
 	},
-	"Time":{
+	"Time": {
 		"speed":2,
 	},
-	"Fashion":{
+	"Fashion": {
 		"speed":1,
 		"evasion":2,
 	},
-	"Agriculture":{
+	"Agriculture": {
 		"health":40,
 	},
-	"Power":{
+	"Power": {
 		"stamina_regen":10,
 		"mana_regen":10,
 	},
-	"Beauty":{
+	"Beauty": {
 		"health":20,
 		"stamina":10,
 		"mana":10,
 	},
-	"Cards":{
+	"Cards": {
 		"attack":1,
 		"mana":1,
 		"accuracy":1,
 		"evasion":1,
 	},
-	"Random Numbers":{
+	"Random Numbers": {
 		"critical":4,
 	},
-	"Procedural Generation":{
+	"Procedural Generation": {
 		"health":20,
 		"stamina":10,
 		"mana":10,
 	},
-	"Segmentation Fault":{
+	"Segmentation Fault": {
 		"critical":4,
 	},
-	"Bugs":{
+	"Bugs": {
 		"willpower":4,
 	},
-	"Curses":{
+	"Curses": {
 		"willpower":-8,
 		"attack":4,
 		"magic":4,
 		"critical":4,
 	},
-	"Doom":{
+	"Doom": {
 		"willpower":-2,
 		"armour":-4,
 		"attack":4,
 		"magic":4,
 		"critical":2,
 	},
-	"Flora":{
+	"Flora": {
 		"health":20,
 		"health_regen":5,
 	},
-	"Fauna":{
+	"Fauna": {
 		"health":40,
 	},
-	"Sleep":{
+	"Sleep": {
 		"willpower":6,
 		"speed":-1,
 	},
-	"Dreams":{
+	"Dreams": {
 		"willpower":4,
 		"armour":2,
 		"speed":-1,
 	},
-	"Gold":{
+	"Gold": {
 		"accuracy":2,
 		"evasion":2,
 	},
-	"Contemplation":{
+	"Contemplation": {
 		"focus":3,
 	}
 }
-const ARCHMAGE_PHRASES = [
-	"aire","cele","alt","dore","bumb","lord","snap","pyr","emo","yeno","thor","ileus","inux","dot",
-]
 const MATERIALS = [
 	"iron","steel","titanium","silver","gold","platinum","mithril","vanadium","palladium",
 	"thorium","uranium","quicksilver","mercury","tungsten",
@@ -473,271 +470,305 @@ const MATERIALS = [
 	"stone","basalt","graphite","granite","marble",
 	"diamond","saphire","ruby","emerald","amber",
 ]
-const ARTIFACT_DESCRIPTIONS = [
-	"The {adjective} {material} can't hide the {theme} beneath.",
-	"The {adjective} {base_name} of the {theme}.",
-	"{material} {base_name}, {name} of the {theme}.",
-	"The legendary artifact of the {adjective} {theme}.",
-	"Unremarkable {base_name} bearing the power of the {adjective} {theme}.",
-	"{material} on the outside but {adjective} {theme} on the inside.",
-	"{adjective} {base_name} powered by {theme}.",
-	"{adjective} {base_name} that can't escape it's {theme}.",
-	"{adjective} {base_name} covered in {feature}.",
-	"The {adjective} {feature} gives an idea about the {name}'s {theme}.",
-	"{feature} obfuscate the {theme} of the {adjective} {name}.",
-	"The {theme} {feature} {is/are} said to be {adjective}.",
-	"The {feature} contrast{s} the {adjective} {material} of the {base_name}.",
-	"{base_name} surrounded by a {adjective} aura of {theme}.",
-	"Not everything that is {adjective} is {material}.",
-]
+#const ARTIFACT_DESCRIPTIONS = [
+	#"The {adjective} {material} can't hide the {theme} beneath.",
+	#"The {adjective} {base_name} of the {theme}.",
+	#"{material} {base_name}, {name} of the {theme}.",
+	#"The legendary artifact of the {adjective} {theme}.",
+	#"Unremarkable {base_name} bearing the power of the {adjective} {theme}.",
+	#"{material} on the outside but {adjective} {theme} on the inside.",
+	#"{adjective} {base_name} powered by {theme}.",
+	#"{adjective} {base_name} that can't escape it's {theme}.",
+	#"{adjective} {base_name} covered in {feature}.",
+	#"The {adjective} {feature} gives an idea about the {name}'s {theme}.",
+	#"{feature} obfuscate the {theme} of the {adjective} {name}.",
+	#"The {theme} {feature} {is/are} said to be {adjective}.",
+	#"The {feature} contrast{s} the {adjective} {material} of the {base_name}.",
+	#"{base_name} surrounded by a {adjective} aura of {theme}.",
+	#"Not everything that is {adjective} is {material}.",
+#]
 const NAME_DATA = {
-	"human":{
-		"phrases_male":["or","esh","us","car","end","rus","har"],
-		"phrases_female":["ia","as","el","icy","bec","ate","sal"],
-		"endings_male":["us","or","en","ki"],
-		"endings_female":["ya","ir","ca","ia"],
-		"phrases":[1,2],
+	"human": {
+		"phrases_male": ["or","esh","us","car","end","rus","har"],
+		"phrases_female": ["ia","as","el","icy","bec","ate","sal"],
+		"endings_male": ["us","or","en","ki"],
+		"endings_female": ["ya","ir","ca","ia"],
+		"phrases": [1,2],
 	},
-	"halfling":{
-		"phrases_male":["sau","fro","nir","cen","ray","alf","ba"],
-		"phrases_female":["ley","sal","nel","anth","ma","hilf","che","ryl"],
-		"endings_male":["ris","ing","do","am"],
-		"endings_female":["ra","ne","ke","ca"],
-		"phrases":[1,1],
+	"halfling": {
+		"phrases_male": ["sau","fro","nir","cen","ray","alf","ba"],
+		"phrases_female": ["ley","sal","nel","anth","ma","hilf","che","ryl"],
+		"endings_male": ["ris","ing","do","am"],
+		"endings_female": ["ra","ne","ke","ca"],
+		"phrases": [1,1],
 	},
-	"elf":{
-		"phrases_male":["ama","egé","len","ar","rid","ril","vón","or","thr","ond","óld"],
-		"phrases_female":["ame","cle","ria","ide","adë","ódi","nón","ili","ól","niel"],
-		"endings_male":["old","egé","rid","ril"],
-		"endings_female":["ndë","adë","niel","ith"],
-		"vovels":["a","e","o","u","i","á","é","ë","ó"],
-		"phrases":[1,3],
+	"elf": {
+		"phrases_male": ["ama","egé","len","ar","rid","ril","vón","or","thr","ond","óld"],
+		"phrases_female": ["ame","cle","ria","ide","adë","ódi","nón","ili","ól","niel"],
+		"endings_male": ["old","egé","rid","ril"],
+		"endings_female": ["ndë","adë","niel","ith"],
+		"vovels": ["a","e","o","u","i","á","é","ë","ó"],
+		"phrases": [1,3],
 	},
-	"dwarf":{
-		"phrases_male":["ard","ol","tis","til","th","as","ai","dur","us","go","hat","kar"],
-		"phrases_female":["ak","uth","hik","dir","urd","tia","het"],
-		"endings_male":["dur","ard","til","arl"],
-		"endings_female":["ak","dir","tia","mir"],
-		"phrases":[1,2],
+	"dwarf": {
+		"phrases_male": ["ard","ol","tis","til","th","as","ai","dur","us","go","hat","kar"],
+		"phrases_female": ["ak","uth","hik","dir","urd","tia","het"],
+		"endings_male": ["dur","ard","til","arl"],
+		"endings_female": ["ak","dir","tia","mir"],
+		"phrases": [1,2],
 	},
-	"orc":{
-		"phrases_male":["nak","ush","rag","gor","ar","dish","ork","uk","urt"],
-		"phrases_female":["urk","ik","ish","vag","pun","nak","lo","rak"],
-		"endings_male":["ush","gor","uk"],
-		"endings_female":["ik","rak","ish"],
-		"phrases":[1,3],
+	"orc": {
+		"phrases_male": ["nak","ush","rag","gor","ar","dish","ork","uk","urt"],
+		"phrases_female": ["urk","ik","ish","vag","pun","nak","lo","rak"],
+		"endings_male": ["ush","gor","uk"],
+		"endings_female": ["ik","rak","ish"],
+		"phrases": [1,3],
 	},
-	"goblin":{
-		"phrases_male":["gla","gak","bli","in","ra","ta","da"],
-		"phrases_female":["gli","gra","gru","ni","ar","ti","om"],
-		"endings_male":["usk","grk","yik"],
-		"endings_female":["yak","gra","isk"],
-		"phrases":[1,1],
+	"goblin": {
+		"phrases_male": ["gla","gak","bli","in","ra","ta","da"],
+		"phrases_female": ["gli","gra","gru","ni","ar","ti","om"],
+		"endings_male": ["usk","grk","yik"],
+		"endings_female": ["yak","gra","isk"],
+		"phrases": [1,1],
 	},
-	"gnoll":{
-		"phrases_male":["glo","gok","dle","yn","wa","to","la"],
-		"phrases_female":["gle","gri","dru","ny","aw","te","il"],
-		"endings_male":["usk","grk","yik"],
-		"endings_female":["yak","gra","isk"],
-		"phrases":[2,2],
+	"gnoll": {
+		"phrases_male": ["glo","gok","dle","yn","wa","to","la"],
+		"phrases_female": ["gle","gri","dru","ny","aw","te","il"],
+		"endings_male": ["usk","grk","yik"],
+		"endings_female": ["yak","gra","isk"],
+		"phrases": [2,2],
 	},
-	"ogre":{
-		"phrases_male":["glo","gok","dle","in","ra","ta","da"],
-		"phrases_female":["gle","gri","dru","ni","ar","ti","om"],
-		"endings_male":["ush","gor","uk"],
-		"endings_female":["ik","rak","ish"],
-		"phrases":[1,2],
+	"ogre": {
+		"phrases_male": ["glo","gok","dle","in","ra","ta","da"],
+		"phrases_female": ["gle","gri","dru","ni","ar","ti","om"],
+		"endings_male": ["ush","gor","uk"],
+		"endings_female": ["ik","rak","ish"],
+		"phrases": [1,2],
 	},
-	"naga":{
-		"phrases_male":["skt","tes","cs","zh"],
-		"phrases_female":["kra","zes","sh","ni"],
-		"endings_male":["esh","rer","'zr"],
-		"endings_female":["ak","za","'cs"],
-		"vovels":["a","e","o","u","i","'","'"],
-		"phrases":[1,2],
+	"naga": {
+		"phrases_male": ["skt","tes","cs","zh"],
+		"phrases_female": ["kra","zes","sh","ni"],
+		"endings_male": ["esh","rer","'zr"],
+		"endings_female": ["ak","za","'cs"],
+		"vovels": ["a","e","o","u","i","'","'"],
+		"phrases": [1,2],
 	},
-	"undead":{
-		"phrases_male":["mal","bal","dur","ak"],
-		"phrases_female":["mel","bil","ald","yu"],
-		"endings_male":["ur","usk","oth","dor"],
-		"endings_female":["ar","isk","eth","dal"],
-		"phrases":[2,2],
+	"undead": {
+		"phrases_male": ["mal","bal","dur","ak"],
+		"phrases_female": ["mel","bil","ald","yu"],
+		"endings_male": ["ur","usk","oth","dor"],
+		"endings_female": ["ar","isk","eth","dal"],
+		"phrases": [2,2],
 	},
-	"demon":{
-		"phrases_male":["wry","esk","thor","pain","death","break"],
-		"phrases_female":["wer","yis","agon","iny","lept","frigh"],
-		"endings_male":["tor","mentor","coth","dor"],
-		"endings_female":["ria","itor","veth","dal"],
-		"phrases":[2,2],
+	"demon": {
+		"phrases_male": ["wry","esk","thor","pain","death","break"],
+		"phrases_female": ["wer","yis","agon","iny","lept","frigh"],
+		"endings_male": ["tor","mentor","coth","dor"],
+		"endings_female": ["ria","itor","veth","dal"],
+		"phrases": [2,2],
 	},
-	"cyborg":{
-		"phrases_male":["bil","hor","and","yu","bos","to","che"],
-		"phrases_female":["mol","gil","hal","ri","bet","ty","si"],
-		"endings_male":["-1s","-m0",":I",".j"],
-		"endings_female":["-2f","-w9",":E",".a"],
-		"vovels":["a","e","o","u","i","0","1","2","3","4","5","6","7","8","9"],
-		"cons":["b","c","d","f","g","h","j","k","l","m","n","p","r","s","t","v","w","x","y","z",".",":","-"],
-		"phrases":[1,2],
+	"cyborg": {
+		"phrases_male": ["bil","hor","and","yu","bos","to","che"],
+		"phrases_female": ["mol","gil","hal","ri","bet","ty","si"],
+		"endings_male": ["-1s","-m0",":I",".j"],
+		"endings_female": ["-2f","-w9",":E",".a"],
+		"vovels": ["a","e","o","u","i","0","1","2","3","4","5","6","7","8","9"],
+		"cons": ["b","c","d","f","g","h","j","k","l","m","n","p","r","s","t","v","w","x","y","z",".",": ","-"],
+		"phrases": [1,2],
 	},
+	"archmage": {
+		"phrases_male": ["alt","bumb","snap","pyr","emo","thor","ileus","proc","proxi","delv","disti"],
+		"phrases_female": ["cele","stel","siri","yeno","tal","hexa","cry","valc","fon","nic","clai"],
+		"endings_male": ["dore","inux","lord","tus"],
+		"endings_female": ["aire","ris","ella","in"],
+		"phrases": [1,2],
+	}
+	
 }
 const RACE_ADJECTIVE = {
-	"elf":"elven",
-	"dwarf":"dwarven",
-	"orc":"orcish",
+	"elf": "elven",
+	"dwarf": "dwarven",
+	"orc": "orcish",
 }
 const EMPIRE_GENERIC_NAME = [
-	"empire","kingdom","state","realm","division","republic",
+	"empire", "kingdom", "state", "realm", "division", "republic",
 ]
 const EMPIRE_RACE_NAME = {
-	"human":[
+	"human": [
 		"guild","republic","kingdom","empire",
 	],
-	"halfling":[
+	"halfling": [
 		"kingdom","empire","state","aristocracy",
 	],
-	"dwarf":[
+	"dwarf": [
 		"company","kingdom",
 	],
-	"orc":[
+	"orc": [
 		"tribe","tribes",
 		"army","warband","marauders",
 	],
-	"goblin":[
+	"goblin": [
 		"tribe","tribes","gang","pack",
 	],
-	"gnoll":[
+	"gnoll": [
 		"tribe","tribes",
 		"army","warband","division",
 	],
 }
 const EMPIRE_RACE_ADJECTIVE = {
-	"human":[
+	"human": [
 		"trader","golden","iron",
 	],
-	"elf":[
+	"elf": [
 		"enlightened","wise","ancient","elder",
 	],
-	"dwarf":[
+	"dwarf": [
 		"mining","miner",
 	],
-	"orc":[
+	"orc": [
 		"warmongering",
 	],
-	"goblin":[
+	"goblin": [
 		"feral","wild",
 	],
 }
 const EMPIRE_RACE_TOPIC = {
-	"elf":[
+	"elf": [
 		"wisdom","elders","woods",
 	],
-	"dwarf":[
+	"dwarf": [
 		"industry","mining",
 	],
-	"orc":[
+	"orc": [
 		"warlords","bannerlord","warfare",
 	],
 }
 const DISEASE_NAME = [
-	"flu","pox","rot","virus",
+	"flu", "pox", "rot", "virus",
 ]
 const DISEASE_PREFIX = [
-	"chicken","cow","black",
+	"chicken", "cow", "black",
+]
+const PREFIX = [
+	"holo", "homo", "hetero", "mono", "bi", "tri", "quattro", "penta", "hexa", "octo", "deca",
+	"multi", "omni", "spatio", "gravo", "pyro", "cryo", "electro", "hydro", "aeoro", "terra", "bio",
+	"necro", "micro", "macro", "toxo", "ethero", "sui", "somni", "ferro", "xeno", "xylo", "tetra",
+	"video", "audio", "lingui", "para", "zoo", "crystallo", "cyber", "propa", "paci", "pan", "eso",
+	"theo", "anti", "phas", "spectro", "cis", "elasto", "galacto", "metro", "verti", "horizon",
+	"logi", "centri", "demo", "auto", "anony", "norma", "dyna", "nano", "phero", "phaeto", "photo",
+	"radio", "lepto", "hypno", "stellar", "sonar", "bureau", "archeo", "astro", "meno", "grammo",
+	"phantas", "trans", "luna", "semi", "ego", "tyranno", "dyna", "panto", "contro", "pro", "idio",
+	"poly", "plasto", "endo", "soli", "arcano", "thermo", "crypto", "mero", "meso", "digi", "ana",
+	"hyper",
+]
+const SUFFIX = [
+	"chrome", "chromatic", "synthetic", "syntactic", "phil", "phobe", "phantastic", "tic",
+	"spatial", "temporal", "metric", "gravitational", "genic", "genetic", "mimetic", "nematic",
+	"phosphatic", "phonetic", "scopic", "cidal", "phasic", "pheral", "morphic", "metallic",
+	"graphic", "gonic", "sive", "mantic", "galactic", "scence", "theric", "thereal", "mal",
+	"elastic", "tal", "centric", "mous", "static", "dynamic", "mite", "nautic", "nomic", "cryptic",
+	"active", "logical", "septic", "cistic", "directional", "mimic", "phoric",  "plasmonic",
+]
+const SUBJECT = [
+	"phobia", "philia", "cide", "laxis", "scope", "mount", "graph", "phone", "borg", "maly",
+	"noun", "void", "mancy", "maniac", "thesis", "matter", "cality", "cracy", "nomy", "phase",
+	"gel", "synthesis", "tron", "logy", "vision", "centrism", "pluralism", "sepsis", "nol", "mere",
+	"hedron", "phantasia", "enigma", "glyph", "nosis", "script", "chemical",
 ]
 const GREETINGS = {
-	"neutral":[
+	"neutral": [
 		"Hello!","Hey!","Hi!","Good day!","Greetings!",
 	],
-	"polite":[
+	"polite": [
 		"Nice to meet you, {sir/miss}.","It's a pleasure to meet you!",
 	],
-	"peasant":[
+	"peasant": [
 		"Howdy!","Howdy, partner!",
 	],
-	"cold":[
+	"cold": [
 		"Hey.","Hi.",
 	],
-	"pious":[
+	"pious": [
 		"May the gods bless you.","May the holy light guide you.",
 	],
-	"rogue":[
+	"rogue": [
 		"Nice purse!","What's in for me?",
 	],
-	"harsh":[
+	"harsh": [
 		"Yes?","Make it quick.",
 	],
-	"friendly":[
+	"friendly": [
 		"How may I help you?","Hey there!",
 	],
-	"curious":[
+	"curious": [
 		"Is there something I should know?","You require my assistance?",
 	],
-	"arcane":[
+	"arcane": [
 		"The force is strong in you.","Magic shall prevail.",
 	],
-	"philosopher":[
+	"philosopher": [
 		"Wanna partake in a trolley experiment of mine?",
 	],
-	"oracle":[
+	"oracle": [
 		"I knew you would come.","I awaited you'r arrival.",
 	],
-	"arrogant":[
+	"arrogant": [
 		"What is it?","You're wasting my time.",
 	],
-	"shy":[
+	"shy": [
 		"Y-yes?","Oh, y-you mean me?","How can I help you?",
 	],
-	"royal":[
+	"royal": [
 		"You may enter.",
 	],
 }
 const QUEST_DONE = {
-	"neutral":[
+	"neutral": [
 		"Well done!","Great work!","Thank you!",
 	],
-	"polite":[
+	"polite": [
 		"You have my thanks.","A job well executed.","You have my gratitute for completing the task.",
 	],
-	"peasant":[
+	"peasant": [
 		"Hell yeah!","You did it!","That was so amazing!",
 	],
-	"cold":[
+	"cold": [
 		"Nice job.","Good work.",
 	],
-	"pious":[
+	"pious": [
 		"God bless you!",
 	],
-	"rogue":[
+	"rogue": [
 		"Thanks!","Good to hear that was taken care of.","Hell yeah!",
 	],
-	"harsh":[
+	"harsh": [
 		"Mission accomplished.","Good.",
 	],
-	"friendly":[
+	"friendly": [
 		"Nice, good work!","That was amazing!","Many thanks!","Keep up the good work!",
 	],
-	"curious":[
+	"curious": [
 		"How did it go?","You did it?","That went smoothly!",
 	],
-	"arcane":[
+	"arcane": [
 		"With great power comes great responsibility.","Your actions show great wisdom.","Magnificant!",
 	],
-	"philosopher":[
+	"philosopher": [
 		"Wonderful!",
 	],
-	"oracle":[
+	"oracle": [
 		"I knew you would manage.","I have forseen your victory.",
 	],
-	"arrogant":[
+	"arrogant": [
 		"About time...","That took you long enough.",
 	],
-	"shy":[
+	"shy": [
 		"T-thank you!","You did a nice job.",
 	],
-	"royal":[
+	"royal": [
 		"You may claim your reward.","You managed to fulfill your task.",
 	],
-	"programer":[
+	"programer": [
 		"Transient parent has another exclusive child.",
 	],
 }
@@ -748,7 +779,7 @@ func get_god() -> Dictionary:
 	var prefix: String = GOD_PREFIX.keys().pick_random()
 	var suffix: String = GOD_SUFFIX.keys().pick_random()
 	var string: String = prefix + " " + tr("GOD_OF") + " "
-	var dict:= {"type":"blessing","duration":24*60*60}
+	var dict:= {"type": "blessing","duration":24*60*60}
 	while string.to_lower().similarity(suffix.to_lower())>0.5:
 		suffix = GOD_SUFFIX.keys().pick_random()
 	string = string + suffix
@@ -902,9 +933,9 @@ func create_from_phrases(length: int, phrases: Array, endings: Array, vovels:= V
 	return _name.capitalize().replace(' ','')
 
 
-func get_archmage_name() -> String:
-	var _name:= create_from_phrases(2+int(randf_range(-0.25,1.75)*randf_range(0.0,1.1)), ARCHMAGE_PHRASES, ARCHMAGE_PHRASES)
-	return _name
+#func get_archmage_name() -> String:
+	#var _name:= create_from_phrases(2+int(randf_range(-0.25,1.75)*randf_range(0.0,1.1)), ARCHMAGE_PHRASES, ARCHMAGE_PHRASES)
+	#return _name
 
 func create_name(race: String, gender: int) -> String:
 	var dict: Dictionary

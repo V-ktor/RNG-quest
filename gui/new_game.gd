@@ -66,7 +66,7 @@ var player_combat_abilities:= []
 var hybrid_race:= false
 var player_vegan:= false
 
-var main:= preload("res://gui/main.tscn")
+var main:= preload("res://gui/main/scenes/main_gui.tscn")
 
 
 
@@ -303,7 +303,7 @@ func start_game():
 		main_instance.set_region("dwarven_mine")
 	else:
 		main_instance.set_region("farmland")
-	main_instance.current_location = main_instance.current_region.cities[0]
+	main_instance.current_location = main_instance.current_region.cities.keys().pick_random()
 	main_instance.join_guild("adventurer_guild")
 	main_instance.current_time = Time.get_unix_time_from_system()
 	main_instance.player_vegan = player_vegan

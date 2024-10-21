@@ -13,7 +13,10 @@ var eq_armour_panel: VBoxContainer = $ScrollContainer/VBoxContainer/Armour/VBoxC
 var eq_accessoire_panel: VBoxContainer = $ScrollContainer/VBoxContainer/Accessoires/VBoxContainer
 
 
-func update():
+func update(inventory:= []):
+	if not visible or not get_parent().visible:
+		return
+	
 	for c in eq_weapons_panel.get_children() + eq_armour_panel.get_children() + eq_accessoire_panel.get_children():
 		c.hide()
 	
@@ -35,4 +38,7 @@ func _show_equipment_tooltip(type: String):
 		return
 	
 	var item: Dictionary = character.equipment[type]
-	tooltip.show_texts([item.description, item.component_description], [tr("PROPERTIES"), tr("COMPONENTS")])
+	if "story" in item:
+		tooltip.show_texts([item.description, item.story, item.component_description], [tr("PROPERTIES"), tr("DESCRIPTION"), tr("COMPONENTS")])
+	else:
+		tooltip.show_texts([item.description, item.component_description], [tr("PROPERTIES"), tr("COMPONENTS")])

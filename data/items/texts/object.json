@@ -553,6 +553,43 @@
 		],
 	},
 	{
+		"type": "sentence_of_object",
+		"text": [
+			"of the {origin.singular}",
+			"of {origin.adjective} origin",
+		],
+		"sentence": {
+			"object": "origin",
+		},
+		"required": [
+			"origin",
+		],
+		"remove": [
+			"origin",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_of_object",
+		"text": [
+			"of the {craftmanship.singular}",
+		],
+		"sentence": {
+			"object": "craftmanship",
+		},
+		"required": [
+			"craftmanship",
+		],
+		"remove": [
+			"craftmanship",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
 		"type": "sentence_object",
 		"text": [
 			"the {stains.adjective} {object.singular}",
@@ -864,6 +901,331 @@
 		],
 		"remove": [
 			"emotion",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {object.singular} of {origin.adjective} origin",
+			"the {object.singular} of the {origin.singular}",
+		],
+		"sentence": {
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"origin",
+		],
+		"remove": [
+			"origin",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {prophecy.adjective} {force.singular}",
+		],
+		"sentence": {
+			"object": "force",
+		},
+		"required": [
+			"force",
+			"prophecy",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {enemy.adjective} {force.singular}",
+		],
+		"sentence": {
+			"object": "force",
+		},
+		"required": [
+			"force",
+			"enemy",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {enemy.singular} of {force.singular}",
+		],
+		"sentence": {
+			"object": "enemy",
+		},
+		"required": [
+			"force",
+			"enemy",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {mental_illness.adjective} {force.singular}",
+		],
+		"sentence": {
+			"object": "force",
+		},
+		"required": [
+			"force",
+			"mental_illness",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {force.singular} of {theme.singular}",
+		],
+		"sentence": {
+			"object": "force",
+		},
+		"required": [
+			"force",
+			"theme",
+		],
+		"remove": [
+			"theme",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {care.adjective} {object.singular}",
+		],
+		"sentence": {
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"care",
+		],
+		"remove": [
+			"care",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {care.adjective} {material.singular}",
+		],
+		"sentence": {
+			"object": "material",
+		},
+		"required": [
+			"material",
+			"care",
+		],
+		"remove": [
+			"care",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {care.adjective} {component.singular}",
+		],
+		"sentence": {
+			"object": "component",
+		},
+		"required": [
+			"component",
+			"care",
+		],
+		"remove": [
+			"care",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"a {color.adjective}ish shade of {force.singular}",
+		],
+		"sentence": {
+			"object": "",
+		},
+		"required": [
+			"force",
+			"color",
+		],
+		"remove": [
+			"color",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"stains left behind by a {enemy.singular}",
+		],
+		"sentence": {
+			"object": "",
+		},
+		"required": [
+			"stains",
+			"enemy",
+		],
+		"remove": [
+			"stains",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"{crime.singular} against {theme.singular}",
+		],
+		"sentence": {
+			"object": "crime",
+		},
+		"required": [
+			"crime",
+			"theme",
+		],
+		"replace": {
+			"crime": "mental_illness",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {science.adjective} {object.singular}",
+		],
+		"sentence": {
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"science",
+		],
+		"remove": [
+			"science",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {science.adjective} {component.singular}",
+		],
+		"sentence": {
+			"object": "component",
+		},
+		"required": [
+			"component",
+			"science",
+		],
+		"remove": [
+			"science",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"{element.singular} enhanced by {science.singular}",
+		],
+		"sentence": {
+			"object": "element",
+		},
+		"required": [
+			"element",
+			"science",
+		],
+		"remove": [
+			"science",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"{mental_illness.singular} fueled by {science.singular}",
+		],
+		"sentence": {
+			"object": "mental_illness",
+		},
+		"required": [
+			"mental_illness",
+			"science",
+		],
+		"remove": [
+			"science",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"{science.adjective} {shape.singular}",
+			"{science.adjective} {shape.plural}",
+		],
+		"sentence": {
+			"object": "shape",
+		},
+		"required": [
+			"shape",
+			"science",
+		],
+		"remove": [
+			"science",
 		],
 		"transition": [
 			"sentence_end",

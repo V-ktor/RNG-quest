@@ -21,6 +21,7 @@
 		"text": [
 			"{is/are} painted in a {theme.adjective} shade of {color.singular}",
 			"{is/are} tinted in a {theme.adjective} shade of {color.singular}",
+			"{is/are} covered with {theme.adjective} {color.singular}",
 			"{emits/emit} a {theme.adjective} {color.singular}",
 		],
 		"sentence":{
@@ -346,6 +347,7 @@
 		"text": [
 			"{fails/fail} to match the {component.singular}",
 			"{does/do} not align with the {component.singular}",
+			"{contrasts/contrast}o the {component.singular}",
 		],
 		"sentence":{
 			"predicate": "",
@@ -740,6 +742,522 @@
 		},
 		"transition": [
 			"sentence_of_object",
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{despises/despise} its {origin.adjective} origin",
+			"{fights/fight} against the {origin.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+		},
+		"required": [
+			"origin",
+			"curse",
+		],
+		"remove": [
+			"origin",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{requires/require} no {care.singular} to be {force.adjective}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "care",
+		},
+		"required": [
+			"care",
+			"force",
+			"element",
+			"object",
+		],
+		"replace": {
+			"force": "theme",
+		},
+		"remove": [
+			"care",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{requires/require} no {care.singular} to be {force.adjective}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "care",
+		},
+		"required": [
+			"care",
+			"force",
+			"theme",
+			"object",
+		],
+		"replace": {
+			"force": "prophecy",
+		},
+		"remove": [
+			"care",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{brims/brim} with {element.adjective} {force.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "force",
+		},
+		"required": [
+			"force",
+			"element",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{brims/brim} with {curse.adjective} {force.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "force",
+		},
+		"required": [
+			"force",
+			"curse",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{brims/brim} with {theme.adjective} {force.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "force",
+		},
+		"required": [
+			"force",
+			"theme",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{stands/stand} against {crime.plural}",
+			"{fights/fight} against {crime.plural}",
+			"{has/have} been used to fight against {crime.plural}",
+			"{is/are} said to be able to prevent {crime.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "crime",
+		},
+		"required": [
+			"crime",
+		],
+		"remove": [
+			"crime",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} tainted by {curse.adjective} {crime.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "crime",
+		},
+		"required": [
+			"crime",
+			"curse",
+		],
+		"remove": [
+			"crime",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} tainted by {mental_illness.adjective} {crime.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "crime",
+		},
+		"required": [
+			"crime",
+			"mental_illness",
+		],
+		"remove": [
+			"crime",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} painted {color.adjective} by {stains.plural}",
+			"{is/are} covered in {color.adjective} {stains.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+		},
+		"required": [
+			"color",
+			"stains",
+		],
+		"remove": [
+			"color",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} painted {color.adjective} by {liquid.plural}",
+			"{is/are} covered in {color.adjective} {liquid.plural}",
+			"{is/are} painted {color.adjective} by {liquid.thickness} {liquid.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+		},
+		"required": [
+			"color",
+			"liquid",
+		],
+		"remove": [
+			"liquid",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{has/have} a {shape.adjective} shape",
+		],
+		"sentence":{
+			"predicate": "",
+		},
+		"required": [
+			"shape",
+		],
+		"replace": {
+			"shape": "quality",
+		},
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} loaded with {emotion.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "emotion",
+		},
+		"required": [
+			"emotion",
+		],
+		"remove": [
+			"emotion",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} {craftmanship.singular}'s {emotion.singular}",
+			"{represents/represent} {craftmanship.singular}'s {emotion.singular}",
+			"{is/are} fueled by {craftmanship.singular}'s {emotion.singular}",
+			"{is/are} driven by {craftmanship.singular}'s {emotion.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "emotion",
+		},
+		"required": [
+			"emotion",
+			"craftmanship",
+		],
+		"replace": {
+			"emotion": "mental_illness",
+		},
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{bears/bear} the {curse.singular} of {enemy.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "curse",
+		},
+		"required": [
+			"curse",
+			"enemy",
+		],
+		"remove": [
+			"curse",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{has/have} no chance to stand against the {force.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "force",
+		},
+		"required": [
+			"force",
+			"curse",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{has/have} no chance to stand against the {force.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "force",
+		},
+		"required": [
+			"force",
+			"mental_illness",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{has/have} no chance to stand against the {force.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "force",
+		},
+		"required": [
+			"force",
+			"weakness",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{stands/stand} against the {force.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "force",
+		},
+		"required": [
+			"force",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{was/were} used to commit {crime.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "crime",
+		},
+		"required": [
+			"crime",
+		],
+		"remove": [
+			"crime",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{uses/use} the {science.singular} theory",
+			"{utilizes/utilize} {science.singular}",
+			"{is/are} {science.adjective}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "science",
+		},
+		"required": [
+			"science",
+		],
+		"remove": [
+			"science",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{puts/put} {science.singular} against {force.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "science",
+		},
+		"required": [
+			"science",
+			"force",
+		],
+		"remove": [
+			"science",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{puts/put} {science.singular} against {theme.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "science",
+		},
+		"required": [
+			"science",
+			"theme",
+		],
+		"remove": [
+			"science",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{puts/put} {science.singular} against {emotion.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "science",
+		},
+		"required": [
+			"science",
+			"emotion",
+		],
+		"remove": [
+			"science",
+		],
+		"transition": [
 			"sentence_end",
 			"addition",
 		],

@@ -27,6 +27,7 @@ const BASE_ENEMIES = {
 			"critical":0,
 		},
 		"soul_rarity":-4,
+		"race": "construct",
 	},
 	"elemental":{
 		"base_name":["slime","elemental"],
@@ -100,6 +101,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":-2,
+		"race": "elemental",
 	},
 	"water_elemental":{
 		"base_name":["elemental","anomaly"],
@@ -165,6 +167,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":-2,
+		"race": "elemental",
 	},
 	"lava_elemental":{
 		"base_name":["elemental","anomaly"],
@@ -232,6 +235,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":-2,
+		"race": "elemental",
 	},
 	"shadow_elemental":{
 		"base_name":["elemental","anomaly"],
@@ -297,6 +301,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":-2,
+		"race": "elemental",
 	},
 	"cloud_elemental":{
 		"base_name":["elemental","anomaly"],
@@ -362,6 +367,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":-2,
+		"race": "elemental",
 	},
 	"nanite_swarm":{
 		"base_name":["nanite swarm"],
@@ -416,6 +422,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["digital","virtual","cyber"],
 		"soul_rarity":-2,
+		"race": "robot",
 	},
 	"nanite_slime":{
 		"base_name":["slime","anomaly"],
@@ -465,6 +472,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["digital","virtual","cyber"],
 		"soul_rarity":-2,
+		"race": "robot",
 	},
 	"mud_slime":{
 		"base_name":["slime","anomaly"],
@@ -533,6 +541,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":-2,
+		"race": "elemental",
 	},
 	"spirit":{
 		"base_name":["spirit","ghost"],
@@ -611,6 +620,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":-1,
+		"race": "undead",
 	},
 	"ghost":{
 		"base_name":["ghost","spirit"],
@@ -668,6 +678,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":-1,
+		"race": "undead",
 	},
 	"golem":{
 		"base_name":["golem"],
@@ -758,10 +769,11 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":-1,
+		"race": "construct",
 	},
 	"paper_golem":{
 		"base_name":["golem"],
-		"lesser_prefix":["lesser","profane","small"],
+		"lesser_prefix":["lesser","small"],
 		"greater_prefix":["greater","great","large"],
 		"base_stats":{
 			"strength":9,
@@ -823,6 +835,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"speed":0.5,
 		},
+		"race": "construct",
 	},
 	"fearfire_golem":{
 		"base_name":["golem"],
@@ -891,6 +904,7 @@ const BASE_ENEMIES = {
 				"darkness":0.05,
 			},
 		},
+		"race": "construct",
 	},
 	"nanite_golem":{
 		"base_name":["golem"],
@@ -963,6 +977,7 @@ const BASE_ENEMIES = {
 				"lightning":0.05,
 			},
 		},
+		"race": "construct",
 	},
 	"zombie":{
 		"base_name":["zombie"],
@@ -1001,6 +1016,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":-1,
+		"race": "undead",
 	},
 	"ghoul":{
 		"base_name":["ghoul"],
@@ -1040,6 +1056,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":0,
+		"race": "undead",
 	},
 	"skeleton":{
 		"base_name":["skeleton"],
@@ -1107,6 +1124,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":0,
+		"race": "undead",
 	},
 	"mummy":{
 		"base_name":["mummy"],
@@ -1184,6 +1202,7 @@ const BASE_ENEMIES = {
 				"acid":0.05,
 			},
 		},
+		"race": "undead",
 	},
 	"vampire":{
 		"base_name":["vampire"],
@@ -1252,6 +1271,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"mana":3,
 		},
+		"race": "undead",
 	},
 	"undead":{
 		"base_name":["necromancer","thrall master","undead fiend"],
@@ -1300,6 +1320,7 @@ const BASE_ENEMIES = {
 				"darkness":0.1,
 			},
 		},
+		"race": "undead",
 	},
 	"lich":{
 		"base_name":["lich"],
@@ -1344,6 +1365,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"mana_regen":2,
 		},
+		"race": "undead",
 	},
 	"goblin":{
 		"base_name":["goblin"],
@@ -1407,6 +1429,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["lesser","mundane","simple"],
 		"soul_rarity":0,
+		"race": "goblin",
 	},
 	"hobgoblin":{
 		"base_name":["hobgoblin"],
@@ -1453,6 +1476,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["lesser","mundane","simple"],
 		"soul_rarity":1,
+		"race": "goblin",
 	},
 	"gnoll":{
 		"base_name":["gnoll"],
@@ -1514,6 +1538,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["lesser","mundane","simple"],
 		"soul_rarity":0,
+		"race": "gnoll",
 	},
 	"troll":{
 		"base_name":["troll"],
@@ -1593,6 +1618,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"health_regen":2,
 		},
+		"race": "troll",
 	},
 	"wolf":{
 		"base_name":["wolf","hound","dog"],
@@ -1623,6 +1649,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["lesser","mundane","simple"],
 		"soul_rarity":-1,
+		"race": "beast",
 	},
 	"strong_wolf":{
 		"base_name":["wolf","hound","beast"],
@@ -1673,6 +1700,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["lesser","mundane","simple"],
 		"soul_rarity":-1,
+		"race": "beast",
 	},
 	"elemental_wolf":{
 		"base_name":["wolf","hound","beast"],
@@ -1745,6 +1773,7 @@ const BASE_ENEMIES = {
 				"lightning":0.025,
 			},
 		},
+		"race": "beast",
 	},
 	"tiger":{
 		"base_name":["tiger","lion","panther"],
@@ -1799,6 +1828,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["lesser","mundane","fierce","wild"],
 		"soul_rarity":-1,
+		"race": "beast",
 	},
 	"boar":{
 		"base_name":["boar"],
@@ -1829,6 +1859,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["lesser","mundane","simple"],
 		"soul_rarity":-1,
+		"race": "beast",
 	},
 	"snap_turtle":{
 		"base_name":["snap turtle"],
@@ -1859,6 +1890,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["lesser","mundane","simple"],
 		"soul_rarity":-1,
+		"race": "beast",
 	},
 	"shark":{
 		"base_name":["shark"],
@@ -1890,6 +1922,7 @@ const BASE_ENEMIES = {
 		"exp":15,
 		"soul_prefix":["lesser","mundane","simple"],
 		"soul_rarity":-1,
+		"race": "beast",
 	},
 	"sky_shark":{
 		"base_name":["shark"],
@@ -1944,10 +1977,11 @@ const BASE_ENEMIES = {
 		"exp":20,
 		"soul_prefix":["lesser","mundane","simple"],
 		"soul_rarity":-1,
+		"race": "beast",
 	},
 	"undead_shark":{
 		"base_name":["shark"],
-		"lesser_prefix":["young","decaying"],
+		"lesser_prefix":["rotten","decaying"],
 		"greater_prefix":["necrotic","preserved"],
 		"abilities":["fangs","feral_cutting_darkness_magic","dirty_fighting"],
 		"base_stats":{
@@ -1992,6 +2026,7 @@ const BASE_ENEMIES = {
 		"exp":20,
 		"soul_prefix":["lesser","mundane","simple"],
 		"soul_rarity":-1,
+		"race": "undead",
 	},
 	"yeti":{
 		"base_name":["yeti"],
@@ -2052,6 +2087,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"evasion":1,
 		},
+		"race": "beast",
 	},
 	"minotaur":{
 		"base_name":["minotaur"],
@@ -2127,6 +2163,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"attack":1,
 		},
+		"race": "beast",
 	},
 	"crab":{
 		"base_name":["crab"],
@@ -2187,6 +2224,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["lesser","mundane","simple"],
 		"soul_rarity":-1,
+		"race": "beast",
 	},
 	"scorpion":{
 		"base_name":["scorpion"],
@@ -2251,6 +2289,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"accuracy":1,
 		},
+		"race": "beast",
 	},
 	"snake":{
 		"base_name":["snake"],
@@ -2328,6 +2367,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["lesser","mundane","simple"],
 		"soul_rarity":-2,
+		"race": "beast",
 	},
 	"water_snake":{
 		"base_name":["water snake","sea snake"],
@@ -2373,6 +2413,7 @@ const BASE_ENEMIES = {
 				"water":0.05,
 			},
 		},
+		"race": "beast",
 	},
 	"sky_snake":{
 		"base_name":["sky snake","air snake"],
@@ -2418,6 +2459,7 @@ const BASE_ENEMIES = {
 				"wind":0.05,
 			},
 		},
+		"race": "beast",
 	},
 	"bat":{
 		"base_name":["bat"],
@@ -2468,6 +2510,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["lesser","mundane","simple"],
 		"soul_rarity":-2,
+		"race": "beast",
 	},
 	"spider":{
 		"base_name":["spider"],
@@ -2522,6 +2565,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["lesser","mundane","simple"],
 		"soul_rarity":-2,
+		"race": "beast",
 	},
 	"harpy":{
 		"base_name":["harpy"],
@@ -2593,6 +2637,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"evasion":1,
 		},
+		"race": "beast",
 	},
 	"drake":{
 		"base_name":["drake"],
@@ -2655,6 +2700,7 @@ const BASE_ENEMIES = {
 				"ice":0.05,
 			},
 		},
+		"race": "beast",
 	},
 	"imp":{
 		"base_name":["imp"],
@@ -2717,6 +2763,7 @@ const BASE_ENEMIES = {
 				"darkness":0.05,
 			},
 		},
+		"race": "demon",
 	},
 	"demon":{
 		"base_name":["demon"],
@@ -2788,6 +2835,7 @@ const BASE_ENEMIES = {
 				"darkness":0.1,
 			},
 		},
+		"race": "demon",
 	},
 	"plant":{
 		"base_name":["plant","tree"],
@@ -2850,6 +2898,7 @@ const BASE_ENEMIES = {
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":-2,
+		"race": "plant",
 	},
 	"thug":{
 		"base_name":["thug","thief","rogue","robber"],
@@ -2916,6 +2965,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"penetration":1,
 		},
+		"race": "human",
 	},
 	"guard":{
 		"base_name":["guard","vanguard","fighter","body guard"],
@@ -2990,6 +3040,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"stamina":3,
 		},
+		"race": "human",
 	},
 	"fighter":{
 		"base_name":["fighter","battler","brawler"],
@@ -3057,6 +3108,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"health":3,
 		},
+		"race": "human",
 	},
 	"human":{
 		"base_name":["swordsman","human"],
@@ -3091,6 +3143,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"willpower":1,
 		},
+		"race": "human",
 	},
 	"halfling":{
 		"base_name":["halfling"],
@@ -3125,6 +3178,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"evasion":1,
 		},
+		"race": "halfling",
 	},
 	"elf":{
 		"base_name":["elf"],
@@ -3159,6 +3213,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"magic":1,
 		},
+		"race": "elf",
 	},
 	"dwarf":{
 		"base_name":["dwarf","hammerdwarf","dwarven fighter"],
@@ -3193,6 +3248,7 @@ const BASE_ENEMIES = {
 		"soul_add":{
 			"armour":1,
 		},
+		"race": "dwarf",
 	},
 	"naga":{
 		"base_name":["naga"],
@@ -3278,6 +3334,7 @@ const BASE_ENEMIES = {
 				"water":0.05,
 			},
 		},
+		"race": "naga",
 	},
 	"orc":{
 		"base_name":["orc"],
@@ -3371,6 +3428,7 @@ const BASE_ENEMIES = {
 				"impact":0.05,
 			},
 		},
+		"race": "orc",
 	},
 	"ogre":{
 		"base_name":["ogre"],
@@ -3436,6 +3494,7 @@ const BASE_ENEMIES = {
 				"impact":0.05,
 			},
 		},
+		"race": "ogre",
 	},
 	"wale":{
 		"base_name":["wale"],
@@ -3492,6 +3551,7 @@ const BASE_ENEMIES = {
 				"impact":0.05,
 			},
 		},
+		"race": "beast",
 	},
 	"drone":{
 		"base_name":["drone"],
@@ -3553,6 +3613,7 @@ const BASE_ENEMIES = {
 				"impact":0.05,
 			},
 		},
+		"race": "robot",
 	},
 	"robot":{
 		"base_name":["robot","android"],
@@ -3630,6 +3691,7 @@ const BASE_ENEMIES = {
 				"lightning":0.1,
 			},
 		},
+		"race": "robot",
 	},
 	"cyborg":{
 		"base_name":["cyborg"],
@@ -3677,6 +3739,7 @@ const BASE_ENEMIES = {
 				"impact":0.1,
 			},
 		},
+		"race": "cyborg",
 	},
 	"mech":{
 		"base_name":["mech"],
@@ -3739,6 +3802,7 @@ const BASE_ENEMIES = {
 				"lightning":0.2,
 			},
 		},
+		"race": "robot",
 	},
 }
 const BASE_SOUL_PREFIX = [
@@ -3871,6 +3935,8 @@ func create_enemy(type: String, level: int, tier:= 0) -> Characters.Enemy:
 	for skill in enemy.skills:
 		if skill.range>max_range:
 			max_range = skill.range
+	if dict.has("race"):
+		enemy.race = dict.race
 	enemy.position = -max_range - 1
 	ret = Characters.Enemy.new(enemy)
 	ret.recover()

@@ -549,7 +549,9 @@ func create_shop_equipment(type: String, quality_mod:= 1.0) -> Dictionary:
 		elif current_region.tier>0:
 			tier_multiplier = sqrt(1.5*current_region.tier)
 		quality = int(100*level_multiplier*tier_multiplier)
-		item = Items.enchant_equipment(item, Items.ENCHANTMENTS.keys().pick_random(), quality)
+		item = Items.enchant_equipment(item, Items.Enchantment.enchantments_by_tier.regular.pick_random(), quality)
+		if randf() < 0.02:
+			item = Items.enchant_equipment(item, Items.Enchantment.enchantments_by_tier.curse.pick_random(), quality)
 	item.source = tr("BOUGHT_FROM_SHOP").format({"location": current_location})
 	item.description = Items.create_tooltip(item)
 	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
@@ -606,8 +608,8 @@ func create_shop_material(material:="") -> Dictionary:
 			type = Items.POTIONS[recipe].material_types.pick_random().pick_random()
 		elif Items.FOOD.has(recipe):
 			type = Items.FOOD[recipe].material_types.pick_random().pick_random()
-		elif Items.ENCHANTMENTS.has(recipe):
-			type = Items.ENCHANTMENTS[recipe].material_types.pick_random().pick_random()
+		elif Items.Enchantment.enchantments.has(recipe):
+			type = Items.Enchantment.enchantments[recipe].material_types.pick_random().pick_random()
 		for mat in Items.MATERIALS.keys():
 			if type in Items.MATERIALS[mat].tags:
 				valid.push_back(mat)
@@ -822,10 +824,10 @@ func extract_soul() -> float:
 func pick_enchantment(item: Dictionary) -> String:
 	if item.has("enchantments"):
 		if item.enchantments.has("minor") && !item.enchantments.has("greater"):
-			return Items.enchantments_by_slot.greater.pick_random()
+			return Items.Enchantment.enchantments_by_tier_and_slot.regular.greater.pick_random()
 		elif item.enchantments.has("greater") && !item.enchantments.has("minor"):
-			return Items.enchantments_by_slot.minor.pick_random()
-	return Items.ENCHANTMENTS.keys().pick_random()
+			return Items.Enchantment.enchantments_by_tier_and_slot.regular.minor.pick_random()
+	return Items.Enchantment.enchantments_by_tier.regular.pick_random()
 
 func level_up():
 	var text: String
@@ -952,7 +954,7 @@ func distribute_stat_points():
 
 func get_task_ID() -> int:
 	var time_zone:= Time.get_time_zone_from_system()
-	var data:= Time.get_time_dict_from_unix_time(int(current_time + 60*time_zone.bias))
+	var data:= Time.get_time_dict_from_unix_time(int(current_time + 60 * time_zone.bias))
 	var hour: int = posmod(data.hour + time_offset, 24)
 	var index:= timetable.size()
 	for i in range(timetable.size()-1,-1,-1):
@@ -1434,7 +1436,7 @@ func action_done(action: Dictionary):
 					continue
 				var item: Dictionary = player.equipment[k]
 				var enchantment:= pick_enchantment(item)
-				var dict: Dictionary = Items.ENCHANTMENTS[enchantment]
+				var dict: Dictionary = Items.Enchantment.enchantments[enchantment]
 				var materials:= pick_random_materials(dict)
 				if materials.size()==dict.material_types.size():
 					item = Items.enchant_equipment_material(item, enchantment, materials, 10.0*(action.args.level-1.0))
@@ -1459,7 +1461,7 @@ func action_done(action: Dictionary):
 					if item.type=="material" || (item.has("enchanted") && item.enchanted):
 						continue
 					var enchantment:= pick_enchantment(item)
-					var dict: Dictionary = Items.ENCHANTMENTS[enchantment]
+					var dict: Dictionary = Items.Enchantment.enchantments[enchantment]
 					var materials:= pick_random_materials(dict)
 					if materials.size()==dict.material_types.size():
 						remove_item(item)
@@ -1824,30 +1826,30 @@ func action_done(action: Dictionary):
 			match randi()%4:
 				0:
 					var god_dict:= Names.get_god()
-					do_action("visit_church", {"god": god_dict.god, "god_dict": god_dict}, REST_DELAY/2.0)
+					do_action("visit_church", {"god": god_dict.god, "god_dict": god_dict}, REST_DELAY / 2.0)
 				_:
-					do_action("visit", {"type": tr(HANGOUT_LOCATIONS.pick_random())}, REST_DELAY/2.0)
+					do_action("visit", {"type": tr(HANGOUT_LOCATIONS.pick_random())}, REST_DELAY / 2.0)
 		"sleeping":
 			var time_zone:= Time.get_time_zone_from_system()
-			var time_data:= Time.get_time_dict_from_unix_time(int(current_time + 60*time_zone.bias))
-			do_action("sleep", {}, min(SLEEP_DELAY, 60*60*abs(5.0 - time_data.hour)))
+			var time_data:= Time.get_time_dict_from_unix_time(int(current_time + 60 * time_zone.bias))
+			do_action("sleep", {}, min(SLEEP_DELAY, 60 * 60 * abs(5.0 - time_data.hour)))
 	
 	
 
 func pick_skill(actor: Characters.Character):
 	var valid_skills:= []
 	for skill in actor.skills:
-		if skill.current_cooldown>0.0:
+		if skill.current_cooldown > 0.0:
 			continue
 		if skill.has("cost"):
 			var valid:= true
 			for k in skill.cost.keys():
-				if actor.get(k)<skill.cost[k]:
+				if actor.get(k) < skill.cost[k]:
 					valid = false
-					if actor==player:
+					if actor == player:
 						for s in Characters.STATS_METERS.keys():
-							if Characters.STATS_METERS[s].has("max_"+k):
-								use_stat(s, Characters.STATS_METERS[s]["max_"+k])
+							if Characters.STATS_METERS[s].has("max_" + k):
+								use_stat(s, Characters.STATS_METERS[s]["max_" + k])
 					else:
 						break
 			if !valid:
@@ -3106,34 +3108,34 @@ func update_timetable():
 			button.get_node("OptionButton").selected = ACTIONS.find(timetable[time])
 		else:
 			button.get_node("OptionButton").selected = 5
-			for j in range(1,time-4):
-				if timetable.has(time-j):
-					button.get_node("OptionButton").selected = ACTIONS.find(timetable[time-j])
+			for j in range(1, time - 4):
+				if timetable.has(time - j):
+					button.get_node("OptionButton").selected = ACTIONS.find(timetable[time - j])
 					break
 
 func update_quest_log():
 	log_quest.parse_bbcode(quest_log)
 
 func print_log_msg(text: String):
-	if log==null || abs(current_time - Time.get_unix_time_from_system())>8*60*60:
+	if log == null || abs(current_time - Time.get_unix_time_from_system()) > 8 * 60 * 60:
 		return
-	if log.get_line_count()>=1000:
-		log.text = log.text.substr(ceil(log.text.length()/2))
+	if log.get_line_count() >= 1000:
+		log.text = log.text.substr(ceil(log.text.length() / 2))
 	text[0] = text[0].to_upper()
 	log.append_text(text + "\n")
 	
 	emit_signal("text_printed", text + "\n")
 
 func print_summary_msg(text: String):
-	if log_summary==null:
+	if log_summary == null:
 		return
 	var time_zone:= Time.get_time_zone_from_system()
-	var time_data:= Time.get_datetime_dict_from_unix_time(int(current_time + 60*time_zone.bias))
-	if log_summary.get_line_count()>=1000:
-		log_summary.text = log_summary.text.substr(ceil(log_summary.text.length()/2))
-	if summary_text.length()>8000:
+	var time_data:= Time.get_datetime_dict_from_unix_time(int(current_time + 60 * time_zone.bias))
+	if log_summary.get_line_count() >= 1000:
+		log_summary.text = log_summary.text.substr(ceil(log_summary.text.length() / 2))
+	if summary_text.length() > 8000:
 		@warning_ignore("integer_division")
-		summary_text = summary_text.right(summary_text.length() - summary_text.find("\n",summary_text.length()/2) - 1)
+		summary_text = summary_text.right(summary_text.length() - summary_text.find("\n", summary_text.length() / 2) - 1)
 	text[0] = text[0].to_upper()
 	text = "\n" + Time.get_datetime_string_from_datetime_dict(time_data, true) + ": " + text
 	summary_text += text
@@ -3456,8 +3458,19 @@ func _load():
 	Items.is_vegan = player_vegan
 	recalc_attributes()
 	
+	# fix broken vectors
+	for item in player_inventory + player.equipment.values():
+		if "card_set" not in item:
+			continue
+		var card_set:= {}
+		for key in item.card_set:
+			var card: Dictionary = item.card_set[key]
+			card.position = Vector2i(Utils.parse_vector2(card.position))
+			card_set[card.position] = card
+		item.card_set = card_set
+	
 	# compatibility with older versions: update item descriptions
-	for item in player_inventory:
+	for item in player_inventory + player.equipment.values():
 		if item.has("description_plain") && item.has("component_description"):
 			continue
 		item.description = Items.create_tooltip(item)
@@ -3658,7 +3671,7 @@ func _ready():
 	randomize()
 	
 #	debug
-#	current_time -= 2*60*60
+	#current_time -= 7*24*60*60
 	
 	if player_settings.valid_weapon_types.size() == 0:
 		player_settings.valid_weapon_types = player.valid_weapon_subtypes

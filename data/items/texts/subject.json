@@ -4,7 +4,7 @@
 		"text": [
 			"the {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 		},
 		"required": [
@@ -19,7 +19,7 @@
 		"text": [
 			"the {color.adjective} {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 		},
 		"required": [
@@ -38,14 +38,14 @@
 		"text": [
 			"the {shape.adjective} {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 		},
 		"required": [
 			"object",
 			"shape",
 		],
-		"replace":{
+		"replace": {
 			"shape": "quality",
 		},
 		"transition": [
@@ -57,7 +57,7 @@
 		"text": [
 			"the {object.singular}'s {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "component",
 		},
 		"required": [
@@ -73,7 +73,7 @@
 		"text": [
 			"the {object.singular}'s {color.adjective} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "component",
 		},
 		"required": [
@@ -93,7 +93,7 @@
 		"text": [
 			"the {object.singular}'s {shape.adjective} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "component",
 		},
 		"required": [
@@ -101,7 +101,7 @@
 			"component",
 			"shape",
 		],
-		"replace":{
+		"replace": {
 			"shape": "quality",
 		},
 		"transition": [
@@ -113,7 +113,7 @@
 		"text": [
 			"the {object.singular}'s {material.adjective} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "component",
 		},
 		"required": [
@@ -130,7 +130,7 @@
 		"text": [
 			"the {element.adjective} {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 		},
 		"required": [
@@ -146,7 +146,7 @@
 		"text": [
 			"the {element.adjective} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "component",
 		},
 		"required": [
@@ -162,14 +162,14 @@
 		"text": [
 			"the {curse.adjective} {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 		},
 		"required": [
 			"object",
 			"curse",
 		],
-		"replace":{
+		"replace": {
 			"curse": "theme",
 		},
 		"transition": [
@@ -181,14 +181,14 @@
 		"text": [
 			"the {curse.adjective} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "component",
 		},
 		"required": [
 			"component",
 			"curse",
 		],
-		"replace":{
+		"replace": {
 			"curse": "theme",
 		},
 		"transition": [
@@ -200,14 +200,14 @@
 		"text": [
 			"the {quality.adjective} {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 		},
 		"required": [
 			"object",
 			"quality",
 		],
-		"replace":{
+		"replace": {
 			"quality": "shape",
 		},
 		"transition": [
@@ -219,14 +219,14 @@
 		"text": [
 			"the {quality.adjective} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "component",
 		},
 		"required": [
 			"component",
 			"quality",
 		],
-		"replace":{
+		"replace": {
 			"quality": "shape",
 		},
 		"transition": [
@@ -238,7 +238,7 @@
 		"text": [
 			"the {craftmanship.adverb} crafted {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 		},
 		"required": [
@@ -257,7 +257,7 @@
 		"text": [
 			"the {craftmanship.adverb} crafted {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "component",
 		},
 		"required": [
@@ -276,7 +276,7 @@
 		"text": [
 			"the {stains.adjective} {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 		},
 		"required": [
@@ -295,7 +295,7 @@
 		"text": [
 			"the {stains.adjective} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "component",
 		},
 		"required": [
@@ -314,7 +314,7 @@
 		"text": [
 			"the {stains.adjective} {shape.plural}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "shape",
 		},
 		"required": [
@@ -333,7 +333,7 @@
 		"text": [
 			"the {enemy.adjective} {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 		},
 		"required": [
@@ -371,7 +371,7 @@
 		"text": [
 			"the {emotion.adjective} {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 		},
 		"required": [
@@ -390,7 +390,7 @@
 		"text": [
 			"the {emotion.adjective} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "component",
 		},
 		"required": [
@@ -409,7 +409,7 @@
 		"text": [
 			"the {emotion.adverb} crafted {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 		},
 		"required": [
@@ -429,7 +429,7 @@
 		"text": [
 			"the {emotion.adverb} crafted {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "component",
 		},
 		"required": [
@@ -439,6 +439,251 @@
 		],
 		"remove": [
 			"emotion",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {object.singular} of {origin.adjective} origin",
+			"the {object.singular} of the {origin.singular}",
+		],
+		"sentence": {
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"origin",
+		],
+		"remove": [
+			"origin",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {prophecy.adjective} {force.singular}",
+		],
+		"sentence": {
+			"subject": "force",
+		},
+		"required": [
+			"force",
+			"prophecy",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {enemy.adjective} {force.singular}",
+		],
+		"sentence": {
+			"subject": "force",
+		},
+		"required": [
+			"force",
+			"enemy",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {mental_illness.adjective} {force.singular}",
+		],
+		"sentence": {
+			"subject": "force",
+		},
+		"required": [
+			"force",
+			"mental_illness",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {force.adjective} {object.singular}",
+		],
+		"sentence": {
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"force",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {care.adjective} {object.singular}",
+		],
+		"sentence": {
+			"subject": "object",
+		},
+		"required": [
+			"object",
+			"care",
+		],
+		"remove": [
+			"care",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {care.adjective} {material.singular}",
+		],
+		"sentence": {
+			"subject": "material",
+		},
+		"required": [
+			"material",
+			"care",
+		],
+		"remove": [
+			"care",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {care.adjective} {component.singular}",
+		],
+		"sentence": {
+			"subject": "component",
+		},
+		"required": [
+			"component",
+			"care",
+		],
+		"remove": [
+			"care",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {curse.singular}-bearer",
+		],
+		"sentence": {
+			"subject": "curse",
+		},
+		"required": [
+			"curse",
+		],
+		"replace": {
+			"curse": "force",
+		},
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {science.adjective} {object.singular}",
+		],
+		"sentence": {
+			"subject": "object",
+		},
+		"required": [
+			"science",
+			"object",
+		],
+		"remove": [
+			"science",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {science.adjective} {component.singular}",
+		],
+		"sentence": {
+			"subject": "component",
+		},
+		"required": [
+			"science",
+			"component",
+		],
+		"remove": [
+			"science",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {curse.singular} of {science.singular}",
+		],
+		"sentence": {
+			"subject": "curse",
+		},
+		"required": [
+			"science",
+			"curse",
+		],
+		"remove": [
+			"science",
+		],
+		"transition": [
+			"sentence_predicate",
+		],
+	},
+	{
+		"type": "sentence_subject",
+		"text": [
+			"the {science.adjective} {shape.singular}",
+			"the {science.adjective} {shape.plural}",
+		],
+		"sentence": {
+			"subject": "shape",
+		},
+		"required": [
+			"science",
+			"shape",
+		],
+		"remove": [
+			"science",
 		],
 		"transition": [
 			"sentence_predicate",
