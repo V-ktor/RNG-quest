@@ -88,9 +88,9 @@ func format_number(number: int) -> String:
 	return str(number) + " " + prefix
 
 
-func parse_vector2(str: String) -> Vector2:
+func parse_vector2(text: String) -> Vector2:
 	var regex:= RegEx.new()
 	var result: RegExMatch
 	regex.compile("\\(([\\d\\.-])+, ([\\d\\.-]+)\\)")
-	result = regex.search(str)
+	result = regex.search(text)
 	return Vector2(float(result.get_string(0)), float(result.get_string(1)))

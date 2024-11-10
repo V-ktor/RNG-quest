@@ -1,0 +1,136 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgkcyaksqhx68"]
+
+[ext_resource type="Script" path="res://gui/chart/scripts/ui/grid.gd" id="1_0bc4w"]
+[ext_resource type="Script" path="res://gui/chart/scripts/ui/chart.gd" id="1_gscgq"]
+[ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://default_theme.tres" id="1_k76b7"]
+[ext_resource type="Script" path="res://gui/chart/scripts/ui/graph.gd" id="2_y0ojy"]
+
+[node name="Chart" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_k76b7")
+script = ExtResource("1_gscgq")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 5
+
+[node name="Button0" type="Button" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/GridContainer/Button0"]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/GridContainer/Button0/HBoxContainer"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/Button0/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "GRAPH"
+vertical_alignment = 1
+text_overrun_behavior = 4
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="Grid" type="Control" parent="VBoxContainer/Control"]
+layout_mode = 1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -6.4
+offset_right = -32.0
+offset_bottom = -70.4001
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0bc4w")
+x_lines = 6
+y_lines = 4
+
+[node name="Graph" type="Control" parent="VBoxContainer/Control"]
+layout_mode = 1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -6.4
+offset_right = -32.0
+offset_bottom = -70.4001
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_y0ojy")
+
+[node name="LabelXAxis" type="Label" parent="VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.2
+offset_top = -16.0
+offset_right = -7.20007
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "x axis"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelYAxis" type="Label" parent="VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = 7.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -1.5708
+text = "y axis"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -3920,7 +3920,8 @@ func create_enemy(type: String, level: int, tier:= 0) -> Characters.Enemy:
 		num_skills = max(num_skills, 1)
 		for i in range(num_skills):
 			var skill:= Skills.create_random_skill(enemy.abilities)
-			skill.level = int(max(level/6 + 4*tier, 1))
+			@warning_ignore("integer_division")
+			skill.level = int(max(level / 6 + 4 * tier, 1))
 			if has_node("/root/Main"):
 				get_node("/root/Main").upgrade_skill(skill)
 			enemy.skills.push_back(skill)

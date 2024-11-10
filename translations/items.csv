@@ -283,3 +283,14 @@ OCTAGON,octagon
 OCTAGONAL,octagonal
 ODD_SHAPE,odd shape
 IRREGULAR,irregular
+BELT,belt
+FEET,feet
+HANDS,hands
+TORSO,torso
+OFFWEAPON,offweapon
+RING_LEFT,left ring
+RING_RIGHT,right ring
+EARRING_LEFT,left earring
+EARRING_RIGHT,right earring
+BRACELET_LEFT,left bracelet
+BRACELET_RIGHT,right bracelet

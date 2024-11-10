@@ -39,7 +39,9 @@ var armour_preference_panel: Control = $Options/Preferences/ArmourPreference
 @onready
 var potion_preference_panel: Control = $Options/Preferences/PotionPreference
 @onready
-var location_label: RichTextLabel = $Overview/HBoxContainer/Location/RichTextLabel
+var quest_log := $Overview/HBoxContainer/Quest/RichTextLabel
+@onready
+var statistics := $Statistics/Statistics/Statistics
 
 
 signal settings_changed
@@ -128,11 +130,16 @@ func update_location(region: Dictionary, current_location: String):
 	$Overview/HBoxContainer/Region.update(list, region.name, description, current_location)
 
 
+func update_quest_log(text: String):
+	quest_log.parse_bbcode(text)
+
+
 func _show_overview():
 	$Overview.show()
 	$Character.hide()
 	$Journal.hide()
 	$Options.hide()
+	$Statistics.hide()
 	title_label.text = tr("OVERVIEW")
 
 func _show_character():
@@ -140,6 +147,7 @@ func _show_character():
 	$Character.show()
 	$Journal.hide()
 	$Options.hide()
+	$Statistics.hide()
 	title_label.text = tr("CHARACTER")
 	
 	stat_chart.queue_redraw()
@@ -154,6 +162,7 @@ func _show_journal():
 	$Character.hide()
 	$Journal.show()
 	$Options.hide()
+	$Statistics.hide()
 	title_label.text = tr("JOURNAL")
 
 func _show_options():
@@ -161,10 +170,21 @@ func _show_options():
 	$Character.hide()
 	$Journal.hide()
 	$Options.show()
+	$Statistics.hide()
 	title_label.text = tr("OPTIONS")
 	
 	update_preferences()
 	skill_module_panel.update()
+
+func _show_statistics() -> void:
+	$Overview.hide()
+	$Character.hide()
+	$Journal.hide()
+	$Options.hide()
+	$Statistics.show()
+	title_label.text = tr("STATISTICS")
+	
+	$Statistics/Statistics/Statistics.show_level()
 
 
 func connect_to_main(main: Node):
@@ -178,6 +198,8 @@ func connect_to_main(main: Node):
 	main.connect("potion_inventory_changed", Callable(inventory_panel, "update_potion_inventory"))
 	main.connect("story_inventory_changed", Callable(inventory_panel, "update_story_inventory"))
 	main.connect("location_changed", Callable(self, "update_location"))
+	main.connect("quest_log_updated", Callable(self, "update_quest_log"))
+	main.connect("skills_updated", Callable(skill_panel, "update"))
 	main.connect("freed", Callable(self, "queue_free"))
 	
 	connect("settings_changed", Callable(main, "_settings_changed"))
@@ -196,6 +218,7 @@ func connect_to_main(main: Node):
 	armour_preference_panel.character_settings = main_character_settings
 	potion_preference_panel.character_settings = main_character_settings
 	timetable = main.timetable
+	statistics.historical_data = main.historical_data
 	
 	main.gui_ready()
 

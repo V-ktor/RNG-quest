@@ -353,3 +353,23 @@ FOREST,Forest
 SWAMP,Swamp
 FLOATING_ISLAND,Floating Island
 CLOUD,Cloud
+QUEST,Quest
+CHARACTERS,Characters
+RESOLUTION,Resolution
+UI_SCALING,UI scaling
+THEME,Theme
+TIME,Time
+TIME_DAYS,Time (days)
+ABILITY_LEVEL,Ability level
+SKILL_LEVEL,Skill level
+EQUIPMENT_LEVEL,Equipment level
+GUILD_RANK,Guild rank
+WEALTH,Wealth
+BATTLES,Battles
+BATTLES_WON,Battles won
+BATTLES_LOST,Battles lost
+POTIONS_USED,Potions used
+AMOUNT,Amount
+STATISTICS,Statistics
+TYPE,Type
+GUILDS,Guilds

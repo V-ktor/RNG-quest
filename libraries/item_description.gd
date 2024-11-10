@@ -448,6 +448,7 @@ func create_description_data(item: Dictionary, rank: int) -> Dictionary:
 				add_card(card_set, create_card("enemy"), Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
 	
 	if rank > 2:
+		@warning_ignore("integer_division")
 		for i in range(min(int((rank - 1) / 2), 2)):
 			var card_pos:= Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys())
 			add_card(card_set, create_card(RANDOM_CARDS.pick_random()), card_pos)
@@ -787,6 +788,7 @@ func generate_description(card_set: Dictionary, max_sentences:= 3) -> String:
 	var available_texts: Array = texts_by_type.sentence_end.pick_random().transition
 	var text_state:= TextState.new(card_set, available_texts)
 	var no_sentences:= 0
+	var failures:= 0
 	
 	while no_sentences < max_sentences:
 		text_state = append_text(text_state)
@@ -800,6 +802,10 @@ func generate_description(card_set: Dictionary, max_sentences:= 3) -> String:
 				if Utils.compare_strings(text_state.text.right(pos + 1), text_state.text.substr(max(pos - length, 0), length)) > 0.75:
 					print("Warning: text rejected because too repetetive")
 					text_state.text = text_state.text.left(pos + 1)
+					failures += 1
+					if failures > 3:
+						no_sentences += 1
+						failures = 0
 				elif text_state.text.right(1) not in [',', ';', ':', '-']:
 					no_sentences += 1
 			elif text_state.text.right(1) not in [',', ';', ':', '-']:

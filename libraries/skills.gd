@@ -1324,13 +1324,13 @@ func get_file_paths(path: String) -> Array:
 	var array:= []
 	var dir:= DirAccess.open(path)
 	var error:= DirAccess.get_open_error()
-	if error!=OK:
+	if error != OK:
 		print("Error when accessing " + path + "!")
 		return array
 	
 	dir.list_dir_begin()
 	var file_name:= dir.get_next()
-	while file_name!="":
+	while file_name != "":
 		if !dir.current_is_dir():
 			array.push_back(path+"/"+file_name)
 		file_name = dir.get_next()
@@ -1341,15 +1341,15 @@ func get_sub_dirs(path: String) -> Array:
 	var array:= []
 	var dir:= DirAccess.open(path)
 	var error:= DirAccess.get_open_error()
-	if error!=OK:
+	if error != OK:
 		print("Error when accessing " + path + "!")
 		return array
 	
 	dir.list_dir_begin()
 	var file_name:= dir.get_next()
-	while file_name!="":
+	while file_name != "":
 		if dir.current_is_dir():
-			array.push_back(path+"/"+file_name)
+			array.push_back(path + "/" + file_name)
 		file_name = dir.get_next()
 	
 	return array
@@ -1376,22 +1376,22 @@ func load_data(paths: Array, type: String):
 			if data[k].has("dual_type_names") && data[k].has("auto_naming") && data[k].auto_naming.has("type"):
 				for t2 in data[k].dual_type_names.keys():
 					for t1 in data[k].auto_naming.type[0]:
-						Names.dual_magic_names[[t1,t2]] = data[k].dual_type_names[t2]
+						Names.dual_magic_names[[t1, t2]] = data[k].dual_type_names[t2]
 		file.close()
 
 func load_skill_data(path: String):
-	load_data(get_file_paths(path+"/base_type"), "type")
-	load_data(get_file_paths(path+"/magic"), "magic")
-	load_data(get_file_paths(path+"/melee_mod"), "melee_mod")
-	load_data(get_file_paths(path+"/ranged_mod"), "ranged_mod")
-	load_data(get_file_paths(path+"/magic_mod"), "magic_mod")
-	load_data(get_file_paths(path+"/defence_mod"), "defence_mod")
-	load_data(get_file_paths(path+"/grapple_mod"), "grapple_mod")
-	load_data(get_file_paths(path+"/aim"), "aim")
-	load_data(get_file_paths(path+"/shape"), "shape")
-	load_data(get_file_paths(path+"/application"), "application")
-	load_data(get_file_paths(path+"/summon_type"), "summon_type")
-	load_data(get_file_paths(path+"/summoning_method"), "summoning_method")
+	load_data(get_file_paths(path + "/base_type"), "type")
+	load_data(get_file_paths(path + "/magic"), "magic")
+	load_data(get_file_paths(path + "/melee_mod"), "melee_mod")
+	load_data(get_file_paths(path + "/ranged_mod"), "ranged_mod")
+	load_data(get_file_paths(path + "/magic_mod"), "magic_mod")
+	load_data(get_file_paths(path + "/defence_mod"), "defence_mod")
+	load_data(get_file_paths(path + "/grapple_mod"), "grapple_mod")
+	load_data(get_file_paths(path + "/aim"), "aim")
+	load_data(get_file_paths(path + "/shape"), "shape")
+	load_data(get_file_paths(path + "/application"), "application")
+	load_data(get_file_paths(path + "/summon_type"), "summon_type")
+	load_data(get_file_paths(path + "/summoning_method"), "summoning_method")
 
 func _ready():
 	load_skill_data("res://data/skills")

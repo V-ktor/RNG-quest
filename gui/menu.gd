@@ -13,12 +13,28 @@ var thread: Thread
 var tile_map_line:= 30
 var import_file:= ""
 var import_data: String
+var settings:= Settings.new()
 
 @onready var progress_bar:= $Loading/ProgressBar
 @onready var progress_label:= $Loading/LabelProgress
 @onready var tile_map:= $TileMap
 @onready var import_name_override:= $ConfirmationDialog/LineEdit
 @onready var import_name_warning:= $ConfirmationDialog/LabelWarning
+@onready var ui_scale_slider:= $Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer/HSlider
+@onready var ui_scale_spinbox:= $Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer/SpinBox
+@onready var theme_button:= $Options/ScrollContainer/VBoxContainer/Theme/HBoxContainer/OptionButton
+
+
+class Settings:
+	var scaling := 1.0
+	var theme := 0
+	
+	func to_json() -> String:
+		var data:= {
+			"scaling": scaling,
+			"theme": theme,
+		}
+		return JSON.stringify(data)
 
 
 func update_tile_map():
@@ -107,6 +123,11 @@ func _new_character():
 func _show_characters():
 	load_characters()
 	$Characters.show()
+	$Options.hide()
+
+func _show_options() -> void:
+	$Characters.hide()
+	$Options.show()
 
 func _load(ID: int):
 	thread = Thread.new()
@@ -203,6 +224,36 @@ func create_instance(player_name: String):
 	get_parent().add_child(main_gui_instance)
 	main_gui_instance.connect_to_main(main_instance)
 
+
+func _on_scaling_changed(value_changed: bool) -> void:
+	if not value_changed:
+		return
+	
+	var value : float = ui_scale_slider.value / 100.0
+	ui_scale_spinbox.value = ui_scale_slider.value
+	settings.scaling = value
+	get_tree().root.content_scale_factor = settings.scaling
+	
+	save_config()
+
+func _on_scaling_changed_value(value: float) -> void:
+	value /= 100.0
+	ui_scale_slider.value = ui_scale_spinbox.value
+	settings.scaling = value
+	get_tree().root.content_scale_factor = settings.scaling
+	$TileMap.scale = Vector2(2.0, 2.0) / settings.scaling
+	$TileMap.position = Vector2(16, 32 - 32 * settings.scaling)
+	
+	save_config()
+
+func _on_theme_selected(index: int) -> void:
+	settings.theme = index
+	$TileMap.scale = Vector2(2.0, 2.0) / settings.scaling
+	$TileMap.position = Vector2(16, 32 - 32 * settings.scaling)
+	
+	save_config()
+
+
 func _process(delta: float):
 	if main_instance==null:
 		tile_map.position.y += delta*MAP_SCROLL_SPEED
@@ -217,12 +268,55 @@ func _process(delta: float):
 		$Loading/AnimationPlayer.play("fade_out")
 		set_process(false)
 
+func load_config():
+	var file:= FileAccess.open("user://config.json", FileAccess.READ)
+	var error:= FileAccess.get_open_error()
+	if error != OK:
+		error = DirAccess.make_dir_absolute("user://")
+		if error != OK:
+			print("Failed to create the user directory")
+		return
+	
+	var raw:= file.get_as_text()
+	var json:= JSON.new()
+	error = json.parse(raw)
+	if error != OK:
+		print("Failed to parse the config file")
+		return
+	
+	for key in json.data:
+		settings.set(key, json.data[key])
+	
+	ui_scale_slider.value = settings.scaling * 100
+	ui_scale_spinbox.value = settings.scaling * 100
+	theme_button.selected = settings.theme
+	
+
+func save_config():
+	var file:= FileAccess.open("user://config.json", FileAccess.WRITE)
+	var error:= FileAccess.get_open_error()
+	if error != OK:
+		error = DirAccess.make_dir_absolute("user://")
+		if error != OK:
+			print("Failed to create the user directory")
+			return
+		file = FileAccess.open("user://config.json", FileAccess.WRITE)
+		error = FileAccess.get_open_error()
+		if error != OK:
+			print("Failed to open the config file")
+			return
+	
+	var data:= settings.to_json()
+	file.store_string(data)
+	file.close()
+
 func _ready():
 	$VersionLabel.text = version
 	
 	if OS.has_feature("web") || OS.has_feature("mobile"):
 		$Panel/VBoxContainer/Button3.hide()
 	
+	load_config()
 	get_window().files_dropped.connect(Callable(self, "_files_dropped"))
 	
 	for i in range(35):

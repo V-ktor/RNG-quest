@@ -1,5 +1,19 @@
 # Change log
 
+## v0.1.0
+### Content
+* reworked item description
+* reworked generation of legendary equipment
+
+### Interface
+* completely new UI
+* UI scaling
+* charts
+* statistics
+
+### Internal changes
+* separated the UI code from the game logic code (interaction via signals)
+
 ## v0.0.7
 ### Content
 * increased the level range of all regions

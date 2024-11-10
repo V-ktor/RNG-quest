@@ -19,7 +19,7 @@ func _draw():
 	var center: Vector2 = size / 2.0
 	var max_stat:= get_max_stat(stats)
 	var length: float = min(size.x, size.y) / 2.0
-	var num_lines:= int(sqrt(1 + 2 * max_stat))
+	var num_lines:= int(min(sqrt(1 + max_stat), 10))
 	var points:= []
 	points.resize(num_stats)
 	for i in range(num_stats):

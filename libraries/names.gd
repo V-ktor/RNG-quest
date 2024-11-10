@@ -659,7 +659,7 @@ const PREFIX = [
 	"radio", "lepto", "hypno", "stellar", "sonar", "bureau", "archeo", "astro", "meno", "grammo",
 	"phantas", "trans", "luna", "semi", "ego", "tyranno", "dyna", "panto", "contro", "pro", "idio",
 	"poly", "plasto", "endo", "soli", "arcano", "thermo", "crypto", "mero", "meso", "digi", "ana",
-	"hyper",
+	"hyper", "anthropo", "cata",
 ]
 const SUFFIX = [
 	"chrome", "chromatic", "synthetic", "syntactic", "phil", "phobe", "phantastic", "tic",
@@ -673,7 +673,8 @@ const SUBJECT = [
 	"phobia", "philia", "cide", "laxis", "scope", "mount", "graph", "phone", "borg", "maly",
 	"noun", "void", "mancy", "maniac", "thesis", "matter", "cality", "cracy", "nomy", "phase",
 	"gel", "synthesis", "tron", "logy", "vision", "centrism", "pluralism", "sepsis", "nol", "mere",
-	"hedron", "phantasia", "enigma", "glyph", "nosis", "script", "chemical",
+	"hedron", "phantasia", "enigma", "glyph", "nosis", "script", "chemical", "clysm", "cyst",
+	"sphere", "gram",
 ]
 const GREETINGS = {
 	"neutral": [

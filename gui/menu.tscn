@@ -952,7 +952,6 @@ text = "CREATE_CHARACTER"
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 14
-disabled = true
 text = "OPTIONS"
 
 [node name="Button3" type="Button" parent="Panel/VBoxContainer"]
@@ -975,15 +974,30 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("12_4c3ch")
 
+[node name="Label" type="Label" parent="Characters"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "CHARACTERS"
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Characters"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = -5.0
-offset_bottom = -5.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
@@ -1073,6 +1087,122 @@ vertical_alignment = 1
 [node name="ButtonExport" type="Button" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer"]
 layout_mode = 2
 text = "EXPORT"
+
+[node name="Options" type="Panel" parent="."]
+visible = false
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = 10.0
+offset_right = 200.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("12_4c3ch")
+
+[node name="Label" type="Label" parent="Options"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "OPTIONS"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 20.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Theme" type="VBoxContainer" parent="Options/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/ScrollContainer/VBoxContainer/Theme"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 10
+text = "THEME"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/ScrollContainer/VBoxContainer/Theme"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/ScrollContainer/VBoxContainer/Theme/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "THEME"
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="Options/ScrollContainer/VBoxContainer/Theme/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "LIGHT"
+popup/item_1/text = "DARK"
+popup/item_1/id = 1
+
+[node name="Resolution" type="VBoxContainer" parent="Options/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/ScrollContainer/VBoxContainer/Resolution"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 10
+text = "RESOLUTION"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/ScrollContainer/VBoxContainer/Resolution"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "UI_SCALING"
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer"]
+layout_mode = 2
+min_value = 50.0
+max_value = 250.0
+value = 100.0
+suffix = "%"
+
+[node name="HSlider" type="HSlider" parent="Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 50.0
+max_value = 250.0
+value = 100.0
+tick_count = 5
+ticks_on_borders = true
 
 [node name="Loading" type="Panel" parent="."]
 visible = false
@@ -1189,6 +1319,10 @@ vertical_alignment = 2
 
 [connection signal="pressed" from="Panel/VBoxContainer/Button0" to="." method="_show_characters"]
 [connection signal="pressed" from="Panel/VBoxContainer/Button1" to="." method="_new_character"]
+[connection signal="pressed" from="Panel/VBoxContainer/Button2" to="." method="_show_options"]
 [connection signal="pressed" from="Panel/VBoxContainer/Button3" to="." method="_quit"]
+[connection signal="item_selected" from="Options/ScrollContainer/VBoxContainer/Theme/HBoxContainer/OptionButton" to="." method="_on_theme_selected"]
+[connection signal="value_changed" from="Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer/SpinBox" to="." method="_on_scaling_changed_value"]
+[connection signal="drag_ended" from="Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer/HSlider" to="." method="_on_scaling_changed"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_import"]
 [connection signal="text_changed" from="ConfirmationDialog/LineEdit" to="." method="_import_name_override_changed"]

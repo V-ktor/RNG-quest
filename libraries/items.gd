@@ -14,123 +14,123 @@ const RANK_COLORS = [
 	Color(0.6,0.5,0.1),
 ]
 const EQUIPMENT_COMPONENTS = {
-	"knife":{
-		"subtype":"melee",
+	"knife": {
+		"subtype": "melee",
 		"attack":3,
 		"penetration":4,
-		"damage_type":"piercing",
-		"material":["metal","bone"],
+		"damage_type": "piercing",
+		"material":["metal", "bone"],
 	},
-	"blade":{
-		"subtype":"melee",
+	"blade": {
+		"subtype": "melee",
 		"attack":6,
-		"damage_type":"cutting",
-		"material":["metal","bone"],
+		"damage_type": "cutting",
+		"material":["metal", "bone"],
 	},
-	"pole":{
-		"subtype":"melee",
+	"pole": {
+		"subtype": "melee",
 		"attack":4,
 		"accuracy":2,
-		"damage_type":"impact",
-		"material":["wood","stone","metal"],
+		"damage_type": "impact",
+		"material":["wood", "stone", "metal"],
 	},
-	"whip":{
-		"subtype":"melee",
+	"whip": {
+		"subtype": "melee",
 		"attack":4,
 		"accuracy":1,
 		"penetration":2,
-		"damage_type":"impact",
+		"damage_type": "impact",
 		"material":["leather"],
 	},
-	"chain_saw":{
-		"subtype":"melee",
+	"chain_saw": {
+		"subtype": "melee",
 		"attack":4,
 		"penetration":2,
-		"damage_type":"cutting",
+		"damage_type": "cutting",
 		"material":["metal"],
 	},
 	
-	"hilt":{
+	"hilt": {
 		"attack":4,
 		"accuracy":2,
-		"material":["wood","stone","leather"],
+		"material":["wood", "stone", "leather"],
 	},
-	"shaft":{
+	"shaft": {
 		"attack":2,
 		"accuracy":2,
 		"evasion":2,
-		"material":["wood","stone","metal"],
+		"material":["wood", "stone", "metal"],
 	},
 	
-	"gem":{
-		"subtype":"magic",
+	"gem": {
+		"subtype": "magic",
 		"magic":6,
-		"material":["gem","magical"],
+		"material":["gem", "magical"],
 	},
-	"formula":{
-		"subtype":"magic",
+	"formula": {
+		"subtype": "magic",
 		"magic":4,
 		"willpower":2,
-		"material":["paper","leather"],
+		"material":["paper", "leather"],
 	},
-	"orb":{
-		"subtype":"magic",
+	"orb": {
+		"subtype": "magic",
 		"magic":2,
 		"willpower":4,
-		"material":["gem","elemental"],
+		"material":["gem", "elemental"],
 	},
 	
-	"string":{
-		"subtype":"ranged",
+	"string": {
+		"subtype": "ranged",
 		"attack":6,
-		"damage_type":"piercing",
+		"damage_type": "piercing",
 		"material":["leather"],
 	},
-	"bow":{
-		"subtype":"ranged",
+	"bow": {
+		"subtype": "ranged",
 		"attack":5,
 		"accuracy":1,
-		"damage_type":"piercing",
+		"damage_type": "piercing",
 		"material":["wood"],
 	},
-	"loader":{
-		"subtype":"ranged",
+	"loader": {
+		"subtype": "ranged",
 		"attack":8,
 		"accuracy":3,
 		"speed":-1,
-		"material":["wood","metal"],
+		"material":["wood", "metal"],
 	},
-	"barrel":{
-		"subtype":"ranged",
+	"barrel": {
+		"subtype": "ranged",
 		"attack":4,
 		"accuracy":2,
-		"damage_type":"impact",
-		"material":["metal","stone"],
+		"damage_type": "impact",
+		"material":["metal", "stone"],
 	},
 	
-	"cloth_armour":{
-		"subtype":"light",
+	"cloth_armour": {
+		"subtype": "light",
 		"armour":1,
 		"evasion":3,
 		"mana":10,
 		"material":["cloth"],
 	},
-	"leather_armour":{
-		"subtype":"medium",
+	"leather_armour": {
+		"subtype": "medium",
 		"armour":3,
 		"accuracy":1,
 		"stamina":10,
 		"material":["leather"],
 	},
-	"light_armour":{
-		"subtype":"medium",
+	"light_armour": {
+		"subtype": "medium",
 		"armour":4,
 		"accuracy":1,
 		"evasion":1,
-		"material":["wood","paper"],
+		"material":["wood", "paper"],
 	},
-	"chain_armour":{
-		"subtype":"heavy",
+	"chain_armour": {
+		"subtype": "heavy",
 		"armour":6,
 		"accuracy":-2,
 		"evasion":-2,
@@ -138,8 +138,8 @@ const EQUIPMENT_COMPONENTS = {
 		"stamina":10,
 		"material":["metal"],
 	},
-	"plate_armour":{
-		"subtype":"heavy",
+	"plate_armour": {
+		"subtype": "heavy",
 		"armour":9,
 		"accuracy":-2,
 		"evasion":-2,
@@ -148,22 +148,22 @@ const EQUIPMENT_COMPONENTS = {
 		"material":["metal"],
 	},
 	
-	"rope_joints":{
-		"subtype":"light",
+	"rope_joints": {
+		"subtype": "light",
 		"magic":1,
 		"willpower":1,
 		"accuracy":2,
 		"evasion":2,
 		"material":["cloth"],
 	},
-	"leather_joints":{
-		"subtype":"medium",
+	"leather_joints": {
+		"subtype": "medium",
 		"accuracy":3,
 		"evasion":3,
 		"material":["leather"],
 	},
-	"metal_joints":{
-		"subtype":"heavy",
+	"metal_joints": {
+		"subtype": "heavy",
 		"attack":1,
 		"armour":3,
 		"accuracy":1,
@@ -171,48 +171,48 @@ const EQUIPMENT_COMPONENTS = {
 		"material":["metal"],
 	},
 	
-	"magical_coating":{
+	"magical_coating": {
 		"magic":3,
 		"willpower":3,
 		"material":["magical"],
 	},
-	"paint_coating":{
+	"paint_coating": {
 		"armour":1,
 		"evasion":3,
 		"accuracy":2,
 		"material":["alchemy"],
 	},
-	"metal_coating":{
+	"metal_coating": {
 		"armour":4,
 		"attack":2,
-		"damage_type":"impact",
+		"damage_type": "impact",
 		"material":["metal"],
 	},
-	"glass_coating":{
+	"glass_coating": {
 		"accuracy":3,
 		"evasion":3,
 		"material":["sand"],
 	},
 	
-	"rope_chain":{
+	"rope_chain": {
 		"magic":2,
 		"stamina":10,
 		"mana":10,
 		"material":["cloth"],
 	},
-	"metal_chain":{
+	"metal_chain": {
 		"armour":2,
 		"stamina":10,
 		"mana":10,
 		"material":["metal"],
 	},
-	"leather_strip":{
+	"leather_strip": {
 		"accuracy":2,
 		"evasion":2,
 		"health":10,
 		"material":["leather"],
 	},
-	"metal_strip":{
+	"metal_strip": {
 		"attack":2,
 		"accuracy":2,
 		"evasion":2,
@@ -221,952 +221,952 @@ const EQUIPMENT_COMPONENTS = {
 	
 }
 const MATERIALS = {
-	"slime":{
+	"slime": {
 		"name":["{name_prefix} slime"],
 		"tags":["liquid"],
-		"attributes":{
+		"attributes": {
 			"adjective":["slimy"],
 		},
 		"price":5,
 	},
-	"condensate":{
+	"condensate": {
 		"name":["{base_name} condensate", "{name_prefix} condensate"],
 		"tags":["liquid", "elemental"],
-		"attributes":{
+		"attributes": {
 			"adjective":["slimy"],
 		},
-		"add":{
+		"add": {
 			"willpower":0.5,
 		},
 		"price":10,
 	},
-	"residue":{
+	"residue": {
 		"name":["{base_name} residue", "{name_prefix} residue"],
 		"tags":["liquid", "magical"],
-		"attributes":{
+		"attributes": {
 			"adjective":["slimy"],
 		},
-		"add":{
+		"add": {
 			"magic":0.5,
 		},
 		"price":10,
 	},
-	"resin":{
+	"resin": {
 		"name":["{name_prefix} resin"],
 		"quality":1.1,
 		"tags":["crafting", "magical"],
-		"attributes":{
+		"attributes": {
 			"adjective":["slimy"],
 		},
-		"add":{
+		"add": {
 			"magic":0.5,
 		},
 		"price":15,
 	},
-	"plasma":{
+	"plasma": {
 		"name":["{base_name} plasma", "{name_prefix} plasma"],
 		"quality":1.1,
 		"tags":["liquid", "elemental"],
-		"attributes":{
+		"attributes": {
 			"adjective":["slimy"],
 		},
-		"add":{
+		"add": {
 			"willpower":0.5,
 		},
 		"price":15,
 	},
-	"magic_salt":{
+	"magic_salt": {
 		"name":["{base_name} salt", "{name_prefix} salt"],
 		"quality":1.1,
 		"tags":["magical", "elemental", "cooking"],
-		"attributes":{
+		"attributes": {
 			"adjective":["salty", "magical"],
 		},
-		"add":{
+		"add": {
 			"magic":0.5,
 		},
 		"price":15,
 	},
-	"dust":{
+	"dust": {
 		"name":["{base_name} dust"],
 		"tags":["magical"],
-		"attributes":{
+		"attributes": {
 			"adjective":["dusty"],
 		},
-		"add":{
+		"add": {
 			"magic":0.5,
 		},
 		"price":10,
 	},
-	"oil":{
+	"oil": {
 		"name":["{base_name} oil", "{name_prefix} oil"],
 		"tags":["liquid", "elemental"],
-		"attributes":{
+		"attributes": {
 			"adjective":["oily", "well-oiled"],
 		},
-		"add":{
+		"add": {
 			"attack":0.25,
 			"magic":0.25,
 		},
 		"price":10,
 	},
-	"herb":{
+	"herb": {
 		"name":["{base_name} herb"],
 		"tags":["alchemy", "plant", "healing"],
-		"attributes":{
+		"attributes": {
 			"adjective":["fresh", "herbal"],
 		},
-		"add":{
+		"add": {
 			"health":2.5,
 		},
 		"price":10,
 	},
-	"venom":{
+	"venom": {
 		"name":["{base_name} venom"],
 		"quality":1.1,
 		"tags":["toxic", "alchemy"],
-		"attributes":{
+		"attributes": {
 			"adjective":["toxic", "poisonous"],
 		},
-		"add":{
+		"add": {
 			"stamina":1.5,
 			"mana":1.5,
 		},
 		"price":15,
 	},
-	"mold":{
+	"mold": {
 		"name":["{base_name} mold"],
 		"tags":["toxic", "alchemy"],
-		"attributes":{
+		"attributes": {
 			"adjective":["moldy"],
 		},
-		"add":{
+		"add": {
 			"health":2.5,
 		},
 		"price":10,
 	},
-	"flower":{
+	"flower": {
 		"name":["{base_name} flower"],
 		"tags":["alchemy", "healing"],
-		"attributes":{
+		"attributes": {
 			"adjective":["flowering", "floral"],
 		},
-		"add":{
+		"add": {
 			"health":2.5,
 		},
 		"price":10,
 	},
-	"moss":{
+	"moss": {
 		"name":["{base_name} moss"],
 		"quality":1.1,
 		"tags":["alchemy", "healing", "toxic"],
-		"attributes":{
+		"attributes": {
 			"adjective":["green", "mossy", "overgrown"],
 		},
-		"add":{
+		"add": {
 			"stamina":1.5,
 			"mana":1.5,
 		},
 		"price":15,
 	},
-	"leaf":{
+	"leaf": {
 		"name":["{base_name} leaf"],
 		"tags":["alchemy", "plant", "cooking"],
-		"attributes":{
+		"attributes": {
 			"adjective":["fresh", "refreshing"],
 		},
-		"add":{
+		"add": {
 			"health":2.5,
 		},
 		"price":10,
 	},
-	"carrot":{
+	"carrot": {
 		"name":["{base_name} carrot"],
 		"tags":["alchemy", "plant", "cooking"],
-		"attributes":{
+		"attributes": {
 			"adjective":["fresh", "healthy", "orange"],
 		},
-		"add":{
+		"add": {
 			"health":2.5,
 		},
 		"price":10,
 	},
-	"root":{
+	"root": {
 		"name":["{base_name} root"],
 		"quality":1.1,
 		"tags":["alchemy", "plant", "cooking"],
-		"attributes":{
+		"attributes": {
 			"adjective":["gnarly", "brown"],
 		},
-		"add":{
+		"add": {
 			"health":2.5,
 		},
 		"price":15,
 	},
-	"mushroom":{
+	"mushroom": {
 		"name":["{base_name} mushroom"],
 		"quality":1.1,
 		"tags":["cooking", "alchemy", "poison"],
-		"attributes":{
+		"attributes": {
 			"adjective":["poisonous", "healthy"],
 		},
-		"add":{
+		"add": {
 			"health":2.5,
 		},
 		"price":15,
 	},
-	"algae":{
+	"algae": {
 		"name":["{base_name} algae"],
 		"quality":1.1,
 		"tags":["cooking", "plant"],
-		"attributes":{
+		"attributes": {
 			"adjective":["salty", "sea green"],
 		},
 		"price":15,
 	},
-	"plankton":{
+	"plankton": {
 		"name":["{base_name} plankton"],
 		"quality":1.1,
 		"tags":["cooking", "alchemy"],
-		"attributes":{
+		"attributes": {
 			"adjective":["salty", "sea green"],
 		},
-		"add":{
+		"add": {
 			"health":2.5,
 		},
 		"price":15,
 	},
-	"spice":{
+	"spice": {
 		"name":["{base_name} spice"],
 		"quality":1.1,
 		"tags":["alchemy", "cooking"],
-		"attributes":{
+		"attributes": {
 			"adjective":["spicy", "hot"],
 		},
-		"add":{
+		"add": {
 			"health":2.5,
 		},
 		"price":15,
 	},
-	"fruit":{
+	"fruit": {
 		"name":["{base_name} fruit"],
 		"quality":1.1,
 		"tags":["cooking", "plant"],
-		"attributes":{
+		"attributes": {
 			"adjective":["fruity", "juicy"],
 		},
 		"price":15,
 	},
-	"berry":{
+	"berry": {
 		"name":["{base_name} berry"],
 		"quality":1.1,
 		"tags":["alchemy", "cooking", "plant"],
-		"attributes":{
+		"attributes": {
 			"adjective":["fruity", "juicy"],
 		},
-		"add":{
+		"add": {
 			"health":2.5,
 		},
 		"price":15,
 	},
-	"cabbage":{
+	"cabbage": {
 		"name":["{base_name} cabbage"],
 		"tags":["cooking", "plant"],
-		"attributes":{
+		"attributes": {
 			"adjective":["fresh", "green"],
 		},
 		"price":10,
 	},
-	"bean":{
+	"bean": {
 		"name":["{base_name} bean"],
 		"quality":1.1,
 		"tags":["cooking"],
-		"attributes":{
+		"attributes": {
 			"adjective":["healthy", "brown", "white", "red"],
 		},
 		"price":15,
 	},
-	"pebble":{
+	"pebble": {
 		"name":["{base_name} pebble"],
 		"tags":["stone"],
-		"attributes":{
+		"attributes": {
 			"adjective":["rocky", "lithic", "stone"],
 		},
-		"add":{
+		"add": {
 			"armour":0.5,
 		},
 		"price":10,
 	},
-	"stone":{
+	"stone": {
 		"name":["{base_name} stone", "{base_name} rock"],
 		"quality":1.1,
 		"tags":["stone"],
-		"attributes":{
+		"attributes": {
 			"adjective":["rocky", "lithic", "stone"],
 		},
-		"add":{
+		"add": {
 			"armour":0.5,
 		},
 		"price":15,
 	},
-	"sand":{
+	"sand": {
 		"name":["{base_name} sand"],
 		"tags":["sand"],
-		"attributes":{
+		"attributes": {
 			"adjective":["sandy", "yellow", "grey"],
 		},
 		"price":10,
 	},
-	"glass":{
+	"glass": {
 		"name":["{base_name} glass"],
 		"tags":["glass"],
-		"attributes":{
+		"attributes": {
 			"adjective":["translucent", "glass"],
 		},
-		"add":{
+		"add": {
 			"penetration":0.75,
 		},
 		"price":10,
 	},
-	"gem":{
+	"gem": {
 		"name":["{base_name} gem", "{base_name} crystal"],
 		"tags":["gem"],
-		"attributes":{
+		"attributes": {
 			"adjective":["expensive", "crystaline"],
 		},
-		"add":{
+		"add": {
 			"magic":0.5,
 		},
 		"price":10,
 	},
-	"jewel":{
+	"jewel": {
 		"name":["{base_name} jewel", "{base_name} gem stone"],
 		"quality":1.1,
 		"tags":["gem"],
-		"attributes":{
+		"attributes": {
 			"adjective":["expensive", "crystaline"],
 		},
-		"add":{
+		"add": {
 			"magic":0.5,
 		},
 		"price":10,
 	},
-	"wood":{
+	"wood": {
 		"name":["{base_name} wood"],
 		"tags":["wood"],
-		"attributes":{
+		"attributes": {
 			"adjective":["wooden"],
 		},
-		"add":{
+		"add": {
 			"accuracy":0.5,
 		},
 		"price":10,
 	},
-	"plank":{
+	"plank": {
 		"name":["{base_name} plank"],
 		"quality":1.1,
 		"tags":["wood"],
-		"attributes":{
+		"attributes": {
 			"adjective":["wooden"],
 		},
-		"add":{
+		"add": {
 			"accuracy":0.5,
 		},
 		"price":15,
 	},
-	"ore":{
+	"ore": {
 		"name":["{base_name} ore"],
 		"tags":["metal"],
-		"attributes":{
+		"attributes": {
 			"adjective":["metallic"],
 		},
-		"add":{
+		"add": {
 			"attack":0.5,
 		},
 		"price":10,
 	},
-	"ingot":{
+	"ingot": {
 		"name":["{base_name} ingot"],
 		"quality":1.1,
 		"tags":["metal"],
-		"attributes":{
+		"attributes": {
 			"adjective":["metallic"],
 		},
-		"add":{
+		"add": {
 			"attack":0.5,
 		},
 		"price":15,
 	},
-	"bar":{
+	"bar": {
 		"name":["{base_name} bar"],
 		"quality":1.1,
 		"tags":["metal"],
-		"attributes":{
+		"attributes": {
 			"adjective":["metallic"],
 		},
-		"add":{
+		"add": {
 			"attack":0.5,
 		},
 		"price":15,
 	},
-	"cog":{
+	"cog": {
 		"name":["{base_name} cog"],
 		"quality":1.1,
 		"tags":["metal"],
-		"attributes":{
+		"attributes": {
 			"adjective":["metallic"],
 		},
-		"add":{
+		"add": {
 			"attack":0.5,
 		},
 		"price":15,
 	},
-	"scrap":{
+	"scrap": {
 		"name":["{base_name} scrap"],
 		"quality":0.9,
 		"tags":["metal", "stone"],
-		"attributes":{
+		"attributes": {
 			"adjective":["metallic", "rusty"],
 		},
 		"price":5,
 	},
-	"coin":{
+	"coin": {
 		"name":["{base_name} coin"],
 		"tags":["metal"],
-		"attributes":{
+		"attributes": {
 			"adjective":["metallic"],
 		},
-		"add":{
+		"add": {
 			"armour":0.5,
 		},
 		"price":10,
 	},
-	"paper":{
+	"paper": {
 		"name":["{base_name} paper"],
 		"tags":["paper"],
-		"attributes":{
+		"attributes": {
 			"adjective":["thin"],
 		},
-		"add":{
+		"add": {
 			"willpower":0.5,
 		},
 		"price":10,
 	},
-	"parchement":{
+	"parchement": {
 		"name":["{base_name} parchement"],
 		"veggie_name":["{base_name} paper"],
 		"tags":["paper"],
-		"attributes":{
+		"attributes": {
 			"adjective":["thin", "parched"],
 		},
-		"add":{
+		"add": {
 			"magic":0.5,
 		},
 		"price":10,
 	},
-	"skin":{
+	"skin": {
 		"name":["{base_name} skin"],
 		"veggie_name":["{base_name} polymere"],
 		"tags":["leather"],
-		"attributes":{
+		"attributes": {
 			"adjective":["leather", "smooth"],
 		},
-		"add":{
+		"add": {
 			"accuracy":0.5,
 		},
 		"price":10,
 	},
-	"leather":{
+	"leather": {
 		"name":["{base_name} leather"],
 		"veggie_name":["{base_name} synthetic leather"],
 		"quality":1.1,
 		"tags":["leather"],
-		"attributes":{
+		"attributes": {
 			"adjective":["leather", "robust"],
 		},
-		"add":{
+		"add": {
 			"accuracy":0.5,
 		},
 		"price":15,
 	},
-	"hide":{
+	"hide": {
 		"name":["{base_name} hide"],
 		"veggie_name":["{base_name} wool"],
 		"quality":1.1,
 		"tags":["leather", "cloth"],
-		"attributes":{
+		"attributes": {
 			"adjective":["leather"],
 		},
-		"add":{
+		"add": {
 			"accuracy":0.5,
 		},
 		"price":15,
 	},
-	"synth_skin":{
+	"synth_skin": {
 		"name":["{base_name} synth skin"],
 		"quality":1.1,
 		"tags":["leather"],
-		"attributes":{
+		"attributes": {
 			"adjective":["synthetic", "fake", "smooth"],
 		},
-		"add":{
+		"add": {
 			"accuracy":0.5,
 		},
 		"price":15,
 	},
-	"wing":{
+	"wing": {
 		"name":["{base_name} wing"],
 		"veggie_name":["{base_name} foil"],
 		"tags":["leather", "alchemy"],
-		"attributes":{
+		"attributes": {
 			"adjective":["smooth", "thin"],
 		},
-		"add":{
+		"add": {
 			"accuracy":0.5,
 		},
 		"price":10,
 	},
-	"fin":{
+	"fin": {
 		"name":["{base_name} fin"],
 		"veggie_name":["{base_name} synthetic leather"],
 		"quality":1.1,
 		"tags":["leather"],
-		"attributes":{
+		"attributes": {
 			"adjective":["leather", "robust"],
 		},
-		"add":{
+		"add": {
 			"evasion":0.5,
 		},
 		"price":15,
 	},
-	"cotton":{
+	"cotton": {
 		"name":["{base_name} cotton"],
 		"tags":["cloth"],
-		"attributes":{
+		"attributes": {
 			"adjective":["cloth"],
 		},
-		"add":{
+		"add": {
 			"evasion":0.5,
 		},
 		"price":10,
 	},
-	"cloth":{
+	"cloth": {
 		"name":["{base_name} cloth"],
 		"quality":1.1,
 		"tags":["cloth"],
-		"attributes":{
+		"attributes": {
 			"adjective":["woven"],
 		},
-		"add":{
+		"add": {
 			"evasion":0.5,
 		},
 		"price":15,
 	},
-	"silk":{
+	"silk": {
 		"name":["{base_name} silk"],
 		"quality":1.1,
 		"tags":["cloth"],
-		"attributes":{
+		"attributes": {
 			"adjective":["elegant"],
 		},
-		"add":{
+		"add": {
 			"evasion":0.5,
 		},
 		"price":15,
 	},
-	"foil":{
+	"foil": {
 		"name":["{base_name} foil"],
 		"tags":["cloth"],
-		"attributes":{
+		"attributes": {
 			"adjective":["foil", "thin"],
 		},
-		"add":{
+		"add": {
 			"evasion":0.5,
 		},
 		"price":10,
 	},
-	"tissue":{
+	"tissue": {
 		"name":["{base_name} tissue"],
 		"quality":1.1,
 		"tags":["cloth"],
-		"attributes":{
+		"attributes": {
 			"adjective":["cloth"],
 		},
-		"add":{
+		"add": {
 			"evasion":0.5,
 		},
 		"price":15,
 	},
-	"wrapping":{
+	"wrapping": {
 		"name":["{base_name} wrapping"],
 		"quality":1.1,
 		"tags":["cloth"],
-		"attributes":{
+		"attributes": {
 			"adjective":["wrapped"],
 		},
-		"add":{
+		"add": {
 			"evasion":0.5,
 		},
 		"price":10,
 	},
-	"fur":{
+	"fur": {
 		"name":["{base_name} fur"],
 		"veggie_name":["{base_name} polyester"],
 		"tags":["cloth"],
-		"attributes":{
+		"attributes": {
 			"adjective":["hairy", "furry"],
 		},
-		"add":{
+		"add": {
 			"evasion":0.5,
 		},
 		"price":10,
 	},
-	"scale":{
+	"scale": {
 		"name":["{base_name} scale"],
 		"veggie_name":["{base_name} plate"],
 		"quality":1.1,
 		"tags":["cloth", "leather"],
-		"attributes":{
+		"attributes": {
 			"adjective":["shimmering", "smooth"],
 		},
-		"add":{
+		"add": {
 			"armour":0.5,
 		},
 		"price":15,
 	},
-	"feather":{
+	"feather": {
 		"name":["{base_name} feather"],
 		"tags":["cloth"],
-		"attributes":{
+		"attributes": {
 			"adjective":["feathered"],
 		},
-		"add":{
+		"add": {
 			"evasion":0.5,
 		},
 		"price":10,
 	},
-	"hair":{
+	"hair": {
 		"name":["{base_name} hair"],
 		"tags":["cloth"],
-		"attributes":{
+		"attributes": {
 			"adjective":["hairy"],
 		},
-		"add":{
+		"add": {
 			"evasion":0.5,
 		},
 		"price":10,
 	},
-	"tail":{
+	"tail": {
 		"name":["{base_name} tail"],
 		"veggie_name":["{base_name} cloth"],
 		"quality":1.1,
 		"tags":["cloth"],
-		"attributes":{
+		"attributes": {
 			"adjective":["cloth"],
 		},
-		"add":{
+		"add": {
 			"evasion":0.5,
 		},
 		"price":15,
 	},
-	"tooth":{
+	"tooth": {
 		"name":["{base_name} tooth"],
 		"veggie_name":["{base_name} ceramic"],
 		"tags":["bone"],
-		"attributes":{
+		"attributes": {
 			"adjective":["bony"],
 		},
-		"add":{
+		"add": {
 			"penetration":0.75,
 		},
 		"price":10,
 	},
-	"nail":{
+	"nail": {
 		"name":["{base_name} nail"],
 		"veggie_name":["{base_name} iron nail"],
 		"tags":["bone"],
-		"attributes":{
+		"attributes": {
 			"adjective":["hard"],
 		},
-		"add":{
+		"add": {
 			"penetration":0.75,
 		},
 		"price":10,
 	},
-	"claw":{
+	"claw": {
 		"name":["{base_name} claw"],
 		"veggie_name":["{base_name} ceramic"],
 		"tags":["bone"],
-		"attributes":{
+		"attributes": {
 			"adjective":["clawed"],
 		},
-		"add":{
+		"add": {
 			"penetration":0.75,
 		},
 		"price":10,
 	},
-	"shell":{
+	"shell": {
 		"name":["{base_name} shell"],
 		"veggie_name":["{base_name} lime"],
 		"quality":1.1,
 		"tags":["stone", "bone"],
-		"attributes":{
+		"attributes": {
 			"adjective":["hard", "armoured"],
 		},
-		"add":{
+		"add": {
 			"armour":0.5,
 		},
 		"price":15,
 	},
-	"fang":{
+	"fang": {
 		"name":["{base_name} fang"],
 		"veggie_name":["{base_name} ceramic"],
 		"quality":1.1,
 		"tags":["bone"],
-		"attributes":{
+		"attributes": {
 			"adjective":["fanged"],
 		},
-		"add":{
+		"add": {
 			"penetration":0.75,
 		},
 		"price":15,
 	},
-	"horn":{
+	"horn": {
 		"name":["{base_name} horn"],
 		"veggie_name":["{base_name} ceramic"],
 		"quality":1.1,
 		"tags":["bone"],
-		"attributes":{
+		"attributes": {
 			"adjective":["hard", "thick"],
 		},
-		"add":{
+		"add": {
 			"penetration":0.75,
 		},
 		"price":15,
 	},
-	"bone":{
+	"bone": {
 		"name":["{base_name} bone"],
 		"veggie_name":["{base_name} ceramic"],
 		"quality":1.1,
 		"tags":["bone"],
-		"attributes":{
+		"attributes": {
 			"adjective":["bone", "skeletal"],
 		},
-		"add":{
+		"add": {
 			"penetration":0.75,
 		},
 		"price":15,
 	},
-	"skull":{
+	"skull": {
 		"name":["{base_name} skull"],
 		"veggie_name":["{base_name} casing"],
 		"quality":1.1,
 		"tags":["bone"],
-		"attributes":{
+		"attributes": {
 			"adjective":["bone", "hard"],
 		},
-		"add":{
+		"add": {
 			"armour":0.5,
 		},
 		"price":15,
 	},
-	"meat":{
+	"meat": {
 		"name":["{base_name} meat"],
 		"veggie_name":["{base_name} tofu"],
 		"tags":["cooking", "meat"],
-		"attributes":{
+		"attributes": {
 			"adjective":["meaty"],
 		},
 		"price":10,
 	},
-	"tongue":{
+	"tongue": {
 		"name":["{base_name} tongue"],
 		"veggie_name":["{base_name} B12 pill"],
 		"tags":["alchemy", "cooking", "meat"],
-		"attributes":{
+		"attributes": {
 			"adjective":["meaty"],
 		},
-		"add":{
+		"add": {
 			"health":2.5,
 		},
 		"price":10,
 	},
-	"pincer":{
+	"pincer": {
 		"name":["{base_name} pincer"],
 		"veggie_name":["{base_name} pea"],
 		"quality":1.1,
 		"tags":["alchemy", "cooking", "meat"],
-		"attributes":{
+		"attributes": {
 			"adjective":["meaty"],
 		},
-		"add":{
+		"add": {
 			"health":2.5,
 		},
 		"price":15,
 	},
-	"insistine":{
+	"insistine": {
 		"name":["{base_name} insistine"],
 		"veggie_name":["{base_name} soy"],
 		"tags":["cooking", "alchemy", "meat"],
-		"attributes":{
+		"attributes": {
 			"adjective":["meaty"],
 		},
-		"add":{
+		"add": {
 			"stamina":1.5,
 			"mana":1.5,
 		},
 		"price":10,
 	},
-	"testicle":{
+	"testicle": {
 		"name":["{base_name} testicle"],
 		"veggie_name":["{base_name} nut"],
 		"tags":["cooking", "alchemy", "meat"],
-		"attributes":{
+		"attributes": {
 			"adjective":["meaty"],
 		},
-		"add":{
+		"add": {
 			"stamina":1.5,
 			"mana":1.5,
 		},
 		"price":10,
 	},
-	"ear":{
+	"ear": {
 		"name":["{base_name} ear"],
 		"veggie_name":["{base_name} poison"],
 		"tags":["alchemy", "poison"],
-		"attributes":{
+		"attributes": {
 			"adjective":["meaty", "poisonous"],
 		},
-		"add":{
+		"add": {
 			"stamina":1.5,
 			"mana":1.5,
 		},
 		"price":10,
 	},
-	"eye_ball":{
+	"eye_ball": {
 		"name":["{base_name} eye ball"],
 		"veggie_name":["{base_name} marble"],
 		"quality":1.1,
 		"tags":["alchemy", "gem"],
-		"attributes":{
+		"attributes": {
 			"adjective":["meaty"],
 		},
-		"add":{
+		"add": {
 			"willpower":0.5,
 		},
 		"price":15,
 	},
-	"kidney":{
+	"kidney": {
 		"name":["{base_name} kidney"],
 		"veggie_name":["{base_name} kidney bean"],
 		"quality":1.1,
 		"tags":["cooking", "meat"],
-		"attributes":{
+		"attributes": {
 			"adjective":["meaty"],
 		},
 		"price":15,
 	},
-	"heart":{
+	"heart": {
 		"name":["{base_name} heart"],
 		"veggie_name":["{base_name} heartstone"],
 		"quality":1.1,
 		"tags":["alchemy", "meat", "gem"],
-		"attributes":{
+		"attributes": {
 			"adjective":["meaty", "hearty"],
 		},
-		"add":{
+		"add": {
 			"willpower":0.5,
 		},
 		"price":15,
 	},
-	"battery":{
+	"battery": {
 		"name":["{base_name} battery"],
 		"quality":1.1,
 		"tags":["alchemy"],
-		"attributes":{
+		"attributes": {
 			"adjective":["acidic", "toxic", "metallic"],
 		},
-		"add":{
+		"add": {
 			"stamina":1.5,
 			"mana":1.5,
 		},
 		"price":15,
 	},
-	"processing_unit":{
+	"processing_unit": {
 		"name":["{base_name} processing unit"],
 		"quality":1.1,
 		"tags":["gem"],
-		"attributes":{
+		"attributes": {
 			"adjective":["metallic", "silicon"],
 		},
-		"add":{
+		"add": {
 			"magic":0.5,
 		},
 		"price":15,
 	},
-	"wires":{
+	"wires": {
 		"name":["{base_name} wires"],
 		"tags":["cloth"],
 		"quality":1.1,
-		"attributes":{
+		"attributes": {
 			"adjective":["metallic"],
 		},
-		"add":{
+		"add": {
 			"critical":0.6,
 		},
 		"price":15,
 	},
-	"ram_module":{
+	"ram_module": {
 		"name":["{base_name} RAM module"],
 		"quality":1.1,
 		"tags":["gem"],
-		"attributes":{
+		"attributes": {
 			"adjective":["metallic", "computational"],
 		},
-		"add":{
+		"add": {
 			"willpower":0.5,
 		},
 		"price":15,
 	},
 	
-	"soul_splinter":{
+	"soul_splinter": {
 		"name":["{soul_prefix} soul splinter", "soul splinter of {base_name}", "{soul_prefix} soul splinter of {base_name}"],
 		"quality":0.6,
 		"tags":["soul"],
 		"price":2,
 	},
-	"soul_shard":{
+	"soul_shard": {
 		"name":["{soul_prefix} soul shard", "soul shard of {base_name}", "{soul_prefix} soul shard of {base_name}"],
 		"quality":0.8,
 		"tags":["soul"],
 		"price":5,
 	},
-	"soul_stone":{
+	"soul_stone": {
 		"name":["{soul_prefix} soul stone", "soul stone of {base_name}", "{soul_prefix} soul stone of {base_name}"],
 		"quality":1.0,
 		"tags":["soul"],
 		"price":10,
 	},
-	"soul_gem":{
+	"soul_gem": {
 		"name":["{soul_prefix} soul gem", "soul gem of {base_name}", "{soul_prefix} soul gem of {base_name}"],
 		"quality":1.2,
 		"tags":["soul"],
 		"price":20,
 	},
-	"soul_jewel":{
+	"soul_jewel": {
 		"name":["{soul_prefix} soul jewel", "soul jewel of {base_name}", "{soul_prefix} soul jewel of {base_name}"],
 		"quality":1.4,
 		"tags":["soul"],
 		"price":30,
 	},
-	"soul_orb":{
+	"soul_orb": {
 		"name":["{soul_prefix} soul orb", "soul orb of {base_name}", "{soul_prefix} soul orb of {base_name}"],
 		"quality":1.6,
 		"tags":["soul"],
 		"price":45,
 	},
 	
-	"empty_soul_stone":{
+	"empty_soul_stone": {
 		"name":["empty soul stone"],
 		"quality":1.0,
 		"tags":["cage"],
@@ -1174,336 +1174,336 @@ const MATERIALS = {
 	},
 }
 const EQUIPMENT_RECIPES = {
-	"dagger":{
-		"type":"weapon",
-		"components":["knife","hilt"],
-		"icon":"dagger",
+	"dagger": {
+		"type": "weapon",
+		"components":["knife", "hilt"],
+		"icon": "dagger",
 	},
-	"sword":{
-		"type":"weapon",
-		"components":["blade","hilt"],
-		"icon":"sword",
+	"sword": {
+		"type": "weapon",
+		"components":["blade", "hilt"],
+		"icon": "sword",
 	},
-	"axe":{
-		"type":"weapon",
-		"components":["blade","shaft"],
-		"icon":"axe",
+	"axe": {
+		"type": "weapon",
+		"components":["blade", "shaft"],
+		"icon": "axe",
 	},
-	"mace":{
-		"type":"weapon",
-		"components":["metal_coating","hilt"],
-		"icon":"mace",
+	"mace": {
+		"type": "weapon",
+		"components":["metal_coating", "hilt"],
+		"icon": "mace",
 	},
-	"whip":{
-		"type":"weapon",
-		"components":["whip","shaft"],
-		"icon":"whip",
+	"whip": {
+		"type": "weapon",
+		"components":["whip", "shaft"],
+		"icon": "whip",
 	},
-	"chain_saw":{
-		"type":"weapon",
-		"components":["chain_saw","hilt"],
-		"icon":"chain_saw",
+	"chain_saw": {
+		"type": "weapon",
+		"components":["chain_saw", "hilt"],
+		"icon": "chain_saw",
 	},
-	"buckler":{
-		"type":"weapon",
-		"subtype":"shield",
-		"components":["light_armour","shaft"],
-		"icon":"buckler",
+	"buckler": {
+		"type": "weapon",
+		"subtype": "shield",
+		"components":["light_armour", "shaft"],
+		"icon": "buckler",
 	},
-	"kite_shield":{
-		"type":"weapon",
-		"subtype":"shield",
-		"components":["chain_armour","shaft"],
-		"icon":"kite_shield",
+	"kite_shield": {
+		"type": "weapon",
+		"subtype": "shield",
+		"components":["chain_armour", "shaft"],
+		"icon": "kite_shield",
 	},
-	"tower_shield":{
-		"type":"weapon",
-		"subtype":"shield",
-		"components":["plate_armour","shaft"],
-		"icon":"tower_shield",
-	},
-	
-	"sling":{
-		"type":"weapon",
-		"components":["string","shaft"],
-		"icon":"sling",
-	},
-	"pistol":{
-		"type":"weapon",
-		"components":["barrel","hilt"],
-		"icon":"pistol",
+	"tower_shield": {
+		"type": "weapon",
+		"subtype": "shield",
+		"components":["plate_armour", "shaft"],
+		"icon": "tower_shield",
 	},
 	
-	"tome":{
-		"type":"weapon",
-		"components":["formula","gem"],
-		"icon":"tome",
+	"sling": {
+		"type": "weapon",
+		"components":["string", "shaft"],
+		"icon": "sling",
 	},
-	"amplifier":{
-		"type":"weapon",
-		"components":["magical_coating","gem"],
-		"icon":"amplifier",
-	},
-	"orb":{
-		"type":"weapon",
-		"components":["magical_coating","orb"],
-		"icon":"orb",
-	},
-	"spellblade":{
-		"type":"weapon",
-		"components":["blade","gem"],
-		"icon":"spellblade",
+	"pistol": {
+		"type": "weapon",
+		"components":["barrel", "hilt"],
+		"icon": "pistol",
 	},
 	
-	"greatsword":{
-		"type":"weapon",
+	"tome": {
+		"type": "weapon",
+		"components":["formula", "gem"],
+		"icon": "tome",
+	},
+	"amplifier": {
+		"type": "weapon",
+		"components":["magical_coating", "gem"],
+		"icon": "amplifier",
+	},
+	"orb": {
+		"type": "weapon",
+		"components":["magical_coating", "orb"],
+		"icon": "orb",
+	},
+	"spellblade": {
+		"type": "weapon",
+		"components":["blade", "gem"],
+		"icon": "spellblade",
+	},
+	
+	"greatsword": {
+		"type": "weapon",
 		"2h":true,
-		"components":["blade","blade","knife","hilt"],
-		"icon":"greatsword",
+		"components":["blade", "blade", "knife", "hilt"],
+		"icon": "greatsword",
 	},
-	"greatmaul":{
-		"type":"weapon",
+	"greatmaul": {
+		"type": "weapon",
 		"2h":true,
-		"components":["metal_coating","metal_coating","pole","hilt"],
-		"icon":"greatmaul",
+		"components":["metal_coating", "metal_coating", "pole", "hilt"],
+		"icon": "greatmaul",
 	},
-	"battleaxe":{
-		"type":"weapon",
+	"battleaxe": {
+		"type": "weapon",
 		"2h":true,
-		"components":["blade","blade","pole","shaft"],
-		"icon":"battleaxe",
+		"components":["blade", "blade", "pole", "shaft"],
+		"icon": "battleaxe",
 	},
-	"spear":{
-		"type":"weapon",
+	"spear": {
+		"type": "weapon",
 		"2h":true,
-		"components":["knife","pole","pole","shaft"],
-		"icon":"spear",
+		"components":["knife", "pole", "pole", "shaft"],
+		"icon": "spear",
 	},
-	"scythe":{
-		"type":"weapon",
+	"scythe": {
+		"type": "weapon",
 		"2h":true,
-		"components":["blade","pole","pole","hilt"],
-		"icon":"scythe",
+		"components":["blade", "pole", "pole", "hilt"],
+		"icon": "scythe",
 	},
-	"morningstar":{
-		"type":"weapon",
+	"morningstar": {
+		"type": "weapon",
 		"2h":true,
-		"components":["metal_coating","whip","whip","shaft"],
-		"icon":"morningstar",
+		"components":["metal_coating", "whip", "whip", "shaft"],
+		"icon": "morningstar",
 	},
 	
-	"bow":{
-		"type":"weapon",
+	"bow": {
+		"type": "weapon",
 		"2h":true,
-		"components":["string","bow","bow","shaft"],
-		"icon":"bow",
+		"components":["string", "bow", "bow", "shaft"],
+		"icon": "bow",
 	},
-	"crossbow":{
-		"type":"weapon",
+	"crossbow": {
+		"type": "weapon",
 		"2h":true,
-		"components":["string","bow","loader","shaft"],
-		"icon":"crossbow",
+		"components":["string", "bow", "loader", "shaft"],
+		"icon": "crossbow",
 	},
-	"blunderbuss":{
-		"type":"weapon",
+	"blunderbuss": {
+		"type": "weapon",
 		"2h":true,
-		"components":["barrel","barrel","loader","hilt"],
-		"icon":"blunderbuss",
+		"components":["barrel", "barrel", "loader", "hilt"],
+		"icon": "blunderbuss",
 	},
-	"gun_blade":{
-		"type":"weapon",
+	"gun_blade": {
+		"type": "weapon",
 		"2h":true,
-		"components":["knife","barrel","loader","shaft"],
-		"icon":"gunblade",
+		"components":["knife", "barrel", "loader", "shaft"],
+		"icon": "gunblade",
 	},
 	
-	"quarterstaff":{
-		"type":"weapon",
+	"quarterstaff": {
+		"type": "weapon",
 		"2h":true,
-		"components":["gem","pole","pole","shaft"],
-		"icon":"quarterstaff",
+		"components":["gem", "pole", "pole", "shaft"],
+		"icon": "quarterstaff",
 	},
-	"magestaff":{
-		"type":"weapon",
+	"magestaff": {
+		"type": "weapon",
 		"2h":true,
-		"components":["gem","orb","shaft","shaft"],
-		"icon":"magestaff",
+		"components":["gem", "orb", "shaft", "shaft"],
+		"icon": "magestaff",
 	},
 	
-	"cloth_shirt":{
-		"type":"torso",
-		"name":"shirt",
-		"components":["cloth_armour","cloth_armour","rope_joints","magical_coating"],
+	"cloth_shirt": {
+		"type": "torso",
+		"name": "shirt",
+		"components":["cloth_armour", "cloth_armour", "rope_joints", "magical_coating"],
 	},
-	"leather_chest":{
-		"type":"torso",
-		"components":["leather_armour","leather_armour","leather_joints","paint_coating"],
+	"leather_chest": {
+		"type": "torso",
+		"components":["leather_armour", "leather_armour", "leather_joints", "paint_coating"],
 	},
-	"chain_cuirass":{
-		"type":"torso",
-		"components":["chain_armour","chain_armour","leather_joints","metal_coating"],
+	"chain_cuirass": {
+		"type": "torso",
+		"components":["chain_armour", "chain_armour", "leather_joints", "metal_coating"],
 	},
-	"plate_cuirass":{
-		"type":"torso",
-		"components":["plate_armour","plate_armour","metal_joints","metal_coating"],
-	},
-	
-	"cloth_pants":{
-		"type":"legs",
-		"name":"pants",
-		"components":["cloth_armour","cloth_armour","magical_coating"],
-	},
-	"leather_pants":{
-		"type":"legs",
-		"name":"pants",
-		"components":["leather_armour","leather_joints","paint_coating"],
-	},
-	"chain_greaves":{
-		"type":"legs",
-		"components":["chain_armour","chain_armour","metal_coating"],
-	},
-	"plate_greaves":{
-		"type":"legs",
-		"components":["plate_armour","metal_joints","metal_coating"],
-	},
-	"panties":{
-		"type":"legs",
-		"components":["cloth_armour","rope_joints","magical_coating"],
+	"plate_cuirass": {
+		"type": "torso",
+		"components":["plate_armour", "plate_armour", "metal_joints", "metal_coating"],
 	},
 	
-	"cloth_hat":{
-		"type":"head",
-		"name":"hat",
-		"components":["cloth_armour","magical_coating"],
+	"cloth_pants": {
+		"type": "legs",
+		"name": "pants",
+		"components":["cloth_armour", "cloth_armour", "magical_coating"],
 	},
-	"leather_hat":{
-		"type":"head",
-		"name":"hat",
-		"components":["leather_armour","paint_coating"],
+	"leather_pants": {
+		"type": "legs",
+		"name": "pants",
+		"components":["leather_armour", "leather_joints", "paint_coating"],
 	},
-	"chain_coif":{
-		"type":"head",
-		"components":["chain_armour","metal_coating"],
+	"chain_greaves": {
+		"type": "legs",
+		"components":["chain_armour", "chain_armour", "metal_coating"],
 	},
-	"plate_helm":{
-		"type":"head",
-		"components":["metal_joints","metal_coating"],
+	"plate_greaves": {
+		"type": "legs",
+		"components":["plate_armour", "metal_joints", "metal_coating"],
 	},
-	"glasses":{
-		"type":"head",
-		"components":["metal_coating","glass_coating"],
-	},
-	
-	"cloth_sandals":{
-		"type":"feet",
-		"name":"sandals",
-		"components":["cloth_armour","rope_joints"],
-	},
-	"leather_boots":{
-		"type":"feet",
-		"name":"boots",
-		"components":["leather_armour","leather_joints"],
-	},
-	"chain_boots":{
-		"type":"feet",
-		"components":["chain_armour","metal_joints"],
-	},
-	"plate_boots":{
-		"type":"feet",
-		"components":["metal_joints","metal_coating"],
+	"panties": {
+		"type": "legs",
+		"components":["cloth_armour", "rope_joints", "magical_coating"],
 	},
 	
-	"cloth_sleeves":{
-		"type":"hands",
-		"name":"sleeves",
-		"components":["cloth_armour","rope_joints"],
+	"cloth_hat": {
+		"type": "head",
+		"name": "hat",
+		"components":["cloth_armour", "magical_coating"],
 	},
-	"leather_gloves":{
-		"type":"hands",
-		"name":"gloves",
-		"components":["leather_armour","leather_joints"],
+	"leather_hat": {
+		"type": "head",
+		"name": "hat",
+		"components":["leather_armour", "paint_coating"],
 	},
-	"chain_gauntlets":{
-		"type":"hands",
-		"components":["chain_armour","metal_joints"],
+	"chain_coif": {
+		"type": "head",
+		"components":["chain_armour", "metal_coating"],
 	},
-	"plate_gauntlets":{
-		"type":"hands",
-		"components":["metal_joints","metal_coating"],
+	"plate_helm": {
+		"type": "head",
+		"components":["metal_joints", "metal_coating"],
 	},
-	
-	"rope_belt":{
-		"type":"belt",
-		"components":["cloth_armour","rope_joints"],
-	},
-	"leather_belt":{
-		"type":"belt",
-		"components":["leather_armour","leather_joints"],
-	},
-	"chain_belt":{
-		"type":"belt",
-		"components":["chain_armour","metal_joints"],
+	"glasses": {
+		"type": "head",
+		"components":["metal_coating", "glass_coating"],
 	},
 	
-	"magical_cape":{
-		"type":"cape",
-		"name":"cape",
-		"components":["cloth_armour","magical_coating"],
+	"cloth_sandals": {
+		"type": "feet",
+		"name": "sandals",
+		"components":["cloth_armour", "rope_joints"],
 	},
-	"cloth_cape":{
-		"type":"cape",
-		"name":"cloak",
-		"components":["cloth_armour","paint_coating"],
+	"leather_boots": {
+		"type": "feet",
+		"name": "boots",
+		"components":["leather_armour", "leather_joints"],
 	},
-	"metal_cape":{
-		"type":"cape",
-		"name":"cape",
-		"components":["chain_armour","paint_coating"],
+	"chain_boots": {
+		"type": "feet",
+		"components":["chain_armour", "metal_joints"],
+	},
+	"plate_boots": {
+		"type": "feet",
+		"components":["metal_joints", "metal_coating"],
 	},
 	
-	"rope_amulet":{
-		"type":"amulet",
-		"name":"amulet",
-		"components":["rope_chain","gem"],
+	"cloth_sleeves": {
+		"type": "hands",
+		"name": "sleeves",
+		"components":["cloth_armour", "rope_joints"],
 	},
-	"metal_amulet":{
-		"type":"amulet",
-		"name":"amulet",
-		"components":["metal_chain","orb"],
+	"leather_gloves": {
+		"type": "hands",
+		"name": "gloves",
+		"components":["leather_armour", "leather_joints"],
 	},
-	"leather_ring":{
-		"type":"ring",
-		"name":"ring",
+	"chain_gauntlets": {
+		"type": "hands",
+		"components":["chain_armour", "metal_joints"],
+	},
+	"plate_gauntlets": {
+		"type": "hands",
+		"components":["metal_joints", "metal_coating"],
+	},
+	
+	"rope_belt": {
+		"type": "belt",
+		"components":["cloth_armour", "rope_joints"],
+	},
+	"leather_belt": {
+		"type": "belt",
+		"components":["leather_armour", "leather_joints"],
+	},
+	"chain_belt": {
+		"type": "belt",
+		"components":["chain_armour", "metal_joints"],
+	},
+	
+	"magical_cape": {
+		"type": "cape",
+		"name": "cape",
+		"components":["cloth_armour", "magical_coating"],
+	},
+	"cloth_cape": {
+		"type": "cape",
+		"name": "cloak",
+		"components":["cloth_armour", "paint_coating"],
+	},
+	"metal_cape": {
+		"type": "cape",
+		"name": "cape",
+		"components":["chain_armour", "paint_coating"],
+	},
+	
+	"rope_amulet": {
+		"type": "amulet",
+		"name": "amulet",
+		"components":["rope_chain", "gem"],
+	},
+	"metal_amulet": {
+		"type": "amulet",
+		"name": "amulet",
+		"components":["metal_chain", "orb"],
+	},
+	"leather_ring": {
+		"type": "ring",
+		"name": "ring",
 		"components":["leather_strip"],
 	},
-	"metal_ring":{
-		"type":"ring",
-		"name":"ring",
+	"metal_ring": {
+		"type": "ring",
+		"name": "ring",
 		"components":["metal_strip"],
 	},
-	"metal_earring":{
-		"type":"earring",
-		"name":"earring",
+	"metal_earring": {
+		"type": "earring",
+		"name": "earring",
 		"components":["metal_strip"],
 	},
-	"gem_earring":{
-		"type":"earring",
-		"name":"earring",
+	"gem_earring": {
+		"type": "earring",
+		"name": "earring",
 		"components":["gem"],
 	},
-	"orb_earring":{
-		"type":"earring",
-		"name":"earring",
+	"orb_earring": {
+		"type": "earring",
+		"name": "earring",
 		"components":["orb"],
 	},
-	"metal_bracelet":{
-		"type":"bracelet",
-		"name":"bracelet",
+	"metal_bracelet": {
+		"type": "bracelet",
+		"name": "bracelet",
 		"components":["metal_chain"],
 	},
-	"wood_bracelet":{
-		"type":"bracelet",
-		"name":"bracelet",
+	"wood_bracelet": {
+		"type": "bracelet",
+		"name": "bracelet",
 		"components":["light_armour"],
 	},
 	
@@ -1517,249 +1517,249 @@ const EQUIPMENT_ATTRIBUTE_MULTIPLIER = {
 	"bracelet":0.5,
 }
 const EQUIPMENT_TYPE_NAME = {
-	"weapon":["weapon","tool"],
-	"torso":["armour","clothing","chest","harness"],
-	"legs":["pants","greaves"],
-	"head":["hat","helmet"],
+	"weapon":["weapon", "tool"],
+	"torso":["armour", "clothing", "chest", "harness"],
+	"legs":["pants", "greaves"],
+	"head":["hat", "helmet"],
 	"hands":["gloves"],
 	"feet":["boots"],
 	"belt":["belt"],
-	"cape":["cape","cloak"],
-	"amulet":["amulet","pendant"],
+	"cape":["cape", "cloak"],
+	"amulet":["amulet", "pendant"],
 	"ring":["ring"],
 	"earring":["earring"],
 	"bracelet":["bracelet"],
 }
 const EQUIPMENT_SUBTYPE_NAME = {
-	"melee":["basher","smasher","cutter","piercer"],
-	"ranged":["thrower","shooter","projector","launcher"],
-	"magic":["catalyst","amplifier","infuser","artifact"],
+	"melee":["basher", "smasher", "cutter", "piercer"],
+	"ranged":["thrower", "shooter", "projector", "launcher"],
+	"magic":["catalyst", "amplifier", "infuser", "artifact"],
 }
 const POTIONS = {
-	"healing_salve":{
-		"name":"healing salve",
-		"type":"potion",
-		"effect":"health",
-		"status":{
-			"type":"buff",
-			"name":"healing",
-			"health_regen":500,
-			"duration":10.0,
+	"healing_salve": {
+		"name": "healing salve",
+		"type": "potion",
+		"effect": "health",
+		"status": {
+			"type": "buff",
+			"name": "healing",
+			"health_regen": 500,
+			"duration": 10.0,
 		},
-		"price":10,
+		"price": 10,
 		"material_types":[["healing"]],
 	},
-	"healing_potion":{
-		"name":"healing potion",
-		"type":"potion",
-		"effect":"health",
-		"healing":75,
-		"price":20,
-		"material_types":[["healing"],["liquid","healing"]],
+	"healing_potion": {
+		"name": "healing potion",
+		"type": "potion",
+		"effect": "health",
+		"healing": 75,
+		"price": 20,
+		"material_types": [["healing"], ["liquid", "healing"]],
 	},
-	"bandage":{
-		"name":"bandage",
-		"type":"potion",
-		"effect":"health",
-		"status":{
-			"type":"buff",
-			"name":"healing",
-			"health_regen":200,
-			"health":20.0,
-			"duration":20.0,
+	"bandage": {
+		"name": "bandage",
+		"type": "potion",
+		"effect": "health",
+		"status": {
+			"type": "buff",
+			"name": "healing",
+			"health_regen": 200,
+			"health": 20.0,
+			"duration": 20.0,
 		},
-		"price":10,
-		"material_types":[["healing","cloth","leather"]],
+		"price": 10,
+		"material_types": [["healing", "cloth", "leather"]],
 	},
-	"healing_infusion":{
-		"name":"healing infusion",
-		"type":"potion",
-		"effect":"health",
-		"healing":75,
-		"price":20,
-		"material_types":[["healing"],["liquid","healing"]],
+	"healing_infusion": {
+		"name": "healing infusion",
+		"type": "potion",
+		"effect": "health",
+		"healing": 75,
+		"price": 20,
+		"material_types": [["healing"], ["liquid", "healing"]],
 	},
-	"mana_salve":{
-		"name":"mana salve",
-		"type":"potion",
-		"effect":"mana",
-		"status":{
-			"type":"buff",
-			"name":"healing",
+	"mana_salve": {
+		"name": "mana salve",
+		"type": "potion",
+		"effect": "mana",
+		"status": {
+			"type": "buff",
+			"name": "healing",
 			"mana_regen":200,
 			"duration":10.0,
 		},
 		"price":10,
 		"material_types":[["magical"]],
 	},
-	"mana_potion":{
-		"name":"mana potion",
-		"type":"potion",
-		"effect":"mana",
+	"mana_potion": {
+		"name": "mana potion",
+		"type": "potion",
+		"effect": "mana",
 		"healing":75,
 		"price":20,
-		"material_types":[["magical"],["liquid","magical"]],
+		"material_types":[["magical"],["liquid", "magical"]],
 	},
-	"stamina_salve":{
-		"name":"stamina salve",
-		"type":"potion",
-		"effect":"stamina",
-		"status":{
-			"type":"buff",
-			"name":"healing",
+	"stamina_salve": {
+		"name": "stamina salve",
+		"type": "potion",
+		"effect": "stamina",
+		"status": {
+			"type": "buff",
+			"name": "healing",
 			"stamina_regen":200,
 			"duration":10.0,
 		},
 		"price":10,
 		"material_types":[["elemental"]],
 	},
-	"stamina_potion":{
-		"name":"stamina potion",
-		"type":"potion",
-		"effect":"stamina",
+	"stamina_potion": {
+		"name": "stamina potion",
+		"type": "potion",
+		"effect": "stamina",
 		"healing":75,
 		"price":20,
-		"material_types":[["elemental"],["liquid","elemental"]],
+		"material_types":[["elemental"],["liquid", "elemental"]],
 	},
 }
 const FOOD = {
-	"soup":{
-		"name":"soup",
-		"type":"food",
+	"soup": {
+		"name": "soup",
+		"type": "food",
 		"stamina":20,
-		"status":{
-			"type":"buff",
-			"name":"regeneration",
+		"status": {
+			"type": "buff",
+			"name": "regeneration",
 			"health_regen":10,
 			"duration":20*60,
 		},
 		"price":10,
-		"material_types":[["cooking","liquid"]],
+		"material_types":[["cooking", "liquid"]],
 	},
-	"salad":{
-		"name":"salad",
-		"type":"food",
+	"salad": {
+		"name": "salad",
+		"type": "food",
 		"stamina":20,
-		"status":{
-			"type":"buff",
-			"name":"agility",
-			"effect":["accuracy","evasion"],
+		"status": {
+			"type": "buff",
+			"name": "agility",
+			"effect":["accuracy", "evasion"],
 			"effect_scale":3.0,
 			"duration":20*60,
 		},
 		"price":10,
 		"material_types":[["plant"]],
 	},
-	"sandwich":{
-		"name":"sandwich",
-		"type":"food",
+	"sandwich": {
+		"name": "sandwich",
+		"type": "food",
 		"stamina":40,
-		"status":{
-			"type":"buff",
-			"name":"resilience",
-			"effect":["armour","willpower"],
+		"status": {
+			"type": "buff",
+			"name": "resilience",
+			"effect":["armour", "willpower"],
 			"effect_scale":6.0,
 			"duration":20*60,
 		},
 		"price":20,
-		"material_types":[["cooking"],["plant","cooking"]],
+		"material_types":[["cooking"],["plant", "cooking"]],
 	},
-	"pizza":{
-		"name":"pizza",
-		"type":"food",
+	"pizza": {
+		"name": "pizza",
+		"type": "food",
 		"stamina":40,
-		"status":{
-			"type":"buff",
-			"name":"vigor",
-			"effect":["attack","magic"],
+		"status": {
+			"type": "buff",
+			"name": "vigor",
+			"effect":["attack", "magic"],
 			"effect_scale":5.5,
 			"duration":20*60,
 		},
 		"price":20,
 		"material_types":[["cooking"],["cooking"]],
 	},
-	"curry":{
-		"name":"curry",
-		"type":"food",
+	"curry": {
+		"name": "curry",
+		"type": "food",
 		"stamina":40,
-		"status":{
-			"type":"buff",
-			"name":"vigor",
-			"effect":["attack","magic"],
+		"status": {
+			"type": "buff",
+			"name": "vigor",
+			"effect":["attack", "magic"],
 			"effect_scale":5.5,
 			"duration":20*60,
 		},
 		"price":20,
-		"material_types":[["cooking"],["liquid","cooking"]],
+		"material_types":[["cooking"],["liquid", "cooking"]],
 	},
-	"tea":{
-		"name":"tea",
-		"type":"food",
+	"tea": {
+		"name": "tea",
+		"type": "food",
 		"stamina":40,
-		"status":{
-			"type":"buff",
-			"name":"regeneration",
+		"status": {
+			"type": "buff",
+			"name": "regeneration",
 			"health_regen":10,
 			"duration":20*60,
 		},
 		"price":20,
-		"material_types":[["healing"],["plant","healing"]],
+		"material_types":[["healing"],["plant", "healing"]],
 	},
-	"dessert":{
-		"name":"dessert",
-		"type":"food",
+	"dessert": {
+		"name": "dessert",
+		"type": "food",
 		"stamina":40,
-		"status":{
-			"type":"buff",
-			"name":"joy",
-			"effect":["willpower","accuracy"],
+		"status": {
+			"type": "buff",
+			"name": "joy",
+			"effect":["willpower", "accuracy"],
 			"effect_scale":6.0,
 			"duration":20*60,
 		},
 		"price":20,
 		"material_types":[["cooking"],["cooking"]],
 	},
-	"pudding":{
-		"name":"pudding",
-		"type":"food",
+	"pudding": {
+		"name": "pudding",
+		"type": "food",
 		"stamina":40,
-		"status":{
-			"type":"buff",
-			"name":"joy",
+		"status": {
+			"type": "buff",
+			"name": "joy",
 			"effect":["speed"],
 			"effect_scale":1.0,
 			"duration":10*60,
 		},
 		"price":20,
-		"material_types":[["cooking"],["liquid","cooking"]],
+		"material_types":[["cooking"],["liquid", "cooking"]],
 	},
-	"pot":{
-		"name":"pot",
-		"type":"food",
+	"pot": {
+		"name": "pot",
+		"type": "food",
 		"stamina":40,
-		"status":{
-			"type":"buff",
-			"name":"satisfaction",
-			"effect":["armour","evasion"],
+		"status": {
+			"type": "buff",
+			"name": "satisfaction",
+			"effect":["armour", "evasion"],
 			"effect_scale":6.0,
 			"duration":20*60,
 		},
 		"price":20,
 		"material_types":[["cooking"],["cooking"]],
 	},
-	"mayonnaise":{
-		"name":"mayonnaise",
-		"type":"food",
+	"mayonnaise": {
+		"name": "mayonnaise",
+		"type": "food",
 		"stamina":30,
-		"status":{
-			"type":"buff",
-			"name":"mayonnaise",
+		"status": {
+			"type": "buff",
+			"name": "mayonnaise",
 			"mana_regen":8,
 			"stamina_regen":8,
 			"duration":20*60,
 		},
 		"price":15,
-		"material_types":[["cooking","liquid"]],
+		"material_types":[["cooking", "liquid"]],
 	},
 }
 const LEGENDARY_ITEM_NAME = {
@@ -1806,242 +1806,242 @@ const LEGENDARY_ITEM_NAME = {
 const DEFAULT_MATERIAL_PRICE = 10
 const DEFAULT_MATERIAL_TYPES = [
 	{
-		"name":"common",
+		"name": "common",
 		"quality":0.75,
 	},
 	{
-		"name":"good",
+		"name": "good",
 		"quality":1.0,
 	},
 	{
-		"name":"rare",
+		"name": "rare",
 		"quality":1.25,
 	},
 ]
 const DEFAULT_MATERIALS = {
 	"wood":[
 		{
-			"name":"pine",
+			"name": "pine",
 			"quality":0.75,
 		},
 		{
-			"name":"cedar",
+			"name": "cedar",
 			"quality":0.75,
 		},
 		{
-			"name":"maple",
+			"name": "maple",
 			"quality":1.0,
 		},
 		{
-			"name":"bamboo",
+			"name": "bamboo",
 			"quality":1.0,
 		},
 		{
-			"name":"birch",
+			"name": "birch",
 			"quality":1.25,
 		},
 		{
-			"name":"oak",
+			"name": "oak",
 			"quality":1.25,
 		},
 	],
 	"paper":[
 		{
-			"name":"rough",
+			"name": "rough",
 			"quality":0.75,
 		},
 		{
-			"name":"bleached",
+			"name": "bleached",
 			"quality":1.0,
 		},
 		{
-			"name":"common",
+			"name": "common",
 			"quality":1.0,
 		},
 		{
-			"name":"infused",
+			"name": "infused",
 			"quality":1.25,
 		},
 	],
 	"cloth":[
 		{
-			"name":"wool",
+			"name": "wool",
 			"quality":0.75,
 		},
 		{
-			"name":"polyester",
+			"name": "polyester",
 			"quality":0.75,
 		},
 		{
-			"name":"linen",
+			"name": "linen",
 			"quality":1.0,
 		},
 		{
-			"name":"cotton",
+			"name": "cotton",
 			"quality":1.0,
 		},
 		{
-			"name":"velvet",
+			"name": "velvet",
 			"quality":1.25,
 		},
 		{
-			"name":"silk",
+			"name": "silk",
 			"quality":1.25,
 		},
 	],
 	"leather":[
 		{
-			"name":"rough",
+			"name": "rough",
 			"quality":0.75,
 		},
 		{
-			"name":"worn down",
+			"name": "worn down",
 			"quality":0.75,
 		},
 		{
-			"name":"reinforced",
+			"name": "reinforced",
 			"quality":1.0,
 		},
 		{
-			"name":"wolf skin",
+			"name": "wolf skin",
 			"quality":1.0,
 		},
 		{
-			"name":"bear skin",
+			"name": "bear skin",
 			"quality":1.25,
 		},
 		{
-			"name":"troll hide",
+			"name": "troll hide",
 			"quality":1.25,
 		},
 	],
 	"metal":[
 		{
-			"name":"tin",
+			"name": "tin",
 			"quality":0.75,
 		},
 		{
-			"name":"copper",
+			"name": "copper",
 			"quality":0.75,
 		},
 		{
-			"name":"bronze",
+			"name": "bronze",
 			"quality":1.0,
 		},
 		{
-			"name":"iron",
+			"name": "iron",
 			"quality":1.0,
 		},
 		{
-			"name":"steel",
+			"name": "steel",
 			"quality":1.25,
 		},
 		{
-			"name":"silver",
+			"name": "silver",
 			"quality":1.25,
 		},
 	],
 	"stone":[
 		{
-			"name":"clay",
+			"name": "clay",
 			"quality":0.75,
 		},
 		{
-			"name":"graphite",
+			"name": "graphite",
 			"quality":0.75,
 		},
 		{
-			"name":"quartz",
+			"name": "quartz",
 			"quality":1.0,
 		},
 		{
-			"name":"sand stone",
+			"name": "sand stone",
 			"quality":1.0,
 		},
 		{
-			"name":"granite",
+			"name": "granite",
 			"quality":1.25,
 		},
 		{
-			"name":"basalt",
+			"name": "basalt",
 			"quality":1.25,
 		},
 	],
 	"gem":[
 		{
-			"name":"quartz",
+			"name": "quartz",
 			"quality":0.75,
 		},
 		{
-			"name":"peridot",
+			"name": "peridot",
 			"quality":0.75,
 		},
 		{
-			"name":"turquoise",
+			"name": "turquoise",
 			"quality":0.75,
 		},
 		{
-			"name":"glass",
+			"name": "glass",
 			"quality":0.75,
 		},
 		{
-			"name":"agate",
+			"name": "agate",
 			"quality":1.0,
 		},
 		{
-			"name":"emerald",
+			"name": "emerald",
 			"quality":1.0,
 		},
 		{
-			"name":"amber",
+			"name": "amber",
 			"quality":1.0,
 		},
 		{
-			"name":"lapis lazuli",
+			"name": "lapis lazuli",
 			"quality":1.0,
 		},
 		{
-			"name":"garnet",
+			"name": "garnet",
 			"quality":1.25,
 		},
 		{
-			"name":"hematite",
+			"name": "hematite",
 			"quality":1.25,
 		},
 		{
-			"name":"ruby",
+			"name": "ruby",
 			"quality":1.25,
 		},
 		{
-			"name":"sapphire",
+			"name": "sapphire",
 			"quality":1.25,
 		},
 	],
 	"bone":[
 		{
-			"name":"withered",
+			"name": "withered",
 			"quality":0.75,
 		},
 		{
-			"name":"beast",
+			"name": "beast",
 			"quality":1.0,
 		},
 		{
-			"name":"tiger",
+			"name": "tiger",
 			"quality":1.25,
 		},
 	],
 	"soul":[
 		{
-			"name":"fleeting",
+			"name": "fleeting",
 			"quality":0.75,
 		},
 		{
-			"name":"unremarkable",
+			"name": "unremarkable",
 			"quality":1.0,
 		},
 		{
-			"name":"greater",
+			"name": "greater",
 			"quality":1.25,
 		},
 	],
@@ -2049,58 +2049,58 @@ const DEFAULT_MATERIALS = {
 const LEGENDARY_MATERIALS = {
 	"wood":[
 		{
-			"name":"redwood",
+			"name": "redwood",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"attack":0.5,
 				"penetration":0.75,
 			},
 		},
 		{
-			"name":"blackwood",
+			"name": "blackwood",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"accuracy":0.5,
 				"evasion":0.5,
 			},
 		},
 		{
-			"name":"whitewood",
+			"name": "whitewood",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"health":5,
 				"stamina":2.5,
 				"mana":2.5,
 			},
 		},
 		{
-			"name":"steelwood",
+			"name": "steelwood",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"armour":1,
 			},
 		},
 	],
 	"paper":[
 		{
-			"name":"forgotten beast",
+			"name": "forgotten beast",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"willpower":1,
 			},
 		},
 		{
-			"name":"ancient beast",
+			"name": "ancient beast",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"magic":0.5,
 				"accuracy":0.5,
 			},
 		},
 		{
-			"name":"aether infused",
+			"name": "aether infused",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"mana":2.5,
 				"mana_regen":1.5,
 			},
@@ -2108,10 +2108,10 @@ const LEGENDARY_MATERIALS = {
 	],
 	"cloth":[
 		{
-			"name":"aramid",
+			"name": "aramid",
 			"quality":1.0,
-			"add":{
-				"resistance":{
+			"add": {
+				"resistance": {
 					"piercing":0.025,
 					"fire":0.025,
 					"light":0.025,
@@ -2119,10 +2119,10 @@ const LEGENDARY_MATERIALS = {
 			},
 		},
 		{
-			"name":"ancient beast fur",
+			"name": "ancient beast fur",
 			"quality":1.0,
-			"add":{
-				"resistance":{
+			"add": {
+				"resistance": {
 					"cutting":0.025,
 					"ice":0.025,
 					"water":0.025,
@@ -2130,17 +2130,17 @@ const LEGENDARY_MATERIALS = {
 			},
 		},
 		{
-			"name":"exquisite velvet",
+			"name": "exquisite velvet",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"willpower":0.5,
 				"evasion":0.5,
 			},
 		},
 		{
-			"name":"resilient silk",
+			"name": "resilient silk",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"willpower":0.5,
 				"armour":0.5,
 			},
@@ -2148,24 +2148,24 @@ const LEGENDARY_MATERIALS = {
 	],
 	"leather":[
 		{
-			"name":"infused troll",
+			"name": "infused troll",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"health_regen":2.5,
 			},
 		},
 		{
-			"name":"ancient beast",
+			"name": "ancient beast",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"armour":0.5,
 				"accuracy":0.5,
 			},
 		},
 		{
-			"name":"forgotten beast",
+			"name": "forgotten beast",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"armour":0.5,
 				"evasion":0.5,
 			},
@@ -2173,35 +2173,35 @@ const LEGENDARY_MATERIALS = {
 	],
 	"metal":[
 		{
-			"name":"mithril",
+			"name": "mithril",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"accuracy":0.5,
 				"evasion":0.5,
 			},
 		},
 		{
-			"name":"black steel",
+			"name": "black steel",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"attack":0.5,
 				"penetration":0.75,
 			},
 		},
 		{
-			"name":"quicksilver",
+			"name": "quicksilver",
 			"quality":0.95,
-			"add":{
+			"add": {
 				"speed":0.5,
 			},
 		},
 	],
 	"stone":[
 		{
-			"name":"granite",
+			"name": "granite",
 			"quality":1.0,
-			"add":{
-				"resistance":{
+			"add": {
+				"resistance": {
 					"cutting":0.02,
 					"piercing":0.02,
 					"impact":0.02,
@@ -2209,16 +2209,16 @@ const LEGENDARY_MATERIALS = {
 			},
 		},
 		{
-			"name":"basalt",
+			"name": "basalt",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"attack":1,
 			},
 		},
 		{
-			"name":"marble",
+			"name": "marble",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"magic":0.5,
 				"mana_regen":1.5,
 			},
@@ -2226,24 +2226,24 @@ const LEGENDARY_MATERIALS = {
 	],
 	"gem":[
 		{
-			"name":"pure diamond",
+			"name": "pure diamond",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"magic":1,
 			},
 		},
 		{
-			"name":"star saphire",
+			"name": "star saphire",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"magic":0.5,
 				"willpower":0.5,
 			},
 		},
 		{
-			"name":"blood ruby",
+			"name": "blood ruby",
 			"quality":1.0,
-			"add":{
+			"add": {
 				"health":2.5,
 				"health_regen":1,
 			},
@@ -2251,10 +2251,10 @@ const LEGENDARY_MATERIALS = {
 	],
 	"bone":[
 		{
-			"name":"ancient beast",
+			"name": "ancient beast",
 			"quality":1.0,
-			"add":{
-				"resitance":{
+			"add": {
+				"resitance": {
 					"impact":0.02,
 					"cutting":0.02,
 					"piercing":0.02,
@@ -2262,10 +2262,10 @@ const LEGENDARY_MATERIALS = {
 			},
 		},
 		{
-			"name":"ancient beast",
+			"name": "ancient beast",
 			"quality":1.0,
-			"add":{
-				"damage":{
+			"add": {
+				"damage": {
 					"impact":0.015,
 					"cutting":0.015,
 					"piercing":0.015,
@@ -2472,7 +2472,7 @@ func create_component_tooltip(item: Dictionary) -> String:
 		return ""
 	if "source" not in item:
 		item.source = tr("UNKNOWN_ORIGIN")
-	var text: String = format_item_name(item) + "\n" + item.type + "\n" + item.source + "\n\n" + tr("COMPONENTS") + ":"
+	var text: String = format_item_name(item) + "\n" + item.type + "\n" + item.source + "\n\n" + tr("COMPONENTS") + ": "
 	if item.components is Array:
 		for dict in item.components:
 			if typeof(dict) == TYPE_DICTIONARY:
@@ -2590,7 +2590,7 @@ func create_randomized_equipment(type: String, slot: String, subtype: String, nu
 		nm = tr(EQUIPMENT_SUBTYPE_NAME[subtype].pick_random().to_upper()).capitalize()
 	elif EQUIPMENT_TYPE_NAME.has(slot):
 		nm = tr(EQUIPMENT_TYPE_NAME[slot].pick_random().to_upper()).capitalize()
-	item = create_random_equipment(type, components, region, {"type":slot,"name":nm}, tier, quality_mod, quality_bonus)
+	item = create_random_equipment(type, components, region, {"type":slot, "name":nm}, tier, quality_mod, quality_bonus)
 	if slot=="weapon" && num_components>=4:
 		item["2h"] = true
 	return item
@@ -2622,7 +2622,7 @@ func create_equipment(type: String, components: Array, materials: Array, info:= 
 		var quality: int = mat.quality + quality_bonus
 		var mat_data:= {
 			"name": mat.name.to_lower(),
-			"attributes":{}
+			"attributes": {}
 		}
 		var comp_data:= {
 #			"name": mat.name.to_lower(),
@@ -2706,7 +2706,7 @@ func create_equipment_drop(creature: Dictionary) -> Dictionary:
 	var recipe: String = EQUIPMENT_RECIPES.keys().pick_random()
 	if creature.has("equipment_quality"):
 		quality *= creature.equipment_quality
-	item = create_random_standard_equipment(recipe, {"level":creature.level,"tier":creature.tier,"local_materials":DEFAULT_MATERIALS}, int(creature.tier*randf_range(0.25,0.75) + randf_range(0.0,0.5)), float(quality)/100.0)
+	item = create_random_standard_equipment(recipe, {"level":creature.level, "tier":creature.tier, "local_materials":DEFAULT_MATERIALS}, int(creature.tier*randf_range(0.25,0.75) + randf_range(0.0,0.5)), float(quality)/100.0)
 	item.recipe = recipe
 	num_enchantments -= int(item.has("enchanted") && item.enchanted)
 	if creature.has("equipment_enchantment_chance"):
@@ -2733,7 +2733,7 @@ func create_equipment_drop(creature: Dictionary) -> Dictionary:
 func create_legendary_equipment(type: String, level: int, quality:= 150) -> Dictionary:
 	var item: Dictionary
 	var add_quality:= 0
-	var scale:= (1.0 + 0.1 * (level - 1)) * quality / 100.0
+	#var scale:= (1.0 + 0.1 * (level - 1)) * quality / 100.0
 	var creator: String
 	var base_name: String
 	if type not in EQUIPMENT_RECIPES:
@@ -2840,7 +2840,7 @@ func create_material_drop(type: String, creature: Dictionary, add_data:= {}) -> 
 			TYPE_INT:
 				material.add[k] = int(material.add[k]*quality/100)
 			TYPE_DICTIONARY:
-				if k in ["damage","resistance"]:
+				if k in ["damage", "resistance"]:
 					continue
 				for c in material.add[k].keys():
 					material.add[k][c] *= float(quality)/100.0
@@ -2870,7 +2870,7 @@ func create_regional_material(type: String, region: Dictionary, quality_mod:= 1.
 				break
 	if base_mat.size()>0:
 		quality *= base_mat.quality
-		material.name = sanitize_name(material.name.pick_random().format({"base_name":base_mat.name,"name_prefix":base_mat.name})).capitalize()
+		material.name = sanitize_name(material.name.pick_random().format({"base_name":base_mat.name, "name_prefix":base_mat.name})).capitalize()
 		if base_mat.has("mod"):
 			if material.has("mod"):
 				material.mod = merge_dicts(material.mod, base_mat.mod.duplicate(true))
@@ -2891,7 +2891,7 @@ func create_regional_material(type: String, region: Dictionary, quality_mod:= 1.
 	
 	if !named:
 		var dict: Dictionary = DEFAULT_MATERIAL_TYPES.pick_random()
-		material.name = sanitize_name(material.name.pick_random().format({"base_name":dict.name,"name_prefix":dict.name})).capitalize()
+		material.name = sanitize_name(material.name.pick_random().format({"base_name":dict.name, "name_prefix":dict.name})).capitalize()
 	material.price = int(material.price*(0.5 + 0.5*float(quality)/100.0*float(quality)/100.0))
 	material.quality = quality
 	material.description = create_tooltip(material)
@@ -3022,7 +3022,7 @@ func craft_potion(type: String, materials: Array, quality_bonus:= 0) -> Dictiona
 func create_potion(type: String, name_prefix: String, quality: int) -> Dictionary:
 	var dict: Dictionary = POTIONS[type]
 	var item:= {
-		"name":sanitize_name(name_prefix+" "+dict.name).capitalize(),
+		"name":sanitize_name(name_prefix + " " + dict.name).capitalize(),
 		"type":dict.type,
 		"effect":dict.effect,
 		"quality":quality,
