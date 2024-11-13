@@ -1883,15 +1883,15 @@ func pick_skill(actor: Characters.Character):
 				var valid:= false
 				if actor is Characters.Enemy:
 					for c in enemies:
-						if c.health < c.max_health:
+						if c.health < 0.75 * c.max_health:
 							valid = true
 							break
 				else:
-					if player.health < player.max_health:
+					if player.health < 0.75 * player.max_health:
 						valid = true
 					else:
 						for c in player_summons:
-							if c.health < c.max_health:
+							if c.health < 0.75 * c.max_health:
 								valid = true
 								break
 				if !valid:
@@ -1904,7 +1904,8 @@ func pick_skill(actor: Characters.Character):
 					if player_summons.size() >= max_summons:
 						continue
 		valid_skills.push_back(skill)
-	if valid_skills.size()>0:
+	
+	if valid_skills.size() > 0:
 		return valid_skills.pick_random()
 
 func chose_engagement_target(actor: Characters.Character):
