@@ -1881,17 +1881,27 @@ func pick_skill(actor: Characters.Character):
 					continue
 			"heal":
 				var valid:= false
+				var type:= ""
+				for combat_array in skill.combat.healing:
+					for c in combat_array:
+						var t: String = c.get("type", "")
+						if t != "":
+							# Prioritize health
+							if t == "health":
+								type = "health"
+							elif type != "health":
+								type = t
 				if actor is Characters.Enemy:
 					for c in enemies:
-						if c.health < 0.75 * c.max_health:
+						if c.get(type) < 0.75 * c.get("max_" + type):
 							valid = true
 							break
 				else:
-					if player.health < 0.75 * player.max_health:
+					if player.get(type) < 0.75 * player.get("max_" + type):
 						valid = true
 					else:
 						for c in player_summons:
-							if c.health < 0.75 * c.max_health:
+							if c.get(type) < 0.75 * c.get("max_" + type):
 								valid = true
 								break
 				if !valid:
