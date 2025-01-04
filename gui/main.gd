@@ -974,6 +974,9 @@ func distribute_stat_points():
 	for stat in player.stats:
 		store_historical_data("stats", player.stats[stat], stat)
 
+func get_max_potions() -> int:
+	return MAX_POTIONS + sqrt(player.level)
+
 func get_task_ID() -> int:
 	var time_zone := Time.get_time_zone_from_system()
 	var data := Time.get_time_dict_from_unix_time(int(current_time + 60 * time_zone.bias))
@@ -1328,7 +1331,7 @@ func action_done(action: Dictionary):
 		"sell_potions":
 			var sold:= false
 			for potion in player_potions:
-				if !(potion.effect in player_settings.valid_potion_types):
+				if !(potion.effect in player_settings.valid_potion_types) or player_potions.size() > get_max_potions():
 					var price:= sell_item(potion)
 					var description: String = potion.get("description_plain", potion.get("description", ""))
 					player_potions.erase(potion)
@@ -1792,7 +1795,7 @@ func action_done(action: Dictionary):
 			elif player_gold > get_equipment_gold_limit() && action_failures < 15:
 				action_failures = max(action_failures, 1)
 				do_action("buy_equipment", {}, SHOPPING_DELAY)
-			elif player_gold > get_potion_gold_limit() && player_potions.size() < MAX_POTIONS + sqrt(player.level) && action_failures < 25:
+			elif player_gold > get_potion_gold_limit() && player_potions.size() < get_max_potions() && action_failures < 25:
 				do_action("buy_potions", {}, SHOPPING_DELAY)
 			elif player_gold>get_material_gold_limit() && action_failures < 30:
 				action_failures = max(action_failures, 20)
@@ -1913,6 +1916,9 @@ func pick_skill(actor: Characters.Character):
 				else:
 					if player_summons.size() >= max_summons:
 						continue
+			"buff":
+				if randf() > 2.0 / (actor.status.size() + 1.0) * actor.focus / actor.max_focus:
+					continue
 		valid_skills.push_back(skill)
 	
 	if valid_skills.size() > 0:

@@ -49,6 +49,8 @@ void fragment() {
 shader = SubResource("Shader_t5fec")
 shader_parameter/speed = 8.0
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_kr5p7"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w674s"]
 draw_center = false
 border_width_left = 4
@@ -56,8 +58,6 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.0117647, 0.0392157, 0.0705882, 1)
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_kr5p7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qskvj"]
 
@@ -91,7 +91,6 @@ grow_vertical = 2
 color = Color(0.0105, 0.04025, 0.07, 1)
 
 [node name="Overview" type="VBoxContainer" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1122,6 +1121,141 @@ mouse_filter = 0
 text = "ITEM"
 autowrap_mode = 3
 
+[node name="Statistics" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ck100")
+
+[node name="Statistics" type="VBoxContainer" parent="Statistics"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Statistics" type="Panel" parent="Statistics/Statistics"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("22_iplwq")
+
+[node name="Label" type="Label" parent="Statistics/Statistics/Statistics"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "STATISTICS"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Statistics/Statistics/Statistics"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Chart" parent="Statistics/Statistics/Statistics/HBoxContainer" instance=ExtResource("23_bktjj")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Statistics/Statistics/Statistics/HBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+
+[node name="Button0" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_kr5p7")
+text = "LEVEL"
+
+[node name="Button1" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_kr5p7")
+text = "EXPERIENCE"
+
+[node name="Button2" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_kr5p7")
+text = "ABILITY_LEVEL"
+
+[node name="Button3" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_kr5p7")
+text = "SKILL_LEVEL"
+
+[node name="Button4" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_kr5p7")
+text = "EQUIPMENT_LEVEL"
+
+[node name="Button9" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_kr5p7")
+text = "GUILD_RANK"
+
+[node name="Button8" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_kr5p7")
+text = "WEALTH"
+
+[node name="Button5" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_kr5p7")
+text = "STATS"
+
+[node name="Button6" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_kr5p7")
+text = "ATTRIBUTES"
+
+[node name="Button7" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_kr5p7")
+text = "BATTLES"
+
+[node name="Button10" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_kr5p7")
+text = "POTIONS_USED"
+
 [node name="Options" type="HBoxContainer" parent="."]
 visible = false
 anchors_preset = 15
@@ -1692,140 +1826,6 @@ text = "SUMMON_TYPE"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Statistics" type="HBoxContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_ck100")
-
-[node name="Statistics" type="VBoxContainer" parent="Statistics"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Statistics" type="Panel" parent="Statistics/Statistics"]
-layout_mode = 2
-size_flags_vertical = 3
-script = ExtResource("22_iplwq")
-
-[node name="Label" type="Label" parent="Statistics/Statistics/Statistics"]
-modulate = Color(1, 1, 1, 0.74902)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = 16.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 10
-text = "STATISTICS"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Statistics/Statistics/Statistics"]
-clip_contents = true
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 16.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Chart" parent="Statistics/Statistics/Statistics/HBoxContainer" instance=ExtResource("23_bktjj")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Statistics/Statistics/Statistics/HBoxContainer"]
-custom_minimum_size = Vector2(192, 0)
-layout_mode = 2
-
-[node name="Button0" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_kr5p7")
-text = "LEVEL"
-
-[node name="Button1" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_kr5p7")
-text = "EXPERIENCE"
-
-[node name="Button2" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_kr5p7")
-text = "ABILITY_LEVEL"
-
-[node name="Button3" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_kr5p7")
-text = "SKILL_LEVEL"
-
-[node name="Button4" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_kr5p7")
-text = "EQUIPMENT_LEVEL"
-
-[node name="Button9" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_kr5p7")
-text = "GUILD_RANK"
-
-[node name="Button8" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_kr5p7")
-text = "WEALTH"
-
-[node name="Button5" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_kr5p7")
-text = "STATS"
-
-[node name="Button6" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_kr5p7")
-text = "ATTRIBUTES"
-
-[node name="Button7" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_kr5p7")
-text = "BATTLES"
-
-[node name="Button10" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_kr5p7")
-text = "POTIONS_USED"
-
 [node name="SideMenu" type="Panel" parent="."]
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -2098,6 +2098,17 @@ theme = ExtResource("2_ck100")
 [connection signal="status_entered" from="Overview/Enemy" to="." method="_show_status_tooltip"]
 [connection signal="mouse_entered" from="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Label" to="Overview/HBoxContainer/Region" method="_show_region_tooltip"]
 [connection signal="status_entered" from="Overview/Player" to="." method="_show_status_tooltip"]
+[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button0" to="Statistics/Statistics/Statistics" method="show_level"]
+[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button1" to="Statistics/Statistics/Statistics" method="_show_experience"]
+[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button2" to="Statistics/Statistics/Statistics" method="_show_ability_level"]
+[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button3" to="Statistics/Statistics/Statistics" method="_show_skills"]
+[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button4" to="Statistics/Statistics/Statistics" method="_show_equipment"]
+[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button9" to="Statistics/Statistics/Statistics" method="_show_guild"]
+[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button8" to="Statistics/Statistics/Statistics" method="_show_wealth"]
+[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button5" to="Statistics/Statistics/Statistics" method="_show_stats"]
+[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button6" to="Statistics/Statistics/Statistics" method="_show_attributes"]
+[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button7" to="Statistics/Statistics/Statistics" method="_show_battles"]
+[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button10" to="Statistics/Statistics/Statistics" method="_show_potions"]
 [connection signal="toggled" from="Options/Preferences/WeaponPreference/VBoxContainer/CheckBoxMelee" to="." method="_toggle_weapon_type" binds= ["melee"]]
 [connection signal="toggled" from="Options/Preferences/WeaponPreference/VBoxContainer/CheckBoxRanged" to="." method="_toggle_weapon_type" binds= ["ranged"]]
 [connection signal="toggled" from="Options/Preferences/WeaponPreference/VBoxContainer/CheckBoxMagic" to="." method="_toggle_weapon_type" binds= ["magic"]]
@@ -2111,17 +2122,6 @@ theme = ExtResource("2_ck100")
 [connection signal="toggled" from="Options/Preferences/PotionPreference/VBoxContainer/CheckBoxStamina" to="." method="_toggle_potion_type" binds= ["stamina"]]
 [connection signal="toggled" from="Options/Preferences/PotionPreference/VBoxContainer/CheckBoxMana" to="." method="_toggle_potion_type" binds= ["mana"]]
 [connection signal="settings_changed" from="Options/SkillModules/SkillModules" to="." method="_settings_changed"]
-[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button0" to="Statistics/Statistics/Statistics" method="show_level"]
-[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button1" to="Statistics/Statistics/Statistics" method="_show_experience"]
-[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button2" to="Statistics/Statistics/Statistics" method="_show_ability_level"]
-[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button3" to="Statistics/Statistics/Statistics" method="_show_skills"]
-[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button4" to="Statistics/Statistics/Statistics" method="_show_equipment"]
-[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button9" to="Statistics/Statistics/Statistics" method="_show_guild"]
-[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button8" to="Statistics/Statistics/Statistics" method="_show_wealth"]
-[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button5" to="Statistics/Statistics/Statistics" method="_show_stats"]
-[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button6" to="Statistics/Statistics/Statistics" method="_show_attributes"]
-[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button7" to="Statistics/Statistics/Statistics" method="_show_battles"]
-[connection signal="pressed" from="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer/Button10" to="Statistics/Statistics/Statistics" method="_show_potions"]
 [connection signal="toggled" from="SideMenu/VBoxContainer/SpaceTop/Button" to="." method="_side_menu_expand_toggled"]
 [connection signal="pressed" from="SideMenu/VBoxContainer/Button0" to="." method="_show_overview"]
 [connection signal="pressed" from="SideMenu/VBoxContainer/Button1" to="." method="_show_character"]
