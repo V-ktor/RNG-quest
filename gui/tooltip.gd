@@ -1,12 +1,13 @@
 extends Panel
+class_name Tooltip
 
 const MOUSE_LIMIT = 128.0
 
 var current_texts: Array
 
-@onready var container:= $VBoxContainer
-@onready var text_label:= $VBoxContainer/RichTextLabel
-@onready var tabs_container:= $VBoxContainer/Tabs
+@onready var container:= $VBoxContainer as VBoxContainer
+@onready var text_label:= $VBoxContainer/RichTextLabel as RichTextLabel
+@onready var tabs_container:= $VBoxContainer/Tabs as HBoxContainer
 
 
 func _get_text_length(text: String) -> int:
@@ -37,8 +38,8 @@ func _get_max_line_length(text: String) -> int:
 
 func _set_pos_scale(text: String):
 	position = get_global_mouse_position() + Vector2(8, 0)
-	size.x = clamp(16 + 8*_get_max_line_length(text), 192, 448)
-	size.y = clamp(48 + 17*text.count("\n"), 64, 512)
+	size.x = clampi(16 + 8*_get_max_line_length(text), 192, 448)
+	size.y = clampi(48 + 17*text.count("\n"), 64, 512)
 
 func show_text(text: String):
 	text_label.clear()
@@ -52,22 +53,22 @@ func show_texts(text_list: Array, category_names: Array):
 	text_label.clear()
 	text_label.parse_bbcode(text_list[0])
 	for c in tabs_container.get_children():
-		c.set_pressed_no_signal(false)
-		c.hide()
+		(c as Button).set_pressed_no_signal(false)
+		(c as Button).hide()
 	for i in range(text_list.size()):
 		var button: Button
-		if tabs_container.has_node("Button"+str(i)):
-			button = tabs_container.get_node("Button"+str(i))
+		if tabs_container.has_node("Button" + str(i)):
+			button = tabs_container.get_node("Button" + str(i)) as Button
 		else:
-			button = tabs_container.get_node("Button0").duplicate(14)
-			button.name = "Button"+str(i)
+			button = tabs_container.get_node("Button0").duplicate(14) as Button
+			button.name = "Button" + str(i)
 			tabs_container.add_child(button)
 		if !button.is_connected("toggled", Callable(self, "_tab_button_toggled")):
 			button.connect("toggled", Callable(self, "_tab_button_toggled").bind(i))
 		button.text = tr(category_names[i])
 		button.show()
 	tabs_container.show()
-	tabs_container.get_node("Button0").set_pressed_no_signal(true)
+	(tabs_container.get_node("Button0") as Button).set_pressed_no_signal(true)
 	_set_pos_scale(text_list[0])
 	show()
 
@@ -84,7 +85,6 @@ func _process(_delta: float):
 	if mouse_pos.x < -MOUSE_LIMIT || mouse_pos.y < -MOUSE_LIMIT || mouse_pos.x > size.x + MOUSE_LIMIT || mouse_pos.y > size.y + MOUSE_LIMIT:
 		hide()
 		return
-#	size.y = text_label.size.y + 4 + (tabs_container.size.y + 4)*int(tabs_container.visible)
-	position.x = min(position.x, DisplayServer.window_get_size().x - size.x - 16)		# leave extra space for scroll bar
-	position.y = clamp(position.y, 0, DisplayServer.window_get_size().y - size.y)
 	
+	position.x = mini(position.x, DisplayServer.window_get_size().x - size.x - 16)	# leave extra space for scroll bar
+	position.y = clampi(position.y, 0, DisplayServer.window_get_size().y - size.y)

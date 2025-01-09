@@ -1,4 +1,5 @@
 extends Panel
+class_name StatisticsPanel
 
 const LINE_COLOR = Color(1.0, 1.0, 1.0, 1.0)
 const LINE_WIDTH = 2.0
@@ -35,13 +36,14 @@ const AREA_COLORS = {
 var historical_data: Dictionary
 
 
-@onready var chart : GraphUI = $HBoxContainer/Chart
+@onready var chart := $HBoxContainer/Chart as GraphUI
+@onready var label := $Label as Label
 
 
 func generate_color(index: int, h := 1.0, s := 1.0, v := 1.0, a := 1.0) -> Color:
 	var is_odd := int(float(index) / (2.1 * PI)) % 2
 	var hue := fposmod(0.6 - float(index) / (2.1 * PI), 1.0)
-	var value: float = max(1.0 - 0.1 * floor(index / 8.0) - 0.2 * float(is_odd), 0.1)
+	var value:= maxf(1.0 - 0.1 * floorf(index / 8.0) - 0.2 * float(is_odd), 0.1)
 	var saturation := 0.5 + 0.5 * value - 0.25 * float(is_odd)
 	return Color.from_hsv(hue * h, saturation * s, value * v, a)
 
@@ -99,13 +101,13 @@ func show_level() -> void:
 	var points := array_to_time_vector(historical_data.get("level", []))
 	var options := init_plot("level", "time_days", "level")
 	chart.plot(tr("LEVEL"), points, options)
-	$Label.text = tr("LEVEL")
+	label.text = tr("LEVEL")
 
 func _show_experience() -> void:
 	var points := array_to_time_vector(historical_data.get("experience", []))
 	var options := init_plot("experience", "time", "experience")
 	chart.plot(tr("EXPERIENCE"), points, options)
-	$Label.text = tr("EXPERIENCE")
+	label.text = tr("EXPERIENCE")
 
 func _show_ability_level() -> void:
 	var options := init_plot("abilities", "time", "level")
@@ -117,13 +119,13 @@ func _show_ability_level() -> void:
 		options.fill_color_top = generate_color(i, 1.0, 0.75, 0.5, 0.5)
 		options.fill_color_bottom = generate_color(i, 1.0, 0.5, 0.25, 0.0)
 		chart.plot(tr(type.to_upper()), points, options)
-	$Label.text = tr("ABILITIES")
+	label.text = tr("ABILITIES")
 
 func _show_wealth() -> void:
 	var points := array_to_time_vector(historical_data.get("gold", []))
 	var options := init_plot("wealth", "time", "gold")
 	chart.plot(tr("WEALTH"), points, options)
-	$Label.text = tr("WEALTH")
+	label.text = tr("WEALTH")
 
 func _show_battles() -> void:
 	var points_won := array_to_time_vector(historical_data.get("battles_won", []))
@@ -132,7 +134,7 @@ func _show_battles() -> void:
 	var options_lost := init_plot("battles_lost", "time", "amount")
 	chart.plot(tr("BATTLES_WON"), points_won, options_won)
 	chart.plot(tr("BATTLES_LOST"), points_lost, options_lost)
-	$Label.text = tr("BATTLES")
+	label.text = tr("BATTLES")
 
 func _show_skills() -> void:
 	var options := init_plot("skills", "time", "level")
@@ -144,7 +146,7 @@ func _show_skills() -> void:
 		options.fill_color_top = generate_color(i, 1.0, 0.75, 0.5, 0.5)
 		options.fill_color_bottom = generate_color(i, 1.0, 0.5, 0.25, 0.0)
 		chart.plot(type, points, options)
-	$Label.text = tr("SKILLS")
+	label.text = tr("SKILLS")
 
 func _show_equipment() -> void:
 	var options := init_plot("equipment", "time", "level")
@@ -157,7 +159,7 @@ func _show_equipment() -> void:
 		options.fill_color_top = generate_color(i, 1.0, 0.75, 0.5, 0.5)
 		options.fill_color_bottom = generate_color(i, 1.0, 0.5, 0.25, 0.0)
 		chart.plot(tr(type.to_upper()), points, options)
-	$Label.text = tr("EQUIPMENT")
+	label.text = tr("EQUIPMENT")
 
 func _show_guild() -> void:
 	var options := init_plot("guilds", "time", "level")
@@ -169,7 +171,7 @@ func _show_guild() -> void:
 		options.fill_color_top = generate_color(i, 1.0, 0.75, 0.5, 0.5)
 		options.fill_color_bottom = generate_color(i, 1.0, 0.5, 0.25, 0.0)
 		chart.plot(tr(type.to_upper()), points, options)
-	$Label.text = tr("GUILDS")
+	label.text = tr("GUILDS")
 
 func _show_stats() -> void:
 	var options := init_plot("stats", "time", "level")
@@ -181,7 +183,7 @@ func _show_stats() -> void:
 		options.fill_color_top = generate_color(i, 1.0, 0.75, 0.5, 0.5)
 		options.fill_color_bottom = generate_color(i, 1.0, 0.5, 0.25, 0.0)
 		chart.plot(tr(type.to_upper()), points, options)
-	$Label.text = tr("STATS")
+	label.text = tr("STATS")
 
 func _show_attributes() -> void:
 	var options := init_plot("attributes", "time", "level")
@@ -193,7 +195,7 @@ func _show_attributes() -> void:
 		options.fill_color_top = generate_color(i, 1.0, 0.75, 0.5, 0.5)
 		options.fill_color_bottom = generate_color(i, 1.0, 0.5, 0.25, 0.0)
 		chart.plot(tr(type.to_upper()), points, options)
-	$Label.text = tr("ATTRIBUTES")
+	label.text = tr("ATTRIBUTES")
 
 func _show_potions() -> void:
 	var options := init_plot("potions", "time", "level")
@@ -205,4 +207,4 @@ func _show_potions() -> void:
 		options.fill_color_top = generate_color(i, 1.0, 0.75, 0.5, 0.5)
 		options.fill_color_bottom = generate_color(i, 1.0, 0.5, 0.25, 0.0)
 		chart.plot(tr(type.to_upper()), points, options)
-	$Label.text = tr("POTIONS")
+	label.text = tr("POTIONS")

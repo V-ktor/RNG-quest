@@ -1,5 +1,5 @@
 {
-    "strike":{
+	"strike":{
 		"name":"strike",
 		"auto_naming":{
 			"base":["strike","hit","attack"],

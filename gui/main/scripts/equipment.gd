@@ -1,16 +1,13 @@
 extends Panel
+class_name EquipmentPanel
 
-@export
-var tooltip: Control
+@export var tooltip: Tooltip
 
 var character: Characters.Character
 
-@onready
-var eq_weapons_panel: VBoxContainer = $ScrollContainer/VBoxContainer/Weapons/VBoxContainer
-@onready
-var eq_armour_panel: VBoxContainer = $ScrollContainer/VBoxContainer/Armour/VBoxContainer
-@onready
-var eq_accessoire_panel: VBoxContainer = $ScrollContainer/VBoxContainer/Accessoires/VBoxContainer
+@onready var eq_weapons_panel:= $ScrollContainer/VBoxContainer/Weapons/VBoxContainer as VBoxContainer
+@onready var eq_armour_panel:= $ScrollContainer/VBoxContainer/Armour/VBoxContainer as VBoxContainer
+@onready var eq_accessoire_panel:= $ScrollContainer/VBoxContainer/Accessoires/VBoxContainer as VBoxContainer
 
 
 func update(inventory:= []):
@@ -18,11 +15,11 @@ func update(inventory:= []):
 		return
 	
 	for c in eq_weapons_panel.get_children() + eq_armour_panel.get_children() + eq_accessoire_panel.get_children():
-		c.hide()
+		(c as Control).hide()
 	
 	for type in character.equipment.keys():
 		var ID: String = type.capitalize().replace(" ", "")
-		var label: Label = get_node("%" + ID)
+		var label:= get_node("%" + ID) as Label
 		if label == null:
 			continue
 		label.text = character.equipment[type].name

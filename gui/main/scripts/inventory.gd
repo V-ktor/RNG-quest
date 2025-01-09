@@ -1,24 +1,21 @@
 extends Panel
+class_name InventoryPanel
 
-@export
-var tooltip: Control
+@export var tooltip: Tooltip
 
 var main_inventory: Array
 var potion_inventory: Array
 var story_inventory: Array
 
-@onready
-var inventory_panel: VBoxContainer = $ScrollContainer/VBoxContainer/Inventory
-@onready
-var potion_inventory_panel: VBoxContainer = $ScrollContainer/VBoxContainer/Potions
-@onready
-var story_inventory_panel: VBoxContainer = $ScrollContainer/VBoxContainer/Quest
+@onready var inventory_panel:= $ScrollContainer/VBoxContainer/Inventory as VBoxContainer
+@onready var potion_inventory_panel:= $ScrollContainer/VBoxContainer/Potions as VBoxContainer
+@onready var story_inventory_panel:= $ScrollContainer/VBoxContainer/Quest as VBoxContainer
 
 
 func summarize_inventory(array: Array) -> Dictionary:
 	var dict:= {}
 	for item in array:
-		if dict.has(item.name):
+		if item.name in dict:
 			dict[item.name] += 1
 		else:
 			dict[item.name] = 1
@@ -29,20 +26,20 @@ func update_inventory(inventory: Array):
 	main_inventory = inventory
 	
 	for c in inventory_panel.get_children():
-		c.hide()
+		(c as Control).hide()
 	
 	for i in range(items.size()):
 		var label: Label
 		var item: Dictionary
 		var item_name: String = items.keys()[i]
 		for it in inventory:
-			if it.name==item_name:
+			if it.name == item_name:
 				item = it
 				break
 		if inventory_panel.has_node("Label" + str(i)):
-			label = inventory_panel.get_node("Label" + str(i))
+			label = inventory_panel.get_node("Label" + str(i)) as Label
 		else:
-			label = inventory_panel.get_node("Label0").duplicate(14)
+			label = inventory_panel.get_node("Label0").duplicate(14) as Label
 			label.name = "Label" + str(i)
 			inventory_panel.add_child(label)
 		if label.is_connected("mouse_entered", Callable(self, "_show_inventory_tooltip")):
@@ -62,20 +59,20 @@ func update_potion_inventory(inventory: Array):
 	potion_inventory = inventory
 	
 	for c in potion_inventory_panel.get_children():
-		c.hide()
+		(c as Control).hide()
 	
 	for i in range(potions.size()):
 		var label: Label
 		var item: Dictionary
 		var _name: String = potions.keys()[i]
 		for it in inventory:
-			if it.name==_name:
+			if it.name == _name:
 				item = it
 				break
 		if potion_inventory_panel.has_node("Label" + str(i)):
-			label = potion_inventory_panel.get_node("Label" + str(i))
+			label = potion_inventory_panel.get_node("Label" + str(i)) as Label
 		else:
-			label = potion_inventory_panel.get_node("Label0").duplicate(14)
+			label = potion_inventory_panel.get_node("Label0").duplicate(14) as Label
 			label.name = "Label" + str(i)
 			potion_inventory_panel.add_child(label)
 		if !label.is_connected("mouse_entered", Callable(self, "_show_potion_tooltip")):
@@ -88,20 +85,20 @@ func update_potion_inventory(inventory: Array):
 
 func update_story_inventory(inventory: Array):
 	for c in story_inventory_panel.get_children():
-		c.hide()
+		(c as Control).hide()
 	story_inventory = inventory
 	
 	for i in range(inventory.size()):
 		var label: Label
 		if story_inventory_panel.has_node("Label" + str(i)):
-			label = story_inventory_panel.get_node("Label" + str(i))
+			label = story_inventory_panel.get_node("Label" + str(i)) as Label
 		else:
-			label = story_inventory_panel.get_node("Label0").duplicate(14)
+			label = story_inventory_panel.get_node("Label0").duplicate(14) as Label
 			label.name = "Label" + str(i)
 			story_inventory_panel.add_child(label)
 		if !label.is_connected("mouse_entered", Callable(self, "_show_story_inventory_tooltip")):
 			label.connect("mouse_entered", Callable(self, "_show_story_inventory_tooltip").bind(i))
-		if inventory[i].amount!=1:
+		if inventory[i].amount != 1:
 			label.text = str(inventory[i].amount) + "x " + inventory[i].name
 		else:
 			label.text = inventory[i].name

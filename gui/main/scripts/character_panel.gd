@@ -1,4 +1,5 @@
 extends Control
+class_name CharacterPanel
 
 var characters: Array[Characters.Character] = []
 

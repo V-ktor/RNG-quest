@@ -1,1 +1,2 @@
 extends Panel
+class_name TimetablePanel

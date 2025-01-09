@@ -1,4 +1,5 @@
 extends Control
+class_name GraphPanel
 
 var graphs: Array[Graph] = []
 
@@ -88,44 +89,3 @@ func _draw() -> void:
 			add_child(layer)
 		layer.graph = graph
 		layer.queue_redraw()
-	
-	#var all_points: Array[PackedVector2Array] = []
-	#all_points.resize(graphs.size())
-	#
-	#for i in range(graphs.size()):
-		#var graph := graphs[i]
-		#var points := graph.get_points()
-		#var no_points := points.size()
-		#if no_points < 2:
-			## Cannot draw a line chart from less than two points
-			#continue
-		#
-		#var colors := PackedColorArray([
-			#graph.fill_color_top,
-			#graph.fill_color_top,
-			#graph.fill_color_bottom,
-			#graph.fill_color_bottom,
-		#])
-		#var rescaled_points := PackedVector2Array()
-		#rescaled_points.resize(no_points + 2)
-		#for j in range(no_points):
-			#var p := (points[j] - Vector2(x_min, y_min)) / Vector2(max(x_max - x_min, 1.0), max(y_max - y_min, 1.0))
-			#p.y = 1.0 - p.y  # in Godot positive y is down
-			#rescaled_points[j + 1] = p * size
-		#rescaled_points[0] = Vector2(0.0, rescaled_points[1].y)
-		#rescaled_points[no_points + 1] = Vector2(size.x, rescaled_points[no_points].y)
-		#all_points[i] = rescaled_points
-		#
-		#for j in range(1, no_points + 2):
-			#var current_points := PackedVector2Array([
-				#rescaled_points[j - 1],
-				#rescaled_points[j],
-				#Vector2(rescaled_points[j].x, size.y),
-				#Vector2(rescaled_points[j - 1].x, size.y),
-			#])
-			#draw_polygon(current_points, colors)
-	#
-	#for i in range(graphs.size()):
-		#var graph := graphs[i]
-		#var rescaled_points := all_points[i]
-		#draw_polyline(rescaled_points, graph.line_color, graph.line_width, true)

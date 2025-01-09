@@ -1,4 +1,5 @@
 extends Node
+class_name Main
 
 const MAX_STEPS = 100
 const MAX_DELTA = 1.0/10.0
@@ -3168,17 +3169,17 @@ func store_historical_data(type: String, value: Variant, sub := ""):
 				historical_data[type][sub].append([current_time, value])
 
 
-#func _set_timetable(ID: int, index: int):
-	#var type: String = ACTIONS[ID]
-	#index += 5
-	#for i in range(1, index - 4):
-		#if timetable.has(index - i):
-			#if timetable[index - i] == type:
-				#timetable.erase(index)
-				#return
-			#break
-	#timetable[index] = type
-	#autosave_delay = 10.0
+func _set_timetable(ID: int, index: int):
+	var type: String = ACTIONS[ID]
+	index += 5
+	for i in range(1, index - 4):
+		if timetable.has(index - i):
+			if timetable[index - i] == type:
+				timetable.erase(index)
+				return
+			break
+	timetable[index] = type
+	autosave_delay = 10.0
 
 
 func _settings_changed():

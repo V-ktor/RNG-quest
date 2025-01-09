@@ -1,8 +1,8 @@
 extends Control
 class_name GraphUI
 
-@onready var grid_ui := $VBoxContainer/Control/Grid
-@onready var graph_ui := $VBoxContainer/Control/Graph
+@onready var grid_ui := $VBoxContainer/Control/Grid as GraphGrid
+@onready var graph_ui := $VBoxContainer/Control/Graph as GraphPanel
 @onready var label_x_axis := $VBoxContainer/Control/LabelXAxis
 @onready var label_y_axis := $VBoxContainer/Control/LabelYAxis
 @onready var filter_container := $VBoxContainer/GridContainer

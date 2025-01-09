@@ -1,4 +1,5 @@
 extends Control
+class_name GraphGrid
 
 const PREFIXES = {
 	1e30: "Q",

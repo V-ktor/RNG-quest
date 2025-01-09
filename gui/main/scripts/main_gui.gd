@@ -6,44 +6,34 @@ var timetable: Dictionary
 var characters_player: Array[Characters.Character] = []
 var characters_enemy: Array[Characters.Character] = []
 
-@onready
-var title_label:= $Title/Label
-@onready
-var tooltip:= $Tooltip
-@onready
-var player_panel: Control = $Overview/Player
-@onready
-var enemy_panel: Control = $Overview/Enemy
-@onready
-var stat_chart: Control = $Character/Stats/Stats/Chart
-@onready
-var attribute_panel: Control = $Character/Stats/Attributes
-@onready
-var mod_panel: Control = $Character/Stats/Mods
-@onready
-var ability_panel: Control = $Character/Skills/Abilities
-@onready
-var skill_panel: Control = $Character/Skills/Skills
-@onready
-var equipment_panel: Control = $Character/Equipment/Equipment
-@onready
-var inventory_panel: Control = $Journal/Inventory
-@onready
-var gold_label: Label = $Journal/Inventory/ScrollContainer/VBoxContainer/LabelGold
-@onready
-var skill_module_panel: Control = $Options/SkillModules/SkillModules
-@onready
-var weapon_preference_panel: Control = $Options/Preferences/WeaponPreference
-@onready
-var armour_preference_panel: Control = $Options/Preferences/ArmourPreference
-@onready
-var potion_preference_panel: Control = $Options/Preferences/PotionPreference
-@onready
-var quest_log := $Overview/HBoxContainer/Quest/RichTextLabel
-@onready
-var statistics := $Statistics/Statistics/Statistics
+@onready var title_label:= $Title/Label as Label
+@onready var tooltip:= $Tooltip as Tooltip
+@onready var player_panel:= $Overview/Player as CharacterPanel
+@onready var enemy_panel:= $Overview/Enemy as CharacterPanel
+@onready var stat_chart:= $Character/Stats/Stats/Chart as RadialChart
+@onready var attribute_panel:= $Character/Stats/Attributes as AttributePanel
+@onready var mod_panel:= $Character/Stats/Mods as ModPanel
+@onready var ability_panel:= $Character/Skills/Abilities as AbilityPanel
+@onready var skill_panel:= $Character/Skills/Skills as SkillPanel
+@onready var equipment_panel:= $Character/Equipment/Equipment as EquipmentPanel
+@onready var inventory_panel:= $Journal/Inventory as InventoryPanel
+@onready var gold_label:= $Journal/Inventory/ScrollContainer/VBoxContainer/LabelGold as Label
+@onready var skill_module_panel:= $Options/SkillModules/SkillModules as SkillModulePanel
+@onready var weapon_preference_panel:= $Options/Preferences/WeaponPreference as WeaponPreferencePanel
+@onready var armour_preference_panel:= $Options/Preferences/ArmourPreference as ArmourPreferencePanel
+@onready var potion_preference_panel:= $Options/Preferences/PotionPreference as PotionPreferencePanel
+@onready var quest_log:= $Overview/HBoxContainer/Quest/RichTextLabel as RichTextLabel
+@onready var statistics:= $Statistics/Statistics/Statistics as StatisticsPanel
+@onready var page_overview:= $Overview as Control
+@onready var page_character:= $Character as Control
+@onready var page_journal:= $Journal as Control
+@onready var page_statistics:= $Statistics as Control
+@onready var page_options:= $Options as Control
+@onready var title:= $Title as Panel
+@onready var side_menu:= $SideMenu as Panel
 
 
+@warning_ignore("unused_signal")
 signal settings_changed
 
 
@@ -90,14 +80,14 @@ func _toggle_potion_type(button_pressed: bool, type: String):
 
 func _side_menu_expand_toggled(toggled_on: bool):
 	if toggled_on:
-		$SideMenu.offset_right = 128
-		$Title.offset_left = 128
-		$Title.offset_right = 192
+		side_menu.offset_right = 128
+		title.offset_left = 128
+		title.offset_right = 192
 	else:
-		$SideMenu.offset_right = 58
-		$Title.offset_left = 58
-		$Title.offset_right = 128
-	$SideMenu/VBoxContainer/SpaceTop/Button/Icon.flip_h = toggled_on
+		side_menu.offset_right = 58
+		title.offset_left = 58
+		title.offset_right = 128
+	($SideMenu/VBoxContainer/SpaceTop/Button/Icon as TextureRect).flip_h = toggled_on
 
 
 func _characters_updated(player: Array[Characters.Character], enemy: Array[Characters.Character]):
@@ -135,19 +125,19 @@ func update_quest_log(text: String):
 
 
 func _show_overview():
-	$Overview.show()
-	$Character.hide()
-	$Journal.hide()
-	$Options.hide()
-	$Statistics.hide()
+	page_overview.show()
+	page_character.hide()
+	page_journal.hide()
+	page_options.hide()
+	page_statistics.hide()
 	title_label.text = tr("OVERVIEW")
 
 func _show_character():
-	$Overview.hide()
-	$Character.show()
-	$Journal.hide()
-	$Options.hide()
-	$Statistics.hide()
+	page_overview.hide()
+	page_character.show()
+	page_journal.hide()
+	page_options.hide()
+	page_statistics.hide()
 	title_label.text = tr("CHARACTER")
 	
 	stat_chart.queue_redraw()
@@ -158,38 +148,38 @@ func _show_character():
 	equipment_panel.update()
 
 func _show_journal():
-	$Overview.hide()
-	$Character.hide()
-	$Journal.show()
-	$Options.hide()
-	$Statistics.hide()
+	page_overview.hide()
+	page_character.hide()
+	page_journal.show()
+	page_options.hide()
+	page_statistics.hide()
 	title_label.text = tr("JOURNAL")
 
 func _show_options():
-	$Overview.hide()
-	$Character.hide()
-	$Journal.hide()
-	$Options.show()
-	$Statistics.hide()
+	page_overview.hide()
+	page_character.hide()
+	page_journal.hide()
+	page_options.show()
+	page_statistics.hide()
 	title_label.text = tr("OPTIONS")
 	
 	update_preferences()
 	skill_module_panel.update()
 
 func _show_statistics() -> void:
-	$Overview.hide()
-	$Character.hide()
-	$Journal.hide()
-	$Options.hide()
-	$Statistics.show()
+	page_overview.hide()
+	page_character.hide()
+	page_journal.hide()
+	page_options.hide()
+	page_statistics.show()
 	title_label.text = tr("STATISTICS")
 	
-	$Statistics/Statistics/Statistics.show_level()
+	statistics.show_level()
 
 
-func connect_to_main(main: Node):
+func connect_to_main(main: Main):
 	# Connect signals from the main scene
-	var main_log: Control = $Overview/HBoxContainer/Log
+	var main_log:= $Overview/HBoxContainer/Log as Control
 	main.connect("text_printed", Callable(main_log, "print_log_msg"))
 	main.connect("characters_updated", Callable(self, "_characters_updated"))
 	main.connect("gold_changed", Callable(self, "_gold_changed"))
@@ -223,4 +213,12 @@ func connect_to_main(main: Node):
 	main.gui_ready()
 
 func _ready():
+	var schedule_option_button:= $Options/Timetable/Timetable/ScrollContainer/VBoxContainer/HBoxContainer0/OptionButton as OptionButton
+	schedule_option_button.set_item_tooltip(0, tr("TRAINING_TOOLTIP"))
+	schedule_option_button.set_item_tooltip(1, tr("GRINDING_TOOLTIP"))
+	schedule_option_button.set_item_tooltip(2, tr("QUESTING_TOOLTIP"))
+	schedule_option_button.set_item_tooltip(3, tr("SHOPPING_TOOLTIP"))
+	schedule_option_button.set_item_tooltip(4, tr("CRAFTING_TOOLTIP"))
+	schedule_option_button.set_item_tooltip(5, tr("RESTING_TOOLTIP"))
+	
 	_show_overview()
