@@ -275,6 +275,10 @@ func load_config():
 		error = DirAccess.make_dir_absolute("user://")
 		if error != OK:
 			print("Failed to create the user directory")
+		# set default scaling to be proportional to the screen DPI
+		settings.scaling = clampf(DisplayServer.screen_get_dpi() / 80.0, 0.5, 2.5)
+		ui_scale_slider.value = settings.scaling * 100
+		ui_scale_spinbox.value = settings.scaling * 100
 		return
 	
 	var raw:= file.get_as_text()
