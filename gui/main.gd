@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node
 
 const MAX_STEPS = 100
 const MAX_DELTA = 1.0/10.0
@@ -729,7 +729,7 @@ func optimize_equipment():
 			i += 1
 			continue
 		if item.has("subtype"):
-			if typeof(item.subtype)==TYPE_ARRAY:
+			if typeof(item.subtype) == TYPE_ARRAY:
 				var valid:= false
 				for k in item.subtype:
 					if k in player_settings.valid_weapon_types || k in player_settings.valid_armour_types:
@@ -738,19 +738,19 @@ func optimize_equipment():
 				if !valid:
 					i += 1
 					continue
-			elif !(item.subtype in player_settings.valid_weapon_types || item.subtype in player_settings.valid_armour_types || (player_settings.valid_weapon_types.size()==0 && item.type=="weapon")):
+			elif !(item.subtype in player_settings.valid_weapon_types || item.subtype in player_settings.valid_armour_types || (player_settings.valid_weapon_types.size() == 0 && item.type == "weapon")):
 				i += 1
 				continue
 		for k in EQUIPMENT_SLOTS:
-			if get_slot_type(k)!=item.type:
+			if get_slot_type(k) != item.type:
 				continue
 			if !player.equipment.has(k) && !(item.has("2h") && item["2h"]) && player_inventory.has(item):
 				equip(item)
 				player_inventory.erase(item)
 				break
 			elif item.has("2h") && item["2h"]:
-				if k=="weapon" || k=="offweapon":
-					if player.equipment.has("offweapon") && player_inventory.has(item) && compare_items([item], [player.equipment[k], player.equipment.offweapon])>0:
+				if k == "weapon" || k == "offweapon":
+					if player.equipment.has("offweapon") && player_inventory.has(item) && compare_items([item], [player.equipment[k], player.equipment.offweapon]) > 0:
 						equip(item)
 						player_inventory.erase(item)
 						break
@@ -762,21 +762,21 @@ func optimize_equipment():
 					if it.has("2h") && it["2h"]:
 						continue
 					if it.has("subtype"):
-						if !(it.subtype in player_settings.valid_weapon_types || it.subtype in player_settings.valid_armour_types || (player_settings.valid_weapon_types.size()==0 && it.type=="weapon")):
+						if !(it.subtype in player_settings.valid_weapon_types || it.subtype in player_settings.valid_armour_types || (player_settings.valid_weapon_types.size() == 0 && it.type == "weapon")):
 							continue
-					if it.type!="weapon":
+					if it.type != "weapon":
 						continue
-					if compare_items([player.equipment[k]], [item, it])<0 && player_inventory.has(item) && player_inventory.has(it):
+					if compare_items([player.equipment[k]], [item, it]) < 0 && player_inventory.has(item) && player_inventory.has(it):
 						equip(item)
 						equip(it)
 						player_inventory.erase(item)
 						player_inventory.erase(it)
 						break
-			elif k=="weapon" && !player.equipment.has("offweapon") && player_inventory.has(item):
+			elif k == "weapon" && !player.equipment.has("offweapon") && player_inventory.has(item):
 				equip(item)
 				player_inventory.erase(item)
 				break
-			elif compare_items([item], [player.equipment[k]])>0 && player_inventory.has(item):
+			elif compare_items([item], [player.equipment[k]]) > 0 && player_inventory.has(item):
 				equip(item)
 				player_inventory.erase(item)
 				break
@@ -1946,19 +1946,19 @@ func chose_engagement_target(actor: Characters.Character):
 
 func create_damage_info(damage: Dictionary) -> String:
 	var text: String = tr("ATTACK") + ": " + str(damage.attack)
-	if damage.critical>0:
+	if damage.critical > 0:
 		text += " (" + str(int(100*damage.critical)) + "% " + tr("CRITICAL_HIT") + ")"
-	if damage.absorbed>0:
+	if damage.absorbed > 0:
 		text += "\n" + tr("ABSORBED") + ": " + str(damage.absorbed)
-	if damage.blocked_armour>0:
+	if damage.blocked_armour > 0:
 		text += "\n" + tr("BLOCKED_BY_ARMOUR") + ": " + str(damage.blocked_armour)
-	if damage.blocked_willpower>0:
+	if damage.blocked_willpower > 0:
 		text += "\n" + tr("BLOCKED_BY_WILLPOWER") + ": " + str(damage.blocked_willpower)
-	if damage.resisted>0:
+	if damage.resisted > 0:
 		text += "\n" + tr("RESISTED") + ": " + str(damage.resisted)
-	if damage.enhanced>0:
+	if damage.enhanced > 0:
 		text += "\n" + tr("ENHANCED") + ": " + str(damage.enhanced)
-	if damage.penetrated>0:
+	if damage.penetrated > 0:
 		text += "\n" + tr("PENETRATED") + ": " + str(damage.penetrated)
 	text += "\n" + tr("TOTAL_DAMAGE") + ": " +str(damage.damage)
 	return text
@@ -1967,14 +1967,14 @@ func summarize_heal(data: Dictionary) -> String:
 	var text:= ""
 	for i in range(data.size()):
 		text += str(int(data.values()[i])) + " " + tr(data.keys()[i].to_upper())
-		if i<data.size()-1:
+		if i < data.size() - 1:
 			text += ", "
 	return text
 
 func merge_dicts(dict: Dictionary, add: Dictionary) -> Dictionary:
 	for k in add.keys():
 		if dict.has(k):
-			if typeof(dict[k])==TYPE_ARRAY:
+			if typeof(dict[k]) == TYPE_ARRAY:
 				dict[k].push_back(add[k])
 			else:
 				dict[k] = [dict[k], add[k]]
@@ -3179,55 +3179,10 @@ func store_historical_data(type: String, value: Variant, sub := ""):
 			#break
 	#timetable[index] = type
 	#autosave_delay = 10.0
-#
-#func _toggle_1h_weapons(button_pressed: bool):
-	#player_settings.auto_update_options = false
-	#player_settings.weapon_1h_alowed = button_pressed
-	#autosave_delay = 10.0
-#
-#func _toggle_2h_weapons(button_pressed: bool):
-	#player_settings.auto_update_options = false
-	#player_settings.weapon_2h_alowed = button_pressed
-	#autosave_delay = 10.0
-#
-#func _toggle_weapon_type(button_pressed: bool, type: String):
-	#player_settings.auto_update_options = false
-	#if button_pressed:
-		#if !player_settings.valid_weapon_types.has(type):
-			#player_settings.valid_weapon_types.push_back(type)
-	#else:
-		#player_settings.valid_weapon_types.erase(type)
-	#autosave_delay = 10.0
-#
-#func _toggle_armour_type(button_pressed: bool, type: String):
-	#player_settings.auto_update_options = false
-	#if button_pressed:
-		#if !player_settings.valid_armour_types.has(type):
-			#player_settings.valid_armour_types.push_back(type)
-	#else:
-		#player_settings.valid_armour_types.erase(type)
-	#autosave_delay = 10.0
-#
-#func _toggle_potion_type(button_pressed: bool, type: String):
-	#player_settings.auto_update_options = false
-	#if button_pressed:
-		#if !player_settings.valid_potion_types.has(type):
-			#player_settings.valid_potion_types.push_back(type)
-	#else:
-		#player_settings.valid_potion_types.erase(type)
-	#autosave_delay = 10.0
-#
-#func _toggle_skill_module_disabled(button_pressed: bool, type: String):
-	#if button_pressed:
-		#player_settings.disabled_skill_modules.erase(type)
-	#else:
-		#player_settings.disabled_skill_modules.push_back(type)
-	#autosave_delay = 10.0
 
 
 func _settings_changed():
 	# queue an autosave if a setting has been changed
-	# TODO: call this function
 	autosave_delay = min(autosave_delay, 10.0)
 
 

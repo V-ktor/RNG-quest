@@ -91,6 +91,7 @@ grow_vertical = 2
 color = Color(0.0105, 0.04025, 0.07, 1)
 
 [node name="Overview" type="VBoxContainer" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1257,7 +1258,6 @@ button_group = SubResource("ButtonGroup_kr5p7")
 text = "POTIONS_USED"
 
 [node name="Options" type="HBoxContainer" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1340,6 +1340,7 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "WEAPONS_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "WEAPONS"
 horizontal_alignment = 2
@@ -1347,27 +1348,33 @@ vertical_alignment = 1
 
 [node name="CheckBoxMelee" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "WEAPONS_DESCRIPTION"
 text = "MELEE"
 
 [node name="CheckBoxRanged" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "WEAPONS_DESCRIPTION"
 text = "RANGED"
 
 [node name="CheckBoxMagic" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "WEAPONS_DESCRIPTION"
 text = "MAGICAL"
 
 [node name="CheckBoxShield" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "WEAPONS_DESCRIPTION"
 text = "SHIELD"
 
 [node name="CheckBox1h" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "WEAPONS_DESCRIPTION"
 button_pressed = true
 text = "ONE_HANDED"
 
 [node name="CheckBox2h" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "WEAPONS_DESCRIPTION"
 button_pressed = true
 text = "TWO_HANDED"
 
@@ -1394,6 +1401,7 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="Options/Preferences/ArmourPreference/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "ARMOUR_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "ARMOUR"
 horizontal_alignment = 2
@@ -1401,14 +1409,17 @@ vertical_alignment = 1
 
 [node name="CheckBoxLight" type="CheckBox" parent="Options/Preferences/ArmourPreference/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "ARMOUR_DESCRIPTION"
 text = "LIGHT"
 
 [node name="CheckBoxMedium" type="CheckBox" parent="Options/Preferences/ArmourPreference/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "ARMOUR_DESCRIPTION"
 text = "MEDIUM"
 
 [node name="CheckBoxHeavy" type="CheckBox" parent="Options/Preferences/ArmourPreference/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "ARMOUR_DESCRIPTION"
 text = "HEAVY"
 
 [node name="PotionPreference" type="Panel" parent="Options/Preferences"]
@@ -1434,6 +1445,7 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="Options/Preferences/PotionPreference/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "POTIONS_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "POTIONS"
 horizontal_alignment = 2
@@ -1441,14 +1453,17 @@ vertical_alignment = 1
 
 [node name="CheckBoxHealth" type="CheckBox" parent="Options/Preferences/PotionPreference/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "POTIONS_DESCRIPTION"
 text = "HEALTH"
 
 [node name="CheckBoxStamina" type="CheckBox" parent="Options/Preferences/PotionPreference/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "POTIONS_DESCRIPTION"
 text = "STAMINA"
 
 [node name="CheckBoxMana" type="CheckBox" parent="Options/Preferences/PotionPreference/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "POTIONS_DESCRIPTION"
 text = "MANA"
 
 [node name="SkillModules" type="VBoxContainer" parent="Options"]
@@ -1471,6 +1486,7 @@ offset_top = 2.0
 offset_right = -2.0
 offset_bottom = 19.0
 grow_horizontal = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "SKILL_MODULES"
 horizontal_alignment = 2
@@ -1515,12 +1531,14 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "BASE_TYPE"
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Panel0" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer"]
+visible = false
 clip_contents = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
@@ -1571,6 +1589,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Aim/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "AIM"
 horizontal_alignment = 2
@@ -1596,6 +1615,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/MeleeMod/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "MELEE_MOD"
 horizontal_alignment = 2
@@ -1621,6 +1641,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/GrappleMod/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "GRAPPLE_MOD"
 horizontal_alignment = 2
@@ -1646,6 +1667,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/RangedMod/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "RANGED_MOD"
 horizontal_alignment = 2
@@ -1671,6 +1693,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/DefenceMod/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "DEFENCE_MOD"
 horizontal_alignment = 2
@@ -1696,6 +1719,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Magic/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "MAGIC"
 horizontal_alignment = 2
@@ -1721,6 +1745,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/MagicMod/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "MAGIC_MOD"
 horizontal_alignment = 2
@@ -1746,6 +1771,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Application/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "APPLICATION"
 horizontal_alignment = 2
@@ -1771,6 +1797,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Shape/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "SHAPE"
 horizontal_alignment = 2
@@ -1796,6 +1823,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/SummoningMethod/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "SUMMONING_METHOD"
 horizontal_alignment = 2
@@ -1821,6 +1849,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/SummonType/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
 theme_override_font_sizes/font_size = 10
 text = "SUMMON_TYPE"
 horizontal_alignment = 2

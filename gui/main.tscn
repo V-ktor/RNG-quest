@@ -2,6 +2,5 @@
 
 [ext_resource type="Script" path="res://gui/main.gd" id="1_7tv8d"]
 
-[node name="Main" type="CanvasLayer"]
-layer = 10
+[node name="Main" type="Node"]
 script = ExtResource("1_7tv8d")
