@@ -2,7 +2,6 @@ extends CanvasLayer
 
 var main_character: Characters.Character
 var main_character_settings: Characters.CharacterSettings
-var timetable: Dictionary
 var characters_player: Array[Characters.Character] = []
 var characters_enemy: Array[Characters.Character] = []
 
@@ -24,6 +23,8 @@ var characters_enemy: Array[Characters.Character] = []
 @onready var potion_preference_panel:= $Options/Preferences/PotionPreference as PotionPreferencePanel
 @onready var quest_log:= $Overview/HBoxContainer/Quest/RichTextLabel as RichTextLabel
 @onready var statistics:= $Statistics/Statistics/Statistics as StatisticsPanel
+@onready var timetable_panel:= $Options/Timetable/Timetable as TimetablePanel
+@onready var time_offset_spinbox := $Options/Timetable/Timetable/ScrollContainer/VBoxContainer/HBoxContainer/SpinBox as SpinBox
 @onready var page_overview:= $Overview as Control
 @onready var page_character:= $Character as Control
 @onready var page_journal:= $Journal as Control
@@ -192,6 +193,8 @@ func connect_to_main(main: Main):
 	main.connect("skills_updated", Callable(skill_panel, "update"))
 	main.connect("freed", Callable(self, "queue_free"))
 	
+	timetable_panel.connect("timetable_modified", Callable(main, "_set_timetable"))
+	time_offset_spinbox.connect("value_changed", Callable(main, "_set_time_offset"))
 	connect("settings_changed", Callable(main, "_settings_changed"))
 	
 	main_character_settings = main.player_settings
@@ -207,10 +210,10 @@ func connect_to_main(main: Main):
 	weapon_preference_panel.character_settings = main_character_settings
 	armour_preference_panel.character_settings = main_character_settings
 	potion_preference_panel.character_settings = main_character_settings
-	timetable = main.timetable
 	statistics.historical_data = main.historical_data
 	
 	main.gui_ready()
+	timetable_panel.update(main.timetable, main.time_offset)
 
 func _ready():
 	var schedule_option_button:= $Options/Timetable/Timetable/ScrollContainer/VBoxContainer/HBoxContainer0/OptionButton as OptionButton

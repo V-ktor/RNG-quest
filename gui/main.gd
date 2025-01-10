@@ -3004,6 +3004,7 @@ func _save():
 		"enemies": enemy_data,
 		"progress_delay": player_delay,
 		"timetable": timetable,
+		"time_offset": time_offset,
 		"summary_text": summary_text,
 	}
 	file = FileAccess.open("user://saves/" + player_name + ".dat", FileAccess.WRITE)
@@ -3179,6 +3180,10 @@ func _set_timetable(ID: int, index: int):
 				return
 			break
 	timetable[index] = type
+	autosave_delay = 10.0
+
+func _set_time_offset(value: int):
+	time_offset = value
 	autosave_delay = 10.0
 
 
