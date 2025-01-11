@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bu5843byioeol" path="res://data/tilesets/vulcano.png" id="8_g6vb4"]
 [ext_resource type="Texture2D" uid="uid://cncjactbf8gbe" path="res://data/tilesets/dunes.png" id="9_bdivd"]
 [ext_resource type="Texture2D" uid="uid://b38sphh1r07ee" path="res://data/tilesets/cities.png" id="11_sq1n7"]
-[ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://default_theme.tres" id="12_4c3ch"]
+[ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://themes/light_theme.tres" id="12_4c3ch"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwadm"]
 texture = ExtResource("2_w7fqm")
@@ -1158,6 +1158,7 @@ text = "THEME"
 vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="Options/ScrollContainer/VBoxContainer/Theme/HBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0
@@ -1188,6 +1189,7 @@ text = "UI_SCALING"
 vertical_alignment = 1
 
 [node name="SpinBox" type="SpinBox" parent="Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 min_value = 50.0
 max_value = 250.0
@@ -1195,6 +1197,7 @@ value = 100.0
 suffix = "%"
 
 [node name="HSlider" type="HSlider" parent="Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1

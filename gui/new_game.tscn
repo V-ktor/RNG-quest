@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bonh7k6p34cy"]
+[gd_scene load_steps=3 format=3 uid="uid://bonh7k6p34cy"]
 
+[ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://themes/light_theme.tres" id="1_4782p"]
 [ext_resource type="Script" path="res://gui/new_game.gd" id="1_m18te"]
 
 [node name="NewGame" type="Control"]
@@ -11,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_4782p")
 script = ExtResource("1_m18te")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -30,9 +32,14 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Name"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -67,9 +74,14 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Gender"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -89,9 +101,13 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Diet"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -109,9 +125,14 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Race"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -133,36 +154,43 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="human" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 text = "human"
 
 [node name="halfling" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 text = "halfling"
 
 [node name="high_elf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 text = "high elf"
 
 [node name="wood_elf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 text = "wood elf"
 
 [node name="dwarf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 text = "dwarf"
 
 [node name="ogre" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 text = "ogre"
 
 [node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 placeholder_text = "CUSTOM_RACE"
 alignment = 1
@@ -221,9 +249,14 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Combat"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -236,66 +269,77 @@ layout_mode = 2
 text = "0 / 2"
 
 [node name="light_weapons" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "LIGHT_WEAPONS_DESCRIPTION"
 toggle_mode = true
 text = "LIGHT_WEAPONS"
 
 [node name="heavy_weapons" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "HEAVY_WEAPONS_DESCRIPTION"
 toggle_mode = true
 text = "HEAVY_WEAPONS"
 
 [node name="dirty_fighting" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "DIRTY_FIGHTING_DESCRIPTION"
 toggle_mode = true
 text = "DIRTY_FIGHTING"
 
 [node name="brawling" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "BRAWLING_DESCRIPTION"
 toggle_mode = true
 text = "BRAWLING"
 
 [node name="shield" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "SHIELD_DESCRIPTION"
 toggle_mode = true
 text = "SHIELD"
 
 [node name="archery" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "ARCHERY_DESCRIPTION"
 toggle_mode = true
 text = "ARCHERY"
 
 [node name="elemental_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "ELEMENTAL_MAGIC_DESCRIPTION"
 toggle_mode = true
 text = "ELEMENTAL_MAGIC"
 
 [node name="nature_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "NATURE_MAGIC_DESCRIPTION"
 toggle_mode = true
 text = "NATURE_MAGIC"
 
 [node name="celestial_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "CELESTIAL_MAGIC_DESCRIPTION"
 toggle_mode = true
 text = "CELESTIAL_MAGIC"
 
 [node name="summoning" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "SUMMONING_DESCRIPTION"
 toggle_mode = true
 text = "SUMMONING"
 
 [node name="necromancy" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "NECROMANCY_DESCRIPTION"
 toggle_mode = true
@@ -310,9 +354,14 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Abilities"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -325,107 +374,138 @@ layout_mode = 2
 text = "0 / 2"
 
 [node name="armour" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "ARMOUR_DESCRIPTION"
 toggle_mode = true
 text = "ARMOUR"
 
 [node name="evasion" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "EVASION_DESCRIPTION"
 toggle_mode = true
 text = "EVASION"
 
 [node name="trapping" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "TRAPPING_DESCRIPTION"
 toggle_mode = true
 text = "TRAPPING"
 
 [node name="defensive_magic" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "DEFENSIVE_MAGIC_DESCRIPTION"
 toggle_mode = true
 text = "DEFENSIVE_MAGIC"
 
 [node name="healing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "HEALING_ABILITY_DESCRIPTION"
 toggle_mode = true
 text = "HEALING_ABILITY"
 
 [node name="alchemy" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "ALCHEMY_DESCRIPTION"
 toggle_mode = true
 text = "ALCHEMY"
 
 [node name="weapon_smithing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "WEAPON_SMITHING_DESCRIPTION"
 toggle_mode = true
 text = "WEAPON_SMITHING"
 
 [node name="armour_smithing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "ARMOUR_SMITHING_DESCRIPTION"
 toggle_mode = true
 text = "ARMOUR_SMITHING"
 
 [node name="woodwork" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "WOODWORK_DESCRIPTION"
 toggle_mode = true
 text = "WOODWORK"
 
 [node name="tayloring" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "TAYLORING_DESCRIPTION"
 toggle_mode = true
 text = "TAYLORING"
 
 [node name="cooking" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "COOKING_DESCRIPTION"
 toggle_mode = true
 text = "COOKING"
 
 [node name="enchanting" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "ENCHANTING_DESCRIPTION"
 toggle_mode = true
 text = "ENCHANTING"
 
 [node name="soul_binding" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "ENCHANTING_DESCRIPTION"
 toggle_mode = true
 text = "SOUL_BINDING"
 
-[node name="Bottom" type="HBoxContainer" parent="."]
-layout_mode = 0
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -40.0
+offset_right = 256.0
+offset_bottom = -4.0
+mouse_filter = 1
+
+[node name="Bottom" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -41.0
-offset_bottom = -1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 alignment = 1
 
-[node name="Button0" type="Button" parent="Bottom"]
+[node name="Button0" type="Button" parent="Panel/Bottom"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "BACK"
 
-[node name="Button1" type="Button" parent="Bottom"]
+[node name="Button1" type="Button" parent="Panel/Bottom"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "RANDOMIZE"
 
-[node name="Button2" type="Button" parent="Bottom"]
+[node name="Button2" type="Button" parent="Panel/Bottom"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "START"
 
 [connection signal="text_changed" from="HBoxContainer/VBoxContainer1/Name/VBoxContainer/LineEdit" to="." method="_name_changed"]
@@ -470,6 +550,6 @@ text = "START"
 [connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/cooking" to="." method="_ability_toggled" binds= ["cooking"]]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/enchanting" to="." method="_ability_toggled" binds= ["enchanting"]]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer/soul_binding" to="." method="_ability_toggled" binds= ["soul_binding"]]
-[connection signal="pressed" from="Bottom/Button0" to="." method="_back_to_menu"]
-[connection signal="pressed" from="Bottom/Button1" to="." method="_randomize"]
-[connection signal="pressed" from="Bottom/Button2" to="." method="start_game"]
+[connection signal="pressed" from="Panel/Bottom/Button0" to="." method="_back_to_menu"]
+[connection signal="pressed" from="Panel/Bottom/Button1" to="." method="_randomize"]
+[connection signal="pressed" from="Panel/Bottom/Button2" to="." method="start_game"]

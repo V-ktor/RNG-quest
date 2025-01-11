@@ -4,6 +4,7 @@ var main_character: Characters.Character
 var main_character_settings: Characters.CharacterSettings
 var characters_player: Array[Characters.Character] = []
 var characters_enemy: Array[Characters.Character] = []
+var theme: Theme
 
 @onready var title_label:= $Title/Label as Label
 @onready var tooltip:= $Tooltip as Tooltip
@@ -22,6 +23,7 @@ var characters_enemy: Array[Characters.Character] = []
 @onready var armour_preference_panel:= $Options/Preferences/ArmourPreference as ArmourPreferencePanel
 @onready var potion_preference_panel:= $Options/Preferences/PotionPreference as PotionPreferencePanel
 @onready var quest_log:= $Overview/HBoxContainer/Quest/RichTextLabel as RichTextLabel
+@onready var journal_log:= $Journal/Journal/RichTextLabel as RichTextLabel
 @onready var statistics:= $Statistics/Statistics/Statistics as StatisticsPanel
 @onready var timetable_panel:= $Options/Timetable/Timetable as TimetablePanel
 @onready var time_offset_spinbox := $Options/Timetable/Timetable/ScrollContainer/VBoxContainer/HBoxContainer/SpinBox as SpinBox
@@ -124,6 +126,9 @@ func update_location(region: Dictionary, current_location: String):
 func update_quest_log(text: String):
 	quest_log.parse_bbcode(text)
 
+func update_journal_log(text: String):
+	journal_log.parse_bbcode(text)
+
 
 func _show_overview():
 	page_overview.show()
@@ -190,6 +195,7 @@ func connect_to_main(main: Main):
 	main.connect("story_inventory_changed", Callable(inventory_panel, "update_story_inventory"))
 	main.connect("location_changed", Callable(self, "update_location"))
 	main.connect("quest_log_updated", Callable(self, "update_quest_log"))
+	main.connect("summary_updated", Callable(self, "update_journal_log"))
 	main.connect("skills_updated", Callable(skill_panel, "update"))
 	main.connect("freed", Callable(self, "queue_free"))
 	
@@ -223,5 +229,14 @@ func _ready():
 	schedule_option_button.set_item_tooltip(3, tr("SHOPPING_TOOLTIP"))
 	schedule_option_button.set_item_tooltip(4, tr("CRAFTING_TOOLTIP"))
 	schedule_option_button.set_item_tooltip(5, tr("RESTING_TOOLTIP"))
+	
+	page_overview.theme = theme
+	page_character.theme = theme
+	page_journal.theme = theme
+	page_statistics.theme = theme
+	page_options.theme = theme
+	side_menu.theme = theme
+	title.theme = theme
+	tooltip.theme = theme
 	
 	_show_overview()

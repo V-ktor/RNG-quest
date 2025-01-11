@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://ilahmpkq8huy"]
+[gd_scene load_steps=10 format=3 uid="uid://ilahmpkq8huy"]
 
-[ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://default_theme.tres" id="1_kdwa0"]
 [ext_resource type="Texture2D" uid="uid://dtgblnp2uvyls" path="res://images/gui/black_rectangle_16.png" id="2_8weer"]
 [ext_resource type="Script" path="res://gui/progress_count_down.gd" id="3_iu7di"]
 
@@ -28,7 +27,6 @@ bg_color = Color(0.599893, 0.599893, 0.599893, 1)
 custom_minimum_size = Vector2(256, 0)
 offset_right = 256.0
 offset_bottom = 128.0
-theme = ExtResource("1_kdwa0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

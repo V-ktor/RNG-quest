@@ -1041,6 +1041,7 @@ func next_chapter():
 	if quest_chapter>0:
 		var item:= Items.create_legendary_equipment(player.equipment.values().pick_random().base_type, max(10*(current_region.tier+1) + (player.level+current_region.level)/2, 1))
 		var log_text:= tr("QUEST_ARTIFACT_REWARD").format({"item":item.name, "description":item.description_plain, "chapter":quest_chapter})
+		var journal_text:= tr("CHAPTER_CONCLUDED").format({"chapter":quest_chapter})
 		print_log_msg(log_text)
 		print_summary_msg(log_text)
 		add_item(item)
@@ -3142,6 +3143,7 @@ func gui_ready():
 	emit_signal("story_inventory_changed", Story.inventory)
 	emit_signal("location_changed", current_region, current_location)
 	emit_signal("quest_log_updated", quest_log)
+	emit_signal("summary_updated", summary_text)
 
 
 func store_historical_data(type: String, value: Variant, sub := ""):
