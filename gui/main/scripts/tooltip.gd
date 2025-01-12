@@ -40,6 +40,12 @@ func _set_pos_scale(text: String):
 	position = get_global_mouse_position() + Vector2(8, 0)
 	size.x = clampi(16 + 8*_get_max_line_length(text), 192, 448)
 	size.y = clampi(48 + 17*text.count("\n"), 64, 512)
+	
+	# Move tooltip to the other side if it it reaches the window border
+	if position.x + size.x > DisplayServer.window_get_size().x:
+		position.x -= size.x
+	if position.y + size.y > DisplayServer.window_get_size().y:
+		position.y -= size.y
 
 func show_text(text: String):
 	text_label.clear()
