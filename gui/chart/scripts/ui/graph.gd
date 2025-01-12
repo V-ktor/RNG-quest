@@ -24,7 +24,7 @@ var scene_layer:= preload("res://gui/chart/scenes/graph_layer.tscn")
 
 
 func set_auto_range():
-	if graphs.size() == 0:
+	if graphs.size() == 0 || graphs[0].get_points().size() == 0:
 		x_min = 0.0
 		x_max = 1.0
 		y_min = 0.0

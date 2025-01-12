@@ -30,13 +30,13 @@ func get_location_list(region: Dictionary, current_location: String) -> Array[Di
 		var data: Dictionary = region.locations[key]
 		if key == current_location:
 			is_current_location_listed = true
-		list.push_back({"name": data.name, "type": data.type})
+		list.push_back({"name": data.name, "type": data.get("type", "field")})
 		if float(i) / float(locations) >= float(city_index) / float(cities) && city_index < cities:
 			key = region.cities.keys()[city_index]
 			data = region.cities[key]
 			if key == current_location:
 				is_current_location_listed = true
-			list.push_back({"name": data.name, "type": data.type})
+			list.push_back({"name": data.name, "type": data.get("type", "town")})
 			city_index += 1
 	for i in range(city_index, cities):
 		var key: String = region.cities.keys()[city_index]

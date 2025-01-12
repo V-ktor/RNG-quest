@@ -66,7 +66,8 @@ var player_combat_abilities:= []
 var hybrid_race:= false
 var player_vegan:= false
 
-var main:= preload("res://gui/main/scenes/main_gui.tscn")
+var main:= preload("res://scenes/main/main.tscn")
+var main_gui:= preload("res://gui/main/scenes/main_gui.tscn")
 
 
 
@@ -308,11 +309,17 @@ func start_game():
 	main_instance.current_time = Time.get_unix_time_from_system()
 	main_instance.player_vegan = player_vegan
 	main_instance.player_creation_time = main_instance.current_time
-	
 	get_parent().add_child(main_instance)
+	
+	var main_gui_instance:= main_gui.instantiate()
+	main_gui_instance.theme = theme
+	get_parent().add_child(main_gui_instance)
+	main_gui_instance.connect_to_main(main_instance)
+	
 	main_instance._save()
 	queue_free()
 
 
 func _back_to_menu():
 	get_tree().change_scene_to_file("res://gui/menu.tscn")
+	queue_free()

@@ -5,8 +5,9 @@ const MAP_SCROLL_SPEED = 30.0
 var version:= "0.1.0"
 
 var characters:= []
-var main:= preload("res://gui/main.tscn")
+var main:= preload("res://scenes/main/main.tscn")
 var main_gui:= preload("res://gui/main/scenes/main_gui.tscn")
+var new_character_gui:= preload("res://gui/new_game.tscn")
 var main_instance: Node
 var main_gui_instance: Node
 var tile_map_line:= 30
@@ -134,7 +135,11 @@ func _quit():
 	get_tree().quit()
 
 func _new_character():
-	get_tree().change_scene_to_file("res://gui/new_game.tscn")
+	#get_tree().change_scene_to_file("res://gui/new_game.tscn")
+	var new_game:= new_character_gui.instantiate()
+	new_game.theme = themes[settings.theme]
+	get_parent().add_child(new_game)
+	queue_free()
 
 func _show_characters():
 	load_characters()
@@ -249,6 +254,8 @@ func _on_scaling_changed(value_changed: bool) -> void:
 	ui_scale_spinbox.value = ui_scale_slider.value
 	settings.scaling = value
 	get_tree().root.content_scale_factor = settings.scaling
+	tile_map.scale = Vector2(2.0, 2.0) / settings.scaling
+	tile_map.position = Vector2(16, 32 - 32 * settings.scaling)
 	
 	save_config()
 

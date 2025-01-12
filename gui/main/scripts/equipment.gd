@@ -23,7 +23,7 @@ func update(inventory:= []):
 		if label == null:
 			continue
 		label.text = character.equipment[type].name
-		label.modulate = Items.RANK_COLORS[character.equipment[type].rank]
+		label.add_theme_color_override("font_color", Items.RANK_COLORS[character.equipment[type].rank])
 		if !label.is_connected("mouse_entered", Callable(self, "_show_equipment_tooltip")):
 			label.connect("mouse_entered", Callable(self, "_show_equipment_tooltip").bind(type))
 		label.show()

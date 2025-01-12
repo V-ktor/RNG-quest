@@ -4,10 +4,10 @@
 [ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://themes/light_theme.tres" id="2_ck100"]
 [ext_resource type="Script" path="res://gui/main/scripts/character_panel.gd" id="3_3wpsb"]
 [ext_resource type="Script" path="res://gui/main/scripts/location_panel.gd" id="4_7xkbg"]
-[ext_resource type="Script" path="res://gui/main_log.gd" id="4_sxg1u"]
+[ext_resource type="Script" path="res://gui/main/scripts/main_log.gd" id="4_sxg1u"]
 [ext_resource type="PackedScene" uid="uid://ilahmpkq8huy" path="res://gui/main/scenes/character_panel.tscn" id="5_wpjmd"]
 [ext_resource type="Texture2D" uid="uid://be6a3wwf20ybd" path="res://images/gui/waiting.svg" id="6_4mtbn"]
-[ext_resource type="Script" path="res://gui/stat_display.gd" id="6_cw8x1"]
+[ext_resource type="Script" path="res://gui/main/scripts/stat_display.gd" id="6_cw8x1"]
 [ext_resource type="Script" path="res://gui/main/scripts/attributes.gd" id="7_be5rh"]
 [ext_resource type="Texture2D" uid="uid://ofnjrxwgqikj" path="res://images/gui/house.svg" id="7_lm0bd"]
 [ext_resource type="Script" path="res://gui/main/scripts/mods.gd" id="8_xxonq"]
@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cqjvar71exxv7" path="res://images/icons/journal.svg" id="15_xy43e"]
 [ext_resource type="Texture2D" uid="uid://dqsr4uq5f6ucf" path="res://images/icons/settings.svg" id="16_15y0b"]
 [ext_resource type="Script" path="res://gui/main/scripts/potion_preference.gd" id="16_nncd2"]
-[ext_resource type="PackedScene" uid="uid://dxb635fm2610y" path="res://gui/tooltip.tscn" id="17_6m177"]
+[ext_resource type="PackedScene" uid="uid://dxb635fm2610y" path="res://gui/main/scenes/tooltip.tscn" id="17_6m177"]
 [ext_resource type="Script" path="res://gui/main/scripts/skill_modules.gd" id="17_prvid"]
 [ext_resource type="Script" path="res://gui/main/scripts/statistics.gd" id="22_iplwq"]
 [ext_resource type="PackedScene" uid="uid://bgkcyaksqhx68" path="res://gui/chart/scenes/chart.tscn" id="23_bktjj"]
@@ -88,7 +88,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0105, 0.04025, 0.07, 1)
+color = Color(0.12549, 0.12549, 0.12549, 1)
 
 [node name="Overview" type="VBoxContainer" parent="."]
 anchors_preset = 15
@@ -1598,6 +1598,7 @@ text = "NAME"
 alignment = 1
 
 [node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer/Panel0"]
+modulate = Color(1, 1, 1, 0.752941)
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.4
@@ -1605,7 +1606,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.74902, 0.74902, 0.74902, 1)
 theme_override_font_sizes/font_size = 14
 text = "DESCRIPTION"
 horizontal_alignment = 1

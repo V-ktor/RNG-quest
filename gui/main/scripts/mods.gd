@@ -15,7 +15,7 @@ func _add_mod(index: int, type: String, value: float):
 		container = vbox_container.get_node("Mod0").duplicate(14) as HBoxContainer
 		container.name = "Mod" + str(index)
 		vbox_container.add_child(container)
-	(container.get_node("Label") as Label).text = tr(type.to_upper())
+	(container.get_node("Label") as Label).text = type
 	(container.get_node("Value") as Label).text = str(int(100.0 * value)) + "%"
 	container.show()
 
@@ -26,8 +26,8 @@ func update():
 		(c as Control).hide()
 	
 	for type in character.damage.keys():
-		_add_mod(index, type, character.damage[type])
+		_add_mod(index, tr(type.to_upper()) + " " + tr("DAMAGE"), character.damage[type])
 		index += 1
 	for type in character.resistance.keys():
-		_add_mod(index, type, character.resistance[type])
+		_add_mod(index, tr(type.to_upper()) + " " + tr("RESISTANCE"), character.resistance[type])
 		index += 1

@@ -51,7 +51,7 @@ func update_inventory(inventory: Array):
 			item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 		if "rank" not in item:
 			item.rank = Items.get_item_rank(item)
-		label.modulate = Items.RANK_COLORS[item.rank]
+		label.add_theme_color_override("font_color", Items.RANK_COLORS[item.rank])
 		label.show()
 
 func update_potion_inventory(inventory: Array):
@@ -80,7 +80,7 @@ func update_potion_inventory(inventory: Array):
 		label.text = str(potions.values()[i]) + "x " + _name
 		if "rank" not in item:
 			item.rank = Items.get_item_rank(item)
-		label.modulate = Items.RANK_COLORS[item.rank]
+		label.add_theme_color_override("font_color", Items.RANK_COLORS[item.rank])
 		label.show()
 
 func update_story_inventory(inventory: Array):
