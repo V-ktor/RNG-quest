@@ -795,7 +795,7 @@ func get_material_gold_limit() -> int:
 
 
 func get_max_exp(lvl: int) -> int:
-	return 50 + 25 * lvl + 25 * lvl * lvl
+	return 50 + 50 * lvl * lvl
 
 func get_ability_exp(lvl: int) -> int:
 	return 100 + 75 * lvl + 25 * lvl * lvl
@@ -816,7 +816,7 @@ func get_min_character_dist(character: Characters.Character, opponents: Array[Ch
 
 func get_soul_stone_drop_chance() -> float:
 	if player.abilities.has("soul_binding"):
-		return min(0.05 + 0.005*player.abilities.soul_binding, 0.25)
+		return min(0.05 + 0.005 * player.abilities.soul_binding, 0.25)
 	return 0.05
 
 func get_empty_soul_stone():
@@ -827,10 +827,10 @@ func get_empty_soul_stone():
 func extract_soul() -> float:
 	for item in player_inventory:
 		if item.type == "material" && item.has("tags") && "soul" in item.tags:
-			var scaling: float = max(sqrt(1.0 + float(item.quality)/200.0 + 0.01*player.abilities.soul_binding) - 1.0, 0.0)
+			var scaling: float = max(sqrt(1.0 + float(item.quality) / 200.0 + 0.01*player.abilities.soul_binding) - 1.0, 0.0)
 			item.name = Items.MATERIALS.empty_soul_stone.name.pick_random().capitalize()
 			item.tags = ["cage"]
-			item.quality = int(item.quality*0.75)
+			item.quality = int(item.quality * 0.75)
 			item.price /= 4
 			item.erase("add")
 			item.description = Items.create_tooltip(item)
@@ -2181,7 +2181,7 @@ func use_skill(actor: Characters.Character, skill: Dictionary) -> Dictionary:
 		for k in skill.cost.keys():
 			actor.set(k, max(actor.get(k) - skill.cost[k], 0))
 	
-	if actor is Characters.Character && actor.abilities.has("soul_binding") && randf() < min(0.01 + 0.005*actor.abilities.soul_binding, 0.2):
+	if actor is Characters.Character && actor.abilities.has("soul_binding") && randf() < min(0.01 + 0.005 * actor.abilities.soul_binding, 0.2):
 		effectiveness_bonus += extract_soul()
 		result.soul_enchantment = true
 		result.soul_bonus = effectiveness_bonus
@@ -2297,7 +2297,7 @@ func fight():
 		if target==null:
 			skill = player.skills.pick_random()
 		else:
-			do_action("engage", {"target":target.name, "target_description":target.description}, delay)
+			do_action("engage", {"target": target.name, "target_description": target.description}, delay)
 			return
 	
 	var result:= use_skill(player, skill)
@@ -2308,28 +2308,28 @@ func fight():
 			update_characters()
 			break
 	if result.has("soul_enchantment") && result.soul_enchantment:
-		print_log_msg(tr("SKILL_SOUL_ENCHANTMENT").format({"soul_bonus":int(100*result.soul_bonus)}))
+		print_log_msg(tr("SKILL_SOUL_ENCHANTMENT").format({"soul_bonus": int(100 * result.soul_bonus)}))
 	match skill.usage:
 		"attack":
 			add_guild_exp("attack")
-			if typeof(result.target)==TYPE_ARRAY:
+			if typeof(result.target) == TYPE_ARRAY:
 				for i in range(result.target.size()):
 					var dict:= {
-						"target":result.target[i],
-						"target_description":result.target_description[i],
-						"skill":result.skill[i],
-						"skill_description":result.skill_description[i],
-						"hit":result.hit[i],
-						"total_damage":result.total_damage[i],
-						"debuff":result.debuff[i],
+						"target": result.target[i],
+						"target_description": result.target_description[i],
+						"skill": result.skill[i],
+						"skill_description": result.skill_description[i],
+						"hit": result.hit[i],
+						"total_damage": result.total_damage[i],
+						"debuff": result.debuff[i],
 					}
 					if result.has("damage_info"):
-						if typeof(result.damage_info)==TYPE_ARRAY && result.damage_info.size()>i:
+						if typeof(result.damage_info) == TYPE_ARRAY && result.damage_info.size() > i:
 							dict.damage_info = result.damage_info[i]
 						else:
 							dict.damage_info = result.damage_info
 					print_log_msg(tr("ATTACK_LOG").format(dict))
-					if dict.hit==0:
+					if dict.hit == 0:
 						print_log_msg(tr("MISSED_LOG"))
 						use_stat("dexterity", delay)
 						add_guild_exp("miss")
@@ -2936,8 +2936,8 @@ func get_dict_text(file: FileAccess) -> String:
 	while true:
 		var new_line:= file.get_line()
 		text += new_line
-		brackets += clamp(int(new_line.find("{") >= 0), 0, 1) - clamp(int(new_line.find("}") >= 0), 0, 1)
-		if brackets <= 0:
+		brackets += new_line.count("{") - new_line.count("}")
+		if brackets <= 0 or file.eof_reached():
 			break
 	return text
 
@@ -3038,10 +3038,10 @@ func _load():
 	var data: Dictionary
 	var first_line:= get_dict_text(file)
 	# TODO: check version info
-	data = JSON.parse_string(get_dict_text(file))
+	data = JSON.parse_string(get_dict_text(file)) as Dictionary
 	if data==null:
 		print("Can't load save file " + player_name + ".dat!")
-	data.delay = min(data.delay, 6 * 60 * 60.0)
+	data.delay = minf(data.delay, 6 * 60 * 60.0)
 	
 	# compatibility with older versions: update skill descriptions
 	for skill in data.skills:
@@ -3058,7 +3058,7 @@ func _load():
 		item.component_description = Items.create_component_tooltip(item)
 	
 	player = Characters.Character.new(data)
-	data = JSON.parse_string(get_dict_text(file))
+	data = JSON.parse_string(get_dict_text(file)) as Dictionary
 	if data.has("timetable"):
 		var dict:= {}
 		for t in data.timetable.keys():
@@ -3117,7 +3117,7 @@ func _load():
 			dict[location_name] = {"name": location_name, "type": "field"}  # TODO: type
 		current_region.locations = dict
 	
-	data = JSON.parse_string(get_dict_text(file))
+	data = JSON.parse_string(get_dict_text(file)) as Dictionary
 	Story.persons = data.persons
 	Story.story = data.story
 	Story.inventory = data.inventory

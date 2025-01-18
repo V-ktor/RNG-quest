@@ -2351,14 +2351,14 @@ func create_tooltip(item: Dictionary) -> String:
 	var text: String = format_item_name(item) + "\n" + item.type + "\n"
 	text += "\n" + "quality: " + str(int(item.quality)) + "%\n"
 	for k in ATTRIBUTES:
-		if !item.has(k) || int(item[k])==0:
+		if !item.has(k) || int(item[k]) == 0:
 			continue
 		if item[k]>0:
 			text += tr(k.to_upper()) + ": +" + str(int(item[k])) + "\n"
 		else:
 			text += tr(k.to_upper()) + ": -" + str(-int(item[k])) + "\n"
 	for k in Characters.DEFAULT_STATS.keys():
-		if !item.has(k) || int(item[k])==0:
+		if !item.has(k) || int(item[k]) == 0:
 			continue
 		if item[k]>0:
 			text += tr(k.to_upper()) + ": +" + str(int(item[k])) + "\n"
@@ -2369,7 +2369,7 @@ func create_tooltip(item: Dictionary) -> String:
 	if item.has("damage"):
 		text += tr("DAMAGE") + ":\n"
 		for k in item.damage.keys():
-			var value:= int(100*item.damage[k])
+			var value:= int(100 * item.damage[k])
 			if value==0:
 				continue
 			if item.damage[k]>=0.0:
@@ -2382,11 +2382,11 @@ func create_tooltip(item: Dictionary) -> String:
 				text += format_resource(k) + ": +" + str(int(item[k])) + "\n"
 			else:
 				text += format_resource(k) + ": -" + str(-int(item[k])) + "\n"
-		if item.has(k+"_regen") && item[k+"_regen"]!=0:
+		if item.has(k+"_regen") && item[k+"_regen"] != 0:
 			var value:= int(item[k+"_regen"])
-			if value==0:
+			if value == 0:
 				continue
-			if item[k+"_regen"]>0:
+			if item[k + "_regen"]>0:
 				text += format_resource(k, "_REGEN") + ": +" + str(value) + "\n"
 			else:
 				text += format_resource(k, "_REGEN") + ": -" + str(-value) + "\n"
@@ -2396,38 +2396,38 @@ func create_tooltip(item: Dictionary) -> String:
 			var value:= int(100*item.resistance[k])
 			if value==0:
 				continue
-			if item.resistance[k]>=0.0:
+			if item.resistance[k] >= 0.0:
 				text += "  " + format_damage_type(k) + ": +" + str(value) + "%\n"
 			else:
 				text += "  " + format_damage_type(k) + ": -" + str(-value) + "%\n"
 	if item.has("status"):
 		text += tr("APPLIES_STATUS").format({"status":item.status.name}) + "\n  " + item.status.type + "\n"
 		for k in item.status.keys():
-			if k=="name" || k=="type":
+			if k == "name" || k == "type":
 				continue
 			if k=="effect":
-				if typeof(item.status.effect)==TYPE_ARRAY:
+				if typeof(item.status.effect) == TYPE_ARRAY:
 					text += "  " + tr("INCREASES") + " " + Names.make_list(item.status.effect) + "\n"
 				else:
 					text += "  " + tr("INCREASES") + " " + item.status.effect + "\n"
 				continue
-			if typeof(item.status[k])==TYPE_ARRAY:
+			if typeof(item.status[k]) == TYPE_ARRAY:
 				text += "  " + format_resource(k) + ": " + Names.make_list(item.status[k]) + "\n"
 			else:
 				text += "  " + format_resource(k) + ": " + str(int(item.status[k])) + "\n"
 	if item.has("mod"):
 		for k in item.mod.keys():
-			if item.mod[k]>=0.0:
-				text += format_resource(k) + ": +" + str(int(100*item.mod[k])) + "%\n"
+			if item.mod[k] >= 0.0:
+				text += format_resource(k) + ": +" + str(int(100 * item.mod[k])) + "%\n"
 			else:
-				text += format_resource(k) + ": -" + str(-int(100*item.mod[k])) + "%\n"
+				text += format_resource(k) + ": -" + str(-int(100 * item.mod[k])) + "%\n"
 	if item.has("add"):
 		for k in item.add.keys():
 			match typeof(item.add[k]):
 				TYPE_INT, TYPE_FLOAT:
 					var value:= int(item.add[k])
 					if value!=0:
-						if item.add[k]>=0.0:
+						if item.add[k] >= 0.0:
 							text += format_resource(k) + ": +" + str(value) + "\n"
 						else:
 							text += format_resource(k) + ": -" + str(-value) + "\n"
@@ -2437,7 +2437,7 @@ func create_tooltip(item: Dictionary) -> String:
 						var value: int
 						var unit:= ""
 						if k in ["damage", "resistance"]:
-							value = int(100*item.add[k][s])
+							value = int(100 * item.add[k][s])
 							unit = "%"
 						else:
 							value = int(item.add[k][s])
@@ -3080,6 +3080,7 @@ func create_food(type: String, name_prefix: String, quality: int) -> Dictionary:
 
 
 func sanitize_name(string: String) -> String:
+	string.replace("{", "").replace("}", "")
 	for s in string.split(" ", false):
 		while string.find(s)!=string.rfind(s):
 			var pos:= string.find(s)
