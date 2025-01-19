@@ -976,7 +976,7 @@ func distribute_stat_points():
 		store_historical_data("stats", player.stats[stat], stat)
 
 func get_max_potions() -> int:
-	return MAX_POTIONS + sqrt(player.level)
+	return MAX_POTIONS + int(sqrt(player.level))
 
 func get_task_ID() -> int:
 	var time_zone := Time.get_time_zone_from_system()
@@ -1021,37 +1021,37 @@ func pick_random_materials(dict: Dictionary) -> Array:
 
 
 func next_chapter():
-	var title:= Story.get_title(quest_chapter+1)
+	var title:= Story.get_title(quest_chapter + 1)
 	var pos:= quest_log.rfind("[center]Chapter")
 	var npcs:= {}
 	quest_progress = 0
 	quest_chapter += 1
-	for _i in range(min(randi_range(2,5),Story.persons.size())):
+	for _i in range(min(randi_range(2, 5),Story.persons.size())):
 		var k: String = Story.persons.keys().pick_random()
 		npcs[k] = Story.persons[k]
 	for k in Story.persons.keys():
-		if "story" in Story.persons[k].tags && randf()<0.5:
+		if "story" in Story.persons[k].tags && randf() < 0.5:
 			npcs[k] = Story.persons[k]
 	Story.persons = npcs
-	for i in range(max(randi_range(15,30) - Story.persons.size(), 0)):
-		if randf()<0.1:
+	for i in range(max(randi_range(15, 30) - Story.persons.size(), 0)):
+		if randf() < 0.1:
 			Story.create_person(Names.NAME_DATA.keys().pick_random(), current_region.cities.keys().pick_random())
 		else:
 			Story.create_person(current_region.race.pick_random(), current_region.cities.keys().pick_random())
-	if quest_chapter>0:
-		var item:= Items.create_legendary_equipment(player.equipment.values().pick_random().base_type, max(10*(current_region.tier+1) + (player.level+current_region.level)/2, 1))
+	if quest_chapter > 0:
+		var item:= Items.create_legendary_equipment(player.equipment.values().pick_random().base_type, max(10 * (current_region.tier + 1) + (player.level + current_region.level) / 2, 1))
 		var log_text:= tr("QUEST_ARTIFACT_REWARD").format({"item":item.name, "description":item.description_plain, "chapter":quest_chapter})
 		var journal_text:= tr("CHAPTER_CONCLUDED").format({"chapter":quest_chapter})
 		print_log_msg(log_text)
-		print_summary_msg(log_text)
+		print_summary_msg(journal_text)
 		add_item(item)
 		optimize_equipment()
 	
-	if pos>=0:
+	if pos >= 0:
 		var rpos: = quest_log.find('\n', pos + 1)
 		quest_log = quest_log.left(rpos) + "\n[center]- [color=green]done[/color] -[/center]\n"
 	var text:= tr("CHAPTER_STARTED").format({"title":title})
-	quest_log += "[center]Chapter " + str(quest_chapter+1) + ": [u]" + title + "[/u][/center]"
+	quest_log += "[center]Chapter " + str(quest_chapter + 1) + ": [u]" + title + "[/u][/center]"
 	print_log_msg("\n" + text)
 	print_summary_msg(text)
 	update_quest_log()
@@ -2934,11 +2934,21 @@ func get_dict_text(file: FileAccess) -> String:
 	var text:= ""
 	var brackets:= 0
 	while true:
+		var is_key:= false
 		var new_line:= file.get_line()
 		text += new_line
-		brackets += new_line.count("{") - new_line.count("}")
+		for i in range(new_line.length()):
+			match new_line[i]:
+				'"':
+					is_key = !is_key
+				'{':
+					brackets += int(!is_key)
+				'}':
+					brackets -= int(!is_key)
 		if brackets <= 0 or file.eof_reached():
 			break
+	if brackets != 0:
+		printt("EOF reached unexpectedly", brackets)
 	return text
 
 func _save():
@@ -3039,7 +3049,7 @@ func _load():
 	var first_line:= get_dict_text(file)
 	# TODO: check version info
 	data = JSON.parse_string(get_dict_text(file)) as Dictionary
-	if data==null:
+	if data == null:
 		print("Can't load save file " + player_name + ".dat!")
 	data.delay = minf(data.delay, 6 * 60 * 60.0)
 	
