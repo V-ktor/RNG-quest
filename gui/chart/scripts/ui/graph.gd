@@ -46,10 +46,10 @@ func set_auto_range():
 			y_max = graph.y_max
 	
 	# TODO: better rounding up/down
-		x_min = floor(x_min)
-		x_max = ceil(x_max)
-		y_min = floor(y_min)
-		y_max = ceil(y_max)
+	x_min = floorf(x_min)
+	x_max = ceilf(x_max)
+	y_min = floorf(y_min)
+	y_max = ceilf(y_max)
 
 
 func toggle_visibility(index: int, is_visible: bool):
@@ -74,18 +74,19 @@ func reset_graphs():
 
 func _draw() -> void:
 	for c in get_children():
-		c.graph = null
-		c.queue_redraw()
+		var layer:= c as GraphLayer
+		layer.graph = null
+		layer.queue_redraw()
 	
 	for i in range(graphs.size()):
 		var graph:= graphs[i]
-		var layer: Control
+		var layer: GraphLayer
 		if has_node("Layer" + str(i)):
-			layer = get_node("Layer" + str(i))
+			layer = get_node("Layer" + str(i)) as GraphLayer
 		else:
-			layer = scene_layer.instantiate()
+			layer = scene_layer.instantiate() as GraphLayer
 			layer.name = "Layer" + str(i)
-			layer.material = layer.material.duplicate(false)
+			layer.material = layer.material.duplicate(false) as Material
 			add_child(layer)
 		layer.graph = graph
 		layer.queue_redraw()

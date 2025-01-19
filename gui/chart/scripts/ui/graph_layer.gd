@@ -1,4 +1,5 @@
 extends Control
+class_name GraphLayer
 
 const FADE_IN_DELAY = 0.5
 

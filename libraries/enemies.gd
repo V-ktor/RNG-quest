@@ -3839,22 +3839,22 @@ func create_enemy(type: String, level: int, tier:= 0) -> Characters.Enemy:
 		type = BASE_ENEMIES.keys().pick_random()
 	var dict: Dictionary = BASE_ENEMIES[type]
 	var enemy:= {
-		"name":dict.base_name.pick_random(),
-		"level":level,
-		"tier":tier,
-		"experience":10,
-		"stats":dict.base_stats.duplicate(),
-		"abilities":[],
-		"resistance":{},
-		"damage":{},
-		"skills":[],
-		"status":[],
-		"delay":randf_range(0.0,1.0),
-		"position":-1,
+		"name": dict.base_name.pick_random(),
+		"level": level,
+		"tier": tier,
+		"experience": 10,
+		"stats": dict.base_stats.duplicate(),
+		"abilities": [],
+		"resistance": {},
+		"damage": {},
+		"skills": [],
+		"status": [],
+		"delay": randf_range(0.0, 1.0),
+		"position": -1,
 	}
 	var tier_multiplier:= 1.0
-	var level_multiplier: float = 1.0 + min(0.1 + 0.001*level, 0.2)*(level-1)
-	var num_skills: int = max(1 + 2*tier, -1)
+	var level_multiplier: float = 1.0 + min(0.1 + 0.001*level, 0.2) * (level - 1)
+	var num_skills: int = max(1 + 2 * tier, -1)
 	var max_range:= 0
 	var ret: Characters.Enemy
 	enemy.base_name = enemy.name
@@ -3898,25 +3898,27 @@ func create_enemy(type: String, level: int, tier:= 0) -> Characters.Enemy:
 		enemy.soul_rarity = dict.soul_rarity
 	else:
 		enemy.soul_rarity = -2
-	if dict.has("soul_add") && randf() > 1.0/max(2.5 + tier, 1.0):
+	if dict.has("soul_add") && randf() > 1.0 / max(2.5 + tier, 1.0):
 		enemy.soul_add = dict.soul_add
 	if tier<0:
-		enemy.name = dict.lesser_prefix.pick_random()+" "+enemy.name
-		tier_multiplier = 1.0/pow(1.5, -tier)
+		enemy.name = dict.lesser_prefix.pick_random() + " " + enemy.name
+		tier_multiplier = 1.0 / pow(1.5, -tier)
 	elif tier>0:
-		enemy.name = dict.greater_prefix.pick_random()+" "+enemy.name
+		enemy.name = dict.greater_prefix.pick_random() + " " + enemy.name
 		tier_multiplier = pow(1.5, tier)
 	enemy.name = enemy.name.capitalize()
-	enemy.experience *= tier_multiplier*level_multiplier*(0.3 + 0.025*enemy.level)
+	enemy.experience *= tier_multiplier * (0.5 + 0.5 * level_multiplier)\
+		* (0.3 + 0.025 * enemy.level)
 	for k in enemy.stats.keys():
-		enemy.stats[k] = int(enemy.stats[k]*(0.5 + 0.5*tier_multiplier*level_multiplier))
+		enemy.stats[k] = int(enemy.stats[k] * (0.5 + 0.5 * tier_multiplier * level_multiplier))
 	for k in enemy.attributes_add.keys():
-		enemy.attributes_add[k] = int(enemy.attributes_add[k]*(0.5 + 0.5*tier_multiplier*level_multiplier))
+		enemy.attributes_add[k] = int(enemy.attributes_add[k]\
+			* (0.5 + 0.5 * tier_multiplier * level_multiplier))
 	enemy.attributes_add.attack += int(enemy.level)
 	enemy.attributes_add.magic += int(enemy.level)
-	enemy.attributes_add.willpower += int(1.5*enemy.level)
-	enemy.attributes_add.armour += int(1.5*enemy.level)
-	if enemy.abilities.size()>0:
+	enemy.attributes_add.willpower += int(1.5 * enemy.level)
+	enemy.attributes_add.armour += int(1.5 * enemy.level)
+	if enemy.abilities.size() > 0:
 		num_skills = max(num_skills, 1)
 		for i in range(num_skills):
 			var skill:= Skills.create_random_skill(enemy.abilities)

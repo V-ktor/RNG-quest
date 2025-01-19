@@ -56,16 +56,6 @@ const PREFIXES = {
 var font:= SystemFont.new()
 
 
-#func format_number(number: float) -> String:
-	#var prefix:= ""
-	#if number < 1.0 || number > 100.0:
-		#for v in PREFIXES:
-			#if number > 10 * v:
-				#prefix = PREFIXES[v]
-				#number /= v
-				#break
-	#return str(int(number)) + prefix
-
 func get_prefix_value(number: float) -> float:
 	var value:= 1
 	if number < 1.0 || number > 100.0:
@@ -87,24 +77,28 @@ func update_labels():
 	
 	for i in range(x_lines + 2):
 		var p := float(i) / float(x_lines + 1)
-		draw_string(font, Vector2(p * size.x - 12, size.y + 24), format_number(x_min + p * float(x_max - x_min), multiplier_x), 0, -1, 12)
+		draw_string(font, Vector2(p * size.x - 12, size.y + 24),\
+			format_number(x_min + p * float(x_max - x_min), multiplier_x),\
+			HORIZONTAL_ALIGNMENT_LEFT, -1, 12)
 	
 	for i in range(y_lines + 2):
 		var p := float(i) / float(y_lines + 1)
-		draw_string(font, Vector2(-48, (1.0 - p) * size.y + 8), format_number(y_min + p * float(y_max - y_min), multiplier_y), 0, -1, 12)
+		draw_string(font, Vector2(-48, (1.0 - p) * size.y + 8),\
+			format_number(y_min + p * float(y_max - y_min), multiplier_y),\
+			HORIZONTAL_ALIGNMENT_LEFT, -1, 12)
 
 
 func _draw() -> void:
 	for i in range(y_lines + 2):
 		var p := float(i) / float(y_lines + 1)
-		var from:= Vector2(ceil(-line_width / 2.0), p * size.y)
-		var to := Vector2(size.x + floor(line_width / 2.0), p * size.y)
+		var from:= Vector2(ceilf(-line_width / 2.0), p * size.y)
+		var to := Vector2(size.x + floorf(line_width / 2.0), p * size.y)
 		draw_line(from, to, line_color, line_width, true)
 	
 	for i in range(x_lines + 2):
 		var p := float(i) / float(x_lines + 1)
-		var from:= Vector2(p * size.x, ceil(-line_width) / 2.0)
-		var to := Vector2(p * size.x, size.y + floor(line_width / 2.0))
+		var from:= Vector2(p * size.x, ceilf(-line_width) / 2.0)
+		var to := Vector2(p * size.x, size.y + floorf(line_width / 2.0))
 		draw_line(from, to, line_color, line_width, true)
 	
 	update_labels()
