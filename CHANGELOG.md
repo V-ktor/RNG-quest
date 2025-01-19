@@ -2,17 +2,24 @@
 
 ## v0.1.0
 ### Content
-* reworked item description
+* new item description generator
 * reworked generation of legendary equipment
 
 ### Interface
 * completely new UI
 * UI scaling
-* charts
-* statistics
+* themes (light/dark)
+* charts/statistics
+
+### Balancing
+* increased experience points needed for level up
+* slightly reduced experience gain scaling
 
 ### Internal changes
 * separated the UI code from the game logic code (interaction via signals)
+* updated to Godot 4.3
+* the web build is now single-threaded and no longer cross-origin isolated
+* refactoring
 
 ## v0.0.7
 ### Content
