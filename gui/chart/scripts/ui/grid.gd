@@ -67,8 +67,14 @@ func get_prefix_value(number: float) -> float:
 
 func format_number(number: float, multiplier: float) -> String:
 	if multiplier not in PREFIXES:
-		return str(int(number))
-	return str(int(number / multiplier)) + PREFIXES[multiplier]
+		return str(int(number)).pad_decimals(1)
+	var value:= number / multiplier
+	var ret: String
+	if abs(value) < 10.0:
+		ret = str(value).pad_decimals(1)
+	else:
+		ret = str(int(value))
+	return ret + PREFIXES[multiplier]
 
 
 func update_labels():

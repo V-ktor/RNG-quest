@@ -2848,6 +2848,7 @@ func create_material_drop(type: String, creature: Dictionary, add_data:= {}) -> 
 	material.source = Story.sanitize_string(tr("DROPPED_BY").format({"creature":creature.name}))
 	material.description = create_tooltip(material)
 	material.description_plain = Skills.tooltip_remove_bb_code(material.description)
+	material.erase("veggie_name")
 	return material
 
 func create_regional_material(type: String, region: Dictionary, quality_mod:= 1.0) -> Dictionary:

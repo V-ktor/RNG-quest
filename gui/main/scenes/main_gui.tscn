@@ -2043,6 +2043,7 @@ text_overrun_behavior = 3
 [node name="Button2" type="Button" parent="SideMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
+tooltip_text = "JOURNAL"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_g737p")
 
@@ -2080,6 +2081,7 @@ text_overrun_behavior = 3
 [node name="Button4" type="Button" parent="SideMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
+tooltip_text = "STATISTICS"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_g737p")
 
@@ -2117,6 +2119,7 @@ text_overrun_behavior = 3
 [node name="Button3" type="Button" parent="SideMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
+tooltip_text = "OPTIONS"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_g737p")
 
