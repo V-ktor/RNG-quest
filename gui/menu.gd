@@ -306,6 +306,7 @@ func load_config():
 			print("Failed to create the user directory")
 		# set default scaling to be proportional to the screen DPI
 		settings.scaling = clampf(DisplayServer.screen_get_dpi() / 80.0, 0.5, 2.5)
+		settings.theme = int(DisplayServer.is_dark_mode())
 		ui_scale_slider.value = settings.scaling * 100
 		ui_scale_spinbox.value = settings.scaling * 100
 		return
