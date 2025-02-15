@@ -17,6 +17,16 @@
 		"price": 250,
 		"material_types": [["soul", "soul", "soul"]],
 	},
+	"legendary_hybrid": {
+		"tier": "legendary",
+		"slot": "minor",
+		"prefix": [[["Spell"], ["blade's"]], [["Arcane"],[" Knight's", " Warrior's"]]],
+		"description": ["element"],
+		"attack": 6,
+		"magic": 6,
+		"price": 260,
+		"material_types": [["soul", "soul", "soul"]],
+	},
 	"legendary_accuracy": {
 		"tier": "legendary",
 		"slot": "minor",

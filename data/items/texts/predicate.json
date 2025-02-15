@@ -1262,4 +1262,88 @@
 			"addition",
 		],
 	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} blessed by {science.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "science",
+		},
+		"required": [
+			"science",
+			"curse",
+		],
+		"remove": [
+			"science",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} stained with {crime.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "crime",
+		},
+		"required": [
+			"crime",
+			"stains",
+		],
+		"remove": [
+			"crime",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} stained with {mental_illness.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "mental_illness",
+		},
+		"required": [
+			"mental_illness",
+			"stains",
+		],
+		"remove": [
+			"mental_illness",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
+	{
+		"type": "sentence_predicate",
+		"text": [
+			"{is/are} stained with {emotion.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"object": "emotion",
+		},
+		"required": [
+			"emotion",
+			"stains",
+		],
+		"remove": [
+			"emotion",
+		],
+		"transition": [
+			"sentence_end",
+			"addition",
+		],
+	},
 ]

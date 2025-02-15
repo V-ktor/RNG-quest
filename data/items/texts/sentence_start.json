@@ -600,4 +600,24 @@
 			"sentence_full",
 		],
 	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"a truly {craftmanship.adverb} crafted {object.singular} -",
+		],
+		"sentence": {
+		},
+		"required": [
+			"object",
+			"craftmanship",
+		],
+		"remove": [
+			"craftmanship",
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full",
+		],
+	},
 ]

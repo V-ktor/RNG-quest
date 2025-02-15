@@ -1275,7 +1275,7 @@
 	{
 		"type": "sentence_full",
 		"text": [
-			"{craftmanship.adjective} craftmanship brought forth a {care.adjective} {object.singular}",
+			"{craftmanship.adjective} craftsmanship brought forth a {care.adjective} {object.singular}",
 		],
 		"sentence":{
 			"predicate": "",
@@ -1289,6 +1289,159 @@
 		],
 		"remove": [
 			"care",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"there is more to the {material.adjective} {object.singular} than meets the eye",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"material",
+		],
+		"replace": {
+			"material": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"there is more to the {craftmanship.adjective} {object.singular} than meets the eye",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"craftmanship",
+		],
+		"replace": {
+			"craftmanship": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"there is more to the {curse.adjective} {object.singular} than meets the eye",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"curse",
+		],
+		"replace": {
+			"curse": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"there is more to the {care.adjective} {object.singular} than meets the eye",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "object",
+		},
+		"required": [
+			"object",
+			"care",
+		],
+		"replace": {
+			"care": "theme",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"a grim reminder of the {crime.singular} of {craftmanship.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "crime",
+		},
+		"required": [
+			"crime",
+			"craftmanship",
+		],
+		"remove": [
+			"crime",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {mental_illness.singular} of {craftmanship.singular} {has/have} been forged into a {object.singular}",
+			"the {mental_illness.singular} of {craftmanship.singular} {was/were} formed into a {object.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "mental_illness",
+			"object": "craftmanship",
+		},
+		"required": [
+			"mental_illness",
+			"craftmanship",
+			"object",
+		],
+		"remove": [
+			"mental_illness",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {mental_illness.adjective} {craftmanship.singular} envisioned a {object.singular} made of {theme.plural}",
+			"the {mental_illness.adjective} {craftmanship.singular} distilled {theme.plural} into a {object.singular}",
+			"the {mental_illness.adjective} {craftmanship.singular} forged a {object.singular} out of {theme.plural}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "craftmanship",
+			"object": "object",
+		},
+		"required": [
+			"mental_illness",
+			"craftmanship",
+			"object",
+			"theme",
+		],
+		"remove": [
+			"mental_illness",
 		],
 		"transition": [
 			"sentence_end",
