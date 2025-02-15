@@ -3,205 +3,868 @@ extends Node
 const MAX_TEXT_LENGTH = 500
 const ATTRIBUTES = {
 	"color": [
-		{"default": "white", "adjective": "white"},
-		{"default": "grey", "adjective": "grey"},
-		{"default": "black", "adjective": "black"},
-		{"default": "brown", "adjective": "brown"},
-		{"default": "red", "adjective": "red"},
-		{"default": "orange", "adjective": "orange"},
-		{"default": "yellow", "adjective": "yellow"},
-		{"default": "green", "adjective": "green"},
-		{"default": "cyan", "adjective": "cyan"},
-		{"default": "blue", "adjective": "blue"},
-		{"default": "violet", "adjective": "violet"},
-		{"default": "purple", "adjective": "purple"},
-		{"default": "pink", "adjective": "pink"},
-		{"default": "magenta", "adjective": "magenta"},
-		{"default": "crimson", "adjective": "crimson"},
-		{"default": "indigo", "adjective": "indigo"},
-		{"default": "silver", "adjective": "silver"},
-		{"default": "beige", "adjective": "beige"},
-		{"default": "aquamarine", "adjective": "aquamarine"},
-		{"default": "orchid", "adjective": "orchid"},
-		{"default": "turquoise", "adjective": "turquoise"},
-		{"default": "teal", "adjective": "teal"},
-		{"default": "gold", "adjective": "golden"},
-		{"adjective": "colorless"},
+		{
+			"default": "white",
+			"adjective": "white",
+			"prefix": "White",
+		},
+		{
+			"default": "grey",
+			"adjective": "grey",
+		},
+		{
+			"default": "black",
+			"adjective": "black",
+			"prefix": "Black",
+		},
+		{
+			"default": "brown",
+			"adjective": "brown",
+		},
+		{
+			"default": "red",
+			"adjective": "red",
+		},
+		{
+			"default": "orange",
+			"adjective": "orange",
+		},
+		{
+			"default": "yellow",
+			"adjective": "yellow",
+		},
+		{
+			"default": "green",
+			"adjective": "green",
+		},
+		{
+			"default": "cyan",
+			"adjective": "cyan",
+		},
+		{
+			"default": "blue",
+			"adjective": "blue",
+		},
+		{
+			"default": "violet",
+			"adjective": "violet",
+		},
+		{
+			"default": "purple",
+			"adjective": "purple",
+		},
+		{
+			"default": "pink",
+			"adjective": "pink",
+		},
+		{
+			"default": "magenta",
+			"adjective": "magenta",
+		},
+		{
+			"default": "crimson",
+			"adjective": "crimson",
+			"prefix": "Crimson",
+		},
+		{
+			"default": "indigo",
+			"adjective": "indigo",
+		},
+		{
+			"default": "silver",
+			"adjective": "silver",
+			"prefix": "Silver",
+		},
+		{
+			"default": "beige",
+			"adjective": "beige",
+		},
+		{
+			"default": "aquamarine",
+			"adjective": "aquamarine",
+		},
+		{
+			"default": "orchid",
+			"adjective": "orchid",
+			"prefix": "Orchid",
+		},
+		{
+			"default": "turquoise",
+			"adjective": "turquoise",
+		},
+		{
+			"default": "teal",
+			"adjective": "teal",
+		},
+		{
+			"default": "gold",
+			"adjective": "golden",
+			"prefix": "Golden",
+		},
+		{
+			"adjective": "colorless",
+		},
 	],
 	"liquid": [
-		{"singular": "water", "plural": "waters", "adjective": "watery"},
-		{"singular": "poison", "plural": "poisons", "adjective": "poisonous"},
-		{"singular": "acid", "plural": "acids", "adjective": "acidic"},
-		{"default": "blood", "adjective": "bloody"},
-		{"default": "oil", "adjective": "oily"},
-		{"default": "syrup", "adjective": "sweet"},
-		{"default": "resin", "adjective": "sticky"},
+		{
+			"singular": "water",
+			"plural":"waters",
+			"adjective": "watery",
+		},
+		{
+			"singular": "poison",
+			"plural": "poisons",
+			"adjective": "poisonous",
+		},
+		{
+			"singular": "acid",
+			"plural": "acids",
+			"adjective": "acidic",
+		},
+		{
+			"default": "blood",
+			"adjective": "bloody",
+		},
+		{
+			"default": "oil",
+			"adjective": "oily",
+		},
+		{
+			"default": "syrup",
+			"adjective": "sweet",
+		},
+		{
+			"default": "resin",
+			"adjective": "sticky",
+		},
 	],
 	"weight": [
-		"heavy", "massive", "light", "lightweight",
+		{
+			"adjective": "heavy",
+			"adverb": "heavily",
+		},
+		{
+			"adjective": "massive",
+			"adverb": "massively",
+		},
+		{
+			"adjective": "light",
+			"adverb": "lightly",
+		},
+		{
+			"adjective": "lightweight",
+			"adverb": "easily",
+		},
 	],
 	"thickness": [
-		"viscous", "thick", "thin",
+		{
+			"adjective": "viscous",
+		},
+		{
+			"adjective": "thick",
+		},
+		{
+			"adjective": "thin",
+		},
 	],
 	"shape": [
-		{"singular": "ball", "plural": "balls", "adjective": "round"},
-		{"singular": "sphere", "plural": "spheres", "adjective": "spherical"},
-		{"singular": "cube", "plural": "cubes", "adjective": "cubic"},
-		{"singular": "triangle", "plural": "triangles", "adjective": "triangular"},
-		{"singular": "rectangle", "plural": "rectangles", "adjective": "rectangular"},
-		{"singular": "pentagon", "plural": "pentagons", "adjective": "pentagonal"},
-		{"singular": "hexagon", "plural": "hexagons", "adjective": "hexagonal"},
-		{"singular": "octagon", "plural": "octagons", "adjective": "octagonal"},
-		{"singular": "odd shape", "plural": "odd shapes", "adjective": "irregular"},
+		{
+			"singular": "ball",
+			"plural": "balls",
+			"adjective": "round",
+		},
+		{
+			"singular": "sphere",
+			"plural": "spheres",
+			"adjective": "spherical",
+		},
+		{
+			"singular": "cube",
+			"plural": "cubes",
+			"adjective": "cubic",
+		},
+		{
+			"singular": "triangle",
+			"plural": "triangles",
+			"adjective": "triangular",
+		},
+		{
+			"singular": "rectangle",
+			"plural": "rectangles",
+			"adjective": "rectangular",
+		},
+		{
+			"singular": "pentagon",
+			"plural": "pentagons",
+			"adjective": "pentagonal",
+		},
+		{
+			"singular": "hexagon",
+			"plural": "hexagons",
+			"adjective": "hexagonal",
+			"prefix": "Hexa",
+		},
+		{
+			"singular": "octagon",
+			"plural": "octagons",
+			"adjective": "octagonal",
+		},
+		{
+			"singular": "odd shape",
+			"plural": "odd shapes",
+			"adjective": "irregular",
+			"prefix": "Odd",
+		},
 	],
 	"theme": [
-		{"singular": "life", "adjective": "vital"},
-		{"singular": "hope", "adjective": "hoping"},
-		{"singular": "determination", "adjective": "determined"},
-		{"singular": "will", "adjective": "willful"},
-		{"singular": "bravery", "adjective": "brave"},
-		{"singular": "day", "adjective": "illuminated"},
-		{"singular": "harmony", "adjective": "harmonious"},
-		{"singular": "death", "adjective": "undead"},
-		{"singular": "torment", "adjective": "tormented"},
-		{"singular": "pain", "adjective": "painful"},
-		{"singular": "agony", "adjective": "agonizing"},
-		{"singular": "despair", "adjective": "hopeless"},
-		{"singular": "devastation", "adjective": "devastating"},
-		{"singular": "night", "adjective": "dark"},
-		{"singular": "mercy", "adjective": "mercyful"},
-		{"singular": "discord", "adjective": "quarrelsome"},
-		{"singular": "war", "adjective": "savage"},
-		{"singular": "destruction", "adjective": "destructive"},
-		{"singular": "obliteration", "adjective": "obliterating"},
-		{"singular": "entropy", "adjective": "entropic"},
-		{"singular": "chaos", "adjective": "chaotic"},
-		{"singular": "order", "adjective": "ordered"},
-		{"singular": "sky", "plural": "skies", "adjective": "skyward"},
-		{"singular": "space", "adjective": "celestial"},
-		{"plural": "stars", "adjective": "faintly glowing"},
-		{"singular": "heaven", "plural": "heavens", "adjective": "heavenly"},
-		{"singular": "aether", "adjective": "aetheral"},
-		{"singular": "abyss", "adjective": "abyssal"},
-		{"plural": "oceans", "adjective": "oceanic"},
-		{"singular": "deep sea", "adjective": "submerged"},
-		{"singular": "dawn", "adjective": "dawning"},
-		{"singular": "twilight", "adjective": "twilight"},
-		{"singular": "light", "adjective": "bright"},
-		{"singular": "darkness", "adjective": "dark"},
-		{"singular": "blight", "adjective": "blighted"},
+		{
+			"singular": "life",
+			"adjective": "vital",
+			"suffix": "of Life",
+		},
+		{
+			"singular": "hope",
+			"adjective": "hoping",
+			"suffix": "of Hope",
+		},
+		{
+			"singular": "determination",
+			"adjective": "determined",
+			"suffix": "of Determination",
+		},
+		{
+			"singular": "will",
+			"adjective": "willful",
+			"suffix": "of Will",
+		},
+		{
+			"singular": "bravery",
+			"adjective": "brave",
+			"suffix": "of Bravery",
+		},
+		{
+			"singular": "day",
+			"adjective": "illuminated",
+			"suffix": "of Daylight",
+		},
+		{
+			"singular": "harmony",
+			"adjective": "harmonious",
+			"suffix": "of Harmony",
+		},
+		{
+			"singular": "death",
+			"adjective": "undead",
+			"suffix": "of Death",
+		},
+		{
+			"singular": "torment",
+			"adjective": "tormented",
+			"suffix": "of Torment",
+		},
+		{
+			"singular": "pain",
+			"adjective": "painful",
+			"suffix": "of Pain"
+		},
+		{
+			"singular": "agony",
+			"adjective": "agonizing",
+			"suffix": "of Agony",
+		},
+		{
+			"singular": "despair",
+			"adjective": "hopeless",
+			"suffix": "of Deaspair",
+		},
+		{
+			"singular": "devastation",
+			"adjective": "devastating",
+			"suffix": "of Devastation",
+		},
+		{
+			"singular": "night",
+			"adjective": "dark",
+			"suffix": "of Moonlight",
+		},
+		{
+			"singular": "mercy",
+			"adjective": "mercyful",
+			"suffix": "of Mercy",
+		},
+		{
+			"singular": "discord",
+			"adjective": "quarrelsome",
+			"suffix": "of Discord",
+		},
+		{
+			"singular": "war",
+			"adjective": "savage",
+			"suffix": "of War",
+		},
+		{
+			"singular": "destruction",
+			"adjective": "destructive",
+			"suffix": "of Destruction",
+		},
+		{
+			"singular": "obliteration",
+			"adjective": "obliterating",
+			"suffix": "of Obliteration",
+		},
+		{
+			"singular": "entropy",
+			"adjective": "entropic",
+			"suffix": "of Entropy",
+		},
+		{
+			"singular": "chaos",
+			"adjective": "chaotic",
+			"suffix": "of Chaos",
+		},
+		{
+			"singular": "order",
+			"adjective": "ordered",
+			"suffix": "of Order",
+		},
+		{
+			"singular": "sky",
+			"plural": "skies",
+			"adjective": "skyward",
+			"suffix": "of Skies",
+		},
+		{
+			"singular": "space",
+			"adjective": "celestial",
+			"prefix": "Spaceborn",
+		},
+		{
+			"plural": "stars",
+			"adjective": "faintly glowing",
+			"prefix": "Astral",
+		},
+		{
+			"singular": "heaven",
+			"plural": "heavens",
+			"adjective": "heavenly",
+			"prefix": "Heavenly",
+		},
+		{
+			"singular": "aether",
+			"adjective": "aethereal",
+			"prefix": "Aethereal",
+		},
+		{
+			"singular": "abyss",
+			"adjective": "abyssal",
+			"prefix": "Abyssal",
+		},
+		{
+			"plural": "oceans",
+			"adjective": "oceanic",
+			"prefix": "of Oceans",
+		},
+		{
+			"singular": "deep sea",
+			"adjective": "submerged",
+			"prefix": "Deap Sea",
+		},
+		{
+			"singular": "dawn",
+			"adjective": "dawning",
+			"suffix": "of Dawn",
+		},
+		{
+			"singular": "twilight",
+			"adjective": "twilight",
+			"suffix": "of Twilight",
+		},
+		{
+			"singular": "light",
+			"adjective": "bright",
+			"suffix": "of Light",
+		},
+		{
+			"singular": "darkness",
+			"adjective": "dark",
+			"suffix": "of Darkness",
+		},
+		{
+			"singular": "blight",
+			"adjective": "blighted",
+			"suffix": "of Blight",
+		},
 	],
 	"mental_illness": [
-		{"singular": "madness", "adjective": "mad"},
-		{"singular": "agony", "adjective": "agonizing"},
-		{"singular": "despair", "adjective": "hopeless"},
-		{"singular": "nightmares", "adjective": "haunted"},
+		{
+			"singular": "madness",
+			"adjective": "mad",
+			"suffix": "of Madness",
+		},
+		{
+			"singular": "agony",
+			"adjective": "agonizing",
+			"suffix": "of Agony",
+		},
+		{
+			"singular": "despair",
+			"adjective": "hopeless",
+			"suffix": "of Despair",
+		},
+		{
+			"singular": "nightmares",
+			"adjective": "haunted",
+			"suffix": "of Nightmares",
+		},
+		{
+			"singular": "suffering",
+			"adjective": "suffering",
+			"suffix": "of Suffering",
+		},
 	],
 	"element": [
-		{"singular": "fire", "adjective": "fiery"},
-		{"plural": "flames", "adjective": "flaming"},
-		{"singular": "ember", "plural": "embers", "adjective": "burning"},
-		{"singular": "ice", "adjective": "icy"},
-		{"singular": "frost", "adjective": "cold"},
-		{"singular": "lightning", "adjective": "sparkling"},
-		{"singular": "electricity", "adjective": "jolting"},
-		{"singular": "water", "plural": "waters", "adjective": "watery"},
-		{"singular": "wind", "plural": "winds", "adjective": "windy"},
-		{"singular": "air", "adjective": "airy"},
-		{"singular": "earth", "adjective": "dirty"},
-		{"singular": "rock", "plural": "rocks", "adjective": "rocky"},
-		{"singular": "light", "plural": "lights", "adjective": "bright"},
-		{"singular": "darkness", "plural": "shadows", "adjective": "dark"},
-		{"singular": "twilight", "adjective": "shimmering"},
+		{
+			"singular": "fire",
+			"adjective": "fiery",
+			"suffix": "of Fire",
+		},
+		{
+			"plural": "flames",
+			"adjective": "flaming",
+			"prefix": "Flaming",
+		},
+		{
+			"singular": "ember",
+			"plural": "embers",
+			"adjective": "burning",
+			"suffix": "of Embers",
+		},
+		{
+			"singular": "ice",
+			"adjective": "icy",
+			"suffix": "of Ice",
+		},
+		{
+			"singular": "frost",
+			"adjective": "cold",
+			"prefix": "Frost",
+		},
+		{
+			"singular": "lightning",
+			"adjective": "sparkling",
+			"suffix": "of Lightning",
+		},
+		{
+			"singular": "electricity",
+			"adjective": "jolting",
+			"prefix": "Lightning",
+		},
+		{
+			"singular": "water",
+			"plural": "waters",
+			"adjective": "watery",
+			"suffix": "of Water",
+		},
+		{
+			"singular": "wind",
+			"plural": "winds",
+			"adjective": "windy",
+			"prefix": "Wind",
+		},
+		{
+			"singular": "air",
+			"adjective": "airy",
+			"suffix": "of Wind",
+		},
+		{
+			"singular": "earth",
+			"adjective": "dirty",
+			"suffix": "of Earth",
+		},
+		{
+			"singular": "rock",
+			"plural": "rocks",
+			"adjective": "rocky",
+			"prefix": "Rock"
+		},
+		{
+			"singular": "light",
+			"plural": "lights",
+			"adjective": "bright",
+			"suffix": "of Light",
+		},
+		{
+			"singular": "darkness",
+			"plural": "shadows",
+			"adjective": "dark",
+			"suffix": "of Darkness",
+		},
+		{
+			"singular": "twilight",
+			"adjective": "shimmering",
+			"suffix": "of Twilight",
+		},
 	],
 	"curse": [
-		{"singular": "curse", "plural": "curses", "adjective": "cursed"},
-		{"singular": "damnation", "adjective": "forsaken"},
-		{"singular": "blessing", "plural": "blessings", "adjective": "blessed"},
+		{
+			"singular": "curse",
+			"plural": "curses",
+			"adjective": "cursed",
+			"prefix": "Cursed",
+		},
+		{
+			"singular": "damnation",
+			"adjective": "forsaken",
+			"prefix": "Forsaken",
+		},
+		{
+			"singular": "blessing",
+			"plural": "blessings",
+			"adjective": "blessed",
+			"prefix": "Blessed",
+		},
 	],
 	"quality": [
-		{"singular": "spike", "plural": "spikes", "adjective": "sharp"},
-		{"singular": "blade", "plural": "blades", "adjective": "sharp"},
-		{"singular": "tip", "plural": "tips", "adjective": "pointy"},
-		{"singular": "hammer", "plural": "hammers", "adjective": "blunt"},
-		{"singular": "metal", "adjective": "polished"},
-		{"singular": "barb", "plural": "barbs", "adjective": "vile"},
+		{
+			"singular": "spike",
+			"plural": "spikes",
+			"adjective": "sharp",
+		},
+		{
+			"singular": "blade",
+			"plural": "blades",
+			"adjective": "sharp",
+		},
+		{
+			"singular": "tip",
+			"plural": "tips",
+			"adjective": "pointy",
+		},
+		{
+			"singular": "hammer",
+			"plural": "hammers",
+			"adjective": "blunt",
+		},
+		{
+			"singular": "metal",
+			"adjective": "polished",
+		},
+		{
+			"singular": "barb",
+			"plural": "barbs",
+			"adjective": "vile",
+		},
 	],
 	"weakness": [
-		{"singular": "weakness", "adjective": "weak"},
-		{"singular": "dullness", "adjective": "dull"},
-		{"singular": "bluntness", "adjective": "blunt"},
-		{"singular": "brittleness", "adjective": "brittle"},
-		{"singular": "age", "adjective": "old"},
+		{
+			"singular": "weakness",
+			"adjective": "weak",
+		},
+		{
+			"singular": "dullness",
+			"adjective": "dull",
+		},
+		{
+			"singular": "bluntness",
+			"adjective": "blunt",
+		},
+		{
+			"singular": "brittleness",
+			"adjective": "brittle",
+		},
+		{
+			"singular": "age",
+			"adjective": "old",
+		},
 	],
 	"craftmanship": [
-		{"singular": "amateur", "adjective": "amateurish", "adverb": "amateurishly"},
-		{"singular": "unskilled craftman", "adjective": "thoughtless", "adverb": "thoughtlessly"},
-		{"singular": "novice craftman", "adjective": "acceptable", "adverb": "acceptably"},
-		{"singular": "professional", "adjective": "professional", "adverb": "professionally"},
-		{"singular": "experienced craftman", "adjective": "inspiring", "adverb": "skillfully"},
-		{"singular": "skilled craftman", "adjective": "skillful", "adverb": "skillfully"},
-		{"singular": "legendary craftman", "adjective": "legendary", "adverb": "legendaryly"},
+		{
+			"singular": "amateur",
+			"adjective": "amateurish",
+			"adverb": "amateurishly",
+		},
+		{
+			"singular": "unskilled craftman",
+			"adjective": "thoughtless",
+			"adverb": "thoughtlessly",
+		},
+		{
+			"singular": "novice craftman",
+			"adjective": "acceptable",
+			"adverb": "acceptably",
+		},
+		{
+			"singular": "professional",
+			"adjective": "professional",
+			"adverb": "professionally",
+		},
+		{
+			"singular": "experienced craftman",
+			"adjective": "inspiring",
+			"adverb": "skillfully",
+		},
+		{
+			"singular": "skilled craftman",
+			"adjective": "skillful",
+			"adverb": "skillfully",
+		},
+		{
+			"singular": "legendary craftman",
+			"adjective": "legendary",
+			"adverb": "legendaryly",
+		},
 	],
 	"stains": [
-		{"singular": "blood stains", "adjective": "blood stained"},
-		{"singular": "grease stains", "adjective": "grease stained"},
-		{"singular": "water stains", "adjective": "water stained"},
+		{
+			"singular": "blood stains",
+			"adjective": "blood stained",
+			"prefix": "Blood Stained",
+		},
+		{
+			"singular": "grease stains",
+			"adjective": "grease stained",
+		},
+		{
+			"singular": "water stains",
+			"adjective": "water stained",
+		},
 	],
 	"enemy": [
-		{"singular": "beast", "plural": "beasts", "adjective": "wild"},
-		{"singular": "demon", "plural": "demons", "adjective": "evil"},
-		{"singular": "angel", "plural": "angels", "adjective": "radiant"},
-		{"singular": "elemental", "plural": "elementals", "adjective": "elemental"},
-		{"plural": "undead", "adjective": "undead"},
-		{"singular": "orc", "plural": "orcs", "adjective": "brutal"},
-		{"singular": "cyborg", "plural": "cyborgs", "adjective": "cybertronic"},
-		{"singular": "robot", "plural": "robots", "adjective": "computronic"},
-		{"singular": "archon", "plural": "archons", "adjective": "mighty"},
-		{"plural": "plants", "adjective": "phototropic"},
+		{
+			"singular": "beast",
+			"plural":"beasts",
+			"adjective": "wild",
+			"prefix": "Beast",
+		},
+		{
+			"singular": "demon",
+			"plural": "demons",
+			"adjective": "evil",
+			"prefix": "Demon",
+		},
+		{
+			"singular": "angel",
+			"plural": "angels",
+			"adjective": "radiant",
+			"prefix": "Radiant",
+		},
+		{
+			"singular": "elemental",
+			"plural": "elementals",
+			"adjective": "elemental",
+			"suffix": "of Elements"
+		},
+		{
+			"plural": "undead",
+			"adjective": "undead",
+			"prefix": "Undead",
+		},
+		{
+			"singular": "orc",
+			"plural": "orcs",
+			"adjective": "brutal",
+			"prefix": "Orc",
+		},
+		{
+			"singular": "cyborg",
+			"plural": "cyborgs",
+			"adjective": "cybertronic",
+			"prefix": "Cyborg",
+		},
+		{
+			"singular": "robot",
+			"plural": "robots",
+			"adjective": "computronic",
+			"prefix": "Robot",
+		},
+		{
+			"singular": "archon",
+			"plural": "archons",
+			"adjective": "mighty",
+			"suffix": "of Archons",
+		},
+		{
+			"plural": "plants",
+			"adjective": "phototropic",
+			"prefix": "floral",
+		},
 	],
 	"prophecy": [
-		{"singular": "prophecy", "plural": "prophecies", "adjective": "prophesied"},
-		{"singular": "oracle", "plural": "oracles", "adjective": "prophetic"},
-		{"singular": "fate", "adjective": "fated"},
-		{"singular": "destiny", "adjective": "destined"},
+		{
+			"singular": "prophecy",
+			"plural": "prophecies",
+			"adjective": "prophesied",
+			"suffix": "of Prophecy",
+		},
+		{
+			"singular": "oracle",
+			"plural": "oracles",
+			"adjective": "prophetic",
+			"suffix": "Oracle's",
+		},
+		{
+			"singular": "fate",
+			"adjective": "fated",
+			"suffix": "of Fate",
+		},
+		{
+			"singular": "destiny",
+			"adjective": "destined",
+			"suffix": "of Destiny",
+		},
 	],
 	"emotion": [
-		{"singular": "care", "adjective": "careful", "adverb": "carefully"},
-		{"singular": "joy", "adjective": "joyful", "adverb": "joyfully"},
-		{"singular": "precision", "adjective": "precise", "adverb": "precisely"},
-		{"singular": "dedication", "adjective": "dedicated", "adverb": "decisively"},
-		{"singular": "determination", "adjective": "determined", "adverb": "mindfully"},
-		{"singular": "hate", "adjective": "fierce", "adverb": "fiercely"},
-		{"singular": "haste", "adjective": "improvised", "adverb": "hastily"},
-		{"singular": "sorrow", "adjective": "sorrowful", "adverb": "sorrowfully"},
+		{
+			"singular": "care",
+			"adjective": "careful",
+			"adverb": "carefully",
+		},
+		{
+			"singular": "joy",
+			"adjective": "joyful",
+			"adverb": "joyfully",
+			"suffix": "of Joy",
+		},
+		{
+			"singular": "precision",
+			"adjective": "precise",
+			"adverb": "precisely",
+			"suffix": "of Precision",
+		},
+		{
+			"singular": "dedication",
+			"adjective": "dedicated",
+			"adverb": "decisively",
+			"suffix": "of Dedication",
+		},
+		{
+			"singular": "determination",
+			"adjective": "determined",
+			"adverb": "mindfully",
+			"suffix": "of Determination",
+		},
+		{
+			"singular": "hate",
+			"adjective": "fierce",
+			"adverb": "fiercely",
+			"suffix": "of Hate",
+		},
+		{
+			"singular": "haste",
+			"adjective": "improvised",
+			"adverb": "hastily",
+			"suffix": "of Haste",
+		},
+		{
+			"singular": "sorrow",
+			"adjective": "sorrowful",
+			"adverb": "sorrowfully",
+			"prefix": "Sorrowful",
+		},
 	],
 	"origin": [
-		{"singular": "unknown", "plural": "enigma", "adjective": "unknown"},
+		{
+			"singular": "unknown",
+			"plural": "enigma",
+			"adjective": "unknown",
+			"suffix": "of Unknown Origin",
+		},
 	],
 	"force": [
-		{"singular": "storm", "plural": "storms", "adjective": "devastating"},
-		{"singular": "earthquake", "plural": "earthquakes", "adjective": "ground shaking"},
-		{"singular": "flashflood", "adjective": "destructive"},
-		{"singular": "apocalypse", "adjective": "apocalyptic"},
-		{"singular": "annihilation", "adjective": "annihilating"},
-		{"singular": "world's end", "adjective": "ultimate"},
+		{
+			"singular": "storm",
+			"plural": "storms",
+			"adjective": "devastating",
+			"suffix": "of Storms",
+		},
+		{
+			"singular": "earthquake",
+			"plural": "earthquakes",
+			"adjective": "ground shaking",
+			"suffix": "of Earthquakes",
+		},
+		{
+			"singular": "flashflood",
+			"adjective": "destructive",
+			"suffix": "of Flashfloods",
+		},
+		{
+			"singular": "apocalypse",
+			"adjective": "apocalyptic",
+			"suffix": "of Apocalypse",
+		},
+		{
+			"singular": "annihilation",
+			"adjective": "annihilating",
+			"suffix": "of Annihilation",
+		},
+		{
+			"singular": "world's end",
+			"adjective": "ultimate",
+			"suffix": "of the End",
+		},
 	],
 	"care": [
-		{"singular": "polishing", "adjective": "polished"},
-		{"singular": "sharpening", "adjective": "sharpened"},
-		{"singular": "oiling", "adjective": "well oiled"},
-		{"singular": "neglect", "adjective": "worn-down"},
-		{"singular": "aging", "adjective": "old"},
-		{"singular": "rot", "adjective": "rotten"},
+		{
+			"singular": "polishing",
+			"adjective": "polished",
+		},
+		{
+			"singular": "sharpening",
+			"adjective": "sharpened",
+		},
+		{
+			"singular": "oiling",
+			"adjective": "well oiled",
+		},
+		{
+			"singular": "neglect",
+			"adjective": "worn-down",
+		},
+		{
+			"singular": "aging",
+			"adjective": "old",
+		},
+		{
+			"singular": "rot",
+			"adjective": "rotten",
+		},
 	],
 	"crime": [
-		{"singular": "murder", "plural": "murders", "adjective": "murderous"},
-		{"singular": "genocide", "plural": "genocides", "adjective": "genocidal"},
-		{"singular": "trespassing", "plural": "tresspassings", "adjective": "trespassing"},
-		{"singular": "stealing", "plural": "thefts", "adjective": "stealing"},
-		{"singular": "tyranny", "plural": "tyrannies", "adjective": "tyrannic"},
-		{"singular": "terrorism", "plural": "terrorist attacks", "adjective": "terrorising"},
+		{
+			"singular": "murder",
+			"plural": "murders",
+			"adjective": "murderous",
+			"suffix": "of Murder",
+		},
+		{
+			"singular": "genocide",
+			"plural": "genocides",
+			"adjective": "genocidal",
+			"suffix": "of Genocide",
+		},
+		{
+			"singular": "trespassing",
+			"plural": "tresspassings",
+			"adjective": "trespassing",
+		},
+		{
+			"singular": "stealing",
+			"plural": "thefts",
+			"adjective": "stealing",
+			"suffix": "of Theft",
+		},
+		{
+			"singular": "tyranny",
+			"plural": "tyrannies",
+			"adjective": "tyrannic",
+			"suffix": "of Tyranny",
+		},
+		{
+			"singular": "terrorism",
+			"plural": "terrorist attacks",
+			"adjective": "terrorising",
+		},
 	],
 }
 const RANDOM_CARDS = [
@@ -212,7 +875,6 @@ const RANDOM_CARDS = [
 var texts: Array[Dictionary] = []
 var texts_by_type:= {}
 var cards:= {}
-
 
 
 class TextState:
@@ -240,21 +902,23 @@ class TextState:
 		plural = false
 		subject_gender = -1
 #		last_cards.clear()
-	
 
 
 func create_item_data() -> Dictionary:
 	var recipe: String = Items.EQUIPMENT_RECIPES.keys().pick_random()
 	var recipe_data: Dictionary = Items.EQUIPMENT_RECIPES[recipe]
 	var item_name:= tr(recipe.to_upper())
-	var item: Dictionary = Items.create_random_standard_equipment(recipe, {"level":1,"tier":1,"local_materials":Items.DEFAULT_MATERIALS})
+	var item: Dictionary = Items.create_random_standard_equipment(recipe, {
+		"level":1,
+		"tier":1,
+		"local_materials":Items.DEFAULT_MATERIALS,
+	})
 	
 	item.attributes = {}
 	if item_name.right(1) == 's' && item_name.right(2) != "ss":
 		item.attributes.plural = item_name
 	else:
 		item.attributes.singular = item_name
-	# item.attributes.adjective = item.components.pick_random().attributes.adjective
 	for i in range(item.components.size()):
 		var component_name: String = tr(recipe_data.components[i].to_upper())
 		item.components[i] = {
@@ -270,13 +934,15 @@ func create_item_data() -> Dictionary:
 		if "attributes" in item.components[i].material:
 			for key in item.components[i].material.attributes:
 				if typeof(item.components[i].material.attributes[key]) == TYPE_ARRAY:
-					item.components[i].material.attributes[key] = item.components[i].material.attributes[key].pick_random()
+					item.components[i].material.attributes[key] = \
+						item.components[i].material.attributes[key].pick_random()
 		else:
 			item.components[i].material.attributes = {}
-		if item.components[i].material.name.right(1) == 's' && item.components[i].material.name.right(2) != "ss":
-			item.components[i].material.attributes.plural = item.components[i].material.name
+		if item.components[i].material.name.right(1) == 's' && \
+			item.components[i].material.name.right(2) != "ss":
+				item.components[i].material.attributes.plural = item.components[i].material.name
 		else:
-			item.components[i].material.attributes.singular = item.components[i].material.name
+				item.components[i].material.attributes.singular = item.components[i].material.name
 	
 	return item
 
@@ -290,64 +956,165 @@ func create_description_data(item: Dictionary, rank: int) -> Dictionary:
 			var quality:= []
 			var elements:= []
 			match enchantment.type:
-				"attack", "accuracy", "armour", "penetration", "physical_resistance", "physical_damage":
+				"attack", "accuracy", "armour", "penetration", "physical_resistance", \
+				"physical_damage":
 					match item.get("base_type", ""):
-						"dagger", "sword", "axe", "spellblade", "greatsword", "battleaxe", "scythe", "gun_blade":
-							quality.append({"singular": "blade", "plural": "blades", "adjective": "sharp"})
+						"dagger", "sword", "axe", "spellblade", "greatsword", "battleaxe", \
+						"scythe", "gun_blade":
+							quality.append({
+								"singular": "blade",
+								"plural": "blades",
+								"adjective": "sharp",
+							})
 						"mace", "greatmaul", "quarterstaff":
-							quality.append({"singular": "hammer", "plural": "hammers", "adjective": "blunt"})
+							quality.append({
+								"singular": "hammer",
+								"plural": "hammers",
+								"adjective": "blunt",
+							})
 						"morningstar":
-							quality.append({"singular": "spike", "plural": "spikes", "adjective": "sharp"})
+							quality.append({
+								"singular": "spike",
+								"plural": "spikes",
+								"adjective": "sharp",
+							})
 						"spear":
-							quality.append({"singular": "tip", "plural": "tips", "adjective": "pointy"})
+							quality.append({
+								"singular": "tip",
+								"plural": "tips",
+								"adjective": "pointy",
+							})
 						"buckler", "kite_shield", "tower_shield", "chain_saw":
-							quality.append({"singular": "metal", "adjective": "polished"})
+							quality.append({
+								"singular": "metal",
+								"adjective": "polished",
+							})
 						_:
 							quality.append([
-								{"singular": "spike", "plural": "spikes", "adjective": "sharp"},
-								{"singular": "blade", "plural": "blades", "adjective": "sharp"},
-								{"singular": "tip", "plural": "tips", "adjective": "pointy"},
-								{"singular": "hammer", "plural": "hammers", "adjective": "blunt"},
-								{"singular": "metal", "adjective": "polished"},
-								{"singular": "barb", "plural": "barbs", "adjective": "vile"},
+								{
+									"singular": "spike",
+									"plural": "spikes",
+									"adjective": "sharp",
+								},
+								{
+									"singular": "blade",
+									"plural": "blades",
+									"adjective": "sharp",
+								},
+								{
+									"singular": "tip",
+									"plural": "tips",
+									"adjective": "pointy",
+								},
+								{
+									"singular": "hammer",
+									"plural": "hammers",
+									"adjective": "blunt",
+								},
+								{
+									"singular": "metal",
+									"adjective": "polished",
+								},
+								{
+									"singular": "barb",
+									"plural": "barbs",
+									"adjective": "vile",
+								},
 							].pick_random())
 				"magic", "willpower":
-					add_card(card_set, create_card("element"), Utils.get_closest_position(Vector2i(0, 0), card_set.keys()))
+					add_card(card_set, create_card("element"), Utils.get_closest_position(
+						Vector2i(0, 0), card_set.keys()))
 				"evasion", "speed":
-					add_card(card_set, create_card("liquid"), Utils.get_closest_position(Vector2i(0, 0), card_set.keys()))
+					add_card(card_set, create_card("liquid"), Utils.get_closest_position(
+						Vector2i(0, 0), card_set.keys()))
 				"health", "health_regen", "stamina", "stamina_regen", "mana", "mana_regen", "focus":
-					add_card(card_set, create_card("liquid"), Utils.get_closest_position(Vector2i(0, 0), card_set.keys()))
+					add_card(card_set, create_card("liquid"), Utils.get_closest_position(
+						Vector2i(0, 0), card_set.keys()))
 				"strength", "constitution", "dexterity", "cunning", "intelligence", "wisdom":
-					add_card(card_set, create_card("stains"), Utils.get_closest_position(Vector2i(0, 0), card_set.keys()))
+					add_card(card_set, create_card("stains"), Utils.get_closest_position(
+						Vector2i(0, 0), card_set.keys()))
 				_:
 					if "elemental" in enchantment.type:
 						elements.append([
-							{"singular": "fire", "adjective": "fiery"},
-							{"plural": "flames", "adjective": "flaming"},
-							{"singular": "ember", "plural": "embers", "adjective": "burning"},
-							{"singular": "ice", "adjective": "icy"},
-							{"singular": "frost", "adjective": "cold"},
-							{"singular": "lightning", "adjective": "sparkling"},
-							{"singular": "electricity", "adjective": "jolting"},
+							{
+								"singular": "fire",
+								"adjective": "fiery",
+							},
+							{
+								"plural": "flames",
+								"adjective": "flaming",
+							},
+							{
+								"singular": "ember",
+								"plural": "embers",
+								"adjective": "burning",
+							},
+							{
+								"singular": "ice",
+								"adjective": "icy",
+							},
+							{
+								"singular": "frost",
+								"adjective": "cold",
+							},
+							{
+								"singular": "lightning",
+								"adjective": "sparkling",
+							},
+							{
+								"singular": "electricity",
+								"adjective": "jolting",
+							},
 						].pick_random())
 					if "nature" in enchantment.type:
 						elements.append([
-							{"singular": "water", "plural": "waters", "adjective": "watery"},
-							{"singular": "wind", "plural": "winds", "adjective": "windy"},
-							{"singular": "air", "adjective": "airy"},
-							{"singular": "earth", "adjective": "dirty"},
-							{"singular": "rock", "plural": "rocks", "adjective": "rocky"},
+							{
+								"singular": "water",
+								"plural": "waters",
+								"adjective": "watery",
+							},
+							{
+								"singular": "wind",
+								"plural": "winds",
+								"adjective": "windy",
+							},
+							{
+								"singular": "air",
+								"adjective": "airy",
+							},
+							{
+								"singular": "earth",
+								"adjective": "dirty",
+							},
+							{
+								"singular": "rock",
+								"plural": "rocks",
+								"adjective": "rocky",
+							},
 						].pick_random())
 					if "celestial" in enchantment.type:
 						elements.append([
-							{"singular": "light", "plural": "lights", "adjective": "bright"},
-							{"singular": "darkness", "plural": "shadows", "adjective": "dark"},
-							{"singular": "twilight", "adjective": "shimmering"},
+							{
+								"singular": "light",
+								"plural": "lights",
+								"adjective": "bright",
+							},
+							{
+								"singular": "darkness",
+								"plural": "shadows",
+								"adjective": "dark",
+							},
+							{
+								"singular": "twilight",
+								"adjective": "shimmering",
+							},
 						].pick_random())
 			if quality.size() > 0:
-				add_card(card_set, create_card("quality", quality.pick_random()), Utils.get_closest_position(Vector2i(0, 0), card_set.keys()))
+				add_card(card_set, create_card("quality", quality.pick_random()),
+					Utils.get_closest_position(Vector2i(0, 0), card_set.keys()))
 			if elements.size() > 0:
-				add_card(card_set, create_card("element", elements.pick_random()), Utils.get_closest_position(Vector2i(0, 0), card_set.keys()))
+				add_card(card_set, create_card("element", elements.pick_random()),
+					Utils.get_closest_position(Vector2i(0, 0), card_set.keys()))
 	
 	for component in item.components:
 		if typeof(component) != TYPE_DICTIONARY:
@@ -355,102 +1122,243 @@ func create_description_data(item: Dictionary, rank: int) -> Dictionary:
 		var position:= Utils.get_closest_position(Vector2i(0, 0), card_set.keys())
 		add_card(card_set, create_card("component", component.get("attributes", {})), position)
 		if "material" in component:
-			var mat_pos:= Utils.get_closest_position(position + Utils.DIRECTIONS.pick_random(), card_set.keys())
-			add_card(card_set, create_card("material", component.material.get("attributes", {})), mat_pos)
+			var mat_pos:= Utils.get_closest_position(position + Utils.DIRECTIONS.pick_random(),
+				card_set.keys())
+			add_card(card_set, create_card("material", component.material.get("attributes", {})),
+				mat_pos)
 	
 	if rank < 2 or (rank < 6 && randf() < 0.1):
-		add_card(card_set, create_card("weakness"), Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
+		add_card(card_set, create_card("weakness"),
+			Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
 	
 	if rank < 2:
 		craftmanship = [
-			{"singular": "amateur", "adjective": "amateurish", "adverb": "amateurishly"},
-			{"singular": "unskilled craftman", "adjective": "thoughtless", "adverb": "thoughtlessly"},
-			{"singular": "novice craftman", "adjective": "acceptable", "adverb": "acceptably"},
+			{
+				"singular": "amateur",
+				"adjective": "amateurish",
+				"adverb": "amateurishly",
+			},
+			{
+				"singular": "unskilled craftman",
+				"adjective": "thoughtless",
+				"adverb": "thoughtlessly",
+			},
+			{
+				"singular": "novice craftman",
+				"adjective": "acceptable",
+				"adverb": "acceptably",
+			},
 		].pick_random()
 	elif rank < 4:
 		craftmanship = [
-			{"singular": "novice craftman", "adjective": "acceptable", "adverb": "acceptably"},
-			{"singular": "professional", "adjective": "professional", "adverb": "professionally"},
-			{"singular": "experienced craftman", "adjective": "inspiring", "adverb": "skillfully"},
+			{
+				"singular": "novice craftman",
+				"adjective": "acceptable",
+				"adverb": "acceptably",
+			},
+			{
+				"singular": "professional",
+				"adjective": "professional",
+				"adverb": "professionally",
+			},
+			{
+				"singular": "experienced craftman",
+				"adjective": "inspiring",
+				"adverb": "skillfully",
+			},
 		].pick_random()
 	elif rank < 6:
 		craftmanship = [
-			{"singular": "skilled craftman", "adjective": "skillful", "adverb": "skillfully"},
-			{"singular": "master craftman", "adjective": "masterful", "adverb": "masterfully"},
-			{"singular": "legendary craftman", "adjective": "legendary", "adverb": "legendaryly"},
+			{
+				"singular": "skilled craftman",
+				"adjective": "skillful",
+				"adverb": "skillfully",
+			},
+			{
+				"singular": "master craftman",
+				"adjective": "masterful",
+				"adverb": "masterfully",
+			},
+			{
+				"singular": "legendary craftman",
+				"adjective": "legendary",
+				"adverb": "legendaryly",
+			},
 		].pick_random()
 	else:
-		craftmanship = {"singular": "legendary craftman", "adjective": "legendary", "adverb": "legendaryly"}
-	add_card(card_set, create_card("craftmanship", craftmanship), Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
+		craftmanship = {
+			"singular": "legendary craftman",
+			"adjective": "legendary",
+			"adverb": "legendaryly",
+		}
+	add_card(card_set, create_card("craftmanship", craftmanship),
+		Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
 	
-	add_card(card_set, create_card("color"), Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
+	add_card(card_set, create_card("color"),
+		Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
 	
 	var care: Dictionary
 	if rank < 2:
 		care = [
-			{"singular": "neglect", "adjective": "worn-down"},
-			{"singular": "aging", "adjective": "old"},
-			{"singular": "rot", "adjective": "rotten"},
+			{
+				"singular": "neglect",
+				"adjective": "worn-down",
+			},
+			{
+				"singular": "aging",
+				"adjective": "old",
+			},
+			{
+				"singular": "rot",
+				"adjective": "rotten",
+			},
 		].pick_random()
 	elif rank < 6:
 		care = [
-			{"singular": "polishing", "adjective": "polished"},
-			{"singular": "sharpening", "adjective": "sharpened"},
-			{"singular": "oiling", "adjective": "well oiled"},
+			{
+				"singular": "polishing",
+				"adjective": "polished",
+			},
+			{
+				"singular": "sharpening",
+				"adjective": "sharpened",
+			},
+			{
+				"singular": "oiling",
+				"adjective": "well oiled",
+			},
 		].pick_random()
 	else:
 		care = [
-			{"plural": "legends", "adjective": "legendary"},
-			{"singular": "perfection", "adjective": "perfect"},
+			{
+				"plural": "legends",
+				"adjective": "legendary",
+			},
+			{
+				"singular": "perfection",
+				"adjective": "perfect",
+			},
 		].pick_random()
-	add_card(card_set, create_card("care", care), Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
+	add_card(card_set, create_card("care", care),
+		Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
 	
 	if "source_race" in item:
 		var enemies:= []
 		match item.source_race:
 			"elemental":
-				enemies.append({"singular": "elemental", "plural": "elementals", "adjective": "elemental"})
+				enemies.append({
+					"singular": "elemental",
+					"plural": "elementals",
+					"adjective": "elemental",
+				})
 			"robot":
-				enemies.append({"singular": "robot", "plural": "robots", "adjective": "computronic"})
+				enemies.append({
+					"singular": "robot",
+					"plural": "robots",
+					"adjective": "computronic",
+				})
 			"undead":
-				enemies.append({"plural": "undead", "adjective": "undead"})
+				enemies.append({
+					"plural": "undead", 
+					"adjective": "undead",
+				})
 			"construct":
-				enemies.append({"singular": "construct", "plural": "constructs", "adjective": "artificial"})
+				enemies.append({
+					"singular": "construct",
+					"plural": "constructs",
+					"adjective": "artificial",
+				})
 			"goblin":
-				enemies.append({"singular": "goblin", "plural": "goblins", "adjective": "primitive"})
+				enemies.append({
+					"singular": "goblin",
+					"plural": "goblins",
+					"adjective": "primitive",
+				})
 			"gnoll":
-				enemies.append({"singular": "gnoll", "plural": "gnolls", "adjective": "aggressive"})
+				enemies.append({
+					"singular": "gnoll",
+					"plural": "gnolls",
+					"adjective": "aggressive",
+				})
 			"troll":
-				enemies.append({"singular": "troll", "plural": "trolls", "adjective": "sturdy"})
+				enemies.append({
+					"singular": "troll",
+					"plural": "trolls",
+					"adjective": "sturdy",
+				})
 			"beast":
-				enemies.append({"singular": "beast", "plural": "beasts", "adjective": "wild"})
+				enemies.append({
+					"singular": "beast",
+					"plural": "beasts",
+					"adjective": "wild",
+				})
 			"demon":
-				enemies.append({"singular": "demon", "plural": "demons", "adjective": "evil"})
+				enemies.append({
+					"singular": "demon",
+					"plural": "demons",
+					"adjective": "evil",
+				})
 			"plant":
-				enemies.append({"plural": "plants", "adjective": "phototropic"})
+				enemies.append({
+					"plural": "plants",
+					"adjective": "phototropic",
+				})
 			"human":
-				enemies.append({"singular": "human", "plural": "mankind", "adjective": "man-made"})
+				enemies.append({
+					"singular": "human",
+					"plural": "mankind",
+					"adjective": "man-made",
+				})
 			"halfling":
-				enemies.append({"singular": "halfling", "plural": "halflings", "adjective": "short"})
+				enemies.append({
+					"singular": "halfling",
+					"plural": "halflings",
+					"adjective": "short",
+				})
 			"elf":
-				enemies.append({"singular": "elf", "plural": "elves", "adjective": "elegant"})
+				enemies.append({
+					"singular": "elf",
+					"plural": "elves",
+					"adjective": "elegant",
+				})
 			"dwarf":
-				enemies.append({"singular": "dwarf", "plural": "dwarves", "adjective": "robust"})
+				enemies.append({
+					"singular": "dwarf",
+					"plural": "dwarves",
+					"adjective": "robust",
+				})
 			"naga":
-				enemies.append({"singular": "naga", "plural": "naga", "adjective": "vile"})
+				enemies.append({
+					"singular": "naga",
+					"plural": "naga",
+					"adjective": "vile",
+				})
 			"orc":
-				enemies.append({"singular": "orc", "plural": "orcs", "adjective": "brutal"})
+				enemies.append({
+					"singular": "orc",
+					"plural": "orcs",
+					"adjective": "brutal",
+				})
 			"ogre":
-				enemies.append({"singular": "ogre", "adjective": "huge"})
+				enemies.append({
+					"singular": "ogre",
+					"adjective": "huge",
+				})
 			"cyborg":
-				enemies.append({"singular": "cyborg", "plural": "cyborgs", "adjective": "cybertronic"})
+				enemies.append({
+					"singular": "cyborg",
+					"plural": "cyborgs",
+					"adjective": "cybertronic",
+				})
 			_:
-				add_card(card_set, create_card("enemy"), Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
+				add_card(card_set, create_card("enemy"),
+					Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
 	
 	if rank > 2:
 		@warning_ignore("integer_division")
 		for i in range(min(int((rank - 1) / 2), 2)):
-			var card_pos:= Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys())
+			var card_pos:= Utils.get_closest_position(Utils.DIRECTIONS.pick_random(),
+				card_set.keys())
 			add_card(card_set, create_card(RANDOM_CARDS.pick_random()), card_pos)
 	
 	return card_set
@@ -479,7 +1387,8 @@ func create_card(type: String, attributes:= {}) -> Dictionary:
 			elif attribute in ATTRIBUTES:
 				var data = ATTRIBUTES[attribute].pick_random()
 				if typeof(data) == TYPE_DICTIONARY:
-					card.attributes[attribute] = tr(data.get("default", data.values().pick_random()))
+					card.attributes[attribute] = tr(
+						data.get("default", data.values().pick_random()))
 					for key in data.keys():
 						if key == "default":
 							continue
@@ -537,8 +1446,10 @@ func create_card_set(item: Dictionary) -> Dictionary:
 		# card_set[position] = create_card(component.type, component.get("attributes", {}))
 		add_card(card_set, create_card("component", component.get("attributes", {})), position)
 		if "material" in component:
-			var mat_pos:= Utils.get_closest_position(position + Utils.DIRECTIONS.pick_random(), card_set.keys())
-			add_card(card_set, create_card("material", component.material.get("attributes", {})), mat_pos)
+			var mat_pos:= Utils.get_closest_position(position + Utils.DIRECTIONS.pick_random(),
+				card_set.keys())
+			add_card(card_set, create_card("material", component.material.get("attributes", {})),
+				mat_pos)
 			
 			var card_pos:= Utils.get_closest_position(mat_pos, card_set.keys())
 			add_card(card_set, create_card(RANDOM_CARDS.pick_random()), card_pos)
@@ -549,14 +1460,16 @@ func create_card_set(item: Dictionary) -> Dictionary:
 	
 	return card_set
 
-func pick_valid_card_set(type_set: Array, current_position: Vector2i, current_cards: Dictionary, card_set:= []) -> Array:
+func pick_valid_card_set(type_set: Array, current_position: Vector2i,
+		current_cards: Dictionary, card_set:= []) -> Array:
 	var index:= card_set.size()
 	if index >= type_set.size():
 		return card_set
 	if index == 0:
 		for pos in current_cards.keys():
-			if current_cards[pos].type != type_set[index] || Utils.get_distance(current_position, pos) > Utils.MAX_DIST:
-				continue
+			if current_cards[pos].type != type_set[index] || \
+				Utils.get_distance(current_position, pos) > Utils.MAX_DIST:
+					continue
 			var array:= pick_valid_card_set(type_set, current_position, current_cards, [pos])
 			if array.size() == type_set.size():
 				return array
@@ -565,10 +1478,13 @@ func pick_valid_card_set(type_set: Array, current_position: Vector2i, current_ca
 			var directions:= Utils.DIRECTIONS.duplicate(true)
 			directions.shuffle()
 			for offset in directions:
-				if current_cards.has(pos + offset) && current_cards[pos+offset].type == type_set[index] && Utils.get_distance(current_position, pos + offset) <= Utils.MAX_DIST:
-					var array:= pick_valid_card_set(type_set, current_position, current_cards, card_set + [pos + offset])
-					if array.size() == type_set.size():
-						return array
+				if current_cards.has(pos + offset) && \
+					current_cards[pos+offset].type == type_set[index] && \
+					Utils.get_distance(current_position, pos + offset) <= Utils.MAX_DIST:
+						var array:= pick_valid_card_set(type_set, current_position, current_cards,
+							card_set + [pos + offset])
+						if array.size() == type_set.size():
+							return array
 	# no valid combinations found
 	return []
 
@@ -582,7 +1498,8 @@ func pick_valid_text(available_texts: Array, current_card_set: Dictionary) -> Di
 			texts_by_type[type].shuffle()
 			for text_data in texts_by_type[type]:
 				var required: Array = text_data.get("required", [])
-				var card_pos:= pick_valid_card_set(required, current_card_set.keys().pick_random(), current_card_set)
+				var card_pos:= pick_valid_card_set(required, current_card_set.keys().pick_random(),
+					current_card_set)
 				if card_pos.size() == required.size():
 					var mapping:= {}
 					for req in required:
@@ -598,16 +1515,14 @@ func pick_valid_text(available_texts: Array, current_card_set: Dictionary) -> Di
 
 func append_text(text_state: TextState) -> TextState:
 	var card_set:= text_state.card_set.duplicate()
-#	for pos in text_state.last_cards:
-#		if randf() < 0.5:
-#			card_set.erase(pos)
 	var text_data:= pick_valid_text(text_state.transition, card_set)
 	if text_data.size() == 0:
 		print("Warning: no valid texts available.")
 		for i in range(4):
 			var card_pos: Vector2i
 			if text_state.card_set.size() > 0:
-				card_pos = Utils.get_closest_position(text_state.card_set.keys().pick_random(), text_state.card_set.keys())
+				card_pos = Utils.get_closest_position(text_state.card_set.keys().pick_random(),
+					text_state.card_set.keys())
 			else:
 				card_pos = Utils.get_closest_position(Vector2(0, 0), text_state.card_set.keys())
 			add_card(text_state.card_set, create_card(RANDOM_CARDS.pick_random()), card_pos)
@@ -619,16 +1534,12 @@ func append_text(text_state: TextState) -> TextState:
 			text_state.transition = texts_by_type.sentence_end.pick_random().transition
 			return text_state
 	
-#	text_state.last_cards.clear()
-	#for pos in text_state.last_cards:
-		#if randf() < 0.5:
-			#card_set.erase(pos)
 	for card in text_data.required.values():
 		if card.position not in text_state.last_cards:
 			text_state.last_cards.push_back(card.position)
 	if text_state.last_cards.size() > 0:
-		for i in range(randi()%int(max(text_state.last_cards.size() / 2.0 - 0.5, 1))):
-			text_state.last_cards.remove_at(randi()%text_state.last_cards.size())
+		for i in range(randi() % int(max(text_state.last_cards.size() / 2.0 - 0.5, 1))):
+			text_state.last_cards.remove_at(randi() % text_state.last_cards.size())
 	
 	var text:= ""
 	var re:= RegEx.new()
@@ -662,9 +1573,6 @@ func append_text(text_state: TextState) -> TextState:
 					if "plural" in res_str:
 						text_state.plural = true
 						break
-#					elif "singular" in res_str:
-#						text_state.plural = false
-#						break
 	for result in results:
 		var key:= result.get_string(1)
 		if "/" in key:
@@ -691,11 +1599,12 @@ func append_text(text_state: TextState) -> TextState:
 					attribute = "singular"
 			if attribute in data:
 				format_dict[key] = data[attribute]
-				if "sentence" in text_data && "subject" in text_data.sentence && text_data.sentence.subject == topic:
-					if data[attribute] == text_state.last_subject:
-						repeated_subject = true
-					subject_key = key
-					text_state.last_subject = data[attribute]
+				if "sentence" in text_data && "subject" in text_data.sentence && \
+					text_data.sentence.subject == topic:
+						if data[attribute] == text_state.last_subject:
+							repeated_subject = true
+						subject_key = key
+						text_state.last_subject = data[attribute]
 			else:
 				print("Warning: key " + key + " missing in text data")
 				format_dict[key] = data.values().pick_random()
@@ -714,7 +1623,8 @@ func append_text(text_state: TextState) -> TextState:
 				elif text.substr(pos - 4, 1) == 'an':
 					text = text.left(pos - 4) + "the" + text.substr(pos - 2)
 		else:
-			print("Warning: key " + key + " has invalid format. Use topic.attribute or singular/plural")
+			print("Warning: key " + key +
+				" has invalid format. Use topic.attribute or singular/plural")
 			format_dict[key] = pick_attribute(ATTRIBUTES.keys().pick_random())
 			continue
 		
@@ -724,15 +1634,9 @@ func append_text(text_state: TextState) -> TextState:
 			if "predicate" in text_data.sentence and "predicate" in text_state.sentence:
 				skip = true
 				print("Info: skipping text part")
-#				var str_that:= tr("THAT")
-#				if str_that not in text_state.text.right(str_that.length() + 1):
-#					text_state.text += str_that
-#			elif "predicate" in text_state.sentence and "subject" in text_state.sentence:
-#				var str_and:= tr("AND")
-#				if str_and not in text_state.text.right(str_and.length() + 1):
-#					text_state.text += str_and
-			if !skip && text_state.text.length() > 0 && text_state.text[text_state.text.length() - 1] != " ":
-				text_state.text += " "
+			if !skip && text_state.text.length() > 0 && \
+				text_state.text[text_state.text.length() - 1] != " ":
+					text_state.text += " "
 	for s in text_data.get("sentence", {}):
 		if s not in text_state.sentence:
 			text_state.sentence.push_back(s)
@@ -743,8 +1647,9 @@ func append_text(text_state: TextState) -> TextState:
 			else:
 				text_state.text += '.'
 		text_state.reset()
-	if text_state.text.length() > 0 && text_state.text[text_state.text.length() - 1] != " " && text.length() > 0 && text[0] != '.' && !skip:
-		text_state.text += " "
+	if text_state.text.length() > 0 && text_state.text[text_state.text.length() - 1] != " " && \
+		text.length() > 0 && text[0] != '.' && !skip:
+			text_state.text += " "
 	if repeated_subject && !skip:
 		var pos:= text.find(subject_key) - 1
 		var lpos:= text.rfind(" ", pos - 2)
@@ -752,8 +1657,8 @@ func append_text(text_state: TextState) -> TextState:
 		if lpos < 0:
 			lpos = 0
 		sub_str = text.substr(lpos, pos - lpos)
-		if "the " in sub_str || "The " in sub_str || "a " in sub_str || "A " in sub_str || "an " in sub_str || "An " in sub_str:
-#			print(subject_key + " - " + text + ": " + text.substr(0, lpos) + " / " + text.substr(pos) + " / " + text.substr(lpos, pos-lpos) + ".")
+		if "the " in sub_str || "The " in sub_str || "a " in sub_str || "A " in sub_str || \
+			"an " in sub_str || "An " in sub_str:
 			text = text.substr(0, lpos) + text.substr(pos)
 			if text_state.plural:
 				format_dict[subject_key] = "they"
@@ -762,19 +1667,24 @@ func append_text(text_state: TextState) -> TextState:
 			text_state.last_subject = ""
 	if !skip:
 		add_text = text.format(format_dict)
-		if text_state.state == "sentence_end" && add_text.length() > 0 && (text_state.text.length() == 0 || text_state.text[max(text_state.text.length() - 2, 0)] not in [',', ':', '-']):
-			add_text[0] = add_text[0].to_upper()
+		if text_state.state == "sentence_end" && add_text.length() > 0 && \
+			(text_state.text.length() == 0 || \
+			text_state.text[max(text_state.text.length() - 2, 0)] not in [',', ':', '-']):
+				add_text[0] = add_text[0].to_upper()
 		text_state.text += add_text
-	text_state.transition = text_data.get("transition", texts_by_type.sentence_end.pick_random().transition)
+	text_state.transition = text_data.get("transition",
+		texts_by_type.sentence_end.pick_random().transition)
 	text_state.state = text_data.type
 	
 	for key in text_data.get("remove", []):
 		text_state.card_set.erase(text_data.required[key].position)
 	for key in text_data.get("add", []):
-		add_card(text_state.card_set, create_card(key), Utils.get_closest_position(text_state.card_set.keys().pick_random(), text_state.card_set.keys()))
+		add_card(text_state.card_set, create_card(key), Utils.get_closest_position(
+			text_state.card_set.keys().pick_random(), text_state.card_set.keys()))
 	for key in text_data.get("replace", {}):
 		text_state.card_set.erase(text_data.required[key].position)
-		add_card(text_state.card_set, create_card(text_data.replace[key]), text_data.required[key].position)
+		add_card(text_state.card_set, create_card(text_data.replace[key]),
+			text_data.required[key].position)
 	
 	return text_state
 
@@ -793,19 +1703,21 @@ func generate_description(card_set: Dictionary, max_sentences:= 3) -> String:
 	while no_sentences < max_sentences:
 		text_state = append_text(text_state)
 		if text_state.state == "error":
-			var pos: int = max(max(text_state.text.rfind('.'), text_state.text.rfind('!')), text_state.text.rfind('?')) + 1
+			var pos: int = max(max(text_state.text.rfind('.'), text_state.text.rfind('!')),
+				text_state.text.rfind('?')) + 1
 			text_state.text = text_state.text.left(pos)
 		elif text_state.state == "sentence_end":
 			var pos:= text_state.text.rfind('.', text_state.text.length() - 2)
 			if pos > 0:
 				var length: int = min(text_state.text.length() - pos - 1, MAX_TEXT_LENGTH)
-				if Utils.compare_strings(text_state.text.right(pos + 1), text_state.text.substr(max(pos - length, 0), length)) > 0.75:
-					print("Warning: text rejected because too repetetive")
-					text_state.text = text_state.text.left(pos + 1)
-					failures += 1
-					if failures > 3:
-						no_sentences += 1
-						failures = 0
+				if Utils.compare_strings(text_state.text.right(pos + 1),
+					text_state.text.substr(max(pos - length, 0), length)) > 0.75:
+						print("Warning: text rejected because too repetetive")
+						text_state.text = text_state.text.left(pos + 1)
+						failures += 1
+						if failures > 3:
+							no_sentences += 1
+							failures = 0
 				elif text_state.text.right(1) not in [',', ';', ':', '-']:
 					no_sentences += 1
 			elif text_state.text.right(1) not in [',', ';', ':', '-']:
@@ -863,7 +1775,7 @@ func load_text_data(path: String):
 	for file_name in Utils.get_file_paths(path):
 		var file:= FileAccess.open(file_name, FileAccess.READ)
 		var error:= FileAccess.get_open_error()
-		if error!=OK:
+		if error != OK:
 			print("Can't open file " + file_name + "!")
 			continue
 		else:
@@ -871,7 +1783,7 @@ func load_text_data(path: String):
 		
 		var raw:= file.get_as_text()
 		var array: Array = JSON.parse_string(raw) as Array
-		if array==null || array.size()==0:
+		if array == null || array.size() == 0:
 			printt("Error parsing " + file_name + "!")
 			continue
 		for text_data in array:
@@ -887,7 +1799,7 @@ func load_card_data(path: String):
 	for file_name in Utils.get_file_paths(path):
 		var file:= FileAccess.open(file_name, FileAccess.READ)
 		var error:= FileAccess.get_open_error()
-		if error!=OK:
+		if error != OK:
 			print("Can't open file " + file_name + "!")
 			continue
 		else:
@@ -895,7 +1807,7 @@ func load_card_data(path: String):
 		
 		var raw:= file.get_as_text()
 		var dict: Dictionary = JSON.parse_string(raw)
-		if dict==null || dict.size()==0:
+		if dict == null || dict.size() == 0:
 			printt("Error parsing " + file_name + "!")
 			continue
 		for key in dict:
@@ -903,14 +1815,6 @@ func load_card_data(path: String):
 		file.close()
 
 
-#func _process(_delta: float):
-	#if randf() < 0.05:
-		#var item:= create_item_data()
-		#print(generate_test_description(item))
-	#
-
 func _ready():
 	load_text_data("res://data/items/texts")
 	load_card_data("res://data/items/cards")
-	
-	

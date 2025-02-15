@@ -5,7 +5,6 @@ const MOUSE_LIMIT = 128.0
 const POPUP_DELAY = 0.5
 
 var current_texts: Array
-#var timer_popup: Timer
 var waiting_for_popup:= false
 var popup_position: Vector2
 
@@ -28,22 +27,22 @@ func _get_max_line_length(text: String) -> int:
 	var pos_l:= 0
 	var pos_r:= text.find("\n")
 	var max_len:= pos_r - pos_l
-	var len: int
+	var length: int
 	while pos_r>=0:
 		pos_l = pos_r
 		pos_r = text.find("\n", pos_r + 1)
-		len = _get_text_length(text.substr(pos_l, pos_r-pos_l))
-		if len > max_len:
-			max_len = len
-	len = _get_text_length(text.substr(pos_l))
-	if len > max_len:
-		max_len = len
+		length = _get_text_length(text.substr(pos_l, pos_r - pos_l))
+		if length > max_len:
+			max_len = length
+	length = _get_text_length(text.substr(pos_l))
+	if length > max_len:
+		max_len = length
 	return max_len
 
 func _set_scale(text: String):
 	position = get_global_mouse_position() + Vector2(8, 0)
-	size.x = clampi(16 + 8*_get_max_line_length(text), 192, 448)
-	size.y = clampi(56 + 17*text.count("\n"), 64, 512)
+	size.x = clampi(16 + 8 * _get_max_line_length(text), 192, 448)
+	size.y = clampi(56 + 17 * text.count("\n"), 64, 512)
 
 func _set_pos():
 	# Move tooltip to the other side if it it reaches the window border
@@ -104,16 +103,15 @@ func _tab_button_toggled(pressed: bool, index: int):
 		text_label.parse_bbcode(current_texts[index])
 
 func _process(_delta: float):
-	if !visible:
+	if not visible:
 		return
 	
 	var mouse_pos:= get_local_mouse_position()
-	if waiting_for_popup:
-		if popup_position.distance_squared_to(mouse_pos) > 32.0 * 32.0:
-			waiting_for_popup = false
+	if waiting_for_popup && popup_position.distance_squared_to(mouse_pos) > 32.0 * 32.0:
+		waiting_for_popup = false
 	if mouse_pos.x < -MOUSE_LIMIT || mouse_pos.y < -MOUSE_LIMIT || mouse_pos.x > size.x + MOUSE_LIMIT || mouse_pos.y > size.y + MOUSE_LIMIT:
 		hide()
 		return
 	
-	position.x = mini(position.x, DisplayServer.window_get_size().x - size.x - 16)	# leave extra space for scroll bar
-	position.y = clampi(position.y, 0, DisplayServer.window_get_size().y - size.y)
+	position.x = minf(position.x, DisplayServer.window_get_size().x - size.x - 16)	# leave extra space for scroll bar
+	position.y = clampf(position.y, 0, DisplayServer.window_get_size().y - size.y)
