@@ -24,7 +24,9 @@ func get_file_paths(path: String) -> Array:
 	dir.list_dir_begin()
 	var file_name:= dir.get_next()
 	while file_name != "":
-		if !dir.current_is_dir():
+		if dir.current_is_dir():
+			array += get_file_paths(path + "/" + file_name)
+		else:
 			array.push_back(path + "/" + file_name)
 		file_name = dir.get_next()
 	
