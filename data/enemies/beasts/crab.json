@@ -1,0 +1,63 @@
+{
+	"crab": {
+		"base_name": ["crab"],
+		"lesser_prefix": ["small","weak","injured"],
+		"greater_prefix": ["king","tank","hard","oversized"],
+		"abilities": ["claws","armour","feral_impact_water_magic"],
+		"base_stats": {
+			"strength": 8,
+			"constitution": 12,
+			"dexterity": 4,
+			"intelligence": 8,
+			"wisdom": 8,
+			"cunning": 6,
+		},
+		"attributes": {
+			"attack": 10,
+			"magic": 10,
+			"willpower": 12,
+			"armour": 15,
+			"evasion": 0,
+			"accuracy": 5,
+			"penetration": 0,
+			"speed": -2,
+			"critical": 0,
+		},
+		"resistance": {
+			"water":0.5,
+		},
+		"variants": {
+			"default": {
+				"abilities": ["defensive_magic"],
+			},
+			"magical": {
+				"name_prefix": ["magical","glowing"],
+				"abilities": ["feral_water_magic","feral_earth_magic"],
+				"attributes": {
+					"attack":5,
+					"magic":15,
+					"armour":5,
+				},
+			},
+			"sturdy": {
+				"name_prefix": ["sturdy","battle-prooved"],
+				"abilities": ["brawling","feral_impact_earth_magic"],
+				"base_stats": {
+					"constitution":14,
+					"cunning":5,
+				},
+				"attributes": {
+					"attack":15,
+					"magic":5,
+					"armour":20,
+				},
+			},
+		},
+		"materials": [
+			"meat","pincer","shell","pebble",
+		],
+		"soul_prefix": ["lesser","mundane","simple"],
+		"soul_rarity":-1,
+		"race": "beast",
+	},
+}

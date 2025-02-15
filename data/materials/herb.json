@@ -1,0 +1,13 @@
+{
+	"herb": {
+		"name":["{base_name} herb"],
+		"tags":["alchemy", "plant", "healing"],
+		"attributes": {
+			"adjective":["fresh", "herbal"],
+		},
+		"add": {
+			"health":2.5,
+		},
+		"price":10,
+	},
+}

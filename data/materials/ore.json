@@ -1,0 +1,13 @@
+{
+	"ore": {
+		"name":["{base_name} ore"],
+		"tags":["metal"],
+		"attributes": {
+			"adjective":["metallic"],
+		},
+		"add": {
+			"attack":0.5,
+		},
+		"price":10,
+	},
+}

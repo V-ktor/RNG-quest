@@ -1,0 +1,14 @@
+{
+	"nail": {
+		"name":["{base_name} nail"],
+		"veggie_name":["{base_name} iron nail"],
+		"tags":["bone"],
+		"attributes": {
+			"adjective":["hard"],
+		},
+		"add": {
+			"penetration":0.75,
+		},
+		"price":10,
+	},
+}

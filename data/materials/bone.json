@@ -1,0 +1,15 @@
+{
+	"bone": {
+		"name":["{base_name} bone"],
+		"veggie_name":["{base_name} ceramic"],
+		"quality":1.1,
+		"tags":["bone"],
+		"attributes": {
+			"adjective":["bone", "skeletal"],
+		},
+		"add": {
+			"penetration":0.75,
+		},
+		"price":15,
+	},
+}

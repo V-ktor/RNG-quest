@@ -1,0 +1,13 @@
+{
+	"paper": {
+		"name":["{base_name} paper"],
+		"tags":["paper"],
+		"attributes": {
+			"adjective":["thin"],
+		},
+		"add": {
+			"willpower":0.5,
+		},
+		"price":10,
+	},
+}

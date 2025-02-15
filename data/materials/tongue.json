@@ -1,0 +1,14 @@
+{
+	"tongue": {
+		"name":["{base_name} tongue"],
+		"veggie_name":["{base_name} B12 pill"],
+		"tags":["alchemy", "cooking", "meat"],
+		"attributes": {
+			"adjective":["meaty"],
+		},
+		"add": {
+			"health":2.5,
+		},
+		"price":10,
+	},
+}

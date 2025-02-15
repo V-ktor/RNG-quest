@@ -1360,15 +1360,15 @@ func load_data(paths: Array, type: String):
 	for file_name in paths:
 		var file:= FileAccess.open(file_name, FileAccess.READ)
 		var error:= FileAccess.get_open_error()
-		if error!=OK:
+		if error != OK:
 			print("Can't open file " + file_name + "!")
 			continue
 		else:
-			print("Loading items " + file_name + ".")
+			print("Loading skill module " + file_name + ".")
 		
 		var raw:= file.get_as_text()
 		var data: Dictionary = JSON.parse_string(raw)
-		if data==null || data.size()==0:
+		if data == null || data.size() == 0:
 			printt("Error parsing " + file_name + "!")
 			continue
 		for k in data.keys():

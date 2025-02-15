@@ -1,0 +1,34 @@
+{
+	"shark":{
+		"base_name":["shark"],
+		"lesser_prefix":["young","weak"],
+		"greater_prefix":["feral","huge","ferocious"],
+		"abilities":["fangs","feral_cutting_water_magic","evasion"],
+		"base_stats":{
+			"strength":11,
+			"constitution":8,
+			"dexterity":10,
+			"intelligence":5,
+			"wisdom":5,
+			"cunning":9,
+		},
+		"attributes":{
+			"attack":15,
+			"magic":0,
+			"willpower":0,
+			"armour":5,
+			"evasion":5,
+			"accuracy":15,
+			"penetration":2,
+			"speed":1,
+			"critical":2,
+		},
+		"materials":[
+			"leather","bone","meat","fin",
+		],
+		"exp":15,
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":-1,
+		"race": "beast",
+	},
+}

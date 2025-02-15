@@ -1,0 +1,14 @@
+{
+	"cloth": {
+		"name":["{base_name} cloth"],
+		"quality":1.1,
+		"tags":["cloth"],
+		"attributes": {
+			"adjective":["woven"],
+		},
+		"add": {
+			"evasion":0.5,
+		},
+		"price":15,
+	},
+}

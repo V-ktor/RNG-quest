@@ -2,21 +2,21 @@ extends Control
 
 const MAX_ABILITIES = 2
 const MATERIALS = {
-	"metal":{
-		"name":"rusty",
-		"quality":0.4,
+	"metal": {
+		"name": "rusty",
+		"quality": 0.4,
 	},
-	"wood":{
-		"name":"broken",
-		"quality":0.4,
+	"wood": {
+		"name": "broken",
+		"quality": 0.4,
 	},
-	"cloth":{
-		"name":"old",
-		"quality":0.4,
+	"cloth": {
+		"name": "old",
+		"quality": 0.4,
 	},
-	"leather":{
-		"name":"old",
-		"quality":0.4,
+	"leather": {
+		"name": "old",
+		"quality": 0.4,
 	},
 }
 const RACE_STATS = {

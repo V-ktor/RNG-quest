@@ -1,0 +1,14 @@
+{
+	"ram_module": {
+		"name":["{base_name} RAM module"],
+		"quality":1.1,
+		"tags":["gem"],
+		"attributes": {
+			"adjective":["metallic", "computational"],
+		},
+		"add": {
+			"willpower":0.5,
+		},
+		"price":15,
+	},
+}

@@ -1,0 +1,14 @@
+{
+	"root": {
+		"name":["{base_name} root"],
+		"quality":1.1,
+		"tags":["alchemy", "plant", "cooking"],
+		"attributes": {
+			"adjective":["gnarly", "brown"],
+		},
+		"add": {
+			"health":2.5,
+		},
+		"price":15,
+	},
+}

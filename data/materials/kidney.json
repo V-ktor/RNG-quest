@@ -1,0 +1,12 @@
+{
+	"kidney": {
+		"name":["{base_name} kidney"],
+		"veggie_name":["{base_name} kidney bean"],
+		"quality":1.1,
+		"tags":["cooking", "meat"],
+		"attributes": {
+			"adjective":["meaty"],
+		},
+		"price":15,
+	},
+}

@@ -1,0 +1,14 @@
+{
+	"jewel": {
+		"name":["{base_name} jewel", "{base_name} gem stone"],
+		"quality":1.1,
+		"tags":["gem"],
+		"attributes": {
+			"adjective":["expensive", "crystaline"],
+		},
+		"add": {
+			"magic":0.5,
+		},
+		"price":10,
+	},
+}

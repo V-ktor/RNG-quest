@@ -1,0 +1,15 @@
+{
+	"fang": {
+		"name":["{base_name} fang"],
+		"veggie_name":["{base_name} ceramic"],
+		"quality":1.1,
+		"tags":["bone"],
+		"attributes": {
+			"adjective":["fanged"],
+		},
+		"add": {
+			"penetration":0.75,
+		},
+		"price":15,
+	},
+}

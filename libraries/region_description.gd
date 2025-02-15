@@ -292,7 +292,7 @@ func load_data(path: String, store_dict: Dictionary):
 			print("Can't open file " + file_name + "!")
 			continue
 		else:
-			print("Loading items " + file_name + '.')
+			print("Loading descriptions " + file_name + '.')
 		
 		var raw:= file.get_as_text()
 		var dict: Dictionary = JSON.parse_string(raw)

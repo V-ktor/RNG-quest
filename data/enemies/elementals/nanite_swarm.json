@@ -1,0 +1,57 @@
+{
+    "nanite_swarm":{
+		"base_name":["nanite swarm"],
+		"lesser_prefix":["lesser","weak","thin"],
+		"greater_prefix":["greater","energized","dense"],
+		"base_stats":{
+			"strength":6,
+			"constitution":7,
+			"dexterity":10,
+			"intelligence":12,
+			"wisdom":12,
+			"cunning":10,
+		},
+		"attributes":{
+			"attack":10,
+			"magic":20,
+			"willpower":15,
+			"armour":-5,
+			"evasion":20,
+			"accuracy":10,
+			"penetration":8,
+			"speed":0,
+			"critical":0,
+		},
+		"resistance":{
+			"poison":0.75,
+			"acid":-0.25,
+		},
+		"abilities":["elemental_magic","evasion"],
+		"variants":{
+			"charged":{
+				"name_prefix":["charged","sparkling","energized"],
+				"abilities":["feral_cutting_lightning_magic","high_tech_ranged","defensive_magic"],
+				"resistance":{
+					"wind":0.5,
+					"lightning":0.5,
+				},
+			},
+			"metallic":{
+				"name_prefix":["metallic","solid"],
+				"abilities":["high_tech_cutting","dirty_fighting"],
+				"resistance":{
+					"impact":0.4,
+					"light":0.5,
+					"darkness":0.5,
+				},
+			},
+		},
+		"exp":15,
+		"materials":[
+			"condensate","residue","resin","magic_salt",
+		],
+		"soul_prefix":["digital","virtual","cyber"],
+		"soul_rarity":-2,
+		"race": "robot",
+	},
+}

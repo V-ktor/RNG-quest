@@ -1,0 +1,11 @@
+{
+	"meat": {
+		"name":["{base_name} meat"],
+		"veggie_name":["{base_name} tofu"],
+		"tags":["cooking", "meat"],
+		"attributes": {
+			"adjective":["meaty"],
+		},
+		"price":10,
+	},
+}

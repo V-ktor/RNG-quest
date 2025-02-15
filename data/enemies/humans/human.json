@@ -1,0 +1,37 @@
+{
+	"human":{
+		"base_name":["swordsman","human"],
+		"lesser_prefix":["weak","pathetic","unexperienced"],
+		"greater_prefix":["strong","elite","fierce"],
+		"base_stats":{
+			"strength":12,
+			"constitution":12,
+			"dexterity":10,
+			"intelligence":6,
+			"wisdom":8,
+			"cunning":8,
+		},
+		"attributes":{
+			"attack":20,
+			"magic":0,
+			"willpower":4,
+			"armour":18,
+			"evasion":10,
+			"accuracy":15,
+			"penetration":0,
+			"speed":-1,
+			"critical":1,
+		},
+		"abilities":["light_weapons","heavy_weapons","evasion","armour"],
+		"exp":20,
+		"equipment_drop_chance":0.3,
+		"equipment_enchantment_chance":0.1,
+		"equipment_quality":1.0,
+		"soul_prefix":["mundane","common","unremarkable"],
+		"soul_rarity":1,
+		"soul_add":{
+			"willpower":1,
+		},
+		"race": "human",
+	},
+}

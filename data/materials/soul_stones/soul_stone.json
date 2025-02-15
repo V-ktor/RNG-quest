@@ -1,0 +1,8 @@
+{
+	"soul_stone": {
+		"name":["{soul_prefix} soul stone", "soul stone of {base_name}", "{soul_prefix} soul stone of {base_name}"],
+		"quality":1.0,
+		"tags":["soul"],
+		"price":10,
+	},
+}

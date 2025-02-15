@@ -1,0 +1,13 @@
+{
+	"flower": {
+		"name":["{base_name} flower"],
+		"tags":["alchemy", "healing"],
+		"attributes": {
+			"adjective":["flowering", "floral"],
+		},
+		"add": {
+			"health":2.5,
+		},
+		"price":10,
+	},
+}

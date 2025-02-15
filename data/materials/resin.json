@@ -1,0 +1,14 @@
+{
+	"resin": {
+		"name":["{name_prefix} resin"],
+		"quality":1.1,
+		"tags":["crafting", "magical"],
+		"attributes": {
+			"adjective":["slimy"],
+		},
+		"add": {
+			"magic":0.5,
+		},
+		"price":15,
+	},
+}

@@ -1,0 +1,41 @@
+{
+	"zombie":{
+		"base_name":["zombie"],
+		"lesser_prefix":["weak","hobbling","rotten","decomposing","half"],
+		"greater_prefix":["fresh","strong","super"],
+		"base_stats":{
+			"strength":7,
+			"constitution":5,
+			"dexterity":4,
+			"intelligence":4,
+			"wisdom":4,
+			"cunning":2,
+		},
+		"attributes":{
+			"attack":10,
+			"magic":10,
+			"willpower":-2,
+			"armour":2,
+			"evasion":0,
+			"accuracy":5,
+			"penetration":5,
+			"speed":0,
+			"critical":-2,
+		},
+		"resistance":{
+			"poison":0.5,
+			"light":-0.5,
+			"darkness":0.25,
+		},
+		"abilities":["claws"],
+		"equipment_drop_chance":0.1,
+		"equipment_enchantment_chance":0.1,
+		"equipment_quality":0.75,
+		"materials":[
+			"bone","skin","nail","insistine","meat","hair","parchement",
+		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":-1,
+		"race": "undead",
+	},
+}

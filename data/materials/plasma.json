@@ -1,0 +1,14 @@
+{
+	"plasma": {
+		"name":["{base_name} plasma", "{name_prefix} plasma"],
+		"quality":1.1,
+		"tags":["liquid", "elemental"],
+		"attributes": {
+			"adjective":["slimy"],
+		},
+		"add": {
+			"willpower":0.5,
+		},
+		"price":15,
+	},
+}

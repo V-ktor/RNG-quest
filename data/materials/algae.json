@@ -1,0 +1,11 @@
+{
+	"algae": {
+		"name":["{base_name} algae"],
+		"quality":1.1,
+		"tags":["cooking", "plant"],
+		"attributes": {
+			"adjective":["salty", "sea green"],
+		},
+		"price":15,
+	},
+}

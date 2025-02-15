@@ -1041,7 +1041,7 @@ func create_required(type: String, dict: Dictionary):
 						return ["zombie","ghoul","skeletton","mummy","vampire"].pick_random()
 					"faction":
 						return hostile_factions.pick_random()
-			return Enemies.BASE_ENEMIES.keys().pick_random()
+			return Enemies.base_enemies.keys().pick_random()
 		"faction":
 			if array.size()>1:
 				match array[1]:
@@ -1238,9 +1238,9 @@ func create_quest(region: Dictionary) -> Dictionary:
 						if !dict.has("person_description"):
 							dict.person_description = persons[dict[k]].description
 				elif "enemy" in k:
-					dict[k] = Enemies.BASE_ENEMIES[dict[k]].base_name.pick_random().capitalize()
+					dict[k] = Enemies.base_enemies[dict[k]].base_name.pick_random().capitalize()
 	if dict.has("enemy"):
-		dict.enemy = Enemies.BASE_ENEMIES[dict.enemy].base_name.pick_random().capitalize()
+		dict.enemy = Enemies.base_enemies[dict.enemy].base_name.pick_random().capitalize()
 	if dict.has("item"):
 		dict.item_description = dict.item.description
 		dict.item = dict.item.name

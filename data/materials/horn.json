@@ -1,0 +1,15 @@
+{
+	"horn": {
+		"name":["{base_name} horn"],
+		"veggie_name":["{base_name} ceramic"],
+		"quality":1.1,
+		"tags":["bone"],
+		"attributes": {
+			"adjective":["hard", "thick"],
+		},
+		"add": {
+			"penetration":0.75,
+		},
+		"price":15,
+	},
+}

@@ -1,0 +1,15 @@
+{
+	"venom": {
+		"name":["{base_name} venom"],
+		"quality":1.1,
+		"tags":["toxic", "alchemy"],
+		"attributes": {
+			"adjective":["toxic", "poisonous"],
+		},
+		"add": {
+			"stamina":1.5,
+			"mana":1.5,
+		},
+		"price":15,
+	},
+}

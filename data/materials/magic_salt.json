@@ -1,0 +1,14 @@
+{
+	"magic_salt": {
+		"name":["{base_name} salt", "{name_prefix} salt"],
+		"quality":1.1,
+		"tags":["magical", "elemental", "cooking"],
+		"attributes": {
+			"adjective":["salty", "magical"],
+		},
+		"add": {
+			"magic":0.5,
+		},
+		"price":15,
+	},
+}

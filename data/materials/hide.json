@@ -1,0 +1,15 @@
+{
+	"hide": {
+		"name":["{base_name} hide"],
+		"veggie_name":["{base_name} wool"],
+		"quality":1.1,
+		"tags":["leather", "cloth"],
+		"attributes": {
+			"adjective":["leather"],
+		},
+		"add": {
+			"accuracy":0.5,
+		},
+		"price":15,
+	},
+}

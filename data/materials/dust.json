@@ -1,0 +1,13 @@
+{
+	"dust": {
+		"name":["{base_name} dust"],
+		"tags":["magical"],
+		"attributes": {
+			"adjective":["dusty"],
+		},
+		"add": {
+			"magic":0.5,
+		},
+		"price":10,
+	},
+}

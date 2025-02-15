@@ -1,0 +1,14 @@
+{
+	"cog": {
+		"name":["{base_name} cog"],
+		"quality":1.1,
+		"tags":["metal"],
+		"attributes": {
+			"adjective":["metallic"],
+		},
+		"add": {
+			"attack":0.5,
+		},
+		"price":15,
+	},
+}

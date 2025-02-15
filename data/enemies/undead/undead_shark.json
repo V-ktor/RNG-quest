@@ -1,0 +1,51 @@
+{
+	"undead_shark":{
+		"base_name":["shark"],
+		"lesser_prefix":["rotten","decaying"],
+		"greater_prefix":["necrotic","preserved"],
+		"abilities":["fangs","feral_cutting_darkness_magic","dirty_fighting"],
+		"base_stats":{
+			"strength":12,
+			"constitution":7,
+			"dexterity":9,
+			"intelligence":7,
+			"wisdom":7,
+			"cunning":11,
+		},
+		"attributes":{
+			"attack":10,
+			"magic":15,
+			"willpower":5,
+			"armour":15,
+			"evasion":5,
+			"accuracy":10,
+			"penetration":0,
+			"speed":1,
+			"critical":-2,
+		},
+		"variants":{
+			"skeleton":{
+				"name_suffix":["skeleton"],
+				"abilities":["brawling"],
+				"attributes":{
+					"armour": 25,
+				},
+			},
+			"necrotic":{
+				"name_prefix":["necromantic","necro"],
+				"abilities":["feral_darkness_magic"],
+			},
+			"poisonous":{
+				"name_prefix":["poisonous","toxic"],
+				"abilities":["feral_poison_magic"],
+			},
+		},
+		"materials":[
+			"leather","bone","meat","fin",
+		],
+		"exp":20,
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":-1,
+		"race": "undead",
+	},
+}

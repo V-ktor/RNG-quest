@@ -1,0 +1,14 @@
+{
+	"mushroom": {
+		"name":["{base_name} mushroom"],
+		"quality":1.1,
+		"tags":["cooking", "alchemy", "poison"],
+		"attributes": {
+			"adjective":["poisonous", "healthy"],
+		},
+		"add": {
+			"health":2.5,
+		},
+		"price":15,
+	},
+}

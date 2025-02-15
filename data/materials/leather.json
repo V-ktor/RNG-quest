@@ -1,0 +1,15 @@
+{
+	"leather": {
+		"name":["{base_name} leather"],
+		"veggie_name":["{base_name} synthetic leather"],
+		"quality":1.1,
+		"tags":["leather"],
+		"attributes": {
+			"adjective":["leather", "robust"],
+		},
+		"add": {
+			"accuracy":0.5,
+		},
+		"price":15,
+	},
+}

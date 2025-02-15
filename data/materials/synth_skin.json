@@ -1,0 +1,14 @@
+{
+	"synth_skin": {
+		"name":["{base_name} synth skin"],
+		"quality":1.1,
+		"tags":["leather"],
+		"attributes": {
+			"adjective":["synthetic", "fake", "smooth"],
+		},
+		"add": {
+			"accuracy":0.5,
+		},
+		"price":15,
+	},
+}

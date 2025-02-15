@@ -1,0 +1,14 @@
+{
+	"claw": {
+		"name":["{base_name} claw"],
+		"veggie_name":["{base_name} ceramic"],
+		"tags":["bone"],
+		"attributes": {
+			"adjective":["clawed"],
+		},
+		"add": {
+			"penetration":0.75,
+		},
+		"price":10,
+	},
+}

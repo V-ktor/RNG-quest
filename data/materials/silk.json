@@ -1,0 +1,14 @@
+{
+	"silk": {
+		"name":["{base_name} silk"],
+		"quality":1.1,
+		"tags":["cloth"],
+		"attributes": {
+			"adjective":["elegant"],
+		},
+		"add": {
+			"evasion":0.5,
+		},
+		"price":15,
+	},
+}

@@ -1,0 +1,13 @@
+{
+	"cotton": {
+		"name":["{base_name} cotton"],
+		"tags":["cloth"],
+		"attributes": {
+			"adjective":["cloth"],
+		},
+		"add": {
+			"evasion":0.5,
+		},
+		"price":10,
+	},
+}

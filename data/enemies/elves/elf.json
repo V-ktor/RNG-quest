@@ -1,0 +1,37 @@
+{
+	"elf":{
+		"base_name":["elf"],
+		"lesser_prefix":["weak","young","pacifist"],
+		"greater_prefix":["strong","elite","fierce"],
+		"base_stats":{
+			"strength":8,
+			"constitution":8,
+			"dexterity":11,
+			"intelligence":9,
+			"wisdom":9,
+			"cunning":6,
+		},
+		"attributes":{
+			"attack":15,
+			"magic":15,
+			"willpower":10,
+			"armour":10,
+			"evasion":15,
+			"accuracy":15,
+			"penetration":0,
+			"speed":0,
+			"critical":4,
+		},
+		"abilities":["light_weapons","archery","nature_magic","healing","evasion"],
+		"exp":20,
+		"equipment_drop_chance":0.3,
+		"equipment_enchantment_chance":0.1,
+		"equipment_quality":1.0,
+		"soul_prefix":["mundane","common","unremarkable"],
+		"soul_rarity":1,
+		"soul_add":{
+			"magic":1,
+		},
+		"race": "elf",
+	},
+}

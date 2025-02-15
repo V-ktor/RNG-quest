@@ -1,0 +1,14 @@
+{
+	"skin": {
+		"name":["{base_name} skin"],
+		"veggie_name":["{base_name} polymere"],
+		"tags":["leather"],
+		"attributes": {
+			"adjective":["leather", "smooth"],
+		},
+		"add": {
+			"accuracy":0.5,
+		},
+		"price":10,
+	},
+}

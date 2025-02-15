@@ -1,0 +1,14 @@
+{
+	"plank": {
+		"name":["{base_name} plank"],
+		"quality":1.1,
+		"tags":["wood"],
+		"attributes": {
+			"adjective":["wooden"],
+		},
+		"add": {
+			"accuracy":0.5,
+		},
+		"price":15,
+	},
+}

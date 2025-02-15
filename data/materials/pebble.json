@@ -1,0 +1,13 @@
+{
+	"pebble": {
+		"name":["{base_name} pebble"],
+		"tags":["stone"],
+		"attributes": {
+			"adjective":["rocky", "lithic", "stone"],
+		},
+		"add": {
+			"armour":0.5,
+		},
+		"price":10,
+	},
+}

@@ -1,0 +1,13 @@
+{
+	"hair": {
+		"name":["{base_name} hair"],
+		"tags":["cloth"],
+		"attributes": {
+			"adjective":["hairy"],
+		},
+		"add": {
+			"evasion":0.5,
+		},
+		"price":10,
+	},
+}

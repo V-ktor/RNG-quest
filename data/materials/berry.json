@@ -1,0 +1,14 @@
+{
+	"berry": {
+		"name":["{base_name} berry"],
+		"quality":1.1,
+		"tags":["alchemy", "cooking", "plant"],
+		"attributes": {
+			"adjective":["fruity", "juicy"],
+		},
+		"add": {
+			"health":2.5,
+		},
+		"price":15,
+	},
+}

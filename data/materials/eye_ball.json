@@ -1,0 +1,15 @@
+{
+	"eye_ball": {
+		"name":["{base_name} eye ball"],
+		"veggie_name":["{base_name} marble"],
+		"quality":1.1,
+		"tags":["alchemy", "gem"],
+		"attributes": {
+			"adjective":["meaty"],
+		},
+		"add": {
+			"willpower":0.5,
+		},
+		"price":15,
+	},
+}

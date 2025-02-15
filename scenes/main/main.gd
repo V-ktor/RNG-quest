@@ -632,15 +632,15 @@ func create_shop_material(material:="") -> Dictionary:
 			type = Items.FOOD[recipe].material_types.pick_random().pick_random()
 		elif Items.Enchantment.enchantments.has(recipe):
 			type = Items.Enchantment.enchantments[recipe].material_types.pick_random().pick_random()
-		for mat in Items.MATERIALS.keys():
-			if type in Items.MATERIALS[mat].tags:
+		for mat in Items.materials.keys():
+			if type in Items.materials[mat].tags:
 				valid.push_back(mat)
 		if player.abilities.has("soul_binding"):
 			valid.push_back("empty_soul_stone")
 		if valid.size()>0:
 			material = valid.pick_random()
 		else:
-			material = Items.MATERIALS.keys().pick_random()
+			material = Items.materials.keys().pick_random()
 	
 	item = Items.create_regional_material(material, dict)
 	item.source = tr("BOUGHT_FROM_SHOP").format({"location": current_location})
@@ -828,7 +828,7 @@ func extract_soul() -> float:
 	for item in player_inventory:
 		if item.type == "material" && item.has("tags") && "soul" in item.tags:
 			var scaling: float = max(sqrt(1.0 + float(item.quality) / 200.0 + 0.01*player.abilities.soul_binding) - 1.0, 0.0)
-			item.name = Items.MATERIALS.empty_soul_stone.name.pick_random().capitalize()
+			item.name = Items.materials.empty_soul_stone.name.pick_random().capitalize()
 			item.tags = ["cage"]
 			item.quality = int(item.quality * 0.75)
 			item.price /= 4
@@ -1748,10 +1748,10 @@ func action_done(action: Dictionary):
 					elif current_quest.stage < 1 + current_quest.amount:
 						match randi()%4:
 							0:
-								do_action("find_quest_enemies", {"enemy": Enemies.BASE_ENEMIES.keys().pick_random(), "amount": 1}, QUESTING_DELAY)
+								do_action("find_quest_enemies", {"enemy": Enemies.base_enemies.keys().pick_random(), "amount": 1}, QUESTING_DELAY)
 							1:
 								var dict: Dictionary = current_region
-								var item:= Items.create_regional_material(Items.MATERIALS.keys().pick_random(), dict, 1.1)
+								var item:= Items.create_regional_material(Items.materials.keys().pick_random(), dict, 1.1)
 								item.source = tr("FOUND_IN_LOCATION").format({"location": current_location})
 								item.description = Items.create_tooltip(item)
 								item.description_plain = Skills.tooltip_remove_bb_code(item.description)

@@ -1,0 +1,13 @@
+{
+	"coin": {
+		"name":["{base_name} coin"],
+		"tags":["metal"],
+		"attributes": {
+			"adjective":["metallic"],
+		},
+		"add": {
+			"armour":0.5,
+		},
+		"price":10,
+	},
+}

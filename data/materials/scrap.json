@@ -1,0 +1,11 @@
+{
+	"scrap": {
+		"name":["{base_name} scrap"],
+		"quality":0.9,
+		"tags":["metal", "stone"],
+		"attributes": {
+			"adjective":["metallic", "rusty"],
+		},
+		"price":5,
+	},
+}

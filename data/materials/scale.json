@@ -1,0 +1,15 @@
+{
+	"scale": {
+		"name":["{base_name} scale"],
+		"veggie_name":["{base_name} plate"],
+		"quality":1.1,
+		"tags":["cloth", "leather"],
+		"attributes": {
+			"adjective":["shimmering", "smooth"],
+		},
+		"add": {
+			"armour":0.5,
+		},
+		"price":15,
+	},
+}

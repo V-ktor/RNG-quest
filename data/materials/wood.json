@@ -1,0 +1,13 @@
+{
+	"wood": {
+		"name":["{base_name} wood"],
+		"tags":["wood"],
+		"attributes": {
+			"adjective":["wooden"],
+		},
+		"add": {
+			"accuracy":0.5,
+		},
+		"price":10,
+	},
+}

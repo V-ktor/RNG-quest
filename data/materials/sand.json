@@ -1,0 +1,10 @@
+{
+	"sand": {
+		"name":["{base_name} sand"],
+		"tags":["sand"],
+		"attributes": {
+			"adjective":["sandy", "yellow", "grey"],
+		},
+		"price":10,
+	},
+}

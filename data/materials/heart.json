@@ -1,0 +1,15 @@
+{
+	"heart": {
+		"name":["{base_name} heart"],
+		"veggie_name":["{base_name} heartstone"],
+		"quality":1.1,
+		"tags":["alchemy", "meat", "gem"],
+		"attributes": {
+			"adjective":["meaty", "hearty"],
+		},
+		"add": {
+			"willpower":0.5,
+		},
+		"price":15,
+	},
+}

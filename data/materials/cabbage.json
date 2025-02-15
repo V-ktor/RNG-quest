@@ -1,0 +1,10 @@
+{
+	"cabbage": {
+		"name":["{base_name} cabbage"],
+		"tags":["cooking", "plant"],
+		"attributes": {
+			"adjective":["fresh", "green"],
+		},
+		"price":10,
+	},
+}

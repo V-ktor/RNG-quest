@@ -1,0 +1,11 @@
+{
+	"bean": {
+		"name":["{base_name} bean"],
+		"quality":1.1,
+		"tags":["cooking"],
+		"attributes": {
+			"adjective":["healthy", "brown", "white", "red"],
+		},
+		"price":15,
+	},
+}

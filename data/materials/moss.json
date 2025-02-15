@@ -1,0 +1,15 @@
+{
+	"moss": {
+		"name":["{base_name} moss"],
+		"quality":1.1,
+		"tags":["alchemy", "healing", "toxic"],
+		"attributes": {
+			"adjective":["green", "mossy", "overgrown"],
+		},
+		"add": {
+			"stamina":1.5,
+			"mana":1.5,
+		},
+		"price":15,
+	},
+}

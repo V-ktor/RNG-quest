@@ -1,0 +1,14 @@
+{
+	"oil": {
+		"name":["{base_name} oil", "{name_prefix} oil"],
+		"tags":["liquid", "elemental"],
+		"attributes": {
+			"adjective":["oily", "well-oiled"],
+		},
+		"add": {
+			"attack":0.25,
+			"magic":0.25,
+		},
+		"price":10,
+	},
+}

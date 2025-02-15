@@ -1,0 +1,13 @@
+{
+	"leaf": {
+		"name":["{base_name} leaf"],
+		"tags":["alchemy", "plant", "cooking"],
+		"attributes": {
+			"adjective":["fresh", "refreshing"],
+		},
+		"add": {
+			"health":2.5,
+		},
+		"price":10,
+	},
+}

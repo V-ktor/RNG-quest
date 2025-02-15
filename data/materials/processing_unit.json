@@ -1,0 +1,14 @@
+{
+	"processing_unit": {
+		"name":["{base_name} processing unit"],
+		"quality":1.1,
+		"tags":["gem"],
+		"attributes": {
+			"adjective":["metallic", "silicon"],
+		},
+		"add": {
+			"magic":0.5,
+		},
+		"price":15,
+	},
+}

@@ -1,0 +1,8 @@
+{
+	"soul_jewel": {
+		"name":["{soul_prefix} soul jewel", "soul jewel of {base_name}", "{soul_prefix} soul jewel of {base_name}"],
+		"quality":1.4,
+		"tags":["soul"],
+		"price":30,
+	},
+}

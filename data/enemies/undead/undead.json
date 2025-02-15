@@ -1,0 +1,51 @@
+{
+	"undead":{
+		"base_name":["necromancer","thrall master","undead fiend"],
+		"lesser_prefix":["weakened","unexpirienced","drained"],
+		"greater_prefix":["elite","powerful","ancient"],
+		"base_stats":{
+			"strength":7,
+			"constitution":9,
+			"dexterity":10,
+			"intelligence":12,
+			"wisdom":12,
+			"cunning":12,
+		},
+		"attributes":{
+			"attack":8,
+			"magic":15,
+			"willpower":10,
+			"armour":5,
+			"evasion":12,
+			"accuracy":16,
+			"penetration":10,
+			"speed":0,
+			"critical":8,
+		},
+		"resistance":{
+			"acid":-0.25,
+			"poison":0.5,
+			"darkness":0.5,
+			"light":-0.5,
+		},
+		"abilities":["draining_bite","celestial_magic","defensive_magic"],
+		"exp":20,
+		"equipment_drop_chance":0.25,
+		"equipment_enchantment_chance":0.2,
+		"equipment_quality":1.0,
+		"materials":[
+			"heart","ore","cloth","paper","parchement","dust","hair",
+		],
+		"soul_prefix":["ethereal","eternal","bound","ancient"],
+		"soul_rarity":0,
+		"soul_add":{
+			"resistance":{
+				"light":-0.05,
+			},
+			"damage":{
+				"darkness":0.1,
+			},
+		},
+		"race": "undead",
+	},
+}

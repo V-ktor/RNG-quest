@@ -1,0 +1,37 @@
+{
+	"dwarf":{
+		"base_name":["dwarf","hammerdwarf","dwarven fighter"],
+		"lesser_prefix":["weak","tiny","small"],
+		"greater_prefix":["sturdy","elite","fierce"],
+		"base_stats":{
+			"strength":13,
+			"constitution":13,
+			"dexterity":8,
+			"intelligence":6,
+			"wisdom":6,
+			"cunning":6,
+		},
+		"attributes":{
+			"attack":20,
+			"magic":0,
+			"willpower":10,
+			"armour":20,
+			"evasion":10,
+			"accuracy":10,
+			"penetration":0,
+			"speed":0,
+			"critical":10,
+		},
+		"abilities":["heavy_weapons","brawling","shield","armour"],
+		"exp":20,
+		"equipment_drop_chance":0.3,
+		"equipment_enchantment_chance":0.1,
+		"equipment_quality":1.0,
+		"soul_prefix":["mundane","common","unremarkable"],
+		"soul_rarity":1,
+		"soul_add":{
+			"armour":1,
+		},
+		"race": "dwarf",
+	},
+}

@@ -1,0 +1,13 @@
+{
+	"mold": {
+		"name":["{base_name} mold"],
+		"tags":["toxic", "alchemy"],
+		"attributes": {
+			"adjective":["moldy"],
+		},
+		"add": {
+			"health":2.5,
+		},
+		"price":10,
+	},
+}

@@ -1,0 +1,10 @@
+{
+	"slime": {
+		"name":["{name_prefix} slime"],
+		"tags":["liquid"],
+		"attributes": {
+			"adjective":["slimy"],
+		},
+		"price":5,
+	},
+}

@@ -1,0 +1,14 @@
+{
+	"plankton": {
+		"name":["{base_name} plankton"],
+		"quality":1.1,
+		"tags":["cooking", "alchemy"],
+		"attributes": {
+			"adjective":["salty", "sea green"],
+		},
+		"add": {
+			"health":2.5,
+		},
+		"price":15,
+	},
+}

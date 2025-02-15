@@ -1,0 +1,47 @@
+{
+	"lich":{
+		"base_name":["lich"],
+		"lesser_prefix":["minor","lesser","weakened"],
+		"greater_prefix":["ancient","greater","powerful"],
+		"base_stats":{
+			"strength":6,
+			"constitution":12,
+			"dexterity":9,
+			"intelligence":13,
+			"wisdom":12,
+			"cunning":12,
+		},
+		"attributes":{
+			"attack":10,
+			"magic":18,
+			"willpower":16,
+			"armour":4,
+			"evasion":10,
+			"accuracy":16,
+			"penetration":8,
+			"speed":0,
+			"critical":8,
+		},
+		"resistance":{
+			"acid":-0.25,
+			"poison":0.5,
+			"darkness":0.5,
+			"light":-0.5,
+			"ice":0.25,
+		},
+		"abilities":["draining_bite","celestial_magic","elemental_magic","defensive_magic","feral_cutting_darkness_magic"],
+		"exp":25,
+		"equipment_drop_chance":0.25,
+		"equipment_enchantment_chance":0.2,
+		"equipment_quality":1.0,
+		"materials":[
+			"ore","cloth","paper","parchement","dust","hair","bone","skin",
+		],
+		"soul_prefix":["eternal","bound","ancient"],
+		"soul_rarity":2,
+		"soul_add":{
+			"mana_regen":2,
+		},
+		"race": "undead",
+	},
+}

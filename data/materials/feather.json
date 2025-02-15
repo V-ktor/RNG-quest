@@ -1,0 +1,13 @@
+{
+	"feather": {
+		"name":["{base_name} feather"],
+		"tags":["cloth"],
+		"attributes": {
+			"adjective":["feathered"],
+		},
+		"add": {
+			"evasion":0.5,
+		},
+		"price":10,
+	},
+}

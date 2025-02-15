@@ -1,0 +1,48 @@
+{
+	"sky_snake":{
+		"base_name":["sky snake","air snake"],
+		"lesser_prefix":["small","weak","dim"],
+		"greater_prefix":["king","deadly","astral"],
+		"abilities":["toxic_bite","feral_wind_magic","feral_cutting_wind_magic","evasion"],
+		"base_stats":{
+			"strength":5,
+			"constitution":7,
+			"dexterity":12,
+			"intelligence":10,
+			"wisdom":9,
+			"cunning":10,
+		},
+		"attributes":{
+			"attack":10,
+			"magic":16,
+			"willpower":4,
+			"armour":2,
+			"evasion":10,
+			"accuracy":18,
+			"penetration":12,
+			"speed":2,
+			"critical":7,
+		},
+		"resistance":{
+			"poison":0.25,
+			"acid":0.25,
+			"wind":0.5,
+			"earth":-0.25,
+		},
+		"exp":17,
+		"materials":[
+			"leather","meat","fang","venom","scale",
+		],
+		"soul_prefix":["lesser","mundane","floating"],
+		"soul_rarity":-1,
+		"soul_add":{
+			"resistance":{
+				"wind":0.05,
+			},
+			"damage":{
+				"wind":0.05,
+			},
+		},
+		"race": "beast",
+	},
+}

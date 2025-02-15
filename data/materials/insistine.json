@@ -1,0 +1,15 @@
+{
+	"insistine": {
+		"name":["{base_name} insistine"],
+		"veggie_name":["{base_name} soy"],
+		"tags":["cooking", "alchemy", "meat"],
+		"attributes": {
+			"adjective":["meaty"],
+		},
+		"add": {
+			"stamina":1.5,
+			"mana":1.5,
+		},
+		"price":10,
+	},
+}

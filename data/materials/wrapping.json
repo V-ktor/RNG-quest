@@ -1,0 +1,14 @@
+{
+	"wrapping": {
+		"name":["{base_name} wrapping"],
+		"quality":1.1,
+		"tags":["cloth"],
+		"attributes": {
+			"adjective":["wrapped"],
+		},
+		"add": {
+			"evasion":0.5,
+		},
+		"price":10,
+	},
+}

@@ -1,0 +1,14 @@
+{
+	"stone": {
+		"name":["{base_name} stone", "{base_name} rock"],
+		"quality":1.1,
+		"tags":["stone"],
+		"attributes": {
+			"adjective":["rocky", "lithic", "stone"],
+		},
+		"add": {
+			"armour":0.5,
+		},
+		"price":15,
+	},
+}

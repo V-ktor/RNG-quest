@@ -1,0 +1,14 @@
+{
+	"ingot": {
+		"name":["{base_name} ingot"],
+		"quality":1.1,
+		"tags":["metal"],
+		"attributes": {
+			"adjective":["metallic"],
+		},
+		"add": {
+			"attack":0.5,
+		},
+		"price":15,
+	},
+}

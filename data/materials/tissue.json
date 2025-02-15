@@ -1,0 +1,14 @@
+{
+	"tissue": {
+		"name":["{base_name} tissue"],
+		"quality":1.1,
+		"tags":["cloth"],
+		"attributes": {
+			"adjective":["cloth"],
+		},
+		"add": {
+			"evasion":0.5,
+		},
+		"price":15,
+	},
+}

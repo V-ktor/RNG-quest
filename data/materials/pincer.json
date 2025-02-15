@@ -1,0 +1,15 @@
+{
+	"pincer": {
+		"name":["{base_name} pincer"],
+		"veggie_name":["{base_name} pea"],
+		"quality":1.1,
+		"tags":["alchemy", "cooking", "meat"],
+		"attributes": {
+			"adjective":["meaty"],
+		},
+		"add": {
+			"health":2.5,
+		},
+		"price":15,
+	},
+}

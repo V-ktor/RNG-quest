@@ -1,0 +1,13 @@
+{
+	"glass": {
+		"name":["{base_name} glass"],
+		"tags":["glass"],
+		"attributes": {
+			"adjective":["translucent", "glass"],
+		},
+		"add": {
+			"penetration":0.75,
+		},
+		"price":10,
+	},
+}

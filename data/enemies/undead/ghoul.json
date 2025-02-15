@@ -1,0 +1,42 @@
+{
+	"ghoul":{
+		"base_name":["ghoul"],
+		"lesser_prefix":["weak","rotten","decomposing","hungry"],
+		"greater_prefix":["fresh","strong","well fed"],
+		"base_stats":{
+			"strength":9,
+			"constitution":6,
+			"dexterity":6,
+			"intelligence":6,
+			"wisdom":5,
+			"cunning":4,
+		},
+		"attributes":{
+			"attack":15,
+			"magic":10,
+			"willpower":4,
+			"armour":4,
+			"evasion":15,
+			"accuracy":20,
+			"penetration":10,
+			"speed":-1,
+			"critical":0,
+		},
+		"resistance":{
+			"poison":0.5,
+			"light":-0.5,
+			"darkness":0.25,
+		},
+		"abilities":["claws","toxic_bite","feral_impact_darkness_magic"],
+		"exp":15,
+		"equipment_drop_chance":0.1,
+		"equipment_enchantment_chance":0.1,
+		"equipment_quality":1.0,
+		"materials":[
+			"skin","nail","insistine","meat","hair","parchement",
+		],
+		"soul_prefix":["etheral","ephemeral","tenuous"],
+		"soul_rarity":0,
+		"race": "undead",
+	},
+}

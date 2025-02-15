@@ -1,0 +1,13 @@
+{
+	"foil": {
+		"name":["{base_name} foil"],
+		"tags":["cloth"],
+		"attributes": {
+			"adjective":["foil", "thin"],
+		},
+		"add": {
+			"evasion":0.5,
+		},
+		"price":10,
+	},
+}

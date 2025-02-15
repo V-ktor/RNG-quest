@@ -1,0 +1,15 @@
+{
+	"shell": {
+		"name":["{base_name} shell"],
+		"veggie_name":["{base_name} lime"],
+		"quality":1.1,
+		"tags":["stone", "bone"],
+		"attributes": {
+			"adjective":["hard", "armoured"],
+		},
+		"add": {
+			"armour":0.5,
+		},
+		"price":15,
+	},
+}

@@ -1,0 +1,15 @@
+{
+	"ear": {
+		"name":["{base_name} ear"],
+		"veggie_name":["{base_name} poison"],
+		"tags":["alchemy", "poison"],
+		"attributes": {
+			"adjective":["meaty", "poisonous"],
+		},
+		"add": {
+			"stamina":1.5,
+			"mana":1.5,
+		},
+		"price":10,
+	},
+}

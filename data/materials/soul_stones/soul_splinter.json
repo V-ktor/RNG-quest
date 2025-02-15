@@ -1,0 +1,8 @@
+{
+	"soul_splinter": {
+		"name":["{soul_prefix} soul splinter", "soul splinter of {base_name}", "{soul_prefix} soul splinter of {base_name}"],
+		"quality":0.6,
+		"tags":["soul"],
+		"price":2,
+	},
+}

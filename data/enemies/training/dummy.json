@@ -1,0 +1,30 @@
+{
+	"dummy":{
+		"base_name":["dummy"],
+		"lesser_prefix":["broken","straw","one-armed","headless"],
+		"greater_prefix":["training","reinforced","steel-clad","crash test"],
+		"abilities":[],
+		"exp":0,
+		"base_stats":{
+			"strength":4,
+			"constitution":40,
+			"dexterity":4,
+			"intelligence":4,
+			"wisdom":4,
+			"cunning":4,
+		},
+		"attributes":{
+			"attack":5,
+			"magic":5,
+			"willpower":20,
+			"armour":0,
+			"evasion":10,
+			"accuracy":10,
+			"penetration":0,
+			"speed":-5,
+			"critical":0,
+		},
+		"soul_rarity":-4,
+		"race": "construct",
+	},
+}

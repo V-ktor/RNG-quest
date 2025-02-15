@@ -1,0 +1,14 @@
+{
+	"wires": {
+		"name":["{base_name} wires"],
+		"tags":["cloth"],
+		"quality":1.1,
+		"attributes": {
+			"adjective":["metallic"],
+		},
+		"add": {
+			"critical":0.6,
+		},
+		"price":15,
+	},
+}

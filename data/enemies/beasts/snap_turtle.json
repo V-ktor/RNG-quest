@@ -1,0 +1,33 @@
+{
+	"snap_turtle":{
+		"base_name":["snap turtle"],
+		"lesser_prefix":["young","starved","injured"],
+		"greater_prefix":["feral","huge","sturdy","ferocious"],
+		"abilities":["fangs","feral_impact_water_magic","armour"],
+		"base_stats":{
+			"strength":8,
+			"constitution":12,
+			"dexterity":6,
+			"intelligence":6,
+			"wisdom":6,
+			"cunning":8,
+		},
+		"attributes":{
+			"attack":10,
+			"magic":5,
+			"willpower":0,
+			"armour":15,
+			"evasion":-2,
+			"accuracy":8,
+			"penetration":0,
+			"speed":-2,
+			"critical":0,
+		},
+		"materials":[
+			"shell","leather","bone","meat",
+		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":-1,
+		"race": "beast",
+	},
+}

@@ -1,0 +1,8 @@
+{
+	"soul_orb": {
+		"name":["{soul_prefix} soul orb", "soul orb of {base_name}", "{soul_prefix} soul orb of {base_name}"],
+		"quality":1.6,
+		"tags":["soul"],
+		"price":45,
+	},
+}

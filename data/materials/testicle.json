@@ -1,0 +1,15 @@
+{
+	"testicle": {
+		"name":["{base_name} testicle"],
+		"veggie_name":["{base_name} nut"],
+		"tags":["cooking", "alchemy", "meat"],
+		"attributes": {
+			"adjective":["meaty"],
+		},
+		"add": {
+			"stamina":1.5,
+			"mana":1.5,
+		},
+		"price":10,
+	},
+}

@@ -1,0 +1,8 @@
+{
+	"soul_shard": {
+		"name":["{soul_prefix} soul shard", "soul shard of {base_name}", "{soul_prefix} soul shard of {base_name}"],
+		"quality":0.8,
+		"tags":["soul"],
+		"price":5,
+	},
+}

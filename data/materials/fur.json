@@ -1,0 +1,14 @@
+{
+	"fur": {
+		"name":["{base_name} fur"],
+		"veggie_name":["{base_name} polyester"],
+		"tags":["cloth"],
+		"attributes": {
+			"adjective":["hairy", "furry"],
+		},
+		"add": {
+			"evasion":0.5,
+		},
+		"price":10,
+	},
+}

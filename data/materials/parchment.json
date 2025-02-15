@@ -1,0 +1,14 @@
+{
+	"parchment": {
+		"name":["{base_name} parchement"],
+		"veggie_name":["{base_name} paper"],
+		"tags":["paper"],
+		"attributes": {
+			"adjective":["thin", "parched"],
+		},
+		"add": {
+			"magic":0.5,
+		},
+		"price":10,
+	},
+}

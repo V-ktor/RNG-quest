@@ -1,0 +1,11 @@
+{
+	"fruit": {
+		"name":["{base_name} fruit"],
+		"quality":1.1,
+		"tags":["cooking", "plant"],
+		"attributes": {
+			"adjective":["fruity", "juicy"],
+		},
+		"price":15,
+	},
+}

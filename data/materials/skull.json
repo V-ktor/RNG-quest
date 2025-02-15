@@ -1,0 +1,15 @@
+{
+	"skull": {
+		"name":["{base_name} skull"],
+		"veggie_name":["{base_name} casing"],
+		"quality":1.1,
+		"tags":["bone"],
+		"attributes": {
+			"adjective":["bone", "hard"],
+		},
+		"add": {
+			"armour":0.5,
+		},
+		"price":15,
+	},
+}

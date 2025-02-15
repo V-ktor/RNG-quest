@@ -1,0 +1,13 @@
+{
+	"residue": {
+		"name":["{base_name} residue", "{name_prefix} residue"],
+		"tags":["liquid", "magical"],
+		"attributes": {
+			"adjective":["slimy"],
+		},
+		"add": {
+			"magic":0.5,
+		},
+		"price":10,
+	},
+}

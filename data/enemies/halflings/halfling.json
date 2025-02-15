@@ -1,0 +1,37 @@
+{
+	"halfling":{
+		"base_name":["halfling"],
+		"lesser_prefix":["weak","tiny","small"],
+		"greater_prefix":["strong","elite","fierce"],
+		"base_stats":{
+			"strength":9,
+			"constitution":9,
+			"dexterity":12,
+			"intelligence":6,
+			"wisdom":6,
+			"cunning":10,
+		},
+		"attributes":{
+			"attack":15,
+			"magic":0,
+			"willpower":6,
+			"armour":15,
+			"evasion":15,
+			"accuracy":20,
+			"penetration":5,
+			"speed":0,
+			"critical":5,
+		},
+		"abilities":["light_weapons","dirty_fighting","evasion"],
+		"exp":20,
+		"equipment_drop_chance":0.3,
+		"equipment_enchantment_chance":0.1,
+		"equipment_quality":1.0,
+		"soul_prefix":["mundane","common","unremarkable"],
+		"soul_rarity":1,
+		"soul_add":{
+			"evasion":1,
+		},
+		"race": "halfling",
+	},
+}

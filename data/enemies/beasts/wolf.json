@@ -1,0 +1,33 @@
+{
+	"wolf":{
+		"base_name":["wolf","hound","dog"],
+		"lesser_prefix":["hungry","starved","injured"],
+		"greater_prefix":["feral","huge","aggressive","ferocious"],
+		"abilities":["fangs","claws"],
+		"base_stats":{
+			"strength":8,
+			"constitution":8,
+			"dexterity":10,
+			"intelligence":4,
+			"wisdom":4,
+			"cunning":6,
+		},
+		"attributes":{
+			"attack":10,
+			"magic":5,
+			"willpower":0,
+			"armour":4,
+			"evasion":5,
+			"accuracy":10,
+			"penetration":0,
+			"speed":0,
+			"critical":2,
+		},
+		"materials":[
+			"fur","tail","fang","bone","eye_ball","meat"
+		],
+		"soul_prefix":["lesser","mundane","simple"],
+		"soul_rarity":-1,
+		"race": "beast",
+	},
+}

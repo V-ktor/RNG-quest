@@ -1,0 +1,14 @@
+{
+	"wing": {
+		"name":["{base_name} wing"],
+		"veggie_name":["{base_name} foil"],
+		"tags":["leather", "alchemy"],
+		"attributes": {
+			"adjective":["smooth", "thin"],
+		},
+		"add": {
+			"accuracy":0.5,
+		},
+		"price":10,
+	},
+}

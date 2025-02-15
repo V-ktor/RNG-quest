@@ -1,0 +1,13 @@
+{
+	"carrot": {
+		"name":["{base_name} carrot"],
+		"tags":["alchemy", "plant", "cooking"],
+		"attributes": {
+			"adjective":["fresh", "healthy", "orange"],
+		},
+		"add": {
+			"health":2.5,
+		},
+		"price":10,
+	},
+}
