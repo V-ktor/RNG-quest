@@ -1,0 +1,21 @@
+{
+	"curse": [
+		{
+			"singular": "curse",
+			"plural": "curses",
+			"adjective": "cursed",
+			"prefix": "Cursed",
+		},
+		{
+			"singular": "damnation",
+			"adjective": "forsaken",
+			"prefix": "Forsaken",
+		},
+		{
+			"singular": "blessing",
+			"plural": "blessings",
+			"adjective": "blessed",
+			"prefix": "Blessed",
+		},
+	],
+}

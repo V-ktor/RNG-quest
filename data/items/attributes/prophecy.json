@@ -1,0 +1,26 @@
+{
+	"prophecy": [
+		{
+			"singular": "prophecy",
+			"plural": "prophecies",
+			"adjective": "prophesied",
+			"suffix": "of Prophecy",
+		},
+		{
+			"singular": "oracle",
+			"plural": "oracles",
+			"adjective": "prophetic",
+			"suffix": "Oracle's",
+		},
+		{
+			"singular": "fate",
+			"adjective": "fated",
+			"suffix": "of Fate",
+		},
+		{
+			"singular": "destiny",
+			"adjective": "destined",
+			"suffix": "of Destiny",
+		},
+	],
+}

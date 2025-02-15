@@ -1,0 +1,29 @@
+{
+	"mental_illness": [
+		{
+			"singular": "madness",
+			"adjective": "mad",
+			"suffix": "of Madness",
+		},
+		{
+			"singular": "agony",
+			"adjective": "agonizing",
+			"suffix": "of Agony",
+		},
+		{
+			"singular": "despair",
+			"adjective": "hopeless",
+			"suffix": "of Despair",
+		},
+		{
+			"singular": "nightmares",
+			"adjective": "haunted",
+			"suffix": "of Nightmares",
+		},
+		{
+			"singular": "suffering",
+			"adjective": "suffering",
+			"suffix": "of Suffering",
+		},
+	],
+}

@@ -1,0 +1,36 @@
+{
+	"force": [
+		{
+			"singular": "storm",
+			"plural": "storms",
+			"adjective": "devastating",
+			"suffix": "of Storms",
+		},
+		{
+			"singular": "earthquake",
+			"plural": "earthquakes",
+			"adjective": "ground shaking",
+			"suffix": "of Earthquakes",
+		},
+		{
+			"singular": "flashflood",
+			"adjective": "destructive",
+			"suffix": "of Flashfloods",
+		},
+		{
+			"singular": "apocalypse",
+			"adjective": "apocalyptic",
+			"suffix": "of Apocalypse",
+		},
+		{
+			"singular": "annihilation",
+			"adjective": "annihilating",
+			"suffix": "of Annihilation",
+		},
+		{
+			"singular": "world's end",
+			"adjective": "ultimate",
+			"suffix": "of the End",
+		},
+	],
+}

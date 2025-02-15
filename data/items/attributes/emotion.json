@@ -1,0 +1,51 @@
+{
+	"emotion": [
+		{
+			"singular": "care",
+			"adjective": "careful",
+			"adverb": "carefully",
+		},
+		{
+			"singular": "joy",
+			"adjective": "joyful",
+			"adverb": "joyfully",
+			"suffix": "of Joy",
+		},
+		{
+			"singular": "precision",
+			"adjective": "precise",
+			"adverb": "precisely",
+			"suffix": "of Precision",
+		},
+		{
+			"singular": "dedication",
+			"adjective": "dedicated",
+			"adverb": "decisively",
+			"suffix": "of Dedication",
+		},
+		{
+			"singular": "determination",
+			"adjective": "determined",
+			"adverb": "mindfully",
+			"suffix": "of Determination",
+		},
+		{
+			"singular": "hate",
+			"adjective": "fierce",
+			"adverb": "fiercely",
+			"suffix": "of Hate",
+		},
+		{
+			"singular": "haste",
+			"adjective": "improvised",
+			"adverb": "hastily",
+			"suffix": "of Haste",
+		},
+		{
+			"singular": "sorrow",
+			"adjective": "sorrowful",
+			"adverb": "sorrowfully",
+			"prefix": "Sorrowful",
+		},
+	],
+}

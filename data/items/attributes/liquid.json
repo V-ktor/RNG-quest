@@ -1,0 +1,35 @@
+{
+	"liquid": [
+		{
+			"singular": "water",
+			"plural":"waters",
+			"adjective": "watery",
+		},
+		{
+			"singular": "poison",
+			"plural": "poisons",
+			"adjective": "poisonous",
+		},
+		{
+			"singular": "acid",
+			"plural": "acids",
+			"adjective": "acidic",
+		},
+		{
+			"default": "blood",
+			"adjective": "bloody",
+		},
+		{
+			"default": "oil",
+			"adjective": "oily",
+		},
+		{
+			"default": "syrup",
+			"adjective": "sweet",
+		},
+		{
+			"default": "resin",
+			"adjective": "sticky",
+		},
+	],
+}

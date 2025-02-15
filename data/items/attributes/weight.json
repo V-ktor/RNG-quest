@@ -1,0 +1,20 @@
+{
+	"weight": [
+		{
+			"adjective": "heavy",
+			"adverb": "heavily",
+		},
+		{
+			"adjective": "massive",
+			"adverb": "massively",
+		},
+		{
+			"adjective": "light",
+			"adverb": "lightly",
+		},
+		{
+			"adjective": "lightweight",
+			"adverb": "easily",
+		},
+	],
+}

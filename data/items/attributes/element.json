@@ -1,0 +1,85 @@
+{
+	"element": [
+		{
+			"singular": "fire",
+			"adjective": "fiery",
+			"suffix": "of Fire",
+		},
+		{
+			"plural": "flames",
+			"adjective": "flaming",
+			"prefix": "Flaming",
+		},
+		{
+			"singular": "ember",
+			"plural": "embers",
+			"adjective": "burning",
+			"suffix": "of Embers",
+		},
+		{
+			"singular": "ice",
+			"adjective": "icy",
+			"suffix": "of Ice",
+		},
+		{
+			"singular": "frost",
+			"adjective": "cold",
+			"prefix": "Frost",
+		},
+		{
+			"singular": "lightning",
+			"adjective": "sparkling",
+			"suffix": "of Lightning",
+		},
+		{
+			"singular": "electricity",
+			"adjective": "jolting",
+			"prefix": "Lightning",
+		},
+		{
+			"singular": "water",
+			"plural": "waters",
+			"adjective": "watery",
+			"suffix": "of Water",
+		},
+		{
+			"singular": "wind",
+			"plural": "winds",
+			"adjective": "windy",
+			"prefix": "Wind",
+		},
+		{
+			"singular": "air",
+			"adjective": "airy",
+			"suffix": "of Wind",
+		},
+		{
+			"singular": "earth",
+			"adjective": "dirty",
+			"suffix": "of Earth",
+		},
+		{
+			"singular": "rock",
+			"plural": "rocks",
+			"adjective": "rocky",
+			"prefix": "Rock"
+		},
+		{
+			"singular": "light",
+			"plural": "lights",
+			"adjective": "bright",
+			"suffix": "of Light",
+		},
+		{
+			"singular": "darkness",
+			"plural": "shadows",
+			"adjective": "dark",
+			"suffix": "of Darkness",
+		},
+		{
+			"singular": "twilight",
+			"adjective": "shimmering",
+			"suffix": "of Twilight",
+		},
+	],
+}

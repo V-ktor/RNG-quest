@@ -1,0 +1,51 @@
+{
+	"shape": [
+		{
+			"singular": "ball",
+			"plural": "balls",
+			"adjective": "round",
+		},
+		{
+			"singular": "sphere",
+			"plural": "spheres",
+			"adjective": "spherical",
+		},
+		{
+			"singular": "cube",
+			"plural": "cubes",
+			"adjective": "cubic",
+		},
+		{
+			"singular": "triangle",
+			"plural": "triangles",
+			"adjective": "triangular",
+		},
+		{
+			"singular": "rectangle",
+			"plural": "rectangles",
+			"adjective": "rectangular",
+		},
+		{
+			"singular": "pentagon",
+			"plural": "pentagons",
+			"adjective": "pentagonal",
+		},
+		{
+			"singular": "hexagon",
+			"plural": "hexagons",
+			"adjective": "hexagonal",
+			"prefix": "Hexa",
+		},
+		{
+			"singular": "octagon",
+			"plural": "octagons",
+			"adjective": "octagonal",
+		},
+		{
+			"singular": "odd shape",
+			"plural": "odd shapes",
+			"adjective": "irregular",
+			"prefix": "Odd",
+		},
+	],
+}

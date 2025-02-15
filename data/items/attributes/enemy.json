@@ -1,0 +1,62 @@
+{
+	"enemy": [
+		{
+			"singular": "beast",
+			"plural":"beasts",
+			"adjective": "wild",
+			"prefix": "Beast",
+		},
+		{
+			"singular": "demon",
+			"plural": "demons",
+			"adjective": "evil",
+			"prefix": "Demon",
+		},
+		{
+			"singular": "angel",
+			"plural": "angels",
+			"adjective": "radiant",
+			"prefix": "Radiant",
+		},
+		{
+			"singular": "elemental",
+			"plural": "elementals",
+			"adjective": "elemental",
+			"suffix": "of Elements"
+		},
+		{
+			"plural": "undead",
+			"adjective": "undead",
+			"prefix": "Undead",
+		},
+		{
+			"singular": "orc",
+			"plural": "orcs",
+			"adjective": "brutal",
+			"prefix": "Orc",
+		},
+		{
+			"singular": "cyborg",
+			"plural": "cyborgs",
+			"adjective": "cybertronic",
+			"prefix": "Cyborg",
+		},
+		{
+			"singular": "robot",
+			"plural": "robots",
+			"adjective": "computronic",
+			"prefix": "Robot",
+		},
+		{
+			"singular": "archon",
+			"plural": "archons",
+			"adjective": "mighty",
+			"suffix": "of Archons",
+		},
+		{
+			"plural": "plants",
+			"adjective": "phototropic",
+			"prefix": "floral",
+		},
+	],
+}

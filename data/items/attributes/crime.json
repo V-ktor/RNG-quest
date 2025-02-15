@@ -1,0 +1,38 @@
+{
+	"crime": [
+		{
+			"singular": "murder",
+			"plural": "murders",
+			"adjective": "murderous",
+			"suffix": "of Murder",
+		},
+		{
+			"singular": "genocide",
+			"plural": "genocides",
+			"adjective": "genocidal",
+			"suffix": "of Genocide",
+		},
+		{
+			"singular": "trespassing",
+			"plural": "tresspassings",
+			"adjective": "trespassing",
+		},
+		{
+			"singular": "stealing",
+			"plural": "thefts",
+			"adjective": "stealing",
+			"suffix": "of Theft",
+		},
+		{
+			"singular": "tyranny",
+			"plural": "tyrannies",
+			"adjective": "tyrannic",
+			"suffix": "of Tyranny",
+		},
+		{
+			"singular": "terrorism",
+			"plural": "terrorist attacks",
+			"adjective": "terrorising",
+		},
+	],
+}

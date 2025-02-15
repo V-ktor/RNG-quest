@@ -1,0 +1,21 @@
+{
+	"stains": [
+		{
+			"singular": "blood stains",
+			"adjective": "blood stained",
+			"prefix": "Blood Stained",
+		},
+		{
+			"singular": "grease stains",
+			"adjective": "grease stained",
+		},
+		{
+			"singular": "rust stains",
+			"adjective": "rust stained",
+		},
+		{
+			"singular": "water stains",
+			"adjective": "water stained",
+		},
+	],
+}

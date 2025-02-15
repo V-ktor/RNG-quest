@@ -1,0 +1,33 @@
+{
+	"quality": [
+		{
+			"singular": "spike",
+			"plural": "spikes",
+			"adjective": "sharp",
+		},
+		{
+			"singular": "blade",
+			"plural": "blades",
+			"adjective": "sharp",
+		},
+		{
+			"singular": "tip",
+			"plural": "tips",
+			"adjective": "pointy",
+		},
+		{
+			"singular": "hammer",
+			"plural": "hammers",
+			"adjective": "blunt",
+		},
+		{
+			"singular": "metal",
+			"adjective": "polished",
+		},
+		{
+			"singular": "barb",
+			"plural": "barbs",
+			"adjective": "vile",
+		},
+	],
+}

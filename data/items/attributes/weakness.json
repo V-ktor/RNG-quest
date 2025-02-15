@@ -1,0 +1,24 @@
+{
+	"weakness": [
+		{
+			"singular": "weakness",
+			"adjective": "weak",
+		},
+		{
+			"singular": "dullness",
+			"adjective": "dull",
+		},
+		{
+			"singular": "bluntness",
+			"adjective": "blunt",
+		},
+		{
+			"singular": "brittleness",
+			"adjective": "brittle",
+		},
+		{
+			"singular": "age",
+			"adjective": "old",
+		},
+	],
+}

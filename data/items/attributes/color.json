@@ -1,0 +1,105 @@
+{
+	"color": [
+		{
+			"default": "white",
+			"adjective": "white",
+			"prefix": "White",
+		},
+		{
+			"default": "grey",
+			"adjective": "grey",
+		},
+		{
+			"default": "black",
+			"adjective": "black",
+			"prefix": "Black",
+		},
+		{
+			"default": "brown",
+			"adjective": "brown",
+		},
+		{
+			"default": "red",
+			"adjective": "red",
+		},
+		{
+			"default": "orange",
+			"adjective": "orange",
+		},
+		{
+			"default": "yellow",
+			"adjective": "yellow",
+		},
+		{
+			"default": "green",
+			"adjective": "green",
+		},
+		{
+			"default": "cyan",
+			"adjective": "cyan",
+		},
+		{
+			"default": "blue",
+			"adjective": "blue",
+		},
+		{
+			"default": "violet",
+			"adjective": "violet",
+		},
+		{
+			"default": "purple",
+			"adjective": "purple",
+		},
+		{
+			"default": "pink",
+			"adjective": "pink",
+		},
+		{
+			"default": "magenta",
+			"adjective": "magenta",
+		},
+		{
+			"default": "crimson",
+			"adjective": "crimson",
+			"prefix": "Crimson",
+		},
+		{
+			"default": "indigo",
+			"adjective": "indigo",
+		},
+		{
+			"default": "silver",
+			"adjective": "silver",
+			"prefix": "Silver",
+		},
+		{
+			"default": "beige",
+			"adjective": "beige",
+		},
+		{
+			"default": "aquamarine",
+			"adjective": "aquamarine",
+		},
+		{
+			"default": "orchid",
+			"adjective": "orchid",
+			"prefix": "Orchid",
+		},
+		{
+			"default": "turquoise",
+			"adjective": "turquoise",
+		},
+		{
+			"default": "teal",
+			"adjective": "teal",
+		},
+		{
+			"default": "gold",
+			"adjective": "golden",
+			"prefix": "Golden",
+		},
+		{
+			"adjective": "colorless",
+		},
+	],
+}

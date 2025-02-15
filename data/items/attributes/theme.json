@@ -1,0 +1,181 @@
+{
+	"theme": [
+		{
+			"singular": "life",
+			"adjective": "vital",
+			"suffix": "of Life",
+		},
+		{
+			"singular": "hope",
+			"adjective": "hoping",
+			"suffix": "of Hope",
+		},
+		{
+			"singular": "determination",
+			"adjective": "determined",
+			"suffix": "of Determination",
+		},
+		{
+			"singular": "will",
+			"adjective": "willful",
+			"suffix": "of Will",
+		},
+		{
+			"singular": "bravery",
+			"adjective": "brave",
+			"suffix": "of Bravery",
+		},
+		{
+			"singular": "day",
+			"adjective": "illuminated",
+			"suffix": "of Daylight",
+		},
+		{
+			"singular": "harmony",
+			"adjective": "harmonious",
+			"suffix": "of Harmony",
+		},
+		{
+			"singular": "death",
+			"adjective": "undead",
+			"suffix": "of Death",
+		},
+		{
+			"singular": "torment",
+			"adjective": "tormented",
+			"suffix": "of Torment",
+		},
+		{
+			"singular": "pain",
+			"adjective": "painful",
+			"suffix": "of Pain"
+		},
+		{
+			"singular": "agony",
+			"adjective": "agonizing",
+			"suffix": "of Agony",
+		},
+		{
+			"singular": "despair",
+			"adjective": "hopeless",
+			"suffix": "of Deaspair",
+		},
+		{
+			"singular": "devastation",
+			"adjective": "devastating",
+			"suffix": "of Devastation",
+		},
+		{
+			"singular": "night",
+			"adjective": "dark",
+			"suffix": "of Moonlight",
+		},
+		{
+			"singular": "mercy",
+			"adjective": "mercyful",
+			"suffix": "of Mercy",
+		},
+		{
+			"singular": "discord",
+			"adjective": "quarrelsome",
+			"suffix": "of Discord",
+		},
+		{
+			"singular": "war",
+			"adjective": "savage",
+			"suffix": "of War",
+		},
+		{
+			"singular": "destruction",
+			"adjective": "destructive",
+			"suffix": "of Destruction",
+		},
+		{
+			"singular": "obliteration",
+			"adjective": "obliterating",
+			"suffix": "of Obliteration",
+		},
+		{
+			"singular": "entropy",
+			"adjective": "entropic",
+			"suffix": "of Entropy",
+		},
+		{
+			"singular": "chaos",
+			"adjective": "chaotic",
+			"suffix": "of Chaos",
+		},
+		{
+			"singular": "order",
+			"adjective": "ordered",
+			"suffix": "of Order",
+		},
+		{
+			"singular": "sky",
+			"plural": "skies",
+			"adjective": "skyward",
+			"suffix": "of Skies",
+		},
+		{
+			"singular": "space",
+			"adjective": "celestial",
+			"prefix": "Spaceborn",
+		},
+		{
+			"plural": "stars",
+			"adjective": "faintly glowing",
+			"prefix": "Astral",
+		},
+		{
+			"singular": "heaven",
+			"plural": "heavens",
+			"adjective": "heavenly",
+			"prefix": "Heavenly",
+		},
+		{
+			"singular": "aether",
+			"adjective": "aethereal",
+			"prefix": "Aethereal",
+		},
+		{
+			"singular": "abyss",
+			"adjective": "abyssal",
+			"prefix": "Abyssal",
+		},
+		{
+			"plural": "oceans",
+			"adjective": "oceanic",
+			"prefix": "of Oceans",
+		},
+		{
+			"singular": "deep sea",
+			"adjective": "submerged",
+			"prefix": "Deap Sea",
+		},
+		{
+			"singular": "dawn",
+			"adjective": "dawning",
+			"suffix": "of Dawn",
+		},
+		{
+			"singular": "twilight",
+			"adjective": "twilight",
+			"suffix": "of Twilight",
+		},
+		{
+			"singular": "light",
+			"adjective": "bright",
+			"suffix": "of Light",
+		},
+		{
+			"singular": "darkness",
+			"adjective": "dark",
+			"suffix": "of Darkness",
+		},
+		{
+			"singular": "blight",
+			"adjective": "blighted",
+			"suffix": "of Blight",
+		},
+	],
+}

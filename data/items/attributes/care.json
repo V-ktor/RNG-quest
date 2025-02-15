@@ -1,0 +1,28 @@
+{
+	"care": [
+		{
+			"singular": "polishing",
+			"adjective": "polished",
+		},
+		{
+			"singular": "sharpening",
+			"adjective": "sharpened",
+		},
+		{
+			"singular": "oiling",
+			"adjective": "well oiled",
+		},
+		{
+			"singular": "neglect",
+			"adjective": "worn-down",
+		},
+		{
+			"singular": "aging",
+			"adjective": "old",
+		},
+		{
+			"singular": "rot",
+			"adjective": "rotten",
+		},
+	],
+}

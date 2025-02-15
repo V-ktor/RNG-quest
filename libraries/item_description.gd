@@ -1,872 +1,6 @@
 extends Node
 
 const MAX_TEXT_LENGTH = 500
-const ATTRIBUTES = {
-	"color": [
-		{
-			"default": "white",
-			"adjective": "white",
-			"prefix": "White",
-		},
-		{
-			"default": "grey",
-			"adjective": "grey",
-		},
-		{
-			"default": "black",
-			"adjective": "black",
-			"prefix": "Black",
-		},
-		{
-			"default": "brown",
-			"adjective": "brown",
-		},
-		{
-			"default": "red",
-			"adjective": "red",
-		},
-		{
-			"default": "orange",
-			"adjective": "orange",
-		},
-		{
-			"default": "yellow",
-			"adjective": "yellow",
-		},
-		{
-			"default": "green",
-			"adjective": "green",
-		},
-		{
-			"default": "cyan",
-			"adjective": "cyan",
-		},
-		{
-			"default": "blue",
-			"adjective": "blue",
-		},
-		{
-			"default": "violet",
-			"adjective": "violet",
-		},
-		{
-			"default": "purple",
-			"adjective": "purple",
-		},
-		{
-			"default": "pink",
-			"adjective": "pink",
-		},
-		{
-			"default": "magenta",
-			"adjective": "magenta",
-		},
-		{
-			"default": "crimson",
-			"adjective": "crimson",
-			"prefix": "Crimson",
-		},
-		{
-			"default": "indigo",
-			"adjective": "indigo",
-		},
-		{
-			"default": "silver",
-			"adjective": "silver",
-			"prefix": "Silver",
-		},
-		{
-			"default": "beige",
-			"adjective": "beige",
-		},
-		{
-			"default": "aquamarine",
-			"adjective": "aquamarine",
-		},
-		{
-			"default": "orchid",
-			"adjective": "orchid",
-			"prefix": "Orchid",
-		},
-		{
-			"default": "turquoise",
-			"adjective": "turquoise",
-		},
-		{
-			"default": "teal",
-			"adjective": "teal",
-		},
-		{
-			"default": "gold",
-			"adjective": "golden",
-			"prefix": "Golden",
-		},
-		{
-			"adjective": "colorless",
-		},
-	],
-	"liquid": [
-		{
-			"singular": "water",
-			"plural":"waters",
-			"adjective": "watery",
-		},
-		{
-			"singular": "poison",
-			"plural": "poisons",
-			"adjective": "poisonous",
-		},
-		{
-			"singular": "acid",
-			"plural": "acids",
-			"adjective": "acidic",
-		},
-		{
-			"default": "blood",
-			"adjective": "bloody",
-		},
-		{
-			"default": "oil",
-			"adjective": "oily",
-		},
-		{
-			"default": "syrup",
-			"adjective": "sweet",
-		},
-		{
-			"default": "resin",
-			"adjective": "sticky",
-		},
-	],
-	"weight": [
-		{
-			"adjective": "heavy",
-			"adverb": "heavily",
-		},
-		{
-			"adjective": "massive",
-			"adverb": "massively",
-		},
-		{
-			"adjective": "light",
-			"adverb": "lightly",
-		},
-		{
-			"adjective": "lightweight",
-			"adverb": "easily",
-		},
-	],
-	"thickness": [
-		{
-			"adjective": "viscous",
-		},
-		{
-			"adjective": "thick",
-		},
-		{
-			"adjective": "thin",
-		},
-	],
-	"shape": [
-		{
-			"singular": "ball",
-			"plural": "balls",
-			"adjective": "round",
-		},
-		{
-			"singular": "sphere",
-			"plural": "spheres",
-			"adjective": "spherical",
-		},
-		{
-			"singular": "cube",
-			"plural": "cubes",
-			"adjective": "cubic",
-		},
-		{
-			"singular": "triangle",
-			"plural": "triangles",
-			"adjective": "triangular",
-		},
-		{
-			"singular": "rectangle",
-			"plural": "rectangles",
-			"adjective": "rectangular",
-		},
-		{
-			"singular": "pentagon",
-			"plural": "pentagons",
-			"adjective": "pentagonal",
-		},
-		{
-			"singular": "hexagon",
-			"plural": "hexagons",
-			"adjective": "hexagonal",
-			"prefix": "Hexa",
-		},
-		{
-			"singular": "octagon",
-			"plural": "octagons",
-			"adjective": "octagonal",
-		},
-		{
-			"singular": "odd shape",
-			"plural": "odd shapes",
-			"adjective": "irregular",
-			"prefix": "Odd",
-		},
-	],
-	"theme": [
-		{
-			"singular": "life",
-			"adjective": "vital",
-			"suffix": "of Life",
-		},
-		{
-			"singular": "hope",
-			"adjective": "hoping",
-			"suffix": "of Hope",
-		},
-		{
-			"singular": "determination",
-			"adjective": "determined",
-			"suffix": "of Determination",
-		},
-		{
-			"singular": "will",
-			"adjective": "willful",
-			"suffix": "of Will",
-		},
-		{
-			"singular": "bravery",
-			"adjective": "brave",
-			"suffix": "of Bravery",
-		},
-		{
-			"singular": "day",
-			"adjective": "illuminated",
-			"suffix": "of Daylight",
-		},
-		{
-			"singular": "harmony",
-			"adjective": "harmonious",
-			"suffix": "of Harmony",
-		},
-		{
-			"singular": "death",
-			"adjective": "undead",
-			"suffix": "of Death",
-		},
-		{
-			"singular": "torment",
-			"adjective": "tormented",
-			"suffix": "of Torment",
-		},
-		{
-			"singular": "pain",
-			"adjective": "painful",
-			"suffix": "of Pain"
-		},
-		{
-			"singular": "agony",
-			"adjective": "agonizing",
-			"suffix": "of Agony",
-		},
-		{
-			"singular": "despair",
-			"adjective": "hopeless",
-			"suffix": "of Deaspair",
-		},
-		{
-			"singular": "devastation",
-			"adjective": "devastating",
-			"suffix": "of Devastation",
-		},
-		{
-			"singular": "night",
-			"adjective": "dark",
-			"suffix": "of Moonlight",
-		},
-		{
-			"singular": "mercy",
-			"adjective": "mercyful",
-			"suffix": "of Mercy",
-		},
-		{
-			"singular": "discord",
-			"adjective": "quarrelsome",
-			"suffix": "of Discord",
-		},
-		{
-			"singular": "war",
-			"adjective": "savage",
-			"suffix": "of War",
-		},
-		{
-			"singular": "destruction",
-			"adjective": "destructive",
-			"suffix": "of Destruction",
-		},
-		{
-			"singular": "obliteration",
-			"adjective": "obliterating",
-			"suffix": "of Obliteration",
-		},
-		{
-			"singular": "entropy",
-			"adjective": "entropic",
-			"suffix": "of Entropy",
-		},
-		{
-			"singular": "chaos",
-			"adjective": "chaotic",
-			"suffix": "of Chaos",
-		},
-		{
-			"singular": "order",
-			"adjective": "ordered",
-			"suffix": "of Order",
-		},
-		{
-			"singular": "sky",
-			"plural": "skies",
-			"adjective": "skyward",
-			"suffix": "of Skies",
-		},
-		{
-			"singular": "space",
-			"adjective": "celestial",
-			"prefix": "Spaceborn",
-		},
-		{
-			"plural": "stars",
-			"adjective": "faintly glowing",
-			"prefix": "Astral",
-		},
-		{
-			"singular": "heaven",
-			"plural": "heavens",
-			"adjective": "heavenly",
-			"prefix": "Heavenly",
-		},
-		{
-			"singular": "aether",
-			"adjective": "aethereal",
-			"prefix": "Aethereal",
-		},
-		{
-			"singular": "abyss",
-			"adjective": "abyssal",
-			"prefix": "Abyssal",
-		},
-		{
-			"plural": "oceans",
-			"adjective": "oceanic",
-			"prefix": "of Oceans",
-		},
-		{
-			"singular": "deep sea",
-			"adjective": "submerged",
-			"prefix": "Deap Sea",
-		},
-		{
-			"singular": "dawn",
-			"adjective": "dawning",
-			"suffix": "of Dawn",
-		},
-		{
-			"singular": "twilight",
-			"adjective": "twilight",
-			"suffix": "of Twilight",
-		},
-		{
-			"singular": "light",
-			"adjective": "bright",
-			"suffix": "of Light",
-		},
-		{
-			"singular": "darkness",
-			"adjective": "dark",
-			"suffix": "of Darkness",
-		},
-		{
-			"singular": "blight",
-			"adjective": "blighted",
-			"suffix": "of Blight",
-		},
-	],
-	"mental_illness": [
-		{
-			"singular": "madness",
-			"adjective": "mad",
-			"suffix": "of Madness",
-		},
-		{
-			"singular": "agony",
-			"adjective": "agonizing",
-			"suffix": "of Agony",
-		},
-		{
-			"singular": "despair",
-			"adjective": "hopeless",
-			"suffix": "of Despair",
-		},
-		{
-			"singular": "nightmares",
-			"adjective": "haunted",
-			"suffix": "of Nightmares",
-		},
-		{
-			"singular": "suffering",
-			"adjective": "suffering",
-			"suffix": "of Suffering",
-		},
-	],
-	"element": [
-		{
-			"singular": "fire",
-			"adjective": "fiery",
-			"suffix": "of Fire",
-		},
-		{
-			"plural": "flames",
-			"adjective": "flaming",
-			"prefix": "Flaming",
-		},
-		{
-			"singular": "ember",
-			"plural": "embers",
-			"adjective": "burning",
-			"suffix": "of Embers",
-		},
-		{
-			"singular": "ice",
-			"adjective": "icy",
-			"suffix": "of Ice",
-		},
-		{
-			"singular": "frost",
-			"adjective": "cold",
-			"prefix": "Frost",
-		},
-		{
-			"singular": "lightning",
-			"adjective": "sparkling",
-			"suffix": "of Lightning",
-		},
-		{
-			"singular": "electricity",
-			"adjective": "jolting",
-			"prefix": "Lightning",
-		},
-		{
-			"singular": "water",
-			"plural": "waters",
-			"adjective": "watery",
-			"suffix": "of Water",
-		},
-		{
-			"singular": "wind",
-			"plural": "winds",
-			"adjective": "windy",
-			"prefix": "Wind",
-		},
-		{
-			"singular": "air",
-			"adjective": "airy",
-			"suffix": "of Wind",
-		},
-		{
-			"singular": "earth",
-			"adjective": "dirty",
-			"suffix": "of Earth",
-		},
-		{
-			"singular": "rock",
-			"plural": "rocks",
-			"adjective": "rocky",
-			"prefix": "Rock"
-		},
-		{
-			"singular": "light",
-			"plural": "lights",
-			"adjective": "bright",
-			"suffix": "of Light",
-		},
-		{
-			"singular": "darkness",
-			"plural": "shadows",
-			"adjective": "dark",
-			"suffix": "of Darkness",
-		},
-		{
-			"singular": "twilight",
-			"adjective": "shimmering",
-			"suffix": "of Twilight",
-		},
-	],
-	"curse": [
-		{
-			"singular": "curse",
-			"plural": "curses",
-			"adjective": "cursed",
-			"prefix": "Cursed",
-		},
-		{
-			"singular": "damnation",
-			"adjective": "forsaken",
-			"prefix": "Forsaken",
-		},
-		{
-			"singular": "blessing",
-			"plural": "blessings",
-			"adjective": "blessed",
-			"prefix": "Blessed",
-		},
-	],
-	"quality": [
-		{
-			"singular": "spike",
-			"plural": "spikes",
-			"adjective": "sharp",
-		},
-		{
-			"singular": "blade",
-			"plural": "blades",
-			"adjective": "sharp",
-		},
-		{
-			"singular": "tip",
-			"plural": "tips",
-			"adjective": "pointy",
-		},
-		{
-			"singular": "hammer",
-			"plural": "hammers",
-			"adjective": "blunt",
-		},
-		{
-			"singular": "metal",
-			"adjective": "polished",
-		},
-		{
-			"singular": "barb",
-			"plural": "barbs",
-			"adjective": "vile",
-		},
-	],
-	"weakness": [
-		{
-			"singular": "weakness",
-			"adjective": "weak",
-		},
-		{
-			"singular": "dullness",
-			"adjective": "dull",
-		},
-		{
-			"singular": "bluntness",
-			"adjective": "blunt",
-		},
-		{
-			"singular": "brittleness",
-			"adjective": "brittle",
-		},
-		{
-			"singular": "age",
-			"adjective": "old",
-		},
-	],
-	"craftmanship": [
-		{
-			"singular": "amateur",
-			"adjective": "amateurish",
-			"adverb": "amateurishly",
-		},
-		{
-			"singular": "unskilled craftman",
-			"adjective": "thoughtless",
-			"adverb": "thoughtlessly",
-		},
-		{
-			"singular": "novice craftman",
-			"adjective": "acceptable",
-			"adverb": "acceptably",
-		},
-		{
-			"singular": "professional",
-			"adjective": "professional",
-			"adverb": "professionally",
-		},
-		{
-			"singular": "experienced craftman",
-			"adjective": "inspiring",
-			"adverb": "skillfully",
-		},
-		{
-			"singular": "skilled craftman",
-			"adjective": "skillful",
-			"adverb": "skillfully",
-		},
-		{
-			"singular": "legendary craftman",
-			"adjective": "legendary",
-			"adverb": "legendaryly",
-		},
-	],
-	"stains": [
-		{
-			"singular": "blood stains",
-			"adjective": "blood stained",
-			"prefix": "Blood Stained",
-		},
-		{
-			"singular": "grease stains",
-			"adjective": "grease stained",
-		},
-		{
-			"singular": "water stains",
-			"adjective": "water stained",
-		},
-	],
-	"enemy": [
-		{
-			"singular": "beast",
-			"plural":"beasts",
-			"adjective": "wild",
-			"prefix": "Beast",
-		},
-		{
-			"singular": "demon",
-			"plural": "demons",
-			"adjective": "evil",
-			"prefix": "Demon",
-		},
-		{
-			"singular": "angel",
-			"plural": "angels",
-			"adjective": "radiant",
-			"prefix": "Radiant",
-		},
-		{
-			"singular": "elemental",
-			"plural": "elementals",
-			"adjective": "elemental",
-			"suffix": "of Elements"
-		},
-		{
-			"plural": "undead",
-			"adjective": "undead",
-			"prefix": "Undead",
-		},
-		{
-			"singular": "orc",
-			"plural": "orcs",
-			"adjective": "brutal",
-			"prefix": "Orc",
-		},
-		{
-			"singular": "cyborg",
-			"plural": "cyborgs",
-			"adjective": "cybertronic",
-			"prefix": "Cyborg",
-		},
-		{
-			"singular": "robot",
-			"plural": "robots",
-			"adjective": "computronic",
-			"prefix": "Robot",
-		},
-		{
-			"singular": "archon",
-			"plural": "archons",
-			"adjective": "mighty",
-			"suffix": "of Archons",
-		},
-		{
-			"plural": "plants",
-			"adjective": "phototropic",
-			"prefix": "floral",
-		},
-	],
-	"prophecy": [
-		{
-			"singular": "prophecy",
-			"plural": "prophecies",
-			"adjective": "prophesied",
-			"suffix": "of Prophecy",
-		},
-		{
-			"singular": "oracle",
-			"plural": "oracles",
-			"adjective": "prophetic",
-			"suffix": "Oracle's",
-		},
-		{
-			"singular": "fate",
-			"adjective": "fated",
-			"suffix": "of Fate",
-		},
-		{
-			"singular": "destiny",
-			"adjective": "destined",
-			"suffix": "of Destiny",
-		},
-	],
-	"emotion": [
-		{
-			"singular": "care",
-			"adjective": "careful",
-			"adverb": "carefully",
-		},
-		{
-			"singular": "joy",
-			"adjective": "joyful",
-			"adverb": "joyfully",
-			"suffix": "of Joy",
-		},
-		{
-			"singular": "precision",
-			"adjective": "precise",
-			"adverb": "precisely",
-			"suffix": "of Precision",
-		},
-		{
-			"singular": "dedication",
-			"adjective": "dedicated",
-			"adverb": "decisively",
-			"suffix": "of Dedication",
-		},
-		{
-			"singular": "determination",
-			"adjective": "determined",
-			"adverb": "mindfully",
-			"suffix": "of Determination",
-		},
-		{
-			"singular": "hate",
-			"adjective": "fierce",
-			"adverb": "fiercely",
-			"suffix": "of Hate",
-		},
-		{
-			"singular": "haste",
-			"adjective": "improvised",
-			"adverb": "hastily",
-			"suffix": "of Haste",
-		},
-		{
-			"singular": "sorrow",
-			"adjective": "sorrowful",
-			"adverb": "sorrowfully",
-			"prefix": "Sorrowful",
-		},
-	],
-	"origin": [
-		{
-			"singular": "unknown",
-			"plural": "enigma",
-			"adjective": "unknown",
-			"suffix": "of Unknown Origin",
-		},
-	],
-	"force": [
-		{
-			"singular": "storm",
-			"plural": "storms",
-			"adjective": "devastating",
-			"suffix": "of Storms",
-		},
-		{
-			"singular": "earthquake",
-			"plural": "earthquakes",
-			"adjective": "ground shaking",
-			"suffix": "of Earthquakes",
-		},
-		{
-			"singular": "flashflood",
-			"adjective": "destructive",
-			"suffix": "of Flashfloods",
-		},
-		{
-			"singular": "apocalypse",
-			"adjective": "apocalyptic",
-			"suffix": "of Apocalypse",
-		},
-		{
-			"singular": "annihilation",
-			"adjective": "annihilating",
-			"suffix": "of Annihilation",
-		},
-		{
-			"singular": "world's end",
-			"adjective": "ultimate",
-			"suffix": "of the End",
-		},
-	],
-	"care": [
-		{
-			"singular": "polishing",
-			"adjective": "polished",
-		},
-		{
-			"singular": "sharpening",
-			"adjective": "sharpened",
-		},
-		{
-			"singular": "oiling",
-			"adjective": "well oiled",
-		},
-		{
-			"singular": "neglect",
-			"adjective": "worn-down",
-		},
-		{
-			"singular": "aging",
-			"adjective": "old",
-		},
-		{
-			"singular": "rot",
-			"adjective": "rotten",
-		},
-	],
-	"crime": [
-		{
-			"singular": "murder",
-			"plural": "murders",
-			"adjective": "murderous",
-			"suffix": "of Murder",
-		},
-		{
-			"singular": "genocide",
-			"plural": "genocides",
-			"adjective": "genocidal",
-			"suffix": "of Genocide",
-		},
-		{
-			"singular": "trespassing",
-			"plural": "tresspassings",
-			"adjective": "trespassing",
-		},
-		{
-			"singular": "stealing",
-			"plural": "thefts",
-			"adjective": "stealing",
-			"suffix": "of Theft",
-		},
-		{
-			"singular": "tyranny",
-			"plural": "tyrannies",
-			"adjective": "tyrannic",
-			"suffix": "of Tyranny",
-		},
-		{
-			"singular": "terrorism",
-			"plural": "terrorist attacks",
-			"adjective": "terrorising",
-		},
-	],
-}
 const RANDOM_CARDS = [
 	"theme", "shape", "color", "liquid", "element", "curse", "quality", "weakness", "craftmanship",
 	"mental_illness", "stains", "enemy", "prophecy", "emotion", "origin", "force", "care", "crime",
@@ -875,6 +9,7 @@ const RANDOM_CARDS = [
 var texts: Array[Dictionary] = []
 var texts_by_type:= {}
 var cards:= {}
+var attributes:= {}
 
 
 class TextState:
@@ -1365,7 +500,7 @@ func create_description_data(item: Dictionary, rank: int) -> Dictionary:
 
 
 func pick_attribute(attribute: String) -> String:
-	var data = ATTRIBUTES[attribute].pick_random()
+	var data = attributes[attribute].pick_random()
 	if typeof(data) == TYPE_DICTIONARY:
 		if "adjective" in data:
 			return tr(data.adjective)
@@ -1374,18 +509,18 @@ func pick_attribute(attribute: String) -> String:
 	else:
 		return tr(data)
 
-func create_card(type: String, attributes:= {}) -> Dictionary:
+func create_card(type: String, attributes_override:= {}) -> Dictionary:
 	var card:= {
 		"type": type,
-		"attributes": attributes.duplicate(true),
+		"attributes": attributes_override.duplicate(true),
 	}
 	if type in cards:
 		var definition: Dictionary = cards[type]
 		for attribute in definition.get("attributes", []):
-			if attribute in attributes:
-				card.attributes[attribute] = tr(attributes[attribute])
-			elif attribute in ATTRIBUTES:
-				var data = ATTRIBUTES[attribute].pick_random()
+			if attribute in attributes_override:
+				card.attributes[attribute] = tr(attributes_override[attribute])
+			elif attribute in attributes:
+				var data = attributes[attribute].pick_random()
 				if typeof(data) == TYPE_DICTIONARY:
 					card.attributes[attribute] = tr(
 						data.get("default", data.values().pick_random()))
@@ -1399,14 +534,14 @@ func create_card(type: String, attributes:= {}) -> Dictionary:
 			else:
 				# fallback: just use some random word lol
 				# print("WARNING: missing attribute " + attribute + " in " + type)
-				card.attributes[attribute] = pick_attribute(ATTRIBUTES.keys().pick_random())
+				card.attributes[attribute] = pick_attribute(attributes.keys().pick_random())
 	if "singular" not in card.attributes && "plural" not in card.attributes:
-		if "name" in attributes:
+		if "name" in attributes_override:
 			card.attributes.singular = tr(attributes.name)
-		elif "recipe" in attributes:
+		elif "recipe" in attributes_override:
 			card.attributes.singular = tr(attributes.recipe)
-		elif type in ATTRIBUTES:
-			var data = ATTRIBUTES[type].pick_random()
+		elif type in attributes:
+			var data = attributes[type].pick_random()
 			if typeof(data) == TYPE_DICTIONARY:
 				if "singular" in data:
 					card.attributes.singular = tr(data.singular)
@@ -1587,7 +722,7 @@ func append_text(text_state: TextState) -> TextState:
 			var attribute:= array[1]
 			if topic not in text_data.required:
 				print("Warning: key " + topic + " missing in text data")
-				format_dict[key] = pick_attribute(ATTRIBUTES.keys().pick_random())
+				format_dict[key] = pick_attribute(attributes.keys().pick_random())
 				continue
 			
 			var data: Dictionary = text_data.required[topic].attributes
@@ -1625,7 +760,7 @@ func append_text(text_state: TextState) -> TextState:
 		else:
 			print("Warning: key " + key +
 				" has invalid format. Use topic.attribute or singular/plural")
-			format_dict[key] = pick_attribute(ATTRIBUTES.keys().pick_random())
+			format_dict[key] = pick_attribute(attributes.keys().pick_random())
 			continue
 		
 	
@@ -1814,7 +949,27 @@ func load_card_data(path: String):
 			cards[key] = dict[key]
 		file.close()
 
+func load_attribute_data(path: String):
+	for file_name in Utils.get_file_paths(path):
+		var file:= FileAccess.open(file_name, FileAccess.READ)
+		var error:= FileAccess.get_open_error()
+		if error != OK:
+			print("Can't open file " + file_name + "!")
+			continue
+		else:
+			print("Loading items " + file_name + '.')
+		
+		var raw:= file.get_as_text()
+		var dict: Dictionary = JSON.parse_string(raw)
+		if dict == null || dict.size() == 0:
+			printt("Error parsing " + file_name + "!")
+			continue
+		for key in dict:
+			attributes[key] = dict[key]
+		file.close()
+
 
 func _ready():
 	load_text_data("res://data/items/texts")
 	load_card_data("res://data/items/cards")
+	load_attribute_data("res://data/items/attributes")

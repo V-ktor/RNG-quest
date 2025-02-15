@@ -1,0 +1,39 @@
+{
+	"craftmanship": [
+		{
+			"singular": "amateur",
+			"adjective": "amateurish",
+			"adverb": "amateurishly",
+		},
+		{
+			"singular": "unskilled craftman",
+			"adjective": "thoughtless",
+			"adverb": "thoughtlessly",
+		},
+		{
+			"singular": "novice craftman",
+			"adjective": "acceptable",
+			"adverb": "acceptably",
+		},
+		{
+			"singular": "professional",
+			"adjective": "professional",
+			"adverb": "professionally",
+		},
+		{
+			"singular": "experienced craftman",
+			"adjective": "inspiring",
+			"adverb": "skillfully",
+		},
+		{
+			"singular": "skilled craftman",
+			"adjective": "skillful",
+			"adverb": "skillfully",
+		},
+		{
+			"singular": "legendary craftman",
+			"adjective": "legendary",
+			"adverb": "legendaryly",
+		},
+	],
+}
