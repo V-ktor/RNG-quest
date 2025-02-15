@@ -1,5 +1,16 @@
 # Change log
 
+## v0.1.1
+### Content
+* a few more prefixes and suffixes for legendary equipment
+* new name generator for legendary equipment
+
+### Interface
+* tooltips are now showed after a delay of 0.5s
+
+### Internal changes
+* moved several definitions into json files to prepare modding support
+
 ## v0.1.0
 ### Content
 * new item description generator
