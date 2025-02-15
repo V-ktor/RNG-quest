@@ -142,7 +142,6 @@ func _show_skills() -> void:
 	for i in range(data.size()):
 		var type: String = data.keys()[i]
 		var points := array_to_time_vector(data[type])
-		printt(points)
 		options.line_color = generate_color(i)
 		options.fill_color_top = generate_color(i, 1.0, 0.75, 0.5, 0.5)
 		options.fill_color_bottom = generate_color(i, 1.0, 0.5, 0.25, 0.0)
@@ -156,7 +155,6 @@ func _show_equipment() -> void:
 		var type: String = data.keys()[i]
 		var points := array_to_time_vector(data[type])
 		y_multiply(points, 0.01)
-		printt(points)
 		options.line_color = generate_color(i)
 		options.fill_color_top = generate_color(i, 1.0, 0.75, 0.5, 0.5)
 		options.fill_color_bottom = generate_color(i, 1.0, 0.5, 0.25, 0.0)
@@ -169,7 +167,6 @@ func _show_guild() -> void:
 	for i in range(data.size()):
 		var type: String = data.keys()[i]
 		var points := array_to_time_vector(data[type])
-		printt(points)
 		options.line_color = generate_color(i)
 		options.fill_color_top = generate_color(i, 1.0, 0.75, 0.5, 0.5)
 		options.fill_color_bottom = generate_color(i, 1.0, 0.5, 0.25, 0.0)

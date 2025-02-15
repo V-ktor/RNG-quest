@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://c4e5fnc1mtooq"]
 
 [ext_resource type="Script" path="res://gui/menu.gd" id="1_mwg2g"]
-[ext_resource type="Texture2D" uid="uid://b78hnhrtssfg1" path="res://data/backgrounds/paper.png" id="2_c37em"]
+[ext_resource type="Texture2D" uid="uid://b78hnhrtssfg1" path="res://images/gui/paper.png" id="2_c37em"]
 [ext_resource type="Texture2D" uid="uid://cmoi5f5ksy74j" path="res://data/tilesets/water.png" id="2_w7fqm"]
 [ext_resource type="Texture2D" uid="uid://b2agk1ffpxnal" path="res://data/tilesets/farm.png" id="3_yx6fe"]
 [ext_resource type="Texture2D" uid="uid://6ngo8di2qba1" path="res://data/tilesets/forest.png" id="4_p8pio"]

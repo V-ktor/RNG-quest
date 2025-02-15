@@ -533,7 +533,6 @@ func create_card(type: String, attributes_override:= {}) -> Dictionary:
 					card.attributes[attribute] = tr(data)
 			else:
 				# fallback: just use some random word lol
-				# print("WARNING: missing attribute " + attribute + " in " + type)
 				card.attributes[attribute] = pick_attribute(attributes.keys().pick_random())
 	if "singular" not in card.attributes && "plural" not in card.attributes:
 		if "name" in attributes_override:
@@ -919,7 +918,7 @@ func load_text_data(path: String):
 		var raw:= file.get_as_text()
 		var array: Array = JSON.parse_string(raw) as Array
 		if array == null || array.size() == 0:
-			printt("Error parsing " + file_name + "!")
+			print("Error parsing " + file_name + "!")
 			continue
 		for text_data in array:
 			texts.push_back(text_data)
@@ -943,7 +942,7 @@ func load_card_data(path: String):
 		var raw:= file.get_as_text()
 		var dict: Dictionary = JSON.parse_string(raw)
 		if dict == null || dict.size() == 0:
-			printt("Error parsing " + file_name + "!")
+			print("Error parsing " + file_name + "!")
 			continue
 		for key in dict:
 			cards[key] = dict[key]
@@ -962,7 +961,7 @@ func load_attribute_data(path: String):
 		var raw:= file.get_as_text()
 		var dict: Dictionary = JSON.parse_string(raw)
 		if dict == null || dict.size() == 0:
-			printt("Error parsing " + file_name + "!")
+			print("Error parsing " + file_name + "!")
 			continue
 		for key in dict:
 			attributes[key] = dict[key]
