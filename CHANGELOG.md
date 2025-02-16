@@ -10,6 +10,7 @@
 
 ### Internal changes
 * moved several definitions into json files to prepare modding support
+* Linux: target wayland as display driver with x11 as fallback
 
 ## v0.1.0
 ### Content
