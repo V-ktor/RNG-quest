@@ -1,0 +1,7 @@
+{
+	"pistol": {
+		"type": "weapon",
+		"components":["barrel", "hilt"],
+		"icon": "pistol",
+	},
+}

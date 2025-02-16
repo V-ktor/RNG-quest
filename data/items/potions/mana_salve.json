@@ -1,0 +1,15 @@
+{
+	"mana_salve": {
+		"name": "mana salve",
+		"type": "potion",
+		"effect": "mana",
+		"status": {
+			"type": "buff",
+			"name": "healing",
+			"mana_regen":200,
+			"duration":10.0,
+		},
+		"price":10,
+		"material_types":[["magical"]],
+	},
+}

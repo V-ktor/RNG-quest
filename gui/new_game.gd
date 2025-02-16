@@ -288,17 +288,25 @@ func start_game():
 	for i in range(2):
 		main_instance.learn_new_skill()
 	for type in player_equipment:
-		var item:= Items.create_random_standard_equipment(type, {"level":1,"tier":0,"local_materials":{}})
-		if Items.EQUIPMENT_RECIPES[type].has("name"):
-			item.source = tr("OLD_ITEM").format({"name":tr(Items.EQUIPMENT_RECIPES[type].name.to_upper())})
+		var item:= Items.create_random_standard_equipment(type, {
+			"level": 1,
+			"tier": 0,
+			"local_materials": {},
+		})
+		if Items.equipment_recipes[type].has("name"):
+			item.source = tr("OLD_ITEM").format({
+				"name": tr(Items.equipment_recipes[type].name.to_upper()),
+			})
 		else:
-			item.source = tr("OLD_ITEM").format({"name":tr(type.to_upper())})
+			item.source = tr("OLD_ITEM").format({
+				"name":tr(type.to_upper()),
+			})
 		item.description = Items.create_tooltip(item)
 		item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 		item.component_description = Items.create_component_tooltip(item)
 		main_instance.equip(item)
 	
-	if "elf" in player_race && (player_alt_race=="" || "elf" in player_alt_race):
+	if "elf" in player_race && (player_alt_race == "" || "elf" in player_alt_race):
 		main_instance.set_region("elven_forest")
 	elif "dwarf" in player_race || "dwarf" in player_alt_race:
 		main_instance.set_region("dwarven_mine")

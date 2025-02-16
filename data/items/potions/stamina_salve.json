@@ -1,0 +1,15 @@
+{
+	"stamina_salve": {
+		"name": "stamina salve",
+		"type": "potion",
+		"effect": "stamina",
+		"status": {
+			"type": "buff",
+			"name": "healing",
+			"stamina_regen":200,
+			"duration":10.0,
+		},
+		"price":10,
+		"material_types":[["elemental"]],
+	},
+}

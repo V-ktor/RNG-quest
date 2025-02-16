@@ -1,0 +1,7 @@
+{
+	"cloth_shirt": {
+		"type": "torso",
+		"name": "shirt",
+		"components":["cloth_armour", "cloth_armour", "rope_joints", "magical_coating"],
+	},
+}

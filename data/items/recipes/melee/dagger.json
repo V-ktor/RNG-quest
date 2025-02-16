@@ -1,0 +1,7 @@
+{
+	"dagger": {
+		"type": "weapon",
+		"components":["knife", "hilt"],
+		"icon": "dagger",
+	},
+}

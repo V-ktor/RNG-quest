@@ -1,0 +1,10 @@
+{
+	"rope_joints": {
+		"subtype": "light",
+		"magic":1,
+		"willpower":1,
+		"accuracy":2,
+		"evasion":2,
+		"material":["cloth"],
+	},
+}

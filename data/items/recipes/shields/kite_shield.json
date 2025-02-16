@@ -1,0 +1,8 @@
+{
+	"kite_shield": {
+		"type": "weapon",
+		"subtype": "shield",
+		"components":["chain_armour", "shaft"],
+		"icon": "kite_shield",
+	},
+}

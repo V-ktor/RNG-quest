@@ -35,7 +35,7 @@
 		"equipment_enchantment_chance":0.2,
 		"equipment_quality":1.0,
 		"materials":[
-			"ore","cloth","paper","parchement","dust","hair","bone","skin",
+			"ore","cloth","paper","parchment","dust","hair","bone","skin",
 		],
 		"soul_prefix":["eternal","bound","ancient"],
 		"soul_rarity":2,

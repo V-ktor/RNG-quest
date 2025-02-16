@@ -1,0 +1,6 @@
+{
+	"chain_greaves": {
+		"type": "legs",
+		"components":["chain_armour", "chain_armour", "metal_coating"],
+	},
+}

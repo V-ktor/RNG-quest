@@ -1,0 +1,15 @@
+{
+	"healing_salve": {
+		"name": "healing salve",
+		"type": "potion",
+		"effect": "health",
+		"status": {
+			"type": "buff",
+			"name": "healing",
+			"health_regen": 500,
+			"duration": 10.0,
+		},
+		"price": 10,
+		"material_types":[["healing"]],
+	},
+}

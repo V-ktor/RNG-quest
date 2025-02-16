@@ -1,0 +1,8 @@
+{
+	"orb": {
+		"subtype": "magic",
+		"magic":2,
+		"willpower":4,
+		"material":["gem", "elemental"],
+	},
+}

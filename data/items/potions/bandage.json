@@ -1,0 +1,16 @@
+{
+	"bandage": {
+		"name": "bandage",
+		"type": "potion",
+		"effect": "health",
+		"status": {
+			"type": "buff",
+			"name": "healing",
+			"health_regen": 200,
+			"health": 20.0,
+			"duration": 20.0,
+		},
+		"price": 10,
+		"material_types": [["healing", "cloth", "leather"]],
+	},
+}

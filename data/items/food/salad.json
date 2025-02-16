@@ -1,0 +1,16 @@
+{
+	"salad": {
+		"name": "salad",
+		"type": "food",
+		"stamina": 20,
+		"status": {
+			"type": "buff",
+			"name": "agility",
+			"effect": ["accuracy", "evasion"],
+			"effect_scale": 3.0,
+			"duration": 1200,
+		},
+		"price": 10,
+		"material_types": [["plant"]],
+	},
+}

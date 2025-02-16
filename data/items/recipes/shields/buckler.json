@@ -1,0 +1,8 @@
+{
+	"buckler": {
+		"type": "weapon",
+		"subtype": "shield",
+		"components":["light_armour", "shaft"],
+		"icon": "buckler",
+	},
+}

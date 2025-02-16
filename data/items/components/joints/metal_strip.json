@@ -1,0 +1,8 @@
+{
+	"metal_strip": {
+		"attack":2,
+		"accuracy":2,
+		"evasion":2,
+		"material":["metal"],
+	},
+}

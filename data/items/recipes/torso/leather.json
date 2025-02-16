@@ -1,0 +1,6 @@
+{
+	"leather_chest": {
+		"type": "torso",
+		"components":["leather_armour", "leather_armour", "leather_joints", "paint_coating"],
+	},
+}

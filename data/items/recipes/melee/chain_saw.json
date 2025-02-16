@@ -1,0 +1,7 @@
+{
+	"chain_saw": {
+		"type": "weapon",
+		"components":["chain_saw", "hilt"],
+		"icon": "chain_saw",
+	},
+}

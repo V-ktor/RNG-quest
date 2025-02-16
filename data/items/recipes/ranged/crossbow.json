@@ -1,0 +1,8 @@
+{
+	"crossbow": {
+		"type": "weapon",
+		"2h":true,
+		"components":["string", "bow", "loader", "shaft"],
+		"icon": "crossbow",
+	},
+}

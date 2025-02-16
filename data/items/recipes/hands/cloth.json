@@ -1,0 +1,7 @@
+{
+	"cloth_sleeves": {
+		"type": "hands",
+		"name": "sleeves",
+		"components":["cloth_armour", "rope_joints"],
+	},
+}

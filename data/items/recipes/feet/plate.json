@@ -1,0 +1,6 @@
+{
+	"plate_boots": {
+		"type": "feet",
+		"components":["metal_joints", "metal_coating"],
+	},
+}

@@ -1,0 +1,7 @@
+{
+	"tome": {
+		"type": "weapon",
+		"components":["formula", "gem"],
+		"icon": "tome",
+	},
+}

@@ -1,0 +1,8 @@
+{
+	"leather_strip": {
+		"accuracy":2,
+		"evasion":2,
+		"health":10,
+		"material":["leather"],
+	},
+}

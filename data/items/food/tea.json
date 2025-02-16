@@ -1,0 +1,15 @@
+{
+	"tea": {
+		"name": "tea",
+		"type": "food",
+		"stamina": 40,
+		"status": {
+			"type": "buff",
+			"name": "regeneration",
+			"health_regen": 10,
+			"duration": 1200,
+		},
+		"price": 20,
+		"material_types":[["healing"], ["plant", "healing"]],
+	},
+}

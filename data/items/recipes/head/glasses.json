@@ -1,0 +1,6 @@
+{
+	"glasses": {
+		"type": "head",
+		"components":["metal_coating", "glass_coating"],
+	},
+}

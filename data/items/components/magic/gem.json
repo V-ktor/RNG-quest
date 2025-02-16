@@ -1,0 +1,7 @@
+{
+	"gem": {
+		"subtype": "magic",
+		"magic":6,
+		"material":["gem", "magical"],
+	},
+}

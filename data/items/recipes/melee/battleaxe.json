@@ -1,0 +1,8 @@
+{
+	"battleaxe": {
+		"type": "weapon",
+		"2h":true,
+		"components":["blade", "blade", "pole", "shaft"],
+		"icon": "battleaxe",
+	},
+}

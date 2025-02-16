@@ -1,0 +1,9 @@
+{
+	"cloth_armour": {
+		"subtype": "light",
+		"armour":1,
+		"evasion":3,
+		"mana":10,
+		"material":["cloth"],
+	},
+}

@@ -1,0 +1,7 @@
+{
+	"orb": {
+		"type": "weapon",
+		"components":["magical_coating", "orb"],
+		"icon": "orb",
+	},
+}

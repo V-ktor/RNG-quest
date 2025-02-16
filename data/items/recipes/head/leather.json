@@ -1,0 +1,7 @@
+{
+	"leather_hat": {
+		"type": "head",
+		"name": "hat",
+		"components":["leather_armour", "paint_coating"],
+	},
+}

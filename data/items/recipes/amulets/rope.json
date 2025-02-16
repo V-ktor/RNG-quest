@@ -1,0 +1,7 @@
+{
+	"rope_amulet": {
+		"type": "amulet",
+		"name": "amulet",
+		"components":["rope_chain", "gem"],
+	},
+}

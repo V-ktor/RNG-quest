@@ -1,0 +1,10 @@
+{
+	"stamina_potion": {
+		"name": "stamina potion",
+		"type": "potion",
+		"effect": "stamina",
+		"healing":75,
+		"price":20,
+		"material_types":[["elemental"],["liquid", "elemental"]],
+	},
+}

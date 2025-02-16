@@ -1,0 +1,8 @@
+{
+	"morningstar": {
+		"type": "weapon",
+		"2h":true,
+		"components":["metal_coating", "whip", "whip", "shaft"],
+		"icon": "morningstar",
+	},
+}

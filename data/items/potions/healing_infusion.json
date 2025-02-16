@@ -1,0 +1,10 @@
+{
+	"healing_infusion": {
+		"name": "healing infusion",
+		"type": "potion",
+		"effect": "health",
+		"healing": 75,
+		"price": 20,
+		"material_types": [["healing"], ["liquid", "healing"]],
+	},
+}

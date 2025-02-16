@@ -40,13 +40,13 @@ class TextState:
 
 
 func create_item_data() -> Dictionary:
-	var recipe: String = Items.EQUIPMENT_RECIPES.keys().pick_random()
-	var recipe_data: Dictionary = Items.EQUIPMENT_RECIPES[recipe]
+	var recipe: String = Items.equipment_recipes.keys().pick_random()
+	var recipe_data: Dictionary = Items.equipment_recipes[recipe]
 	var item_name:= tr(recipe.to_upper())
 	var item: Dictionary = Items.create_random_standard_equipment(recipe, {
-		"level":1,
-		"tier":1,
-		"local_materials":Items.DEFAULT_MATERIALS,
+		"level": 1,
+		"tier": 1,
+		"local_materials": Items.DEFAULT_MATERIALS,
 	})
 	
 	item.attributes = {}

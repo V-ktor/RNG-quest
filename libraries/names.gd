@@ -470,23 +470,6 @@ const MATERIALS = [
 	"stone","basalt","graphite","granite","marble",
 	"diamond","saphire","ruby","emerald","amber",
 ]
-#const ARTIFACT_DESCRIPTIONS = [
-	#"The {adjective} {material} can't hide the {theme} beneath.",
-	#"The {adjective} {base_name} of the {theme}.",
-	#"{material} {base_name}, {name} of the {theme}.",
-	#"The legendary artifact of the {adjective} {theme}.",
-	#"Unremarkable {base_name} bearing the power of the {adjective} {theme}.",
-	#"{material} on the outside but {adjective} {theme} on the inside.",
-	#"{adjective} {base_name} powered by {theme}.",
-	#"{adjective} {base_name} that can't escape it's {theme}.",
-	#"{adjective} {base_name} covered in {feature}.",
-	#"The {adjective} {feature} gives an idea about the {name}'s {theme}.",
-	#"{feature} obfuscate the {theme} of the {adjective} {name}.",
-	#"The {theme} {feature} {is/are} said to be {adjective}.",
-	#"The {feature} contrast{s} the {adjective} {material} of the {base_name}.",
-	#"{base_name} surrounded by a {adjective} aura of {theme}.",
-	#"Not everything that is {adjective} is {material}.",
-#]
 const NAME_DATA = {
 	"human": {
 		"phrases_male": ["or","esh","us","car","end","rus","har"],
@@ -1004,9 +987,3 @@ func get_empire_name(race: String) -> String:
 	if EMPIRE_RACE_NAME.has(race):
 		return EMPIRE_RACE_NAME[race].pick_random().capitalize() + " " + tr("OF") + " " + create_name(race, 0).capitalize()
 	return EMPIRE_GENERIC_NAME.pick_random().capitalize() + " " + tr("OF") + " " + create_name(race, 0).capitalize()
-
-
-#func _ready():
-#	for i in range(20):
-#		printt(create_name("naga", 1))
-#		printt(get_empire_name("gnoll"))

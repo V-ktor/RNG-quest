@@ -1,0 +1,10 @@
+{
+	"mana_potion": {
+		"name": "mana potion",
+		"type": "potion",
+		"effect": "mana",
+		"healing":75,
+		"price":20,
+		"material_types":[["magical"],["liquid", "magical"]],
+	},
+}

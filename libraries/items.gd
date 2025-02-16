@@ -13,548 +13,6 @@ const RANK_COLORS = [
 	Color(0.6,0.2,1.0),
 	Color(0.6,0.5,0.1),
 ]
-const EQUIPMENT_COMPONENTS = {
-	"knife": {
-		"subtype": "melee",
-		"attack":3,
-		"penetration":4,
-		"damage_type": "piercing",
-		"material":["metal", "bone"],
-	},
-	"blade": {
-		"subtype": "melee",
-		"attack":6,
-		"damage_type": "cutting",
-		"material":["metal", "bone"],
-	},
-	"pole": {
-		"subtype": "melee",
-		"attack":4,
-		"accuracy":2,
-		"damage_type": "impact",
-		"material":["wood", "stone", "metal"],
-	},
-	"whip": {
-		"subtype": "melee",
-		"attack":4,
-		"accuracy":1,
-		"penetration":2,
-		"damage_type": "impact",
-		"material":["leather"],
-	},
-	"chain_saw": {
-		"subtype": "melee",
-		"attack":4,
-		"penetration":2,
-		"damage_type": "cutting",
-		"material":["metal"],
-	},
-	
-	"hilt": {
-		"attack":4,
-		"accuracy":2,
-		"material":["wood", "stone", "leather"],
-	},
-	"shaft": {
-		"attack":2,
-		"accuracy":2,
-		"evasion":2,
-		"material":["wood", "stone", "metal"],
-	},
-	
-	"gem": {
-		"subtype": "magic",
-		"magic":6,
-		"material":["gem", "magical"],
-	},
-	"formula": {
-		"subtype": "magic",
-		"magic":4,
-		"willpower":2,
-		"material":["paper", "leather"],
-	},
-	"orb": {
-		"subtype": "magic",
-		"magic":2,
-		"willpower":4,
-		"material":["gem", "elemental"],
-	},
-	
-	"string": {
-		"subtype": "ranged",
-		"attack":6,
-		"damage_type": "piercing",
-		"material":["leather"],
-	},
-	"bow": {
-		"subtype": "ranged",
-		"attack":5,
-		"accuracy":1,
-		"damage_type": "piercing",
-		"material":["wood"],
-	},
-	"loader": {
-		"subtype": "ranged",
-		"attack":8,
-		"accuracy":3,
-		"speed":-1,
-		"material":["wood", "metal"],
-	},
-	"barrel": {
-		"subtype": "ranged",
-		"attack":4,
-		"accuracy":2,
-		"damage_type": "impact",
-		"material":["metal", "stone"],
-	},
-	
-	"cloth_armour": {
-		"subtype": "light",
-		"armour":1,
-		"evasion":3,
-		"mana":10,
-		"material":["cloth"],
-	},
-	"leather_armour": {
-		"subtype": "medium",
-		"armour":3,
-		"accuracy":1,
-		"stamina":10,
-		"material":["leather"],
-	},
-	"light_armour": {
-		"subtype": "medium",
-		"armour":4,
-		"accuracy":1,
-		"evasion":1,
-		"material":["wood", "paper"],
-	},
-	"chain_armour": {
-		"subtype": "heavy",
-		"armour":6,
-		"accuracy":-2,
-		"evasion":-2,
-		"health":10,
-		"stamina":10,
-		"material":["metal"],
-	},
-	"plate_armour": {
-		"subtype": "heavy",
-		"armour":9,
-		"accuracy":-2,
-		"evasion":-2,
-		"speed":-1,
-		"health":15,
-		"material":["metal"],
-	},
-	
-	"rope_joints": {
-		"subtype": "light",
-		"magic":1,
-		"willpower":1,
-		"accuracy":2,
-		"evasion":2,
-		"material":["cloth"],
-	},
-	"leather_joints": {
-		"subtype": "medium",
-		"accuracy":3,
-		"evasion":3,
-		"material":["leather"],
-	},
-	"metal_joints": {
-		"subtype": "heavy",
-		"attack":1,
-		"armour":3,
-		"accuracy":1,
-		"evasion":1,
-		"material":["metal"],
-	},
-	
-	"magical_coating": {
-		"magic":3,
-		"willpower":3,
-		"material":["magical"],
-	},
-	"paint_coating": {
-		"armour":1,
-		"evasion":3,
-		"accuracy":2,
-		"material":["alchemy"],
-	},
-	"metal_coating": {
-		"armour":4,
-		"attack":2,
-		"damage_type": "impact",
-		"material":["metal"],
-	},
-	"glass_coating": {
-		"accuracy":3,
-		"evasion":3,
-		"material":["sand"],
-	},
-	
-	"rope_chain": {
-		"magic":2,
-		"stamina":10,
-		"mana":10,
-		"material":["cloth"],
-	},
-	"metal_chain": {
-		"armour":2,
-		"stamina":10,
-		"mana":10,
-		"material":["metal"],
-	},
-	"leather_strip": {
-		"accuracy":2,
-		"evasion":2,
-		"health":10,
-		"material":["leather"],
-	},
-	"metal_strip": {
-		"attack":2,
-		"accuracy":2,
-		"evasion":2,
-		"material":["metal"],
-	},
-	
-}
-const EQUIPMENT_RECIPES = {
-	"dagger": {
-		"type": "weapon",
-		"components":["knife", "hilt"],
-		"icon": "dagger",
-	},
-	"sword": {
-		"type": "weapon",
-		"components":["blade", "hilt"],
-		"icon": "sword",
-	},
-	"axe": {
-		"type": "weapon",
-		"components":["blade", "shaft"],
-		"icon": "axe",
-	},
-	"mace": {
-		"type": "weapon",
-		"components":["metal_coating", "hilt"],
-		"icon": "mace",
-	},
-	"whip": {
-		"type": "weapon",
-		"components":["whip", "shaft"],
-		"icon": "whip",
-	},
-	"chain_saw": {
-		"type": "weapon",
-		"components":["chain_saw", "hilt"],
-		"icon": "chain_saw",
-	},
-	"buckler": {
-		"type": "weapon",
-		"subtype": "shield",
-		"components":["light_armour", "shaft"],
-		"icon": "buckler",
-	},
-	"kite_shield": {
-		"type": "weapon",
-		"subtype": "shield",
-		"components":["chain_armour", "shaft"],
-		"icon": "kite_shield",
-	},
-	"tower_shield": {
-		"type": "weapon",
-		"subtype": "shield",
-		"components":["plate_armour", "shaft"],
-		"icon": "tower_shield",
-	},
-	
-	"sling": {
-		"type": "weapon",
-		"components":["string", "shaft"],
-		"icon": "sling",
-	},
-	"pistol": {
-		"type": "weapon",
-		"components":["barrel", "hilt"],
-		"icon": "pistol",
-	},
-	
-	"tome": {
-		"type": "weapon",
-		"components":["formula", "gem"],
-		"icon": "tome",
-	},
-	"amplifier": {
-		"type": "weapon",
-		"components":["magical_coating", "gem"],
-		"icon": "amplifier",
-	},
-	"orb": {
-		"type": "weapon",
-		"components":["magical_coating", "orb"],
-		"icon": "orb",
-	},
-	"spellblade": {
-		"type": "weapon",
-		"components":["blade", "gem"],
-		"icon": "spellblade",
-	},
-	
-	"greatsword": {
-		"type": "weapon",
-		"2h":true,
-		"components":["blade", "blade", "knife", "hilt"],
-		"icon": "greatsword",
-	},
-	"greatmaul": {
-		"type": "weapon",
-		"2h":true,
-		"components":["metal_coating", "metal_coating", "pole", "hilt"],
-		"icon": "greatmaul",
-	},
-	"battleaxe": {
-		"type": "weapon",
-		"2h":true,
-		"components":["blade", "blade", "pole", "shaft"],
-		"icon": "battleaxe",
-	},
-	"spear": {
-		"type": "weapon",
-		"2h":true,
-		"components":["knife", "pole", "pole", "shaft"],
-		"icon": "spear",
-	},
-	"scythe": {
-		"type": "weapon",
-		"2h":true,
-		"components":["blade", "pole", "pole", "hilt"],
-		"icon": "scythe",
-	},
-	"morningstar": {
-		"type": "weapon",
-		"2h":true,
-		"components":["metal_coating", "whip", "whip", "shaft"],
-		"icon": "morningstar",
-	},
-	
-	"bow": {
-		"type": "weapon",
-		"2h":true,
-		"components":["string", "bow", "bow", "shaft"],
-		"icon": "bow",
-	},
-	"crossbow": {
-		"type": "weapon",
-		"2h":true,
-		"components":["string", "bow", "loader", "shaft"],
-		"icon": "crossbow",
-	},
-	"blunderbuss": {
-		"type": "weapon",
-		"2h":true,
-		"components":["barrel", "barrel", "loader", "hilt"],
-		"icon": "blunderbuss",
-	},
-	"gun_blade": {
-		"type": "weapon",
-		"2h":true,
-		"components":["knife", "barrel", "loader", "shaft"],
-		"icon": "gunblade",
-	},
-	
-	"quarterstaff": {
-		"type": "weapon",
-		"2h":true,
-		"components":["gem", "pole", "pole", "shaft"],
-		"icon": "quarterstaff",
-	},
-	"magestaff": {
-		"type": "weapon",
-		"2h":true,
-		"components":["gem", "orb", "shaft", "shaft"],
-		"icon": "magestaff",
-	},
-	
-	"cloth_shirt": {
-		"type": "torso",
-		"name": "shirt",
-		"components":["cloth_armour", "cloth_armour", "rope_joints", "magical_coating"],
-	},
-	"leather_chest": {
-		"type": "torso",
-		"components":["leather_armour", "leather_armour", "leather_joints", "paint_coating"],
-	},
-	"chain_cuirass": {
-		"type": "torso",
-		"components":["chain_armour", "chain_armour", "leather_joints", "metal_coating"],
-	},
-	"plate_cuirass": {
-		"type": "torso",
-		"components":["plate_armour", "plate_armour", "metal_joints", "metal_coating"],
-	},
-	
-	"cloth_pants": {
-		"type": "legs",
-		"name": "pants",
-		"components":["cloth_armour", "cloth_armour", "magical_coating"],
-	},
-	"leather_pants": {
-		"type": "legs",
-		"name": "pants",
-		"components":["leather_armour", "leather_joints", "paint_coating"],
-	},
-	"chain_greaves": {
-		"type": "legs",
-		"components":["chain_armour", "chain_armour", "metal_coating"],
-	},
-	"plate_greaves": {
-		"type": "legs",
-		"components":["plate_armour", "metal_joints", "metal_coating"],
-	},
-	"panties": {
-		"type": "legs",
-		"components":["cloth_armour", "rope_joints", "magical_coating"],
-	},
-	
-	"cloth_hat": {
-		"type": "head",
-		"name": "hat",
-		"components":["cloth_armour", "magical_coating"],
-	},
-	"leather_hat": {
-		"type": "head",
-		"name": "hat",
-		"components":["leather_armour", "paint_coating"],
-	},
-	"chain_coif": {
-		"type": "head",
-		"components":["chain_armour", "metal_coating"],
-	},
-	"plate_helm": {
-		"type": "head",
-		"components":["metal_joints", "metal_coating"],
-	},
-	"glasses": {
-		"type": "head",
-		"components":["metal_coating", "glass_coating"],
-	},
-	
-	"cloth_sandals": {
-		"type": "feet",
-		"name": "sandals",
-		"components":["cloth_armour", "rope_joints"],
-	},
-	"leather_boots": {
-		"type": "feet",
-		"name": "boots",
-		"components":["leather_armour", "leather_joints"],
-	},
-	"chain_boots": {
-		"type": "feet",
-		"components":["chain_armour", "metal_joints"],
-	},
-	"plate_boots": {
-		"type": "feet",
-		"components":["metal_joints", "metal_coating"],
-	},
-	
-	"cloth_sleeves": {
-		"type": "hands",
-		"name": "sleeves",
-		"components":["cloth_armour", "rope_joints"],
-	},
-	"leather_gloves": {
-		"type": "hands",
-		"name": "gloves",
-		"components":["leather_armour", "leather_joints"],
-	},
-	"chain_gauntlets": {
-		"type": "hands",
-		"components":["chain_armour", "metal_joints"],
-	},
-	"plate_gauntlets": {
-		"type": "hands",
-		"components":["metal_joints", "metal_coating"],
-	},
-	
-	"rope_belt": {
-		"type": "belt",
-		"components":["cloth_armour", "rope_joints"],
-	},
-	"leather_belt": {
-		"type": "belt",
-		"components":["leather_armour", "leather_joints"],
-	},
-	"chain_belt": {
-		"type": "belt",
-		"components":["chain_armour", "metal_joints"],
-	},
-	
-	"magical_cape": {
-		"type": "cape",
-		"name": "cape",
-		"components":["cloth_armour", "magical_coating"],
-	},
-	"cloth_cape": {
-		"type": "cape",
-		"name": "cloak",
-		"components":["cloth_armour", "paint_coating"],
-	},
-	"metal_cape": {
-		"type": "cape",
-		"name": "cape",
-		"components":["chain_armour", "paint_coating"],
-	},
-	
-	"rope_amulet": {
-		"type": "amulet",
-		"name": "amulet",
-		"components":["rope_chain", "gem"],
-	},
-	"metal_amulet": {
-		"type": "amulet",
-		"name": "amulet",
-		"components":["metal_chain", "orb"],
-	},
-	"leather_ring": {
-		"type": "ring",
-		"name": "ring",
-		"components":["leather_strip"],
-	},
-	"metal_ring": {
-		"type": "ring",
-		"name": "ring",
-		"components":["metal_strip"],
-	},
-	"metal_earring": {
-		"type": "earring",
-		"name": "earring",
-		"components":["metal_strip"],
-	},
-	"gem_earring": {
-		"type": "earring",
-		"name": "earring",
-		"components":["gem"],
-	},
-	"orb_earring": {
-		"type": "earring",
-		"name": "earring",
-		"components":["orb"],
-	},
-	"metal_bracelet": {
-		"type": "bracelet",
-		"name": "bracelet",
-		"components":["metal_chain"],
-	},
-	"wood_bracelet": {
-		"type": "bracelet",
-		"name": "bracelet",
-		"components":["light_armour"],
-	},
-	
-}
 const EQUIPMENT_ATTRIBUTE_MULTIPLIER = {
 	"weapon":1.5,
 	"belt":0.75,
@@ -581,233 +39,6 @@ const EQUIPMENT_SUBTYPE_NAME = {
 	"melee":["basher", "smasher", "cutter", "piercer"],
 	"ranged":["thrower", "shooter", "projector", "launcher"],
 	"magic":["catalyst", "amplifier", "infuser", "artifact"],
-}
-const POTIONS = {
-	"healing_salve": {
-		"name": "healing salve",
-		"type": "potion",
-		"effect": "health",
-		"status": {
-			"type": "buff",
-			"name": "healing",
-			"health_regen": 500,
-			"duration": 10.0,
-		},
-		"price": 10,
-		"material_types":[["healing"]],
-	},
-	"healing_potion": {
-		"name": "healing potion",
-		"type": "potion",
-		"effect": "health",
-		"healing": 75,
-		"price": 20,
-		"material_types": [["healing"], ["liquid", "healing"]],
-	},
-	"bandage": {
-		"name": "bandage",
-		"type": "potion",
-		"effect": "health",
-		"status": {
-			"type": "buff",
-			"name": "healing",
-			"health_regen": 200,
-			"health": 20.0,
-			"duration": 20.0,
-		},
-		"price": 10,
-		"material_types": [["healing", "cloth", "leather"]],
-	},
-	"healing_infusion": {
-		"name": "healing infusion",
-		"type": "potion",
-		"effect": "health",
-		"healing": 75,
-		"price": 20,
-		"material_types": [["healing"], ["liquid", "healing"]],
-	},
-	"mana_salve": {
-		"name": "mana salve",
-		"type": "potion",
-		"effect": "mana",
-		"status": {
-			"type": "buff",
-			"name": "healing",
-			"mana_regen":200,
-			"duration":10.0,
-		},
-		"price":10,
-		"material_types":[["magical"]],
-	},
-	"mana_potion": {
-		"name": "mana potion",
-		"type": "potion",
-		"effect": "mana",
-		"healing":75,
-		"price":20,
-		"material_types":[["magical"],["liquid", "magical"]],
-	},
-	"stamina_salve": {
-		"name": "stamina salve",
-		"type": "potion",
-		"effect": "stamina",
-		"status": {
-			"type": "buff",
-			"name": "healing",
-			"stamina_regen":200,
-			"duration":10.0,
-		},
-		"price":10,
-		"material_types":[["elemental"]],
-	},
-	"stamina_potion": {
-		"name": "stamina potion",
-		"type": "potion",
-		"effect": "stamina",
-		"healing":75,
-		"price":20,
-		"material_types":[["elemental"],["liquid", "elemental"]],
-	},
-}
-const FOOD = {
-	"soup": {
-		"name": "soup",
-		"type": "food",
-		"stamina":20,
-		"status": {
-			"type": "buff",
-			"name": "regeneration",
-			"health_regen":10,
-			"duration":20*60,
-		},
-		"price":10,
-		"material_types":[["cooking", "liquid"]],
-	},
-	"salad": {
-		"name": "salad",
-		"type": "food",
-		"stamina":20,
-		"status": {
-			"type": "buff",
-			"name": "agility",
-			"effect":["accuracy", "evasion"],
-			"effect_scale":3.0,
-			"duration":20*60,
-		},
-		"price":10,
-		"material_types":[["plant"]],
-	},
-	"sandwich": {
-		"name": "sandwich",
-		"type": "food",
-		"stamina":40,
-		"status": {
-			"type": "buff",
-			"name": "resilience",
-			"effect":["armour", "willpower"],
-			"effect_scale":6.0,
-			"duration":20*60,
-		},
-		"price":20,
-		"material_types":[["cooking"],["plant", "cooking"]],
-	},
-	"pizza": {
-		"name": "pizza",
-		"type": "food",
-		"stamina":40,
-		"status": {
-			"type": "buff",
-			"name": "vigor",
-			"effect":["attack", "magic"],
-			"effect_scale":5.5,
-			"duration":20*60,
-		},
-		"price":20,
-		"material_types":[["cooking"],["cooking"]],
-	},
-	"curry": {
-		"name": "curry",
-		"type": "food",
-		"stamina":40,
-		"status": {
-			"type": "buff",
-			"name": "vigor",
-			"effect":["attack", "magic"],
-			"effect_scale":5.5,
-			"duration":20*60,
-		},
-		"price":20,
-		"material_types":[["cooking"],["liquid", "cooking"]],
-	},
-	"tea": {
-		"name": "tea",
-		"type": "food",
-		"stamina":40,
-		"status": {
-			"type": "buff",
-			"name": "regeneration",
-			"health_regen":10,
-			"duration":20*60,
-		},
-		"price":20,
-		"material_types":[["healing"],["plant", "healing"]],
-	},
-	"dessert": {
-		"name": "dessert",
-		"type": "food",
-		"stamina":40,
-		"status": {
-			"type": "buff",
-			"name": "joy",
-			"effect":["willpower", "accuracy"],
-			"effect_scale":6.0,
-			"duration":20*60,
-		},
-		"price":20,
-		"material_types":[["cooking"],["cooking"]],
-	},
-	"pudding": {
-		"name": "pudding",
-		"type": "food",
-		"stamina":40,
-		"status": {
-			"type": "buff",
-			"name": "joy",
-			"effect":["speed"],
-			"effect_scale":1.0,
-			"duration":10*60,
-		},
-		"price":20,
-		"material_types":[["cooking"],["liquid", "cooking"]],
-	},
-	"pot": {
-		"name": "pot",
-		"type": "food",
-		"stamina":40,
-		"status": {
-			"type": "buff",
-			"name": "satisfaction",
-			"effect":["armour", "evasion"],
-			"effect_scale":6.0,
-			"duration":20*60,
-		},
-		"price":20,
-		"material_types":[["cooking"],["cooking"]],
-	},
-	"mayonnaise": {
-		"name": "mayonnaise",
-		"type": "food",
-		"stamina":30,
-		"status": {
-			"type": "buff",
-			"name": "mayonnaise",
-			"mana_regen":8,
-			"stamina_regen":8,
-			"duration":20*60,
-		},
-		"price":15,
-		"material_types":[["cooking", "liquid"]],
-	},
 }
 const LEGENDARY_ITEM_NAME = {
 	"dagger": ["knife", "scalpel", "shard"],
@@ -1327,6 +558,10 @@ const SOUL_STONES = [
 
 var is_vegan:= false
 var materials:= {}
+var equipment_components:= {}
+var equipment_recipes:= {}
+var potion_recipes:= {}
+var food_recipes:= {}
 
 @onready
 var Description:= $Description
@@ -1336,8 +571,8 @@ var Enchantment:= $Enchantment
 
 func pick_random_equipment(type: String) -> String:
 	var valid:= []
-	for k in EQUIPMENT_RECIPES.keys():
-		if EQUIPMENT_RECIPES[k].type == type:
+	for k in equipment_recipes.keys():
+		if equipment_recipes[k].type == type:
 			valid.push_back(k)
 	if valid.size() > 0:
 		return valid.pick_random()
@@ -1584,7 +819,7 @@ func pick_random_material(type: String) -> String:
 func create_material_list(components: Array) -> Array:
 	var array:= []
 	for type in components:
-		array.push_back(EQUIPMENT_COMPONENTS[type].material)
+		array.push_back(equipment_components[type].material)
 	return array
 
 func create_random_materials(list: Array, region: Dictionary, quality_mod:= 1.0) -> Array:
@@ -1602,7 +837,7 @@ func create_random_equipment(type: String, components: Array, region: Dictionary
 	quality_mod *= quality_scale
 	components = components.duplicate(true)
 	for i in range(tier):
-		components.push_back(EQUIPMENT_COMPONENTS.keys().pick_random())
+		components.push_back(equipment_components.keys().pick_random())
 	item = create_equipment(type, components, create_random_materials(
 		create_material_list(components), region, quality_mod), info, quality_bonus)
 	item.quality = int(item.quality / quality_scale)
@@ -1627,7 +862,7 @@ func create_random_equipment(type: String, components: Array, region: Dictionary
 func create_random_standard_equipment(type: String, region: Dictionary, tier:= 0,
 		quality_mod:= 1.0, quality_bonus:= 0) -> Dictionary:
 	var item: Dictionary
-	var dict: Dictionary = EQUIPMENT_RECIPES[type].duplicate(true)
+	var dict: Dictionary = equipment_recipes[type].duplicate(true)
 	dict.base_type = type
 	item = create_random_equipment(dict.type, dict.components, region, dict, tier,
 		quality_mod, quality_bonus)
@@ -1641,13 +876,13 @@ func create_randomized_equipment(type: String, slot: String, subtype: String,num
 	var components:= []
 	var nm: String
 	components.resize(num_components)
-	for k in EQUIPMENT_COMPONENTS.keys():
-		if EQUIPMENT_COMPONENTS[k].has("subtype") && EQUIPMENT_COMPONENTS[k].subtype == subtype:
+	for k in equipment_components.keys():
+		if "subtype" in equipment_components[k] && equipment_components[k].subtype == subtype:
 			valid.push_back(k)
 	if valid.size() > 0:
 		components[0] = valid.pick_random()
 	for i in range(1, num_components):
-		components[i] = EQUIPMENT_COMPONENTS.keys().pick_random()
+		components[i] = equipment_components.keys().pick_random()
 	if randf() < 0.5 && EQUIPMENT_SUBTYPE_NAME.has(subtype):
 		nm = tr(EQUIPMENT_SUBTYPE_NAME[subtype].pick_random().to_upper()).capitalize()
 	elif EQUIPMENT_TYPE_NAME.has(slot):
@@ -1683,7 +918,7 @@ func create_equipment(type: String, components: Array, material_list: Array, inf
 	item.price = 0
 	item.enchantment_potential = randi_range(1, 4)
 	for i in range(components.size()):
-		var dict: Dictionary = EQUIPMENT_COMPONENTS[components[i]]
+		var dict: Dictionary = equipment_components[components[i]]
 		var mat: Dictionary = material_list[i]
 		var quality: int = mat.quality + quality_bonus
 		var mat_data:= {
@@ -1753,7 +988,7 @@ func create_equipment(type: String, components: Array, material_list: Array, inf
 
 func craft_equipment(type: String, material_list: Array, quality_bonus:= 0) -> Dictionary:
 	var item: Dictionary
-	var dict: Dictionary = EQUIPMENT_RECIPES[type].duplicate(true)
+	var dict: Dictionary = equipment_recipes[type].duplicate(true)
 	dict.base_type = type
 	item = create_equipment(dict.type, dict.components, material_list, dict, quality_bonus)
 	item.recipe = type
@@ -1768,7 +1003,7 @@ func create_equipment_drop(creature: Dictionary) -> Dictionary:
 	var item: Dictionary
 	var quality:= 100
 	var num_enchantments:= 0
-	var recipe: String = EQUIPMENT_RECIPES.keys().pick_random()
+	var recipe: String = equipment_recipes.keys().pick_random()
 	if creature.has("equipment_quality"):
 		quality *= creature.equipment_quality
 	item = create_random_standard_equipment(recipe, {
@@ -1806,8 +1041,8 @@ func create_legendary_equipment(type: String, level: int, quality:= 150) -> Dict
 	var add_quality:= 0
 	var creator: String
 	var base_name: String
-	if type not in EQUIPMENT_RECIPES:
-		type = EQUIPMENT_RECIPES.keys().pick_random()
+	if type not in equipment_recipes:
+		type = equipment_recipes.keys().pick_random()
 	item = create_random_standard_equipment(type, {
 		"level": 10 + int(1.2 * level),
 		"tier": 0,
@@ -2116,7 +1351,7 @@ func craft_potion(type: String, material_list: Array, quality_bonus:= 0) -> Dict
 	return item
 
 func create_potion(type: String, name_prefix: String, quality: int) -> Dictionary:
-	var dict: Dictionary = POTIONS[type]
+	var dict: Dictionary = potion_recipes[type]
 	var item:= {
 		"name":sanitize_name(name_prefix + " " + dict.name).capitalize(),
 		"type":dict.type,
@@ -2137,7 +1372,7 @@ func create_potion(type: String, name_prefix: String, quality: int) -> Dictionar
 				item.status[k] = int(ceil(scale * item.status[k]))
 			elif typeof(item.status[k]) == TYPE_FLOAT:
 				item.status[k] = scale * item.status[k]
-	item.price = int(POTIONS[type].price * (0.5 +
+	item.price = int(potion_recipes[type].price * (0.5 +
 		0.5 * float(quality) / 100.0 * float(quality) / 100.0))
 	return item
 
@@ -2150,7 +1385,7 @@ func cook(type: String, material_list: Array, quality_bonus:= 0) -> Dictionary:
 	return item
 
 func create_food(type: String, name_prefix: String, quality: int) -> Dictionary:
-	var dict: Dictionary = FOOD[type]
+	var dict: Dictionary = food_recipes[type]
 	var item:= {
 		"name": sanitize_name(name_prefix + " " + dict.name).capitalize(),
 		"type": dict.type,
@@ -2171,7 +1406,7 @@ func create_food(type: String, name_prefix: String, quality: int) -> Dictionary:
 				item.status[k] = int(ceil(scale * item.status[k]))
 			elif typeof(item.status[k]) == TYPE_FLOAT:
 				item.status[k] = scale * item.status[k]
-	item.price = int(FOOD[type].price * (0.5 +
+	item.price = int(food_recipes[type].price * (0.5 +
 		0.5 * float(quality) / 100.0 * float(quality) / 100.0))
 	item.description = create_tooltip(item)
 	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
@@ -2207,5 +1442,85 @@ func load_material_data(path: String):
 			materials[key] = dict[key]
 		file.close()
 
+func load_component_data(path: String):
+	for file_name in Utils.get_file_paths(path):
+		var file:= FileAccess.open(file_name, FileAccess.READ)
+		var error:= FileAccess.get_open_error()
+		if error != OK:
+			print("Can't open file " + file_name + "!")
+			continue
+		else:
+			print("Loading component " + file_name + '.')
+		
+		var raw:= file.get_as_text()
+		var dict: Dictionary = JSON.parse_string(raw)
+		if dict == null || dict.size() == 0:
+			printt("Error parsing " + file_name + "!")
+			continue
+		for key in dict:
+			equipment_components[key] = dict[key]
+		file.close()
+
+func load_recipe_data(path: String):
+	for file_name in Utils.get_file_paths(path):
+		var file:= FileAccess.open(file_name, FileAccess.READ)
+		var error:= FileAccess.get_open_error()
+		if error != OK:
+			print("Can't open file " + file_name + "!")
+			continue
+		else:
+			print("Loading crafting recipe " + file_name + '.')
+		
+		var raw:= file.get_as_text()
+		var dict: Dictionary = JSON.parse_string(raw)
+		if dict == null || dict.size() == 0:
+			printt("Error parsing " + file_name + "!")
+			continue
+		for key in dict:
+			equipment_recipes[key] = dict[key]
+		file.close()
+
+func load_potion_data(path: String):
+	for file_name in Utils.get_file_paths(path):
+		var file:= FileAccess.open(file_name, FileAccess.READ)
+		var error:= FileAccess.get_open_error()
+		if error != OK:
+			print("Can't open file " + file_name + "!")
+			continue
+		else:
+			print("Loading potion " + file_name + '.')
+		
+		var raw:= file.get_as_text()
+		var dict: Dictionary = JSON.parse_string(raw)
+		if dict == null || dict.size() == 0:
+			printt("Error parsing " + file_name + "!")
+			continue
+		for key in dict:
+			potion_recipes[key] = dict[key]
+		file.close()
+
+func load_food_data(path: String):
+	for file_name in Utils.get_file_paths(path):
+		var file:= FileAccess.open(file_name, FileAccess.READ)
+		var error:= FileAccess.get_open_error()
+		if error != OK:
+			print("Can't open file " + file_name + "!")
+			continue
+		else:
+			print("Loading cooking recipe " + file_name + '.')
+		
+		var raw:= file.get_as_text()
+		var dict: Dictionary = JSON.parse_string(raw)
+		if dict == null || dict.size() == 0:
+			printt("Error parsing " + file_name + "!")
+			continue
+		for key in dict:
+			food_recipes[key] = dict[key]
+		file.close()
+
 func _ready():
 	load_material_data("res://data/materials")
+	load_component_data("res://data/items/components")
+	load_recipe_data("res://data/items/recipes")
+	load_potion_data("res://data/items/potions")
+	load_food_data("res://data/items/food")

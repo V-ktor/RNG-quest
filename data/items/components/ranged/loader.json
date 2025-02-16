@@ -1,0 +1,9 @@
+{
+	"loader": {
+		"subtype": "ranged",
+		"attack":8,
+		"accuracy":3,
+		"speed":-1,
+		"material":["wood", "metal"],
+	},
+}

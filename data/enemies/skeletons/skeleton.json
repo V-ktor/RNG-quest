@@ -61,7 +61,7 @@
 		"equipment_enchantment_chance":0.1,
 		"equipment_quality":1.0,
 		"materials":[
-			"skull","ore","cloth","paper","parchement","dust",
+			"skull","ore","cloth","paper","parchment","dust",
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":0,

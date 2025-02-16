@@ -1,0 +1,8 @@
+{
+	"paint_coating": {
+		"armour":1,
+		"evasion":3,
+		"accuracy":2,
+		"material":["alchemy"],
+	},
+}

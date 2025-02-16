@@ -1,0 +1,7 @@
+{
+	"leather_pants": {
+		"type": "legs",
+		"name": "pants",
+		"components":["leather_armour", "leather_joints", "paint_coating"],
+	},
+}

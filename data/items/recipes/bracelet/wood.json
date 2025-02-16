@@ -1,0 +1,7 @@
+{
+	"wood_bracelet": {
+		"type": "bracelet",
+		"name": "bracelet",
+		"components":["light_armour"],
+	},
+}

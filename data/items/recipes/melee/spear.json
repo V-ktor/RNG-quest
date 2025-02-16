@@ -1,0 +1,8 @@
+{
+	"spear": {
+		"type": "weapon",
+		"2h":true,
+		"components":["knife", "pole", "pole", "shaft"],
+		"icon": "spear",
+	},
+}

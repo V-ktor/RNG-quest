@@ -1,0 +1,8 @@
+{
+	"bow": {
+		"type": "weapon",
+		"2h":true,
+		"components":["string", "bow", "bow", "shaft"],
+		"icon": "bow",
+	},
+}

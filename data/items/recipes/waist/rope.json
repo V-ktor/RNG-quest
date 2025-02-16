@@ -1,0 +1,6 @@
+{
+	"rope_belt": {
+		"type": "belt",
+		"components":["cloth_armour", "rope_joints"],
+	},
+}

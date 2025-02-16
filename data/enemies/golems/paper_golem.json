@@ -56,7 +56,7 @@
 		"equipment_quality":0.75,
 		"exp":18,
 		"materials":[
-			"pebble","gem","residue","resin","paper","parchement",
+			"pebble","gem","residue","resin","paper","parchment",
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":0,

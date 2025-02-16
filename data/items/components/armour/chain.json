@@ -1,0 +1,11 @@
+{
+	"chain_armour": {
+		"subtype": "heavy",
+		"armour":6,
+		"accuracy":-2,
+		"evasion":-2,
+		"health":10,
+		"stamina":10,
+		"material":["metal"],
+	},
+}

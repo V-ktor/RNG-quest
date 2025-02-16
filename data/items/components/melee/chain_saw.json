@@ -1,0 +1,9 @@
+{
+	"chain_saw": {
+		"subtype": "melee",
+		"attack":4,
+		"penetration":2,
+		"damage_type": "cutting",
+		"material":["metal"],
+	},
+}

@@ -1,0 +1,6 @@
+{
+	"plate_gauntlets": {
+		"type": "hands",
+		"components":["metal_joints", "metal_coating"],
+	},
+}

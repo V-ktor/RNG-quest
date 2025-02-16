@@ -1,0 +1,6 @@
+{
+	"chain_coif": {
+		"type": "head",
+		"components":["chain_armour", "metal_coating"],
+	},
+}

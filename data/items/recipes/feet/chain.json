@@ -1,0 +1,6 @@
+{
+	"chain_boots": {
+		"type": "feet",
+		"components":["chain_armour", "metal_joints"],
+	},
+}

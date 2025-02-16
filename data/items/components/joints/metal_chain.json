@@ -1,0 +1,8 @@
+{
+	"metal_chain": {
+		"armour":2,
+		"stamina":10,
+		"mana":10,
+		"material":["metal"],
+	},
+}

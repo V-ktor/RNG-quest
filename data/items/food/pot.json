@@ -1,0 +1,16 @@
+{
+	"pot": {
+		"name": "pot",
+		"type": "food",
+		"stamina": 40,
+		"status": {
+			"type": "buff",
+			"name": "satisfaction",
+			"effect": ["armour", "evasion"],
+			"effect_scale": 6.0,
+			"duration": 1200,
+		},
+		"price": 20,
+		"material_types": [["cooking"], ["cooking"]],
+	},
+}

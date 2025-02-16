@@ -1,0 +1,7 @@
+{
+	"orb_earring": {
+		"type": "earring",
+		"name": "earring",
+		"components":["orb"],
+	},
+}

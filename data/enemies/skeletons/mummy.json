@@ -63,7 +63,7 @@
 		"equipment_enchantment_chance":0.2,
 		"equipment_quality":1.0,
 		"materials":[
-			"heart","ore","cloth","paper","parchement","wrapping","dust",
+			"heart","ore","cloth","paper","parchment","wrapping","dust",
 		],
 		"soul_prefix":["etheral","bound","ancient"],
 		"soul_rarity":1,

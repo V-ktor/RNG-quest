@@ -1,0 +1,8 @@
+{
+	"greatmaul": {
+		"type": "weapon",
+		"2h":true,
+		"components":["metal_coating", "metal_coating", "pole", "hilt"],
+		"icon": "greatmaul",
+	},
+}

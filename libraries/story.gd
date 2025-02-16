@@ -1017,7 +1017,7 @@ func create_required(type: String, dict: Dictionary):
 		"loot":
 			var loot:= []
 			for i in range(randi_range(1,3)):
-				loot.push_back(Items.EQUIPMENT_RECIPES.keys().pick_random())
+				loot.push_back(Items.equipment_recipes.keys().pick_random())
 			return loot
 		"item":
 			if array.size()>1:

@@ -1,0 +1,8 @@
+{
+	"gun_blade": {
+		"type": "weapon",
+		"2h":true,
+		"components":["knife", "barrel", "loader", "shaft"],
+		"icon": "gunblade",
+	},
+}

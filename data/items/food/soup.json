@@ -1,0 +1,15 @@
+{
+	"soup": {
+		"name": "soup",
+		"type": "food",
+		"stamina": 20,
+		"status": {
+			"type": "buff",
+			"name": "regeneration",
+			"health_regen": 10,
+			"duration": 1200,
+		},
+		"price": 10,
+		"material_types": [["cooking", "liquid"]],
+	},
+}

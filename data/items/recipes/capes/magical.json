@@ -1,0 +1,7 @@
+{
+	"magical_cape": {
+		"type": "cape",
+		"name": "cape",
+		"components":["cloth_armour", "magical_coating"],
+	},
+}

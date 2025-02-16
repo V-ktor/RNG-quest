@@ -1,0 +1,7 @@
+{
+	"amplifier": {
+		"type": "weapon",
+		"components":["magical_coating", "gem"],
+		"icon": "amplifier",
+	},
+}

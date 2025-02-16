@@ -1,0 +1,8 @@
+{
+	"blunderbuss": {
+		"type": "weapon",
+		"2h":true,
+		"components":["barrel", "barrel", "loader", "hilt"],
+		"icon": "blunderbuss",
+	},
+}

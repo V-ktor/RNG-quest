@@ -1,0 +1,16 @@
+{
+	"mayonnaise": {
+		"name": "mayonnaise",
+		"type": "food",
+		"stamina": 30,
+		"status": {
+			"type": "buff",
+			"name": "mayonnaise",
+			"mana_regen": 8,
+			"stamina_regen": 8,
+			"duration": 1200,
+		},
+		"price": 15,
+		"material_types": [["cooking", "liquid"]],
+	},
+}

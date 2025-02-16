@@ -1,0 +1,7 @@
+{
+	"leather_ring": {
+		"type": "ring",
+		"name": "ring",
+		"components":["leather_strip"],
+	},
+}

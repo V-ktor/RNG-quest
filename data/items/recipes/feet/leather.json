@@ -1,0 +1,7 @@
+{
+	"leather_boots": {
+		"type": "feet",
+		"name": "boots",
+		"components":["leather_armour", "leather_joints"],
+	},
+}

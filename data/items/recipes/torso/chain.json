@@ -1,0 +1,6 @@
+{
+	"chain_cuirass": {
+		"type": "torso",
+		"components":["chain_armour", "chain_armour", "leather_joints", "metal_coating"],
+	},
+}

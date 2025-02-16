@@ -1,0 +1,8 @@
+{
+	"scythe": {
+		"type": "weapon",
+		"2h":true,
+		"components":["blade", "pole", "pole", "hilt"],
+		"icon": "scythe",
+	},
+}

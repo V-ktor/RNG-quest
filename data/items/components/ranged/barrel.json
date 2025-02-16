@@ -1,0 +1,9 @@
+{
+	"barrel": {
+		"subtype": "ranged",
+		"attack":4,
+		"accuracy":2,
+		"damage_type": "impact",
+		"material":["metal", "stone"],
+	},
+}

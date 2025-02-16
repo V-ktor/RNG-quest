@@ -1,0 +1,7 @@
+{
+	"axe": {
+		"type": "weapon",
+		"components":["blade", "shaft"],
+		"icon": "axe",
+	},
+}

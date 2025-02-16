@@ -1,0 +1,7 @@
+{
+	"cloth_hat": {
+		"type": "head",
+		"name": "hat",
+		"components":["cloth_armour", "magical_coating"],
+	},
+}

@@ -1,0 +1,9 @@
+{
+	"knife": {
+		"subtype": "melee",
+		"attack":3,
+		"penetration":4,
+		"damage_type": "piercing",
+		"material":["metal", "bone"],
+	},
+}

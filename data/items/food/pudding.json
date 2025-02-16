@@ -1,0 +1,16 @@
+{
+	"pudding": {
+		"name": "pudding",
+		"type": "food",
+		"stamina": 40,
+		"status": {
+			"type": "buff",
+			"name": "joy",
+			"effect": ["speed"],
+			"effect_scale": 1.0,
+			"duration": 600,
+		},
+		"price": 20,
+		"material_types": [["cooking"], ["liquid", "cooking"]],
+	},
+}

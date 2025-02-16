@@ -523,7 +523,7 @@ func equip(item: Dictionary) -> bool:
 func get_equipment_quality(type: String) -> float:
 	var search_type:= type
 	for t in player.equipment.keys():
-		if t!=search_type:
+		if t != search_type:
 			continue
 		var item: Dictionary = player.equipment[t]
 		return item.quality
@@ -533,27 +533,27 @@ func get_worst_equipment_type() -> String:
 	var valid:= []
 	var min_quality:= 1e99
 	for k in EQUIPMENT_SLOTS:
-		if EQUIPMENT_LEVEL_RESTRICTION.has(k) && player.level<EQUIPMENT_LEVEL_RESTRICTION[k]:
+		if EQUIPMENT_LEVEL_RESTRICTION.has(k) && player.level < EQUIPMENT_LEVEL_RESTRICTION[k]:
 			continue
-		var quality:= get_equipment_quality(k)*randf_range(0.95,1.05)
-		if quality==min_quality:
+		var quality:= get_equipment_quality(k) * randf_range(0.95, 1.05)
+		if quality == min_quality:
 			valid.push_back(k)
 			min_quality = quality
-		if quality<min_quality:
+		if quality < min_quality:
 			valid = [k]
 			min_quality = quality
-	if valid.size()==0:
+	if valid.size() == 0:
 		return ""
 	return valid.pick_random()
 
 func pick_random_potion_type(type:= "health") -> String:
 	var valid:= []
-	for t in Items.POTIONS.keys():
-		if Items.POTIONS[t].effect==type:
+	for t in Items.potion_recipes.keys():
+		if Items.potion_recipes[t].effect == type:
 			valid.push_back(t)
-	if valid.size()>0:
+	if valid.size() > 0:
 		return valid.pick_random()
-	return Items.POTIONS.keys().pick_random()
+	return Items.potion_recipes.keys().pick_random()
 
 func create_shop_equipment(type: String, quality_mod:= 1.0) -> Dictionary:
 	var item: Dictionary
@@ -585,18 +585,18 @@ func create_shop_potion(type:="") -> Dictionary:
 	var material: Dictionary = current_region.local_materials.alchemy.pick_random().duplicate(true)
 	var quality: int
 	var tier_multiplier:= 1.0
-	var level_multiplier: float = 1.0 + 0.05*(current_region.level + player.level - 2)
-	if current_region.tier<0:
-		tier_multiplier = 1.0/sqrt(-1.5*current_region.tier)
-	elif current_region.tier>0:
-		tier_multiplier = sqrt(1.5*current_region.tier)
-	quality = int(100*level_multiplier*tier_multiplier)
-	if type=="":
-		if player_settings.valid_potion_types.size()>0 && randf()<0.25:
+	var level_multiplier: float = 1.0 + 0.05 * (current_region.level + player.level - 2)
+	if current_region.tier < 0:
+		tier_multiplier = 1.0 / sqrt(-1.5 * current_region.tier)
+	elif current_region.tier > 0:
+		tier_multiplier = sqrt(1.5 * current_region.tier)
+	quality = int(100 * level_multiplier * tier_multiplier)
+	if type == "":
+		if player_settings.valid_potion_types.size() > 0 && randf() < 0.25:
 			type = pick_random_potion_type(player_settings.valid_potion_types.pick_random())
 		else:
 			type = pick_random_potion_type()
-	dict = Items.POTIONS[type]
+	dict = Items.potion_recipes[type]
 	for m in dict.material_types[0]:
 		if !current_region.local_materials.has(m):
 			continue
@@ -609,27 +609,28 @@ func create_shop_potion(type:="") -> Dictionary:
 	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 	return item
 
-func create_shop_material(material:="") -> Dictionary:
+func create_shop_material(material:= "") -> Dictionary:
 	var item: Dictionary
 	var dict: Dictionary = current_region
 	var valid_abilities:= []
 	var recipe: String
 	
-	if material=="":
+	if material == "":
 		var valid:= []
 		var type: String
 		for k in player.abilities:
 			if Skills.ABILITIES[k].has("recipes"):
 				valid_abilities.push_back(k)
-		if valid_abilities.size()==0:
+		if valid_abilities.size() == 0:
 			return {}
 		recipe = Skills.ABILITIES[valid_abilities.pick_random()].recipes.pick_random()
-		if Items.EQUIPMENT_RECIPES.has(recipe):
-			type = Items.EQUIPMENT_COMPONENTS[Items.EQUIPMENT_RECIPES[recipe].components.pick_random()].material.pick_random()
-		elif Items.POTIONS.has(recipe):
-			type = Items.POTIONS[recipe].material_types.pick_random().pick_random()
-		elif Items.FOOD.has(recipe):
-			type = Items.FOOD[recipe].material_types.pick_random().pick_random()
+		if Items.equipment_recipes.has(recipe):
+			type = Items.equipment_components[
+				Items.equipment_recipes[recipe].components.pick_random()].material.pick_random()
+		elif Items.potion_recipes.has(recipe):
+			type = Items.potion_recipes[recipe].material_types.pick_random().pick_random()
+		elif Items.food_recipes.has(recipe):
+			type = Items.food_recipes[recipe].material_types.pick_random().pick_random()
 		elif Items.Enchantment.enchantments.has(recipe):
 			type = Items.Enchantment.enchantments[recipe].material_types.pick_random().pick_random()
 		for mat in Items.materials.keys():
@@ -643,7 +644,9 @@ func create_shop_material(material:="") -> Dictionary:
 			material = Items.materials.keys().pick_random()
 	
 	item = Items.create_regional_material(material, dict)
-	item.source = tr("BOUGHT_FROM_SHOP").format({"location": current_location})
+	item.source = tr("BOUGHT_FROM_SHOP").format({
+		"location": current_location,
+	})
 	item.description = Items.create_tooltip(item)
 	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 	return item
@@ -995,7 +998,7 @@ func pick_random_materials(dict: Dictionary) -> Array:
 	if dict.has("components"):
 		for c in dict.components:
 			var valid_materials:= []
-			var mat_types: Array = Items.EQUIPMENT_COMPONENTS[c].material
+			var mat_types: Array = Items.equipment_components[c].material
 			for item in player_inventory:
 				if item.type != "material":
 					continue
@@ -1363,35 +1366,42 @@ func action_done(action: Dictionary):
 					type = player.equipment[replace].base_type
 				else:
 					type = Items.pick_random_equipment(type)
-			if type=="":
+			if type == "":
 				var item: Dictionary
-				type = Items.EQUIPMENT_RECIPES.keys().pick_random()
-				while EQUIPMENT_LEVEL_RESTRICTION.has(Items.EQUIPMENT_RECIPES[type].type) && player.level<EQUIPMENT_LEVEL_RESTRICTION[Items.EQUIPMENT_RECIPES[type].type]:
-					type = Items.EQUIPMENT_RECIPES.keys().pick_random()
-				item = Items.EQUIPMENT_RECIPES[type]
+				type = Items.equipment_recipes.keys().pick_random()
+				while EQUIPMENT_LEVEL_RESTRICTION.has(Items.equipment_recipes[type].type) && \
+					player.level < EQUIPMENT_LEVEL_RESTRICTION[Items.equipment_recipes[type].type]:
+						type = Items.equipment_recipes.keys().pick_random()
+				item = Items.equipment_recipes[type]
 				replace = item.type
-				if replace=="weapon":
-					if !(item.has("2h") && item["2h"]):
-						if randf()<0.5:
+				if replace == "weapon":
+					if !("2h" in item && item["2h"]):
+						if randf() < 0.5:
 							replace = "offweapon"
 				elif replace in EQUIPMENT_LR_TYPES:
-					replace += ["_left", "_right"][randi()%2]
-			if type!="":
+					replace += ["_left", "_right"][randi() % 2]
+			if type != "":
 				var item: Dictionary
-				if !Items.EQUIPMENT_RECIPES.has(type):
+				if type not in Items.equipment_recipes:
 					type = Items.pick_random_equipment(type)
-				if type=="":
-					type = Items.EQUIPMENT_RECIPES.keys().pick_random()
+				if type == "":
+					type = Items.equipment_recipes.keys().pick_random()
 				item = create_shop_equipment(type)
-				if !player.equipment.has(replace) || compare_items([item], [player.equipment[replace]])>0:
-					var bought:= buy_item(item)
-					if bought:
-						print_log_msg(tr("BUY_LOG").format({"name": item.name, "description": item.description_plain, "amount": 1, "price": item.price}))
-						equip(item)
-						add_guild_exp("buy",2.0)
-					else:
-						print_log_msg(tr("BUY_NOTHING_PRICE_TOO_HIGH_LOG"))
-						action_failures += 1
+				if replace not in player.equipment || \
+					compare_items([item], [player.equipment[replace]]) > 0:
+						var bought:= buy_item(item)
+						if bought:
+							print_log_msg(tr("BUY_LOG").format({
+								"name": item.name,
+								"description": item.description_plain,
+								"amount": 1,
+								"price": item.price,
+							}))
+							equip(item)
+							add_guild_exp("buy",2.0)
+						else:
+							print_log_msg(tr("BUY_NOTHING_PRICE_TOO_HIGH_LOG"))
+							action_failures += 1
 				else:
 					print_log_msg(tr("BUY_NOTHING_POOR_QUALITY_LOG"))
 					action_failures += 1
@@ -1411,13 +1421,18 @@ func action_done(action: Dictionary):
 				action_failures += 1
 		"buy_materials":
 			var item:= create_shop_material()
-			if item.size()==0:
+			if item.size() == 0:
 				print_log_msg(tr("BUY_NOTHING_LOG"))
 				action_failures += 5
 			else:
 				var bought:= buy_item(item)
 				if bought:
-					print_log_msg(tr("BUY_LOG").format({"name": item.name, "description": item.description_plain, "amount": 1, "price": item.price}))
+					print_log_msg(tr("BUY_LOG").format({
+						"name": item.name,
+						"description": item.description_plain,
+						"amount": 1, 
+						"price": item.price,
+					}))
 					add_item(item)
 					add_guild_exp("buy", 0.5)
 				else:
@@ -1431,8 +1446,8 @@ func action_done(action: Dictionary):
 			print_log_msg(tr("SLEEP_LOG"))
 		"craft":
 			var type: String = Skills.ABILITIES[action.args.ability].recipes.pick_random()
-			var materials:= pick_random_materials(Items.EQUIPMENT_RECIPES[type])
-			if materials.size()==Items.EQUIPMENT_RECIPES[type].components.size():
+			var materials:= pick_random_materials(Items.equipment_recipes[type])
+			if materials.size() == Items.equipment_recipes[type].components.size():
 				var item: Dictionary
 				item = Items.craft_equipment(type, materials, 10.0*(action.args.level-1.0))
 				item.source += "\n" + tr("PLAYER_CREATION")
@@ -1482,12 +1497,17 @@ func action_done(action: Dictionary):
 					var materials:= pick_random_materials(dict)
 					if materials.size()==dict.material_types.size():
 						remove_item(item)
-						item = Items.enchant_equipment_material(item, enchantment, materials, 10.0*(action.args.level-1.0))
+						item = Items.enchant_equipment_material(item, enchantment, materials,
+							10.0 * (action.args.level - 1.0))
 						item.source += "\n" + tr("PLAYER_ENCHANTED")
 						item.description = Items.create_tooltip(item)
 						item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 						add_item(item)
-						print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({"name":item.name, "description":item.description_plain, "quality":str(int(item.quality))}))
+						print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({
+							"name": item.name,
+							"description": item.description_plain,
+							"quality": str(int(item.quality)),
+						}))
 						optimize_equipment()
 						add_ability_exp(action.args.ability, 50.0)
 						for mat in materials:
@@ -1499,10 +1519,10 @@ func action_done(action: Dictionary):
 					break
 		"alchemy":
 			var type: String = Skills.ABILITIES[action.args.ability].recipes.pick_random()
-			var materials:= pick_random_materials(Items.POTIONS[type])
-			if materials.size()==Items.POTIONS[type].material_types.size():
+			var materials:= pick_random_materials(Items.potion_recipes[type])
+			if materials.size() == Items.potion_recipes[type].material_types.size():
 				var item: Dictionary
-				item = Items.craft_potion(type, materials, 10.0*(action.args.level-1.0))
+				item = Items.craft_potion(type, materials, 10.0 * (action.args.level - 1.0))
 				item.source += "\n" + tr("PLAYER_CREATION")
 				item.description = Items.create_tooltip(item)
 				item.description_plain = Skills.tooltip_remove_bb_code(item.description)
@@ -1517,12 +1537,16 @@ func action_done(action: Dictionary):
 				action_failures += 1
 				print_log_msg(tr("MISSING_MATERIALS_LOG"))
 		"cook":
-			var type: String = Items.FOOD.keys().pick_random()
-			var materials:= pick_random_materials(Items.FOOD[type])
-			if materials.size()==Items.FOOD[type].material_types.size():
+			var type: String = Items.food_recipes.keys().pick_random()
+			var materials:= pick_random_materials(Items.food_recipes[type])
+			if materials.size() == Items.food_recipes[type].material_types.size():
 				var item: Dictionary
-				item = Items.cook(type, materials, 10.0*(action.args.level-1.0))
-				print_log_msg(tr("COOKING_LOG").format({"name":item.name, "description":item.description_plain, "quality":str(int(item.quality))}))
+				item = Items.cook(type, materials, 10.0 * (action.args.level - 1.0))
+				print_log_msg(tr("COOKING_LOG").format({
+					"name": item.name,
+					"description": item.description_plain,
+					"quality": str(int(item.quality)),
+				}))
 				add_ability_exp("cooking", 40.0)
 				if item.has("status"):
 					var status:= Characters.create_status(item.status, player, player)
@@ -1580,8 +1604,8 @@ func action_done(action: Dictionary):
 				var type: String = item_types.pick_random()
 				if Items.EQUIPMENT.has(type):
 					dict = Items.EQUIPMENT[type]
-				elif Items.POTIONS.has(type):
-					dict = Items.POTIONS[type]
+				elif type in Items.potion_recipes:
+					dict = Items.potion_recipes[type]
 				if dict.size()==0:
 					print_log_msg(tr("CRAFT_QUEST_LOG"))
 				else:

@@ -1,0 +1,7 @@
+{
+	"flail": {
+		"type": "weapon",
+		"components":["whip", "metal_coating"],
+		"icon": "flail",
+	},
+}

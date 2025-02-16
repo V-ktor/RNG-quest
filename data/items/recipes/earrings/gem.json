@@ -1,0 +1,7 @@
+{
+	"gem_earring": {
+		"type": "earring",
+		"name": "earring",
+		"components":["gem"],
+	},
+}

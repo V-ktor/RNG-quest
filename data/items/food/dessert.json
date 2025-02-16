@@ -1,0 +1,16 @@
+{
+	"dessert": {
+		"name": "dessert",
+		"type": "food",
+		"stamina": 40,
+		"status": {
+			"type": "buff",
+			"name": "joy",
+			"effect": ["willpower", "accuracy"],
+			"effect_scale": 6.0,
+			"duration": 1200,
+		},
+		"price": 20,
+		"material_types": [["cooking"], ["cooking"]],
+	},
+}

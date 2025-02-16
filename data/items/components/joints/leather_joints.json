@@ -1,0 +1,8 @@
+{
+	"leather_joints": {
+		"subtype": "medium",
+		"accuracy":3,
+		"evasion":3,
+		"material":["leather"],
+	},
+}

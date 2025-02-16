@@ -1,0 +1,6 @@
+{
+	"chain_belt": {
+		"type": "belt",
+		"components":["chain_armour", "metal_joints"],
+	},
+}

@@ -1,0 +1,6 @@
+{
+	"leather_belt": {
+		"type": "belt",
+		"components":["leather_armour", "leather_joints"],
+	},
+}

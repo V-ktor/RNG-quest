@@ -1,0 +1,7 @@
+{
+	"metal_ring": {
+		"type": "ring",
+		"name": "ring",
+		"components":["metal_strip"],
+	},
+}

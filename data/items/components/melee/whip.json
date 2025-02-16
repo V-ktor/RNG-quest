@@ -1,0 +1,10 @@
+{
+	"whip": {
+		"subtype": "melee",
+		"attack":4,
+		"accuracy":1,
+		"penetration":2,
+		"damage_type": "impact",
+		"material":["leather"],
+	},
+}

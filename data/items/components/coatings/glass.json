@@ -1,0 +1,7 @@
+{
+	"glass_coating": {
+		"accuracy":3,
+		"evasion":3,
+		"material":["sand"],
+	},
+}

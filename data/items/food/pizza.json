@@ -1,0 +1,16 @@
+{
+	"pizza": {
+		"name": "pizza",
+		"type": "food",
+		"stamina": 40,
+		"status": {
+			"type": "buff",
+			"name": "vigor",
+			"effect": ["attack", "magic"],
+			"effect_scale": 5.5,
+			"duration": 1200,
+		},
+		"price": 20,
+		"material_types": [["cooking"], ["cooking"]],
+	},
+}

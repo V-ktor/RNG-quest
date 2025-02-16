@@ -1,0 +1,7 @@
+{
+	"cloth_cape": {
+		"type": "cape",
+		"name": "cloak",
+		"components":["cloth_armour", "paint_coating"],
+	},
+}

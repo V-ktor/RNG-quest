@@ -1,0 +1,7 @@
+{
+	"metal_bracelet": {
+		"type": "bracelet",
+		"name": "bracelet",
+		"components":["metal_chain"],
+	},
+}

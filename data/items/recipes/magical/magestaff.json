@@ -1,0 +1,8 @@
+{
+	"magestaff": {
+		"type": "weapon",
+		"2h":true,
+		"components":["gem", "orb", "shaft", "shaft"],
+		"icon": "magestaff",
+	},
+}

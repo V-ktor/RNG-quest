@@ -1,0 +1,7 @@
+{
+	"magical_coating": {
+		"magic":3,
+		"willpower":3,
+		"material":["magical"],
+	},
+}

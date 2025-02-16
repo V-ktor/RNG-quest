@@ -1,0 +1,7 @@
+{
+	"spellblade": {
+		"type": "weapon",
+		"components":["blade", "gem"],
+		"icon": "spellblade",
+	},
+}

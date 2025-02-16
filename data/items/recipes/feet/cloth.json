@@ -1,0 +1,7 @@
+{
+	"cloth_sandals": {
+		"type": "feet",
+		"name": "sandals",
+		"components":["cloth_armour", "rope_joints"],
+	},
+}

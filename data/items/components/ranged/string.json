@@ -1,0 +1,8 @@
+{
+	"string": {
+		"subtype": "ranged",
+		"attack":6,
+		"damage_type": "piercing",
+		"material":["leather"],
+	},
+}

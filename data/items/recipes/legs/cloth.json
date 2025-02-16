@@ -1,0 +1,7 @@
+{
+	"cloth_pants": {
+		"type": "legs",
+		"name": "pants",
+		"components":["cloth_armour", "cloth_armour", "magical_coating"],
+	},
+}

@@ -1,0 +1,8 @@
+{
+	"greatsword": {
+		"type": "weapon",
+		"2h":true,
+		"components":["blade", "blade", "knife", "hilt"],
+		"icon": "greatsword",
+	},
+}

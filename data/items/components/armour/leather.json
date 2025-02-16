@@ -1,0 +1,9 @@
+{
+	"leather_armour": {
+		"subtype": "medium",
+		"armour":3,
+		"accuracy":1,
+		"stamina":10,
+		"material":["leather"],
+	},
+}

@@ -1,0 +1,7 @@
+{
+	"metal_earring": {
+		"type": "earring",
+		"name": "earring",
+		"components":["metal_strip"],
+	},
+}

@@ -1,0 +1,6 @@
+{
+	"plate_cuirass": {
+		"type": "torso",
+		"components":["plate_armour", "plate_armour", "metal_joints", "metal_coating"],
+	},
+}

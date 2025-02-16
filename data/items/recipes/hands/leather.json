@@ -1,0 +1,7 @@
+{
+	"leather_gloves": {
+		"type": "hands",
+		"name": "gloves",
+		"components":["leather_armour", "leather_joints"],
+	},
+}

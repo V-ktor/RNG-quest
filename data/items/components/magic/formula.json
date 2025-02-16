@@ -1,0 +1,8 @@
+{
+	"formula": {
+		"subtype": "magic",
+		"magic":4,
+		"willpower":2,
+		"material":["paper", "leather"],
+	},
+}

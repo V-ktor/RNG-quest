@@ -1,0 +1,7 @@
+{
+	"metal_amulet": {
+		"type": "amulet",
+		"name": "amulet",
+		"components":["metal_chain", "orb"],
+	},
+}

@@ -1,0 +1,7 @@
+{
+	"whip": {
+		"type": "weapon",
+		"components":["whip", "shaft"],
+		"icon": "whip",
+	},
+}

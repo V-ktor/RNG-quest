@@ -1,0 +1,7 @@
+{
+	"hilt": {
+		"attack":4,
+		"accuracy":2,
+		"material":["wood", "stone", "leather"],
+	},
+}

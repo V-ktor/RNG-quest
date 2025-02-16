@@ -1,0 +1,6 @@
+{
+	"plate_greaves": {
+		"type": "legs",
+		"components":["plate_armour", "metal_joints", "metal_coating"],
+	},
+}

@@ -1,0 +1,8 @@
+{
+	"blade": {
+		"subtype": "melee",
+		"attack":6,
+		"damage_type": "cutting",
+		"material":["metal", "bone"],
+	},
+}

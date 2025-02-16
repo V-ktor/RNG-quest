@@ -1,0 +1,7 @@
+{
+	"sword": {
+		"type": "weapon",
+		"components":["blade", "hilt"],
+		"icon": "sword",
+	},
+}

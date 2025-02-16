@@ -1,0 +1,9 @@
+{
+	"light_armour": {
+		"subtype": "medium",
+		"armour":4,
+		"accuracy":1,
+		"evasion":1,
+		"material":["wood", "paper"],
+	},
+}

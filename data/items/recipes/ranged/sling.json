@@ -1,0 +1,7 @@
+{
+	"sling": {
+		"type": "weapon",
+		"components":["string", "shaft"],
+		"icon": "sling",
+	},
+}

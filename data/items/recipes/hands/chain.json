@@ -1,0 +1,6 @@
+{
+	"chain_gauntlets": {
+		"type": "hands",
+		"components":["chain_armour", "metal_joints"],
+	},
+}

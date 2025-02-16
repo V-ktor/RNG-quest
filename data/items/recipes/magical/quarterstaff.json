@@ -1,0 +1,8 @@
+{
+	"quarterstaff": {
+		"type": "weapon",
+		"2h":true,
+		"components":["gem", "pole", "pole", "shaft"],
+		"icon": "quarterstaff",
+	},
+}

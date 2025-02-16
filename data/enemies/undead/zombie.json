@@ -32,7 +32,7 @@
 		"equipment_enchantment_chance":0.1,
 		"equipment_quality":0.75,
 		"materials":[
-			"bone","skin","nail","insistine","meat","hair","parchement",
+			"bone","skin","nail","insistine","meat","hair","parchment",
 		],
 		"soul_prefix":["etheral","ephemeral","tenuous"],
 		"soul_rarity":-1,

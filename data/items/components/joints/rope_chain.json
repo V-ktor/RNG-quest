@@ -1,0 +1,8 @@
+{
+	"rope_chain": {
+		"magic":2,
+		"stamina":10,
+		"mana":10,
+		"material":["cloth"],
+	},
+}

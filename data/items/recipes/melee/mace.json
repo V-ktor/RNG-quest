@@ -1,0 +1,7 @@
+{
+	"mace": {
+		"type": "weapon",
+		"components":["metal_coating", "hilt"],
+		"icon": "mace",
+	},
+}

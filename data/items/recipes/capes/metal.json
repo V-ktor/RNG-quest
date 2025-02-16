@@ -1,0 +1,7 @@
+{
+	"metal_cape": {
+		"type": "cape",
+		"name": "cape",
+		"components":["chain_armour", "paint_coating"],
+	},
+}

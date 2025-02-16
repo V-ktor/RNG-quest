@@ -34,7 +34,7 @@
 		"equipment_enchantment_chance":0.2,
 		"equipment_quality":1.0,
 		"materials":[
-			"heart","ore","cloth","paper","parchement","dust","hair",
+			"heart","ore","cloth","paper","parchment","dust","hair",
 		],
 		"soul_prefix":["ethereal","eternal","bound","ancient"],
 		"soul_rarity":0,
