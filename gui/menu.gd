@@ -2,7 +2,7 @@ extends Node
 
 const MAP_SCROLL_SPEED = 30.0
 
-var version:= "0.1.1"
+var version:= "0.1.1c"
 
 var characters:= []
 var main:= preload("res://scenes/main/main.tscn")
@@ -307,19 +307,17 @@ func load_config():
 		# set default scaling to be proportional to the screen DPI
 		settings.scaling = clampf(DisplayServer.screen_get_dpi() / 80.0, 0.5, 2.5)
 		settings.theme = int(DisplayServer.is_dark_mode())
-		ui_scale_slider.value = settings.scaling * 100
-		ui_scale_spinbox.value = settings.scaling * 100
-		return
 	
-	var raw:= file.get_as_text()
-	var json:= JSON.new()
-	error = json.parse(raw)
-	if error != OK:
-		print("Failed to parse the config file")
-		return
-	
-	for key in json.data:
-		settings.set(key, json.data[key])
+	else:
+		var raw:= file.get_as_text()
+		var json:= JSON.new()
+		error = json.parse(raw)
+		if error != OK:
+			print("Failed to parse the config file")
+			return
+		
+		for key in json.data:
+			settings.set(key, json.data[key])
 	
 	var theme:= themes[settings.theme]
 	ui_scale_slider.value = settings.scaling * 100

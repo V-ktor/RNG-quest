@@ -21,14 +21,25 @@ func _draw() -> void:
 	
 	var points := graph.get_points()
 	var no_points := points.size()
-	if no_points < 2:
-		# Cannot draw a line chart from less than two points
+	if no_points == 0:
+		# Cannot draw a graph with no points
 		return
+	
 	
 	var x_min: float = get_parent().x_min
 	var x_max: float = get_parent().x_max
 	var y_min: float = get_parent().y_min
 	var y_max: float = get_parent().y_max
+	
+	if no_points == 1:
+		# Draw a point
+		var p := (points[0] - Vector2(x_min, y_min)) / Vector2(max(x_max - x_min, 1.0), max(y_max - y_min, 1.0))
+		p.y = 1.0 - p.y
+		p *= size
+		var p_rect := Rect2(p.x - graph.line_width , p.y - graph.line_width, graph.line_width*2, graph.line_width*2)
+		draw_rect(p_rect, graph.line_color, true, -1, true)
+		return
+	
 	var rescaled_points := PackedVector2Array()
 	var colors := PackedColorArray()
 	rescaled_points.resize(2 * no_points)

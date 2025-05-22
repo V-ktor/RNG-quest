@@ -83,13 +83,13 @@ HEALING_ABILITY_DESCRIPTION,"Learn healing magic."
 ALCHEMY,Alchemy
 ALCHEMY_DESCRIPTION,"Allows you to craft of potions."
 WEAPON_SMITHING,Weapon Smithing
-WEAPON_SMITHING_DESCRIPTION,"llows you to craft melee weapons."
+WEAPON_SMITHING_DESCRIPTION,"Allows you to craft melee weapons."
 ARMOUR_SMITHING,Armour Smithing
-ARMOUR_SMITHING_DESCRIPTION,"llows you to craft heavy armour."
+ARMOUR_SMITHING_DESCRIPTION,"Allows you to craft heavy armour."
 WOODWORK,Woodwork
-WOODWORK_DESCRIPTION,"llows you to craft ranged weapons and magic weapons."
+WOODWORK_DESCRIPTION,"Allows you to craft ranged weapons and magic weapons."
 TAYLORING,Tayloring
-TAYLORING_DESCRIPTION,"llows you to craft light and medium armour."
+TAYLORING_DESCRIPTION,"Allows you to craft light and medium armour."
 COOKING,Cooking
 COOKING_DESCRIPTION,"Allows you to cook meals before going into battle granting buffs."
 ENCHANTING,Enchanting

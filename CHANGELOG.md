@@ -1,5 +1,20 @@
 # Change log
 
+##v0.1.1c
+
+### Interface
+* fixed title window hiding stats
+* fixed some spelling
+* made single dot graphs visible
+
+### Bug fixes
+* fixed problem that set the main menu to light mode on first login
+* fixed graph starting time (only works for version v0.1.1c an onwards, will not affect earlier saves)
+* fixed popup window going out of frame
+
+### Bug progress
+* the weird lines in the ui appear as a result of scaling
+
 ## v0.1.1
 ### Content
 * a few more prefixes and suffixes for legendary equipment
