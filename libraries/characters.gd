@@ -136,6 +136,7 @@ class Character:
 		for k in ATTRIBUTES:
 			attributes[k] = 0
 			base_attributes[k] = 0
+		attributes.accuracy = 10
 		
 		for ability in abilities.keys():
 			if !Skills.ABILITIES.has(ability):

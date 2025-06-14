@@ -7,9 +7,11 @@
 
 ### Interface
 * tooltips are now showed after a delay of 0.5s
-### Interface
 * recipes and guild information
 * filter options for crafting
+
+### Balancing
+* increased player character's base accuracy by 10 to avoid high miss rates for new characters
 
 ### Internal changes
 * moved several definitions into json files to prepare modding support
