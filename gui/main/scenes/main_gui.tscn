@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://s10031v8frul"]
+[gd_scene load_steps=43 format=3 uid="uid://s10031v8frul"]
 
 [ext_resource type="Script" uid="uid://8de6201xgfoq" path="res://gui/main/scripts/main_gui.gd" id="1_rxg50"]
 [ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://themes/light_theme.tres" id="2_ck100"]
@@ -24,12 +24,14 @@
 [ext_resource type="Texture2D" uid="uid://cqjvar71exxv7" path="res://images/icons/journal.svg" id="15_xy43e"]
 [ext_resource type="Texture2D" uid="uid://dqsr4uq5f6ucf" path="res://images/icons/settings.svg" id="16_15y0b"]
 [ext_resource type="Script" uid="uid://0n1otdlfi5ii" path="res://gui/main/scripts/potion_preference.gd" id="16_nncd2"]
+[ext_resource type="Script" uid="uid://bnxmsvbw0p6my" path="res://gui/main/scripts/guilds.gd" id="16_oc305"]
 [ext_resource type="PackedScene" uid="uid://dxb635fm2610y" path="res://gui/main/scenes/tooltip.tscn" id="17_6m177"]
 [ext_resource type="Script" uid="uid://bxuqunhdt65c1" path="res://gui/main/scripts/recipes.gd" id="17_ko12v"]
 [ext_resource type="Script" uid="uid://evcj1ksu1pyr" path="res://gui/main/scripts/skill_modules.gd" id="17_prvid"]
 [ext_resource type="Script" uid="uid://cpbgiil5hkv12" path="res://gui/main/scripts/statistics.gd" id="22_iplwq"]
 [ext_resource type="PackedScene" uid="uid://bgkcyaksqhx68" path="res://gui/chart/scenes/chart.tscn" id="23_bktjj"]
 [ext_resource type="Texture2D" uid="uid://daweldqfvj4c" path="res://images/icons/chart.svg" id="27_2mq8c"]
+[ext_resource type="Texture2D" uid="uid://bv3m1vsxft4up" path="res://images/icons/inventory.svg" id="29_2hy47"]
 
 [sub_resource type="Shader" id="Shader_t5fec"]
 code = "shader_type canvas_item;
@@ -986,7 +988,6 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Journal" type="HBoxContainer" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1030,12 +1031,11 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Guilds" type="Panel" parent="Journal" node_paths=PackedStringArray("tooltip")]
+[node name="Guilds" type="Panel" parent="Journal"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("11_4ftob")
-tooltip = NodePath("../../Tooltip")
+script = ExtResource("16_oc305")
 
 [node name="Label" type="Label" parent="Journal/Guilds"]
 modulate = Color(1, 1, 1, 0.74902)
@@ -1070,6 +1070,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
+
+[node name="Guild0" type="HBoxContainer" parent="Journal/Guilds/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="LabelName" type="Label" parent="Journal/Guilds/ScrollContainer/VBoxContainer/Guild0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "NAME"
+
+[node name="LabelRank" type="Label" parent="Journal/Guilds/ScrollContainer/VBoxContainer/Guild0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "RANK"
 
 [node name="Inventory" type="HBoxContainer" parent="."]
 visible = false
@@ -2487,7 +2503,7 @@ offset_right = -2.0
 offset_bottom = -2.0
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_xy43e")
+texture = ExtResource("29_2hy47")
 expand_mode = 4
 stretch_mode = 5
 

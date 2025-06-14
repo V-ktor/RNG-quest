@@ -148,6 +148,7 @@ signal quest_log_updated(text: String)
 signal summary_updated(text: String)
 signal skills_updated()
 signal abilities_updated()
+signal guilds_updated()
 signal freed
 
 
@@ -386,6 +387,7 @@ func join_guild(guild: String):
 	print_summary_msg(text)
 	store_historical_data("guilds", 0, guild)
 	store_historical_data("guilds", 1, guild)
+	emit_signal("guilds_updated")
 
 func get_preference_bonus(type: String) -> float:
 	var multiplier:= 1.0
@@ -3215,6 +3217,7 @@ func gui_ready():
 	emit_signal("summary_updated", summary_text)
 	emit_signal("abilities_updated")
 	emit_signal("skills_updated")
+	emit_signal("guilds_updated")
 
 
 func store_historical_data(type: String, value: Variant, sub := ""):

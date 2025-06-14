@@ -25,6 +25,7 @@ var theme: Theme
 @onready var potion_preference_panel:= $Options/Preferences/PotionPreference as PotionPreferencePanel
 @onready var quest_log:= $Overview/HBoxContainer/Quest/RichTextLabel as RichTextLabel
 @onready var journal_log:= $Journal/Journal/RichTextLabel as RichTextLabel
+@onready var guild_panel:= $Journal/Guilds
 @onready var statistics:= $Statistics/Statistics/Statistics as StatisticsPanel
 @onready var timetable_panel:= $Options/Timetable/Timetable as TimetablePanel
 @onready var time_offset_spinbox := $Options/Timetable/Timetable/ScrollContainer/VBoxContainer/HBoxContainer/SpinBox as SpinBox
@@ -214,6 +215,7 @@ func connect_to_main(main: Main):
 	main.connect("summary_updated", Callable(self, "update_journal_log"))
 	main.connect("skills_updated", Callable(skill_panel, "update"))
 	main.connect("abilities_updated", Callable(recipe_panel, "update"))
+	main.connect("guilds_updated", Callable(guild_panel, "update"))
 	main.connect("freed", Callable(self, "queue_free"))
 	
 	timetable_panel.connect("timetable_modified", Callable(main, "_set_timetable"))
@@ -236,6 +238,7 @@ func connect_to_main(main: Main):
 	armour_preference_panel.character_settings = main_character_settings
 	potion_preference_panel.character_settings = main_character_settings
 	statistics.historical_data = main.historical_data
+	guild_panel.guild_lvl = main.player_guild_lvl
 	
 	main.gui_ready()
 	timetable_panel.update(main.timetable, main.time_offset)
@@ -252,6 +255,7 @@ func _ready():
 	page_overview.theme = theme
 	page_character.theme = theme
 	page_journal.theme = theme
+	page_inventory.theme = theme
 	page_statistics.theme = theme
 	page_options.theme = theme
 	side_menu.theme = theme
