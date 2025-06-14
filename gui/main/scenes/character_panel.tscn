@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ilahmpkq8huy"]
 
 [ext_resource type="Texture2D" uid="uid://dtgblnp2uvyls" path="res://images/gui/black_rectangle_16.png" id="2_8weer"]
-[ext_resource type="Script" path="res://gui/main/scripts/progress_count_down.gd" id="3_iu7di"]
+[ext_resource type="Script" uid="uid://doowqljk47kwn" path="res://gui/main/scripts/progress_count_down.gd" id="3_iu7di"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enhnj"]
 

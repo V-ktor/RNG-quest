@@ -16,8 +16,9 @@ var theme: Theme
 @onready var ability_panel:= $Character/Skills/Abilities as AbilityPanel
 @onready var skill_panel:= $Character/Skills/Skills as SkillPanel
 @onready var equipment_panel:= $Character/Equipment/Equipment as EquipmentPanel
-@onready var inventory_panel:= $Journal/Inventory as InventoryPanel
-@onready var gold_label:= $Journal/Inventory/ScrollContainer/VBoxContainer/LabelGold as Label
+@onready var inventory_panel:= $Inventory/Inventory as InventoryPanel
+@onready var recipe_panel:= $Inventory/Recipes as RecipePanel
+@onready var gold_label:= $Inventory/Inventory/ScrollContainer/VBoxContainer/LabelGold as Label
 @onready var skill_module_panel:= $Options/SkillModules/SkillModules as SkillModulePanel
 @onready var weapon_preference_panel:= $Options/Preferences/WeaponPreference as WeaponPreferencePanel
 @onready var armour_preference_panel:= $Options/Preferences/ArmourPreference as ArmourPreferencePanel
@@ -30,6 +31,7 @@ var theme: Theme
 @onready var page_overview:= $Overview as Control
 @onready var page_character:= $Character as Control
 @onready var page_journal:= $Journal as Control
+@onready var page_inventory:= $Inventory as Control
 @onready var page_statistics:= $Statistics as Control
 @onready var page_options:= $Options as Control
 @onready var title:= $Title as Panel
@@ -134,6 +136,7 @@ func _show_overview():
 	page_overview.show()
 	page_character.hide()
 	page_journal.hide()
+	page_inventory.hide()
 	page_options.hide()
 	page_statistics.hide()
 	title_label.text = tr("OVERVIEW")
@@ -142,6 +145,7 @@ func _show_character():
 	page_overview.hide()
 	page_character.show()
 	page_journal.hide()
+	page_inventory.hide()
 	page_options.hide()
 	page_statistics.hide()
 	title_label.text = tr("CHARACTER")
@@ -157,14 +161,25 @@ func _show_journal():
 	page_overview.hide()
 	page_character.hide()
 	page_journal.show()
+	page_inventory.hide()
 	page_options.hide()
 	page_statistics.hide()
 	title_label.text = tr("JOURNAL")
+
+func _show_inventory() -> void:
+	page_overview.hide()
+	page_character.hide()
+	page_journal.hide()
+	page_inventory.show()
+	page_options.hide()
+	page_statistics.hide()
+	title_label.text = tr("INVENTORY")
 
 func _show_options():
 	page_overview.hide()
 	page_character.hide()
 	page_journal.hide()
+	page_inventory.hide()
 	page_options.show()
 	page_statistics.hide()
 	title_label.text = tr("OPTIONS")
@@ -176,6 +191,7 @@ func _show_statistics() -> void:
 	page_overview.hide()
 	page_character.hide()
 	page_journal.hide()
+	page_inventory.hide()
 	page_options.hide()
 	page_statistics.show()
 	title_label.text = tr("STATISTICS")
@@ -197,6 +213,7 @@ func connect_to_main(main: Main):
 	main.connect("quest_log_updated", Callable(self, "update_quest_log"))
 	main.connect("summary_updated", Callable(self, "update_journal_log"))
 	main.connect("skills_updated", Callable(skill_panel, "update"))
+	main.connect("abilities_updated", Callable(recipe_panel, "update"))
 	main.connect("freed", Callable(self, "queue_free"))
 	
 	timetable_panel.connect("timetable_modified", Callable(main, "_set_timetable"))
@@ -213,6 +230,8 @@ func connect_to_main(main: Main):
 	equipment_panel.character = main.player
 	skill_module_panel.character = main.player
 	skill_module_panel.character_settings = main_character_settings
+	recipe_panel.character = main_character
+	recipe_panel.character_settings = main_character_settings
 	weapon_preference_panel.character_settings = main_character_settings
 	armour_preference_panel.character_settings = main_character_settings
 	potion_preference_panel.character_settings = main_character_settings

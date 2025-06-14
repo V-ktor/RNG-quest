@@ -1,0 +1,16 @@
+{
+	"energy_drink": {
+		"name": "energy drink",
+		"type": "potion",
+		"effect": "stamina",
+		"status": {
+			"type": "buff",
+			"name": "healing",
+			"mana_regen":200,
+			"stamina_regen":200,
+			"duration":15.0,
+		},
+		"price":20,
+		"material_types":[["liquid"], ["plant", "meat"]],
+	},
+}

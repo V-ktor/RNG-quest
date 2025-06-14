@@ -101,8 +101,8 @@ class Character:
 	var min_dist:= 0
 	var action_duration: float
 	var current_action: String
-	var valid_weapon_subtypes:= []
-	var valid_armour_subtypes:= []
+	var valid_weapon_subtypes: Array[String] = []
+	var valid_armour_subtypes: Array[String] = []
 	
 	func _init(dict: Dictionary):
 		if dict.has("abilities") && typeof(dict.abilities)==TYPE_ARRAY:
@@ -523,10 +523,11 @@ class Summon:
 class CharacterSettings:
 	var weapon_1h_alowed:= true
 	var weapon_2h_alowed:= true
-	var valid_weapon_types:= []
-	var valid_armour_types:= []
-	var valid_potion_types:= ["health"]
-	var disabled_skill_modules:= []
+	var valid_weapon_types: Array[String] = []
+	var valid_armour_types: Array[String] = []
+	var valid_potion_types: Array[String] = ["health"]
+	var disabled_skill_modules: Array[String] = []
+	var disabled_recipes: Array[String] = []
 	var auto_update_options:= true
 	
 	func _init(dict: Dictionary = {}):
@@ -541,6 +542,7 @@ class CharacterSettings:
 			"valid_armour_types": valid_armour_types,
 			"valid_potion_types": valid_potion_types,
 			"disabled_skill_modules": disabled_skill_modules,
+			"disabled_recipes": disabled_recipes,
 			"auto_update_options": true,
 		}
 

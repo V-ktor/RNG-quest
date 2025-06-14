@@ -36,22 +36,32 @@ func get_location_list(region: Dictionary, current_location: String) -> Array[Di
 			data = region.cities[key]
 			if key == current_location:
 				is_current_location_listed = true
-			list.push_back({"name": data.name, "type": data.get("type", "town")})
+			list.push_back({
+				"name": data.name,
+				"type": data.get("type", "town"),
+			})
 			city_index += 1
 	for i in range(city_index, cities):
 		var key: String = region.cities.keys()[city_index]
 		var data: Dictionary = region.cities[key]
 		if key == current_location:
 			is_current_location_listed = true
-		list.push_back({"name": data.name, "type": data.type})
+		list.push_back({
+			"name": data.name,
+			"type": data.type,
+		})
 	if not is_current_location_listed:
-		list.push_back({"name": current_location, "type": "dungeon"})
+		list.push_back({
+			"name": current_location,
+			"type": "dungeon",
+		})
 	
 	return list
 
 func get_region_description(region: Dictionary) -> String:
 	var text: String = region.name
-	text += "\n" + tr("LVL") + " " + str(region.level) + " " + tr(REGION_TIERS[clamp(region.tier + 2, 0, REGION_TIERS.size() - 1)]) + " " + tr("REGION")
+	text += "\n" + tr("LVL") + " " + str(region.level) + " " + \
+		tr(REGION_TIERS[clamp(region.tier + 2, 0, REGION_TIERS.size() - 1)]) + " " + tr("REGION")
 	if region.race.size()>0:
 		text += "\n" + tr("RACE") + ": " + Names.make_list(region.race)
 	return text
@@ -113,9 +123,12 @@ func create_region(ID: String, level:= 0, tier:= 0) -> Dictionary:
 		var location_name: String
 		for _j in range(20):
 			location_name = (location_data.prefix.pick_random() + " " + base).capitalize()
-			if !(location_name in data.locations):
+			if location_name not in data.locations:
 				break
-		data.locations[location_name] = {"name": location_name, "type": location_data.type.pick_random()}
+		data.locations[location_name] = {
+			"name": location_name,
+			"type": location_data.type.pick_random(),
+		}
 		if "enemies" in location_data:
 			data.location_enemies[location_name] = location_data.enemies
 		else:
@@ -124,6 +137,8 @@ func create_region(ID: String, level:= 0, tier:= 0) -> Dictionary:
 			data.location_resources[location_name] = location_data.resources
 		else:
 			data.location_resources[location_name] = dict.resources
+		if "description" in location_data:
+			pass
 	for array in data.local_materials.values():
 		for mat in array:
 			mat.quality *= tier_multiplier*level_multiplier

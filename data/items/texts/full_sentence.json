@@ -1447,4 +1447,202 @@
 			"sentence_end",
 		],
 	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"behind the {care.adjective} surface lies a {mental_illness.adjective} {curse.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "mental_illness",
+		},
+		"required": [
+			"care",
+			"mental_illness",
+			"curse",
+		],
+		"remove": [
+			"curse",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"behind the {stains.adjective} surface lies a {mental_illness.adjective} {curse.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "mental_illness",
+		},
+		"required": [
+			"stains",
+			"mental_illness",
+			"curse",
+		],
+		"remove": [
+			"curse",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"behind the {material.adjective} surface lies a {mental_illness.adjective} {curse.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "mental_illness",
+		},
+		"required": [
+			"material",
+			"mental_illness",
+			"curse",
+		],
+		"remove": [
+			"curse",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"behind the {care.adjective} surface lies a {element.adjective} {force.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "element",
+		},
+		"required": [
+			"care",
+			"element",
+			"force",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"behind the {stains.adjective} surface lies a {element.adjective} {force.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "element",
+		},
+		"required": [
+			"stains",
+			"element",
+			"force",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"behind the {material.adjective} surface lies a {element.adjective} {force.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "element",
+		},
+		"required": [
+			"material",
+			"element",
+			"force",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"behind the {care.adjective} surface lies {force.adjective} {theme.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "element",
+		},
+		"required": [
+			"care",
+			"theme",
+			"force",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"behind the {stains.adjective} surface lies {force.adjective} {theme.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "element",
+		},
+		"required": [
+			"stains",
+			"theme",
+			"force",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"behind the {material.adjective} surface lies {force.adjective} {theme.singular}",
+		],
+		"sentence":{
+			"predicate": "",
+			"subject": "",
+			"object": "element",
+		},
+		"required": [
+			"material",
+			"theme",
+			"force",
+		],
+		"remove": [
+			"force",
+		],
+		"transition": [
+			"sentence_end",
+		],
+	},
 ]

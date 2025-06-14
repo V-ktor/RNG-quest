@@ -347,7 +347,7 @@
 		"text": [
 			"{fails/fail} to match the {component.singular}",
 			"{does/do} not align with the {component.singular}",
-			"{contrasts/contrast}o the {component.singular}",
+			"{contrasts/contrast} the {component.singular}",
 		],
 		"sentence":{
 			"predicate": "",

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxb635fm2610y"]
 
-[ext_resource type="Script" path="res://gui/main/scripts/tooltip.gd" id="1_6sfc2"]
+[ext_resource type="Script" uid="uid://cotqs4ynhteph" path="res://gui/main/scripts/tooltip.gd" id="1_6sfc2"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_q6wl8"]
 

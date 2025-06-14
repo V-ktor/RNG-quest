@@ -41,6 +41,6 @@ func _draw():
 		v3.x = minf(maxf(v3.x, 16), size.x - 16)
 		v3.y = minf(maxf(v3.y, 16), size.y - 16)
 		draw_line(v1, v2, Color(0.5, 0.75, 1.0, 1.0), 2.0, true)
-		draw_string(theme.get_default_font(), v3 + Vector2(-16, 0), tr(stats.keys()[i]).substr(0, 3).to_upper() + " " + str(stats.values()[i]), HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color(1.0, 1.0, 1.0, 1.0))
+		draw_string(theme.get_default_font(), v3 + Vector2(-16, 0), tr(stats.keys()[i]).substr(0, 3).to_upper() + " " + str(int(stats.values()[i])), HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color(1.0, 1.0, 1.0, 1.0))
 		points[i] = v1
 	draw_colored_polygon(points, Color(0.5, 0.75, 1.0, 0.25))

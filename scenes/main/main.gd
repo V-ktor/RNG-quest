@@ -137,27 +137,17 @@ var time_offset:= 0
 var autosave_delay:= 30.0
 var historical_data:= {}
 
-@warning_ignore("unused_signal")
 signal text_printed(text: String)
-@warning_ignore("unused_signal")
 signal characters_updated(player: Array[Characters.Character], enemy: Array[Characters.Character])
-@warning_ignore("unused_signal")
 signal gold_changed(value: int)
-@warning_ignore("unused_signal")
 signal inventory_changed(inventory: Array)
-@warning_ignore("unused_signal")
 signal potion_inventory_changed(inventory: Array)
-@warning_ignore("unused_signal")
 signal story_inventory_changed(inventory: Array)
-@warning_ignore("unused_signal")
 signal location_changed(region: Dictionary, current_location: String)
-@warning_ignore("unused_signal")
 signal quest_log_updated(text: String)
-@warning_ignore("unused_signal")
 signal summary_updated(text: String)
-@warning_ignore("unused_signal")
 signal skills_updated()
-@warning_ignore("unused_signal")
+signal abilities_updated()
 signal freed
 
 
@@ -386,6 +376,7 @@ func learn_new_ability(type := ""):
 	print_summary_msg(text)
 	store_historical_data("abilities", 0, type)
 	store_historical_data("abilities", 1, type)
+	emit_signal("abilities_updated")
 
 func join_guild(guild: String):
 	var text:= tr("JOIN_GUILD").format({"guild": tr(guild.to_upper()), "rank": Guilds.get_rank(1, guild)})
@@ -1022,6 +1013,49 @@ func pick_random_materials(dict: Dictionary) -> Array:
 				materials.push_back(valid_materials.pick_random())
 	return materials
 
+func pick_recipe() -> String:
+	var valid_recipes: Array[String] = []
+	for ability in player.abilities:
+		if ability == "alchemy":
+			continue
+		
+		var ability_data:= Skills.ABILITIES[ability]
+		if "recipes" not in ability_data:
+			continue
+		
+		for recipe in ability_data.recipes:
+			if recipe in player_settings.disabled_recipes:
+				continue
+			
+			valid_recipes.push_back(recipe)
+	
+	if valid_recipes.size() > 0:
+		return valid_recipes.pick_random()
+	return ""
+
+func get_recipe_abilities(recipe: String) -> Array[String]:
+	var abilities: Array[String] = []
+	for ability in player.abilities:
+		var ability_data:= Skills.ABILITIES[ability]
+		if "recipes" not in ability_data or recipe not in ability_data.recipes:
+			continue
+		
+		abilities.push_back(ability)
+	
+	return abilities
+
+func get_recipe_level(recipe: String) -> int:
+	var level:= 0
+	for ability in player.abilities:
+		var ability_data:= Skills.ABILITIES[ability]
+		if "recipes" not in ability_data or recipe not in ability_data.recipes:
+			continue
+		
+		if player.abilities[ability] > level:
+			level = player.abilities[ability]
+	
+	return level
+
 
 func next_chapter():
 	var title:= Story.get_title(quest_chapter + 1)
@@ -1445,17 +1479,17 @@ func action_done(action: Dictionary):
 			player.recover()
 			print_log_msg(tr("SLEEP_LOG"))
 		"craft":
-			var type: String = Skills.ABILITIES[action.args.ability].recipes.pick_random()
-			var materials:= pick_random_materials(Items.equipment_recipes[type])
-			if materials.size() == Items.equipment_recipes[type].components.size():
+			var materials:= pick_random_materials(Items.equipment_recipes[action.args.recipe])
+			if materials.size() == Items.equipment_recipes[action.args.recipe].components.size():
 				var item: Dictionary
-				item = Items.craft_equipment(type, materials, 10.0*(action.args.level-1.0))
+				item = Items.craft_equipment(action.args.recipe, materials, 10.0 * (action.args.level - 1.0))
 				item.source += "\n" + tr("PLAYER_CREATION")
 				item.description = Items.create_tooltip(item)
 				item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 				add_item(item)
 				print_log_msg(tr("CRAFT_EQUIPMENT_LOG").format({"name":item.name, "description":item.description_plain, "quality":str(int(item.quality))}))
-				add_ability_exp(action.args.ability, 20.0)
+				for ability in get_recipe_abilities(action.args.recipe):
+					add_ability_exp(ability, 20.0)
 				for mat in materials:
 					remove_item(mat)
 				add_guild_exp("craft")
@@ -1836,10 +1870,11 @@ func action_done(action: Dictionary):
 			else:
 				var valid_tasks:= []
 				var crafting_abilities:= []
+				var recipe:= pick_recipe()
 				for ability in Skills.CRAFTING_ABILITIES:
 					if player.abilities.has(ability):
 						crafting_abilities.push_back(ability)
-				if crafting_abilities.size()>0:
+				if crafting_abilities.size() > 0 and recipe != "":
 					valid_tasks.push_back("crafting")
 				if player.abilities.has("enchanting"):
 					valid_tasks.push_back("enchanting")
@@ -1848,8 +1883,7 @@ func action_done(action: Dictionary):
 				if valid_tasks.size()>0:
 					match valid_tasks.pick_random():
 						"crafting":
-							var ability: String = crafting_abilities.pick_random()
-							do_action("craft", {"ability": ability, "level": player.abilities[ability]}, CRAFTING_DELAY)
+							do_action("craft", {"recipe": recipe, "level": get_recipe_level(recipe)}, CRAFTING_DELAY)
 						"enchanting":
 							do_action("enchanting", {"ability": "enchanting", "level": player.abilities.enchanting}, CRAFTING_DELAY)
 						"alchemy":
@@ -3070,7 +3104,8 @@ func _load():
 		return
 	
 	var data: Dictionary
-	var first_line:= get_dict_text(file)
+	#var first_line:= get_dict_text(file)
+	get_dict_text(file)
 	# TODO: check version info
 	data = JSON.parse_string(get_dict_text(file)) as Dictionary
 	if data == null:
@@ -3178,6 +3213,8 @@ func gui_ready():
 	emit_signal("location_changed", current_region, current_location)
 	emit_signal("quest_log_updated", quest_log)
 	emit_signal("summary_updated", summary_text)
+	emit_signal("abilities_updated")
+	emit_signal("skills_updated")
 
 
 func store_historical_data(type: String, value: Variant, sub := ""):

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b4h04wll7qn4h"]
 
-[ext_resource type="Shader" path="res://shaders/item.gdshader" id="1_4i58x"]
+[ext_resource type="Shader" uid="uid://c1q3skglg78l8" path="res://shaders/item.gdshader" id="1_4i58x"]
 [ext_resource type="Texture2D" uid="uid://c4axo707jo625" path="res://images/icons/sword.svg" id="1_flx4i"]
 [ext_resource type="Texture2D" uid="uid://rsq30f81bquw" path="res://images/gui/transparent_pixel.png" id="2_ijjk6"]
 

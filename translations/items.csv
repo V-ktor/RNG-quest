@@ -294,3 +294,86 @@ EARRING_LEFT,left earring
 EARRING_RIGHT,right earring
 BRACELET_LEFT,left bracelet
 BRACELET_RIGHT,right bracelet
+HEALING_SALVE,healing salve
+HEALING_SALVE_DESCRIPTION,"Restores a large amount of health slowly over time."
+HEALING_POTION,healing potion
+HEALING_POTION_DESCRIPTION,"Instantly restores health."
+HEALING_INFUSION,healing infusion
+HEALING_INFUSION_DESCRIPTION,"Restores health instantly and over time."
+BANDAGE,bandage
+BANDAGE_DESCRIPTION,"Increases health temporarily and restores some health over time."
+MANA_SALVE,mana salve
+MANA_SALVE_DESCRIPTION,"Restores a large amount of mana slowly over time."
+MANA_POTION,mana potion
+MANA_POTION_DESCRIPTION,"Instantly restores mana."
+STAMINA_SALVE,stamina salve
+STAMINA_SALVE_DESCRIPTION,"Restores a large amount of stamina slowly over time."
+STAMINA_POTION,stamina potion
+STAMINA_POTION_DESCRIPTION,"Instantly restores stamina."
+ENERGY_DRINK,energy drink
+ENERGY_DRINK_DESCRIPTION,"Restores stamina and mana over time."
+METAL_AMULET_DESCRIPTION,"Amulet with defensive properties."
+ROPE_AMULET_DESCRIPTION,Amulet with magical properties.
+METAL_BRACELET_DESCRIPTION,"Bracelet made of metal."
+WOOD_BRACELET_DESCRIPTION,"Bracelet made of wood."
+CLOTH_CAPE_DESCRIPTION,"Light cape made of cloth."
+MAGICAL_CAPE_DESCRIPTION,"Cloth cape with magical properties."
+METAL_CAPE_DESCRIPTION,"Heavy cloth made of metal chains."
+GEM_EARRING_DESCRIPTION,"Earring with a set gem."
+METAL_EARRING_DESCRIPTION,"Heavy earring made of metal."
+ORB_EARRING_DESCRIPTION,"Earring with a heavy gem."
+CHAIN_BOOTS_DESCRIPTION,"Protective boots made of metal."
+CLOTH_SANDALS_DESCRIPTION,"Light sandals."
+LEATHER_BOOTS_DESCRIPTION,"Closed leather boots."
+PLATE_BOOTS_DESCRIPTION,"High, heavy metal boots"
+CHAIN_GAUNTLETS_DESCRIPTION,"Gauntlets made of metal."
+CLOTH_SLEEVES_DESCRIPTION,"Light cloth sleeves."
+LEATHER_GLOVES_DESCRIPTION,"Gloves made of leather."
+PLATE_GAUNTLETS_DESCRIPTION,"Heavy metal gauntlets."
+CHAIN_COIF_DESCRIPTION,"Helmet made of metal."
+CLOTH_HAT_DESCRIPTION,"Light hat made of cloth."
+GLASSES_DESCRIPTION,"Glasses made of glas and metal."
+LEATHER_HAT_DESCRIPTION,"Hat made of leather."
+PLATE_HELM_DESCRIPTION,"Heavy metal helmet."
+CHAIN_GREAVES_DESCRIPTION,"Greaves made of metal."
+CLOTH_PANTS_DESCRIPTION,"Pants made of cloth."
+LEATHER_PANTS_DESCRIPTION,"Pants made of leather."
+PANTIES_DESCRIPTION,"Underwear."
+PLATE_GREAVES_DESCRIPTION,"Heavy metal greaves."
+AMPLIFIER_DESCRIPTION,"Improves magical abilities."
+MAGESTAFF_DESCRIPTION,"Staff imbued with magic."
+ORB_DESCRIPTION,"Catalyst used for spell casting."
+QUARTERSTAFF_DESCRIPTION,"Long, wooden staff."
+SPELLBLADE_DESCRIPTION,"Sword with magical properties."
+TOME_DESCRIPTION,"Tome containing powerful spells."
+AXE_DESCRIPTION,"Simple handaxe."
+BATTLEAXE_DESCRIPTION,"Large battleaxe."
+CHAIN_SAW_DESCRIPTION,"Motorized chain saw."
+DAGGER_DESCRIPTION,"Light dagger."
+FLAIL_DESCRIPTION,"One-handed flail."
+GREATMAUL_DESCRIPTION,"Large maul."
+GREATSWORD_DESCRIPTION,"Two-handed greatsword."
+MACE_DESCRIPTION,"One-handed mace."
+MORNINGSTAR_DESCRIPTION,"Two-handed morning star."
+SCYTHE_DESCRIPTION,"Harvesting tool."
+SPEAR_DESCRIPTION,"Wooden spear"
+SWORD_DESCRIPTION,"One-handed sword."
+WHIP_DESCRIPTION,"Leather whip."
+BLUNDERBUSS_DESCRIPTION,"Two-handed firearm."
+BOW_DESCRIPTION,"Wooden bow."
+CROSSBOW_DESCRIPTION,"Wooden crossbow."
+GUN_BLADE_DESCRIPTION,"Sword with integrated firing mechanism."
+PISTOL_DESCRIPTION,"Simple handgun."
+SLING_DESCRIPTION,"Leather sling."
+LEATHER_RING_DESCRIPTION,"Ring made of leather."
+METAL_RING_DESCRIPTION,"Ring made of metal."
+BUCKLER_DESCRIPTION,"Light buckler made of wood or leather."
+KITE_SHIELD_DESCRIPTION,"Shield made of metal."
+TOWER_SHIELD_DESCRIPTION,"Heavy shield made of metal."
+CHAIN_CUIRASS_DESCRIPTION,Body armour made of metal chains.
+CLOTH_SHIRT_DESCRIPTION,Light body armour made of cloth.
+LEATHER_CHEST_DESCRIPTION,Body armour made of leather.
+PLATE_CUIRASS_DESCRIPTION,Heavy body armour made of metal.
+CHAIN_BELT_DESCRIPTION,Belt made of metal.
+LEATHER_BELT_DESCRIPTION,Belt made of leather.
+ROPE_BELT_DESCRIPTION,Belt made of ropes.

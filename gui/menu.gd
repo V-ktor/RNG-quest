@@ -116,7 +116,7 @@ func load_characters():
 				button.show()
 				(button.get_node("HBoxContainer/Info/LabelName") as Label).text = data.name
 				(button.get_node("HBoxContainer/Info/LabelRace") as Label).text = data.race
-				(button.get_node("HBoxContainer/Info/LabelLevel") as Label).text = tr("LEVEL") + " " + str(data.level)
+				(button.get_node("HBoxContainer/Info/LabelLevel") as Label).text = tr("LEVEL") + " " + str(int(data.level))
 				(button.get_node("HBoxContainer/Info/LabelLocation") as Label).text = data.location
 				if !OS.has_feature("web"):
 					(button.get_node("HBoxContainer/ButtonExport") as Control).hide()

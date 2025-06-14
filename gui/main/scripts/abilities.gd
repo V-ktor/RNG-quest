@@ -19,6 +19,6 @@ func update():
 			container.name = "Ability" + str(i)
 			vbox_container.add_child(container)
 		(container.get_node("Label") as Label).text = tr(character.abilities.keys()[i].to_upper())
-		(container.get_node("Value") as Label).text = str(character.abilities.values()[i])
+		(container.get_node("Value") as Label).text = str(int(character.abilities.values()[i]))
 		# TODO: add tooltips
 		container.show()

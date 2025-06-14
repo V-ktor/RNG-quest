@@ -11,6 +11,7 @@ var data:= {
 }
 
 
+@warning_ignore("unused_signal")
 signal travel_text(String)
 
 

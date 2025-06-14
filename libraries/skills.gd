@@ -1,12 +1,12 @@
 extends Node
 
-const RESOURCE_COLOR = {
+const RESOURCE_COLOR: Dictionary[String, String] = {
 	"health":"#FF2010",
 	"stamina":"#CCCC30",
 	"focus":"#50FF99",
 	"mana":"#4090FF",
 }
-const DAMAGE_COLOR = {
+const DAMAGE_COLOR: Dictionary[String, String] = {
 	"cutting":"#FFBBBB",
 	"piercing":"#FFBBDD",
 	"impact":"#FFEECC",
@@ -21,7 +21,7 @@ const DAMAGE_COLOR = {
 	"light":"#EEEE30",
 	"darkness":"#502580",
 }
-const DAMAGE_TYPES = [
+const DAMAGE_TYPES: Array[String] = [
 	"cutting",
 	"piercing",
 	"impact",
@@ -36,14 +36,14 @@ const DAMAGE_TYPES = [
 	"light",
 	"darkness",
 ]
-const PHYSICAL_DAMAGE_TYPES = [
+const PHYSICAL_DAMAGE_TYPES: Array[String] = [
 	"cutting",
 	"piercing",
 	"impact",
 	"poison",
 	"acid",
 ]
-const ABILITIES = {
+const ABILITIES: Dictionary[String, Dictionary] = {
 	"light_weapons":{
 		"name":"light_weapons",
 		"penetration":2,
@@ -148,14 +148,15 @@ const ABILITIES = {
 		"recipes":[
 			"healing_salve","healing_potion","bandage","healing_infusion",
 			"mana_salve","mana_potion","stamina_salve","stamina_potion",
+			"energy_drink"
 		],
 	},
 	"weapon_smithing":{
 		"name":"weapon_smithing",
 		"attack":2,
 		"recipes":[
-			"dagger","sword","axe","mace","whip","greatsword","battleaxe","greatmaul",
-			"scythe","morningstar","spear",
+			"dagger","sword","axe","mace","whip","greatsword","battleaxe",
+			"greatmaul","scythe","morningstar","spear",
 		],
 	},
 	"armour_smithing":{
@@ -201,10 +202,10 @@ const ABILITIES = {
 	},
 	
 }
-const CRAFTING_ABILITIES = [
+const CRAFTING_ABILITIES: Array[String] = [
 	"weapon_smithing","armour_smithing","woodwork","tayloring",
 ]
-const ABILITY_MODULES = {
+const ABILITY_MODULES: Dictionary[String, Dictionary] = {
 	"light_weapons":{
 		"base_type":["strike","slash","dual_strike","stab"],
 		"melee_mod":["pierce","quick","dual","stunning","rush"],
@@ -555,7 +556,7 @@ const ABILITY_MODULES = {
 	},
 	
 }
-const TRAPS = {
+const TRAPS: Dictionary[String, Dictionary] = {
 	"poison":{
 		"ability":"trapping",
 		"type":"debuff",
@@ -613,7 +614,7 @@ const TRAPS = {
 	},
 }
 
-const ROMAN_NUMBERS = {
+const ROMAN_NUMBERS: Dictionary[String, int] = {
 	"I":1,
 	"V":5,
 	"X":10,
@@ -623,7 +624,7 @@ const ROMAN_NUMBERS = {
 	"M":1000,
 }
 
-var module_data:= {}
+var module_data: Dictionary[String, Dictionary] = {}
 
 
 func merge_dicts(dict: Dictionary, add: Dictionary) -> Dictionary:

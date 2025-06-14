@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgkcyaksqhx68"]
 
-[ext_resource type="Script" path="res://gui/chart/scripts/ui/grid.gd" id="1_0bc4w"]
-[ext_resource type="Script" path="res://gui/chart/scripts/ui/chart.gd" id="1_gscgq"]
-[ext_resource type="Script" path="res://gui/chart/scripts/ui/graph.gd" id="2_y0ojy"]
+[ext_resource type="Script" uid="uid://jmpe1jxy0irs" path="res://gui/chart/scripts/ui/grid.gd" id="1_0bc4w"]
+[ext_resource type="Script" uid="uid://c6ixml78ifn2v" path="res://gui/chart/scripts/ui/chart.gd" id="1_gscgq"]
+[ext_resource type="Script" uid="uid://cc4vjjx2h55l4" path="res://gui/chart/scripts/ui/graph.gd" id="2_y0ojy"]
 
 [node name="Chart" type="Control"]
 layout_mode = 3

@@ -1,32 +1,33 @@
-[gd_scene load_steps=40 format=3 uid="uid://s10031v8frul"]
+[gd_scene load_steps=41 format=3 uid="uid://s10031v8frul"]
 
-[ext_resource type="Script" path="res://gui/main/scripts/main_gui.gd" id="1_rxg50"]
+[ext_resource type="Script" uid="uid://8de6201xgfoq" path="res://gui/main/scripts/main_gui.gd" id="1_rxg50"]
 [ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://themes/light_theme.tres" id="2_ck100"]
-[ext_resource type="Script" path="res://gui/main/scripts/character_panel.gd" id="3_3wpsb"]
-[ext_resource type="Script" path="res://gui/main/scripts/location_panel.gd" id="4_7xkbg"]
-[ext_resource type="Script" path="res://gui/main/scripts/main_log.gd" id="4_sxg1u"]
+[ext_resource type="Script" uid="uid://cemdadev3as02" path="res://gui/main/scripts/character_panel.gd" id="3_3wpsb"]
+[ext_resource type="Script" uid="uid://b4ge6xtacfiiy" path="res://gui/main/scripts/location_panel.gd" id="4_7xkbg"]
+[ext_resource type="Script" uid="uid://d2txfujvc52jj" path="res://gui/main/scripts/main_log.gd" id="4_sxg1u"]
 [ext_resource type="PackedScene" uid="uid://ilahmpkq8huy" path="res://gui/main/scenes/character_panel.tscn" id="5_wpjmd"]
 [ext_resource type="Texture2D" uid="uid://be6a3wwf20ybd" path="res://images/gui/waiting.svg" id="6_4mtbn"]
-[ext_resource type="Script" path="res://gui/main/scripts/stat_display.gd" id="6_cw8x1"]
-[ext_resource type="Script" path="res://gui/main/scripts/attributes.gd" id="7_be5rh"]
+[ext_resource type="Script" uid="uid://dm6u654c24vg7" path="res://gui/main/scripts/stat_display.gd" id="6_cw8x1"]
+[ext_resource type="Script" uid="uid://1qu8eqanouvw" path="res://gui/main/scripts/attributes.gd" id="7_be5rh"]
 [ext_resource type="Texture2D" uid="uid://ofnjrxwgqikj" path="res://images/gui/house.svg" id="7_lm0bd"]
-[ext_resource type="Script" path="res://gui/main/scripts/mods.gd" id="8_xxonq"]
-[ext_resource type="Script" path="res://gui/main/scripts/equipment.gd" id="9_p5fy4"]
-[ext_resource type="Script" path="res://gui/main/scripts/inventory.gd" id="11_4ftob"]
-[ext_resource type="Script" path="res://gui/main/scripts/abilities.gd" id="11_rginl"]
+[ext_resource type="Script" uid="uid://b4uw5ocghv2v" path="res://gui/main/scripts/mods.gd" id="8_xxonq"]
+[ext_resource type="Script" uid="uid://cpumy2bs82lfr" path="res://gui/main/scripts/equipment.gd" id="9_p5fy4"]
+[ext_resource type="Script" uid="uid://cxp22gc4f4wgi" path="res://gui/main/scripts/inventory.gd" id="11_4ftob"]
+[ext_resource type="Script" uid="uid://cl2w8jtpeat" path="res://gui/main/scripts/abilities.gd" id="11_rginl"]
 [ext_resource type="Texture2D" uid="uid://2q6idpe7wgl5" path="res://images/gui/arrows_right.svg" id="12_6ewli"]
-[ext_resource type="Script" path="res://gui/main/scripts/skills.gd" id="12_nx1dh"]
+[ext_resource type="Script" uid="uid://qf6jn8c1ahae" path="res://gui/main/scripts/skills.gd" id="12_nx1dh"]
 [ext_resource type="Texture2D" uid="uid://cics21jodet7p" path="res://images/icons/overview.svg" id="13_0vtos"]
-[ext_resource type="Script" path="res://gui/main/scripts/timetable.gd" id="13_hltwl"]
+[ext_resource type="Script" uid="uid://dw13iv8d2h60h" path="res://gui/main/scripts/timetable.gd" id="13_hltwl"]
 [ext_resource type="Texture2D" uid="uid://iydd5obvkaw5" path="res://images/icons/character.svg" id="14_4iy3k"]
-[ext_resource type="Script" path="res://gui/main/scripts/weapon_preference.gd" id="14_6ovlx"]
-[ext_resource type="Script" path="res://gui/main/scripts/armour_preference.gd" id="15_bpsop"]
+[ext_resource type="Script" uid="uid://fpi2c85vnqx4" path="res://gui/main/scripts/weapon_preference.gd" id="14_6ovlx"]
+[ext_resource type="Script" uid="uid://c58yreut2syco" path="res://gui/main/scripts/armour_preference.gd" id="15_bpsop"]
 [ext_resource type="Texture2D" uid="uid://cqjvar71exxv7" path="res://images/icons/journal.svg" id="15_xy43e"]
 [ext_resource type="Texture2D" uid="uid://dqsr4uq5f6ucf" path="res://images/icons/settings.svg" id="16_15y0b"]
-[ext_resource type="Script" path="res://gui/main/scripts/potion_preference.gd" id="16_nncd2"]
+[ext_resource type="Script" uid="uid://0n1otdlfi5ii" path="res://gui/main/scripts/potion_preference.gd" id="16_nncd2"]
 [ext_resource type="PackedScene" uid="uid://dxb635fm2610y" path="res://gui/main/scenes/tooltip.tscn" id="17_6m177"]
-[ext_resource type="Script" path="res://gui/main/scripts/skill_modules.gd" id="17_prvid"]
-[ext_resource type="Script" path="res://gui/main/scripts/statistics.gd" id="22_iplwq"]
+[ext_resource type="Script" uid="uid://bxuqunhdt65c1" path="res://gui/main/scripts/recipes.gd" id="17_ko12v"]
+[ext_resource type="Script" uid="uid://evcj1ksu1pyr" path="res://gui/main/scripts/skill_modules.gd" id="17_prvid"]
+[ext_resource type="Script" uid="uid://cpbgiil5hkv12" path="res://gui/main/scripts/statistics.gd" id="22_iplwq"]
 [ext_resource type="PackedScene" uid="uid://bgkcyaksqhx68" path="res://gui/chart/scenes/chart.tscn" id="23_bktjj"]
 [ext_resource type="Texture2D" uid="uid://daweldqfvj4c" path="res://images/icons/chart.svg" id="27_2mq8c"]
 
@@ -49,8 +50,6 @@ void fragment() {
 shader = SubResource("Shader_t5fec")
 shader_parameter/speed = 8.0
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_kr5p7"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w674s"]
 draw_center = false
 border_width_left = 4
@@ -58,6 +57,8 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.0117647, 0.0392157, 0.0705882, 1)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_kr5p7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qskvj"]
 
@@ -1029,14 +1030,68 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Inventory" type="Panel" parent="Journal" node_paths=PackedStringArray("tooltip")]
+[node name="Guilds" type="Panel" parent="Journal" node_paths=PackedStringArray("tooltip")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("11_4ftob")
 tooltip = NodePath("../../Tooltip")
 
-[node name="Label" type="Label" parent="Journal/Inventory"]
+[node name="Label" type="Label" parent="Journal/Guilds"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "GUILDS"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Journal/Guilds"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Journal/Guilds/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Inventory" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ck100")
+
+[node name="Inventory" type="Panel" parent="Inventory" node_paths=PackedStringArray("tooltip")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("11_4ftob")
+tooltip = NodePath("../../Tooltip")
+
+[node name="Label" type="Label" parent="Inventory/Inventory"]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -1051,35 +1106,35 @@ text = "INVENTORY"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Journal/Inventory"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Inventory/Inventory"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
-offset_top = 16.0
+offset_top = 30.0
 offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Journal/Inventory/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Inventory/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="LabelGold" type="Label" parent="Journal/Inventory/ScrollContainer/VBoxContainer"]
+[node name="LabelGold" type="Label" parent="Inventory/Inventory/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "GOLD: 0"
 vertical_alignment = 1
 
-[node name="Potions" type="VBoxContainer" parent="Journal/Inventory/ScrollContainer/VBoxContainer"]
+[node name="Potions" type="VBoxContainer" parent="Inventory/Inventory/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label0" type="Label" parent="Journal/Inventory/ScrollContainer/VBoxContainer/Potions"]
+[node name="Label0" type="Label" parent="Inventory/Inventory/ScrollContainer/VBoxContainer/Potions"]
 visible = false
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
@@ -1088,11 +1143,11 @@ mouse_filter = 0
 text = "ITEM"
 autowrap_mode = 3
 
-[node name="Quest" type="VBoxContainer" parent="Journal/Inventory/ScrollContainer/VBoxContainer"]
+[node name="Quest" type="VBoxContainer" parent="Inventory/Inventory/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label0" type="Label" parent="Journal/Inventory/ScrollContainer/VBoxContainer/Quest"]
+[node name="Label0" type="Label" parent="Inventory/Inventory/ScrollContainer/VBoxContainer/Quest"]
 visible = false
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
@@ -1101,11 +1156,11 @@ mouse_filter = 0
 text = "ITEM"
 autowrap_mode = 3
 
-[node name="Inventory" type="VBoxContainer" parent="Journal/Inventory/ScrollContainer/VBoxContainer"]
+[node name="Inventory" type="VBoxContainer" parent="Inventory/Inventory/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label0" type="Label" parent="Journal/Inventory/ScrollContainer/VBoxContainer/Inventory"]
+[node name="Label0" type="Label" parent="Inventory/Inventory/ScrollContainer/VBoxContainer/Inventory"]
 visible = false
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
@@ -1113,6 +1168,340 @@ size_flags_vertical = 6
 mouse_filter = 0
 text = "ITEM"
 autowrap_mode = 3
+
+[node name="Recipes" type="Panel" parent="Inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("17_ko12v")
+
+[node name="Label" type="Label" parent="Inventory/Recipes"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "KNOWN_RECIPES"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Inventory/Recipes"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 30.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Alchemy" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
+mouse_filter = 0
+theme_override_font_sizes/font_size = 10
+text = "ALCHEMY"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy/VBoxContainer"]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy/VBoxContainer/Panel0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+text = "NAME"
+alignment = 1
+
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy/VBoxContainer/Panel0"]
+modulate = Color(1, 1, 1, 0.752941)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 4
+
+[node name="WeaponSmithing" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
+mouse_filter = 0
+theme_override_font_sizes/font_size = 10
+text = "WEAPON_SMITHING"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing/VBoxContainer"]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing/VBoxContainer/Panel0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+text = "NAME"
+alignment = 1
+
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing/VBoxContainer/Panel0"]
+modulate = Color(1, 1, 1, 0.752941)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 4
+
+[node name="ArmourSmithing" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
+mouse_filter = 0
+theme_override_font_sizes/font_size = 10
+text = "ARMOUR_SMITHING"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing/VBoxContainer"]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing/VBoxContainer/Panel0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+text = "NAME"
+alignment = 1
+
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing/VBoxContainer/Panel0"]
+modulate = Color(1, 1, 1, 0.752941)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 4
+
+[node name="Woodwork" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
+mouse_filter = 0
+theme_override_font_sizes/font_size = 10
+text = "WOODWORK"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork/VBoxContainer"]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork/VBoxContainer/Panel0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+text = "NAME"
+alignment = 1
+
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork/VBoxContainer/Panel0"]
+modulate = Color(1, 1, 1, 0.752941)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 4
+
+[node name="Tayloring" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 2
+tooltip_text = "SKILL_MODULES_DESCRIPTION"
+mouse_filter = 0
+theme_override_font_sizes/font_size = 10
+text = "TAYLORING"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring/VBoxContainer"]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring/VBoxContainer/Panel0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+text = "NAME"
+alignment = 1
+
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring/VBoxContainer/Panel0"]
+modulate = Color(1, 1, 1, 0.752941)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 4
 
 [node name="Statistics" type="HBoxContainer" parent="."]
 visible = false
@@ -1292,7 +1681,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
-offset_top = 24.0
+offset_top = 30.0
 offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 2
@@ -1339,6 +1728,7 @@ alignment = 1
 selected = 1
 item_count = 6
 popup/item_0/text = "TRAINING"
+popup/item_0/id = 0
 popup/item_1/text = "GRINDING"
 popup/item_1/id = 1
 popup/item_2/text = "QUESTING"
@@ -1541,7 +1931,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
-offset_top = 35.0
+offset_top = 30.0
 offset_right = -5.0
 offset_bottom = -5.0
 grow_horizontal = 2
@@ -2078,6 +2468,44 @@ text = "Character"
 vertical_alignment = 1
 text_overrun_behavior = 3
 
+[node name="Button5" type="Button" parent="SideMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+tooltip_text = "JOURNAL"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g737p")
+
+[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button5"]
+self_modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("15_xy43e")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Character"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
 [node name="Button4" type="Button" parent="SideMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
@@ -2213,5 +2641,6 @@ theme = ExtResource("2_ck100")
 [connection signal="pressed" from="SideMenu/VBoxContainer/Button0" to="." method="_show_overview"]
 [connection signal="pressed" from="SideMenu/VBoxContainer/Button1" to="." method="_show_character"]
 [connection signal="pressed" from="SideMenu/VBoxContainer/Button2" to="." method="_show_journal"]
+[connection signal="pressed" from="SideMenu/VBoxContainer/Button5" to="." method="_show_inventory"]
 [connection signal="pressed" from="SideMenu/VBoxContainer/Button4" to="." method="_show_statistics"]
 [connection signal="pressed" from="SideMenu/VBoxContainer/Button3" to="." method="_show_options"]
