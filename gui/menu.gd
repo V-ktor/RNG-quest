@@ -2,7 +2,7 @@ extends Node
 
 const MAP_SCROLL_SPEED = 30.0
 
-var version:= "0.1.1c"
+var version:= "0.1.2"
 
 var characters:= []
 var main:= preload("res://scenes/main/main.tscn")

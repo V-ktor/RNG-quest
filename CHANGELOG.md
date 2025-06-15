@@ -1,6 +1,17 @@
 # Change log
 
-##v0.1.1c
+## v0.1.2
+
+### Interface
+* added known recipes and guild information
+* filter options for crafting
+* tooltips are now shown after a delay of 0.5s
+
+### Balancing
+* increased player character's base accuracy by 10 to avoid high miss rates for new characters
+* retreat after 1000 battle turns
+
+## v0.1.1c
 
 ### Interface
 * fixed title window hiding stats
@@ -19,15 +30,6 @@
 ### Content
 * a few more prefixes and suffixes for legendary equipment
 * new name generator for legendary equipment
-
-### Interface
-* added known recipes and guild information
-* filter options for crafting
-* tooltips are now shown after a delay of 0.5s
-
-### Balancing
-* increased player character's base accuracy by 10 to avoid high miss rates for new characters
-* retreat after 1000 battle turns
 
 ### Internal changes
 * moved several definitions into json files to prepare modding support
