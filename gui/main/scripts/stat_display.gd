@@ -25,7 +25,7 @@ func _draw():
 	points.resize(num_stats)
 	for i in range(num_stats):
 		var angle:= 2.0 * PI * float(i) / float(num_stats)
-		var to:= (length + 8.0) * Vector2(cos(angle) * cos(angle) + sin(angle) * sin(angle), 0).rotated(angle)
+		var to:= (length + 8.0) * Vector2.RIGHT.rotated(angle) #replaced Vector2(cos(angle) * cos(angle) + sin(angle) * sin(angle), 0) because it's always (1,0)
 		var j:= int(i + 1) % num_stats
 		var angle2 := 2.0 * PI * float(j) / float(num_stats)
 		draw_line(center, center + to, Color(0.5, 0.5, 0.5, 1.0), 2.0, true)

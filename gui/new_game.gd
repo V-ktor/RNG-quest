@@ -215,6 +215,8 @@ func start_game():
 	var magical:= "elemental_magic" in player_abilities || "nature_magic" in player_abilities || "celestial_magic" in player_abilities || "defensive_magic" in player_abilities
 	var healer:= "healing" in player_abilities && !magical
 	main_instance.player_name = player_name
+	main_instance.current_time = Time.get_unix_time_from_system()
+	main_instance.player_creation_time = main_instance.current_time
 	if player_race==player_alt_race:
 		player_alt_race = ""
 		hybrid_race = false
@@ -314,9 +316,12 @@ func start_game():
 		main_instance.set_region("farmland")
 	main_instance.current_location = main_instance.current_region.cities.keys().pick_random()
 	main_instance.join_guild("adventurer_guild")
-	main_instance.current_time = Time.get_unix_time_from_system()
 	main_instance.player_vegan = player_vegan
-	main_instance.player_creation_time = main_instance.current_time
+	main_instance.store_historical_data("level", main_instance.player.level)
+	for k in player_abilities:
+		main_instance.store_historical_data("abilities", main_instance.player.abilities[k], k)
+	for stat in main_instance.player.stats:
+		main_instance.store_historical_data("stats", main_instance.player.stats[stat], stat)
 	get_parent().add_child(main_instance)
 	
 	var main_gui_instance:= main_gui.instantiate()

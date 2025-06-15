@@ -7,6 +7,8 @@ const POPUP_DELAY = 0.5
 var current_texts: Array
 var waiting_for_popup:= false
 var popup_position: Vector2
+# scaling disorted the coordinates, this is a local fix, set in _set_scale
+var scaled_window_size: Vector2
 
 @onready var container:= $VBoxContainer as VBoxContainer
 @onready var text_label:= $VBoxContainer/RichTextLabel as RichTextLabel
@@ -43,12 +45,14 @@ func _set_scale(text: String):
 	position = get_global_mouse_position() + Vector2(8, 0)
 	size.x = clampi(16 + 8 * _get_max_line_length(text), 192, 448)
 	size.y = clampi(56 + 17 * text.count("\n"), 64, 512)
+	scaled_window_size =  DisplayServer.window_get_size() / get_tree().root.content_scale_factor
 
 func _set_pos():
+	# the coordinates are disorted relative to window size due to scaling
 	# Move tooltip to the other side if it it reaches the window border
-	if position.x + size.x > DisplayServer.window_get_size().x:
+	if position.x + size.x > scaled_window_size.x:
 		position.x -= size.x
-	if position.y + size.y > DisplayServer.window_get_size().y:
+	if position.y + size.y > scaled_window_size.y:
 		position.y -= size.y
 
 func _show_delayed():
@@ -113,5 +117,6 @@ func _process(_delta: float):
 		hide()
 		return
 	
-	position.x = minf(position.x, DisplayServer.window_get_size().x - size.x - 16)	# leave extra space for scroll bar
-	position.y = clampf(position.y, 0, DisplayServer.window_get_size().y - size.y)
+	position.x = minf(position.x, scaled_window_size.x - size.x - 16)	# leave extra space for scroll bar
+	position.y = clampf(position.y, 0, scaled_window_size.y - size.y)
+	
