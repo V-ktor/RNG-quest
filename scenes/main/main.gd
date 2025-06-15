@@ -126,6 +126,7 @@ var summary_text:= ""
 var action_failures:= 0
 var enemies:= []
 var loot:= []
+var turn_counter:= 0
 var current_time: float
 var info_update:= false
 var skill_update:= false
@@ -1666,12 +1667,15 @@ func action_done(action: Dictionary):
 		start_task(current_task_ID)
 		return
 	if enemies.size()>0:
-		if player.health<=RETREAT_THRESHOLD*player.max_health || action_failures>50:
+		turn_counter += 1
+		
+		if player.health<=RETREAT_THRESHOLD*player.max_health || action_failures>50 || turn_counter > 1000:
 			enemies.clear()
 			player_summons.clear()
 			update_characters()
 			loot.clear()
 			action_failures = 0
+			turn_counter = 0
 			do_action("retreat", {}, RETREAT_DELAY/(1.0 + float(player.abilities.has("trapping"))))
 			return
 		elif player.health<=POTION_THRESHOLD*player.max_health && player_potions.size()>0 && player_potion_delay<=0.0:
@@ -1684,6 +1688,7 @@ func action_done(action: Dictionary):
 			do_action("quaff_potion", {"type": "stamina"}, POTION_DELAY)
 			return
 	elif enemies.size() == 0:
+		turn_counter = 0
 		if loot.size()>0:
 			do_action("loot", {}, LOOT_DELAY)
 			return
@@ -2807,6 +2812,8 @@ func start_task(task_ID: int, task:= ""):
 		task = timetable.values()[task_ID]
 	if task==current_task:
 		return
+	turn_counter = 0
+	
 	if task=="crafting":
 		if player_inventory.size()<2:
 			if player_gold > get_potion_gold_limit() || player_inventory.size() > 50:
