@@ -77,8 +77,8 @@ func _process(_delta: float):
 		panel.get_node("VBoxContainer/HBoxContainer/VBoxContainer/FocusBar").set_max(character.max_focus)
 		panel.get_node("VBoxContainer/HBoxContainer/VBoxContainer/FocusBar").set_value(character.focus)
 		panel.get_node("VBoxContainer/HBoxContainer/VBoxContainer/FocusBar").set_tooltip_text(tr("FOCUS") + ": " + str(int(character.focus)) + " / " + str(character.max_focus))
-#		panel.get_node("VBoxContainer/HBoxContainer/VBoxContainer/ExpBar").set_max(character.get_max_exp())
-#		panel.get_node("VBoxContainer/HBoxContainer/VBoxContainer/ExpBar").set_value(character.experience)
+		panel.get_node("VBoxContainer/TopContainer/Name/ExpBar").set_max(character.get_max_exp())
+		panel.get_node("VBoxContainer/TopContainer/Name/ExpBar").set_value(character.experience)
 		panel.get_node("VBoxContainer/HBoxContainer/VBoxContainer/ProgressBar").set_max(character.action_duration)
 		panel.get_node("VBoxContainer/HBoxContainer/VBoxContainer/ProgressBar").set_value(character.action_duration - character.delay)
 		panel.get_node("VBoxContainer/HBoxContainer/VBoxContainer/ProgressBar/Label").text = character.current_action

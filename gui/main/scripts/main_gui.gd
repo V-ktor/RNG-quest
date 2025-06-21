@@ -239,6 +239,7 @@ func connect_to_main(main: Main):
 	potion_preference_panel.character_settings = main_character_settings
 	statistics.historical_data = main.historical_data
 	guild_panel.guild_lvl = main.player_guild_lvl
+	guild_panel.guild_exp = main.player_guild_exp
 	
 	main.gui_ready()
 	timetable_panel.update(main.timetable, main.time_offset)

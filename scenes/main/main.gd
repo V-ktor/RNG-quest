@@ -883,6 +883,7 @@ func add_guild_exp(type: String, exp_scale := 1.0):
 	for guild in player_guild_exp.keys():
 		if type in Guilds.GUILDS[guild].exp_gain:
 			player_guild_exp[guild] += int(ceil(exp_scale * Guilds.GUILDS[guild].exp_gain[type]))
+	emit_signal("guilds_updated")
 
 func guild_level_up(guild: String):
 	var item: Dictionary
@@ -949,6 +950,7 @@ func guild_level_up(guild: String):
 	optimize_equipment()
 	print_log_msg(tr("GUILD_ITEM_REWARD").format(item))
 	store_historical_data("guilds", player_guild_lvl[guild], guild)
+	emit_signal("guilds_updated")
 
 
 func recalc_attributes():
@@ -1128,6 +1130,7 @@ func quest_done():
 	quest_progress += 1
 	if current_quest.has("guild"):
 		player_guild_exp[current_quest.guild] += 50
+		emit_signal("guilds_updated")
 	if current_quest.has("reward"):
 		if current_quest.reward.has("exp"):
 			add_exp(current_quest.exp)
@@ -1217,7 +1220,7 @@ func action_done(action: Dictionary):
 				add_guild_exp("exploration")
 			if current_location in current_region.cities:
 				for guild in player_guild_exp.keys():
-					if player_guild_exp[guild]>=Guilds.get_max_exp(player_guild_lvl[guild]):
+					if player_guild_exp[guild] >= Guilds.get_max_exp(player_guild_lvl[guild]):
 						guild_level_up(guild)
 				if player.level>=20*player_guild_lvl.size()-10:
 					var guild:= Guilds.pick_guild(player.abilities.keys(), player_guild_lvl.keys())

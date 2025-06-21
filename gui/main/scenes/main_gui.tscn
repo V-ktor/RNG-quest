@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://s10031v8frul"]
+[gd_scene load_steps=45 format=3 uid="uid://s10031v8frul"]
 
 [ext_resource type="Script" uid="uid://8de6201xgfoq" path="res://gui/main/scripts/main_gui.gd" id="1_rxg50"]
 [ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://themes/light_theme.tres" id="2_ck100"]
@@ -51,6 +51,11 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1cgrk"]
 shader = SubResource("Shader_t5fec")
 shader_parameter/speed = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2hy47"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1giea"]
+bg_color = Color(0.376471, 0.752941, 0.25098, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w674s"]
 draw_center = false
@@ -1072,7 +1077,6 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="Guild0" type="HBoxContainer" parent="Journal/Guilds/ScrollContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="LabelName" type="Label" parent="Journal/Guilds/ScrollContainer/VBoxContainer/Guild0"]
@@ -1080,6 +1084,20 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "NAME"
+
+[node name="ExpBar" type="ProgressBar" parent="Journal/Guilds/ScrollContainer/VBoxContainer/Guild0/LabelName"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxEmpty_2hy47")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1giea")
+value = 50.0
+show_percentage = false
 
 [node name="LabelRank" type="Label" parent="Journal/Guilds/ScrollContainer/VBoxContainer/Guild0"]
 layout_mode = 2
@@ -2480,14 +2498,14 @@ offset_right = -2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Character"
+text = "Journal"
 vertical_alignment = 1
 text_overrun_behavior = 3
 
 [node name="Button5" type="Button" parent="SideMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-tooltip_text = "JOURNAL"
+tooltip_text = "INVENTORY"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_g737p")
 
@@ -2518,7 +2536,7 @@ offset_right = -2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Character"
+text = "Inventory"
 vertical_alignment = 1
 text_overrun_behavior = 3
 
@@ -2556,7 +2574,7 @@ offset_right = -2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Character"
+text = "Statistics"
 vertical_alignment = 1
 text_overrun_behavior = 3
 
@@ -2594,7 +2612,7 @@ offset_right = -2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Character"
+text = "Options"
 vertical_alignment = 1
 text_overrun_behavior = 3
 
@@ -2625,6 +2643,10 @@ vertical_alignment = 1
 [node name="Tooltip" parent="." instance=ExtResource("17_6m177")]
 visible = false
 theme = ExtResource("2_ck100")
+
+[node name="Timer" type="Timer" parent="Tooltip"]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="status_entered" from="Overview/Enemy" to="." method="_show_status_tooltip"]
 [connection signal="mouse_entered" from="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Label" to="Overview/HBoxContainer/Region" method="_show_region_tooltip"]
@@ -2660,3 +2682,4 @@ theme = ExtResource("2_ck100")
 [connection signal="pressed" from="SideMenu/VBoxContainer/Button5" to="." method="_show_inventory"]
 [connection signal="pressed" from="SideMenu/VBoxContainer/Button4" to="." method="_show_statistics"]
 [connection signal="pressed" from="SideMenu/VBoxContainer/Button3" to="." method="_show_options"]
+[connection signal="timeout" from="Tooltip/Timer" to="Tooltip" method="show_tooltip"]

@@ -13,6 +13,7 @@ var scaled_window_size: Vector2
 @onready var container:= $VBoxContainer as VBoxContainer
 @onready var text_label:= $VBoxContainer/RichTextLabel as RichTextLabel
 @onready var tabs_container:= $VBoxContainer/Tabs as HBoxContainer
+@onready var timer:= $Timer
 
 
 func _get_text_length(text: String) -> int:
@@ -60,8 +61,9 @@ func _show_delayed():
 	
 	waiting_for_popup = true
 	popup_position = get_local_mouse_position()
-	await get_tree().create_timer(POPUP_DELAY).timeout
-	
+	timer.start()
+
+func show_tooltip():
 	if not waiting_for_popup:
 		return
 	_set_pos()
@@ -119,4 +121,3 @@ func _process(_delta: float):
 	
 	position.x = minf(position.x, scaled_window_size.x - size.x - 16)	# leave extra space for scroll bar
 	position.y = clampf(position.y, 0, scaled_window_size.y - size.y)
-	
