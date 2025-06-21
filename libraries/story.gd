@@ -864,7 +864,7 @@ func get_title(chapter: int) -> String:
 	return title
 
 func get_person_description(npc: Dictionary) -> String:
-	return npc.description + "\n" + tr("LOCATION") + ": " + npc.location
+	return (npc.description + "\n" + tr("LOCATION") + ": " + npc.location).replace("'", "")
 
 func get_dungeon_name() -> String:
 	var _name: String = DUNGEON_NAME.pick_random()
