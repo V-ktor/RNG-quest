@@ -67,11 +67,11 @@ border_color = Color(0.0117647, 0.0392157, 0.0705882, 1)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_kr5p7"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qskvj"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64y7e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7hsw0"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64y7e"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qskvj"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_g737p"]
 
@@ -2369,9 +2369,9 @@ offset_top = 2.0
 offset_right = -2.0
 offset_bottom = -2.0
 grow_vertical = 0
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_qskvj")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_7hsw0")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_64y7e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7hsw0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qskvj")
 toggle_mode = true
 
 [node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/SpaceTop/Button"]

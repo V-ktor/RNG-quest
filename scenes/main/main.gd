@@ -156,21 +156,21 @@ signal freed
 func set_region(type: String) -> String:
 	current_region = Regions.create_region(type)
 	# Adjust difficulty.
-	if player.level<current_region.level:
+	if player.level < current_region.level:
 		current_region.tier -= 1
-	elif current_region.level<player.level-25:
+	elif current_region.level < player.level - 25:
 		current_region.tier += 2
 		current_region.level += 10
-	elif current_region.level<player.level-20:
+	elif current_region.level < player.level - 20:
 		current_region.tier += 2
 		current_region.level += 5
-	elif current_region.level<player.level-15:
+	elif current_region.level < player.level - 15:
 		current_region.tier += 1
 		current_region.level += 10
-	elif current_region.level<player.level-10:
+	elif current_region.level < player.level - 10:
 		current_region.tier += 1
 		current_region.level += 5
-	elif current_region.level<player.level-5:
+	elif current_region.level < player.level - 5:
 		current_region.tier += 1
 	Story.locations = current_region.locations
 	Story.cities = current_region.cities
@@ -554,17 +554,17 @@ func create_shop_equipment(type: String, quality_mod:= 1.0) -> Dictionary:
 	var num_enchantments:= 0
 	item = Items.create_random_standard_equipment(type, current_region, 0, quality_mod)
 	for i in range(3):
-		if randf()<current_region.enchantment_chance:
+		if randf() < current_region.enchantment_chance:
 			num_enchantments += 1
 	for i in range(num_enchantments):
 		var quality: int
 		var tier_multiplier:= 1.0
-		var level_multiplier: float = 1.0 + 0.05*(current_region.level + player.level - 2)
-		if current_region.tier<0:
-			tier_multiplier = 1.0/sqrt(-1.5*current_region.tier)
-		elif current_region.tier>0:
-			tier_multiplier = sqrt(1.5*current_region.tier)
-		quality = int(100*level_multiplier*tier_multiplier)
+		var level_multiplier: float = 1.0 + 0.05 * (current_region.level + player.level - 2)
+		if current_region.tier < 0:
+			tier_multiplier = 1.0 / sqrt(-1.5 * current_region.tier)
+		elif current_region.tier > 0:
+			tier_multiplier = sqrt(1.5 * current_region.tier)
+		quality = int(100*level_multiplier * tier_multiplier)
 		item = Items.enchant_equipment(item, Items.Enchantment.enchantments_by_tier.regular.pick_random(), quality)
 		if randf() < 0.02:
 			item = Items.enchant_equipment(item, Items.Enchantment.enchantments_by_tier.curse.pick_random(), quality)
@@ -942,7 +942,7 @@ func guild_level_up(guild: String):
 				item = Items.create_regional_material(current_region.location_resources[current_location].pick_random(), current_region, 1.5)
 			else:
 				item = Items.create_regional_material(current_region.resources.pick_random(), current_region, 1.5)
-			amount = randi_range(10,14)
+			amount = randi_range(10, 14)
 	item.source = tr("GUILD_REWARD").format({"guild": tr(Guilds.GUILDS[guild].name.to_upper())})
 	item.description = Items.create_tooltip(item)
 	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
@@ -1098,7 +1098,7 @@ func next_chapter():
 	print_summary_msg(text)
 	update_quest_log()
 	
-	if abs(player.level-current_region.level)>=4:
+	if abs(player.level - current_region.level) >= 4:
 		var region:= Regions.select_next_region(player.level)
 		do_action("wander", {"region":region, "region_type":tr(region.to_upper())}, QUICKTRAVEL_DELAY)
 
@@ -1106,7 +1106,7 @@ func start_quest():
 	var quest:= Story.next_quest(current_region)
 	print_log_msg(tr("QUEST_ACCEPTED")+"\n"+quest.name)
 	if quest.has("npc"):
-		if quest.npc.location==current_location:
+		if quest.npc.location == current_location:
 			print_log_msg("[color=blue][hint=" + Story.get_person_description(quest.npc) + "]" + quest.npc.name + '[/hint][/color]: "' + Names.GREETINGS[quest.npc.personality].pick_random() + '"')
 		else:
 			quest.npc.location = current_location
@@ -1125,7 +1125,7 @@ func quest_done():
 	var pos:= quest_log.rfind('•') + 1
 	if current_quest.has("log"):
 		print_log_msg(current_quest.log)
-	if current_quest.has("npc") && current_quest.npc.location==current_location:
+	if current_quest.has("npc") && current_quest.npc.location == current_location:
 		print_log_msg("[color=blue][hint=" + Story.get_person_description(current_quest.npc) + "]" + current_quest.npc.name + '[/hint][/color]: "' + Names.QUEST_DONE[current_quest.npc.personality].pick_random() + '"')
 	quest_progress += 1
 	if current_quest.has("guild"):
@@ -1134,7 +1134,7 @@ func quest_done():
 	if current_quest.has("reward"):
 		if current_quest.reward.has("exp"):
 			add_exp(current_quest.exp)
-		if current_quest.has("equipment_chance") && randf()<current_quest.equipment_chance:
+		if current_quest.has("equipment_chance") && randf() < current_quest.equipment_chance:
 			var item:= create_shop_equipment(player.equipment.values().pick_random().base_type)
 			if current_quest.has("person"):
 				item.source = tr("QUEST_REWARD_PERSON").format(current_quest)
@@ -1222,9 +1222,9 @@ func action_done(action: Dictionary):
 				for guild in player_guild_exp.keys():
 					if player_guild_exp[guild] >= Guilds.get_max_exp(player_guild_lvl[guild]):
 						guild_level_up(guild)
-				if player.level>=20*player_guild_lvl.size()-10:
+				if player.level >= 20*player_guild_lvl.size() - 10:
 					var guild:= Guilds.pick_guild(player.abilities.keys(), player_guild_lvl.keys())
-					if guild!="":
+					if guild != "":
 						join_guild(guild)
 			emit_signal("location_changed", current_region, current_location)
 		"engage":
@@ -1729,13 +1729,13 @@ func action_done(action: Dictionary):
 				return
 			else:
 				current_quest.stage += 1
-			if current_quest.has("location") && current_location!=current_quest.location:
+			if current_quest.has("location") && current_location != current_quest.location:
 				do_action("goto", {"location": current_quest.location}, TRAVEL_DELAY)
 				return
 			match current_quest.action:
 				"talk":
 					if current_quest.stage<1:
-						do_action("talk", {"name": current_quest.npc.display_name, "description":Story.get_person_description(current_quest.npc)}, QUESTING_DELAY)
+						do_action("talk", {"name": current_quest.npc.display_name, "description": Story.get_person_description(current_quest.npc)}, QUESTING_DELAY)
 					else:
 						quest_done()
 					return
@@ -1754,13 +1754,13 @@ func action_done(action: Dictionary):
 						quest_done()
 					return
 				"search":
-					if current_quest.stage<current_quest.amount:
+					if current_quest.stage < current_quest.amount:
 						do_action("searching", {"location": current_quest.location}, QUESTING_DELAY)
 					else:
 						quest_done()
 					return
 				"dig":
-					if current_quest.stage<1:
+					if current_quest.stage < 1:
 						if !current_quest.has("location"):
 							current_quest.location = current_location
 						do_action("dig", {"location": current_quest.location}, QUESTING_DELAY)
@@ -1768,13 +1768,13 @@ func action_done(action: Dictionary):
 						quest_done()
 					return
 				"map_location":
-					if current_quest.stage<1:
+					if current_quest.stage < 1:
 						do_action("map_location", {"location": current_quest.location}, QUESTING_DELAY)
 					else:
 						quest_done()
 					return
 				"collect", "fetch":
-					if current_quest.stage<current_quest.amount:
+					if current_quest.stage < current_quest.amount:
 						do_action("collect", {"item": current_quest.item, "item_name": current_quest.item.name, "amount": current_quest.amount}, QUESTING_DELAY)
 					else:
 						quest_done()
@@ -3195,7 +3195,7 @@ func _load():
 	if typeof(current_region.locations) != TYPE_DICTIONARY:
 		var dict:= {}
 		for location_name in current_region.locations:
-			dict[location_name] = {"name": location_name, "type": "field"}  # TODO: type
+			dict[location_name] = {"name": location_name, "type": "field"}
 		current_region.locations = dict
 	
 	data = JSON.parse_string(get_dict_text(file)) as Dictionary

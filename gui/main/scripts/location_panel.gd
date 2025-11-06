@@ -25,6 +25,26 @@ var icons:= {
 	"floating_island": preload("res://images/gui/floating_island.svg"),
 	"cloud": preload("res://images/gui/cloud.svg"),
 }
+var colors:= {
+	"settlement": Color(0.2, 0.8, 0.2),
+	"town": Color(0.2, 0.8, 0.2),
+	"castle": Color(0.2, 0.8, 0.2),
+	"graveyard": Color(0.7, 0.6, 0.1),
+	"dungeon": Color(0.7, 0.6, 0.1),
+	"river": Color(0.7, 0.6, 0.1),
+	"cave": Color(0.7, 0.6, 0.1),
+	"dunes": Color(0.7, 0.6, 0.1),
+	"coast": Color(0.7, 0.6, 0.1),
+	"field": Color(0.7, 0.6, 0.1),
+	"factory": Color(0.7, 0.6, 0.1),
+	"sea": Color(0.7, 0.6, 0.1),
+	"mountain": Color(0.7, 0.6, 0.1),
+	"volcano": Color(0.7, 0.6, 0.1),
+	"forest": Color(0.7, 0.6, 0.1),
+	"swamp": Color(0.7, 0.6, 0.1),
+	"floating_island": Color(0.7, 0.6, 0.1),
+	"cloud": Color(0.7, 0.6, 0.1),
+}
 var region_description:= ""
 var location_descriptions: Array[String] = []
 
@@ -42,6 +62,9 @@ func update(locations: Array[Dictionary], region_name: String, description: Stri
 	for i in range(locations.size()):
 		var location:= locations[i]
 		var container: HBoxContainer
+		var color: Color = Color(0.5, 0.5, 0.5)
+		if location.type in colors:
+			color = colors[location.type]
 		if has_node("ScrollContainer/VBoxContainer/Location" + str(i)):
 			container = get_node("ScrollContainer/VBoxContainer/Location" + str(i))
 		else:
@@ -53,10 +76,12 @@ func update(locations: Array[Dictionary], region_name: String, description: Stri
 			container.connect("mouse_entered", Callable(self, "_show_location_tooltip").bind(i))
 		location_descriptions[i] = location.name + "\n" + tr(location.type.to_upper())
 		
-		container.get_node("Label").text = location.name
+		(container.get_node("Label") as Label).text = location.name
+		(container.get_node("Label") as Label).add_theme_color_override("font_color", color)
 		container.get_node("Inactive").visible = location.name != current_location
 		container.get_node("Staying").visible = location.name == current_location
-		container.get_node("Icon").texture = icons.get(location.type, icons.settlement)
+		(container.get_node("Icon") as TextureRect).texture = icons.get(location.type, icons.settlement)
+		(container.get_node("Icon") as TextureRect).modulate = color
 		container.show()
 
 

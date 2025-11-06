@@ -15,6 +15,7 @@ func update():
 	for i in range(character.skills.size()):
 		var label: Label
 		var skill: Dictionary = character.skills[i]
+		var rank:= mini(int(skill.level * Items.RANK_COLORS.size() / 50), Items.RANK_COLORS.size()-1)
 		if vbox_container.has_node("Skill" + str(i)):
 			label = vbox_container.get_node("Skill" + str(i)) as Label
 		else:
@@ -24,6 +25,7 @@ func update():
 		if !label.is_connected("mouse_entered", Callable(self, "_show_skill_tooltip")):
 			label.connect("mouse_entered", Callable(self, "_show_skill_tooltip").bind(i))
 		label.text = skill.name + " " + Skills.convert_to_roman_number(skill.level)
+		label.add_theme_color_override("font_color", Items.RANK_COLORS[rank])
 		label.show()
 
 # Tooltips
