@@ -138,6 +138,16 @@ func create_enemy(type: String, level: int, tier:= 0) -> Characters.Enemy:
 	if dict.has("race"):
 		enemy.race = dict.race
 	enemy.position = -max_range - 1
+	
+	var abilities: Dictionary[String, Dictionary] = {}
+	for ability_id in enemy.abilities:
+		abilities[ability_id] = {
+			"name": ability_id,
+			"level": int(5 * log(level)),
+			"experience": 0.0,
+		}
+	enemy.abilities = abilities
+	
 	ret = Characters.Enemy.new(enemy)
 	ret.recover()
 	ret.description = create_tooltip(ret)

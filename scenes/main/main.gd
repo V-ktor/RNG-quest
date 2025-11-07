@@ -91,7 +91,7 @@ var player_name:= "Player"
 var player_gender:= "None"
 var player_race:= "Unknown"
 var player: Characters.Character
-var player_ability_exp:= {}
+#var player_ability_exp:= {}
 var player_inventory:= []
 var player_potions:= []
 var player_summons:= []
@@ -368,11 +368,16 @@ func learn_new_ability(type := ""):
 		type = pick_ability()
 	if type.length() == 0:
 		for ability in player.abilities.keys():
-			player.abilities[ability] += 1
+			player.abilities[ability].level_up()
 		return
+	
 	var text:= tr("LEARNED_ABIlITY_LOG").format({"ability": tr(Skills.ABILITIES[type].name.to_upper())})
-	player.abilities[type] = 1
-	player_ability_exp[type] = 0
+	player.abilities[type] = Ability.new({
+		"name": Skills.ABILITIES[type].name,
+		"level": 1,
+		"experience": 0,
+	})
+	#player_ability_exp[type] = 0
 	learn_new_skill()
 	print_log_msg(text)
 	print_summary_msg(text)
@@ -794,8 +799,8 @@ func get_material_gold_limit() -> int:
 func get_max_exp(lvl: int) -> int:
 	return 50 + 50 * lvl * lvl
 
-func get_ability_exp(lvl: int) -> int:
-	return 100 + 75 * lvl + 25 * lvl * lvl
+#func get_ability_exp(lvl: int) -> int:
+#	return 100 + 75 * lvl + 25 * lvl * lvl
 
 func get_delay_scale(speed: int) -> float:
 	var s := Characters.get_resistance(speed / 10.0) * 10
@@ -813,7 +818,7 @@ func get_min_character_dist(character: Characters.Character, opponents: Array[Ch
 
 func get_soul_stone_drop_chance() -> float:
 	if player.abilities.has("soul_binding"):
-		return min(0.05 + 0.005 * player.abilities.soul_binding, 0.25)
+		return min(0.05 + 0.005 * player.abilities.soul_binding.level, 0.25)
 	return 0.05
 
 func get_empty_soul_stone():
@@ -824,7 +829,7 @@ func get_empty_soul_stone():
 func extract_soul() -> float:
 	for item in player_inventory:
 		if item.type == "material" && item.has("tags") && "soul" in item.tags:
-			var scaling: float = max(sqrt(1.0 + float(item.quality) / 200.0 + 0.01*player.abilities.soul_binding) - 1.0, 0.0)
+			var scaling: float = max(sqrt(1.0 + float(item.quality) / 200.0 + 0.01*player.abilities.soul_binding.level) - 1.0, 0.0)
 			item.name = Items.materials.empty_soul_stone.name.pick_random().capitalize()
 			item.tags = ["cage"]
 			item.quality = int(item.quality * 0.75)
@@ -1056,8 +1061,8 @@ func get_recipe_level(recipe: String) -> int:
 		if "recipes" not in ability_data or recipe not in ability_data.recipes:
 			continue
 		
-		if player.abilities[ability] > level:
-			level = player.abilities[ability]
+		if player.abilities[ability].level > level:
+			level = player.abilities[ability].level
 	
 	return level
 
@@ -1185,13 +1190,12 @@ func use_ability(ability: String, amount:= 1.0):
 		player_ability_preference[ability] = amount
 
 func add_ability_exp(ability: String, amount: float):
-	player_ability_exp[ability] += amount
-	if player_ability_exp[ability] > get_ability_exp(player.abilities[ability]):
-		player_ability_exp[ability] -= get_ability_exp(player.abilities[ability])
-		player.abilities[ability] += 1
-		if player.abilities[ability] > 10:
+	var a:= player.abilities[ability]
+	var ability_level_up:= a.add_exp(amount)
+	if ability_level_up:
+		if a.level > 10:
 			upgrade_skill()
-		store_historical_data("abilities", player.abilities[ability], ability)
+		store_historical_data("abilities", a.name, ability)
 
 func do_action(action: String, args: Dictionary, delay: float, string:=""):
 	player.delay = delay
@@ -1264,9 +1268,9 @@ func action_done(action: Dictionary):
 				if player.abilities.has("trapping"):
 					var trap: Dictionary = Skills.TRAPS.values().pick_random().duplicate(true)
 					var target: Characters.Enemy = enemies.pick_random()
-					var status:= Characters.create_status(trap, player, target, 1.0 + 0.2*(player.abilities.trapping-1))
+					var status:= Characters.create_status(trap, player, target, 1.0 + 0.2 * (player.abilities.trapping.level - 1))
 					var dict:= status.duplicate()
-					trap.level = 2*player.abilities.trapping - 1
+					trap.level = 2 * player.abilities.trapping.level - 1
 					dict.name = dict.name.capitalize()
 					dict.description = Skills.tooltip_remove_bb_code(Skills.create_tooltip(trap))
 					print_log_msg(tr("TRAPPING_LOG").format(dict))
@@ -1293,7 +1297,7 @@ func action_done(action: Dictionary):
 			if player.abilities.has("trapping"):
 				var trap: Dictionary = Skills.TRAPS.values().pick_random()
 				var target: Characters.Enemy = enemies.pick_random()
-				var status:= Characters.create_status(trap, player, target, 1.0 + 0.2*(player.abilities.trapping-1))
+				var status:= Characters.create_status(trap, player, target, 1.0 + 0.2 * (player.abilities.trapping.level - 1))
 				print_log_msg(tr("TRAPPING_LOG").format(status))
 				target.add_status(status)
 				use_ability("trapping", 1.0)
@@ -1315,7 +1319,7 @@ func action_done(action: Dictionary):
 			if player.abilities.has("trapping"):
 				var trap: Dictionary = Skills.TRAPS.values().pick_random()
 				var target: Characters.Enemy = enemies.pick_random()
-				var status:= Characters.create_status(trap, player, target, 1.0 + 0.2*(player.abilities.trapping-1))
+				var status:= Characters.create_status(trap, player, target, 1.0 + 0.2 * (player.abilities.trapping.level - 1))
 				print_log_msg(tr("TRAPPING_LOG").format(status))
 				target.add_status(status)
 				use_ability("trapping", 1.0)
@@ -1713,7 +1717,7 @@ func action_done(action: Dictionary):
 		"grinding":
 			if enemies.size() == 0:
 				if player.abilities.has("cooking") && player_cooking_delay<=0.0:
-					do_action("cook", {"level": player.abilities.cooking}, CRAFTING_DELAY)
+					do_action("cook", {"level": player.abilities.cooking.level}, CRAFTING_DELAY)
 				else:
 					do_action("find_enemies", {}, SEARCH_DELAY)
 			else:
@@ -1800,11 +1804,11 @@ func action_done(action: Dictionary):
 					return
 				"fight", "kill":
 					if player.abilities.has("cooking") && player_cooking_delay <= 0.0:
-						do_action("cook", {"level": player.abilities.cooking}, CRAFTING_DELAY)
+						do_action("cook", {"level": player.abilities.cooking.level}, CRAFTING_DELAY)
 					elif current_quest.stage < current_quest.amount && enemies.size() == 0:
 						if player.abilities.has("cooking") && player_cooking_delay<=0.0:
 							current_quest.stage -= 1
-							do_action("cook", {"level": player.abilities.cooking}, CRAFTING_DELAY)
+							do_action("cook", {"level": player.abilities.cooking.level}, CRAFTING_DELAY)
 						else:
 							do_action("find_quest_enemies", {"enemy": current_quest.enemy, "amount": 1}, SEARCH_DELAY)
 					else:
@@ -1812,7 +1816,7 @@ func action_done(action: Dictionary):
 					return
 				"explore":
 					if player.abilities.has("cooking") && player_cooking_delay <= 0.0:
-						do_action("cook", {"level": player.abilities.cooking}, CRAFTING_DELAY)
+						do_action("cook", {"level": player.abilities.cooking.level}, CRAFTING_DELAY)
 					elif current_quest.stage < 1 + current_quest.amount:
 						match randi()%4:
 							0:
@@ -1895,9 +1899,9 @@ func action_done(action: Dictionary):
 						"crafting":
 							do_action("craft", {"recipe": recipe, "level": get_recipe_level(recipe)}, CRAFTING_DELAY)
 						"enchanting":
-							do_action("enchanting", {"ability": "enchanting", "level": player.abilities.enchanting}, CRAFTING_DELAY)
+							do_action("enchanting", {"ability": "enchanting", "level": player.abilities.enchanting.level}, CRAFTING_DELAY)
 						"alchemy":
-							do_action("alchemy", {"ability": "alchemy", "level": player.abilities.alchemy}, CRAFTING_DELAY)
+							do_action("alchemy", {"ability": "alchemy", "level": player.abilities.alchemy.level}, CRAFTING_DELAY)
 						_:
 							start_task(current_task_ID, "shopping")
 				else:
@@ -2249,7 +2253,7 @@ func use_skill(actor: Characters.Character, skill: Dictionary) -> Dictionary:
 		for k in skill.cost.keys():
 			actor.set(k, max(actor.get(k) - skill.cost[k], 0))
 	
-	if actor is Characters.Character && actor.abilities.has("soul_binding") && randf() < min(0.01 + 0.005 * actor.abilities.soul_binding, 0.2):
+	if actor is Characters.Character && actor.abilities.has("soul_binding") && randf() < min(0.01 + 0.005 * actor.abilities.soul_binding.level, 0.2):
 		effectiveness_bonus += extract_soul()
 		result.soul_enchantment = true
 		result.soul_bonus = effectiveness_bonus
@@ -2789,7 +2793,7 @@ func die(enemy: Characters.Enemy):
 	if player.abilities.has("soul_binding") && soul_cage!=null && soul_cage is Dictionary:
 		var charge: int = max(4 + enemy.soul_rarity, 1)
 		if player.abilities.has("soul_binding"):
-			charge += round(randf_range(0.05, 0.2) * player.abilities.soul_binding)
+			charge += round(randf_range(0.05, 0.2) * player.abilities.soul_binding.level)
 		if soul_cage.has("charges"):
 			soul_cage.charges += charge
 		else:
@@ -3044,7 +3048,6 @@ func _save():
 		"player_name": player_name.replace("{", "").replace("}", ""),
 		"player_gender": player_gender,
 		"player_race": player_race,
-		"player_ability_exp": player_ability_exp,
 		"player_inventory": player_inventory,
 		"player_potions": player_potions,
 		"player_stat_preference": player_stat_preference,
@@ -3137,6 +3140,13 @@ func _load():
 		item.description = Items.create_tooltip(item)
 		item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 		item.component_description = Items.create_component_tooltip(item)
+	for ability_id in data.abilities:
+		if typeof(data.abilities[ability_id]) != TYPE_DICTIONARY:
+			data.abilities[ability_id] = {
+				"name": str(ability_id),
+				"level": int(data.abilities[ability_id]),
+				"experience": 0.0,
+			}
 	
 	player = Characters.Character.new(data)
 	data = JSON.parse_string(get_dict_text(file)) as Dictionary

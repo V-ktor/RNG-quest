@@ -90,7 +90,7 @@ class Character:
 	var effective_stats: Dictionary
 	var base_attributes: Dictionary
 	var attributes: Dictionary
-	var abilities: Dictionary
+	var abilities: Dictionary[String, Ability]
 	var skills: Array
 	var damage: Dictionary
 	var resistance: Dictionary
@@ -105,17 +105,34 @@ class Character:
 	var valid_armour_subtypes: Array[String] = []
 	
 	func _init(dict: Dictionary):
-		if dict.has("abilities") && typeof(dict.abilities)==TYPE_ARRAY:
-			var ab_dict:= {}
-			dict = dict.duplicate(false)
-			for k in dict.abilities:
-				ab_dict[k] = 1
-			dict.abilities = ab_dict
+		# compatibility with old versions
+		if dict.has("abilities"):
+			if typeof(dict.abilities) == TYPE_ARRAY:
+				var ab_dict:= {}
+				dict = dict.duplicate(false)
+				for k in dict.abilities:
+					ab_dict[k] = 1
+				dict.abilities = ab_dict
+			elif typeof(dict.abilities) == TYPE_DICTIONARY and dict.abilities.size() > 0 and \
+				typeof(dict.abilities.values()[0]) != TYPE_DICTIONARY:
+				for ability_id in dict.abilities:
+					dict.abilities[ability_id] = {
+						"name": ability_id,
+						"level": int(dict.abilities[ability_id]),
+						"experience": 0,
+					}
+		
 		for k in dict.keys():
-			if typeof(dict[k])==TYPE_DICTIONARY || typeof(dict[k])==TYPE_ARRAY:
-				set(k, dict[k].duplicate(true))
-			else:
-				set(k, dict[k])
+			match k:
+				"abilities":
+					self.abilities = {}
+					for ability_id in dict.abilities:
+						self.abilities[ability_id] = Ability.new(dict.abilities[ability_id])
+				_:
+					if typeof(dict[k]) == TYPE_DICTIONARY || typeof(dict[k]) == TYPE_ARRAY:
+						set(k, dict[k].duplicate(true))
+					else:
+						set(k, dict[k])
 		recalc_attributes()
 	
 	func recalc_attributes():
@@ -145,25 +162,25 @@ class Character:
 			var dict: Dictionary = Skills.ABILITIES[ability]
 			for k in attributes:
 				if dict.has(k):
-					attributes[k] = int(ceil(attributes[k] + dict[k]*abilities[ability]))
+					attributes[k] = int(ceil(attributes[k] + dict[k] * abilities[ability].level))
 					base_attributes[k] = attributes[k]
 			for k in RESOURCES:
 				if dict.has(k):
-					set("max_"+k, get("max_"+k) + dict[k])
-				if dict.has(k+"_regen"):
-					set(k+"_regen", get(k+"_regen") + dict[k+"_regen"])
+					set("max_" + k, get("max_" + k) + dict[k])
+				if dict.has(k + "_regen"):
+					set(k + "_regen", get(k + "_regen") + dict[k + "_regen"])
 			if dict.has("resistance"):
 				for k in dict.resistance:
 					if resistance.has(k):
-						resistance[k] += dict.resistance[k]*abilities[ability]
+						resistance[k] += dict.resistance[k] * abilities[ability].level
 					else:
-						resistance[k] = dict.resistance[k]*abilities[ability]
+						resistance[k] = dict.resistance[k] * abilities[ability].level
 			if dict.has("damage"):
 				for k in dict.damage:
 					if damage.has(k):
-						damage[k] += dict.damage[k]*abilities[ability]
+						damage[k] += dict.damage[k] * abilities[ability].level
 					else:
-						damage[k] = dict.damage[k]*abilities[ability]
+						damage[k] = dict.damage[k] * abilities[ability].level
 			if dict.has("weapon_subtypes"):
 				for t in dict.weapon_subtypes:
 					if !valid_weapon_subtypes.has(t):
@@ -314,29 +331,31 @@ class Character:
 		delay -= delta*(1.0 - stun)
 		for skill in skills:
 			skill.current_cooldown -= delta*(1.0 - stun)
-		
 	
 	func to_dict() -> Dictionary:
+		var ability_dict:= {}
+		for ability_id in self.abilities:
+			ability_dict[ability_id] = self.abilities[ability_id].to_dict()
 		return {
-			"name": name,
-			"level": level,
-			"experience": experience,
-			"health": health,
-			"mana": mana,
-			"stamina": stamina,
-			"stats": stats,
-			"attributes": attributes,
-			"abilities": abilities,
-			"skills": skills,
-			"damage": damage,
-			"resistance": resistance,
-			"equipment": equipment,
-			"status": status,
-			"delay": delay,
-			"action_duration": action_duration,
-			"current_action": current_action,
+			"name": self.name,
+			"level": self.level,
+			"experience": self.experience,
+			"health": self.health,
+			"mana": self.mana,
+			"stamina": self.stamina,
+			"stats": self.stats,
+			"attributes": self.attributes,
+			"abilities": ability_dict,
+			"skills": self.skills,
+			"damage": self.damage,
+			"resistance": self.resistance,
+			"equipment": self.equipment,
+			"status": self.status,
+			"delay": self.delay,
+			"action_duration": self.action_duration,
+			"current_action": self.current_action,
 		}
-	
+
 
 class Enemy:
 	extends Character
@@ -354,7 +373,6 @@ class Enemy:
 	var equipment_drop_chance: float
 	var equipment_quality: float
 	var equipment_enchantment_chance: float
-	
 	
 	func recalc_attributes():
 		max_health = 0
@@ -408,37 +426,40 @@ class Enemy:
 		reset_focus()
 	
 	func to_dict() -> Dictionary:
+		var ability_dict:= {}
+		for ability_id in self.abilities:
+			ability_dict[ability_id] = self.abilities[ability_id].to_dict()
 		return {
-			"name":name,
-			"base_name":base_name,
-			"name_prefix":name_prefix,
-			"name_suffix":name_suffix,
-			"soul_prefix":soul_prefix,
-			"description":description,
-			"tier":tier,
-			"soul_rarity":soul_rarity,
-			"soul_add":soul_add,
-			"level":level,
-			"experience":experience,
-			"health":health,
-			"mana":mana,
-			"stamina":stamina,
-			"stats":stats,
-			"attributes":attributes,
-			"attributes_add":attributes_add,
-			"abilities":abilities,
-			"skills":skills,
-			"damage":damage,
-			"resistance":resistance,
-			"equipment":equipment,
-			"status":status,
-			"delay":delay,
-			"materials":materials,
-			"equipment_drop_chance":equipment_drop_chance,
-			"equipment_quality":equipment_quality,
-			"equipment_enchantment_chance":equipment_enchantment_chance,
+			"name": self.name,
+			"base_name": self.base_name,
+			"name_prefix": self.name_prefix,
+			"name_suffix": self.name_suffix,
+			"soul_prefix": self.soul_prefix,
+			"description": self.description,
+			"tier": self.tier,
+			"soul_rarity": self.soul_rarity,
+			"soul_add": self.soul_add,
+			"level": self.level,
+			"experience": self.experience,
+			"health": self.health,
+			"mana": self.mana,
+			"stamina": self.stamina,
+			"stats": self.stats,
+			"attributes": self.attributes,
+			"attributes_add": self.attributes_add,
+			"abilities": ability_dict,
+			"skills": self.skills,
+			"damage": self.damage,
+			"resistance": self.resistance,
+			"equipment": self.equipment,
+			"status": self.status,
+			"delay": self.delay,
+			"materials": self.materials,
+			"equipment_drop_chance": self.equipment_drop_chance,
+			"equipment_quality": self.equipment_quality,
+			"equipment_enchantment_chance": self.equipment_enchantment_chance,
 		}
-	
+
 
 class Summon:
 	extends Character
@@ -501,25 +522,28 @@ class Summon:
 		reset_focus()
 	
 	func to_dict() -> Dictionary:
+		var ability_dict:= {}
+		for ability_id in self.abilities:
+			ability_dict[ability_id] = self.abilities[ability_id].to_dict()
 		return {
-			"name":name,
-			"level":level,
-			"experience":experience,
-			"health":health,
-			"mana":mana,
-			"stamina":stamina,
-			"stats":stats,
-			"attributes":attributes,
-			"abilities":abilities,
-			"skills":skills,
-			"damage":damage,
-			"resistance":resistance,
-			"equipment":equipment,
-			"status":status,
-			"delay":delay,
-			"duration":duration,
+			"name": self.name,
+			"level": self.level,
+			"experience": self.experience,
+			"health": self.health,
+			"mana": self.mana,
+			"stamina": self.stamina,
+			"stats": self.stats,
+			"attributes": self.attributes,
+			"abilities": ability_dict,
+			"skills": self.skills,
+			"damage": self.damage,
+			"resistance": self.resistance,
+			"equipment": self.equipment,
+			"status": self.status,
+			"delay": self.delay,
+			"duration": self.duration,
 		}
-	
+
 
 class CharacterSettings:
 	var weapon_1h_alowed:= true
@@ -886,10 +910,20 @@ func create_summon(dict: Dictionary, actor: Character, value_scale:=1.0) -> Summ
 	for k in creature_dict.stats.keys():
 		creature_dict.stats[k] = int((0.5 + 0.5*value)*creature_dict.stats[k])
 	creature_dict.duration *= 0.5 + 0.5*value
+	
+	var abilities: Dictionary[String, Dictionary] = {}
+	for ability_id in creature_dict.abilities:
+		abilities[ability_id] = {
+			"name": ability_id,
+			"level": int(5 * log(actor.level)),
+			"experience": 0.0,
+		}
+	creature_dict.abilities = abilities
+	
 	creature = Summon.new(creature_dict)
 	creature.recover()
 	for i in range(3):
-		creature.skills.push_back(Skills.create_random_skill(creature_dict.abilities))
+		creature.skills.push_back(Skills.create_random_skill(creature_dict.abilities.keys()))
 	creature_dict.skills = creature.skills
 	creature_dict.attributes = creature.attributes
 	creature.description = Enemies.create_tooltip(creature)

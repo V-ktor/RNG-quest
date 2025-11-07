@@ -935,6 +935,20 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 3
 
+[node name="ExpBar" type="ProgressBar" parent="Character/Skills/Abilities/ScrollContainer/VBoxContainer/Ability0/Label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxEmpty_2hy47")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1giea")
+value = 50.0
+show_percentage = false
+
 [node name="Value" type="Label" parent="Character/Skills/Abilities/ScrollContainer/VBoxContainer/Ability0"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
@@ -993,6 +1007,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Journal" type="HBoxContainer" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

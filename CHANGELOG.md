@@ -1,5 +1,12 @@
 # Change log
 
+## v0.1.3
+
+### Interface
+* Add EXP bars for player level, abilities and guilds
+* Add text label colors for skills, abilities, guild level and resistances that show the progress
+* Add text label color for locations that shows the danger
+
 ## v0.1.2
 
 ### Interface
