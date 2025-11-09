@@ -327,3 +327,9 @@ TAME,Tame
 TAME_DESCRIPTION,"Tame a wild beast."
 CONJURATION,Conjuration
 CONJURATION_DESCRIPTION,"Conjures a magical being."
+SNEAK,Sneak
+SNEAK_DESCRIPTION,"Grants a buff increasing critical hit chance and damage"
+UNSEEN,Unseen
+UNSEEN_DESCRIPTION,"Increases the user's penetration bonus"
+ARMOURED,Armoured
+ARMOURED_DESCRIPTION,"Increases the user's armour"

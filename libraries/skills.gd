@@ -217,9 +217,10 @@ const ABILITY_MODULES: Dictionary[String, Dictionary] = {
 		"aim":["body","arms","legs","neck"],
 	},
 	"dirty_fighting":{
-		"base_type":["backstab","throwing_knife"],
+		"base_type":["backstab","throwing_knife","sneak"],
 		"melee_mod":["shred","poisoned","penetrating"],
 		"ranged_mod":["vile","sharp"],
+		"defence_mod":["unseen"],
 		"aim":["weakpoint","organs","eyes"],
 	},
 	"brawling":{
@@ -231,6 +232,7 @@ const ABILITY_MODULES: Dictionary[String, Dictionary] = {
 	"shield":{
 		"base_type":["bash"],
 		"melee_mod":["force","concussive","shielding"],
+		"defence_mod":["armoured","reflecting"],
 		"aim":["body","arms","legs"],
 	},
 	

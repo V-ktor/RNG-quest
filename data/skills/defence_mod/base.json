@@ -1,118 +1,197 @@
 {
-    "defencive":{
-		"name":"defencive",
-		"auto_naming":{
-			"prefix":["defencive","protective","shielding"],
+	"defencive": {
+		"name": "defencive",
+		"auto_naming": {
+			"prefix": [
+				"defencive",
+				"protective",
+				"shielding"
+			],
 		},
-		"type":"defence",
-		"cost":{
-			"stamina":2,
+		"type": "defence",
+		"cost": {
+			"stamina": 2,
 		},
-		"shielding_type":["impact"],
-		"shielding":{
-			"strength":0.3,
+		"shielding_type": [
+			"impact"
+		],
+		"shielding": {
+			"strength": 0.3,
 		},
-		"cooldown":2.0,
+		"cooldown": 2.0,
 	},
-    "absorbing":{
-		"name":"absorbing",
-		"auto_naming":{
-			"prefix":["absorbing","life-stealing"],
+	"absorbing": {
+		"name": "absorbing",
+		"auto_naming": {
+			"prefix": [
+				"absorbing",
+				"life-stealing"
+			],
 		},
-		"type":"defence",
-		"cost":{
-			"stamina":2,
+		"type": "defence",
+		"cost": {
+			"stamina": 2,
 		},
-	    "health_steal":0.1,
-		"cooldown":2.0,
+		"health_steal": 0.1,
+		"cooldown": 2.0,
 	},
-	"reflecting":{
-		"name":"reflecting",
-		"auto_naming":{
-			"prefix":["reflecting","mirror"],
+	"reflecting": {
+		"name": "reflecting",
+		"auto_naming": {
+			"prefix": [
+				"reflecting",
+				"mirror"
+			],
 		},
-		"type":"defence",
-		"cost":{
-			"stamina":2,
+		"type": "defence",
+		"cost": {
+			"stamina": 2,
 		},
-	    "reflect_damage":0.1,
-		"cooldown":2.0,
+		"reflect_damage": 0.1,
+		"cooldown": 2.0,
 	},
-	"nimble":{
-		"name":"nimble",
-		"auto_naming":{
-			"prefix":["nimble","agile"],
+	"nimble": {
+		"name": "nimble",
+		"auto_naming": {
+			"prefix": [
+				"nimble",
+				"agile"
+			],
 		},
-		"type":"defence",
-		"cost":{
-			"stamina":2,
+		"type": "defence",
+		"cost": {
+			"stamina": 2,
 		},
-        "attributes":{
-			"evasion":10,
+		"attributes": {
+			"evasion": 10,
 		},
-		"cooldown":2.0,
+		"cooldown": 2.0,
 	},
-	"engaging":{
-		"name":"engaging",
-		"auto_naming":{
-			"prefix":["engaging","focus","accuracy"],
+	"engaging": {
+		"name": "engaging",
+		"auto_naming": {
+			"prefix": [
+				"engaging",
+				"focus",
+				"accuracy"
+			],
 		},
-		"type":"defence",
-		"cost":{
-			"stamina":2,
+		"type": "defence",
+		"cost": {
+			"stamina": 2,
 		},
-        "attributes":{
-			"accuracy":10,
+		"attributes": {
+			"accuracy": 10,
 		},
-		"cooldown":2.0,
+		"cooldown": 2.0,
 	},
-	"physical_shielding":{
-		"name":"physical shielding",
-		"auto_naming":{
-			"prefix":["physical","force"],
+	"armoured": {
+		"name": "armoured",
+		"auto_naming": {
+			"prefix": [
+				"armoured"
+			],
 		},
-		"type":"defence",
-		"cost":{
-			"mana":2,
+		"type": "defence",
+		"cost": {
+			"stamina": 2,
 		},
-        "shielding_type":["impact","cutting","piercing"],
-		"cooldown":1.0,
+		"attributes": {
+			"armour": 10,
+		},
+		"cooldown": 2.0,
 	},
-	"spell_shielding":{
-		"name":"spell shielding",
-		"auto_naming":{
-			"prefix":["spell-shielding"],
+	"unseen": {
+		"name": "unseen",
+		"auto_naming": {
+			"prefix": [
+				"unseen",
+				"misleading"
+			],
 		},
-		"type":"defence",
-		"cost":{
-			"mana":2,
+		"type": "defence",
+		"cost": {
+			"stamina": 2,
 		},
-        "shielding_type":["fire","ice","lightning"],
-		"cooldown":1.0,
+		"attributes": {
+			"penetration": 15,
+		},
+		"cooldown": 2.0,
 	},
-	"nature_shielding":{
-		"name":"nature shielding",
-		"auto_naming":{
-			"prefix":["nature-shielding"],
+	"physical_shielding": {
+		"name": "physical shielding",
+		"auto_naming": {
+			"prefix": [
+				"physical",
+				"force"
+			],
 		},
-		"type":"defence",
-		"cost":{
-			"mana":2,
+		"type": "defence",
+		"cost": {
+			"mana": 2,
 		},
-        "shielding_type":["wind","earth","water","poison","acid"],
-        "shielding_multiplier":0.9,
-		"cooldown":1.0,
+		"shielding_type": [
+			"impact",
+			"cutting",
+			"piercing"
+		],
+		"cooldown": 1.0,
 	},
-	"celestial_shielding":{
-		"name":"celestial shielding",
-		"auto_naming":{
-			"prefix":["light-shielding","shadow-shielding"],
+	"spell_shielding": {
+		"name": "spell shielding",
+		"auto_naming": {
+			"prefix": [
+				"spell-shielding"
+			],
 		},
-		"type":"defence",
-		"cost":{
-			"mana":2,
+		"type": "defence",
+		"cost": {
+			"mana": 2,
 		},
-        "shielding_type":["light","darkness"],
-		"cooldown":1.0,
+		"shielding_type": [
+			"fire",
+			"ice",
+			"lightning"
+		],
+		"cooldown": 1.0,
+	},
+	"nature_shielding": {
+		"name": "nature shielding",
+		"auto_naming": {
+			"prefix": [
+				"nature-shielding"
+			],
+		},
+		"type": "defence",
+		"cost": {
+			"mana": 2,
+		},
+		"shielding_type": [
+			"wind",
+			"earth",
+			"water",
+			"poison",
+			"acid"
+		],
+		"shielding_multiplier": 0.9,
+		"cooldown": 1.0,
+	},
+	"celestial_shielding": {
+		"name": "celestial shielding",
+		"auto_naming": {
+			"prefix": [
+				"light-shielding",
+				"shadow-shielding"
+			],
+		},
+		"type": "defence",
+		"cost": {
+			"mana": 2,
+		},
+		"shielding_type": [
+			"light",
+			"darkness"
+		],
+		"cooldown": 1.0,
 	},
 }
