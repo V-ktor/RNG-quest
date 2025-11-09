@@ -28,9 +28,10 @@ var icons:= {
 var colors:= {
 	"settlement": Color(0.2, 0.8, 0.2),
 	"town": Color(0.2, 0.8, 0.2),
+	"outpost": Color(0.2, 0.8, 0.2),
 	"castle": Color(0.2, 0.8, 0.2),
 	"graveyard": Color(0.7, 0.6, 0.1),
-	"dungeon": Color(0.7, 0.6, 0.1),
+	"dungeon": Color(0.8, 0.3, 0.2),
 	"river": Color(0.7, 0.6, 0.1),
 	"cave": Color(0.7, 0.6, 0.1),
 	"dunes": Color(0.7, 0.6, 0.1),

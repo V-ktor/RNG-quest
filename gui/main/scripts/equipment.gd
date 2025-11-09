@@ -10,7 +10,7 @@ var character: Characters.Character
 @onready var eq_accessoire_panel:= $ScrollContainer/VBoxContainer/Accessoires/VBoxContainer as VBoxContainer
 
 
-func update(inventory:= []):
+func update(_inventory:= []):
 	if not visible or not get_parent().visible:
 		return
 	

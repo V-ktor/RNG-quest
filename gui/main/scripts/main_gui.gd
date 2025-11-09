@@ -120,7 +120,7 @@ func update_preferences():
 	potion_preference_panel.update()
 
 
-func update_location(region: Dictionary, current_location: String):
+func update_location(region: Region, current_location: String):
 	var list:= Regions.get_location_list(region, current_location)
 	var description:= Regions.get_region_description(region)
 	$Overview/HBoxContainer/Region.update(list, region.name, description, current_location)

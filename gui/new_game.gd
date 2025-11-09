@@ -235,9 +235,6 @@ func start_game():
 	elif RACE_STATS.has(player_race):
 		for k in RACE_STATS[player_race].keys():
 			player_stats[k] += RACE_STATS[player_race][k]
-	main_instance.player_ability_exp = {}
-	for k in player_abilities:
-		main_instance.player_ability_exp[k] = 0
 	if "heavy_weapons" in player_abilities:
 		if "light_weapons" in player_abilities || "shield" in player_abilities || "archery" in player_abilities || magical || healer:
 			player_equipment.push_back("axe")
@@ -277,24 +274,32 @@ func start_game():
 	else:
 		player_equipment += ["cloth_shirt","cloth_pants","cloth_hat","cloth_sandals","cloth_sleeves"]
 	
+	var ability_dict:= {}
+	for ability in player_abilities:
+		ability_dict[ability] = {
+			"name": ability,
+			"level": 1,
+			"experience": 0,
+		}
+	
 	main_instance.player = Characters.Character.new({
-		"name":player_name,
-		"level":1,
-		"experience":0,
-		"stats":player_stats,
-		"abilities":player_abilities,
-		"delay":0.0,
+		"name": player_name,
+		"level": 1,
+		"experience": 0,
+		"stats": player_stats,
+		"abilities": ability_dict,
+		"delay": 0.0,
 	})
 	main_instance.player.recover()
 	main_instance.learn_new_skill("strike", true)
 	for i in range(2):
 		main_instance.learn_new_skill()
 	for type in player_equipment:
-		var item:= Items.create_random_standard_equipment(type, {
+		var item:= Items.create_random_standard_equipment(type, Region.new({
 			"level": 1,
 			"tier": 0,
 			"local_materials": {},
-		})
+		}))
 		if Items.equipment_recipes[type].has("name"):
 			item.source = tr("OLD_ITEM").format({
 				"name": tr(Items.equipment_recipes[type].name.to_upper()),

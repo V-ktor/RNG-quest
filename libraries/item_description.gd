@@ -274,12 +274,12 @@ func create_description_data(item: Dictionary, rank: int) -> Dictionary:
 				"adverb": "amateurishly",
 			},
 			{
-				"singular": "unskilled craftman",
+				"singular": "unskilled craftsman",
 				"adjective": "thoughtless",
 				"adverb": "thoughtlessly",
 			},
 			{
-				"singular": "novice craftman",
+				"singular": "novice craftsman",
 				"adjective": "acceptable",
 				"adverb": "acceptably",
 			},
@@ -287,7 +287,7 @@ func create_description_data(item: Dictionary, rank: int) -> Dictionary:
 	elif rank < 4:
 		craftmanship = [
 			{
-				"singular": "novice craftman",
+				"singular": "novice craftsman",
 				"adjective": "acceptable",
 				"adverb": "acceptably",
 			},
@@ -297,7 +297,7 @@ func create_description_data(item: Dictionary, rank: int) -> Dictionary:
 				"adverb": "professionally",
 			},
 			{
-				"singular": "experienced craftman",
+				"singular": "experienced craftsman",
 				"adjective": "inspiring",
 				"adverb": "skillfully",
 			},
@@ -305,24 +305,24 @@ func create_description_data(item: Dictionary, rank: int) -> Dictionary:
 	elif rank < 6:
 		craftmanship = [
 			{
-				"singular": "skilled craftman",
+				"singular": "skilled craftsman",
 				"adjective": "skillful",
 				"adverb": "skillfully",
 			},
 			{
-				"singular": "master craftman",
+				"singular": "master craftsman",
 				"adjective": "masterful",
 				"adverb": "masterfully",
 			},
 			{
-				"singular": "legendary craftman",
+				"singular": "legendary craftsman",
 				"adjective": "legendary",
 				"adverb": "legendaryly",
 			},
 		].pick_random()
 	else:
 		craftmanship = {
-			"singular": "legendary craftman",
+			"singular": "legendary craftsman",
 			"adjective": "legendary",
 			"adverb": "legendaryly",
 		}

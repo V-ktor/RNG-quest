@@ -1164,7 +1164,7 @@ func next():
 func start():
 	transition_to(INITIAL_STATES.pick_random())
 
-func create_quest(region: Dictionary) -> Dictionary:
+func create_quest(region: Region) -> Dictionary:
 	var quest:= {
 		"title":current_state.title,
 		"requires":current_state.requires,
@@ -1249,11 +1249,11 @@ func create_quest(region: Dictionary) -> Dictionary:
 		quest.log = sanitize_string(current_state.log.format(dict))
 	if quest.has("reward"):
 		if quest.reward.has("exp"):
-			quest.reward.exp = int(ceil(quest.reward.exp*(1.0 + 0.2*(region.level-1))))
+			quest.reward.exp = ceili(quest.reward.exp * (1.0 + 0.2 * (region.level - 1)))
 		if quest.reward.has("gold"):
-			quest.reward.gold = int(ceil(quest.reward.exp*(1.0 + 0.1*(region.level-1))))
+			quest.reward.gold = ceili(quest.reward.exp * (1.0 + 0.1 * (region.level - 1)))
 	return quest
 
-func next_quest(region: Dictionary) -> Dictionary:
+func next_quest(region: Region) -> Dictionary:
 	next()
 	return create_quest(region)

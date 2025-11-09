@@ -115,7 +115,7 @@ var current_action_text: String
 var current_task: String
 var current_task_ID:= -1
 var current_action: Dictionary
-var current_region: Dictionary
+var current_region: Region
 var current_location: String
 var explored_locations: Array
 var quest_chapter:= -1
@@ -144,7 +144,7 @@ signal gold_changed(value: int)
 signal inventory_changed(inventory: Array)
 signal potion_inventory_changed(inventory: Array)
 signal story_inventory_changed(inventory: Array)
-signal location_changed(region: Dictionary, current_location: String)
+signal location_changed(region: Region, current_location: String)
 signal quest_log_updated(text: String)
 signal summary_updated(text: String)
 signal skills_updated()
@@ -610,7 +610,6 @@ func create_shop_potion(type:="") -> Dictionary:
 
 func create_shop_material(material:= "") -> Dictionary:
 	var item: Dictionary
-	var dict: Dictionary = current_region
 	var valid_abilities:= []
 	var recipe: String
 	
@@ -642,7 +641,7 @@ func create_shop_material(material:= "") -> Dictionary:
 		else:
 			material = Items.materials.keys().pick_random()
 	
-	item = Items.create_regional_material(material, dict)
+	item = Items.create_regional_material(material, current_region)
 	item.source = tr("BOUGHT_FROM_SHOP").format({
 		"location": current_location,
 	})
@@ -944,7 +943,7 @@ func guild_level_up(guild: String):
 			item = create_shop_equipment(["chain_cuirass", "plate_cuirass", "chain_greaves", "plate_greaves"].pick_random(), 1.5)
 		"material":
 			if current_region.location_resources.has(current_location):
-				item = Items.create_regional_material(current_region.location_resources[current_location].pick_random(), current_region, 1.5)
+				item = Items.create_regional_material(pick_random_resource(), current_region, 1.5)
 			else:
 				item = Items.create_regional_material(current_region.resources.pick_random(), current_region, 1.5)
 			amount = randi_range(10, 14)
@@ -956,6 +955,12 @@ func guild_level_up(guild: String):
 	print_log_msg(tr("GUILD_ITEM_REWARD").format(item))
 	store_historical_data("guilds", player_guild_lvl[guild], guild)
 	emit_signal("guilds_updated")
+
+func pick_random_resource() -> String:
+	if current_region.locations[current_location].resources.size() > 0:
+		return current_region.locations[current_location].resources.pick_random()
+	else:
+		return Items.materials.keys().pick_random()
 
 
 func recalc_attributes():
@@ -1086,7 +1091,8 @@ func next_chapter():
 		else:
 			Story.create_person(current_region.race.pick_random(), current_region.cities.keys().pick_random())
 	if quest_chapter > 0:
-		var item:= Items.create_legendary_equipment(player.equipment.values().pick_random().base_type, max(10 * (current_region.tier + 1) + (player.level + current_region.level) / 2, 1))
+		@warning_ignore("integer_division")
+		var item:= Items.create_legendary_equipment(player.equipment.values().pick_random().base_type, maxi(10 * (current_region.tier + 1) + (player.level + current_region.level) / 2, 1))
 		var log_text:= tr("QUEST_ARTIFACT_REWARD").format({"item":item.name, "description":item.description_plain, "chapter":quest_chapter})
 		var journal_text:= tr("CHAPTER_CONCLUDED").format({"chapter":quest_chapter})
 		print_log_msg(log_text)
@@ -1191,7 +1197,7 @@ func use_ability(ability: String, amount:= 1.0):
 
 func add_ability_exp(ability: String, amount: float):
 	var a:= player.abilities[ability]
-	var ability_level_up:= a.add_exp(amount)
+	var ability_level_up:= a.add_exp(ceili(amount))
 	if ability_level_up:
 		if a.level > 10:
 			upgrade_skill()
@@ -1235,10 +1241,9 @@ func action_done(action: Dictionary):
 			for c in enemies:
 				c.position += sign(player.position-c.position)
 		"find_enemies":
-			if randf()<current_region.resource_chance:
-				var dict: Dictionary = current_region
-				for i in range(randi_range(dict.resource_amount[0],dict.resource_amount[1])):
-					var item:= Items.create_regional_material(dict.location_resources[current_location].pick_random(), dict)
+			if randf() < current_region.resource_chance:
+				for i in range(randi_range(current_region.resource_amount[0], current_region.resource_amount[1])):
+					var item:= Items.create_regional_material(pick_random_resource(), current_region)
 					item.source = tr("HARVESTED_IN_LOCATION").format({"location": current_location})
 					item.description = Items.create_tooltip(item)
 					item.description_plain = Skills.tooltip_remove_bb_code(item.description)
@@ -1253,12 +1258,13 @@ func action_done(action: Dictionary):
 				enemies.clear()
 				player_summons.clear()
 				player.position = 1
-				if current_region.location_enemies.has(current_location):
-					valid_enemies = current_region.location_enemies[current_location]
+				if current_region.locations[current_location].enemies.size() > 0:
+					valid_enemies = current_region.locations[current_location].enemies
 				else:
 					valid_enemies = current_region.enemies
-				for i in range(randf_range(current_region.enemy_amount[0],current_region.enemy_amount[1])):
-					var lvl: int = max(min((current_region.level + player.level)/2, current_region.level+15) + randi()%5-2, 1)
+				for i in range(randf_range(current_region.enemy_amount[0], current_region.enemy_amount[1])):
+					@warning_ignore("integer_division")
+					var lvl: int = max(min((current_region.level + player.level) / 2, current_region.level + 15) + randi()%5 - 2, 1)
 					var tier: int = clamp(round(randf_range(-1.25,1.25) - 0.5*tier_sum), -2, 2)
 					tier_sum += tier
 					enemies.push_back(Enemies.create_enemy(valid_enemies.pick_random(), lvl,  current_region.tier + tier))
@@ -1289,7 +1295,8 @@ func action_done(action: Dictionary):
 			player_summons.clear()
 			player.position = 1
 			for i in range(action.args.amount):
-				var lvl: int = max(min((current_region.level + player.level)/2, current_region.level+20) + randi()%5-2, 1)
+				@warning_ignore("integer_division")
+				var lvl: int = max(min((current_region.level + player.level) / 2, current_region.level + 20) + randi()%5 - 2, 1)
 				enemies.push_back(Enemies.create_enemy(action.args.enemy, lvl,  current_region.tier))
 			action.args.enemy_list = make_desc_list(enemies)
 			print_log_msg("\n"+tr("FIND_ENEMIES_LOG").format(action.args))
@@ -1822,8 +1829,7 @@ func action_done(action: Dictionary):
 							0:
 								do_action("find_quest_enemies", {"enemy": Enemies.base_enemies.keys().pick_random(), "amount": 1}, QUESTING_DELAY)
 							1:
-								var dict: Dictionary = current_region
-								var item:= Items.create_regional_material(Items.materials.keys().pick_random(), dict, 1.1)
+								var item:= Items.create_regional_material(Items.materials.keys().pick_random(), current_region, 1.1)
 								item.source = tr("FOUND_IN_LOCATION").format({"location": current_location})
 								item.description = Items.create_tooltip(item)
 								item.description_plain = Skills.tooltip_remove_bb_code(item.description)
@@ -3069,7 +3075,7 @@ func _save():
 		"action_failures": action_failures,
 		"current_time": current_time,
 		"current_action": current_action,
-		"current_region": current_region,
+		"current_region": current_region.to_dict(),
 		"current_location": current_location,
 		"explored_locations":explored_locations,
 		"quest_chapter":quest_chapter,
@@ -3125,7 +3131,7 @@ func _load():
 	data = JSON.parse_string(get_dict_text(file)) as Dictionary
 	if data == null:
 		print("Can't load save file " + player_name + ".dat!")
-	data.delay = minf(data.delay, 6 * 60 * 60.0)
+	data.delay = minf(data.get("delay", 0.0), 6.0 * 60.0 * 60.0)
 	
 	# compatibility with older versions: update skill descriptions
 	for skill in data.skills:
@@ -3159,7 +3165,11 @@ func _load():
 		if k in player_settings:
 			player_settings.set(k, data[k])
 		else:
-			set(k, data[k])
+			match k:
+				"current_region":
+					self.current_region = Region.new(data[k])
+				_:
+					set(k, data[k])
 	for i in range(enemies.size()):
 		for skill in enemies[i].skills:
 			if skill.has("description_plain"):

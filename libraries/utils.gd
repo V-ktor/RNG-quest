@@ -13,8 +13,28 @@ const DIRECTIONS = [
 const UNIT_PREFIXES = ["k", "M", "G", "T", "P", "E", "Z", "Y", "R", "Q"]
 
 
-func get_file_paths(path: String) -> Array:
-	var array:= []
+func get_file_paths(path: String) -> Array[String]:
+	var array: Array[String] = []
+	var dir:= DirAccess.open(path)
+	var error:= DirAccess.get_open_error()
+	if error != OK:
+		print("Error when accessing " + path)
+		return array
+	
+	dir.list_dir_begin()
+	var file_name:= dir.get_next()
+	while file_name != "":
+		if dir.current_is_dir():
+			array += get_file_paths(path + "/" + file_name)
+		else:
+			array.push_back(path + "/" + file_name)
+		file_name = dir.get_next()
+	
+	return array
+
+
+func get_sub_dirs(path: String) -> Array[String]:
+	var array: Array[String] = []
 	var dir:= DirAccess.open(path)
 	var error:= DirAccess.get_open_error()
 	if error != OK:
@@ -25,8 +45,6 @@ func get_file_paths(path: String) -> Array:
 	var file_name:= dir.get_next()
 	while file_name != "":
 		if dir.current_is_dir():
-			array += get_file_paths(path + "/" + file_name)
-		else:
 			array.push_back(path + "/" + file_name)
 		file_name = dir.get_next()
 	

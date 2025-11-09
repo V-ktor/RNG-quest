@@ -18,7 +18,7 @@ var regions:= {}
 var Descriptions:= $RegionDescription
 
 
-func get_location_list(region: Dictionary, current_location: String) -> Array[Dictionary]:
+func get_location_list(region: Region, current_location: String) -> Array[Dictionary]:
 	var cities: int = region.cities.size()
 	var locations: int = region.locations.size()
 	var city_index:= 0
@@ -27,10 +27,10 @@ func get_location_list(region: Dictionary, current_location: String) -> Array[Di
 	
 	for i in range(locations):
 		var key: String = region.locations.keys()[i]
-		var data: Dictionary = region.locations[key]
+		var data: Location = region.locations[key]
 		if key == current_location:
 			is_current_location_listed = true
-		list.push_back({"name": data.name, "type": data.get("type", "field")})
+		list.push_back({"name": data.name, "type": data.type})
 		if float(i) / float(locations) >= float(city_index) / float(cities) && city_index < cities:
 			key = region.cities.keys()[city_index]
 			data = region.cities[key]
@@ -38,12 +38,12 @@ func get_location_list(region: Dictionary, current_location: String) -> Array[Di
 				is_current_location_listed = true
 			list.push_back({
 				"name": data.name,
-				"type": data.get("type", "town"),
+				"type": data.type,
 			})
 			city_index += 1
 	for i in range(city_index, cities):
 		var key: String = region.cities.keys()[city_index]
-		var data: Dictionary = region.cities[key]
+		var data: Location = region.cities[key]
 		if key == current_location:
 			is_current_location_listed = true
 		list.push_back({
@@ -58,7 +58,7 @@ func get_location_list(region: Dictionary, current_location: String) -> Array[Di
 	
 	return list
 
-func get_region_description(region: Dictionary) -> String:
+func get_region_description(region: Region) -> String:
 	var text: String = region.name
 	text += "\n" + tr("LVL") + " " + str(region.level) + " " + \
 		tr(REGION_TIERS[clamp(region.tier + 2, 0, REGION_TIERS.size() - 1)]) + " " + tr("REGION")
@@ -79,22 +79,22 @@ func get_city_data(array: Array) -> Dictionary:
 		name += dict.suffix.pick_random()
 	return {"name": name, "type": dict.type.pick_random()}
 
-func create_region(ID: String, level:= 0, tier:= 0) -> Dictionary:
+func create_region(ID: String, level:= 0, tier:= 0) -> Region:
 	var dict: Dictionary = regions[ID]
-	var data:= {
+	var data: Dictionary[String, Variant] = {
 		"level": dict.level + level,
 		"tier": dict.tier + tier,
 		"race": dict.race,
 		"enemy": dict.enemy,
 		"cities": {},
 		"locations": {},
-		"location_enemies": {},
+		#"location_enemies": {},
 		"enemies": dict.enemies,
 		"enemy_amount": dict.enemy_amount.duplicate(),
 		"local_materials": dict.local_materials.duplicate(true),
 		"enchantment_chance": dict.enchantment_chance,
 		"resources": dict.resources,
-		"location_resources": {},
+		#"location_resources": {},
 		"resource_chance": dict.resource_chance,
 		"resource_amount": dict.resource_amount,
 	}
@@ -128,22 +128,15 @@ func create_region(ID: String, level:= 0, tier:= 0) -> Dictionary:
 		data.locations[location_name] = {
 			"name": location_name,
 			"type": location_data.type.pick_random(),
+			"enemies": location_data.get("enemies", []),
+			"resources": location_data.get("resources", []),
 		}
-		if "enemies" in location_data:
-			data.location_enemies[location_name] = location_data.enemies
-		else:
-			data.location_enemies[location_name] = dict.enemies
-		if "resources" in location_data:
-			data.location_resources[location_name] = location_data.resources
-		else:
-			data.location_resources[location_name] = dict.resources
-		if "description" in location_data:
-			pass
 	for array in data.local_materials.values():
 		for mat in array:
 			mat.quality *= tier_multiplier*level_multiplier
-	data.description = get_region_description(data)
-	return data
+	var region:= Region.new(data)
+	region.description = get_region_description(region)
+	return region
 
 
 func select_next_region(level: int) -> String:
@@ -184,5 +177,5 @@ func load_data(paths: Array):
 		file.close()
 
 func _ready():
-	load_data(Skills.get_file_paths("res://data/regions"))
+	load_data(Utils.get_file_paths("res://data/regions"))
 	

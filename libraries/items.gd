@@ -822,7 +822,7 @@ func create_material_list(components: Array) -> Array:
 		array.push_back(equipment_components[type].material)
 	return array
 
-func create_random_materials(list: Array, region: Dictionary, quality_mod:= 1.0) -> Array:
+func create_random_materials(list: Array, region: Region, quality_mod:= 1.0) -> Array:
 	var material_list:= []
 	for array in list:
 		var type: String = array.pick_random()
@@ -830,7 +830,7 @@ func create_random_materials(list: Array, region: Dictionary, quality_mod:= 1.0)
 			region, quality_mod))
 	return material_list
 
-func create_random_equipment(type: String, components: Array, region: Dictionary,
+func create_random_equipment(type: String, components: Array, region: Region,
 		info:= {}, tier:= 0, quality_mod:= 1.0, quality_bonus:= 0) -> Dictionary:
 	var item: Dictionary
 	var quality_scale:= 0.5 + 0.5 * components.size() / (components.size() + tier)
@@ -859,7 +859,7 @@ func create_random_equipment(type: String, components: Array, region: Dictionary
 			item.name += tr(type.to_upper()).capitalize()
 	return item
 
-func create_random_standard_equipment(type: String, region: Dictionary, tier:= 0,
+func create_random_standard_equipment(type: String, region: Region, tier:= 0,
 		quality_mod:= 1.0, quality_bonus:= 0) -> Dictionary:
 	var item: Dictionary
 	var dict: Dictionary = equipment_recipes[type].duplicate(true)
@@ -870,7 +870,7 @@ func create_random_standard_equipment(type: String, region: Dictionary, tier:= 0
 	return item
 
 func create_randomized_equipment(type: String, slot: String, subtype: String,num_components: int,
-		region: Dictionary, tier:= 0, quality_mod:= 1.0, quality_bonus:= 0) -> Dictionary:
+		region: Region, tier:= 0, quality_mod:= 1.0, quality_bonus:= 0) -> Dictionary:
 	var item: Dictionary
 	var valid:= []
 	var components:= []
@@ -1006,11 +1006,11 @@ func create_equipment_drop(creature: Dictionary) -> Dictionary:
 	var recipe: String = equipment_recipes.keys().pick_random()
 	if creature.has("equipment_quality"):
 		quality *= creature.equipment_quality
-	item = create_random_standard_equipment(recipe, {
+	item = create_random_standard_equipment(recipe, Region.new({
 		"level":creature.level,
 		"tier":creature.tier,
 		"local_materials":DEFAULT_MATERIALS,
-	}, int(creature.tier * randf_range(0.25, 0.75) + randf_range(0.0, 0.5)), float(quality) / 100.0)
+	}), int(creature.tier * randf_range(0.25, 0.75) + randf_range(0.0, 0.5)), float(quality) / 100.0)
 	item.recipe = recipe
 	num_enchantments -= int(item.has("enchanted") && item.enchanted)
 	if creature.has("equipment_enchantment_chance"):
@@ -1043,11 +1043,11 @@ func create_legendary_equipment(type: String, level: int, quality:= 150) -> Dict
 	var base_name: String
 	if type not in equipment_recipes:
 		type = equipment_recipes.keys().pick_random()
-	item = create_random_standard_equipment(type, {
+	item = create_random_standard_equipment(type, Region.new({
 		"level": 10 + int(1.2 * level),
 		"tier": 0,
 		"local_materials": LEGENDARY_MATERIALS,
-	}, 2, 1.5, add_quality)
+	}), 2, 1.5, add_quality)
 	if type in LEGENDARY_ITEM_NAME && randf() < 0.75:
 		base_name = LEGENDARY_ITEM_NAME[type].pick_random().capitalize()
 	else:
@@ -1164,7 +1164,7 @@ func create_material_drop(type: String, creature: Dictionary, add_data:= {}) -> 
 	material.erase("veggie_name")
 	return material
 
-func create_regional_material(type: String, region: Dictionary, quality_mod:= 1.0) -> Dictionary:
+func create_regional_material(type: String, region: Region, quality_mod:= 1.0) -> Dictionary:
 	var material: Dictionary = materials[type].duplicate(true)
 	var quality: int
 	var named:= false
