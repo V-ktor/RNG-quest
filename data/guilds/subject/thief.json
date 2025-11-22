@@ -1,0 +1,60 @@
+{
+	"name": "thief",
+	"prefixes": [
+		"thief", "crime", "pirate"
+	],
+	"ranks": {
+		"0": [
+			"rascal"
+		],
+		"1": [
+			"swindler"
+		],
+		"2": [
+			"crook"
+		],
+		"3": [
+			"trickster"
+		],
+		"4": [
+			"cutthroat"
+		],
+		"5": [
+			"thief"
+		],
+		"6": [
+			"burglar"
+		],
+		"7": [
+			"rogue"
+		],
+		"8": [
+			"phantom",
+			"apparition"
+		],
+		"9": [
+			"assassin"
+		]
+	},
+	"relics": [
+		"relic"
+	],
+	"abilities": [
+		"dirty_fighting",
+		"brawling",
+		"evasion",
+		"trapping"
+	],
+	"exp_gain": {
+		"loot": 4,
+		"debuff": 2,
+		"attack": 1,
+	},
+	"tags": [
+		"theft",
+		"looting",
+		"gold",
+		"cunning",
+		"darkness"
+	]
+}

@@ -1,0 +1,17 @@
+{
+	"name": "bulwark",
+	"relics": [
+		"banner"
+	],
+	"abilities": [
+		"armour",
+		"shield"
+	],
+	"exp_gain": {
+		"attacked": 2
+	},
+	"tags": [
+		"armour",
+		"constitution"
+	]
+}

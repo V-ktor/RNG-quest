@@ -1,0 +1,16 @@
+{
+	"name": "summoner",
+	"relics": [
+		"crystal"
+	],
+	"abilities": [
+		"summoning"
+	],
+	"exp_gain": {
+		"summon": 4
+	},
+	"tags": [
+		"summoning",
+		"nature"
+	]
+}

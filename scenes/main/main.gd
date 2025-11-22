@@ -331,6 +331,8 @@ func pick_ability() -> String:
 		valid.push_back("celestial_magic")
 	if !player.abilities.has("defensive_magic") && magical:
 		valid.push_back("defensive_magic")
+	if !player.abilities.has("blood_magic") && (player.abilities.has("necromancy") || player.abilities.has("celestial_magic")) && magical:
+		valid.push_back("blood_magic")
 	if !player.abilities.has("summoning") && magical:
 		valid.push_back("summoning")
 	if !player.abilities.has("necromancy") && magical:
@@ -2566,6 +2568,7 @@ func enemy_attack(enemy: Characters.Enemy):
 	
 	match skill.usage:
 		"attack":
+			add_guild_exp("attacked")
 			if typeof(result.target)==TYPE_ARRAY:
 				for i in range(result.target.size()):
 					var dict:= {

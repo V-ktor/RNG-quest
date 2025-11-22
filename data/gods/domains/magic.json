@@ -1,0 +1,180 @@
+{
+	"magic": {
+		"name": "magic",
+		"title": [
+			"Magic",
+			"Arcana"
+		],
+		"prefix": [
+			"Arcane"
+		],
+		"suffix": [
+			"Controlling Magic",
+			"Creating the Arcane"
+		],
+		"tags": [
+			"magic"
+		]
+	},
+	"light": {
+		"name": "light",
+		"title": [
+			"Light",
+			"Illumination",
+			"Sun"
+		],
+		"prefix": [
+			"Illuminated"
+		],
+		"suffix": [
+			"of Light",
+			"Bathed in Light",
+			"Carrying the Sun"
+		],
+		"tags": [
+			"light"
+		]
+	},
+	"darkness": {
+		"name": "darkness",
+		"title": [
+			"Darkness",
+			"Shadow"
+		],
+		"prefix": [
+			"Dark"
+		],
+		"suffix": [
+			"of Darkness",
+			"Spreading Darkness",
+			"Emanating Darkness"
+		],
+		"tags": [
+			"darkness"
+		]
+	},
+	"celestial": {
+		"name": "celestial",
+		"title": [
+			"Star",
+			"Sun",
+			"Moon"
+		],
+		"prefix": [
+			"Stellar"
+		],
+		"suffix": [
+			"of Stars",
+			"from Space"
+		],
+		"tags": [
+			"celestial_magic"
+		]
+	},
+	"fire": {
+		"name": "fire",
+		"title": [
+			"Fire",
+			"Flame",
+			"Pyre"
+		],
+		"prefix": [
+			"Flaming",
+			"Burning"
+		],
+		"suffix": [
+			"Engulfed in Flames",
+			"who Burns"
+		],
+		"tags": [
+			"fire",
+			"elemental"
+		]
+	},
+	"ice": {
+		"name": "ice",
+		"title": [
+			"Ice",
+			"Frost",
+			"Frostbite"
+		],
+		"prefix": [
+			"Frozen",
+			"Freezing"
+		],
+		"suffix": [
+			"Encased in Ice"
+		],
+		"tags": [
+			"ice",
+			"elemental"
+		]
+	},
+	"lightning": {
+		"name": "lightning",
+		"title": [
+			"Lightning",
+			"Tempest"
+		],
+		"prefix": [
+			"Crackling"
+		],
+		"tags": [
+			"lightning",
+			"elemental"
+		]
+	},
+	"water": {
+		"name": "water",
+		"title": [
+			"Ocean"
+		],
+		"prefix": [
+			"Water",
+			"Flowing"
+		],
+		"suffix": [
+			"of Water",
+			"Granting Water"
+		],
+		"tags": [
+			"water",
+			"nature"
+		]
+	},
+	"wind": {
+		"name": "wind",
+		"title": [
+			"Breeze",
+			"Storm"
+		],
+		"prefix": [
+			"Wind",
+			"Blowing"
+		],
+		"suffix": [
+			"of Wind"
+		],
+		"tags": [
+			"wind",
+			"nature"
+		]
+	},
+	"earth": {
+		"name": "earth",
+		"prefix": [
+			"Earth",
+			"Rock"
+		],
+		"suffix": [
+			"of Earth",
+			"of Rock"
+		],
+		"tags": [
+			"earth",
+			"nature",
+			"materials",
+			"dwarf"
+		]
+	},
+}

@@ -1,0 +1,47 @@
+{
+	"fate": {
+		"name": "fate",
+		"title": [
+			"Fate"
+		],
+		"prefix": [
+			"Fated"
+		],
+		"suffix": [
+			"who Spins Fate"
+		],
+		"tags": [
+			"worship"
+		]
+	},
+	"destiny": {
+		"name": "destiny",
+		"title": [
+			"Destiny"
+		],
+		"suffix": [
+			"who Defies Fate"
+		],
+		"tags": [
+			"exploration",
+			"salvation"
+		]
+	},
+	"providence": {
+		"name": "providence",
+		"title": [
+			"Providence"
+		],
+		"prefix": [
+			"Untouchable"
+		],
+		"suffix": [
+			"of Providence",
+			"Granting Providence"
+		],
+		"tags": [
+			"god",
+			"salvation"
+		]
+	}
+}

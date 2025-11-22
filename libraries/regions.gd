@@ -71,7 +71,7 @@ func get_city_data(array: Array) -> Dictionary:
 	var city_name: String = dict.base.pick_random()
 	if dict.has("prefix"):
 		var city_prefix: String = dict.prefix.pick_random()
-		if city_prefix[city_prefix.length()-1] == ' ' && city_name[0] == ' ':
+		if city_prefix[city_prefix.length() - 1] == ' ' && city_name[0] == ' ':
 			name = (city_prefix + city_name.substr(1)).capitalize()
 		else:
 			name = (city_prefix + city_name).capitalize()
@@ -88,13 +88,11 @@ func create_region(ID: String, level:= 0, tier:= 0) -> Region:
 		"enemy": dict.enemy,
 		"cities": {},
 		"locations": {},
-		#"location_enemies": {},
 		"enemies": dict.enemies,
 		"enemy_amount": dict.enemy_amount.duplicate(),
 		"local_materials": dict.local_materials.duplicate(true),
 		"enchantment_chance": dict.enchantment_chance,
 		"resources": dict.resources,
-		#"location_resources": {},
 		"resource_chance": dict.resource_chance,
 		"resource_amount": dict.resource_amount,
 	}
@@ -107,7 +105,7 @@ func create_region(ID: String, level:= 0, tier:= 0) -> Region:
 	else:
 		data.name = (region_prefix + region_name).capitalize()
 	if tier<0:
-		tier_multiplier = 1.0/pow(1.5, -tier)
+		tier_multiplier = 1.0 / pow(1.5, -tier)
 	elif tier>0:
 		tier_multiplier = pow(1.5, tier)
 	for i in range(NUM_CITIES):
@@ -133,7 +131,7 @@ func create_region(ID: String, level:= 0, tier:= 0) -> Region:
 		}
 	for array in data.local_materials.values():
 		for mat in array:
-			mat.quality *= tier_multiplier*level_multiplier
+			mat.quality *= tier_multiplier * level_multiplier
 	var region:= Region.new(data)
 	region.description = get_region_description(region)
 	return region
@@ -143,13 +141,13 @@ func select_next_region(level: int) -> String:
 	var valid:= []
 	var level_cap:= 5
 	
-	while valid.size()==0:
+	while valid.size() == 0:
 		for k in regions.keys():
-			if abs(regions[k].level-level)<level_cap:
+			if abs(regions[k].level - level) < level_cap:
 				valid.push_back(k)
-		level_cap += randi_range(4,8)
+		level_cap += randi_range(4, 8)
 	
-	if valid.size()>0:
+	if valid.size() > 0:
 		return valid.pick_random()
 	return regions.keys().pick_random()
 

@@ -114,3 +114,23 @@ func parse_vector2(text: String) -> Vector2:
 	regex.compile("\\(([\\d\\.-])+, ([\\d\\.-]+)\\)")
 	result = regex.search(text)
 	return Vector2(float(result.get_string(0)), float(result.get_string(1)))
+
+
+func merge_dicts(dict: Dictionary, add: Dictionary) -> Dictionary:
+	for k in add.keys():
+		if dict.has(k):
+			if typeof(dict[k]) == TYPE_DICTIONARY:
+				if typeof(add[k]) == TYPE_ARRAY:
+					for s in add[k]:
+						if !dict[k].has(s):
+							dict[k][s] = null
+				elif typeof(add[k]) == TYPE_DICTIONARY:
+					dict[k] = merge_dicts(dict[k], add[k])
+			elif typeof(dict[k]) != TYPE_STRING:
+				if typeof(add[k]) == TYPE_DICTIONARY:
+					dict[k] += add[k].value
+				else:
+					dict[k] += add[k]
+		else:
+			dict[k] = add[k]
+	return dict

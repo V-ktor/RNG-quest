@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c272b31fmx5ud"]
+
+[ext_resource type="Script" uid="uid://c8xdtxuuoiya5" path="res://libraries/guilds.gd" id="1_s72jj"]
+[ext_resource type="Script" uid="uid://cggj5y00saka1" path="res://libraries/guild_description.gd" id="2_5eqra"]
+[ext_resource type="Script" uid="uid://cv5bh6lm3dxp0" path="res://libraries/god_description.gd" id="3_jqdd1"]
+
+[node name="Guilds" type="Node"]
+script = ExtResource("1_s72jj")
+
+[node name="Description" type="Node" parent="."]
+script = ExtResource("2_5eqra")
+
+[node name="Gods" type="Node" parent="."]
+script = ExtResource("3_jqdd1")

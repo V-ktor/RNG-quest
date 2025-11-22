@@ -1,0 +1,194 @@
+[
+	{
+		"texts": [
+			"to wield light weapons"
+		],
+		"tags": [
+			"light_weapons"
+		]
+	},
+	{
+		"texts": [
+			"to wield heavy weapons"
+		],
+		"tags": [
+			"heavy_weapons"
+		]
+	},
+	{
+		"texts": [
+			"to wield fight dirty"
+		],
+		"tags": [
+			"dirty_weapons"
+		]
+	},
+	{
+		"texts": [
+			"to fight unarmed"
+		],
+		"tags": [
+			"brawling"
+		]
+	},
+	{
+		"texts": [
+			"to wield shields"
+		],
+		"tags": [
+			"shield"
+		]
+	},
+	{
+		"texts": [
+			"to fight with ranged weapons"
+		],
+		"tags": [
+			"archery"
+		]
+	},
+	{
+		"texts": [
+			"to wield firearms"
+		],
+		"tags": [
+			"gun_slinging"
+		]
+	},
+	{
+		"texts": [
+			"to wear heavy armour"
+		],
+		"tags": [
+			"armour"
+		]
+	},
+	{
+		"texts": [
+			"to excel in elemental magic"
+		],
+		"tags": [
+			"elemental_magic"
+		]
+	},
+	{
+		"texts": [
+			"to excel in nature magic"
+		],
+		"tags": [
+			"nature_magic"
+		]
+	},
+	{
+		"texts": [
+			"to excel in celestial magic"
+		],
+		"tags": [
+			"celestial_magic"
+		]
+	},
+	{
+		"texts": [
+				"to sacrifice your their own blood in unholy rituals"
+		],
+		"tags": [
+			"blood_magic"
+		]
+	},
+	{
+		"texts": [
+			"to use magic defensively"
+		],
+		"tags": [
+			"defensive_magic"
+		]
+	},
+	{
+		"texts": [
+			"to use healing magic"
+		],
+		"tags": [
+			"healing"
+		]
+	},
+	{
+		"texts": [
+			"to summon wild beasts to fight by their side"
+		],
+		"tags": [
+			"summoning"
+		]
+	},
+	{
+		"texts": [
+			"to revive the dead"
+		],
+		"tags": [
+			"necromancy"
+		]
+	},
+	{
+		"texts": [
+			"to cook for themselves"
+		],
+		"tags": [
+			"cooking"
+		]
+	},
+	{
+		"texts": [
+			"to brew alchemical potions"
+		],
+		"tags": [
+			"alchemy"
+		]
+	},
+	{
+		"texts": [
+			"to craft weapons"
+		],
+		"tags": [
+			"weapon_smithing"
+		]
+	},
+	{
+		"texts": [
+			"to craft armour"
+		],
+		"tags": [
+			"armour_smithing"
+		]
+	},
+	{
+		"texts": [
+			"to craft bows and staves"
+		],
+		"tags": [
+			"woodwork"
+		]
+	},
+	{
+		"texts": [
+			"to craft clothing"
+		],
+		"tags": [
+			"tayloring"
+		]
+	},
+	{
+		"texts": [
+			"to enchant equipment"
+		],
+		"tags": [
+			"enchanting"
+		]
+	},
+	{
+		"texts": [
+			"to extract the souls of living creatures"
+		],
+		"tags": [
+			"soulbinding"
+		]
+	}
+]

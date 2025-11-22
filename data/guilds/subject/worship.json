@@ -1,0 +1,57 @@
+{
+	"name": "worship",
+	"prefixes": [
+		"holy", "celestial", "divine"
+	],
+	"ranks": {
+		"0": [
+			"layman"
+		],
+		"1": [
+			"apprentice"
+		],
+		"2": [
+			"novice"
+		],
+		"3": [
+			"preacher"
+		],
+		"4": [
+			"cleric"
+		],
+		"5": [
+			"priest"
+		],
+		"6": [
+			"missionary"
+		],
+		"7": [
+			"inquisitor"
+		],
+		"8": [
+			"saint"
+		],
+		"9": [
+			"angel"
+		]
+	},
+	"relics": [
+		"idol"
+	],
+	"abilities": [
+		"celestial_magic",
+		"defensive_magic",
+		"healing",
+		"summoning"
+	],
+	"exp_gain": {
+		"heal": 4,
+		"buff": 1,
+		"summon": 1,
+	},
+	"tags": [
+		"worship",
+		"gods",
+		"light"
+	]
+}

@@ -1,0 +1,119 @@
+[
+	{
+		"texts": [
+			"to gather wealth",
+			"to amass wealth",
+			"to get filthy rich"
+		],
+		"tags": [
+			"gold"
+		]
+	},
+	{
+		"texts": [
+			"to explore the lands beyond {region}"
+		],
+		"tags": [
+			"exploration"
+		]
+	},
+	{
+		"texts": [
+			"to help people"
+		],
+		"tags": [
+			"quests"
+		]
+	},
+	{
+		"texts": [
+			"to become stronger"
+		],
+		"tags": [
+			"strength"
+		]
+	},
+	{
+		"texts": [
+			"to shed blood"
+		],
+		"tags": [
+			"brutality"
+		]
+	},
+	{
+		"texts": [
+			"to craft exquisite equipment",
+			"to produces top notch equipment"
+		],
+		"tags": [
+			"crafting"
+		]
+	},
+	{
+		"texts": [
+			"to hunt the mightiest beasts",
+			"to defeat powerful monsters"
+		],
+		"tags": [
+			"hunt"
+		]
+	},
+	{
+		"texts": [
+			"to master powerful magic",
+			"to collect knowledge about magic"
+		],
+		"tags": [
+			"magic"
+		]
+	},
+	{
+		"texts": [
+			"to learn and to share knowledge"
+		],
+		"tags": [
+			"intelligence"
+		]
+	},
+	{
+		"texts": [
+			"to conduct research",
+			"to expand the boundaries of knowledge"
+		],
+		"tags": [
+			"research"
+		]
+	},
+	{
+		"texts": [
+			"to research new technologies",
+			"to develop innovative technologies",
+			"to work on cutting edge technology"
+		],
+		"tags": [
+			"technology"
+		]
+	},
+	{
+		"texts": [
+			"to steal great treasures and powerful artifacts"
+		],
+		"tags": [
+			"theft"
+		]
+	},
+	{
+		"texts": [
+			"to worship {god}",
+			"to praise {god}",
+			"to kneel before {god}",
+			"to spread the word of {god}",
+			"to be the messengers of {god}"
+		],
+		"tags": [
+			"worship",
+			"god"
+		]
+	}
+]

@@ -1,0 +1,15 @@
+{
+	"name": "cryomancy",
+	"relics": [
+		"crystal"
+	],
+	"abilities": [
+		"elemental_magic"
+	],
+	"exp_gain": {
+		"attack": 1
+	},
+	"tags": [
+		"ice"
+	]
+}

@@ -1,0 +1,323 @@
+{
+	"death": {
+		"name": "death",
+		"title": [
+			"Death"
+		],
+		"prefix": [
+			"Dead"
+		],
+		"suffix": [
+			"of Death"
+		],
+		"tags": [
+			"necromancy",
+			"blood"
+		]
+	},
+	"life": {
+		"name": "life",
+		"title": [
+			"Life"
+		],
+		"prefix": [
+			"Living"
+		],
+		"suffix": [
+			"of Life"
+		],
+		"tags": [
+			"healing",
+			"constitution",
+			"blood"
+		]
+	},
+	"blood": {
+		"name": "blood",
+		"title": [
+			"Blood"
+		],
+		"prefix": [
+			"Bloody",
+			"Bleeding"
+		],
+		"suffix": [
+			"Covered in Blood",
+			"Standing in Blood"
+		],
+		"tags": [
+			"constitution",
+			"blood_magic",
+			"blood"
+		]
+	},
+	"beauty": {
+		"name": "beauty",
+		"title": [
+			"Beauty"
+		],
+		"prefix": [
+			"Beautiful"
+		],
+		"suffix": [
+			"Born of Beauty"
+		],
+		"tags": [
+			"constitution"
+		]
+	},
+	"mystery": {
+		"name": "mystery",
+		"title": [
+			"Mystery",
+			"Enigma"
+		],
+		"prefix": [
+			"Mysterious",
+			"Enigmatic"
+		],
+		"suffix": [
+			"Shrouded in Mysteries",
+			"Born of Mysteries"
+		],
+		"tags": [
+			"mysterious",
+			"conspiracy"
+		]
+	},
+	"secrets": {
+		"name": "secrets",
+		"title": [
+			"Secret",
+			"Unknown"
+		],
+		"prefix": [
+			"Secret",
+			"Hidden",
+			"Unknown"
+		],
+		"suffix": [
+			"of Secrets",
+			"who Is Unknown"
+		],
+		"tags": [
+			"conspiracy"
+		]
+	},
+	"amnesia": {
+		"name": "amnesia",
+		"title": [
+			"Amnesia",
+			"Forgetful",
+			"Blank"
+		],
+		"prefix": [
+			"Forgetful",
+			"Blank"
+		],
+		"suffix": [
+			"who Is Forgotten",
+			"Born from Amnesia"
+		],
+		"tags": [
+			"mysterious"
+		]
+	},
+	"knowledge": {
+		"name": "knowledge",
+		"title": [
+			"Knowledge",
+			"Information"
+		],
+		"prefix": [
+			"Knowledgeable"
+		],
+		"suffix": [
+			"of Knowledge",
+			"Born from Knowledge",
+			"Processing Information"
+		],
+		"tags": [
+			"research",
+			"magic"
+		]
+	},
+	"science": {
+		"name": "science",
+		"title": [
+			"Science"
+		],
+		"prefix":[
+			"Scientific"
+		],
+		"suffix": [
+			"of Science"
+		],
+		"tags": [
+			"research",
+			"technology"
+		]
+	},
+	"technology": {
+		"name": "technology",
+		"title": [
+			"Technology",
+			"Mechanic"
+		],
+		"prefix": [
+			"Mechanical",
+			"Technologically Ascended",
+			"Artificial"
+		],
+		"suffix": [
+			"of Technology"
+		],
+		"tags": [
+			"research",
+			"technology"
+		]
+	},
+	"mind": {
+		"name": "mind",
+		"title": [
+			"Mind",
+			"Consciousness"
+		],
+		"suffix": [
+			"of Mind"
+		],
+		"tags": [
+			"Intelligence",
+			"Wisdom"
+		]
+	},
+	"dreams": {
+		"name": "dreams",
+		"title": [
+			"Dream"
+		],
+		"prefix": [
+			"Dreaming",
+			"Dreamt"
+		],
+		"suffix": [
+			"Born from Dreams",
+			"who Carries Dreams"
+		],
+		"tags": [
+			"light",
+			"mysterious"
+		]
+	},
+	"nightmare": {
+		"name": "nightmare",
+		"title": [
+			"Nightmare"
+		],
+		"suffix": [
+			"Born from Nightmares",
+			"Haunted by Nightmares",
+			"Trapped in Nightmares"
+		],
+		"tags": [
+			"darkness"
+		]
+	},
+	"traveling": {
+		"name": "traveling",
+		"title": [
+			"Traveller"
+		],
+		"prefix": [
+			"Traveling",
+			"Venturing"
+		],
+		"suffix": [
+			"who Keeps Traveling",
+			"who Ventures Forth"
+		],
+		"tags": [
+			"exploration"
+		]
+	},
+	"exploration": {
+		"name": "exploration",
+		"title": [
+			"Explorer",
+			"Adventurer"
+		],
+		"prefix": [
+			"Exploring"
+		],
+		"suffix": [
+			"of Exploration",
+			"of Adventures"
+		],
+		"tags": [
+			"exploration"
+		]
+	},
+	"cooking": {
+		"name": "cooking",
+		"title": [
+			"Cook"
+		],
+		"prefix": [
+			"Hard-Boiled",
+			"Cooked"
+		],
+		"suffix": [
+			"of Cooking",
+			"of Gastronomy",
+			"Eating Pasta"
+		],
+		"tags": [
+			"cooking"
+		]
+	},
+	"trickery": {
+		"name": "trickery",
+		"title": [
+			"Trickster"
+		],
+		"suffix": [
+			"of Trickery"
+		],
+		"tags": [
+			"cunning",
+			"dirty_fighting",
+			"trapping"
+		],
+	},
+	"procedural_generation": {
+		"name": "procedural_generation",
+		"title": [
+			"Procedural Generation",
+			"Algorithm"
+		],
+		"prefix": [
+			"Procedurally Generated"
+		],
+		"suffix": [
+			"of Procedural Generation"
+		],
+		"tags": [
+		]
+	},
+	"randomness": {
+		"name": "randomness",
+		"title": [
+			"Randomness"
+		],
+		"prefix": [
+			"Random",
+			"Randomized"
+		],
+		"suffix": [
+			"of Randomness",
+			"who Is Randomized"
+		],
+		"tags": [
+		]
+	}
+}

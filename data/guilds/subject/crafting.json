@@ -1,0 +1,58 @@
+{
+	"name": "crafting",
+	"prefixes": [
+		"crafter"
+	],
+	"ranks": {
+		"0": [
+			"apprentice"
+		],
+		"1": [
+			"novice"
+		],
+		"2": [
+			"fellow"
+		],
+		"3": [
+			"journeyman"
+		],
+		"4": [
+			"craftsman"
+		],
+		"5": [
+			"professional"
+		],
+		"6": [
+			"smith"
+		],
+		"7": [
+			"artisan"
+		],
+		"8": [
+			"master"
+		],
+		"9": [
+			"legend"
+		]
+	},
+	"relics": [
+		"banner"
+	],
+	"abilities": [
+		"weapon_smithing",
+		"armour_smithing",
+		"woodwork",
+		"tayloring"
+	],
+	"exp_gain": {
+		"loot": 2,
+		"craft": 6,
+	},
+	"tags": [
+		"crafting",
+		"equipment",
+		"materials",
+		"weapons",
+		"armour"
+	]
+}

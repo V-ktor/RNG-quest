@@ -1,0 +1,109 @@
+{
+	"metal": {
+		"name": "metal",
+		"prefix": [
+			"Metallic"
+		],
+		"suffix": [
+			"of Metals"
+		],
+		"tags": [
+			"dwarf",
+			"materials",
+			"crafting"
+		]
+	},
+	"copper": {
+		"name": "copper",
+		"prefix": [
+			"Copper"
+		],
+		"suffix": [
+			"of Copper"
+		],
+		"tags": [
+			"dwarf",
+			"materials"
+		]
+	},
+	"iron": {
+		"name": "iron",
+		"prefix": [
+			"Iron"
+		],
+		"suffix": [
+			"of Iron"
+		],
+		"tags": [
+			"dwarf",
+			"materials"
+		]
+	},
+	"silver": {
+		"name": "silver",
+		"prefix": [
+			"Silver"
+		],
+		"suffix": [
+			"of Silver"
+		],
+		"tags": [
+			"dwarf",
+			"materials"
+		]
+	},
+	"gold": {
+		"name": "gold",
+		"prefix": [
+			"Golden"
+		],
+		"suffix": [
+			"of Gold"
+		],
+		"tags": [
+			"dwarf",
+			"materials",
+			"gold"
+		]
+	},
+	"titanium": {
+		"name": "titanium",
+		"prefix": [
+			"Titanium"
+		],
+		"suffix": [
+			"of Titanium"
+		],
+		"tags": [
+			"dwarf",
+			"materials"
+		]
+	},
+	"platinum": {
+		"name": "platinum",
+		"prefix": [
+			"Platinum"
+		],
+		"suffix": [
+			"of Platinum"
+		],
+		"tags": [
+			"dwarf",
+			"materials",
+			"gold"
+		]
+	},
+	"lead": {
+		"name": "lead",
+		"prefix": [
+			"Leaden"
+		],
+		"suffix": [
+			"of Lead"
+		],
+		"tags": [
+			"dwarf",
+			"materials"
+		]
+	}
+}

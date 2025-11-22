@@ -1,0 +1,16 @@
+{
+	"name": "archeology",
+	"relics": [
+		"fossil"
+	],
+	"abilities": [
+	],
+	"exp_gain": {
+		"exploration": 10,
+		"loot": 1
+	},
+	"tags": [
+		"archeology",
+		"looting"
+	]
+}

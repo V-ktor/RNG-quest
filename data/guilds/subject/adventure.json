@@ -1,0 +1,56 @@
+{
+	"name": "adventure",
+	"prefixes": [
+		"adventure", "explorer", "scout"
+	],
+	"ranks": {
+		"0": [
+			"copper"
+		],
+		"1": [
+			"tin"
+		],
+		"2": [
+			"bronze"
+		],
+		"3": [
+			"iron"
+		],
+		"4": [
+			"steel"
+		],
+		"5": [
+			"tungsten",
+			"chromium"
+		],
+		"6": [
+			"silver"
+		],
+		"7": [
+			"gold"
+		],
+		"8": [
+			"titanium",
+			"platinum"
+		],
+		"9": [
+			"mithril",
+			"admanite"
+		]
+	},
+	"relics": [
+		"artifact"
+	],
+	"abilities": [
+	],
+	"exp_gain": {
+		"exploration": 40,
+		"quest": 10
+	},
+	"tags": [
+		"quests",
+		"exploration",
+		"salvation",
+		"versatility"
+	]
+}

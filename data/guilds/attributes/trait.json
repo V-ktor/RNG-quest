@@ -1,0 +1,194 @@
+[
+	{
+		"texts": [
+			"strength"
+		],
+		"tags": [
+			"strength",
+			"orc"
+		]
+	},
+	{
+		"texts": [
+			"constitution"
+		],
+		"tags": [
+			"constitution",
+			"ogre"
+		]
+	},
+	{
+		"texts": [
+			"dexterity"
+		],
+		"tags": [
+			"dexterity",
+			"halfling"
+		]
+	},
+	{
+		"texts": [
+			"intelligence"
+		],
+		"tags": [
+			"intelligence",
+			"elf"
+		]
+	},
+	{
+		"texts": [
+			"willpower"
+		],
+		"tags": [
+			"willpower",
+			"human"
+		]
+	},
+	{
+		"texts": [
+			"cunning"
+		],
+		"tags": [
+			"cunning",
+			"halfling"
+		]
+	},
+	{
+		"texts": [
+			"kindness"
+		],
+		"tags": [
+			"salvation"
+		]
+	},
+	{
+		"texts": [
+			"brutality"
+		],
+		"tags": [
+			"brutality",
+			"ogre"
+		]
+	},
+	{
+		"texts": [
+			"ingenuity",
+			"talent",
+			"practicality"
+		],
+		"tags": [
+			"crafting",
+			"technology"
+		]
+	},
+	{
+		"texts": [
+			"hunting skills"
+		],
+		"tags": [
+			"hunt"
+		]
+	},
+	{
+		"texts": [
+			"affinity to magic",
+			"interest in magic"
+		],
+		"tags": [
+			"magic"
+		]
+	},
+	{
+		"texts": [
+			"genius"
+		],
+		"tags": [
+			"research"
+		]
+	},
+	{
+		"texts": [
+			"greed"
+		],
+		"tags": [
+			"gold"
+		]
+	},
+	{
+		"texts": [
+			"thievery",
+			"unscrupulousness"
+		],
+		"tags": [
+			"theft"
+		]
+	},
+	{
+		"texts": [
+			"resolve",
+			"faith"
+		],
+		"tags": [
+			"worship"
+		]
+	},
+	{
+		"texts": [
+			"piety",
+			"connection to {god}"
+		],
+		"tags": [
+			"gods"
+		]
+	},
+	{
+		"texts": [
+			"connection to nature"
+		],
+		"tags": [
+			"nature",
+			"elf"
+		]
+	},
+	{
+		"texts": [
+			"craftsmanship"
+		],
+		"tags": [
+			"dwarf"
+		]
+	},
+	{
+		"texts": [
+			"cruelty"
+		],
+		"tags": [
+			"demon",
+			"orc"
+		]
+	},
+	{
+		"texts": [
+			"pride"
+		],
+		"tags": [
+			"elf"
+		]
+	},
+	{
+		"texts": [
+			"ruthlessness"
+		],
+		"tags": [
+			"murder"
+		]
+	},
+	{
+		"texts": [
+			"healthy meals"
+		],
+		"tags": [
+			"cooking"
+		]
+	}
+]

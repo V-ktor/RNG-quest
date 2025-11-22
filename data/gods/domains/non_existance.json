@@ -1,0 +1,54 @@
+{
+	"absence": {
+		"name": "absence",
+		"title": [
+			"Absence",
+			"Missing"
+		],
+		"prefix": [
+			"Absent",
+			"Missing"
+		],
+		"suffix": [
+			"who Is Absent"
+		],
+		"tags": [
+		]
+	},
+	"void": {
+		"name": "void",
+		"title": [
+			"Void",
+			"Vacuum"
+		],
+		"prefix": [
+			"Non-Existing",
+			"Voidborn"
+		],
+		"suffix": [
+			"of Void",
+			"Consumed by the Void"
+		],
+		"tags": [
+			"vile",
+			"mysterious"
+		]
+	},
+	"null": {
+		"name": "null",
+		"title": [
+			"Null",
+			"Null Device"
+		],
+		"prefix": [
+			"Null"
+		],
+		"suffix": [
+			"of Null",
+			"of Null Pointers"
+		],
+		"tags": [
+			"android"
+		]
+	}
+}

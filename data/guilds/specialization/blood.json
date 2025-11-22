@@ -1,0 +1,17 @@
+{
+	"name": "blood",
+	"relics": [
+		"fossil"
+	],
+	"abilities": [
+		"blood_magic"
+	],
+	"exp_gain": {
+		"attack": 1
+	},
+	"tags": [
+		"blood",
+		"mysterious",
+		"vile"
+	]
+}

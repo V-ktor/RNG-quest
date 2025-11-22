@@ -1,0 +1,81 @@
+{
+	"wilderness": {
+		"name": "wilderness",
+		"prefix": [
+			"Wild",
+			"Feral",
+			"Overgrown"
+		],
+		"suffix": [
+			"of Wilderness"
+		],
+		"tags": [
+			"hunt",
+			"nature"
+		]
+	},
+	"trees": {
+		"name": "trees",
+		"prefix": [
+			"Timberborn"
+		],
+		"suffix": [
+			"of Trees",
+			"of Forests",
+			"of Timber"
+		],
+		"tags": [
+			"elf",
+			"nature"
+		]
+	},
+	"foliage": {
+		"name": "foliage",
+		"prefix": [
+			"Overgrown"
+		],
+		"suffix": [
+			"of Foliage"
+		],
+		"tags": [
+			"elf",
+			"nature"
+		]
+	},
+	"flowers": {
+		"name": "flowers",
+		"title": [
+			"Flower"
+		],
+		"prefix": [
+			"Blooming"
+		],
+		"suffix": [
+			"of Flowers",
+			"of Petals"
+		],
+		"tags": [
+			"elf",
+			"nature"
+		]
+	},
+	"moss": {
+		"name": "moss",
+		"title": [
+			"Moss"
+		],
+		"prefix": [
+			"Mossy",
+			"Mossbearing"
+		],
+		"suffix": [
+			"of Moss",
+			"Covered in Moss",
+			"Overgrown with Moss"
+		],
+		"tags": [
+			"elf",
+			"nature"
+		]
+	}
+}

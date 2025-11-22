@@ -1,0 +1,59 @@
+{
+	"name": "hunt",
+	"prefixes": [
+		"hunter", "woodsman"
+	],
+	"ranks": {
+		"0": [
+			"rookie"
+		],
+		"1": [
+			"greenhorn"
+		],
+		"2": [
+			"trainee"
+		],
+		"3": [
+			"scout"
+		],
+		"4": [
+			"pathfinder"
+		],
+		"5": [
+			"woodsman"
+		],
+		"6": [
+			"hunter"
+		],
+		"7": [
+			"predator"
+		],
+		"8": [
+			"slayer"
+		],
+		"9": [
+			"legend"
+		]
+	},
+	"relics": [
+		"idol"
+	],
+	"abilities": [
+		"archery",
+		"gun_slinging",
+		"evasion",
+		"trapping",
+		"cooking"
+	],
+	"exp_gain": {
+		"hit": 1,
+		"cook": 20,
+		"trap": 4,
+	},
+	"tags": [
+		"hunt",
+		"trapping",
+		"archery",
+		"dexterity"
+	]
+}

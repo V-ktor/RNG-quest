@@ -1,0 +1,122 @@
+{
+	"greed": {
+		"name": "greed",
+		"title": [
+			"Greed"
+		],
+		"prefix": [
+			"Greedy"
+		],
+		"suffix": [
+			"of Greed"
+		],
+		"tags": [
+			"dwarf",
+			"theft"
+		]
+	},
+	"lust": {
+		"name": "lust",
+		"title": [
+			"Lust"
+		],
+		"prefix": [
+			"Lustful"
+		],
+		"suffix": [
+			"of Lust"
+		],
+		"tags": [
+		]
+	},
+	"sloth": {
+		"name": "sloth",
+		"title": [
+			"Sloth"
+		],
+		"prefix": [
+			"Slothful",
+			"Lazy"
+		],
+		"suffix": [
+			"of Sloth"
+		],
+		"tags": [
+			"human"
+		]
+	},
+	"vengeful": {
+		"name": "vengeful",
+		"title": [
+			"Vengeance"
+		],
+		"prefix": [
+			"Vengeful"
+		],
+		"suffix": [
+			"of Vengeance"
+		],
+		"tags": [
+			"orc"
+		]
+	},
+	"apathy": {
+		"name": "apathy",
+		"title": [
+			"Apathy"
+		],
+		"prefix": [
+			"Apathetic"
+		],
+		"suffix": [
+			"of Apathy"
+		],
+		"tags": [
+			"elf"
+		]
+	},
+	"arrogance": {
+		"name": "arrogance",
+		"title": [
+			"Arrogance"
+		],
+		"prefix": [
+			"Arrogant"
+		],
+		"suffix": [
+			"of Arrogance"
+		],
+		"tags": [
+			"elf"
+		]
+	},
+	"zeal": {
+		"name": "zeal",
+		"title": [
+			"Zeal"
+		],
+		"prefix": [
+			"Zealous"
+		],
+		"tags": [
+			"human",
+			"worship"
+		]
+	},
+	"madness": {
+		"name": "madness",
+		"title": [
+			"Madness"
+		],
+		"prefix": [
+			"Mad"
+		],
+		"suffix": [
+			"Afflicted by Madness",
+			"Stricken by Madness"
+		],
+		"tags": [
+			"vile"
+		]
+	}
+}

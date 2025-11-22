@@ -1,0 +1,16 @@
+{
+	"name": "thaumaturgy",
+	"relics": [
+		"crystal"
+	],
+	"abilities": [
+		"elemental_magic"
+	],
+	"exp_gain": {
+		"attack": 1
+	},
+	"tags": [
+		"combat",
+		"elemental"
+	]
+}

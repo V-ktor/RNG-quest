@@ -1,0 +1,17 @@
+{
+	"name": "necromancy",
+	"relics": [
+		"fossil"
+	],
+	"abilities": [
+		"necromancy",
+		"blood_magic"
+	],
+	"exp_gain": {
+		"summon": 4
+	},
+	"tags": [
+		"necromancy",
+		"darkness"
+	]
+}

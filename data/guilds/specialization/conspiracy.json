@@ -1,0 +1,15 @@
+{
+	"name": "conspiracy",
+	"relics": [
+		"relic"
+	],
+	"abilities": [
+		"stealth"
+	],
+	"exp_gain": {
+		"quest": 4
+	},
+	"tags": [
+		"conspiracy"
+	]
+}

@@ -181,6 +181,8 @@ POISON,Poison
 POISON_DESCRIPTION,"Poison magic."
 ACID,Acid
 ACID_DESCRIPTION,"Acid magic."
+BLOOD,Blood
+BLOOD_DESCRIPTION,"Blood magic."
 VAMPIRIC,Vampiric
 VAMPIRIC_DESCRIPTION,"Restore some of the damage done as health."
 HOMING,Homing
@@ -333,3 +335,9 @@ UNSEEN,Unseen
 UNSEEN_DESCRIPTION,"Increases the user's penetration bonus"
 ARMOURED,Armoured
 ARMOURED_DESCRIPTION,"Increases the user's armour"
+BLOOD_INFUSED,Blood-infused
+BLOOD_INFUSED_DESCRIPTION,"Drain your own blood to make the spell stronger"
+BLOOD_BLADE,Blood blade
+BLOOD_BLADE_DESCRIPTION,"Form your own blood into a blade to strike the enemy"
+BONE_ARROW,Bone arrow
+BONE_ARROW_DESCRIPTION,"Draw a bone fragment out of your body for a bleeding inflicting attack"

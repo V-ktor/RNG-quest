@@ -1,0 +1,17 @@
+{
+	"name": "herbalist",
+	"relics": [
+		"infusion"
+	],
+	"abilities": [
+		"alchemy",
+	],
+	"exp_gain": {
+		"harvest": 2,
+		"alchemy": 4,
+	},
+	"tags": [
+		"research",
+		"alchemy"
+	]
+}

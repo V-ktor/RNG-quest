@@ -43,11 +43,11 @@ func create_item_data() -> Dictionary:
 	var recipe: String = Items.equipment_recipes.keys().pick_random()
 	var recipe_data: Dictionary = Items.equipment_recipes[recipe]
 	var item_name:= tr(recipe.to_upper())
-	var item: Dictionary = Items.create_random_standard_equipment(recipe, {
+	var item: Dictionary = Items.create_random_standard_equipment(recipe, Region.new({
 		"level": 1,
 		"tier": 1,
 		"local_materials": Items.DEFAULT_MATERIALS,
-	})
+	}))
 	
 	item.attributes = {}
 	if item_name.right(1) == 's' && item_name.right(2) != "ss":

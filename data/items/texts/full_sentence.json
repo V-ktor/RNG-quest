@@ -4,7 +4,7 @@
 		"text": [
 			"{curse.adjective} {material.singular} {forms/form} a {shape.adjective} {component.singular} as",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "material",
 			"object": "component",
 			"predicate": "",
@@ -15,7 +15,7 @@
 			"shape",
 			"component",
 		],
-		"replace":{
+		"replace": {
 			"curse": "theme",
 			"shape": "quality",
 		},
@@ -29,7 +29,7 @@
 			"the {object.singular} {bears/bear} the blessing of the {theme.singular}",
 			"the {object.singular} {bears/bear} the blessing of {theme.plural}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 			"predicate": "",
 			"object": "theme",
@@ -38,7 +38,7 @@
 			"object",
 			"theme",
 		],
-		"replace":{
+		"replace": {
 			"theme": "quality",
 		},
 		"transition": [
@@ -54,7 +54,7 @@
 			"the {object.singular} {is/are} covered in {liquid.thickness} {liquid.singular}",
 			"the {object.singular} {is/are} engulfed by {liquid.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 			"predicate": "",
 			"object": "liquid",
@@ -63,7 +63,7 @@
 			"object",
 			"liquid",
 		],
-		"replace":{
+		"replace": {
 			"liquid": "theme",
 		},
 		"transition": [
@@ -77,7 +77,7 @@
 			"the {object.singular} {is/are} filled with {theme.singular}",
 			"the {object.singular} {is/are} fueled by {theme.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 			"predicate": "",
 			"object": "theme",
@@ -86,7 +86,7 @@
 			"object",
 			"theme",
 		],
-		"replace":{
+		"replace": {
 			"theme": "quality",
 		},
 		"transition": [
@@ -101,7 +101,7 @@
 			"the {liquid.singular} of {theme.singular} {runs/run} down the {object.singular}'s {component.singular}",
 			"{theme.adjective} {liquid.singular} {runs/run} down the {object.singular}'s {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "liquid",
 			"predicate": "",
 			"object": "object",
@@ -112,7 +112,7 @@
 			"liquid",
 			"theme",
 		],
-		"replace":{
+		"replace": {
 			"liquid": "shape",
 			"theme": "quality",
 		},
@@ -125,7 +125,7 @@
 		"text": [
 			"the {object.singular} {bears/bear} the {curse.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 			"predicate": "",
 			"object": "curse",
@@ -134,7 +134,7 @@
 			"object",
 			"curse",
 		],
-		"replace":{
+		"replace": {
 			"curse": "quality",
 		},
 		"transition": [
@@ -147,7 +147,7 @@
 			"{quality.adjective} {material.singular} {hides/hide} the {theme.singular} beneath",
 			"the {quality.adjective} {material.singular} cannot hide the {theme.singular} beneath",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "material",
 			"predicate": "",
 			"object": "theme",
@@ -166,7 +166,7 @@
 		"text": [
 			"the craftmanship is {craftmanship.adjective}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "craftmanship",
 			"predicate": "",
 		},
@@ -188,7 +188,7 @@
 			"{color.adjective} {shape.plural} {overlays/overlay} the bare {material.singular}",
 			"{color.adjective} {shape.plural} {covers/cover} the bare {material.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "shape",
 			"object": "material",
 			"predicate": "",
@@ -213,7 +213,7 @@
 			"{quality.adjective} {shape.plural} {overlays/overlay} the bare {material.singular}",
 			"{quality.adjective} {shape.plural} {covers/cover} the bare {material.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "shape",
 			"object": "material",
 			"predicate": "",
@@ -235,7 +235,7 @@
 		"text": [
 			"a {craftmanship.singular} envisioned a {object.singular} with a {component.singular} made of {shape.plural}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "craftmanship",
 			"object": "object",
 			"predicate": "",
@@ -259,7 +259,7 @@
 			"the {object.singular}{'s/'} {component.singular} in shape of {shape.plural} has been designed by a {craftmanship.singular}",
 			"the {object.singular}{'s/'} {shape.adjective} {component.singular} has been designed by a {craftmanship.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 			"object": "craftmanship",
 			"predicate": "",
@@ -282,7 +282,7 @@
 		"text": [
 			"a {craftmanship.singular} envisioned a {object.singular} with a {component.singular} made of {material.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "craftmanship",
 			"object": "object",
 			"predicate": "",
@@ -305,7 +305,7 @@
 		"text": [
 			"the {object.singular}{'s/'} {material.adjective} {component.singular} {has/have} been designed by a {craftmanship.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 			"object": "craftmanship",
 			"predicate": "",
@@ -331,7 +331,7 @@
 			"the {craftmanship.singular}, driven by {theme.singular}, created a {theme.adjective} {object.singular}",
 			"the {craftmanship.singular} has been struck by {theme.singular} when they created the {theme.adjective} {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 		},
 		"required": [
@@ -351,7 +351,7 @@
 		"text": [
 			"the {theme.adjective} {object.singular} {fights/fight} against the {enemy.plural}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 			"object": "enemy",
 			"predicate": "",
@@ -374,7 +374,7 @@
 			"the {object.singular} {defies/defy} the {theme.singular} of {enemy.plural}",
 			"cursed by {enemy.plural}, the {object.singular} {stand/stand} against the {enemy.adjective} {theme.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 			"object": "theme",
 			"predicate": "",
@@ -396,7 +396,7 @@
 		"text": [
 			"the {object.singular} emerged from a {theme.adjective} war against {enemy.plural}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 			"object": "enemy",
 			"predicate": "",
@@ -418,7 +418,7 @@
 		"text": [
 			"the {stains.adjective} {object.singular} emerged from a war against {enemy.plural}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 			"object": "enemy",
 			"predicate": "",
@@ -442,7 +442,7 @@
 			"{material.singular} {has/have} been used to craft the {object.singular}{'s/'} {component.singular}",
 			"{material.singular} turned into the {object.singular}{'s/'} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "material",
 			"object": "component",
 			"predicate": "",
@@ -465,7 +465,7 @@
 			"{weakness.adjective} {material.singular} {has/have} been crafted into a {curse.adjective} {component.singular}",
 			"{weakness.adjective} {material.singular} turned into a {curse.adjective} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "material",
 			"object": "component",
 			"predicate": "",
@@ -490,7 +490,7 @@
 			"{quality.adjective} {material.singular} {has/have} been used to craft a {material.adjective} {component.singular}",
 			"{quality.adjective} {material.singular} turned into a {material.adjective} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "material",
 			"object": "component",
 			"predicate": "",
@@ -514,7 +514,7 @@
 			"{material.singular} {has/have} been used to craft a {element.adjective} {component.singular}",
 			"{material.singular} turned into a {element.adjective} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "material",
 			"object": "component",
 			"predicate": "",
@@ -538,7 +538,7 @@
 			"{liquid.adjective} {material.singular} {has/have} been used to craft a {stains.adjective} {component.singular}",
 			"{liquid.adjective} {material.singular} turned into a {stains.adjective} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "material",
 			"object": "component",
 			"predicate": "",
@@ -566,7 +566,7 @@
 			"will the {prophecy.adjective} {object.singular} be able to overcome the curse of {theme.plural}?",
 			"will the {curse.adjective} {object.singular} be able to overcome the curse of {theme.plural}?",
 		],
-		"sentence":{
+		"sentence": {
 			"subject": "object",
 			"object": "curse",
 			"predicate": "",
@@ -596,7 +596,7 @@
 			"but is it worth the sacrifice?",
 			"are you willing to pay the price?",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 		},
 		"required": [
@@ -615,7 +615,7 @@
 			"the {craftmanship.adjective} {object.singular} {was/were} crafted {emotion.adverb}",
 			"the {emotion.adverb} crafted {object.singular} {is/are} {craftmanship.adjective}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "object",
 			"object": "craftmanship",
@@ -639,7 +639,7 @@
 			"the {shape.adjective} {component.singular} {defines/define} the {object.singular}",
 			"the {shape.singular} shaped {component.singular} {defines/define} the {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "object",
 			"object": "component",
@@ -659,7 +659,7 @@
 			"the {material.adjective} {component.singular} {defines/define} the {object.singular}",
 			"the {component.singular} made of {material.singular} {defines/define} the {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "object",
 			"object": "component",
@@ -683,7 +683,7 @@
 			"the {curse.adjective} {object.singular} {ravages/ravage} with {emotion.singular}",
 			"the {curse.adjective} {object.singular} {is/are} filled with {emotion.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "object",
 			"object": "emotion",
@@ -706,7 +706,7 @@
 		"text": [
 			"the {object.singular} {is/are} filled with {emotion.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "object",
 			"object": "emotion",
@@ -774,7 +774,7 @@
 			"the {component.singular} {was/were} crafted from {material.singular}",
 			"the {component.singular} {is/are} made of {material.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"object": "material",
 		},
@@ -792,7 +792,7 @@
 			"the {component.singular} {was/were} crafted from {quality.adjective} {material.singular}",
 			"the {component.singular} {is/are} made of {quality.adjective} {material.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"object": "material",
 		},
@@ -811,7 +811,7 @@
 			"the {component.singular} {was/were} crafted from {color.adjective} {material.singular}",
 			"the {component.singular} {is/are} made of {color.adjective} {material.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"object": "material",
 		},
@@ -830,7 +830,7 @@
 			"the {component.singular} {was/were} crafted from {element.adjective} {material.singular}",
 			"the {component.singular} {is/are} made of {element.adjective} {material.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"object": "material",
 		},
@@ -849,7 +849,7 @@
 			"the {component.singular} {was/were} crafted from {theme.adjective} {material.singular}",
 			"the {component.singular} {is/are} made of {theme.adjective} {material.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"object": "material",
 		},
@@ -868,7 +868,7 @@
 			"the {component.singular} {was/were} {emotion.adverb} crafted from {material.singular}",
 			"with {emotion.singular}, the {component.singular} {was/were} crafted from {material.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"object": "material",
 		},
@@ -890,7 +890,7 @@
 			"{material.singular} {was/were} forged into {component.singular}",
 			"{material.singular} {is/are} formed into {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "material",
 			"object": "component",
@@ -910,7 +910,7 @@
 			"{material.singular} {was/were} forged into {shape.adjective} {component.singular}",
 			"{material.singular} {is/are} formed into {shape.adjective} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "material",
 			"object": "component",
@@ -934,7 +934,7 @@
 			"{material.singular} {was/were} forged into {quality.adjective} {component.singular}",
 			"{material.singular} {is/are} formed into {quality.adjective} {component.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "material",
 			"object": "component",
@@ -957,7 +957,7 @@
 		"text": [
 			"{theme.singular} {falls/fall} to {prophecy.adjective} {force.plural}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "theme",
 			"object": "force",
@@ -983,7 +983,7 @@
 		"text": [
 			"{theme.singular} {falls/fall} to {enemy.adjective} {force.plural}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "theme",
 			"object": "force",
@@ -1006,7 +1006,7 @@
 		"text": [
 			"{theme.singular} {falls/fall} to {mental_illness.adjective} {force.plural}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "theme",
 			"object": "force",
@@ -1029,7 +1029,7 @@
 		"text": [
 			"more of a glorified {care.adjective} {quality.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "quality",
 		},
@@ -1051,7 +1051,7 @@
 		"text": [
 			"the amount of {care.singular} on the {object.singular} {becomes/become} apparent",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "care",
 			"object": "object",
@@ -1074,7 +1074,7 @@
 		"text": [
 			"the amount of {care.singular} on the {object.singular} {becomes/become} apparent",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "care",
 			"object": "object",
@@ -1097,7 +1097,7 @@
 		"text": [
 			"the amount of {care.singular} on the {object.singular} {becomes/become} apparent",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "care",
 			"object": "object",
@@ -1120,7 +1120,7 @@
 		"text": [
 			"worn by a {enemy.singular} - and now by you",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "enemy",
 		},
@@ -1141,7 +1141,7 @@
 			"the {mental_illness.adjective} {object.singular} committed many {crime.plural} in the name of {enemy.plural}",
 			"the {object.singular} committed many {crime.plural} in the name of the {mental_illness.adjective} {enemy.plural}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "object",
 			"object": "crime",
@@ -1165,7 +1165,7 @@
 			"the {force.adjective} {object.singular} committed many {crime.plural} in the name of {enemy.plural}",
 			"the {object.singular} committed many {force.adjective} {crime.plural} in the name of {enemy.plural}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "object",
 			"object": "crime",
@@ -1188,7 +1188,7 @@
 		"text": [
 			"the {quality.adjective} {object.singular} committed many {crime.plural} in the name of {enemy.plural}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "object",
 			"object": "crime",
@@ -1212,7 +1212,7 @@
 			"the {curse.adjective} {object.singular} committed many {crime.plural} in the name of {enemy.plural}",
 			"the {object.singular} committed many {crime.plural} in the name of the {curse.adjective} {enemy.plural}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "object",
 			"object": "crime",
@@ -1235,7 +1235,7 @@
 		"text": [
 			"just a particularly {quality.adjective} {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "object",
 		},
@@ -1256,7 +1256,7 @@
 		"text": [
 			"just a particularly {care.adjective} {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "object",
 		},
@@ -1277,7 +1277,7 @@
 		"text": [
 			"{craftmanship.adjective} craftsmanship brought forth a {care.adjective} {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "object",
@@ -1299,7 +1299,7 @@
 		"text": [
 			"there is more to the {material.adjective} {object.singular} than meets the eye",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "object",
@@ -1320,7 +1320,7 @@
 		"text": [
 			"there is more to the {craftmanship.adjective} {object.singular} than meets the eye",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "object",
@@ -1341,7 +1341,7 @@
 		"text": [
 			"there is more to the {curse.adjective} {object.singular} than meets the eye",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "object",
@@ -1362,7 +1362,7 @@
 		"text": [
 			"there is more to the {care.adjective} {object.singular} than meets the eye",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "object",
@@ -1383,7 +1383,7 @@
 		"text": [
 			"a grim reminder of the {crime.singular} of {craftmanship.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "crime",
@@ -1405,7 +1405,7 @@
 			"the {mental_illness.singular} of {craftmanship.singular} {has/have} been forged into a {object.singular}",
 			"the {mental_illness.singular} of {craftmanship.singular} {was/were} formed into a {object.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "mental_illness",
 			"object": "craftmanship",
@@ -1429,7 +1429,7 @@
 			"the {mental_illness.adjective} {craftmanship.singular} distilled {theme.plural} into a {object.singular}",
 			"the {mental_illness.adjective} {craftmanship.singular} forged a {object.singular} out of {theme.plural}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "craftmanship",
 			"object": "object",
@@ -1452,7 +1452,7 @@
 		"text": [
 			"behind the {care.adjective} surface lies a {mental_illness.adjective} {curse.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "mental_illness",
@@ -1474,7 +1474,7 @@
 		"text": [
 			"behind the {stains.adjective} surface lies a {mental_illness.adjective} {curse.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "mental_illness",
@@ -1496,7 +1496,7 @@
 		"text": [
 			"behind the {material.adjective} surface lies a {mental_illness.adjective} {curse.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "mental_illness",
@@ -1518,7 +1518,7 @@
 		"text": [
 			"behind the {care.adjective} surface lies a {element.adjective} {force.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "element",
@@ -1540,7 +1540,7 @@
 		"text": [
 			"behind the {stains.adjective} surface lies a {element.adjective} {force.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "element",
@@ -1562,7 +1562,7 @@
 		"text": [
 			"behind the {material.adjective} surface lies a {element.adjective} {force.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "element",
@@ -1584,7 +1584,7 @@
 		"text": [
 			"behind the {care.adjective} surface lies {force.adjective} {theme.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "element",
@@ -1606,7 +1606,7 @@
 		"text": [
 			"behind the {stains.adjective} surface lies {force.adjective} {theme.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "element",
@@ -1628,7 +1628,7 @@
 		"text": [
 			"behind the {material.adjective} surface lies {force.adjective} {theme.singular}",
 		],
-		"sentence":{
+		"sentence": {
 			"predicate": "",
 			"subject": "",
 			"object": "element",
@@ -1641,6 +1641,48 @@
 		"remove": [
 			"force",
 		],
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"it is said that {craftmanship.singular} laughed in face of the {force.singular}",
+		],
+		"sentence": {
+			"predicate": "",
+			"subject": "craftmanship",
+			"object": "force",
+		},
+		"required": [
+			"craftmanship",
+			"force",
+		],
+		"replace": {
+			"force": "mental_illness",
+		},
+		"transition": [
+			"sentence_end",
+		],
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"it is said that {craftmanship.singular} laughed in face of {emotion.singular}",
+		],
+		"sentence": {
+			"predicate": "",
+			"subject": "craftmanship",
+			"object": "emotion",
+		},
+		"required": [
+			"craftmanship",
+			"emotion",
+		],
+		"replace": {
+			"emotion": "mental_illness",
+		},
 		"transition": [
 			"sentence_end",
 		],

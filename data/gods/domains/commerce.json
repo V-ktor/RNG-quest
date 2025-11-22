@@ -1,0 +1,45 @@
+{
+	"merchant": {
+		"name": "merchant",
+		"title": [
+			"Merchant"
+		],
+		"suffix": [
+			"of Commerce"
+		],
+		"tags": [
+			"crafting"
+		]
+	},
+	"trade": {
+		"name": "trade",
+		"title": [
+			"Trader"
+		],
+		"prefix": [
+			"Trading"
+		],
+		"suffix": [
+			"of Trade"
+		],
+		"tags": [
+		]
+	},
+	"wealth": {
+		"name": "wealth",
+		"title": [
+			"Wealth",
+			"Wealthy"
+		],
+		"prefix": [
+			"Wealthy"
+		],
+		"suffix": [
+			"of Wealth"
+		],
+		"tags": [
+			"gold",
+			"crafting"
+		]
+	},
+}

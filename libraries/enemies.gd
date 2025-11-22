@@ -37,6 +37,7 @@ func create_enemy(type: String, level: int, tier:= 0) -> Characters.Enemy:
 	var dict:= base_enemies[type] as Dictionary
 	var enemy:= {
 		"name": dict.base_name.pick_random(),
+		"race": dict.get("race", "beast"),
 		"level": level,
 		"tier": tier,
 		"experience": 10,

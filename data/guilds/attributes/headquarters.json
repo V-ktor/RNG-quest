@@ -1,0 +1,26 @@
+[
+	{
+		"texts": [
+			"headquarters"
+		],
+		"tags": [
+			"guild"
+		]
+	},
+	{
+		"texts": [
+			"institute"
+		],
+		"tags": [
+			"institute"
+		]
+	},
+	{
+		"texts": [
+			"origin"
+		],
+		"tags": [
+			"club"
+		]
+	}
+]

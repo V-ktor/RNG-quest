@@ -25,9 +25,9 @@ Enemies="*res://libraries/enemies.gd"
 Regions="*res://libraries/regions.tscn"
 Names="*res://libraries/names.gd"
 Characters="*res://libraries/characters.gd"
-Guilds="*res://libraries/guilds.gd"
 Story="*res://libraries/story.gd"
 TextGeneration="*res://libraries/text_generation.gd"
+Guilds="*res://libraries/guilds.tscn"
 
 [display]
 

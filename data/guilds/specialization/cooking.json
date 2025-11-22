@@ -1,0 +1,15 @@
+{
+	"name": "cooking",
+	"relics": [
+		"infusion"
+	],
+	"abilities": [
+		"cooking",
+	],
+	"exp_gain": {
+		"cook": 10
+	},
+	"tags": [
+		"cooking"
+	]
+}

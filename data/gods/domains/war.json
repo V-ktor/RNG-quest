@@ -1,0 +1,84 @@
+{
+	"destruction": {
+		"name": "destruction",
+		"title": [
+			"Destruction"
+		],
+		"prefix": [
+			"Destructive"
+		],
+		"suffix": [
+			"Bringing Destruction"
+		],
+		"tags": [
+			"brutality",
+			"strength"
+		]
+	},
+	"war": {
+		"name": "war",
+		"title": [
+			"Warbringer"
+		],
+		"prefix": [
+			"Warmongering"
+		],
+		"suffix": [
+			"of War"
+		],
+		"tags": [
+			"combat",
+			"brutality",
+			"strength"
+		]
+	},
+	"conquest": {
+		"name": "conquest",
+		"title": [
+			"Conquest"
+		],
+		"suffix": [
+			"of Conquest"
+		],
+		"tags": [
+			"combat"
+		]
+	},
+	"pillaging": {
+		"name": "pillaging",
+		"title": [
+			"Pillager"
+		],
+		"prefix": [
+			"Pillaging"
+		],
+		"suffix": [
+			"of Pillaging"
+		],
+		"tags": [
+			"brutality",
+			"theft",
+			"looting"
+		]
+	},
+	"bloodshed": {
+		"name": "bloodshed",
+		"title": [
+			"Bloodshed",
+			"Bloodbath"
+		],
+		"prefix": [
+			"Bloodthirsty"
+		],
+		"suffix": [
+			"of Bloodshed",
+			"Bathing in Blood",
+			"Wading through Blood"
+		],
+		"tags": [
+			"brutality",
+			"blood_magic",
+			"blood"
+		]
+	}
+}

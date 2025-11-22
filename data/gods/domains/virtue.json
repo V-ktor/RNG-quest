@@ -1,0 +1,140 @@
+{
+	"virtue": {
+		"name": "virtue",
+		"title": [
+			"Virtue"
+		],
+		"prefix": [
+			"Virtuous"
+		],
+		"suffix": [
+			"of Virtues"
+		],
+		"tags": [
+		]
+	},
+	"bravery": {
+		"name": "bravery",
+		"title": [
+			"Brave"
+		],
+		"prefix": [
+			"Brave"
+		],
+		"tags": [
+			"strength"
+		]
+	},
+	"kindness": {
+		"name": "kindness",
+		"title": [
+			"Kind"
+		],
+		"prefix": [
+			"Kind"
+		],
+		"suffix": [
+			"offering kindness",
+			"knowing kindness"
+		],
+		"tags": [
+			"healing"
+		]
+	},
+	"compassion": {
+		"name": "compassion",
+		"prefix": [
+			"Compassionate"
+		],
+		"suffix": [
+			"of Compassion"
+		],
+		"tags": [
+			"light",
+			"healing"
+		]
+	},
+	"tolerance": {
+		"name": "tolerance",
+		"title": [
+			"Tolerant"
+		],
+		"prefix": [
+			"Tolerant"
+		],
+		"suffix": [
+			"of Tolerance"
+		],
+		"tags": [
+			"wisdom"
+		]
+	},
+	"wisdom": {
+		"name": "wisdom",
+		"title": [
+			"Wisdom",
+			"Wise"
+		],
+		"prefix": [
+			"Wise"
+		],
+		"suffix": [
+			"of Wisdom"
+		],
+		"tags": [
+			"research",
+			"wisdom"
+		]
+	},
+	"prudence": {
+		"name": "prudence",
+		"title": [
+			"Prudence"
+		],
+		"prefix": [
+			"Prudent"
+		],
+		"suffix": [
+			"of Prudence"
+		],
+		"tags": [
+			"intelligence"
+		]
+	},
+	"unity": {
+		"name": "unity",
+		"title": [
+			"Unity"
+		],
+		"prefix": [
+			"Uniting"
+		],
+		"tags": [
+			"human"
+		]
+	},
+	"purity": {
+		"name": "purity",
+		"title": [
+			"Purity"
+		],
+		"suffix": [
+			"of Purity"
+		],
+		"tags": [
+			"elf"
+		]
+	},
+	"cunning": {
+		"name": "cunning",
+		"prefix": [
+			"Cunning"
+		],
+		"suffix": [
+			"of Cunning"
+		],
+		"tags": [
+			"cunning"
+		]
+	}
+}

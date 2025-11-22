@@ -1,0 +1,16 @@
+{
+	"name": "assassination",
+	"relics": [
+		"artifact"
+	],
+	"abilities": [
+		"stealth",
+		"dirty_fighting"
+	],
+	"exp_gain": {
+		"buff": 1
+	},
+	"tags": [
+		"murder"
+	]
+}

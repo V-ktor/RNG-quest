@@ -1,0 +1,17 @@
+{
+	"name": "combat",
+	"relics": [
+		"banner"
+	],
+	"abilities": [
+		"light_weapons",
+		"heavy_weapons"
+	],
+	"exp_gain": {
+		"attack": 1,
+	},
+	"tags": [
+		"combat",
+		"brutality"
+	]
+}

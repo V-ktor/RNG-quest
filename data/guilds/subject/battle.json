@@ -1,0 +1,60 @@
+{
+	"name": "battle",
+	"prefixes": [
+		"fighter", "battle", "strife", "brawler"
+	],
+	"ranks": {
+		"0": [
+			"greenhorn"
+		],
+		"1": [
+			"brawler"
+		],
+		"2": [
+			"combatant",
+			"fighter"
+		],
+		"3": [
+			"battler"
+		],
+		"4": [
+			"challenger"
+		],
+		"5": [
+			"grand_master"
+		],
+		"6": [
+			"champion"
+		],
+		"7": [
+			"warlord"
+		],
+		"8": [
+			"titan"
+		],
+		"9": [
+			"legend"
+		]
+	},
+	"relics": [
+		"banner"
+	],
+	"abilities": [
+		"light_weapons",
+		"heavy_weapons",
+		"brawling",
+		"shield",
+		"armour"
+	],
+	"exp_gain": {
+		"attack": 1,
+		"kill": 4
+	},
+	"tags": [
+		"combat",
+		"strength",
+		"brutality",
+		"weapons",
+		"armour"
+	]
+}

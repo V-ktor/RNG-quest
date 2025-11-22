@@ -1,0 +1,29 @@
+{
+	"name": "institute",
+	"organization": "institute",
+	"names": [
+		"institute",
+		"academy",
+		"circle",
+		"syndicate",
+		"house"
+	],
+	"rank_carry_over": 1.0,
+	"max_range": 2,
+	"give_parting_gift": true,
+	"rank_prefixes": {
+		"-1": [
+			"low"
+		],
+		"0": [
+			"advanced"
+		],
+		"1": [
+			"high"
+		]
+	},
+	"tags": [
+		"institute",
+		"research"
+	]
+}

@@ -401,6 +401,35 @@
 		],
 		"cooldown":2.0,
 	},
+	"bone_arrow":{
+		"name":"bone_arrow",
+		"auto_naming":{
+			"base":["arrow"],
+			"prefix":["bone"]
+		},
+		"type":"ranged",
+		"cost":{
+			"health":2,
+		},
+		"status":[
+			{
+				"type":"debuff",
+				"name":"bleeding",
+				"duration":8.0,
+				"damage":{
+					"cunning":{
+						"value":0.8,
+						"type":["cutting"],
+					},
+					"magic":{
+						"value":0.1,
+						"type":["cutting"],
+					},
+				},
+			},
+		],
+		"cooldown":3.0,
+	},
 	"infuse":{
 		"name":"infuse",
 		"type":"ranged",

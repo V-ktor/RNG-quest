@@ -1,0 +1,31 @@
+{
+	"name": "cult",
+	"organization": "cult",
+	"names": [
+		"cult",
+		"circle",
+		"house",
+		"society"
+	],
+	"rank_carry_over": 1.0,
+	"max_range": 1,
+	"revival_chance": 0.1,
+	"give_welcome_gift": true,
+	"give_parting_gift": true,
+	"rank_prefixes": {
+		"-1": [
+			"initiate"
+		],
+		"0": [
+			"anointed"
+		],
+		"1": [
+			"arch"
+		]
+	},
+	"tags": [
+		"blood",
+		"vile",
+		"conspiracy"
+	]
+}

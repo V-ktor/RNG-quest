@@ -556,7 +556,7 @@ const NAME_DATA = {
 		"endings_male": ["-1s","-m0",":I",".j"],
 		"endings_female": ["-2f","-w9",":E",".a"],
 		"vovels": ["a","e","o","u","i","0","1","2","3","4","5","6","7","8","9"],
-		"cons": ["b","c","d","f","g","h","j","k","l","m","n","p","r","s","t","v","w","x","y","z",".",": ","-"],
+		"cons": ["b","c","d","f","g","h","j","k","l","m","n","p","r","s","t","v","w","x","y","z",".",": ","-","/"],
 		"phrases": [1,2],
 	},
 	"archmage": {
@@ -565,7 +565,59 @@ const NAME_DATA = {
 		"endings_male": ["dore","inux","lord","tus"],
 		"endings_female": ["aire","ris","ella","in"],
 		"phrases": [1,2],
-	}
+	},
+	"ai_overlord": {
+		"phrases_male": ["hex", "penti", "giga", "eta", "pro", "cess", "bit", "over"],
+		"phrases_female": ["hexa", "penta", "tera", "exa", "hal", "byte", "super"],
+		"endings_male": ["tron", "er", "or"],
+		"endings_female": ["ia", "in", "net"],
+		"phrases": [1,2],
+	},
+	"primal_god": {
+		"phrases_male": ["bo", "de", "du", "fe", "go", "ko", "lo", "ne", "no", "pe", "quo", "que", "re", "ro", "to", "ti", "xi", "xa"],
+		"phrases_female": ["bi", "ci", "da", "di", "fa", "ga", "gi", "ka", "la", "li", "le", "ma", "mi", "pi", "ri", "ta", "xe", "ya"],
+		"endings_male": ["rik", "tic", "tok", "mop", "xo", "cho", "po"],
+		"endings_female": ["tac", "rac", "fic", "xi", "si", "re"],
+		"phrases": [2,4],
+	},
+	"scientific_god": {
+		"phrases_male": ["holo", "mono", "quattro", "octo", "multi", "omni", "spatio", "gravo",
+			"pyro", "cryo", "electro", "necro", "toxo", "ethero", "ferro", "xeno", "xylo",
+			"zoo", "crystallo", "cyber", "theo", "elasto", "galacto", "metro", "demo", "auto",
+			"nano", "phero", "photo", "radio", "lepto", "hypno", "bureau", "archeo", "astro",
+			"phantas", "trans", "ego", "tyranno", "panto", "contro", "pro", "idio", "plasto",
+			"endo", "arcano", "thermo", "crypto", "mero", "meso", "hyper", "anthropo"],
+		"phrases_female": ["homo", "bi", "tri", "penta", "hexa", "deca", "hydro", "aeoro", "bio",
+			"terra", "micro", "macro", "sui", "somni", "tetra", "video", "audio", "lingui", "para",
+			"propa", "paci", "pan", "eso", "anti", "phas", "spectro", "cis", "logi", "centri",
+			"anony", "norma", "dyna", "phaeto", "stellar", "sonar", "meno", "grammo", "luna",
+			"semi", "poly", "soli", "digi", "ana", "cata"],
+		"endings_male": ["chromatic", "synthetic", "syntactic", "phil", "phantastic", "tic",
+			"spatial", "temporal", "metric", "gravitational", "phonetic", "morphic", "metallic",
+			"graphic", "gonic", "mantic", "galactic", "scence", "theric", "thereal", "mal",
+			"elastic","centric", "mous", "static", "mite", "nautic", "nomic", "cryptic",
+			"active", "logical", "septic", "cistic", "directional"],
+		"endings_female": ["chrome", "phobe", "genic", "genetic", "mimetic", "nematic",
+			"phosphatic", "scopic", "cidal", "phasic", "pheral", "sive",  "tal", "dynamic",
+			"mimic", "phoric", "plasmonic"],
+		"phrases": [1,2],
+	},
+	"human_god": {
+		"phrases_male": ["dawn", "mighty", "all", "aeth", "bulk", "holy", "world"],
+		"phrases_female": ["dusk", "star", "harv", "est", "aeg", "beau", "crop"],
+		"endings_male": ["father", "lord", "bringer", "bearer", "man", "las", "en"],
+		"endings_female": ["mother", "any", "terra", "weaver", "gal", "ya"],
+		"vovels": ["a","e","o","u","i","y"],
+		"phrases": [1,1],
+	},
+	"elf_god": {
+		"phrases_male": ["nor", "ris", "le", "egé","len", "thr","ond","óld"],
+		"phrases_female": ["shan", "kri", "thy", "fore", "ame","adë","ódi"],
+		"endings_male": ["thon", "lan", "rbis"],
+		"endings_female": ["thor", "la", "ith"],
+		"vovels": ["a","e","o","u","i","á","é","ë","ó"],
+		"phrases": [2,2],
+	},
 	
 }
 const RACE_ADJECTIVE = {
@@ -650,7 +702,7 @@ const SUFFIX = [
 	"phosphatic", "phonetic", "scopic", "cidal", "phasic", "pheral", "morphic", "metallic",
 	"graphic", "gonic", "sive", "mantic", "galactic", "scence", "theric", "thereal", "mal",
 	"elastic", "tal", "centric", "mous", "static", "dynamic", "mite", "nautic", "nomic", "cryptic",
-	"active", "logical", "septic", "cistic", "directional", "mimic", "phoric",  "plasmonic",
+	"active", "logical", "septic", "cistic", "directional", "mimic", "phoric", "plasmonic",
 ]
 const SUBJECT = [
 	"phobia", "philia", "cide", "laxis", "scope", "mount", "graph", "phone", "borg", "maly",
@@ -917,10 +969,6 @@ func create_from_phrases(length: int, phrases: Array, endings: Array, vovels:= V
 	return _name.capitalize().replace(' ','')
 
 
-#func get_archmage_name() -> String:
-	#var _name:= create_from_phrases(2+int(randf_range(-0.25,1.75)*randf_range(0.0,1.1)), ARCHMAGE_PHRASES, ARCHMAGE_PHRASES)
-	#return _name
-
 func create_name(race: String, gender: int) -> String:
 	var dict: Dictionary
 	var _name: String
@@ -935,10 +983,10 @@ func create_name(race: String, gender: int) -> String:
 			var d: Dictionary = NAME_DATA.values().pick_random()
 			if d.has(k):
 				dict[k] += d[k]
-	if gender<=0:
+	if gender <= 0:
 		phrases += dict.phrases_male
 		endings += dict.endings_male
-	if gender>=0:
+	if gender >= 0:
 		phrases += dict.phrases_female
 		endings += dict.endings_female
 	if dict.has("vovels"):

@@ -573,6 +573,35 @@
 		"range":1,
 		"cooldown":4.0,
 	},
+	"blood_blade":{
+		"name":"blood_blade",
+		"auto_naming":{
+			"base":["blade"],
+			"prefix":["blood","bloody"]
+		},
+		"type":"melee",
+		"cost":{
+			"health":2,
+		},
+		"status":[
+			{
+				"type":"debuff",
+				"name":"bleeding",
+				"duration":8.0,
+				"damage":{
+					"cunning":{
+						"value":0.8,
+						"type":["cutting"],
+					},
+					"magic":{
+						"value":0.1,
+						"type":["cutting"],
+					},
+				},
+			},
+		],
+		"cooldown":3.0,
+	},
 	"infuse":{
 		"name":"infuse",
 		"type":"melee",

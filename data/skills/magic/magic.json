@@ -16,6 +16,7 @@
 			"light":["heat","starfire"],
 			"darkness":["hellfire","fearfire"],
 			"acid":["napalm"],
+			"blood":["blood-boil"],
 		},
 		"type":"magic",
 		"cost":{
@@ -75,6 +76,7 @@
 			"darkness":["filth"],
 			"poison":["slime"],
 			"acid":["slime"],
+			"blood":["blight"],
 		},
 		"type":"magic",
 		"cost":{
@@ -218,6 +220,7 @@
 			"darkness":["filth"],
 			"poison":["lithophage","geo-stigma"],
 			"acid":["bleach"],
+			"blood":["rot"],
 		},
 		"type":"magic",
 		"cost":{
@@ -296,6 +299,7 @@
 			"earth":["scorch"],
 			"lightning":["arc"],
 			"darkness":["twilight"],
+			"blood":["radiation"],
 		},
 		"type":"magic",
 		"cost":{
@@ -332,6 +336,7 @@
 			"light":["twilight"],
 			"poison":["blight","vile"],
 			"acid":["decay"],
+			"blood":["corruption"],
 		},
 		"type":"magic",
 		"cost":{
@@ -436,4 +441,48 @@
 			},
 		],
 	},
+	"blood":{
+		"name":"blood",
+		"auto_naming":{
+			"type":[["blood","bone"]],
+		},
+		"dual_type_names":{
+			"fire":["blood-boil"],
+			"water":["blight"],
+			"earth":["rot"],
+			"light":["radiation"],
+			"darkness":["corruption"],
+		},
+		"type":"magic",
+		"cost":{
+			"health":2,
+		},
+		"healing":{
+			"constitution":0.3,
+		},
+		"damage":{
+			"magic":-0.3,
+			"cunning": 0.1,
+		},
+		"damage_type":["piercing"],
+		"latent_damage_type":["cutting","impact","water","earth","darkness"],
+		"healing_type":["health"],
+		"shielding_type":["acid","poison"],
+		"latent_shielding_type":["cutting","piercing","impact"],
+		"summon_abilities":["feral_darkness_magic","feral_cutting_darkness_magic"],
+		"status":[
+			{
+				"type":"debuff",
+				"name":"bleeding",
+				"limit":"attack",
+				"duration":10.0,
+				"damage":{
+					"magic":{
+						"value":0.4,
+						"type":["cutting"],
+					},
+				},
+			},
+		],
+	}
 }

@@ -66,7 +66,7 @@ func _init(dict: Dictionary) -> void:
 	for r in dict.get("resources", []):
 		self.resources.push_back(r)
 	self.local_materials = {}
-	material_dict = dict.get("local_materials")
+	material_dict = dict.get("local_materials", {})
 	for key in material_dict:
 		self.local_materials[key] = material_dict[key]
 

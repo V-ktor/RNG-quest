@@ -73,6 +73,7 @@ const CRITICAL_DAMAGE = 0.5
 
 class Character:
 	var name: String
+	var race: String
 	var level: int
 	var experience: int
 	var health: float
@@ -338,6 +339,7 @@ class Character:
 			ability_dict[ability_id] = self.abilities[ability_id].to_dict()
 		return {
 			"name": self.name,
+			"race": self.race,
 			"level": self.level,
 			"experience": self.experience,
 			"health": self.health,

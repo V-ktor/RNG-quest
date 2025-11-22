@@ -1,0 +1,241 @@
+{
+	"emotions": {
+		"name": "emotions",
+		"title": [
+			"Emotion"
+		],
+		"prefix": [
+			"Emotional"
+		],
+		"suffix": [
+			"Spreading Emotions",
+			"Afflicted with Emotions"
+		],
+		"tags": [
+		]
+	},
+	"sadness": {
+		"name": "sadness",
+		"title": [
+			"Sadness"
+		],
+		"prefix": [
+			"Sad"
+		],
+		"suffix": [
+			"of Sadness",
+			"Born from Sadness",
+			"Drowning in Sadness"
+		],
+		"tags": [
+			"healing"
+		]
+	},
+	"joy": {
+		"name": "joy",
+		"title": [
+			"Joy"
+		],
+		"prefix": [
+			"Joyous",
+			"Joyful"
+		],
+		"suffix": [
+			"of Joy",
+			"Born from Joy",
+			"Feeling Joy"
+		],
+		"tags": [
+			"healing"
+		]
+	},
+	"fear": {
+		"name": "fear",
+		"title": [
+			"Fear",
+			"Dread"
+		],
+		"prefix": [
+			"Fearful",
+			"Dreadful",
+			"Frightened"
+		],
+		"suffix": [
+			"Spreading Dread",
+			"Engulfed in Fear"
+		],
+		"tags": [
+			"cunning",
+			"vile"
+		]
+	},
+	"hate": {
+		"name": "hate",
+		"title": [
+			"Hate",
+			"Hater",
+			"Hateful"
+		],
+		"prefix": [
+			"Hating",
+			"Hateful"
+		],
+		"suffix": [
+			"who Hate"
+		],
+		"tags": [
+			"combat",
+			"brutality"
+		]
+	},
+	"love": {
+		"name": "love",
+		"title": [
+			"Love",
+			"Lover"
+		],
+		"prefix": [
+			"Loving"
+		],
+		"suffix": [
+			"of Love"
+		],
+		"tags": [
+			"healing"
+		]
+	},
+	"passion": {
+		"name": "passion",
+		"title": [
+			"Passion"
+		],
+		"prefix": [
+			"Passionate"
+		],
+		"suffix": [
+			"of Passion"
+		],
+		"tags": [
+			"worship"
+		]
+	},
+	"boredom": {
+		"name": "boredom",
+		"title": [
+			"Boredom"
+		],
+		"prefix": [
+			"Bored",
+			"Boring"
+		],
+		"suffix": [
+			"Dying from Boredom",
+			"Tortured with Boredom"
+		],
+		"tags": [
+			"vile"
+		]
+	},
+	"anger": {
+		"name": "anger",
+		"title": [
+			"Anger",
+			"Wrath",
+			"Rage",
+			"Fury"
+		],
+		"prefix": [
+			"Angry",
+			"Wrathful",
+			"Raging"
+		],
+		"suffix": [
+			"Born from Anger",
+			"Blinded by Fury",
+			"in Wild Rage"
+		],
+		"tags": [
+			"brutality"
+		]
+	},
+	"envy": {
+		"name": "envy",
+		"title": [
+			"Envy"
+		],
+		"prefix": [
+			"Envious"
+		],
+		"tags": [
+			"Theft",
+			"Looting"
+		]
+	},
+	"pain": {
+		"name": "pain",
+		"title": [
+			"Painbringer",
+			"Agony"
+		],
+		"prefix": [
+			"Agonizing"
+		],
+		"suffix": [
+			"who Feels Pain",
+			"Bringing Agony",
+			"Emanating Pain",
+			"of Torture"
+		],
+		"tags": [
+			"vile"
+		]
+	},
+	"hunger": {
+		"name": "hunger",
+		"title": [
+			"Hunger"
+		],
+		"prefix": [
+			"Hungry",
+			"Hungering"
+		],
+		"suffix": [
+			"of Hunger"
+		],
+		"tags": [
+			"halfling",
+			"goblin"
+		]
+	},
+	"thirst": {
+		"name": "thirst",
+		"title": [
+			"Thirst",
+			"Thirsty"
+		],
+		"prefix": [
+			"Thirsty"
+		],
+		"suffix": [
+			"of Thirst"
+		],
+		"tags": [
+			"orc",
+			"goblin"
+		]
+	},
+	"cringe": {
+		"name": "cringe",
+		"title": [
+			"Cringe"
+		],
+		"prefix": [
+			"Cringe"
+		],
+		"suffix": [
+			"Dying from Cringe"
+		],
+		"tags": [
+		]
+	}
+}

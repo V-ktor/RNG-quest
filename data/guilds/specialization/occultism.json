@@ -1,0 +1,16 @@
+{
+	"name": "occultism",
+	"relics": [
+		"relic"
+	],
+	"abilities": [
+		"celestial_magic"
+	],
+	"exp_gain": {
+		"attack": 1
+	},
+	"tags": [
+		"darkness",
+		"mysterious"
+	]
+}

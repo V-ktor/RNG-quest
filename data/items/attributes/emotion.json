@@ -31,8 +31,8 @@
 		},
 		{
 			"singular": "hate",
-			"adjective": "fierce",
-			"adverb": "fiercely",
+			"adjective": "hateful",
+			"adverb": "hatefully",
 			"suffix": "of Hate",
 		},
 		{
@@ -46,6 +46,12 @@
 			"adjective": "sorrowful",
 			"adverb": "sorrowfully",
 			"prefix": "Sorrowful",
+		},
+		{
+			"singular": "strife",
+			"adjective": "fierce",
+			"adverb": "fiercely",
+			"prefix": "Aggressive",
 		},
 	],
 }

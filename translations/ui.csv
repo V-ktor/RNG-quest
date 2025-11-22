@@ -144,60 +144,74 @@ WOOD_ELF,Wood Elf
 DWARF,Dwarf
 OGRE,Ogre
 CUSTOM_RACE,custom race
-ADVENTURER_GUILD,Adventurer Guild
-FIGHTER_GUILD,Fighter Guild
-FIGHT_CLUB,Fight Club
-TRAPPER_GUILD,Trapper Guild
-MAGE_GUILD,Mage Guild
-SUMMONER_GUILD,Summoner Guild
-ALCHEMIST_GUILD,Alchemist Guild
-WAR_CASTER_GUILD,War Caster Guild
-CELESTIAL_CHURCH,Celestial Church
-CELESTIAL_ORDER,Celestial Order
-THIEF_GUILD,Thief Guild
-ASSASSIN_GUILD,Assassin Guild
-CRAFTER_GUILD,Crafter Guild
+YOU,you
 RANK,rank
 COPPER,copper
 TIN,tin
 BRONZE,bronze
 IRON,iron
 STEEL,steel
+TUNGSTEN,tungsten
 CHROMIUM,chromium
 SILVER,silver
 GOLD,gold
 TITANIUM,titanium
 PLATINUM,platinum
+MITHRIL,mithril
 ADMANITE,admanite
-YOU,you
 ROOKIE,rookie
-CANNON_FODDER,cannon fodder
 GREENHORN,greenhorn
 BRAWLER,brawler
 COMBATANT,combatant
 FIGHTER,fighter
 BATTLER,battler
 CHALLENGER,challenger
+GRAND_MASTER,grand master
 CHAMPION,champion
+WARLORD,warlord
+TITAN,titan
 LEGEND,legend
 AMATEUR,amateur
 APPRENTICE,apprentice
 NOVICE,novice
-STUDENT,student
-PHD,PhD
 SPELL_CASTER,spell caster
 WIZARD,wizard
-INTRUCTOR,instructor
+MAGE,mage
+SAGE,sage
 ARCHMAGE,archmage
+TRAINEE,trainee
+STUDENT,student
+PHD,PhD
+INTRUCTOR,instructor
+LECTURER,lecturer
+PROFESSOR,professor
+GENIUS,genius
+RASCAL,rascal
+SWINDLER,swindler
+CROOK,crook
+TRICKSTER,trickster
+CUTTHROAT,cutthroat
+THIEF,thief
+ROGUE,rogue
+PHANTOM,phantom
+ASSASSIN,assassin
 LAYMAN,layman
 PREACHER,preacher
 CLERIC,cleric
 PRIEST,priest
-TEMPLE_PRIEST,temple priest
+INQUISITOR,inquisitor
 HIGH_PRIEST,high priest
 SAINT,saint
-INQUISITOR,inquisitor
-HIGH_INQUISITOR,high inquisitor
+FELLOW,fellow
+JOURNEYMAN,journeyman
+CRAFTSMAN,craftsman
+PROFESSIONAL,professional
+MASTER,master
+SCOUT,scout
+PATHFINDER,pathfiner
+WOODSMAN,woodsman
+HUNTER,hunter
+SLAYER,slayer
 HEALTH,Health
 HEALTH_REGEN,Health regeneration
 HEALTH_DRAIN,Health drain
@@ -374,3 +388,33 @@ STATISTICS,Statistics
 TYPE,Type
 GUILDS,Guilds
 KNOWN_RECIPES,Known Recipes
+ADVENTURE,adventure
+EXPLORER,explorer
+SCOUT,scout
+BATTLE,battle
+STRIFE,strife
+CLUB,club
+GROUP,group
+BROTHERHOOD,brotherhood
+GUILD,guild
+ASSOCIATION,association
+ORGANIZATION,organization
+INSTITUTE,institute
+ACADEMY,academy
+CIRCLE,circle
+SYNDICATE,syndicate
+HOUSE,house
+CULT,cult
+SOCIETY,society
+CRAFTER,crafter
+HUNTER,hunter
+WOODSMAN,woodsman
+MAGE,mage
+ARCANE,arcane
+SCIENCE,science
+RESEARCH,research
+CRIME,crime
+PIRATE,pirate
+HOLY,holy
+CELESTIAL,celestial
+DIVINE,divine

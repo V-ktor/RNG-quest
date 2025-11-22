@@ -1,0 +1,58 @@
+{
+	"name": "research",
+	"prefixes": [
+		"science", "research",
+	],
+	"ranks": {
+		"0": [
+			"amateur"
+		],
+		"1": [
+			"trainee"
+		],
+		"2": [
+			"student"
+		],
+		"3": [
+			"librarian"
+		],
+		"4": [
+			"PhD"
+		],
+		"5": [
+			"instructor"
+		],
+		"6": [
+			"lecturer"
+		],
+		"7": [
+			"PI"
+		],
+		"8": [
+			"professor"
+		],
+		"9": [
+			"genius"
+		]
+	},
+	"relics": [
+		"core"
+	],
+	"abilities": [
+		"alchemy",
+		"enchanting",
+		"soul_binding",
+		"gun_slinging",
+	],
+	"exp_gain": {
+		"identify": 30,
+		"harvest": 1,
+		"alchemy": 6,
+	},
+	"tags": [
+		"research",
+		"technology",
+		"alchemy",
+		"enchanting"
+	]
+}

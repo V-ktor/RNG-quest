@@ -52,6 +52,18 @@
 		"damage_multiplier":0.4,
 		"delay_multiplier":0.2,
 	},
+	"blood_infused":{
+		"name":"blood-infused",
+		"auto_naming":{
+			"prefix":["blood-infused"],
+		},
+		"type":"magic",
+		"cost":{
+			"health":3,
+		},
+		"damage_multiplier":0.3,
+		"cooldown":1.0,
+	},
 	"explosive":{
 		"name":"explosive",
 		"auto_naming":{

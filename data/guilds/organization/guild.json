@@ -1,0 +1,30 @@
+{
+	"name": "guild",
+	"organization": "branches",
+	"names": [
+		"guild",
+		"association",
+		"organization"
+	],
+	"addendum": [
+		"- {region} branch",
+		"- {city} branch"
+	],
+	"rank_carry_over": 0.75,
+	"give_welcome_gift": true,
+	"rank_prefixes": {
+		"-1": [
+			"beginner"
+		],
+		"0": [
+			"advanced"
+		],
+		"1": [
+			"master"
+		]
+	},
+	"tags": [
+		"guild",
+		"quests"
+	]
+}

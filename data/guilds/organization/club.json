@@ -1,0 +1,33 @@
+{
+	"name": "club",
+	"organization": "independant",
+	"names": [
+		"club",
+		"group",
+		"brotherhood"
+	],
+	"preamble": [
+		"{region}",
+		"{city}"
+	],
+	"addendum": [
+		"of {region}",
+		"of {city}"
+	],
+	"rank_carry_over": 0.25,
+	"rank_prefixes": {
+		"-1": [
+			"rookie"
+		],
+		"0": [
+			"veteran"
+		],
+		"1": [
+			"elite"
+		]
+	},
+	"tags": [
+		"club",
+		"constitution"
+	]
+}

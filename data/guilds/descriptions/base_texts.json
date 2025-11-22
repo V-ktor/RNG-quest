@@ -1,0 +1,84 @@
+[
+	{
+		"root": true,
+		"texts": [
+			"their goal is {goal}",
+			"the {guild_name} wants {goal}",
+			"the {guild_name} has the ambition {goal}"
+		]
+	},
+	{
+		"root": true,
+		"texts": [
+			"the {guild_name} was founded in {city}",
+			"the {guild_name} originiates from {region}",
+			"the {guild_name} has their {headquarters} in {city}"
+		]
+	},
+	{
+		"root": true,
+		"texts": [
+			"the {guild_name} operates in {region}",
+			"the {guild_name} is active in {region}",
+			"the {guild_name} focuses on {city}",
+			"the {guild_name} has its center of operation in {city}"
+		]
+	},
+	{
+		"root": true,
+		"texts": [
+			"the {guild_name} has been founded by {founder} with the goal {goal}",
+			"the {guild_name} has been founded by {founder} {goal}",
+			"{founder} founded the {guild_name} {goal}"
+		]
+	},
+	{
+		"root": true,
+		"texts": [
+			"the {guild_name} specializes in {ability}",
+			"the specialty of the {guild_name} is {ability}",
+			"the {guild_name} favours {ability}"
+		]
+	},
+	{
+		"root": true,
+		"texts": [
+			"the {guild_name} is known for their {trait}",
+			"the members of the {guild_name} are known for their {trait}",
+			"{trait} is a key characteristic of the {guild_name}"
+		]
+	},
+	{
+		"root": true,
+		"texts": [
+			"the {guild_name} believes in {god}",
+			"the {guild_name} is faithful to {god}"
+		],
+		"tags": [
+			"god"
+		]
+	},
+	{
+		"root": true,
+		"texts": [
+			"the {guild_name} is destined to {destiny}",
+			"the {guild_name} is fated to {destiny}",
+			"it is the destiny of {guild_name} {destiny}",
+			"it is the fate of {guild_name} {destiny}"
+		],
+		"tags": [
+			"worship",
+			"destiny"
+		]
+	},
+	{
+		"root": true,
+		"texts": [
+			"the {guild_name} cherishes the ability {ability}",
+			"the {guild_name} is in favor of the ability {ability}",
+			"the {guild_name} considers it a valuable asset to be able {ability}",
+			"many members of the {guild_name} are able {ability}",
+			"it is a key characteristic of the {guild_name} to be able {ability}"
+		]
+	}
+]

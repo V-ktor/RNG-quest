@@ -1,0 +1,61 @@
+{
+	"name": "magic",
+	"prefixes": [
+		"mage", "arcane",
+	],
+	"ranks": {
+		"0": [
+			"amateur"
+		],
+		"1": [
+			"apprentice"
+		],
+		"2": [
+			"novice"
+		],
+		"3": [
+			"spell_caster",
+			"spell_slinger"
+		],
+		"4": [
+			"wizard"
+		],
+		"5": [
+			"mage"
+		],
+		"6": [
+			"sage"
+		],
+		"7": [
+			"gifted"
+		],
+		"8": [
+			"master"
+		],
+		"9": [
+			"legend"
+		]
+	},
+	"relics": [
+		"crystal",
+	],
+	"abilities": [
+		"elemental_magic",
+		"nature_magic",
+		"defensive_magic",
+		"enchanting",
+		"necromancy"
+	],
+	"exp_gain": {
+		"enchant": 6,
+		"hit": 1,
+		"buff": 1,
+		"summon": 1
+	},
+	"tags": [
+		"magic",
+		"elemental",
+		"nature",
+		"intelligence"
+	]
+}
