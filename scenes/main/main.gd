@@ -91,7 +91,6 @@ var player_name:= "Player"
 var player_gender:= "None"
 var player_race:= "Unknown"
 var player: Characters.Character
-#var player_ability_exp:= {}
 var player_inventory:= []
 var player_potions:= []
 var player_summons:= []
@@ -2935,13 +2934,25 @@ func print_log_msg(text: String):
 func print_summary_msg(text: String):
 	var time_zone:= Time.get_time_zone_from_system()
 	var time_data:= Time.get_datetime_dict_from_unix_time(int(current_time + 60 * time_zone.bias))
-	if summary_text.length() > 8000:
-		@warning_ignore("integer_division")
-		summary_text = summary_text.right(summary_text.length() - summary_text.find("\n", summary_text.length() / 2) - 1)
+	if summary_text.length() > 10000:
+		summary_text = summary_text.right(summary_text.length() - find_log_middle_position(summary_text) - 1)
 	text[0] = text[0].to_upper()
 	text = "\n" + Time.get_datetime_string_from_datetime_dict(time_data, true) + ": " + text
 	summary_text += text
 	emit_signal("summary_updated", summary_text)
+
+
+func find_log_middle_position(text: String) -> int:
+	var counter_bbcode := 0
+	for i in range(text.length()-1):
+		if text.substr(i, 2) == "[/":
+			counter_bbcode -= 1
+		elif text[i] == "[":
+			counter_bbcode += 1
+		@warning_ignore("integer_division")
+		if text[i] == "\n" and i > text.length() / 2 and counter_bbcode <= 0:
+			return i
+	return text.length()
 
 
 func time_step(delta: float, time: float):
