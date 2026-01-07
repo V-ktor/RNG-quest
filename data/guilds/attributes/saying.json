@@ -1,0 +1,24 @@
+[
+	{
+		"texts": [
+			"{god} {god.predicate}s {god.domain}",
+		],
+		"tags": [
+			"god"
+		]
+	},
+	{
+		"texts": [
+			"{god} brings {god.adjective} {god.concept}",
+			"{god} spreads {god.adjective} {god.concept}",
+			"{god} is the source of all {god.adjective} {god.concept}",
+			"{god} created the {god.concept}",
+			"{god} is {god.adjective} {god.concept}",
+			"all {god.adjective} {god.concept} exists solely for {god}",
+			"the reason for all {god.adjective} {god.concept} is {god}"
+		],
+		"tags": [
+			"god"
+		]
+	}
+]

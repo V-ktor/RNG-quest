@@ -12,6 +12,7 @@
 			"Afflicted with Emotions"
 		],
 		"tags": [
+			"cult"
 		]
 	},
 	"sadness": {
@@ -66,7 +67,8 @@
 		],
 		"tags": [
 			"cunning",
-			"vile"
+			"vile",
+			"cult"
 		]
 	},
 	"hate": {
@@ -85,7 +87,8 @@
 		],
 		"tags": [
 			"combat",
-			"brutality"
+			"brutality",
+			"cult"
 		]
 	},
 	"love": {
@@ -101,7 +104,8 @@
 			"of Love"
 		],
 		"tags": [
-			"healing"
+			"healing",
+			"cult"
 		]
 	},
 	"passion": {
@@ -133,7 +137,8 @@
 			"Tortured with Boredom"
 		],
 		"tags": [
-			"vile"
+			"vile",
+			"cult"
 		]
 	},
 	"anger": {
@@ -155,7 +160,8 @@
 			"in Wild Rage"
 		],
 		"tags": [
-			"brutality"
+			"brutality",
+			"cult"
 		]
 	},
 	"envy": {
@@ -167,8 +173,9 @@
 			"Envious"
 		],
 		"tags": [
-			"Theft",
-			"Looting"
+			"theft",
+			"looting",
+			"cult"
 		]
 	},
 	"pain": {
@@ -187,7 +194,8 @@
 			"of Torture"
 		],
 		"tags": [
-			"vile"
+			"vile",
+			"cult"
 		]
 	},
 	"hunger": {
@@ -204,7 +212,8 @@
 		],
 		"tags": [
 			"halfling",
-			"goblin"
+			"goblin",
+			"cult"
 		]
 	},
 	"thirst": {
@@ -221,7 +230,8 @@
 		],
 		"tags": [
 			"orc",
-			"goblin"
+			"goblin",
+			"cult"
 		]
 	},
 	"cringe": {
@@ -236,6 +246,7 @@
 			"Dying from Cringe"
 		],
 		"tags": [
+			"cult"
 		]
 	}
 }

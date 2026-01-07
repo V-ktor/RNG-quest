@@ -25,26 +25,26 @@ func generate_guild() -> void:
 		"name": "Test Player",
 		"level": 1,
 		"abilities": {
-			"light_weapons": {
-				"name": "light_weapons",
-				"level": 1,
-			},
-			"dirty_fighting": {
-				"name": "dirty_fighting",
-				"level": 1,
-			},
-			"elemental_magic": {
-				"name": "elemental_magic",
-				"level": 1,
-			},
+			#"light_weapons": {
+				#"name": "light_weapons",
+				#"level": 1,
+			#},
+			#"dirty_fighting": {
+				#"name": "dirty_fighting",
+				#"level": 1,
+			#},
+			#"elemental_magic": {
+				#"name": "elemental_magic",
+				#"level": 1,
+			#},
 			"celestial_magic": {
 				"name": "celestial_magic",
 				"level": 1,
 			},
-			"defensive_magic": {
-				"name": "defensive_magic",
-				"level": 1,
-			},
+			#"defensive_magic": {
+				#"name": "defensive_magic",
+				#"level": 1,
+			#},
 			"healing": {
 				"name": "healing",
 				"level": 1,
@@ -62,13 +62,12 @@ func generate_guild() -> void:
 	var guild := Guilds.create_guild(region, player)
 	
 	var text := JSON.stringify(guild.to_dict(), "\t")
-	$RichTextLabel.add_text(text)
+	$RichTextLabel.add_text(text + "\n")
 	
-	text = JSON.stringify(Guilds.get_node("Description").create_guild_description(guild, region), "\t")
-	$RichTextLabel2.add_text(text)
+	$RichTextLabel2.add_text(guild.description + "\n\n")
 
 func _input(event: InputEvent) -> void:
-	if event.is_pressed():
+	if event is not InputEventMouse && event.is_pressed():
 		generate_guild()
 
 func _ready() -> void:

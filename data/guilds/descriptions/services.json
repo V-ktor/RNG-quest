@@ -1,0 +1,265 @@
+[
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} helps adventurers carrying out their tasks",
+			"the {organization} arranges tasks for adventurers",
+			"the {organization} publishes quests for adventurers"
+		],
+		"tags": [
+			"quests"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} provides basic education for those in need",
+			"the {organization} educated their clients",
+			"the {organization} organizes tutorials for their clients"
+		],
+		"tags": [
+			"education"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} helps those in need"
+		],
+		"tags": [
+			"salvation"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} gives combat training",
+			"the {organization} trains fighters"
+		],
+		"tags": [
+			"combat"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} organizes fight tournaments"
+		],
+		"tags": [
+			"brutality"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} provides weapons to their members"
+		],
+		"tags": [
+			"weapons"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} provides armour to their members"
+		],
+		"tags": [
+			"armour"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} provides equipment to their members"
+		],
+		"tags": [
+			"equipment"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} crafts equipment for their clients",
+			"the {organization} offers crafting services for their clients"
+		],
+		"tags": [
+			"crafting"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} trades with rare materials",
+			"the {organization} sells rare materials"
+		],
+		"tags": [
+			"materials"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} hunts dangerous beasts"
+		],
+		"tags": [
+			"hunt"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} offers archery training",
+			"the {organization} trains archers"
+		],
+		"tags": [
+			"archery"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} deals with powerful magic",
+			"the {organization} shares their vast knowledge of magic",
+			"the {organization} has vast knowledge of magic",
+			"the {organization} trains mages"
+		],
+		"tags": [
+			"magic"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} conducts advanced research",
+			"the {organization} has a vast library"
+		],
+		"tags": [
+			"research"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} researches advanced technology",
+			"the {organization} offers advanced engineering services"
+		],
+		"tags": [
+			"technology"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} sells potions and elixirs",
+			"the {organization} trades with herbs and alchemical ingredients",
+			"the {organization} is known for their experienced alchemists"
+		],
+		"tags": [
+			"alchemy"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} sells enchanted equipment",
+			"the {organization} offers advanced enchantment services",
+			"the {organization} enchants their client's equipment"
+		],
+		"tags": [
+			"enchanting"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} runs a black market",
+			"the {organization} runs a smuggling business",
+			"the {organization} trades with illegal wares"
+		],
+		"tags": [
+			"theft"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} is well versed in illegal arts"
+		],
+		"tags": [
+			"darkness"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} runs churches and chapels throughout {location}"
+		],
+		"tags": [
+			"god"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} prays to their god {god}"
+		],
+		"tags": [
+			"worship"
+		]
+	},
+	{
+		"type": [
+			"details"
+		],
+		"texts": [
+			"the {organization} offers medical aid for those in need",
+			"the {organization} is well versed in healing magic",
+			"the {organization} offers advanced medical aid for their clients"
+		],
+		"tags": [
+			"healing"
+		]
+	}
+]

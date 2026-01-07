@@ -1,0 +1,12 @@
+[
+	{
+		"type": [
+			"convictions"
+		],
+		"texts": [
+			"the {organization} believes that all people are {personality_qualifier}",
+			"the {organization} believes that most people are {personality_qualifier}",
+			"the {organization} believes that people are {personality_qualifier}",
+		]
+	}
+]

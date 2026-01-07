@@ -1,6 +1,6 @@
 extends Node
 
-const VOVELS = ["a","e","o","u","i"]
+const VOVELS = ["a", "e", "o", "u", "i"]
 const MAX_DIST = 3
 const DIRECTIONS = [
 	Vector2i(-1,-1),
@@ -11,6 +11,34 @@ const DIRECTIONS = [
 	Vector2i(-1, 0),
 ]
 const UNIT_PREFIXES = ["k", "M", "G", "T", "P", "E", "Z", "Y", "R", "Q"]
+const FRUITS = [
+	"apple", "banana", "pineapple", "pomegranate", "pear", "raspberry", "strawberry",
+	"orange", "lemon", "lime", "blueberry", "cherry", "melon", 
+]
+const PLANTS = [
+	"tree", "bush", "palm", "grass", "moss", "lichen", "coral",
+]
+const JOBS = [
+	"janitor", "peasant", "farmer", "worker", "cook", "waiter", "smith", "taylor", "crafter",
+	"soldier", "hunter", "alchemist", "scribe", "researcher", "ferryman",
+]
+const DEATH_RELATED_JOBS = [
+	"doctor", "healer", "executioner",
+]
+const PEOPLE = [
+	"person", "commoner", "pawn", "man", "woman", "boy", "girl",
+	"human", "elf", "dwarf", "halfling",
+]
+const COLORS = [
+	"red", "orange", "yellow", "green", "cyan", "blue", "violet", "purple", "pink",
+	"black", "grey", "white",
+]
+const ADJECTIVE_SMALL = [
+	"tiny", "small", "minuscule",
+]
+const ADJECTIVE_LARGE = [
+	"large", "huge", "gigantic",
+]
 
 
 func get_file_paths(path: String) -> Array[String]:
@@ -134,3 +162,54 @@ func merge_dicts(dict: Dictionary, add: Dictionary) -> Dictionary:
 		else:
 			dict[k] = add[k]
 	return dict
+
+
+func get_random_saying() -> String:
+	var rnd := randi()%6
+	match rnd:
+		0:
+			return "even the most {tiny} {plant} brings forth {large} {fruit}s".format({
+				"tiny": ADJECTIVE_SMALL.pick_random(),
+				"large": ADJECTIVE_LARGE.pick_random(),
+				"plant": PLANTS.pick_random(),
+				"fruit": FRUITS.pick_random()
+			})
+		1:
+			return "{job}s love {color} {fruit}s".format({
+				"job": JOBS.pick_random(),
+				"color": COLORS.pick_random(),
+				"fruit": FRUITS.pick_random(),
+			})
+		2:
+			return [
+				"a {fruit} a day keeps the {job} away",
+				"9 out of 10 {job}s advice eating a {fruit} each day",
+			].pick_random().format({
+				"job": DEATH_RELATED_JOBS.pick_random(),
+				"fruit": FRUITS.pick_random(),
+			})
+		3:
+			return "plant {fruit} {plant} for a bountyful harvest".format({
+				"fruit": FRUITS.pick_random(),
+				"plant": PLANTS.pick_random(),
+			})
+		4:
+			return [
+				"any {people} could be a {job}",
+				"any {people} can become a {job}",
+			].pick_random().format({
+				"people": PEOPLE.pick_random(),
+				"job": JOBS.pick_random(),
+			})
+		5:
+			return "{job1}s are just better {job2}s".format({
+				"job1": DEATH_RELATED_JOBS.pick_random(),
+				"job2": JOBS.pick_random(),
+			})
+		6:
+			return [
+				"never trust a {person}"
+			].pick_random().format({
+				"person": (JOBS + PEOPLE).pick_random(),
+			})
+	return "your advertisement could be here"

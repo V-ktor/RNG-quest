@@ -605,8 +605,8 @@ const NAME_DATA = {
 	"human_god": {
 		"phrases_male": ["dawn", "mighty", "all", "aeth", "bulk", "holy", "world"],
 		"phrases_female": ["dusk", "star", "harv", "est", "aeg", "beau", "crop"],
-		"endings_male": ["father", "lord", "bringer", "bearer", "man", "las", "en"],
-		"endings_female": ["mother", "any", "terra", "weaver", "gal", "ya"],
+		"endings_male": ["ther", "lord", "bringer", "bearer", "man", "las", "en"],
+		"endings_female": ["thra", "any", "terra", "weaver", "gal", "ya"],
 		"vovels": ["a","e","o","u","i","y"],
 		"phrases": [1,1],
 	},
@@ -618,7 +618,6 @@ const NAME_DATA = {
 		"vovels": ["a","e","o","u","i","á","é","ë","ó"],
 		"phrases": [2,2],
 	},
-	
 }
 const RACE_ADJECTIVE = {
 	"elf": "elven",

@@ -1,0 +1,13 @@
+[
+	{
+		"type": [
+			"symbol"
+		],
+		"texts": [
+			"the {organization}'s symbol is a {symbol} depicting a {symbol_attribute} {symbol_shape}",
+			"the symbol of the {organization} is a {symbol} depicting a {symbol_attribute} {symbol_shape}",
+			"a {symbol} with a {symbol_attribute} {symbol_shape} represents the {organization}",
+			"the {organization} is represented by a {symbol} with a {symbol_attribute} {symbol_shape}"
+		]
+	}
+]

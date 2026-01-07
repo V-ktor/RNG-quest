@@ -3,6 +3,9 @@
 	"prefixes": [
 		"holy", "celestial", "divine"
 	],
+	"suffixes": [
+		"of {god}"
+	],
 	"ranks": {
 		"0": [
 			"layman"
@@ -51,7 +54,7 @@
 	},
 	"tags": [
 		"worship",
-		"gods",
+		"god",
 		"light"
 	]
 }

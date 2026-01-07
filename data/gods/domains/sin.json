@@ -27,6 +27,7 @@
 			"of Lust"
 		],
 		"tags": [
+			"cult"
 		]
 	},
 	"sloth": {
@@ -42,7 +43,8 @@
 			"of Sloth"
 		],
 		"tags": [
-			"human"
+			"human",
+			"cult"
 		]
 	},
 	"vengeful": {
@@ -57,7 +59,8 @@
 			"of Vengeance"
 		],
 		"tags": [
-			"orc"
+			"orc",
+			"cult"
 		]
 	},
 	"apathy": {
@@ -72,7 +75,7 @@
 			"of Apathy"
 		],
 		"tags": [
-			"elf"
+			"cult"
 		]
 	},
 	"arrogance": {
@@ -87,7 +90,7 @@
 			"of Arrogance"
 		],
 		"tags": [
-			"elf"
+			"cult"
 		]
 	},
 	"zeal": {
@@ -116,7 +119,8 @@
 			"Stricken by Madness"
 		],
 		"tags": [
-			"vile"
+			"vile",
+			"cult"
 		]
 	}
 }

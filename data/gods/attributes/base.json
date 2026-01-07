@@ -1,0 +1,351 @@
+[
+	{
+		"adjective": [
+			"luminous"
+		],
+		"predicate": [
+			"illuminate",
+			"blind"
+		],
+		"concept": [
+			"light",
+			"brightness",
+			"clarity"
+		],
+		"tags": [
+			"light",
+			"healing"
+		]
+	},
+	{
+		"adjective": [
+			"dark"
+		],
+		"predicate": [
+			"darken",
+			"hide"
+		],
+		"concept": [
+			"darkness",
+			"abyss"
+		],
+		"tags": [
+			"darkness",
+			"necromancy",
+			"blood"
+		]
+	},
+	{
+		"adjective": [
+			"dead"
+		],
+		"predicate": [
+			"outlast"
+		],
+		"concept": [
+			"death",
+			"immortality"
+		],
+		"tags": [
+			"necromancy",
+			"blood",
+			"blood_magic"
+		]
+	},
+	{
+		"adjective": [
+			"evil"
+		],
+		"predicate": [
+			"defeat"
+		],
+		"concept": [
+			"power",
+			"blood"
+		],
+		"tags": [
+			"vile",
+			"necromancy",
+			"blood"
+		]
+	},
+	{
+		"adjective": [
+			"mysterious",
+			"ominous"
+		],
+		"predicate": [
+			"encrypt",
+			"riddle"
+		],
+		"concept": [
+			"mystery",
+			"enigma"
+		],
+		"tags": [
+			"mysterious",
+			"conspiracy"
+		]
+	},
+	{
+		"adjective": [
+			"wise"
+		],
+		"predicate": [
+			"know"
+		],
+		"concept": [
+			"wisdom",
+			"enlightenment"
+		],
+		"tags": [
+			"research",
+			"technology",
+			"magic",
+			"Intelligence",
+			"Wisdom"
+		]
+	},
+	{
+		"adjective": [
+			"mechanical",
+			"artificial"
+		],
+		"predicate": [
+			"construct"
+		],
+		"concept": [
+			"technology",
+			"construction"
+		],
+		"tags": [
+			"research",
+			"technology",
+			"android"
+		]
+	},
+	{
+		"adjective": [
+			"curious"
+		],
+		"predicate": [
+			"explore"
+		],
+		"concept": [
+			"exploration",
+			"curiosity"
+		],
+		"tags": [
+			"exploration",
+			"cooking"
+		]
+	},
+	{
+		"adjective": [
+			"trickster"
+		],
+		"predicate": [
+			"deceive",
+			"outsmart"
+		],
+		"concept": [
+			"deception"
+		],
+		"tags": [
+			"cunning",
+			"dirty_fighting",
+			"trapping"
+		]
+	},
+	{
+		"adjective": [
+			"gigantic"
+		],
+		"predicate": [
+			"block",
+			"withstand"
+		],
+		"concept": [
+			"force"
+		],
+		"tags": [
+			"constitution"
+		]
+	},
+	{
+		"adjective": [
+			"crafty"
+		],
+		"predicate": [
+			"craft"
+		],
+		"concept": [
+			"craftsmanship"
+		],
+		"tags": [
+			"crafting",
+			"materials"
+		]
+	},
+	{
+		"adjective": [
+			"golden"
+		],
+		"predicate": [
+			"illuminate",
+			"shine"
+		],
+		"concept": [
+			"illumination"
+		],
+		"tags": [
+			"gold",
+			"light"
+		]
+	},
+	{
+		"adjective": [
+			"brutal",
+			"warlike"
+		],
+		"predicate": [
+			"conquer",
+			"destroy"
+		],
+		"concept": [
+			"war",
+			"strife"
+		],
+		"tags": [
+			"combat",
+			"brutality",
+			"strength"
+		]
+	},
+	{
+		"adjective": [
+			"loving"
+		],
+		"predicate": [
+			"love",
+			"heal"
+		],
+		"concept": [
+			"love",
+			"compassion"
+		],
+		"tags": [
+			"healing"
+		]
+	},
+	{
+		"adjective": [
+			"envious",
+			"greedy"
+		],
+		"predicate": [
+			"take",
+			"possess"
+		],
+		"concept": [
+			"greed"
+		],
+		"tags": [
+			"theft",
+			"looting"
+		]
+	},
+	{
+		"adjective": [
+			"arcane"
+		],
+		"predicate": [
+			"master"
+		],
+		"concept": [
+			"magic",
+			"aether"
+		],
+		"tags": [
+			"magic",
+			"elemental"
+		]
+	},
+	{
+		"adjective": [
+			"stellar",
+			"astral"
+		],
+		"predicate": [
+			"predict",
+			"see"
+		],
+		"concept": [
+			"space",
+			"sky"
+		],
+		"tags": [
+			"celestial_magic"
+		]
+	},
+	{
+		"adjective": [
+			"burning"
+		],
+		"predicate": [
+			"burn"
+		],
+		"concept": [
+			"fire"
+		],
+		"tags": [
+			"fire"
+		]
+	},
+	{
+		"adjective": [
+			"freezing"
+		],
+		"predicate": [
+			"freeze"
+		],
+		"concept": [
+			"ice"
+		],
+		"tags": [
+			"ice"
+		]
+	},
+	{
+		"adjective": [
+			"primitive",
+			"primal"
+		],
+		"predicate": [
+			"hunt"
+		],
+		"concept": [
+			"nature"
+		],
+		"tags": [
+			"nature",
+			"hunt"
+		]
+	},
+	{
+		"adjective": [
+			"forgiving"
+		],
+		"predicate": [
+			"forgive",
+			"rescue"
+		],
+		"concept": [
+			"salvation",
+			"forgiveness"
+		],
+		"tags": [
+			"salvation"
+		]
+	}
+]

@@ -1,18 +1,31 @@
 extends Node
 
 var domain_data: Dictionary[String, Dictionary] = {}
+var attribute_data: Array[Dictionary] = []
 
 var gods: Dictionary[String, God] = {}
 
 
-func create_god(tags: Array[String]) -> God:
-	var valid_domains := get_valid_domains(tags)
-	var domain := domain_data[valid_domains.pick_random() as String]
+func create_god(tags: Array[String], tier:= 2) -> God:
+	var domains := pick_domains(tags, tier)
 	var data := {
-		"name": generate_name(domain, tags)
+		"name": generate_name(self.domain_data[domains.pick_random()], tags),
+		"domains": domains,
 	}
+	var god_tags: Array[String] = []
+	tags.shuffle()
+	for i in range(ceili(tags.size() / 2.0)):
+		if randf() < 0.5:
+			god_tags.push_back(tags[i])
+	for d in domains:
+		var domain := self.domain_data[d]
+		var domain_tags := domain.get("tags", []) as Array
+		domain_tags.shuffle()
+		for i in range(ceili(domain_tags.size() / 2.0)):
+			god_tags.push_back(domain_tags[i])
+		data.tags = god_tags
 	
-	var ID := data.get("name", "god" + str(randi())) as String
+	var ID := (data.get("name", "god" + str(randi())) as String).to_lower().replace(" ", "_")
 	var index := 1
 	while ID + str(index) in self.gods:
 		index += 1
@@ -35,6 +48,31 @@ func get_valid_domains(tags: Array[String]) -> Array[String]:
 	if valid_domains.size() == 0:
 		return domain_data.keys()
 	return valid_domains
+
+func pick_domains(tags: Array[String], number: int) -> Array[String]:
+	var valid_domains := get_valid_domains(tags)
+	var domains: Array[String] = []
+	valid_domains.shuffle()
+	for i in range(mini(number, valid_domains.size())):
+		domains.push_back(valid_domains[i])
+	return domains
+
+func get_properties(tags: Array[String], property: String) -> Array[String]:
+	var contains:= func contains(tag: String):
+		return tag in tags
+	
+	var properties: Array[String] = []
+	for a in self.attribute_data:
+		if "tags" in a and not a.tags.any(contains):
+			continue
+		properties += Array(a.get(property, []) as Array, TYPE_STRING, "", null)
+	
+	if properties.size() == 0:
+		if self.attribute_data.size() == 0:
+			return []
+		return Array(self.attribute_data.pick_random().get(property, []) as Array,
+			TYPE_STRING, "", null)
+	return properties
 
 func generate_name(domain: Dictionary, tags: Array[String]) -> String:
 	var rnd := randf()
@@ -69,6 +107,16 @@ func generate_name(domain: Dictionary, tags: Array[String]) -> String:
 		return base_name + " " + domain.get("suffix", ["who is generic"]).pick_random()
 	return base_name
 
+func pick_property(god_id: String, attribute: String) -> String:
+	var god := self.gods[god_id]
+	if god.tmp_properties.size() == 0:
+		for p in ["adjective", "predicate", "concept"]:
+			god.tmp_properties[p] = get_properties(god.tags, p)
+	
+	if attribute == "domain":
+		return god.domains.pick_random()
+	return god.tmp_properties[attribute].pick_random() as String
+
 
 ### Loading ###
 
@@ -89,9 +137,31 @@ func load_domain_data(paths: Array[String]):
 			continue
 		
 		for type in data:
-			domain_data[type] = data[type]
+			self.domain_data[type] = data[type]
 			file.close()
+
+func load_attribute_data(paths: Array[String]):
+	for file_name in paths:
+		var file:= FileAccess.open(file_name, FileAccess.READ)
+		var error:= FileAccess.get_open_error()
+		if error != OK:
+			print("Can't open file " + file_name)
+			continue
+		else:
+			print("Loading skill module " + file_name)
+		
+		var raw:= file.get_as_text()
+		var data: Array = JSON.parse_string(raw)
+		if data == null || data.size() == 0:
+			printt("Error parsing " + file_name)
+			continue
+		
+		for d in data:
+			if typeof(d) != TYPE_DICTIONARY:
+				continue
+			self.attribute_data.push_back(d)
 
 func _ready() -> void:
 	load_domain_data(Utils.get_file_paths("res://data/gods/domains"))
+	load_attribute_data(Utils.get_file_paths("res://data/gods/attributes"))
 	

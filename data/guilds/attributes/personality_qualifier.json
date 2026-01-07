@@ -1,0 +1,125 @@
+[
+	{
+		"texts": [
+			"good"
+		],
+		"tags": [
+			"healing",
+			"light"
+		]
+	},
+	{
+		"texts": [
+			"evil"
+		],
+		"tags": [
+			"blood",
+			"vile",
+			"necromancy",
+			"darkness",
+			"murder"
+		]
+	},
+	{
+		"texts": [
+			"dumb"
+		],
+		"tags": [
+			"science",
+			"research"
+		]
+	},
+	{
+		"texts": [
+			"greedy"
+		],
+		"tags": [
+			"looting",
+			"gold"
+		]
+	},
+	{
+		"texts": [
+			"different",
+			"unique"
+		],
+		"tags": [
+			"mysterious"
+		]
+	},
+	{
+		"texts": [
+			"weak"
+		],
+		"tags": [
+			"armour",
+			"shield",
+			"constitution"
+		]
+	},
+	{
+		"texts": [
+			"wild",
+			"feral"
+		],
+		"tags": [
+			"combat",
+			"brutality",
+			"nature"
+		]
+	},
+	{
+		"texts": [
+			"lying",
+			"dishonest",
+			"unfair"
+		],
+		"tags": [
+			"conspiracy"
+		]
+	},
+	{
+		"texts": [
+			"versatile"
+		],
+		"tags": [
+			"versatility"
+		]
+	},
+	{
+		"texts": [
+			"curious"
+		],
+		"tags": [
+			"exploration"
+		]
+	},
+	{
+		"texts": [
+			"crafty"
+		],
+		"tags": [
+			"crafting",
+			"materials",
+		]
+	},
+	{
+		"texts": [
+			"cunning",
+			"tricky"
+		],
+		"tags": [
+			"trapping",
+			"cunning"
+		]
+	},
+	{
+		"texts": [
+			"quick"
+		],
+		"tags": [
+			"hunt",
+			"dexterity"
+		]
+	}
+]

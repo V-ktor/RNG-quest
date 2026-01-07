@@ -2,10 +2,17 @@
 
 ## v0.1.3
 
+### Content
+* Add new skills
+* Reworked how guilds work (procedurally generated guilds)
+
 ### Interface
 * Add EXP bars for player level, abilities and guilds
 * Add text label colors for skills, abilities, guild level and resistances that show the progress
 * Add text label color for locations that shows the danger
+
+### Bug fixes
+* fixed a problem with incorrect BB code on the journal page
 
 ## v0.1.2
 

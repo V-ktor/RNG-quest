@@ -287,7 +287,24 @@
 			"cunning",
 			"dirty_fighting",
 			"trapping"
+		]
+	},
+	"harvest": {
+		"name": "harvest",
+		"title": [
+			"Harvest"
 		],
+		"prefix": [
+			"Rich",
+			"Bountiful"
+		],
+		"suffix": [
+			"of Harvest"
+		],
+		"tags": [
+			"nature",
+			"human"
+		]
 	},
 	"procedural_generation": {
 		"name": "procedural_generation",

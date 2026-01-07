@@ -14,10 +14,11 @@
 			"student"
 		],
 		"3": [
-			"librarian"
+			"librarian",
+			"scribe"
 		],
 		"4": [
-			"PhD"
+			"scholar"
 		],
 		"5": [
 			"instructor"

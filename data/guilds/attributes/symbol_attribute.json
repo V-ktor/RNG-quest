@@ -1,0 +1,311 @@
+[
+	{
+		"texts": [
+			"red",
+			"orange",
+			"yellow",
+			"green",
+			"cyan",
+			"blue",
+			"purple",
+			"white",
+			"yellow",
+			"stylized"
+		],
+		"tags": [
+			"versatility"
+		]
+	},
+	{
+		"texts": [
+			"labeled",
+			"abstract"
+		],
+		"tags": [
+			"education"
+		]
+	},
+	{
+		"texts": [
+			"winged",
+			"glorified"
+		],
+		"tags": [
+			"exploration",
+			"quests"
+		]
+	},
+	{
+		"texts": [
+			"illuminated",
+			"glowing"
+		],
+		"tags": [
+			"salvation",
+			"light"
+		]
+	},
+	{
+		"texts": [
+			"bloody",
+			"scarlet"
+		],
+		"tags": [
+			"brutality",
+			"blood",
+			"blood_magic"
+		]
+	},
+	{
+		"texts": [
+			"iron",
+			"steel"
+		],
+		"tags": [
+			"combat"
+		]
+	},
+	{
+		"texts": [
+			"mighty"
+		],
+		"tags": [
+			"strength"
+		]
+	},
+	{
+		"texts": [
+			"towering",
+			"gigantic"
+		],
+		"tags": [
+			"constitution"
+		]
+	},
+	{
+		"texts": [
+			"agile"
+		],
+		"tags": [
+			"dexterity"
+		]
+	},
+	{
+		"texts": [
+			"wise",
+			"old",
+			"grey"
+		],
+		"tags": [
+			"wisdom"
+		]
+	},
+	{
+		"texts": [
+			"inscribed"
+		],
+		"tags": [
+			"intelligence"
+		]
+	},
+	{
+		"texts": [
+			"reversed"
+		],
+		"tags": [
+			"cunning"
+		]
+	},
+	{
+		"texts": [
+			"copper",
+			"bronze",
+			"iron",
+			"steel",
+			"silver",
+			"golden",
+			"wooden",
+			"leather"
+		],
+		"tags": [
+			"weapons",
+			"armour",
+			"materials",
+			"crafting",
+			"equipment"
+		]
+	},
+	{
+		"texts": [
+			"flying"
+		],
+		"tags": [
+			"archery"
+		]
+	},
+	{
+		"texts": [
+			"wild",
+			"feral",
+			"primal"
+		],
+		"tags": [
+			"hunt"
+		]
+	},
+	{
+		"texts": [
+			"magical",
+			"radiant"
+		],
+		"tags": [
+			"magic"
+		]
+	},
+	{
+		"texts": [
+			"glowing"
+		],
+		"tags": [
+			"elemental"
+		]
+	},
+	{
+		"texts": [
+			"burning"
+		],
+		"tags": [
+			"fire"
+		]
+	},
+	{
+		"texts": [
+			"frozen"
+		],
+		"tags": [
+			"ice"
+		]
+	},
+	{
+		"texts": [
+			"wet"
+		],
+		"tags": [
+			"water"
+		]
+	},
+	{
+		"texts": [
+			"muddy",
+			"dirty"
+		],
+		"tags": [
+			"earth"
+		]
+	},
+	{
+		"texts": [
+			"floating",
+			"flying"
+		],
+		"tags": [
+			"wind"
+		]
+	},
+	{
+		"texts": [
+			"growing",
+			"mossy",
+			"healthy"
+		],
+		"tags": [
+			"nature"
+		]
+	},
+	{
+		"texts": [
+			"schematic"
+		],
+		"tags": [
+			"research",
+			"technology"
+		]
+	},
+	{
+		"texts": [
+			"schematic"
+		],
+		"tags": [
+			"alchemy",
+			"enchanting"
+		]
+	},
+	{
+		"texts": [
+			"bleeding"
+		],
+		"tags": [
+			"theft"
+		]
+	},
+	{
+		"texts": [
+			"rich"
+		],
+		"tags": [
+			"looting",
+			"gold"
+		]
+	},
+	{
+		"texts": [
+			"white",
+			"yellow",
+			"radiant",
+			"bright"
+		],
+		"tags": [
+			"light"
+		]
+	},
+	{
+		"texts": [
+			"black",
+			"pitch black",
+			"dark",
+			"shadowy"
+		],
+		"tags": [
+			"darkness"
+		]
+	},
+	{
+		"texts": [
+			"holy"
+		],
+		"tags": [
+			"god",
+			"worship"
+		]
+	},
+	{
+		"texts": [
+			"pink",
+			"purple",
+			"yellow"
+		],
+		"tags": [
+			"healing"
+		]
+	},
+	{
+		"texts": [
+			"upside down",
+			"monochrome",
+			"colourful",
+			"outlined",
+			"geometric"
+		],
+		"tags": []
+	}
+]

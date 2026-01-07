@@ -1,10 +1,12 @@
 {
 	"name": "club",
-	"organization": "independant",
+	"organization": "independent",
 	"names": [
 		"club",
 		"group",
-		"brotherhood"
+		"brotherhood",
+		"association",
+		"pack"
 	],
 	"preamble": [
 		"{region}",

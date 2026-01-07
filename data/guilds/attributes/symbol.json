@@ -1,0 +1,39 @@
+[
+	{
+		"texts": [
+			"batch",
+			"card"
+		],
+		"tags": [
+			"institute"
+		]
+	},
+	{
+		"texts": [
+			"crests",
+			"emblem",
+			"banner"
+		],
+		"tags": [
+			"guild"
+		]
+	},
+	{
+		"texts": [
+			"banner",
+			"mark"
+		],
+		"tags": [
+			"club"
+		]
+	},
+	{
+		"texts": [
+			"sigil",
+			"rune"
+		],
+		"tags": [
+			"cult"
+		]
+	}
+]

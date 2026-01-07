@@ -1,0 +1,24 @@
+{
+	"name": "cultists",
+	"names": [
+		"cultists"
+	],
+	"suffixes": [
+		"of {god}"
+	],
+	"relics": [
+		"idol"
+	],
+	"abilities": [
+		"blood_magic",
+		"necromancy"
+	],
+	"exp_gain": {
+		"kill": 3
+	},
+	"tags": [
+		"cult",
+		"vile",
+		"blood"
+	]
+}

@@ -16,7 +16,7 @@ var revival_chance: float
 var rank_carry_over: float
 var give_welcome_gift: bool
 var give_parting_gift: bool
-var description: Array[String]
+var description: String
 var addendum: Array[String]
 var abilities: Array[String]
 var tags: Array[String]
@@ -30,13 +30,40 @@ var exp_gain: Dictionary[String, int]
 
 func on_travel(region: Region):
 	self.distance += 1
-	if self.max_range > 0 && self.distance > self.max_range:
+	if self.revival_chance > 0.0 and randf() < self.revival_chance:
+		self.is_available = true
+	elif self.max_range > 0 && self.distance > self.max_range:
 		self.is_available = false
 	else:
 		self.is_available = true
+	if self.is_available:
 		if self.addendum.size() > 0:
-			self.name = self.base_name + " " + self.addendum.pick_random().format({"region": region.name,
-				"city": region.cities.values().pick_random().name})
+			self.name = self.base_name + " " + self.addendum.pick_random().format({
+				"region": region.name,
+				"city": region.cities.values().pick_random().name,
+			})
+		self.level = ceili(self.level * self.rank_carry_over)
+
+
+func get_max_exp() -> int:
+	return 600 + 400 * self.level * self.level
+
+
+func add_exp(amount: float, type: String = "") -> void:
+	self.experience += ceili(amount * self.exp_gain.get(type, 1.0))
+
+
+func level_up() -> void:
+	self.experience -= self.get_max_exp()
+	self.level += 1
+
+
+func get_rank() -> String:
+	if self.ranks.size() == 0:
+		return tr("UNKNOWN")
+	if self.level >= self.ranks.size():
+		return self.ranks[self.ranks.size() - 1] + " " + Skills.convert_to_roman_number(self.level - self.ranks.size() + 2)
+	return self.ranks[self.level]
 
 
 func _init(dict: Dictionary) -> void:
@@ -57,9 +84,7 @@ func _init(dict: Dictionary) -> void:
 	self.revival_chance = dict.get("revival_chance", 0.0) as float
 	self.give_welcome_gift = dict.get("give_welcome_gift", false) as bool
 	self.give_parting_gift = dict.get("give_parting_gift", false) as bool
-	self.description = []
-	for desc in dict.get("description", []):
-		self.description.push_back(desc)
+	self.description =  dict.get("description", "")
 	self.addendum = []
 	for add in dict.get("addendum", []):
 		self.addendum.push_back(add)

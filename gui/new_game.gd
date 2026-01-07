@@ -320,7 +320,6 @@ func start_game():
 	else:
 		main_instance.set_region("farmland")
 	main_instance.current_location = main_instance.current_region.cities.keys().pick_random()
-	main_instance.join_guild("adventurer_guild")
 	main_instance.player_vegan = player_vegan
 	main_instance.store_historical_data("level", main_instance.player.level)
 	for k in player_abilities:

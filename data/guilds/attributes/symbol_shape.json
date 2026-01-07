@@ -1,0 +1,457 @@
+[
+	{
+		"texts": [
+			"bear",
+			"boar",
+			"shield"
+		],
+		"tags":  [
+			"constitution"
+		]
+	},
+	{
+		"texts": [
+			"book",
+			"scroll",
+			"sceptre"
+		],
+		"tags": [
+			"education",
+			"research"
+		]
+	},
+	{
+		"texts": [
+			"boot"
+		],
+		"tags": [
+			"exploration"
+		]
+	},
+	{
+		"texts": [
+			"circle",
+			"square",
+			"pentagon",
+			"hexagon",
+			"octagon"
+		],
+		"tags": [
+			"versatility"
+		]
+	},
+	{
+		"texts": [
+			"fist",
+			"sword",
+			"warrior"
+		],
+		"tags": [
+			"combat"
+		]
+	},
+	{
+		"texts": [
+			"eagle",
+			"bear",
+			"lion"
+		],
+		"tags": [
+			"strength"
+		]
+	},
+	{
+		"texts": [
+			"sword",
+			"axe",
+			"spear",
+			"mace"
+		],
+		"tags": [
+			"weapons",
+			"equipment"
+		]
+	},
+	{
+		"texts": [
+			"helmet",
+			"glove",
+			"shield"
+		],
+		"tags": [
+			"armour",
+			"equipment"
+		]
+	},
+	{
+		"texts": [
+			"hammer",
+			"anvil",
+			"tool"
+		],
+		"tags": [
+			"crafting",
+			"dwarf"
+		]
+	},
+	{
+		"texts": [
+			"bow",
+			"quiver"
+		],
+		"tags": [
+			"archery"
+		]
+	},
+	{
+		"texts": [
+			"eagle",
+			"deer",
+			"bear trap"
+		],
+		"tags": [
+			"hunt",
+			"trapping"
+		]
+	},
+	{
+		"texts": [
+			"eagle",
+			"wolf",
+			"tiger"
+		],
+		"tags": [
+			"dexterity"
+		]
+	},
+	{
+		"texts": [
+			"book",
+			"tome",
+			"scroll",
+			"brain"
+		],
+		"tags": [
+			"intelligence"
+		]
+	},
+	{
+		"texts": [
+			"formula",
+			"tome",
+			"scroll"
+		],
+		"tags": [
+			"magic"
+		]
+	},
+	{
+		"texts": [
+			"flame",
+			"ice crystal",
+			"lightning bolt"
+		],
+		"tags":[
+			"elemental"
+		]
+	},
+	{
+		"texts": [
+			"tree",
+			"bush",
+			"patch of moss"
+		],
+		"tags": [
+			"nature",
+			"elf"
+		]
+	},
+	{
+		"texts": [
+			"cog",
+			"robot arm"
+		],
+		"tags": [
+			"technology"
+		]
+	},
+	{
+		"texts": [
+			"test tube",
+			"mortar and pestle"
+		],
+		"tags": [
+			"alchemy"
+		]
+	},
+	{
+		"texts": [
+			"crystal"
+		],
+		"tags": [
+			"enchanting"
+		]
+	},
+	{
+		"texts": [
+			"dagger",
+			"bag",
+			"hood"
+		],
+		"tags": [
+			"theft",
+			"cunning"
+		]
+	},
+	{
+		"texts": [
+			"treasure chest",
+			"gold coin"
+		],
+		"tags": [
+			"looting",
+			"gold"
+		]
+	},
+	{
+		"texts": [
+			"ingot"
+		],
+		"tags": [
+			"materials"
+		]
+	},
+	{
+		"texts": [
+			"skull"
+		],
+		"tags": [
+			"darkness",
+			"murder",
+			"vile"
+		]
+	},
+	{
+		"texts": [
+			"sun"
+		],
+		"tags": [
+			"light"
+		]
+	},
+	{
+		"texts": [
+			"moon",
+			"star"
+		],
+		"tags": [
+			"celestial"
+		]
+	},
+	{
+		"texts": [
+			"saint"
+		],
+		"tags": [
+			"worship",
+			"god"
+		]
+	},
+	{
+		"texts": [
+			"whip",
+			"spatula"
+		],
+		"tags": [
+			"archaeology"
+		]
+	},
+	{
+		"texts": [
+			"bloody dagger",
+			"bloody knife"
+		],
+		"tags": [
+			"murder"
+		]
+	},
+	{
+		"texts": [
+			"drop of blood"
+		],
+		"tags": [
+			"blood",
+			"blood_magic",
+			"vile"
+		]
+	},
+	{
+		"texts": [
+			"cooking pot",
+			"frying pan"
+		],
+		"tags": [
+			"cooking"
+		]
+	},
+	{
+		"texts": [
+			"symbol",
+			"letter"
+		],
+		"tags": [
+			"cult"
+		]
+	},
+	{
+		"texts": [
+			"skeleton",
+			"skull",
+			"bone"
+		],
+		"tags": [
+			"necromancy",
+			"vile"
+		]
+	},
+	{
+		"texts": [
+			"shadow"
+		],
+		"tags": [
+			"darkness"
+		]
+	},
+	{
+		"texts": [
+			"creature",
+			"hound",
+			"turtle",
+			"sparrow"
+		],
+		"tags": [
+			"summoning"
+		]
+	},
+	{
+		"texts": [
+			"fox",
+			"cat",
+			"snake"
+		],
+		"tags": [
+			"cunning"
+		]
+	},
+	{
+		"texts": [
+			"owl",
+			"elephant"
+		],
+		"tags": [
+			"wisdom"
+		]
+	},
+	{
+		"texts": [
+			"human",
+			"man",
+			"person"
+		],
+		"tags": [
+			"human"
+		]
+	},
+	{
+		"texts": [
+			"elf",
+			"sage"
+		],
+		"tags": [
+			"elf"
+		]
+	},
+	{
+		"texts": [
+			"dwarf"
+		],
+		"tags": [
+			"dwarf"
+		]
+	},
+	{
+		"texts": [
+			"halfling"
+		],
+		"tags": [
+			"halfling"
+		]
+	},
+	{
+		"texts": [
+			"ogre"
+		],
+		"tags": [
+			"ogre"
+		]
+	},
+	{
+		"texts": [
+			"orc",
+			"warrior"
+		],
+		"tags": [
+			"orc"
+		]
+	},
+	{
+		"texts": [
+			"goblin"
+		],
+		"tags": [
+			"goblin"
+		]
+	},
+	{
+		"texts": [
+			"gnoll"
+		],
+		"tags": [
+			"gnoll"
+		]
+	},
+	{
+		"texts": [
+			"demon"
+		],
+		"tags": [
+			"demon"
+		]
+	},
+	{
+		"texts": [
+			"cyborg"
+		],
+		"tags": [
+			"cyborg"
+		]
+	},
+	{
+		"texts": [
+			"robot"
+		],
+		"tags": [
+			"robot"
+		]
+	},
+	{
+		"texts": [
+			"droplet"
+		],
+		"tags": [
+			"water",
+			"acid",
+			"poison"
+		]
+	}
+]

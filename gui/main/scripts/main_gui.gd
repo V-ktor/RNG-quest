@@ -202,7 +202,7 @@ func _show_statistics() -> void:
 
 func connect_to_main(main: Main):
 	# Connect signals from the main scene
-	var main_log:= $Overview/HBoxContainer/Log as Control
+	var main_log := $Overview/HBoxContainer/Log as Control
 	main.connect("text_printed", Callable(main_log, "print_log_msg"))
 	main.connect("characters_updated", Callable(self, "_characters_updated"))
 	main.connect("gold_changed", Callable(self, "_gold_changed"))
@@ -238,8 +238,7 @@ func connect_to_main(main: Main):
 	armour_preference_panel.character_settings = main_character_settings
 	potion_preference_panel.character_settings = main_character_settings
 	statistics.historical_data = main.historical_data
-	guild_panel.guild_lvl = main.player_guild_lvl
-	guild_panel.guild_exp = main.player_guild_exp
+	#guild_panel.available_guilds = main.available_guilds
 	
 	main.gui_ready()
 	timetable_panel.update(main.timetable, main.time_offset)

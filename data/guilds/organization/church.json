@@ -1,0 +1,33 @@
+{
+	"name": "church",
+	"organization": "branches",
+	"names": [
+		"church",
+		"chapel",
+		"sanctuary"
+	],
+	"preamble": [
+		"{region}"
+	],
+	"addendum": [
+		"of {region}"
+	],
+	"rank_carry_over": 0.75,
+	"give_welcome_gift": true,
+	"rank_prefixes": {
+		"-1": [
+			"novice"
+		],
+		"0": [
+			"initiate"
+		],
+		"1": [
+			"anointed"
+		]
+	},
+	"tags": [
+		"church",
+		"god",
+		"wisdom"
+	]
+}

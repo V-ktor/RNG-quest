@@ -1,0 +1,96 @@
+[
+	{
+		"type": [
+			"details",
+			"convictions"
+		],
+		"texts": [
+			"the {guild_name} believes in {god}",
+			"the {guild_name} is faithful to {god}",
+			"the {guild_name} worships {god}",
+			"the god of the {guild_name} is {god}",
+			"{god} is the god of the {guild_name}"
+		],
+		"tags": [
+			"god"
+		]
+	},
+	{
+		"type": [
+			"goal",
+			"convictions"
+		],
+		"texts": [
+			"they say that {god} is the master of {god.domain}",
+			"they say that {god} is the creator of {god.domain}"
+		],
+		"tags": [
+			"worship",
+			"god"
+		]
+	},
+	{
+		"type": [
+			"goal",
+			"convictions"
+		],
+		"texts": [
+			"there is a saying: \"{saying}\"",
+			"the members of the {organization} say: \"{saying}\"",
+			"they say: \"{saying}\""
+		],
+		"tags": [
+			"worship",
+			"god"
+		]
+	},
+	{
+		"type": [
+			"goal",
+			"convictions"
+		],
+		"texts": [
+			"they say the lord of {god.domain} {god.predicate}s {god.concept}",
+			"they say the master of {god.domain} {god.predicate}s {god.concept}",
+			"they say the god of {god.domain} {god.predicate}s {god.concept}",
+			"there is a saying in the {organization} that the lord of {god.domain} {god.predicate}s {god.concept}",
+			"there is a saying in the {organization} that the creator of {god.domain} {god.predicate}s {god.concept}",
+			"there is a saying in the {organization} that the god of {god.domain} {god.predicate}s {god.concept}"
+		],
+		"tags": [
+			"worship",
+			"god"
+		]
+	},
+	{
+		"type": [
+			"goal",
+			"convictions"
+		],
+		"texts": [
+			"the members of the {organization} pray for {god.adjective} {god.concept}",
+			"the members of the {organization} wish for {god.adjective} {god.concept}",
+			"the members of the {organization} dream of {god.adjective} {god.concept}",
+			"the members of the {organization} call {god.domain} \"{god.adjective} {god.concept}\"",
+			"the members of the {organization} refer to {god.domain} as \"{god.adjective} {god.concept}\""
+		],
+		"tags": [
+			"worship",
+			"god"
+		]
+	},
+	{
+		"type": [
+			"goal",
+			"convictions"
+		],
+		"texts": [
+			"the {organization} live by the wise words \"{saying}\"",
+			"the {organization} is known for their mantra \"{saying}\"",
+			"the {organization} spreads the word of {god}: \"{saying}\""
+		],
+		"tags": [
+			"worship"
+		]
+	}
+]

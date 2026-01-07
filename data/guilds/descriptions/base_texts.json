@@ -1,6 +1,8 @@
 [
 	{
-		"root": true,
+		"type": [
+			"goal"
+		],
 		"texts": [
 			"their goal is {goal}",
 			"the {guild_name} wants {goal}",
@@ -8,15 +10,19 @@
 		]
 	},
 	{
-		"root": true,
+		"type": [
+			"founding"
+		],
 		"texts": [
 			"the {guild_name} was founded in {city}",
-			"the {guild_name} originiates from {region}",
+			"the {guild_name} originates from {region}",
 			"the {guild_name} has their {headquarters} in {city}"
 		]
 	},
 	{
-		"root": true,
+		"type": [
+			"details"
+		],
 		"texts": [
 			"the {guild_name} operates in {region}",
 			"the {guild_name} is active in {region}",
@@ -25,7 +31,9 @@
 		]
 	},
 	{
-		"root": true,
+		"type": [
+			"founding"
+		],
 		"texts": [
 			"the {guild_name} has been founded by {founder} with the goal {goal}",
 			"the {guild_name} has been founded by {founder} {goal}",
@@ -33,52 +41,55 @@
 		]
 	},
 	{
-		"root": true,
+		"type": [
+			"details"
+		],
 		"texts": [
-			"the {guild_name} specializes in {ability}",
 			"the specialty of the {guild_name} is {ability}",
-			"the {guild_name} favours {ability}"
+			"the {guild_name} prefer {ability}",
+			"the {guild_name} is able {ability}",
+			"many members of the {guild_name} have the ability {ability}",
+			"some members of the {guild_name} have the ability {ability}"
 		]
 	},
 	{
-		"root": true,
+		"type": [
+			"details"
+		],
 		"texts": [
 			"the {guild_name} is known for their {trait}",
 			"the members of the {guild_name} are known for their {trait}",
-			"{trait} is a key characteristic of the {guild_name}"
+			"{trait} is a key characteristic of the {guild_name}",
+			"many members of the {guild_name} excel in {trait}",
+			"the members of the {guild_name} are famous for their {trait}"
 		]
 	},
 	{
-		"root": true,
-		"texts": [
-			"the {guild_name} believes in {god}",
-			"the {guild_name} is faithful to {god}"
+		"type": [
+			"details"
 		],
-		"tags": [
-			"god"
-		]
-	},
-	{
-		"root": true,
-		"texts": [
-			"the {guild_name} is destined to {destiny}",
-			"the {guild_name} is fated to {destiny}",
-			"it is the destiny of {guild_name} {destiny}",
-			"it is the fate of {guild_name} {destiny}"
-		],
-		"tags": [
-			"worship",
-			"destiny"
-		]
-	},
-	{
-		"root": true,
 		"texts": [
 			"the {guild_name} cherishes the ability {ability}",
 			"the {guild_name} is in favor of the ability {ability}",
 			"the {guild_name} considers it a valuable asset to be able {ability}",
 			"many members of the {guild_name} are able {ability}",
 			"it is a key characteristic of the {guild_name} to be able {ability}"
+		]
+	},
+	{
+		"type": [
+			"goal",
+			"convictions"
+		],
+		"texts": [
+			"the {guild_name} is destined {destiny}",
+			"the {guild_name} is fated {destiny}",
+			"it is the destiny of {guild_name} {destiny}",
+			"it is the fate of {guild_name} {destiny}"
+		],
+		"tags": [
+			"worship",
+			"destiny"
 		]
 	}
 ]

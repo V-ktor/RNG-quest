@@ -1,5 +1,5 @@
 {
-	"name": "archeology",
+	"name": "archaeology",
 	"relics": [
 		"fossil"
 	],
@@ -10,7 +10,7 @@
 		"loot": 1
 	},
 	"tags": [
-		"archeology",
+		"archaeology",
 		"looting"
 	]
 }
