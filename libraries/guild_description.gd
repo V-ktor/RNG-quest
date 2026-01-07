@@ -46,14 +46,20 @@ func create_guild_description(guild: Guild, region: Region) -> String:
 	var description := ""
 	var stage := "start"
 	var past_stages: Array[String] = []
-	var valid_descriptions: Array[String]
 	
 	for i in range(3):
 		stage = get_next_stage(stage, past_stages, guild.tags)
 		past_stages.push_back(stage)
 		
-		valid_descriptions = self.get_valid_descriptions(guild.tags, stage)
-		
+		var valid_descriptions := self.get_valid_descriptions(guild.tags, stage)
+		var text := valid_descriptions.pick_random() as String
+		var required_attributes := self.get_required_attributes(text)
+		var format_dict := self.construct_format_dict(required_attributes, guild, region)
+		var final_text := text.format(format_dict) + "."
+		final_text[0] = final_text[0].to_upper()
+		description += final_text + " "
+	if "symbol" not in past_stages:
+		var valid_descriptions := self.get_valid_descriptions(guild.tags, "symbol")
 		var text := valid_descriptions.pick_random() as String
 		var required_attributes := self.get_required_attributes(text)
 		var format_dict := self.construct_format_dict(required_attributes, guild, region)

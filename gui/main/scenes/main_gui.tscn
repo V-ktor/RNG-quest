@@ -1007,7 +1007,6 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Journal" type="HBoxContainer" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1051,11 +1050,12 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Guilds" type="Panel" parent="Journal"]
+[node name="Guilds" type="Panel" parent="Journal" node_paths=PackedStringArray("tooltip")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("16_oc305")
+tooltip = NodePath("../../Tooltip")
 
 [node name="Label" type="Label" parent="Journal/Guilds"]
 modulate = Color(1, 1, 1, 0.74902)
@@ -1093,6 +1093,7 @@ theme_override_constants/separation = 0
 
 [node name="Guild0" type="HBoxContainer" parent="Journal/Guilds/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 0
 
 [node name="LabelName" type="Label" parent="Journal/Guilds/ScrollContainer/VBoxContainer/Guild0"]
 layout_mode = 2
@@ -1109,6 +1110,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxEmpty_2hy47")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1giea")
 value = 50.0

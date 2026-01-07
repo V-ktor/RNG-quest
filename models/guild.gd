@@ -59,11 +59,11 @@ func level_up() -> void:
 
 
 func get_rank() -> String:
-	if self.ranks.size() == 0:
+	if self.ranks.size() == 0 or self.level < 1:
 		return tr("UNKNOWN")
 	if self.level >= self.ranks.size():
-		return self.ranks[self.ranks.size() - 1] + " " + Skills.convert_to_roman_number(self.level - self.ranks.size() + 2)
-	return self.ranks[self.level]
+		return self.ranks[self.ranks.size() - 1] + " " + Skills.convert_to_roman_number(self.level - 1 - self.ranks.size() + 2)
+	return self.ranks[self.level - 1]
 
 
 func _init(dict: Dictionary) -> void:

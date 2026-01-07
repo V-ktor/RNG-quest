@@ -164,6 +164,17 @@ func merge_dicts(dict: Dictionary, add: Dictionary) -> Dictionary:
 	return dict
 
 
+func make_list(array: Array[String]) -> String:
+	var string:= ""
+	for i in range(array.size()):
+		string += array[i]
+		if i < array.size() - 2:
+			string += ", "
+		elif i == array.size() - 2:
+			string += ", and "
+	return string
+
+
 func get_random_saying() -> String:
 	var rnd := randi()%6
 	match rnd:

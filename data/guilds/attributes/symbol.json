@@ -29,6 +29,14 @@
 	},
 	{
 		"texts": [
+			"crucifix"
+		],
+		"tags": [
+			"church"
+		]
+	},
+	{
+		"texts": [
 			"sigil",
 			"rune"
 		],
