@@ -66,6 +66,14 @@ func create_guild_description(guild: Guild, region: Region) -> String:
 		var final_text := text.format(format_dict) + "."
 		final_text[0] = final_text[0].to_upper()
 		description += final_text + " "
+	elif "god" in guild.tags and "convictions" not in past_stages:
+		var valid_descriptions := self.get_valid_descriptions(guild.tags, "convictions")
+		var text := valid_descriptions.pick_random() as String
+		var required_attributes := self.get_required_attributes(text)
+		var format_dict := self.construct_format_dict(required_attributes, guild, region)
+		var final_text := text.format(format_dict) + "."
+		final_text[0] = final_text[0].to_upper()
+		description += final_text + " "
 	
 	return sanitize_string(description)
 

@@ -587,6 +587,10 @@ func create_shop_equipment(type: String, quality_mod:= 1.0) -> Dictionary:
 		item = Items.enchant_equipment(item, Items.Enchantment.enchantments_by_tier.regular.pick_random(), quality)
 		if randf() < 0.02:
 			item = Items.enchant_equipment(item, Items.Enchantment.enchantments_by_tier.curse.pick_random(), quality)
+	if num_enchantments > 0:
+		item.source += "\n" + tr("NPC_ENCHANTED").format({
+			"name": Names.create_name(self.current_region.race.pick_random(), randi_range(-1, 1)),
+		})
 	item.source = tr("BOUGHT_FROM_SHOP").format({"location": current_location})
 	item.description = Items.create_tooltip(item)
 	item.description_plain = Skills.tooltip_remove_bb_code(item.description)

@@ -1323,7 +1323,7 @@ func enchant_equipment(item: Dictionary, enchantment_type: String, quality: int,
 		0.25 * float(quality) / 100.0 * float(quality) / 100.0)))
 	item.quality = (item.quality + total_quality) / 2.0
 	item.enchanted = true
-	if !item.has("enchantments"):
+	if "enchantments" not in item:
 		item.enchantments = {}
 	item.enchantments[slot] = {
 		"type":enchantment_type,
