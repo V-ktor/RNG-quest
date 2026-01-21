@@ -82,7 +82,7 @@ func toggle_graph_visibility(pressed: bool, index: int):
 	graph_ui.toggle_visibility(index, pressed)
 
 func _size_changed():
-	filter_container.columns = int(round(filter_container.size.x / 200))
+	filter_container.columns = roundi(filter_container.size.x / 200)
 
 func _ready() -> void:
 	get_tree().get_root().connect("size_changed", Callable(self, "_size_changed"))

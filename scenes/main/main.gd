@@ -574,6 +574,7 @@ func create_shop_equipment(type: String, quality_mod:= 1.0) -> Dictionary:
 	for i in range(3):
 		if randf() < self.current_region.enchantment_chance:
 			num_enchantments += 1
+	item.enchantment_potential = maxi(randi_range(0, 2) - num_enchantments, 0)
 	for i in range(num_enchantments):
 		var quality: int
 		var tier_multiplier:= 1.0

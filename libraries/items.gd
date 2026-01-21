@@ -948,7 +948,7 @@ func create_equipment(type: String, components: Array, material_list: Array, inf
 	item.price *= (0.5 + 0.5 * float(item.quality) / 100.0 * float(item.quality) / 100.0)
 	for i in range(material_list.size()):
 		var mat: Dictionary = material_list[i]
-		if !mat.has("mod"):
+		if not mat.has("mod"):
 			continue
 		for k in mat.mod.keys():
 			if item.has(k):
@@ -956,12 +956,12 @@ func create_equipment(type: String, components: Array, material_list: Array, inf
 	if EQUIPMENT_ATTRIBUTE_MULTIPLIER.has(type):
 		var multiplier: float = EQUIPMENT_ATTRIBUTE_MULTIPLIER[type]
 		for k in item.keys():
-			if typeof(item[k])==TYPE_FLOAT:
-				item[k] = int(round(multiplier*item[k]))
+			if typeof(item[k]) == TYPE_FLOAT:
+				item[k] = roundi(multiplier*item[k])
 	else:
 		for k in item.keys():
-			if typeof(item[k])==TYPE_FLOAT:
-				item[k] = int(round(item[k]))
+			if typeof(item[k]) == TYPE_FLOAT:
+				item[k] = roundi(item[k])
 	item.components = component_list
 	item.erase("material")
 	item.attributes = {}
@@ -1024,7 +1024,7 @@ func create_equipment_drop(creature: Dictionary) -> Dictionary:
 				enchantment = Enchantment.enchantments_by_tier.curse.pick_random()
 			else:
 				enchantment = Enchantment.enchantments_by_tier.regular.pick_random()
-			item = enchant_equipment(item, enchantment, int(quality*randf_range(0.75, 1.25)))
+			item = enchant_equipment(item, enchantment, int(quality * randf_range(0.75, 1.25)))
 	item.source = Story.sanitize_string(tr("DROPPED_BY").format({
 		"creature":creature.name,
 	}))

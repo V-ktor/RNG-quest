@@ -290,8 +290,8 @@ func _process(delta: float):
 	
 	progress_bar.value = progress_bar.max_value - (Time.get_unix_time_from_system()\
 		- main_instance.current_time)
-	progress_label.text = tr("DAY") + " " + str(int(round((progress_bar.value) / 60 / 60 / 24)) + 1)\
-		+ " / " + str(int(round(progress_bar.max_value / 60 / 60 / 24))+1)
+	progress_label.text = tr("DAY") + " " + str(roundi((progress_bar.value) / 60 / 60 / 24) + 1)\
+		+ " / " + str(roundi(progress_bar.max_value / 60 / 60 / 24) + 1)
 	
 	if abs(Time.get_unix_time_from_system() - main_instance.current_time) < 10:
 		($Loading/AnimationPlayer as AnimationPlayer).play("fade_out")
