@@ -1,4 +1,5 @@
 extends Node
+class_name GuildDescriptions
 
 const TRANSITIONS: Dictionary[String, Array] = {
 	"start": [
@@ -33,12 +34,13 @@ var description_data: Array[Dictionary] = []
 var attribute_data: Dictionary[String, Array] = {}
 
 @onready
-var god_description := $"../Gods"
+var gods := $"../Gods" as GodDescriptions
 
 
 func format_guild_name(guild: Guild, region: Region) -> String:
 	var required_attributes:= self.get_required_attributes(guild.base_name)
 	var format_dict:= self.construct_format_dict(required_attributes, guild, region)
+	guild.name = guild.name.format(format_dict)
 	guild.base_name = guild.base_name.format(format_dict)
 	return guild.base_name
 
@@ -139,19 +141,19 @@ func construct_format_dict(required_attributes: Array[String], guild: Guild, reg
 			"organization":
 				format_dict[attribute] = guild.organization
 			"god":
-				if guild.god != "" and guild.god in god_description.gods:
-					format_dict[attribute] = (god_description.gods[guild.god] as God).name
+				if guild.god != "" and guild.god in gods.gods:
+					format_dict[attribute] = (gods.gods[guild.god] as God).name
 				else:
-					var god := god_description.create_god(guild.tags) as God
+					var god := gods.create_god(guild.tags) as God
 					guild.god = god.ID
 					format_dict[attribute] = god.name
 			_:
 				if attribute.contains("god"):
-					if guild.god == "" or guild.god not in god_description.gods:
-						var god := god_description.create_god(guild.tags) as God
+					if guild.god == "" or guild.god not in gods.gods:
+						var god := gods.create_god(guild.tags) as God
 						guild.god = god.ID
 					var attr := attribute.substr(4)
-					format_dict[attribute] = god_description.pick_property(guild.god, attr)
+					format_dict[attribute] = gods.pick_property(guild.god, attr)
 				else:
 					var req_attributes: Array[String]
 					format_dict[attribute] = pick_attribute(attribute, guild)

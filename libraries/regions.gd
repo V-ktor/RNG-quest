@@ -12,7 +12,7 @@ const REGION_TIERS = [
 	"HOSTILE",
 ]
 
-var regions:= {}
+var regions := {}
 
 @onready
 var Descriptions:= $RegionDescription
@@ -95,6 +95,7 @@ func create_region(ID: String, level:= 0, tier:= 0) -> Region:
 		"resources": dict.resources,
 		"resource_chance": dict.resource_chance,
 		"resource_amount": dict.resource_amount,
+		"setting": dict.get("setting", "fantasy") as String,
 	}
 	var tier_multiplier:= 1.0
 	var level_multiplier:= 1.0 + 0.1 * (level - 1)

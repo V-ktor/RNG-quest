@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://s10031v8frul"]
+[gd_scene format=3 uid="uid://s10031v8frul"]
 
 [ext_resource type="Script" uid="uid://8de6201xgfoq" path="res://gui/main/scripts/main_gui.gd" id="1_rxg50"]
 [ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://themes/light_theme.tres" id="2_ck100"]
@@ -86,11 +86,11 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_buju4"]
 shader = SubResource("Shader_5jyo5")
 
-[node name="MainGUI" type="CanvasLayer"]
+[node name="MainGUI" type="CanvasLayer" unique_id=345817687]
 layer = 15
 script = ExtResource("1_rxg50")
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="BG" type="ColorRect" parent="." unique_id=685682279]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -98,7 +98,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.12549, 0.12549, 0.12549, 1)
 
-[node name="Overview" type="VBoxContainer" parent="."]
+[node name="Overview" type="VBoxContainer" parent="." unique_id=242153754]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -110,12 +110,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_ck100")
 
-[node name="Enemy" type="Control" parent="Overview"]
+[node name="Enemy" type="Control" parent="Overview" unique_id=1084271724]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 script = ExtResource("3_3wpsb")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Overview/Enemy"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Overview/Enemy" unique_id=120771150]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,24 +124,24 @@ grow_horizontal = 2
 grow_vertical = 2
 vertical_scroll_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Overview/Enemy/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Overview/Enemy/ScrollContainer" unique_id=253680567]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Overview"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Overview" unique_id=1258341579]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Region" type="Panel" parent="Overview/HBoxContainer" node_paths=PackedStringArray("tooltip")]
+[node name="Region" type="Panel" parent="Overview/HBoxContainer" unique_id=1750048419 node_paths=PackedStringArray("tooltip")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4_7xkbg")
 tooltip = NodePath("../../../Tooltip")
 
-[node name="Label" type="Label" parent="Overview/HBoxContainer/Region"]
+[node name="Label" type="Label" parent="Overview/HBoxContainer/Region" unique_id=319330219]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -156,7 +156,7 @@ text = "REGION"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Overview/HBoxContainer/Region"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Overview/HBoxContainer/Region" unique_id=1455236373]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -169,28 +169,28 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Overview/HBoxContainer/Region/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Overview/HBoxContainer/Region/ScrollContainer" unique_id=556060104]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer" unique_id=1621733028]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 text = "REGION"
 
-[node name="Location0" type="HBoxContainer" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer"]
+[node name="Location0" type="HBoxContainer" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer" unique_id=32323042]
 layout_mode = 2
 mouse_filter = 0
 
-[node name="Inactive" type="Control" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0"]
+[node name="Inactive" type="Control" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0" unique_id=1089936717]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Staying" type="TextureRect" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0"]
+[node name="Staying" type="TextureRect" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0" unique_id=38842433]
 visible = false
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -199,7 +199,7 @@ texture = ExtResource("12_6ewli")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Traveling" type="TextureRect" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0"]
+[node name="Traveling" type="TextureRect" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0" unique_id=469024932]
 visible = false
 material = SubResource("ShaderMaterial_1cgrk")
 custom_minimum_size = Vector2(16, 16)
@@ -209,12 +209,12 @@ texture = ExtResource("6_4mtbn")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0"]
+[node name="Label" type="Label" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0" unique_id=977841162]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "LOCATION"
 
-[node name="Icon" type="TextureRect" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0"]
+[node name="Icon" type="TextureRect" parent="Overview/HBoxContainer/Region/ScrollContainer/VBoxContainer/Location0" unique_id=1732362951]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 mouse_filter = 2
@@ -222,14 +222,14 @@ texture = ExtResource("7_lm0bd")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Log" type="Panel" parent="Overview/HBoxContainer"]
+[node name="Log" type="Panel" parent="Overview/HBoxContainer" unique_id=2146719095]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 script = ExtResource("4_sxg1u")
 
-[node name="Label" type="Label" parent="Overview/HBoxContainer/Log"]
+[node name="Label" type="Label" parent="Overview/HBoxContainer/Log" unique_id=1077512772]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -244,7 +244,7 @@ text = "LOG"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Overview/HBoxContainer/Log"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Overview/HBoxContainer/Log" unique_id=1290603734]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -259,11 +259,11 @@ theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 scroll_following = true
 
-[node name="Quest" type="Panel" parent="Overview/HBoxContainer"]
+[node name="Quest" type="Panel" parent="Overview/HBoxContainer" unique_id=327776127]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Overview/HBoxContainer/Quest"]
+[node name="Label" type="Label" parent="Overview/HBoxContainer/Quest" unique_id=333766272]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -278,7 +278,7 @@ text = "QUEST"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Overview/HBoxContainer/Quest"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Overview/HBoxContainer/Quest" unique_id=227801932]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -291,12 +291,12 @@ grow_horizontal = 2
 grow_vertical = 2
 scroll_following = true
 
-[node name="Player" type="Control" parent="Overview"]
+[node name="Player" type="Control" parent="Overview" unique_id=522911650]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 script = ExtResource("3_3wpsb")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Overview/Player"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Overview/Player" unique_id=2038041627]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -305,16 +305,16 @@ grow_horizontal = 2
 grow_vertical = 2
 vertical_scroll_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Overview/Player/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Overview/Player/ScrollContainer" unique_id=1807915189]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="CharacterPanel0" parent="Overview/Player/ScrollContainer/HBoxContainer" instance=ExtResource("5_wpjmd")]
+[node name="CharacterPanel0" parent="Overview/Player/ScrollContainer/HBoxContainer" unique_id=315068306 instance=ExtResource("5_wpjmd")]
 layout_mode = 2
 
-[node name="Character" type="HBoxContainer" parent="."]
+[node name="Character" type="HBoxContainer" parent="." unique_id=739904486]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -327,15 +327,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_ck100")
 
-[node name="Stats" type="VBoxContainer" parent="Character"]
+[node name="Stats" type="VBoxContainer" parent="Character" unique_id=923465035]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Stats" type="Panel" parent="Character/Stats"]
+[node name="Stats" type="Panel" parent="Character/Stats" unique_id=1233113617]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Character/Stats/Stats"]
+[node name="Label" type="Label" parent="Character/Stats/Stats" unique_id=391823211]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -350,7 +350,7 @@ text = "STATS"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Chart" type="Control" parent="Character/Stats/Stats"]
+[node name="Chart" type="Control" parent="Character/Stats/Stats" unique_id=930669987]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -364,12 +364,12 @@ grow_vertical = 2
 theme = ExtResource("2_ck100")
 script = ExtResource("6_cw8x1")
 
-[node name="Attributes" type="Panel" parent="Character/Stats"]
+[node name="Attributes" type="Panel" parent="Character/Stats" unique_id=865960854]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("7_be5rh")
 
-[node name="Label" type="Label" parent="Character/Stats/Attributes"]
+[node name="Label" type="Label" parent="Character/Stats/Attributes" unique_id=668476094]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -384,7 +384,7 @@ text = "ATTRIBUTES"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Character/Stats/Attributes"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Stats/Attributes" unique_id=1818693075]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -397,12 +397,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 4
 
-[node name="Attack" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+[node name="Attack" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer" unique_id=1796429207]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Attack"]
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Attack" unique_id=2119038664]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -413,7 +413,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 3
 
-[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Attack"]
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Attack" unique_id=770694036]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -423,12 +423,12 @@ text = "0"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Magic" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+[node name="Magic" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer" unique_id=426282772]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Magic"]
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Magic" unique_id=366125184]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -439,7 +439,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 3
 
-[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Magic"]
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Magic" unique_id=435222752]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -449,12 +449,12 @@ text = "0"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Willpower" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+[node name="Willpower" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer" unique_id=652343123]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Willpower"]
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Willpower" unique_id=447766130]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -465,7 +465,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 3
 
-[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Willpower"]
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Willpower" unique_id=222840290]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -475,12 +475,12 @@ text = "0"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Armour" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+[node name="Armour" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer" unique_id=700774014]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Armour"]
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Armour" unique_id=746482373]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -491,7 +491,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 3
 
-[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Armour"]
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Armour" unique_id=1946108122]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -501,12 +501,12 @@ text = "0"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Accuracy" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+[node name="Accuracy" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer" unique_id=2114728564]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Accuracy"]
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Accuracy" unique_id=840351069]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -517,7 +517,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 3
 
-[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Accuracy"]
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Accuracy" unique_id=46284271]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -527,12 +527,12 @@ text = "0"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Evasion" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+[node name="Evasion" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer" unique_id=613823455]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Evasion"]
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Evasion" unique_id=845073593]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -543,7 +543,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 3
 
-[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Evasion"]
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Evasion" unique_id=1390651107]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -553,12 +553,12 @@ text = "0"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Penetration" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+[node name="Penetration" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer" unique_id=689749919]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Penetration"]
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Penetration" unique_id=1100483714]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -569,7 +569,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 3
 
-[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Penetration"]
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Penetration" unique_id=1939553361]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -579,12 +579,12 @@ text = "0"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Speed" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+[node name="Speed" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer" unique_id=1659465583]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Speed"]
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Speed" unique_id=954659660]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -595,7 +595,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 3
 
-[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Speed"]
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Speed" unique_id=1857165713]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -605,12 +605,12 @@ text = "0"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Critical" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer"]
+[node name="Critical" type="HBoxContainer" parent="Character/Stats/Attributes/VBoxContainer" unique_id=1010711281]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Critical"]
+[node name="Label" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Critical" unique_id=216582411]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -621,7 +621,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 3
 
-[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Critical"]
+[node name="Value" type="Label" parent="Character/Stats/Attributes/VBoxContainer/Critical" unique_id=1961470521]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -631,12 +631,12 @@ text = "0"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Mods" type="Panel" parent="Character/Stats"]
+[node name="Mods" type="Panel" parent="Character/Stats" unique_id=1411600058]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("8_xxonq")
 
-[node name="Label" type="Label" parent="Character/Stats/Mods"]
+[node name="Label" type="Label" parent="Character/Stats/Mods" unique_id=504943514]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -651,7 +651,7 @@ text = "MODS"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Character/Stats/Mods"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Character/Stats/Mods" unique_id=280700997]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -664,16 +664,16 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Character/Stats/Mods/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Stats/Mods/ScrollContainer" unique_id=1391876467]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 4
 
-[node name="Mod0" type="HBoxContainer" parent="Character/Stats/Mods/ScrollContainer/VBoxContainer"]
+[node name="Mod0" type="HBoxContainer" parent="Character/Stats/Mods/ScrollContainer/VBoxContainer" unique_id=720513721]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Character/Stats/Mods/ScrollContainer/VBoxContainer/Mod0"]
+[node name="Label" type="Label" parent="Character/Stats/Mods/ScrollContainer/VBoxContainer/Mod0" unique_id=284710827]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -683,7 +683,7 @@ text = "MOD"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Value" type="Label" parent="Character/Stats/Mods/ScrollContainer/VBoxContainer/Mod0"]
+[node name="Value" type="Label" parent="Character/Stats/Mods/ScrollContainer/VBoxContainer/Mod0" unique_id=967035220]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -693,17 +693,17 @@ text = "0%"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Equipment" type="VBoxContainer" parent="Character"]
+[node name="Equipment" type="VBoxContainer" parent="Character" unique_id=150209076]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Equipment" type="Panel" parent="Character/Equipment" node_paths=PackedStringArray("tooltip")]
+[node name="Equipment" type="Panel" parent="Character/Equipment" unique_id=1762994649 node_paths=PackedStringArray("tooltip")]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("9_p5fy4")
 tooltip = NodePath("../../../Tooltip")
 
-[node name="Label" type="Label" parent="Character/Equipment/Equipment"]
+[node name="Label" type="Label" parent="Character/Equipment/Equipment" unique_id=1553993793]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -718,7 +718,7 @@ text = "EQUIPMENT"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Character/Equipment/Equipment"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Character/Equipment/Equipment" unique_id=1817697937]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -731,15 +731,15 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer" unique_id=1939423596]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Weapons" type="HBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer"]
+[node name="Weapons" type="HBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer" unique_id=130279994]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Weapons"]
+[node name="Label" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Weapons" unique_id=1172166636]
 modulate = Color(1, 1, 1, 0.74902)
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -747,26 +747,26 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 10
 text = "WEAPONS"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Weapons"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Weapons" unique_id=60494895]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Weapon" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Weapons/VBoxContainer"]
+[node name="Weapon" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Weapons/VBoxContainer" unique_id=1745348677]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "MAINHAND"
 
-[node name="Offweapon" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Weapons/VBoxContainer"]
+[node name="Offweapon" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Weapons/VBoxContainer" unique_id=1836289828]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "OFFHAND"
 
-[node name="Armour" type="HBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer"]
+[node name="Armour" type="HBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer" unique_id=2108965704]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour"]
+[node name="Label" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour" unique_id=860158153]
 modulate = Color(1, 1, 1, 0.74902)
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -774,56 +774,56 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 10
 text = "ARMOUR"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour" unique_id=515723616]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Head" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer"]
+[node name="Head" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer" unique_id=1740750176]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "HEAD"
 
-[node name="Torso" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer"]
+[node name="Torso" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer" unique_id=664076690]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "TORSO"
 
-[node name="Belt" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer"]
+[node name="Belt" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer" unique_id=1890050573]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "BELT"
 
-[node name="Hands" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer"]
+[node name="Hands" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer" unique_id=200084176]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "HANDS"
 
-[node name="Legs" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer"]
+[node name="Legs" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer" unique_id=251777244]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "LEGS"
 
-[node name="Feet" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer"]
+[node name="Feet" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer" unique_id=1925454275]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "FEET"
 
-[node name="Cape" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer"]
+[node name="Cape" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Armour/VBoxContainer" unique_id=379980726]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "CAPE"
 
-[node name="Accessoires" type="HBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer"]
+[node name="Accessoires" type="HBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer" unique_id=1059002090]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires"]
+[node name="Label" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires" unique_id=1845255767]
 modulate = Color(1, 1, 1, 0.74902)
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -832,62 +832,62 @@ theme_override_font_sizes/font_size = 10
 text = "ACCESSOIRES"
 clip_text = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires" unique_id=578553712]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Amulet" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer"]
+[node name="Amulet" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer" unique_id=444428742]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "AMULET"
 
-[node name="RingLeft" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer"]
+[node name="RingLeft" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer" unique_id=1327404271]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "RING"
 
-[node name="RingRight" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer"]
+[node name="RingRight" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer" unique_id=1898845526]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "RING"
 
-[node name="BraceletLeft" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer"]
+[node name="BraceletLeft" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer" unique_id=1033924235]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "BRACELET"
 
-[node name="BraceletRight" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer"]
+[node name="BraceletRight" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer" unique_id=1188645886]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "BRACELET"
 
-[node name="EarringLeft" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer"]
+[node name="EarringLeft" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer" unique_id=428790887]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "EARRING"
 
-[node name="EarringRight" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer"]
+[node name="EarringRight" type="Label" parent="Character/Equipment/Equipment/ScrollContainer/VBoxContainer/Accessoires/VBoxContainer" unique_id=272479003]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 text = "EARRING"
 
-[node name="Skills" type="VBoxContainer" parent="Character"]
+[node name="Skills" type="VBoxContainer" parent="Character" unique_id=1070570238]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Abilities" type="Panel" parent="Character/Skills"]
+[node name="Abilities" type="Panel" parent="Character/Skills" unique_id=868028488]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("11_rginl")
 
-[node name="Label" type="Label" parent="Character/Skills/Abilities"]
+[node name="Label" type="Label" parent="Character/Skills/Abilities" unique_id=1593288891]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -902,7 +902,7 @@ text = "ABILITIES"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Character/Skills/Abilities"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Character/Skills/Abilities" unique_id=666993524]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -914,17 +914,17 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Character/Skills/Abilities/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Skills/Abilities/ScrollContainer" unique_id=1947236780]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Ability0" type="HBoxContainer" parent="Character/Skills/Abilities/ScrollContainer/VBoxContainer"]
+[node name="Ability0" type="HBoxContainer" parent="Character/Skills/Abilities/ScrollContainer/VBoxContainer" unique_id=396560547]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Character/Skills/Abilities/ScrollContainer/VBoxContainer/Ability0"]
+[node name="Label" type="Label" parent="Character/Skills/Abilities/ScrollContainer/VBoxContainer/Ability0" unique_id=24199837]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -935,7 +935,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 3
 
-[node name="ExpBar" type="ProgressBar" parent="Character/Skills/Abilities/ScrollContainer/VBoxContainer/Ability0/Label"]
+[node name="ExpBar" type="ProgressBar" parent="Character/Skills/Abilities/ScrollContainer/VBoxContainer/Ability0/Label" unique_id=453862468]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
@@ -949,7 +949,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_1giea")
 value = 50.0
 show_percentage = false
 
-[node name="Value" type="Label" parent="Character/Skills/Abilities/ScrollContainer/VBoxContainer/Ability0"]
+[node name="Value" type="Label" parent="Character/Skills/Abilities/ScrollContainer/VBoxContainer/Ability0" unique_id=1088242067]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -959,13 +959,13 @@ text = "0"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Skills" type="Panel" parent="Character/Skills" node_paths=PackedStringArray("tooltip")]
+[node name="Skills" type="Panel" parent="Character/Skills" unique_id=721480144 node_paths=PackedStringArray("tooltip")]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("12_nx1dh")
 tooltip = NodePath("../../../Tooltip")
 
-[node name="Label" type="Label" parent="Character/Skills/Skills"]
+[node name="Label" type="Label" parent="Character/Skills/Skills" unique_id=2046423088]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -980,7 +980,7 @@ text = "SKILLS"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Character/Skills/Skills"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Character/Skills/Skills" unique_id=1891617150]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -992,12 +992,12 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Character/Skills/Skills/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/Skills/Skills/ScrollContainer" unique_id=2023992654]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Skill0" type="Label" parent="Character/Skills/Skills/ScrollContainer/VBoxContainer"]
+[node name="Skill0" type="Label" parent="Character/Skills/Skills/ScrollContainer/VBoxContainer" unique_id=1948420026]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1006,7 +1006,7 @@ text = "SKILL"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Journal" type="HBoxContainer" parent="."]
+[node name="Journal" type="HBoxContainer" parent="." unique_id=990264678]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1018,12 +1018,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_ck100")
 
-[node name="Journal" type="Panel" parent="Journal"]
+[node name="Journal" type="Panel" parent="Journal" unique_id=1577381813]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Journal/Journal"]
+[node name="Label" type="Label" parent="Journal/Journal" unique_id=1187534654]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -1038,7 +1038,7 @@ text = "JOURNAL"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Journal/Journal"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Journal/Journal" unique_id=1797086897]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1050,14 +1050,14 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Guilds" type="Panel" parent="Journal" node_paths=PackedStringArray("tooltip")]
+[node name="Guilds" type="Panel" parent="Journal" unique_id=1725778928 node_paths=PackedStringArray("tooltip")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("16_oc305")
 tooltip = NodePath("../../Tooltip")
 
-[node name="Label" type="Label" parent="Journal/Guilds"]
+[node name="Label" type="Label" parent="Journal/Guilds" unique_id=1810995865]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -1072,7 +1072,7 @@ text = "GUILDS"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Journal/Guilds"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Journal/Guilds" unique_id=1462220812]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1085,23 +1085,23 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Journal/Guilds/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Journal/Guilds/ScrollContainer" unique_id=1875521972]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Guild0" type="HBoxContainer" parent="Journal/Guilds/ScrollContainer/VBoxContainer"]
+[node name="Guild0" type="HBoxContainer" parent="Journal/Guilds/ScrollContainer/VBoxContainer" unique_id=745553010]
 layout_mode = 2
 mouse_filter = 0
 
-[node name="LabelName" type="Label" parent="Journal/Guilds/ScrollContainer/VBoxContainer/Guild0"]
+[node name="LabelName" type="Label" parent="Journal/Guilds/ScrollContainer/VBoxContainer/Guild0" unique_id=1010080974]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "NAME"
 
-[node name="ExpBar" type="ProgressBar" parent="Journal/Guilds/ScrollContainer/VBoxContainer/Guild0/LabelName"]
+[node name="ExpBar" type="ProgressBar" parent="Journal/Guilds/ScrollContainer/VBoxContainer/Guild0/LabelName" unique_id=1041283313]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
@@ -1116,13 +1116,13 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_1giea")
 value = 50.0
 show_percentage = false
 
-[node name="LabelRank" type="Label" parent="Journal/Guilds/ScrollContainer/VBoxContainer/Guild0"]
+[node name="LabelRank" type="Label" parent="Journal/Guilds/ScrollContainer/VBoxContainer/Guild0" unique_id=711365921]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "RANK"
 
-[node name="Inventory" type="HBoxContainer" parent="."]
+[node name="Inventory" type="HBoxContainer" parent="." unique_id=1464742736]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -1135,14 +1135,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_ck100")
 
-[node name="Inventory" type="Panel" parent="Inventory" node_paths=PackedStringArray("tooltip")]
+[node name="Inventory" type="Panel" parent="Inventory" unique_id=1915078536 node_paths=PackedStringArray("tooltip")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("11_4ftob")
 tooltip = NodePath("../../Tooltip")
 
-[node name="Label" type="Label" parent="Inventory/Inventory"]
+[node name="Label" type="Label" parent="Inventory/Inventory" unique_id=1040313830]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -1157,7 +1157,7 @@ text = "INVENTORY"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Inventory/Inventory"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Inventory/Inventory" unique_id=17374077]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1170,22 +1170,22 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Inventory/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Inventory/ScrollContainer" unique_id=1841818415]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="LabelGold" type="Label" parent="Inventory/Inventory/ScrollContainer/VBoxContainer"]
+[node name="LabelGold" type="Label" parent="Inventory/Inventory/ScrollContainer/VBoxContainer" unique_id=925623022]
 layout_mode = 2
 text = "GOLD: 0"
 vertical_alignment = 1
 
-[node name="Potions" type="VBoxContainer" parent="Inventory/Inventory/ScrollContainer/VBoxContainer"]
+[node name="Potions" type="VBoxContainer" parent="Inventory/Inventory/ScrollContainer/VBoxContainer" unique_id=999567683]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label0" type="Label" parent="Inventory/Inventory/ScrollContainer/VBoxContainer/Potions"]
+[node name="Label0" type="Label" parent="Inventory/Inventory/ScrollContainer/VBoxContainer/Potions" unique_id=963121190]
 visible = false
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
@@ -1194,11 +1194,11 @@ mouse_filter = 0
 text = "ITEM"
 autowrap_mode = 3
 
-[node name="Quest" type="VBoxContainer" parent="Inventory/Inventory/ScrollContainer/VBoxContainer"]
+[node name="Quest" type="VBoxContainer" parent="Inventory/Inventory/ScrollContainer/VBoxContainer" unique_id=1521732398]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label0" type="Label" parent="Inventory/Inventory/ScrollContainer/VBoxContainer/Quest"]
+[node name="Label0" type="Label" parent="Inventory/Inventory/ScrollContainer/VBoxContainer/Quest" unique_id=95449857]
 visible = false
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
@@ -1207,11 +1207,11 @@ mouse_filter = 0
 text = "ITEM"
 autowrap_mode = 3
 
-[node name="Inventory" type="VBoxContainer" parent="Inventory/Inventory/ScrollContainer/VBoxContainer"]
+[node name="Inventory" type="VBoxContainer" parent="Inventory/Inventory/ScrollContainer/VBoxContainer" unique_id=1455750879]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label0" type="Label" parent="Inventory/Inventory/ScrollContainer/VBoxContainer/Inventory"]
+[node name="Label0" type="Label" parent="Inventory/Inventory/ScrollContainer/VBoxContainer/Inventory" unique_id=1066107595]
 visible = false
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
@@ -1220,13 +1220,13 @@ mouse_filter = 0
 text = "ITEM"
 autowrap_mode = 3
 
-[node name="Recipes" type="Panel" parent="Inventory"]
+[node name="Recipes" type="Panel" parent="Inventory" unique_id=1357745319]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("17_ko12v")
 
-[node name="Label" type="Label" parent="Inventory/Recipes"]
+[node name="Label" type="Label" parent="Inventory/Recipes" unique_id=1927975679]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -1241,7 +1241,7 @@ text = "KNOWN_RECIPES"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Inventory/Recipes"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Inventory/Recipes" unique_id=1490960079]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1254,17 +1254,17 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer" unique_id=1335616075]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Alchemy" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer"]
+[node name="Alchemy" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer" unique_id=1597580083]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy" unique_id=128845309]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1276,7 +1276,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy/VBoxContainer"]
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy/VBoxContainer" unique_id=1598775118]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -1286,13 +1286,13 @@ text = "ALCHEMY"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy/VBoxContainer"]
+[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy/VBoxContainer" unique_id=382468667]
 visible = false
 clip_contents = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy/VBoxContainer/Panel0"]
+[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy/VBoxContainer/Panel0" unique_id=1409358177]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1302,7 +1302,7 @@ grow_vertical = 2
 text = "NAME"
 alignment = 1
 
-[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy/VBoxContainer/Panel0"]
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Alchemy/VBoxContainer/Panel0" unique_id=1355650937]
 modulate = Color(1, 1, 1, 0.752941)
 layout_mode = 1
 anchors_preset = -1
@@ -1318,12 +1318,12 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 4
 
-[node name="WeaponSmithing" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer"]
+[node name="WeaponSmithing" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer" unique_id=1604116554]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing" unique_id=1033471709]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1335,7 +1335,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing/VBoxContainer"]
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing/VBoxContainer" unique_id=795967896]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -1345,13 +1345,13 @@ text = "WEAPON_SMITHING"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing/VBoxContainer"]
+[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing/VBoxContainer" unique_id=1348749557]
 visible = false
 clip_contents = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing/VBoxContainer/Panel0"]
+[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing/VBoxContainer/Panel0" unique_id=505508630]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1361,7 +1361,7 @@ grow_vertical = 2
 text = "NAME"
 alignment = 1
 
-[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing/VBoxContainer/Panel0"]
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/WeaponSmithing/VBoxContainer/Panel0" unique_id=1224912236]
 modulate = Color(1, 1, 1, 0.752941)
 layout_mode = 1
 anchors_preset = -1
@@ -1377,12 +1377,12 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 4
 
-[node name="ArmourSmithing" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer"]
+[node name="ArmourSmithing" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer" unique_id=1256762047]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing" unique_id=1916391736]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1394,7 +1394,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing/VBoxContainer"]
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing/VBoxContainer" unique_id=17787003]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -1404,13 +1404,13 @@ text = "ARMOUR_SMITHING"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing/VBoxContainer"]
+[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing/VBoxContainer" unique_id=1515539537]
 visible = false
 clip_contents = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing/VBoxContainer/Panel0"]
+[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing/VBoxContainer/Panel0" unique_id=2076041283]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1420,7 +1420,7 @@ grow_vertical = 2
 text = "NAME"
 alignment = 1
 
-[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing/VBoxContainer/Panel0"]
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/ArmourSmithing/VBoxContainer/Panel0" unique_id=1949176400]
 modulate = Color(1, 1, 1, 0.752941)
 layout_mode = 1
 anchors_preset = -1
@@ -1436,12 +1436,12 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 4
 
-[node name="Woodwork" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer"]
+[node name="Woodwork" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer" unique_id=11283630]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork" unique_id=66392461]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1453,7 +1453,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork/VBoxContainer"]
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork/VBoxContainer" unique_id=898744077]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -1463,13 +1463,13 @@ text = "WOODWORK"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork/VBoxContainer"]
+[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork/VBoxContainer" unique_id=273769976]
 visible = false
 clip_contents = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork/VBoxContainer/Panel0"]
+[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork/VBoxContainer/Panel0" unique_id=728420298]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1479,7 +1479,7 @@ grow_vertical = 2
 text = "NAME"
 alignment = 1
 
-[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork/VBoxContainer/Panel0"]
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Woodwork/VBoxContainer/Panel0" unique_id=1797512578]
 modulate = Color(1, 1, 1, 0.752941)
 layout_mode = 1
 anchors_preset = -1
@@ -1495,12 +1495,12 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 4
 
-[node name="Tayloring" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer"]
+[node name="Tayloring" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer" unique_id=822654393]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring" unique_id=112300183]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1512,7 +1512,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring/VBoxContainer"]
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring/VBoxContainer" unique_id=1745438067]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -1522,13 +1522,13 @@ text = "TAYLORING"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring/VBoxContainer"]
+[node name="Panel0" type="Panel" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring/VBoxContainer" unique_id=1162934854]
 visible = false
 clip_contents = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring/VBoxContainer/Panel0"]
+[node name="CheckButton" type="CheckButton" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring/VBoxContainer/Panel0" unique_id=753929091]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1538,7 +1538,7 @@ grow_vertical = 2
 text = "NAME"
 alignment = 1
 
-[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring/VBoxContainer/Panel0"]
+[node name="Label" type="Label" parent="Inventory/Recipes/ScrollContainer/VBoxContainer/Tayloring/VBoxContainer/Panel0" unique_id=2066407860]
 modulate = Color(1, 1, 1, 0.752941)
 layout_mode = 1
 anchors_preset = -1
@@ -1554,7 +1554,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 4
 
-[node name="Statistics" type="HBoxContainer" parent="."]
+[node name="Statistics" type="HBoxContainer" parent="." unique_id=81150326]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -1567,16 +1567,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_ck100")
 
-[node name="Statistics" type="VBoxContainer" parent="Statistics"]
+[node name="Statistics" type="VBoxContainer" parent="Statistics" unique_id=1599067507]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Statistics" type="Panel" parent="Statistics/Statistics"]
+[node name="Statistics" type="Panel" parent="Statistics/Statistics" unique_id=1398680398]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("22_iplwq")
 
-[node name="Label" type="Label" parent="Statistics/Statistics/Statistics"]
+[node name="Label" type="Label" parent="Statistics/Statistics/Statistics" unique_id=1901952166]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -1591,7 +1591,7 @@ text = "STATISTICS"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Statistics/Statistics/Statistics"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Statistics/Statistics/Statistics" unique_id=935502952]
 clip_contents = true
 layout_mode = 1
 anchors_preset = -1
@@ -1604,92 +1604,92 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Chart" parent="Statistics/Statistics/Statistics/HBoxContainer" instance=ExtResource("23_bktjj")]
+[node name="Chart" parent="Statistics/Statistics/Statistics/HBoxContainer" unique_id=1477545272 instance=ExtResource("23_bktjj")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Statistics/Statistics/Statistics/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Statistics/Statistics/Statistics/HBoxContainer" unique_id=1089920977]
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 
-[node name="Button0" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+[node name="Button0" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer" unique_id=2088681325]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_kr5p7")
 text = "LEVEL"
 
-[node name="Button1" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+[node name="Button1" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer" unique_id=1321716891]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_kr5p7")
 text = "EXPERIENCE"
 
-[node name="Button2" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer" unique_id=1430179656]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_kr5p7")
 text = "ABILITY_LEVEL"
 
-[node name="Button3" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer" unique_id=1654398415]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_kr5p7")
 text = "SKILL_LEVEL"
 
-[node name="Button4" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+[node name="Button4" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer" unique_id=1502822647]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_kr5p7")
 text = "EQUIPMENT_LEVEL"
 
-[node name="Button9" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+[node name="Button9" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer" unique_id=2139246100]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_kr5p7")
 text = "GUILD_RANK"
 
-[node name="Button8" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+[node name="Button8" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer" unique_id=701417900]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_kr5p7")
 text = "WEALTH"
 
-[node name="Button5" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+[node name="Button5" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer" unique_id=1157326004]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_kr5p7")
 text = "STATS"
 
-[node name="Button6" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+[node name="Button6" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer" unique_id=755525497]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_kr5p7")
 text = "ATTRIBUTES"
 
-[node name="Button7" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+[node name="Button7" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer" unique_id=1916161272]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_kr5p7")
 text = "BATTLES"
 
-[node name="Button10" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer"]
+[node name="Button10" type="Button" parent="Statistics/Statistics/Statistics/HBoxContainer/VBoxContainer" unique_id=2010539575]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_kr5p7")
 text = "POTIONS_USED"
 
-[node name="Options" type="HBoxContainer" parent="."]
+[node name="Options" type="HBoxContainer" parent="." unique_id=565768237]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -1702,16 +1702,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_ck100")
 
-[node name="Timetable" type="VBoxContainer" parent="Options"]
+[node name="Timetable" type="VBoxContainer" parent="Options" unique_id=876121178]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Timetable" type="Panel" parent="Options/Timetable"]
+[node name="Timetable" type="Panel" parent="Options/Timetable" unique_id=953207266]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("13_hltwl")
 
-[node name="Label" type="Label" parent="Options/Timetable/Timetable"]
+[node name="Label" type="Label" parent="Options/Timetable/Timetable" unique_id=1926193234]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -1726,7 +1726,7 @@ text = "TIMETABLE"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Options/Timetable/Timetable"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Options/Timetable/Timetable" unique_id=1993027761]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1739,38 +1739,38 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/Timetable/Timetable/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/Timetable/Timetable/ScrollContainer" unique_id=875575838]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/Timetable/Timetable/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/Timetable/Timetable/ScrollContainer/VBoxContainer" unique_id=1232629333]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="Options/Timetable/Timetable/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Options/Timetable/Timetable/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1921548458]
 layout_mode = 2
 text = "TIME_OFFSET"
 
-[node name="SpinBox" type="SpinBox" parent="Options/Timetable/Timetable/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="SpinBox" type="SpinBox" parent="Options/Timetable/Timetable/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1993943648]
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "TIME_OFFSET_TOOLTIP"
 min_value = -12.0
 max_value = 12.0
 
-[node name="HBoxContainer0" type="HBoxContainer" parent="Options/Timetable/Timetable/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer0" type="HBoxContainer" parent="Options/Timetable/Timetable/ScrollContainer/VBoxContainer" unique_id=547602453]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Options/Timetable/Timetable/ScrollContainer/VBoxContainer/HBoxContainer0"]
+[node name="Label" type="Label" parent="Options/Timetable/Timetable/ScrollContainer/VBoxContainer/HBoxContainer0" unique_id=537198051]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "05:00"
 horizontal_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Options/Timetable/Timetable/ScrollContainer/VBoxContainer/HBoxContainer0"]
+[node name="OptionButton" type="OptionButton" parent="Options/Timetable/Timetable/ScrollContainer/VBoxContainer/HBoxContainer0" unique_id=253934470]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -1791,18 +1791,18 @@ popup/item_4/id = 4
 popup/item_5/text = "RESTING"
 popup/item_5/id = 5
 
-[node name="Preferences" type="VBoxContainer" parent="Options"]
+[node name="Preferences" type="VBoxContainer" parent="Options" unique_id=316454187]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="WeaponPreference" type="Panel" parent="Options/Preferences"]
+[node name="WeaponPreference" type="Panel" parent="Options/Preferences" unique_id=839807881]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.75
 script = ExtResource("14_6ovlx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/Preferences/WeaponPreference"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/Preferences/WeaponPreference" unique_id=208026180]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1817,7 +1817,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/Preferences/WeaponPreference/VBoxContainer" unique_id=1924031991]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "WEAPONS_DESCRIPTION"
@@ -1827,44 +1827,44 @@ text = "WEAPONS"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="CheckBoxMelee" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
+[node name="CheckBoxMelee" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer" unique_id=530483982]
 layout_mode = 2
 tooltip_text = "WEAPONS_DESCRIPTION"
 text = "MELEE"
 
-[node name="CheckBoxRanged" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
+[node name="CheckBoxRanged" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer" unique_id=1083681520]
 layout_mode = 2
 tooltip_text = "WEAPONS_DESCRIPTION"
 text = "RANGED"
 
-[node name="CheckBoxMagic" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
+[node name="CheckBoxMagic" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer" unique_id=514060184]
 layout_mode = 2
 tooltip_text = "WEAPONS_DESCRIPTION"
 text = "MAGICAL"
 
-[node name="CheckBoxShield" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
+[node name="CheckBoxShield" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer" unique_id=1624518265]
 layout_mode = 2
 tooltip_text = "WEAPONS_DESCRIPTION"
 text = "SHIELD"
 
-[node name="CheckBox1h" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
+[node name="CheckBox1h" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer" unique_id=1817151629]
 layout_mode = 2
 tooltip_text = "WEAPONS_DESCRIPTION"
 button_pressed = true
 text = "ONE_HANDED"
 
-[node name="CheckBox2h" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer"]
+[node name="CheckBox2h" type="CheckBox" parent="Options/Preferences/WeaponPreference/VBoxContainer" unique_id=358172569]
 layout_mode = 2
 tooltip_text = "WEAPONS_DESCRIPTION"
 button_pressed = true
 text = "TWO_HANDED"
 
-[node name="ArmourPreference" type="Panel" parent="Options/Preferences"]
+[node name="ArmourPreference" type="Panel" parent="Options/Preferences" unique_id=1846068308]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("15_bpsop")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/Preferences/ArmourPreference"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/Preferences/ArmourPreference" unique_id=1643178660]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1879,7 +1879,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Options/Preferences/ArmourPreference/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/Preferences/ArmourPreference/VBoxContainer" unique_id=1868668972]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "ARMOUR_DESCRIPTION"
@@ -1889,27 +1889,27 @@ text = "ARMOUR"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="CheckBoxLight" type="CheckBox" parent="Options/Preferences/ArmourPreference/VBoxContainer"]
+[node name="CheckBoxLight" type="CheckBox" parent="Options/Preferences/ArmourPreference/VBoxContainer" unique_id=1995886177]
 layout_mode = 2
 tooltip_text = "ARMOUR_DESCRIPTION"
 text = "LIGHT"
 
-[node name="CheckBoxMedium" type="CheckBox" parent="Options/Preferences/ArmourPreference/VBoxContainer"]
+[node name="CheckBoxMedium" type="CheckBox" parent="Options/Preferences/ArmourPreference/VBoxContainer" unique_id=1258536751]
 layout_mode = 2
 tooltip_text = "ARMOUR_DESCRIPTION"
 text = "MEDIUM"
 
-[node name="CheckBoxHeavy" type="CheckBox" parent="Options/Preferences/ArmourPreference/VBoxContainer"]
+[node name="CheckBoxHeavy" type="CheckBox" parent="Options/Preferences/ArmourPreference/VBoxContainer" unique_id=1450511099]
 layout_mode = 2
 tooltip_text = "ARMOUR_DESCRIPTION"
 text = "HEAVY"
 
-[node name="PotionPreference" type="Panel" parent="Options/Preferences"]
+[node name="PotionPreference" type="Panel" parent="Options/Preferences" unique_id=1748309834]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("16_nncd2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/Preferences/PotionPreference"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/Preferences/PotionPreference" unique_id=1922125710]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -1924,7 +1924,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Options/Preferences/PotionPreference/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/Preferences/PotionPreference/VBoxContainer" unique_id=197787477]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "POTIONS_DESCRIPTION"
@@ -1934,32 +1934,32 @@ text = "POTIONS"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="CheckBoxHealth" type="CheckBox" parent="Options/Preferences/PotionPreference/VBoxContainer"]
+[node name="CheckBoxHealth" type="CheckBox" parent="Options/Preferences/PotionPreference/VBoxContainer" unique_id=249190760]
 layout_mode = 2
 tooltip_text = "POTIONS_DESCRIPTION"
 text = "HEALTH"
 
-[node name="CheckBoxStamina" type="CheckBox" parent="Options/Preferences/PotionPreference/VBoxContainer"]
+[node name="CheckBoxStamina" type="CheckBox" parent="Options/Preferences/PotionPreference/VBoxContainer" unique_id=755796840]
 layout_mode = 2
 tooltip_text = "POTIONS_DESCRIPTION"
 text = "STAMINA"
 
-[node name="CheckBoxMana" type="CheckBox" parent="Options/Preferences/PotionPreference/VBoxContainer"]
+[node name="CheckBoxMana" type="CheckBox" parent="Options/Preferences/PotionPreference/VBoxContainer" unique_id=101620163]
 layout_mode = 2
 tooltip_text = "POTIONS_DESCRIPTION"
 text = "MANA"
 
-[node name="SkillModules" type="VBoxContainer" parent="Options"]
+[node name="SkillModules" type="VBoxContainer" parent="Options" unique_id=352813454]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SkillModules" type="Panel" parent="Options/SkillModules"]
+[node name="SkillModules" type="Panel" parent="Options/SkillModules" unique_id=1500168687]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("17_prvid")
 
-[node name="Label" type="Label" parent="Options/SkillModules/SkillModules"]
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules" unique_id=1693066897]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -1976,7 +1976,7 @@ text = "SKILL_MODULES"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Options/SkillModules/SkillModules"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Options/SkillModules/SkillModules" unique_id=2064838859]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1990,17 +1990,17 @@ grow_vertical = 2
 follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer" unique_id=868833859]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="BaseType" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+[node name="BaseType" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer" unique_id=1855247505]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType" unique_id=1924126007]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2012,7 +2012,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer" unique_id=607246233]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -2022,13 +2022,13 @@ text = "BASE_TYPE"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Panel0" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer"]
+[node name="Panel0" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer" unique_id=977981795]
 visible = false
 clip_contents = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer/Panel0"]
+[node name="CheckButton" type="CheckButton" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer/Panel0" unique_id=1419947337]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2038,7 +2038,7 @@ grow_vertical = 2
 text = "NAME"
 alignment = 1
 
-[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer/Panel0"]
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/BaseType/VBoxContainer/Panel0" unique_id=565395844]
 modulate = Color(1, 1, 1, 0.752941)
 layout_mode = 1
 anchors_preset = -1
@@ -2054,12 +2054,12 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 4
 
-[node name="Aim" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+[node name="Aim" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer" unique_id=1161813942]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Aim"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Aim" unique_id=1372670336]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2071,7 +2071,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Aim/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Aim/VBoxContainer" unique_id=68006840]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -2081,12 +2081,12 @@ text = "AIM"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="MeleeMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+[node name="MeleeMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer" unique_id=423256871]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/MeleeMod"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/MeleeMod" unique_id=1084541132]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2098,7 +2098,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/MeleeMod/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/MeleeMod/VBoxContainer" unique_id=573947854]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -2108,12 +2108,12 @@ text = "MELEE_MOD"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="GrappleMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+[node name="GrappleMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer" unique_id=1759187508]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/GrappleMod"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/GrappleMod" unique_id=390826723]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2125,7 +2125,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/GrappleMod/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/GrappleMod/VBoxContainer" unique_id=2046121413]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -2135,12 +2135,12 @@ text = "GRAPPLE_MOD"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="RangedMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+[node name="RangedMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer" unique_id=1978499710]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/RangedMod"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/RangedMod" unique_id=1411239606]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2152,7 +2152,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/RangedMod/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/RangedMod/VBoxContainer" unique_id=358743607]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -2162,12 +2162,12 @@ text = "RANGED_MOD"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="DefenceMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+[node name="DefenceMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer" unique_id=291961004]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/DefenceMod"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/DefenceMod" unique_id=1621110388]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2179,7 +2179,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/DefenceMod/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/DefenceMod/VBoxContainer" unique_id=1534422795]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -2189,12 +2189,12 @@ text = "DEFENCE_MOD"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Magic" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+[node name="Magic" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer" unique_id=1981174079]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Magic"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Magic" unique_id=1057083178]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2206,7 +2206,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Magic/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Magic/VBoxContainer" unique_id=965558258]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -2216,12 +2216,12 @@ text = "MAGIC"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="MagicMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+[node name="MagicMod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer" unique_id=1680882716]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/MagicMod"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/MagicMod" unique_id=1352573769]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2233,7 +2233,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/MagicMod/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/MagicMod/VBoxContainer" unique_id=717477878]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -2243,12 +2243,12 @@ text = "MAGIC_MOD"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Application" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+[node name="Application" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer" unique_id=508325135]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Application"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Application" unique_id=705605535]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2260,7 +2260,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Application/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Application/VBoxContainer" unique_id=543637880]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -2270,12 +2270,12 @@ text = "APPLICATION"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Shape" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+[node name="Shape" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer" unique_id=2010500126]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Shape"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Shape" unique_id=1145913947]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2287,7 +2287,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Shape/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/Shape/VBoxContainer" unique_id=1943470189]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -2297,12 +2297,12 @@ text = "SHAPE"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="SummoningMethod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+[node name="SummoningMethod" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer" unique_id=2076843447]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/SummoningMethod"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/SummoningMethod" unique_id=1127769229]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2314,7 +2314,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/SummoningMethod/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/SummoningMethod/VBoxContainer" unique_id=344101226]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -2324,12 +2324,12 @@ text = "SUMMONING_METHOD"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="SummonType" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer"]
+[node name="SummonType" type="Panel" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer" unique_id=1041086430]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w674s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/SummonType"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/SummonType" unique_id=1139504000]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2341,7 +2341,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/SummonType/VBoxContainer"]
+[node name="Label" type="Label" parent="Options/SkillModules/SkillModules/ScrollContainer/VBoxContainer/SummonType/VBoxContainer" unique_id=137669691]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 tooltip_text = "SKILL_MODULES_DESCRIPTION"
@@ -2351,14 +2351,14 @@ text = "SUMMON_TYPE"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="SideMenu" type="Panel" parent="."]
+[node name="SideMenu" type="Panel" parent="." unique_id=1497001465]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 56.0
 grow_vertical = 2
 theme = ExtResource("2_ck100")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SideMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SideMenu" unique_id=1633774304]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2370,11 +2370,11 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SpaceTop" type="Control" parent="SideMenu/VBoxContainer"]
+[node name="SpaceTop" type="Control" parent="SideMenu/VBoxContainer" unique_id=1479854508]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="SideMenu/VBoxContainer/SpaceTop"]
+[node name="Button" type="Button" parent="SideMenu/VBoxContainer/SpaceTop" unique_id=1150897943]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -2391,7 +2391,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_7hsw0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_qskvj")
 toggle_mode = true
 
-[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/SpaceTop/Button"]
+[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/SpaceTop/Button" unique_id=169966084]
 self_modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 1
 anchors_preset = 15
@@ -2404,7 +2404,7 @@ texture = ExtResource("12_6ewli")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Button0" type="Button" parent="SideMenu/VBoxContainer"]
+[node name="Button0" type="Button" parent="SideMenu/VBoxContainer" unique_id=418099177]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 tooltip_text = "OVERVIEW"
@@ -2412,7 +2412,7 @@ toggle_mode = true
 button_pressed = true
 button_group = SubResource("ButtonGroup_g737p")
 
-[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button0"]
+[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button0" unique_id=199490876]
 self_modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 1
 anchors_preset = -1
@@ -2428,7 +2428,7 @@ texture = ExtResource("13_0vtos")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button0"]
+[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button0" unique_id=2080841377]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2443,14 +2443,14 @@ text = "Overview"
 vertical_alignment = 1
 text_overrun_behavior = 3
 
-[node name="Button1" type="Button" parent="SideMenu/VBoxContainer"]
+[node name="Button1" type="Button" parent="SideMenu/VBoxContainer" unique_id=776178485]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 tooltip_text = "CHARACTER"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_g737p")
 
-[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button1"]
+[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button1" unique_id=284219501]
 self_modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 1
 anchors_preset = -1
@@ -2466,7 +2466,7 @@ texture = ExtResource("14_4iy3k")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button1"]
+[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button1" unique_id=1334074250]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2481,14 +2481,14 @@ text = "Character"
 vertical_alignment = 1
 text_overrun_behavior = 3
 
-[node name="Button2" type="Button" parent="SideMenu/VBoxContainer"]
+[node name="Button2" type="Button" parent="SideMenu/VBoxContainer" unique_id=2048264771]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 tooltip_text = "JOURNAL"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_g737p")
 
-[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button2"]
+[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button2" unique_id=1044976676]
 self_modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 1
 anchors_preset = -1
@@ -2504,7 +2504,7 @@ texture = ExtResource("15_xy43e")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button2"]
+[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button2" unique_id=1651200633]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2519,14 +2519,14 @@ text = "Journal"
 vertical_alignment = 1
 text_overrun_behavior = 3
 
-[node name="Button5" type="Button" parent="SideMenu/VBoxContainer"]
+[node name="Button5" type="Button" parent="SideMenu/VBoxContainer" unique_id=1776416142]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 tooltip_text = "INVENTORY"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_g737p")
 
-[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button5"]
+[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button5" unique_id=1665861917]
 self_modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 1
 anchors_preset = -1
@@ -2542,7 +2542,7 @@ texture = ExtResource("29_2hy47")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button5"]
+[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button5" unique_id=835528075]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2557,14 +2557,14 @@ text = "Inventory"
 vertical_alignment = 1
 text_overrun_behavior = 3
 
-[node name="Button4" type="Button" parent="SideMenu/VBoxContainer"]
+[node name="Button4" type="Button" parent="SideMenu/VBoxContainer" unique_id=717605132]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 tooltip_text = "STATISTICS"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_g737p")
 
-[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button4"]
+[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button4" unique_id=1342089060]
 self_modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 1
 anchors_preset = -1
@@ -2580,7 +2580,7 @@ texture = ExtResource("27_2mq8c")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button4"]
+[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button4" unique_id=125251381]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2595,14 +2595,14 @@ text = "Statistics"
 vertical_alignment = 1
 text_overrun_behavior = 3
 
-[node name="Button3" type="Button" parent="SideMenu/VBoxContainer"]
+[node name="Button3" type="Button" parent="SideMenu/VBoxContainer" unique_id=376669398]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 tooltip_text = "OPTIONS"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_g737p")
 
-[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button3"]
+[node name="Icon" type="TextureRect" parent="SideMenu/VBoxContainer/Button3" unique_id=1617697652]
 self_modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 1
 anchors_preset = -1
@@ -2618,7 +2618,7 @@ texture = ExtResource("16_15y0b")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button3"]
+[node name="Label" type="Label" parent="SideMenu/VBoxContainer/Button3" unique_id=873055155]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2633,7 +2633,7 @@ text = "Options"
 vertical_alignment = 1
 text_overrun_behavior = 3
 
-[node name="Title" type="Panel" parent="."]
+[node name="Title" type="Panel" parent="." unique_id=840980516]
 material = SubResource("ShaderMaterial_buju4")
 anchors_preset = -1
 anchor_right = 0.1
@@ -2642,7 +2642,7 @@ offset_right = 128.0
 offset_bottom = 34.0
 theme = ExtResource("2_ck100")
 
-[node name="Label" type="Label" parent="Title"]
+[node name="Label" type="Label" parent="Title" unique_id=1394622128]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -2657,11 +2657,11 @@ theme_override_font_sizes/font_size = 18
 text = "OVERVIEW"
 vertical_alignment = 1
 
-[node name="Tooltip" parent="." instance=ExtResource("17_6m177")]
+[node name="Tooltip" parent="." unique_id=1091290140 instance=ExtResource("17_6m177")]
 visible = false
 theme = ExtResource("2_ck100")
 
-[node name="Timer" type="Timer" parent="Tooltip"]
+[node name="Timer" type="Timer" parent="Tooltip" unique_id=386625197]
 wait_time = 0.5
 one_shot = true
 

@@ -21,7 +21,7 @@ func summarize_inventory(array: Array) -> Dictionary:
 			dict[item.name] = 1
 	return dict
 
-func update_inventory(inventory: Array):
+func update_inventory(inventory: Array[Item]):
 	var items:= summarize_inventory(inventory)
 	main_inventory = inventory
 	
@@ -30,8 +30,8 @@ func update_inventory(inventory: Array):
 	
 	for i in range(items.size()):
 		var label: Label
-		var item: Dictionary
-		var item_name: String = items.keys()[i]
+		var item: Item
+		var item_name := items.keys()[i] as String
 		for it in inventory:
 			if it.name == item_name:
 				item = it
@@ -46,15 +46,10 @@ func update_inventory(inventory: Array):
 			label.disconnect("mouse_entered", Callable(self, "_show_inventory_tooltip"))
 		label.connect("mouse_entered", Callable(self, "_show_inventory_tooltip").bind(item))
 		label.text = str(items.values()[i]) + "x " + item_name
-		if !item.has("description"):
-			item.description = Items.create_tooltip(item)
-			item.description_plain = Skills.tooltip_remove_bb_code(item.description)
-		if "rank" not in item:
-			item.rank = Items.get_item_rank(item)
 		label.add_theme_color_override("font_color", Items.RANK_COLORS[item.rank])
 		label.show()
 
-func update_potion_inventory(inventory: Array):
+func update_potion_inventory(inventory: Array[Item]):
 	var potions:= summarize_inventory(inventory)
 	potion_inventory = inventory
 	
@@ -63,8 +58,8 @@ func update_potion_inventory(inventory: Array):
 	
 	for i in range(potions.size()):
 		var label: Label
-		var item: Dictionary
-		var _name: String = potions.keys()[i]
+		var item: Item
+		var _name := potions.keys()[i] as String
 		for it in inventory:
 			if it.name == _name:
 				item = it
@@ -78,12 +73,10 @@ func update_potion_inventory(inventory: Array):
 		if !label.is_connected("mouse_entered", Callable(self, "_show_potion_tooltip")):
 			label.connect("mouse_entered", Callable(self, "_show_potion_tooltip").bind(i))
 		label.text = str(potions.values()[i]) + "x " + _name
-		if "rank" not in item:
-			item.rank = Items.get_item_rank(item)
 		label.add_theme_color_override("font_color", Items.RANK_COLORS[item.rank])
 		label.show()
 
-func update_story_inventory(inventory: Array):
+func update_story_inventory(inventory: Array[Item]):
 	for c in story_inventory_panel.get_children():
 		(c as Control).hide()
 	story_inventory = inventory

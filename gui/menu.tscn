@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c4e5fnc1mtooq"]
+[gd_scene format=3 uid="uid://c4e5fnc1mtooq"]
 
 [ext_resource type="Script" uid="uid://vb5b2dwrrj8v" path="res://gui/menu.gd" id="1_mwg2g"]
 [ext_resource type="Texture2D" uid="uid://b78hnhrtssfg1" path="res://images/gui/paper.png" id="2_c37em"]
@@ -879,11 +879,11 @@ _data = {
 &"fade_out": SubResource("Animation_127r2")
 }
 
-[node name="Menu" type="CanvasLayer"]
+[node name="Menu" type="CanvasLayer" unique_id=279812952]
 layer = 100
 script = ExtResource("1_mwg2g")
 
-[node name="Black" type="ColorRect" parent="."]
+[node name="Black" type="ColorRect" parent="." unique_id=196426404]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -891,7 +891,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=40895638]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -901,7 +901,7 @@ texture = ExtResource("2_c37em")
 expand_mode = 2
 stretch_mode = 6
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." unique_id=1457682945]
 y_sort_enabled = true
 position = Vector2(16, 0)
 scale = Vector2(2, 2)
@@ -909,7 +909,7 @@ tile_set = SubResource("TileSet_7n5ur")
 format = 2
 layer_0/y_sort_enabled = true
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=51211041]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -924,7 +924,7 @@ grow_vertical = 2
 size_flags_horizontal = 8
 theme = ExtResource("12_4c3ch")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=675209390]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -936,31 +936,31 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button0" type="Button" parent="Panel/VBoxContainer"]
+[node name="Button0" type="Button" parent="Panel/VBoxContainer" unique_id=1012104094]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 14
 text = "CONTINUE"
 
-[node name="Button1" type="Button" parent="Panel/VBoxContainer"]
+[node name="Button1" type="Button" parent="Panel/VBoxContainer" unique_id=542652302]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 14
 text = "CREATE_CHARACTER"
 
-[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+[node name="Button2" type="Button" parent="Panel/VBoxContainer" unique_id=1714875646]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 14
 text = "OPTIONS"
 
-[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+[node name="Button3" type="Button" parent="Panel/VBoxContainer" unique_id=1539803782]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 14
 text = "QUIT"
 
-[node name="Characters" type="Panel" parent="."]
+[node name="Characters" type="Panel" parent="." unique_id=588460823]
 visible = false
 anchors_preset = 13
 anchor_left = 0.5
@@ -974,7 +974,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("12_4c3ch")
 
-[node name="Label" type="Label" parent="Characters"]
+[node name="Label" type="Label" parent="Characters" unique_id=1954201754]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -989,7 +989,7 @@ text = "CHARACTERS"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Characters"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Characters" unique_id=868692940]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1002,17 +1002,17 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Characters/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Characters/ScrollContainer" unique_id=1501479462]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Character0" type="Button" parent="Characters/ScrollContainer/VBoxContainer"]
+[node name="Character0" type="Button" parent="Characters/ScrollContainer/VBoxContainer" unique_id=604650547]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Characters/ScrollContainer/VBoxContainer/Character0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Characters/ScrollContainer/VBoxContainer/Character0" unique_id=1503172874]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1025,12 +1025,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Info" type="Control" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer"]
+[node name="Info" type="Control" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer" unique_id=1122585383]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="LabelName" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer/Info"]
+[node name="LabelName" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer/Info" unique_id=1499620685]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
@@ -1043,7 +1043,7 @@ grow_vertical = 2
 text = "NAME"
 vertical_alignment = 1
 
-[node name="LabelRace" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer/Info"]
+[node name="LabelRace" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer/Info" unique_id=939872748]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -1057,7 +1057,7 @@ text = "RACE"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="LabelLevel" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer/Info"]
+[node name="LabelLevel" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer/Info" unique_id=480634674]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -1070,7 +1070,7 @@ grow_vertical = 2
 text = "LEVEL"
 vertical_alignment = 1
 
-[node name="LabelLocation" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer/Info"]
+[node name="LabelLocation" type="Label" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer/Info" unique_id=510780017]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -1084,11 +1084,11 @@ text = "LOCATION"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ButtonExport" type="Button" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer"]
+[node name="ButtonExport" type="Button" parent="Characters/ScrollContainer/VBoxContainer/Character0/HBoxContainer" unique_id=2045031396]
 layout_mode = 2
 text = "EXPORT"
 
-[node name="Options" type="Panel" parent="."]
+[node name="Options" type="Panel" parent="." unique_id=2070704169]
 visible = false
 anchors_preset = 13
 anchor_left = 0.5
@@ -1102,7 +1102,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("12_4c3ch")
 
-[node name="Label" type="Label" parent="Options"]
+[node name="Label" type="Label" parent="Options" unique_id=245494522]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 1
 anchors_preset = -1
@@ -1117,7 +1117,7 @@ text = "OPTIONS"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Options"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Options" unique_id=836110204]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1130,16 +1130,16 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/ScrollContainer" unique_id=539942339]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="Theme" type="VBoxContainer" parent="Options/ScrollContainer/VBoxContainer"]
+[node name="Theme" type="VBoxContainer" parent="Options/ScrollContainer/VBoxContainer" unique_id=457530065]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Options/ScrollContainer/VBoxContainer/Theme"]
+[node name="Label" type="Label" parent="Options/ScrollContainer/VBoxContainer/Theme" unique_id=670152704]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 size_flags_vertical = 6
@@ -1148,16 +1148,16 @@ text = "THEME"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/ScrollContainer/VBoxContainer/Theme"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/ScrollContainer/VBoxContainer/Theme" unique_id=754545650]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Options/ScrollContainer/VBoxContainer/Theme/HBoxContainer"]
+[node name="Label" type="Label" parent="Options/ScrollContainer/VBoxContainer/Theme/HBoxContainer" unique_id=745005383]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "THEME"
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Options/ScrollContainer/VBoxContainer/Theme/HBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="Options/ScrollContainer/VBoxContainer/Theme/HBoxContainer" unique_id=1279737649]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1168,10 +1168,10 @@ popup/item_0/id = 0
 popup/item_1/text = "DARK"
 popup/item_1/id = 1
 
-[node name="Resolution" type="VBoxContainer" parent="Options/ScrollContainer/VBoxContainer"]
+[node name="Resolution" type="VBoxContainer" parent="Options/ScrollContainer/VBoxContainer" unique_id=430652357]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Options/ScrollContainer/VBoxContainer/Resolution"]
+[node name="Label" type="Label" parent="Options/ScrollContainer/VBoxContainer/Resolution" unique_id=873105094]
 modulate = Color(1, 1, 1, 0.74902)
 layout_mode = 2
 size_flags_vertical = 6
@@ -1180,16 +1180,16 @@ text = "RESOLUTION"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/ScrollContainer/VBoxContainer/Resolution"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/ScrollContainer/VBoxContainer/Resolution" unique_id=681168576]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer"]
+[node name="Label" type="Label" parent="Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer" unique_id=1643028307]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "UI_SCALING"
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer"]
+[node name="SpinBox" type="SpinBox" parent="Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer" unique_id=138950345]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 min_value = 50.0
@@ -1197,7 +1197,7 @@ max_value = 250.0
 value = 100.0
 suffix = "%"
 
-[node name="HSlider" type="HSlider" parent="Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer" unique_id=1551333959]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1208,7 +1208,7 @@ value = 100.0
 tick_count = 5
 ticks_on_borders = true
 
-[node name="Loading" type="Panel" parent="."]
+[node name="Loading" type="Panel" parent="." unique_id=1461725631]
 visible = false
 anchors_preset = 12
 anchor_top = 1.0
@@ -1222,7 +1222,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("12_4c3ch")
 
-[node name="Label" type="Label" parent="Loading"]
+[node name="Label" type="Label" parent="Loading" unique_id=37267749]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1237,7 +1237,7 @@ text = "SIMULATING"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="Loading"]
+[node name="ProgressBar" type="ProgressBar" parent="Loading" unique_id=391802277]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1251,7 +1251,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 14
 value = 50.0
 
-[node name="LabelProgress" type="Label" parent="Loading"]
+[node name="LabelProgress" type="Label" parent="Loading" unique_id=1235199580]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -1268,12 +1268,10 @@ text = "PROGRESS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Loading"]
-libraries = {
-&"": SubResource("AnimationLibrary_uxs0h")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Loading" unique_id=1984475636]
+libraries/ = SubResource("AnimationLibrary_uxs0h")
 
-[node name="VersionLabel" type="Label" parent="."]
+[node name="VersionLabel" type="Label" parent="." unique_id=135898353]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -1286,14 +1284,14 @@ theme_override_colors/font_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
 text = "v0.2.0"
 vertical_alignment = 2
 
-[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=417922245]
 title = "IMPORT_CHARACTER"
 initial_position = 2
 size = Vector2i(320, 128)
 theme = ExtResource("12_4c3ch")
 cancel_button_text = "CANCEL"
 
-[node name="LineEdit" type="LineEdit" parent="ConfirmationDialog"]
+[node name="LineEdit" type="LineEdit" parent="ConfirmationDialog" unique_id=1989697440]
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 8.0
@@ -1303,7 +1301,7 @@ offset_bottom = 93.0
 grow_horizontal = 2
 placeholder_text = "NAME"
 
-[node name="LabelWarning" type="Label" parent="ConfirmationDialog"]
+[node name="LabelWarning" type="Label" parent="ConfirmationDialog" unique_id=736954871]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

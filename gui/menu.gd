@@ -2,33 +2,47 @@ extends Node
 
 const MAP_SCROLL_SPEED = 30.0
 
-var version:= "0.2.0"
+var version := "0.2.0"
 
-var characters:= []
-var main:= preload("res://scenes/main/main.tscn")
-var main_gui:= preload("res://gui/main/scenes/main_gui.tscn")
-var new_character_gui:= preload("res://gui/new_game.tscn")
-var main_instance: Node
-var main_gui_instance: Node
-var tile_map_line:= 30
-var import_file:= ""
+var characters: Array[String] = []
+var main := preload("res://scenes/main/main.tscn")
+var main_gui := preload("res://gui/main/scenes/main_gui.tscn")
+var new_character_gui := preload("res://gui/new_game.tscn")
+var main_instance: Main
+var main_gui_instance: MainGui
+var tile_map_line := 30
+var import_file := ""
 var import_data: String
-var settings:= Settings.new()
+var settings := Settings.new()
 
-@onready var progress_bar:= $Loading/ProgressBar as ProgressBar
-@onready var progress_label:= $Loading/LabelProgress
-@onready var tile_map:= $TileMap as TileMap
-@onready var confirmation_dialog:= $ConfirmationDialog as ConfirmationDialog
-@onready var import_name_override:= $ConfirmationDialog/LineEdit as LineEdit
-@onready var import_name_warning:= $ConfirmationDialog/LabelWarning as Label
-@onready var ui_scale_slider:= $Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer/HSlider as HSlider
-@onready var ui_scale_spinbox:= $Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer/SpinBox as SpinBox
-@onready var theme_button:= $Options/ScrollContainer/VBoxContainer/Theme/HBoxContainer/OptionButton as OptionButton
-@onready var menu_panel:= $Panel as Panel
-@onready var character_panel:= $Characters as Panel
-@onready var option_panel:= $Options as Panel
-@onready var loading_panel:= $Loading as Panel
-
+@onready
+var progress_bar := $Loading/ProgressBar as ProgressBar
+@onready
+var progress_label := $Loading/LabelProgress as Label
+@onready
+var tile_map := $TileMap as TileMap
+@onready
+var confirmation_dialog := $ConfirmationDialog as ConfirmationDialog
+@onready
+var import_name_override := $ConfirmationDialog/LineEdit as LineEdit
+@onready
+var import_name_warning := $ConfirmationDialog/LabelWarning as Label
+@onready
+var ui_scale_slider := $Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer/HSlider as HSlider
+@onready
+var ui_scale_spinbox := $Options/ScrollContainer/VBoxContainer/Resolution/HBoxContainer/SpinBox as SpinBox
+@onready
+var theme_button := $Options/ScrollContainer/VBoxContainer/Theme/HBoxContainer/OptionButton as OptionButton
+@onready
+var menu_panel := $Panel as Panel
+@onready
+var character_panel := $Characters as Panel
+@onready
+var option_panel := $Options as Panel
+@onready
+var loading_panel := $Loading as Panel
+@onready
+var loading_animation_player := $Loading/AnimationPlayer as AnimationPlayer
 
 
 var themes: Array[Theme] = [
@@ -49,15 +63,19 @@ class Settings:
 		return JSON.stringify(data)
 
 
-func update_tile_map():
+func update_tile_map() -> void:
 	for k in range(0, 15):
 		var pos:= Vector2i(k, tile_map_line)
 		tile_map.set_cell(0, pos + Vector2i(0, 35), -1)
 		if randf() < 0.5:
 			continue
 		var source:= int(randf_range(1, 8.5))
-		var p: Vector2i = [Vector2i(-1, 0), Vector2i(1, 0), Vector2i(0, -1),\
-			Vector2i(0, 1)].pick_random()
+		var p: Vector2i = [
+			Vector2i(-1, 0),
+			Vector2i(1, 0),
+			Vector2i(0, -1),
+			Vector2i(0, 1)
+		].pick_random()
 		if tile_map.get_cell_source_id(0, pos + p)>=0:
 			source = tile_map.get_cell_source_id(0, pos + p)
 		tile_map.set_cell(0, pos, source, Vector2i(randi()%3, randi()%3))
@@ -79,19 +97,19 @@ func get_dict_text(file: FileAccess) -> String:
 func create_save_dir() -> DirAccess:
 	var dir:= DirAccess.open("user://")
 	var error:= dir.make_dir_recursive("user://saves")
-	if error!=OK:
+	if error != OK:
 		print("Can't create save directory!")
 	return dir
 
-func load_characters():
-	var dir:= DirAccess.open("user://saves")
+func load_characters() -> void:
+	var dir := DirAccess.open("user://saves")
 	characters.clear()
-	if dir == null || DirAccess.get_open_error() != OK:
+	if dir == null or DirAccess.get_open_error() != OK:
 		create_save_dir()
 		return
 	
 	var file_name: String
-	var i:= 0
+	var i := 0
 	dir.list_dir_begin()
 	file_name = dir.get_next()
 	for c in $Characters/ScrollContainer/VBoxContainer.get_children():
@@ -116,7 +134,7 @@ func load_characters():
 				button.show()
 				(button.get_node("HBoxContainer/Info/LabelName") as Label).text = data.name
 				(button.get_node("HBoxContainer/Info/LabelRace") as Label).text = data.race
-				(button.get_node("HBoxContainer/Info/LabelLevel") as Label).text = tr("LEVEL") + " " + str(int(data.level))
+				(button.get_node("HBoxContainer/Info/LabelLevel") as Label).text = tr("LEVEL") + " " + str(data.level as int)
 				(button.get_node("HBoxContainer/Info/LabelLocation") as Label).text = data.location
 				if !OS.has_feature("web"):
 					(button.get_node("HBoxContainer/ButtonExport") as Control).hide()
@@ -131,17 +149,17 @@ func load_characters():
 		first_character.grab_focus()
 
 
-func _quit():
+func _quit() -> void:
 	get_tree().quit()
 
-func _new_character():
-	#get_tree().change_scene_to_file("res://gui/new_game.tscn")
-	var new_game:= new_character_gui.instantiate()
+func _new_character() -> void:
+	var new_game := new_character_gui.instantiate() as NewGameUi
+	new_game.version = version
 	new_game.theme = themes[settings.theme]
 	get_parent().add_child(new_game)
 	queue_free()
 
-func _show_characters():
+func _show_characters() -> void:
 	load_characters()
 	character_panel.show()
 	option_panel.hide()
@@ -150,28 +168,28 @@ func _show_options() -> void:
 	character_panel.hide()
 	option_panel.show()
 
-func _load(ID: int):
+func _load(ID: int) -> void:
 	menu_panel.hide()
 	character_panel.hide()
-	$Loading/AnimationPlayer.play("fade_in")
+	loading_animation_player.play("fade_in")
 	set_process(true)
 	progress_bar.value = 0.0
 	progress_label.text = tr("DAY") + " 1 / 1"
 	create_instance(characters[ID].left(characters[ID].rfind('.')))
 
-func _export(ID: int):
+func _export(ID: int) -> void:
 	var file:= FileAccess.open("user://saves/" + characters[ID], FileAccess.READ)
 	if FileAccess.get_open_error() != OK:
 		print("Can't open save file " + characters[ID])
 		return
 	
-	var text:= file.get_as_text()
+	var text := file.get_as_text()
 	file.close()
 	JavaScriptBridge.download_buffer(text.to_utf8_buffer(), characters[ID], "text/plain")
 
-func _files_dropped(file_names: Array[String]):
+func _files_dropped(file_names: Array[String]) -> void:
 	for file_name in file_names:
-		var file:= FileAccess.open(file_name, FileAccess.READ)
+		var file := FileAccess.open(file_name, FileAccess.READ)
 		if not file:
 			print("Can't open file " + file_name)
 			continue
@@ -205,10 +223,10 @@ func check_character_existance() -> bool:
 		file_name = dir.get_next()
 	return false
 
-func _import_name_override_changed(_new_name: String):
+func _import_name_override_changed(_new_name: String) -> void:
 	import_name_warning.visible = check_character_existance()
 
-func _import():
+func _import() -> void:
 	var dir:= DirAccess.open("user://saves/")
 	if dir == null || DirAccess.get_open_error() != OK:
 		dir = create_save_dir()
@@ -232,11 +250,13 @@ func _import():
 	
 	load_characters()
 
-func create_instance(player_name: String):
+func create_instance(player_name: String) -> void:
 	main_instance = main.instantiate()
 	main_instance.version = version
 	main_instance.player_name = player_name
-	main_instance._load()
+	if not main_instance._load():
+		# Loading failed
+		return
 	progress_bar.max_value = Time.get_unix_time_from_system() - main_instance.current_time
 	get_parent().add_child(main_instance)
 	
@@ -281,7 +301,7 @@ func _on_theme_selected(index: int) -> void:
 	save_config()
 
 
-func _process(delta: float):
+func _process(delta: float) -> void:
 	if main_instance == null:
 		tile_map.position.y += delta*MAP_SCROLL_SPEED
 		if -tile_map_line < 2 + tile_map.position.y / 33:
@@ -297,9 +317,9 @@ func _process(delta: float):
 		($Loading/AnimationPlayer as AnimationPlayer).play("fade_out")
 		set_process(false)
 
-func load_config():
-	var file:= FileAccess.open("user://config.json", FileAccess.READ)
-	var error:= FileAccess.get_open_error()
+func load_config() -> void:
+	var file := FileAccess.open("user://config.json", FileAccess.READ)
+	var error := FileAccess.get_open_error()
 	if error != OK:
 		error = DirAccess.make_dir_absolute("user://")
 		if error != OK:
@@ -309,17 +329,17 @@ func load_config():
 		settings.theme = int(DisplayServer.is_dark_mode())
 	
 	else:
-		var raw:= file.get_as_text()
-		var json:= JSON.new()
+		var raw := file.get_as_text()
+		var json := JSON.new()
 		error = json.parse(raw)
 		if error != OK:
 			print("Failed to parse the config file")
 			return
 		
-		for key in json.data:
+		for key: String in json.data:
 			settings.set(key, json.data[key])
 	
-	var theme:= themes[settings.theme]
+	var theme := themes[settings.theme]
 	ui_scale_slider.value = settings.scaling * 100
 	ui_scale_spinbox.value = settings.scaling * 100
 	theme_button.selected = settings.theme
@@ -329,9 +349,9 @@ func load_config():
 	loading_panel.theme = theme
 	confirmation_dialog.theme = theme
 
-func save_config():
-	var file:= FileAccess.open("user://config.json", FileAccess.WRITE)
-	var error:= FileAccess.get_open_error()
+func save_config() -> void:
+	var file := FileAccess.open("user://config.json", FileAccess.WRITE)
+	var error := FileAccess.get_open_error()
 	if error != OK:
 		error = DirAccess.make_dir_absolute("user://")
 		if error != OK:
@@ -347,7 +367,7 @@ func save_config():
 	file.store_string(data)
 	file.close()
 
-func _ready():
+func _ready() -> void:
 	($VersionLabel as Label).text = version
 	
 	if OS.has_feature("web") || OS.has_feature("mobile"):

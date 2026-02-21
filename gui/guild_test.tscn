@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://63fg3wc77184"]
+[gd_scene format=3 uid="uid://63fg3wc77184"]
 
 [ext_resource type="Script" uid="uid://dv5h4wrtgqn6c" path="res://gui/guild_test.gd" id="1_q2010"]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=1393710396]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q2010")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1701495756]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scroll_following = true
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=1111834393]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

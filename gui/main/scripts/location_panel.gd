@@ -1,4 +1,5 @@
 extends Panel
+class_name RegionGui
 
 @export
 var tooltip: Control

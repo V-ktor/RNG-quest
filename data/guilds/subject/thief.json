@@ -1,7 +1,9 @@
 {
 	"name": "thief",
 	"prefixes": [
-		"thief", "crime", "pirate"
+		"thief",
+		"crime",
+		"pirate"
 	],
 	"ranks": {
 		"0": [
@@ -56,5 +58,10 @@
 		"gold",
 		"cunning",
 		"darkness"
+	],
+	"vocation": [
+		"thief",
+		"thug",
+		"assassin"
 	]
 }

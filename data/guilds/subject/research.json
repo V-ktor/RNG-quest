@@ -1,7 +1,8 @@
 {
 	"name": "research",
 	"prefixes": [
-		"science", "research",
+		"science",
+		"research",
 	],
 	"ranks": {
 		"0": [
@@ -55,5 +56,11 @@
 		"technology",
 		"alchemy",
 		"enchanting"
+	],
+	"vocation": [
+		"scientist",
+		"researcher",
+		"engineer",
+		"alchemist"
 	]
 }

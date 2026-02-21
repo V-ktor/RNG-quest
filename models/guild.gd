@@ -26,6 +26,7 @@ var locations: Array[String]
 var relics: Array[String]
 var race: Array[String]
 var exp_gain: Dictionary[String, int]
+var founder: String
 
 
 func on_travel(region: Region):
@@ -113,6 +114,7 @@ func _init(dict: Dictionary) -> void:
 		if typeof(key) != TYPE_STRING:
 			continue
 		self.exp_gain[key] = int(exp_gain_dict[key])
+	self.founder = dict.get("founder", "") as String
 
 func to_dict() -> Dictionary[String, Variant]:
 	return {
@@ -140,4 +142,5 @@ func to_dict() -> Dictionary[String, Variant]:
 		"relics": self.relics,
 		"race": self.race,
 		"exp_gain": self.exp_gain,
+		"founder": self.founder,
 	}

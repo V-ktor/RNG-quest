@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bonh7k6p34cy"]
+[gd_scene format=3 uid="uid://bonh7k6p34cy"]
 
 [ext_resource type="Theme" uid="uid://bohv0eosjj5p" path="res://themes/light_theme.tres" id="1_4782p"]
 [ext_resource type="Script" uid="uid://dk6hjgcqbq4nm" path="res://gui/new_game.gd" id="1_m18te"]
 
-[node name="NewGame" type="Control"]
+[node name="NewGame" type="Control" unique_id=2075536129]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +15,7 @@ size_flags_vertical = 3
 theme = ExtResource("1_4782p")
 script = ExtResource("1_m18te")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=514850476]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,15 +23,15 @@ offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer1" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer1" type="VBoxContainer" parent="HBoxContainer" unique_id=343366363]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Name" type="Panel" parent="HBoxContainer/VBoxContainer1"]
+[node name="Name" type="Panel" parent="HBoxContainer/VBoxContainer1" unique_id=633217458]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Name"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Name" unique_id=296480736]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -43,12 +43,12 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/Name/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/Name/VBoxContainer" unique_id=1272186581]
 layout_mode = 2
 size_flags_vertical = 6
 text = "NAME"
 
-[node name="LabelWarning" type="Label" parent="HBoxContainer/VBoxContainer1/Name/VBoxContainer/Label"]
+[node name="LabelWarning" type="Label" parent="HBoxContainer/VBoxContainer1/Name/VBoxContainer/Label" unique_id=1446394605]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -64,16 +64,16 @@ text = "WARNING_OVERWRITTEN"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer1/Name/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer1/Name/VBoxContainer" unique_id=136107978]
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "NAME"
 
-[node name="Gender" type="Panel" parent="HBoxContainer/VBoxContainer1"]
+[node name="Gender" type="Panel" parent="HBoxContainer/VBoxContainer1" unique_id=1565576648]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Gender"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Gender" unique_id=1724020286]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -85,21 +85,21 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/Gender/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/Gender/VBoxContainer" unique_id=744173577]
 layout_mode = 2
 size_flags_vertical = 6
 text = "GENDER"
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer1/Gender/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer1/Gender/VBoxContainer" unique_id=1342329486]
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "GENDER"
 
-[node name="Diet" type="Panel" parent="HBoxContainer/VBoxContainer1"]
+[node name="Diet" type="Panel" parent="HBoxContainer/VBoxContainer1" unique_id=1481146430]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Diet"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Diet" unique_id=719948913]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -111,20 +111,20 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/Diet/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/Diet/VBoxContainer" unique_id=1647660949]
 layout_mode = 2
 text = "DIET"
 
-[node name="CheckButton2" type="CheckButton" parent="HBoxContainer/VBoxContainer1/Diet/VBoxContainer"]
+[node name="CheckButton2" type="CheckButton" parent="HBoxContainer/VBoxContainer1/Diet/VBoxContainer" unique_id=802659299]
 layout_mode = 2
 text = "VEGAN"
 alignment = 1
 
-[node name="Race" type="Panel" parent="HBoxContainer/VBoxContainer1"]
+[node name="Race" type="Panel" parent="HBoxContainer/VBoxContainer1" unique_id=2049686748]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Race"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Race" unique_id=1548558959]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -136,66 +136,66 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer" unique_id=212007352]
 layout_mode = 2
 text = "RACE"
 
-[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer" unique_id=2125375587]
 layout_mode = 2
 text = "HYBRID"
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer" unique_id=1924354109]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Main" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer"]
+[node name="Main" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer" unique_id=897324843]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="human" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+[node name="human" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main" unique_id=143230636]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 text = "human"
 
-[node name="halfling" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+[node name="halfling" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main" unique_id=1364692556]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 text = "halfling"
 
-[node name="high_elf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+[node name="high_elf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main" unique_id=669371780]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 text = "high elf"
 
-[node name="wood_elf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+[node name="wood_elf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main" unique_id=1483299876]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 text = "wood elf"
 
-[node name="dwarf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+[node name="dwarf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main" unique_id=1349083658]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 text = "dwarf"
 
-[node name="ogre" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+[node name="ogre" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main" unique_id=745316477]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 toggle_mode = true
 text = "ogre"
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main" unique_id=1042154895]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 placeholder_text = "CUSTOM_RACE"
 alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/LineEdit"]
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Main/LineEdit" unique_id=943350905]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -205,50 +205,50 @@ offset_left = -48.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Alt" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer"]
+[node name="Alt" type="VBoxContainer" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer" unique_id=1577292768]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="human" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt"]
+[node name="human" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt" unique_id=635475593]
 layout_mode = 2
 toggle_mode = true
 text = "human"
 
-[node name="halfling" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt"]
+[node name="halfling" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt" unique_id=1927171709]
 layout_mode = 2
 toggle_mode = true
 text = "halfling"
 
-[node name="high_elf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt"]
+[node name="high_elf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt" unique_id=1956129347]
 layout_mode = 2
 toggle_mode = true
 text = "high elf"
 
-[node name="wood_elf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt"]
+[node name="wood_elf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt" unique_id=1326629996]
 layout_mode = 2
 toggle_mode = true
 text = "wood elf"
 
-[node name="dwarf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt"]
+[node name="dwarf" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt" unique_id=1447893458]
 layout_mode = 2
 toggle_mode = true
 text = "dwarf"
 
-[node name="ogre" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt"]
+[node name="ogre" type="Button" parent="HBoxContainer/VBoxContainer1/Race/VBoxContainer/HBoxContainer/Alt" unique_id=712457586]
 layout_mode = 2
 toggle_mode = true
 text = "ogre"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1973268247]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Combat" type="Panel" parent="HBoxContainer/VBoxContainer2"]
+[node name="Combat" type="Panel" parent="HBoxContainer/VBoxContainer2" unique_id=1759732415]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Combat"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Combat" unique_id=1603081601]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -260,100 +260,100 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer" unique_id=176697819]
 layout_mode = 2
 text = "COMBAT_ABILITIES"
 
-[node name="LabelNumber" type="Label" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+[node name="LabelNumber" type="Label" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer" unique_id=632100403]
 layout_mode = 2
 text = "0 / 2"
 
-[node name="light_weapons" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+[node name="light_weapons" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer" unique_id=1116586962]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "LIGHT_WEAPONS_DESCRIPTION"
 toggle_mode = true
 text = "LIGHT_WEAPONS"
 
-[node name="heavy_weapons" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+[node name="heavy_weapons" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer" unique_id=1971987786]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "HEAVY_WEAPONS_DESCRIPTION"
 toggle_mode = true
 text = "HEAVY_WEAPONS"
 
-[node name="dirty_fighting" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+[node name="dirty_fighting" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer" unique_id=291702887]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "DIRTY_FIGHTING_DESCRIPTION"
 toggle_mode = true
 text = "DIRTY_FIGHTING"
 
-[node name="brawling" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+[node name="brawling" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer" unique_id=1778787169]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "BRAWLING_DESCRIPTION"
 toggle_mode = true
 text = "BRAWLING"
 
-[node name="shield" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+[node name="shield" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer" unique_id=1978186211]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "SHIELD_DESCRIPTION"
 toggle_mode = true
 text = "SHIELD"
 
-[node name="archery" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+[node name="archery" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer" unique_id=1773215457]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "ARCHERY_DESCRIPTION"
 toggle_mode = true
 text = "ARCHERY"
 
-[node name="elemental_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+[node name="elemental_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer" unique_id=1130028615]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "ELEMENTAL_MAGIC_DESCRIPTION"
 toggle_mode = true
 text = "ELEMENTAL_MAGIC"
 
-[node name="nature_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+[node name="nature_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer" unique_id=1794937455]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "NATURE_MAGIC_DESCRIPTION"
 toggle_mode = true
 text = "NATURE_MAGIC"
 
-[node name="celestial_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+[node name="celestial_magic" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer" unique_id=2133864083]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "CELESTIAL_MAGIC_DESCRIPTION"
 toggle_mode = true
 text = "CELESTIAL_MAGIC"
 
-[node name="summoning" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+[node name="summoning" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer" unique_id=131121290]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "SUMMONING_DESCRIPTION"
 toggle_mode = true
 text = "SUMMONING"
 
-[node name="necromancy" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer"]
+[node name="necromancy" type="Button" parent="HBoxContainer/VBoxContainer2/Combat/VBoxContainer" unique_id=1589068760]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "NECROMANCY_DESCRIPTION"
 toggle_mode = true
 text = "NECROMANCY"
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer" unique_id=797149879]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Abilities" type="Panel" parent="HBoxContainer/VBoxContainer3"]
+[node name="Abilities" type="Panel" parent="HBoxContainer/VBoxContainer3" unique_id=1257798447]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Abilities"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Abilities" unique_id=1165294782]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -365,106 +365,106 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=1801319266]
 layout_mode = 2
 text = "ABILITIES"
 
-[node name="LabelNumber" type="Label" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="LabelNumber" type="Label" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=879483221]
 layout_mode = 2
 text = "0 / 2"
 
-[node name="armour" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="armour" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=1346292902]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "ARMOUR_DESCRIPTION"
 toggle_mode = true
 text = "ARMOUR"
 
-[node name="evasion" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="evasion" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=675473908]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "EVASION_DESCRIPTION"
 toggle_mode = true
 text = "EVASION"
 
-[node name="trapping" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="trapping" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=1274266460]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "TRAPPING_DESCRIPTION"
 toggle_mode = true
 text = "TRAPPING"
 
-[node name="defensive_magic" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="defensive_magic" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=1990665910]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "DEFENSIVE_MAGIC_DESCRIPTION"
 toggle_mode = true
 text = "DEFENSIVE_MAGIC"
 
-[node name="healing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="healing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=510986068]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "HEALING_ABILITY_DESCRIPTION"
 toggle_mode = true
 text = "HEALING_ABILITY"
 
-[node name="alchemy" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="alchemy" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=1039719214]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "ALCHEMY_DESCRIPTION"
 toggle_mode = true
 text = "ALCHEMY"
 
-[node name="weapon_smithing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="weapon_smithing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=1604758618]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "WEAPON_SMITHING_DESCRIPTION"
 toggle_mode = true
 text = "WEAPON_SMITHING"
 
-[node name="armour_smithing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="armour_smithing" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=1906851274]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "ARMOUR_SMITHING_DESCRIPTION"
 toggle_mode = true
 text = "ARMOUR_SMITHING"
 
-[node name="woodwork" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="woodwork" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=116328858]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "WOODWORK_DESCRIPTION"
 toggle_mode = true
 text = "WOODWORK"
 
-[node name="tayloring" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="tayloring" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=1967364936]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "TAYLORING_DESCRIPTION"
 toggle_mode = true
 text = "TAYLORING"
 
-[node name="cooking" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="cooking" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=1813104842]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "COOKING_DESCRIPTION"
 toggle_mode = true
 text = "COOKING"
 
-[node name="enchanting" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="enchanting" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=525365166]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "ENCHANTING_DESCRIPTION"
 toggle_mode = true
 text = "ENCHANTING"
 
-[node name="soul_binding" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer"]
+[node name="soul_binding" type="Button" parent="HBoxContainer/VBoxContainer3/Abilities/VBoxContainer" unique_id=644972914]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 tooltip_text = "ENCHANTING_DESCRIPTION"
 toggle_mode = true
 text = "SOUL_BINDING"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=551142072]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -477,7 +477,7 @@ offset_right = 256.0
 offset_bottom = -4.0
 mouse_filter = 1
 
-[node name="Bottom" type="HBoxContainer" parent="Panel"]
+[node name="Bottom" type="HBoxContainer" parent="Panel" unique_id=378297010]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -490,19 +490,19 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Button0" type="Button" parent="Panel/Bottom"]
+[node name="Button0" type="Button" parent="Panel/Bottom" unique_id=256411203]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "BACK"
 
-[node name="Button1" type="Button" parent="Panel/Bottom"]
+[node name="Button1" type="Button" parent="Panel/Bottom" unique_id=588690750]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "RANDOMIZE"
 
-[node name="Button2" type="Button" parent="Panel/Bottom"]
+[node name="Button2" type="Button" parent="Panel/Bottom" unique_id=47935319]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3

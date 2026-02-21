@@ -16,6 +16,7 @@ var enemy_amount: Array[int]
 var resource_amount: Array[int]
 var resources: Array[String]
 var local_materials: Dictionary[String, Array]
+var setting: String
 
 
 func _init(dict: Dictionary) -> void:
@@ -27,28 +28,28 @@ func _init(dict: Dictionary) -> void:
 	self.level = dict.get("level", 1) as int
 	self.tier = dict.get("tier", 0) as int
 	self.description = dict.get("description", "") as String
-	self.enchantment_chance = dict.get(enchantment_chance, 0.1) as float
-	self.resource_chance = dict.get(resource_chance, 0.1) as float
+	self.enchantment_chance = dict.get("enchantment_chance", 0.1) as float
+	self.resource_chance = dict.get("resource_chance", 0.1) as float
 	self.race = []
-	for r in dict.get("race", ["human"]):
+	for r: String in dict.get("race", ["human"]):
 		self.race.push_back(r)
 	self.enemy = []
-	for e in dict.get("enemy", ["orc"]):
+	for e: String in dict.get("enemy", ["orc"]):
 		self.enemy.push_back(e)
 	self.cities = {}
 	city_dict = dict.get("cities", {})
-	for city in city_dict:
+	for city: String in city_dict:
 		var data: Dictionary[String, Variant] = {}
-		for key in city_dict[city]:
+		for key: String in city_dict[city]:
 			if typeof(key) != TYPE_STRING:
 				continue
 			data[key] = city_dict[city][key]
 		self.cities[city] = Location.new(data)
 	self.locations = {}
 	location_dict = dict.get("locations", {})
-	for location in location_dict:
+	for location: String in location_dict:
 		var data: Dictionary[String, Variant] = {}
-		for key in location_dict[location]:
+		for key: String in location_dict[location]:
 			if typeof(key) != TYPE_STRING:
 				continue
 			data[key] = location_dict[location][key]
@@ -69,6 +70,7 @@ func _init(dict: Dictionary) -> void:
 	material_dict = dict.get("local_materials", {})
 	for key in material_dict:
 		self.local_materials[key] = material_dict[key]
+	self.setting = dict.get("setting", "fantasy") as String
 
 func to_dict() -> Dictionary[String, Variant]:
 	var city_dict: Dictionary[String, Dictionary] = {}
@@ -93,4 +95,5 @@ func to_dict() -> Dictionary[String, Variant]:
 		"resource_amount": self.resource_amount,
 		"resources": self.resources,
 		"local_materials": self.local_materials,
+		"setting": self.setting,
 	}

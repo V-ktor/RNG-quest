@@ -1,15 +1,19 @@
 # Change log
 
-## v0.1.3
+## v0.2.0
 
 ### Content
 * Add new skills
 * Reworked how guilds work (procedurally generated guilds)
 
+### Balancing
+* Shop items can have enchantment potential
+
 ### Interface
 * Add EXP bars for player level, abilities and guilds
 * Add text label colors for skills, abilities, guild level and resistances that show the progress
 * Add text label color for locations that shows the danger
+* The description of enchanted shop items contains the name of the enchanter
 
 ### Bug fixes
 * fixed a problem with incorrect BB code on the journal page

@@ -1,7 +1,8 @@
 {
 	"name": "magic",
 	"prefixes": [
-		"mage", "arcane",
+		"mage",
+		"arcane",
 	],
 	"ranks": {
 		"0": [
@@ -57,5 +58,11 @@
 		"elemental",
 		"nature",
 		"intelligence"
+	],
+	"vocation": [
+		"wizard",
+		"mage",
+		"archmage",
+		"spell slinger"
 	]
 }

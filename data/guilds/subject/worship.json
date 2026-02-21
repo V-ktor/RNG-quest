@@ -1,7 +1,9 @@
 {
 	"name": "worship",
 	"prefixes": [
-		"holy", "celestial", "divine"
+		"holy",
+		"celestial",
+		"divine"
 	],
 	"suffixes": [
 		"of {god}"
@@ -56,5 +58,11 @@
 		"worship",
 		"god",
 		"light"
+	],
+	"vocation": [
+		"priest",
+		"cleric",
+		"preacher",
+		"paladin"
 	]
 }

@@ -1,52 +1,52 @@
 extends Node
 class_name Main
 
-const MAX_STEPS = 100
-const MAX_DELTA = 1.0/10.0
-const SELLING_PRICE = 0.2
-const MATERIAL_SELLING_PRICE = 0.2
-const QUESTS_PER_CHAPTER = 50
-const QUESTS_INCREASE_PER_CHAPTER = 20
-const QUEST_GOLD_REWARD_MIN = 5
-const QUEST_GOLD_REWARD_MAX = 20
-const TRAVEL_DELAY = 180.0
-const RETREAT_DELAY = 180.0
-const RECOVER_DELAY = 300.0
-const SEARCH_DELAY = 15.0
-const LOOT_DELAY = 30.0
-const POTION_DELAY = 2.0
-const POTION_USE_DELAY = 10.0
-const QUESTING_DELAY = 60.0
-const SHOPPING_DELAY = 5.0
-const CRAFTING_DELAY = 60.0
-const COOKING_ATTEMPT_DELAY = 600.0
-const REST_DELAY = 60.0*60.0
-const SLEEP_DELAY = 7.0*60.0*60.0
-const QUICKTRAVEL_DELAY = 60*60
-const RETREAT_THRESHOLD = 0.1
-const RECOVER_THRESHOLD = 0.4
-const POTION_THRESHOLD = 0.7
-const MAX_POTIONS = 20
-const EQUIPMENT_SLOTS = [
+const MAX_STEPS := 100
+const MAX_DELTA := 1.0/10.0
+const SELLING_PRICE := 0.2
+const MATERIAL_SELLING_PRICE := 0.2
+const QUESTS_PER_CHAPTER := 50
+const QUESTS_INCREASE_PER_CHAPTER := 20
+const QUEST_GOLD_REWARD_MIN := 5
+const QUEST_GOLD_REWARD_MAX := 20
+const TRAVEL_DELAY := 180.0
+const RETREAT_DELAY := 180.0
+const RECOVER_DELAY := 300.0
+const SEARCH_DELAY := 15.0
+const LOOT_DELAY := 30.0
+const POTION_DELAY := 2.0
+const POTION_USE_DELAY := 10.0
+const QUESTING_DELAY := 60.0
+const SHOPPING_DELAY := 5.0
+const CRAFTING_DELAY := 60.0
+const COOKING_ATTEMPT_DELAY := 600.0
+const REST_DELAY := 60.0 * 60.0
+const SLEEP_DELAY := 7.0 * 60.0 * 60.0
+const QUICKTRAVEL_DELAY := 60 * 60
+const RETREAT_THRESHOLD := 0.1
+const RECOVER_THRESHOLD := 0.4
+const POTION_THRESHOLD := 0.7
+const MAX_POTIONS := 20
+const EQUIPMENT_SLOTS: Array[String] = [
 	"weapon", "offweapon", "torso", "legs", "head", "hands", "feet", "cape", "belt",
 	"amulet", "ring_left", "ring_right", "bracelet_left", "bracelet_right",
 	"earring_left", "earring_right",
 ]
-const EQUIPMENT_LEVEL_RESTRICTION = {
+const EQUIPMENT_LEVEL_RESTRICTION: Dictionary[String, int] = {
 	"ring": 5, "ring_left": 5, "ring_right": 5,
 	"belt": 10,
 	"cape": 15,
 	"bracelet": 25, "bracelet_left": 25, "bracelet_right": 25,
 	"earring": 40, "earring_left": 40, "earring_right": 40,
 }
-const EQUIPMENT_LR_TYPES = [
+const EQUIPMENT_LR_TYPES: Array[String] = [
 	"ring", "earring", "bracelet"
 ]
-const EQUIPMENT_QUALITY_SCALING = 0.1
-const EQUIPMENT_BASE_PRICE = 30
-const MAX_SUMMONS = 1
-const ACTIONS = ["training", "grinding", "questing", "shopping", "crafting", "resting"]
-var timetable:= {
+const EQUIPMENT_QUALITY_SCALING := 0.1
+const EQUIPMENT_BASE_PRICE := 30
+const MAX_SUMMONS := 1
+const ACTIONS: Array[String] = ["training", "grinding", "questing", "shopping", "crafting", "resting"]
+var timetable: Dictionary[int, String] = {
 	00: "sleeping",
 	05: "shopping",
 	07: "training",
@@ -63,7 +63,7 @@ var timetable:= {
 	22: "shopping",
 	23: "sleeping",
 }
-const STAT_ATTRIBUTES = {
+const STAT_ATTRIBUTES: Dictionary[String, Dictionary] = {
 	"strength": {
 		"attack": 1,
 	},
@@ -81,69 +81,67 @@ const STAT_ATTRIBUTES = {
 		"evasion": 1,
 	},
 }
-const HANGOUT_LOCATIONS = [
+const HANGOUT_LOCATIONS: Array[String] = [
 	"TAVERN", "BAR", "PUB", "MARKET", "GROCERY_STORE", "PARK",
 	"BATH_HOUSE", "TOILET", "BARBER_SHOP", "SPA", "DOCTOR", "DENTIST",
 ]
 
-var version:= ""
-var player_name:= "Player"
-var player_gender:= "None"
-var player_race:= "Unknown"
+var version := ""
+var player_name := "Player"
+var player_gender := "None"
+var player_race := "Unknown"
 var player: Characters.Character
-var player_inventory:= []
-var player_potions:= []
-var player_summons:= []
-var player_gold:= 50
-var player_stat_preference:= {}
-var player_ability_preference:= {}
-var player_potion_delay:= 0.0
-var player_cooking_delay:= 0.0
-#var player_guild_lvl:= {}
-#var player_guild_exp:= {}
-var player_exp:= 0
-var player_vegan:= false
-var player_creation_time:= 0
-var player_settings:= Characters.CharacterSettings.new()
-var player_delay:= 0.0
-var player_battles_won:= 0
-var player_battles_lost:= 0
-var player_potions_used:= {}
-var max_summons:= MAX_SUMMONS
+var player_inventory: Array[Item] = []
+var player_potions: Array[ItemPotion] = []
+var player_summons: Array[Characters.Summon] = []
+var player_gold := 50
+var player_stat_preference: Dictionary[String, float] = {}
+var player_ability_preference: Dictionary[String, float] = {}
+var player_potion_delay := 0.0
+var player_cooking_delay := 0.0
+var player_exp := 0
+var player_vegan := false
+var player_creation_time := 0
+var player_settings := Characters.CharacterSettings.new()
+var player_delay := 0.0
+var player_battles_won := 0
+var player_battles_lost := 0
+var player_potions_used := {}
+var max_summons := MAX_SUMMONS
 var current_action_text: String
 var current_task: String
-var current_task_ID:= -1
+var current_task_ID := -1
 var current_action: Dictionary
 var current_region: Region
 var current_location: String
 var explored_locations: Array
-var quest_chapter:= -1
-var quest_progress:= 0
+var quest_chapter := -1
+var quest_progress := 0
 var current_quest: Dictionary
-var quest_log:= ""
-var summary_text:= ""
+var quest_log := ""
+var summary_text := ""
 var action_failures:= 0
-var enemies:= []
-var loot:= []
-var turn_counter:= 0
+var enemies: Array[Characters.Enemy] = []
+var loot: Array[Item] = []
+var turn_counter := 0
 var current_time: float
-var info_update:= false
-var skill_update:= false
-var equipment_update:= false
-var inventory_update:= false
-var status_update:= false
-var character_update:= false
-var time_offset:= 0
-var autosave_delay:= 30.0
-var historical_data:= {}
+var info_update := false
+var skill_update := false
+var equipment_update := false
+var inventory_update := false
+var status_update := false
+var character_update := false
+var time_offset := 0
+var autosave_delay := 30.0
+var historical_data := {}
 var available_guilds: Array[String] = []
 
 signal text_printed(text: String)
 signal characters_updated(player: Array[Characters.Character], enemy: Array[Characters.Character])
 signal gold_changed(value: int)
-signal inventory_changed(inventory: Array)
-signal potion_inventory_changed(inventory: Array)
-signal story_inventory_changed(inventory: Array)
+signal inventory_changed(inventory: Array[Item])
+signal potion_inventory_changed(inventory: Array[ItemPotion])
+signal story_inventory_changed(inventory: Array[ItemQuest])
 signal location_changed(region: Region, current_location: String)
 signal quest_log_updated(text: String)
 signal summary_updated(text: String)
@@ -172,8 +170,12 @@ func set_region(type: String) -> String:
 		self.current_region.level += 5
 	elif self.current_region.level < self.player.level - 5:
 		self.current_region.tier += 1
-	Story.locations = self.current_region.locations
-	Story.cities = self.current_region.cities
+	Story.locations.clear()
+	for location in self.current_region.locations:
+		Story.locations[location] = self.current_region.locations[location].name
+	Story.cities.clear()
+	for city in self.current_region.cities:
+		Story.cities[city] = self.current_region.cities[city].name
 	Story.factions = self.current_region.race
 	Story.hostile_factions = self.current_region.enemy
 	
@@ -192,47 +194,48 @@ func set_region(type: String) -> String:
 	return self.current_region.name
 
 func pick_skill_type() -> String:
-	var dict:= {}
+	var dict: Dictionary[String, float] = {}
 	var sum:= 0.0
 	var rnd: float
-	for k in player_ability_preference.keys():
-		if !Skills.ABILITY_SKILLS.has(k):
+	for k in player_ability_preference:
+		# TODO
+		if k not in Skills.ABILITY_SKILLS:
 			continue
 		sum += player_ability_preference[k]*get_preference_bonus(k)
 		dict[k] = sum
-	rnd = randf()*sum
-	for k in dict.keys():
-		if rnd<=dict[k]:
+	rnd = randf() * sum
+	for k in dict:
+		if rnd <= dict[k]:
 			return k
 	return ""
 
 func pick_skill_upgrade() -> Dictionary:
-	var dict:= {}
+	var dict: Dictionary[Dictionary, float] = {}
 	var sum:= 0.0
 	var rnd: float
 	if randf()<0.25:
 		return player.skills.pick_random()
 	for skill in player.skills:
-		if skill.has("cost") and skill.cost.has("focus") and player.max_focus-skill.cost.focus<=1.0:
+		if "cost" in skill and "focus" in skill.cost and player.max_focus - skill.cost.focus <= 1.0:
 			continue
-		for s in skill.slots.keys():
-			for t in skill.slots[s]:
-				for a in player.abilities.keys():
-					if !Skills.ABILITY_MODULES.has(a) or !Skills.ABILITY_MODULES[a].has(s) or !Skills.ABILITY_MODULES[a][s].has(t):
+		for s: String in skill.slots:
+			for t: String in skill.slots[s]:
+				for a in player.abilities:
+					if a not in Skills.ABILITY_MODULES or s not in Skills.ABILITY_MODULES[a] or t not in Skills.ABILITY_MODULES[a][s]:
 						continue
-					if !player_ability_preference.has(a):
+					if a not in player_ability_preference:
 						player_ability_preference[a] = 0.0
 					sum += player_ability_preference[a] * get_preference_bonus(a)
 		dict[skill] = sum
 	rnd = randf() * sum
-	for k in dict.keys():
+	for k in dict:
 		if rnd <= dict[k]:
 			return k
 	if player.skills.size() == 0:
 		return {}
 	return player.skills.pick_random()
 
-func learn_new_skill(force_type := "", basic := false):
+func learn_new_skill(force_type := "", basic := false) -> void:
 	var skill := Skills.create_random_skill(player.abilities.keys(), force_type, basic, [], player_settings.disabled_skill_modules)
 	var text := tr("LEARNED_SKILL_LOG").format(skill)
 	for s in player.skills:
@@ -249,149 +252,154 @@ func learn_new_skill(force_type := "", basic := false):
 	print_log_msg("\n" + text)
 	print_summary_msg(text)
 	emit_signal("skills_updated")
-	store_historical_data("skills", 0, skill.name)
-	store_historical_data("skills", skill.level, skill.name)
+	store_historical_data("skills", 0, skill.name as String)
+	store_historical_data("skills", skill.level, skill.name as String)
 
-func get_level_scaling(level: int, scaling := 1.0):
+func get_level_scaling(level: int, scaling := 1.0) -> float:
 	return (1.0 + 0.1 * scaling * (level - 1)) / (1.0 + 0.1 * scaling * (level - 2))
 
-func inc_level(dict, level: int, scaling := 1.0):
+func inc_level(dict: Variant, level: int, scaling := 1.0) -> void:
 	if typeof(dict) == TYPE_DICTIONARY:
-		for k in dict.keys():
-			var s:= scaling*(1.0 - 0.5 * float(k == "focus") + 1.0 * float(k == "mana" or k == "stamina" or k == "health"))
+		for k: String in dict:
+			var s: = scaling * (1.0 - 0.5 * float(k == "focus") + 1.0 * float(k == "mana" or k == "stamina" or k == "health"))
 			match typeof(dict[k]):
 				TYPE_FLOAT:
 					dict[k] *= get_level_scaling(level, s)
 				TYPE_INT:
-					dict[k] = float(dict[k]) * get_level_scaling(level, s)
+					dict[k] = (dict[k] as float) * get_level_scaling(level, s)
 				TYPE_DICTIONARY, TYPE_ARRAY:
 					inc_level(dict[k], level, scaling)
-	elif typeof(dict)==TYPE_ARRAY:
-		for i in range(dict.size()):
+	elif typeof(dict) == TYPE_ARRAY:
+		for i in range((dict as Array).size()):
 			match typeof(dict[i]):
 				TYPE_FLOAT:
 					dict[i] *= get_level_scaling(level, scaling)
 				TYPE_INT:
-					dict[i] = float(dict[i]) * get_level_scaling(level, scaling)
+					dict[i] = (dict[i] as float) * get_level_scaling(level, scaling)
 				TYPE_DICTIONARY, TYPE_ARRAY:
 					inc_level(dict[i], level, scaling)
 
-func upgrade_skill(skill:= {}):
+func upgrade_skill(skill:= {}) -> void:
 	var text: String
-	if skill.size()==0:
+	if skill.size() == 0:
 		skill = pick_skill_upgrade()
-	if skill.size()==0:
+	if skill.size() == 0:
 		skill = player.skills.pick_random()
-	skill.level = int(skill.level + 1)
-	inc_level(skill.combat, skill.level)
-	if skill.has("cost"):
-		inc_level(skill.cost, skill.level)
-	if skill.has("attributes"):
-		inc_level(skill.attributes, skill.level)
-	if skill.has("summon_damage"):
-		inc_level(skill.summon_damage, skill.level)
-	if skill.has("summon_resistance"):
-		inc_level(skill.summon_resistance, skill.level)
-	if skill.has("summoning"):
-		inc_level(skill.summoning, skill.level)
-	if skill.has("status"):
-		inc_level(skill.status, skill.level)
-	if skill.has("damage"):
-		inc_level(skill.damage, skill.level)
-	if skill.has("magic"):
-		inc_level(skill.magic, skill.level)
-	if skill.has("duration"):
-		skill.duration *= get_level_scaling(skill.level, 0.25)
-	if skill.has("cooldown"):
-		skill.cooldown *= get_level_scaling(skill.level, 0.25)
+	skill.level = (skill.level as int) + 1
+	inc_level(skill.combat, skill.level as int)
+	if "cost" in skill:
+		inc_level(skill.cost, skill.level as int)
+	if "attributes" in skill:
+		inc_level(skill.attributes, skill.level as int)
+	if "summon_damage" in skill:
+		inc_level(skill.summon_damage, skill.level as int)
+	if "summon_resistance" in skill:
+		inc_level(skill.summon_resistance, skill.level as int)
+	if "summoning" in skill:
+		inc_level(skill.summoning, skill.level as int)
+	if "status" in skill:
+		inc_level(skill.status, skill.level as int)
+	if "damage" in skill:
+		inc_level(skill.damage, skill.level as int)
+	if "magic" in skill:
+		inc_level(skill.magic, skill.level as int)
+	if "duration" in skill:
+		skill.duration *= get_level_scaling(skill.level as int, 0.25)
+	if "cooldown" in skill:
+		skill.cooldown *= get_level_scaling(skill.level as int, 0.25)
 	skill.description = Skills.create_tooltip(skill)
-	skill.description_plain = Skills.tooltip_remove_bb_code(skill.description)
+	skill.description_plain = Utils.tooltip_remove_bb_code(skill.description as String)
 	if skill in player.skills:
-		text = tr("SKILL_UPGRADE_LOG").format({"name":skill.name, "level":Skills.convert_to_roman_number(skill.level), "description":skill.description_plain})
+		text = tr("SKILL_UPGRADE_LOG").format({
+			"name":skill.name,
+			"level":Skills.convert_to_roman_number(skill.level as int),
+			"description":skill.description_plain,
+		})
 		print_log_msg(text)
 		print_summary_msg(text)
 		emit_signal("skills_updated")
-		store_historical_data("skills", skill.level, skill.name)
+		store_historical_data("skills", skill.level, skill.name as String)
 
 func pick_ability() -> String:
-	var valid:= []
-	var magical:= player.abilities.has("elemental_magic") or player.abilities.has("nature_magic") or player.abilities.has("celestial_magic") or player.abilities.has("defensive_magic") or player.abilities.has("healing")
+	var valid := []
+	var magical := "elemental_magic" in player.abilities or "nature_magic" in player.abilities or "celestial_magic" in player.abilities or "defensive_magic" in player.abilities or "healing" in player.abilities
 	
-	if !player.abilities.has("light_weapons") and (player.abilities.has("heavy_weapons") or player.abilities.has("dirty_fighting") or player.abilities.has("shield") or player.abilities.has("evasion") or player.abilities.has("weapon_smithing")):
+	if "light_weapons" not in player.abilities and ("heavy_weapons" in player.abilities or "dirty_fighting" in player.abilities or "shield" in player.abilities or "evasion" in player.abilities or "weapon_smithing" in player.abilities):
 		valid.push_back("light_weapons")
-	if !player.abilities.has("heavy_weapons") and (player.abilities.has("light_weapons") or player.abilities.has("shield") or player.abilities.has("armour") or player.abilities.has("weapon_smithing")):
+	if "heavy_weapons" not in player.abilities and ("light_weapons" in player.abilities or "shield" in player.abilities or "armour" in player.abilities or "weapon_smithing" in player.abilities):
 		valid.push_back("heavy_weapons")
-	if !player.abilities.has("dirty_fighting") and (player.abilities.has("light_weapons")):
+	if "dirty_fighting" not in player.abilities and ("light_weapons" in player.abilities):
 		valid.push_back("dirty_fighting")
-	if !player.abilities.has("brawling") and (player.abilities.has("armour") or player.abilities.has("heavy_weapons")):
+	if "brawling" not in player.abilities and ("armour" in player.abilities or "heavy_weapons" in player.abilities):
 		valid.push_back("brawling")
-	if !player.abilities.has("archery") and (((player.abilities.has("light_weapons") or player.abilities.has("woodwork")) and !magical) or ((magical or player.abilities.has("woodwork")) and !(player.abilities.has("light_weapons") or player.abilities.has("heavy_weapons")))):
+	if "archery" not in player.abilities and ((("light_weapons" in player.abilities or "woodwork" in player.abilities) and not magical) or ((magical or "woodwork" in player.abilities) and not ("light_weapons" in player.abilities or "heavy_weapons" in player.abilities))):
 		valid.push_back("archery")
-	if !player.abilities.has("trapping") and (player.abilities.has("archery") or player.abilities.has("dirty_fighting")):
+	if "trapping" not in player.abilities and ("archery" in player.abilities or "dirty_fighting" in player.abilities):
 		valid.push_back("trapping")
-	if !player.abilities.has("shield") and player.abilities.has("armour"):
+	if "shield" not in player.abilities and "armour" in player.abilities:
 		valid.push_back("shield")
-	if !player.abilities.has("armour") and (player.abilities.has("shield") or player.abilities.has("heavy_weapons") or player.abilities.has("armour_smithing")):
+	if "armour" not in player.abilities and ("shield" in player.abilities or "heavy_weapons" in player.abilities or "armour_smithing" in player.abilities):
 		valid.push_back("armour")
-	if !player.abilities.has("evasion") and (player.abilities.has("light_weapons") or player.abilities.has("dirty_fighting") or player.abilities.has("tayloring")):
+	if "evasion" not in player.abilities and ("light_weapons" in player.abilities or "dirty_fighting" in player.abilities or "tayloring" in player.abilities):
 		valid.push_back("evasion")
-	if !player.abilities.has("elemental_magic") and magical:
+	if "elemental_magic" not in player.abilities and magical:
 		valid.push_back("elemental_magic")
-	if !player.abilities.has("nature_magic") and magical:
+	if "nature_magic" not in player.abilities and magical:
 		valid.push_back("nature_magic")
-	if !player.abilities.has("celestial_magic") and magical:
+	if "celestial_magic" not in player.abilities and magical:
 		valid.push_back("celestial_magic")
-	if !player.abilities.has("defensive_magic") and magical:
+	if "defensive_magic" not in player.abilities and magical:
 		valid.push_back("defensive_magic")
-	if !player.abilities.has("blood_magic") and (player.abilities.has("necromancy") or player.abilities.has("celestial_magic")) and magical:
+	if "blood_magic" not in player.abilities and ("necromancy" in player.abilities or "celestial_magic" in player.abilities) and magical:
 		valid.push_back("blood_magic")
-	if !player.abilities.has("summoning") and magical:
+	if "summoning" not in player.abilities and magical:
 		valid.push_back("summoning")
-	if !player.abilities.has("necromancy") and magical:
+	if "necromancy" not in player.abilities and magical and (("healing" not in player.abilities and "summoning" not in player.abilities) or ("blood_magic" in player.abilities)):
 		valid.push_back("necromancy")
-	if !player.abilities.has("healing") and magical:
+	if "healing" not in player.abilities and magical:
 		valid.push_back("healing")
-	if !player.abilities.has("alchemy") and (magical or player.abilities.has("archery") or player.abilities.has("dirty_fighting")):
+	if "alchemy" not in player.abilities and (magical or "archery" in player.abilities or "dirty_fighting" in player.abilities):
 		valid.push_back("alchemy")
-	if !player.abilities.has("enchanting") and magical:
+	if "enchanting" not in player.abilities and magical:
 		valid.push_back("enchanting")
-	if !player.abilities.has("soul_binding") and magical and player.abilities.has("enchanting"):
+	if "soul_binding" not in player.abilities and magical and "enchanting" in player.abilities:
 		valid.push_back("soul_binding")
-	if !player.abilities.has("weapon_smithing") and (player.abilities.has("light_weapons") or player.abilities.has("heavy_weapons")):
+	if "weapon_smithing" not in player.abilities and ("light_weapons" in player.abilities or "heavy_weapons" in player.abilities):
 		valid.push_back("weapon_smithing")
-	if !player.abilities.has("armour_smithing") and (player.abilities.has("armour") or player.abilities.has("shield")):
+	if "armour_smithing" not in player.abilities and ("armour" in player.abilities or "shield" in player.abilities):
 		valid.push_back("armour_smithing")
-	if !player.abilities.has("tayloring") and (magical or player.abilities.has("evasion") or player.abilities.has("dirty_fighting")):
+	if "tayloring" not in player.abilities and (magical or "evasion" in player.abilities or "dirty_fighting" in player.abilities):
 		valid.push_back("tayloring")
-	if !player.abilities.has("woodwork") and (magical or player.abilities.has("archery")):
+	if "woodwork" not in player.abilities and (magical or "archery" in player.abilities):
 		valid.push_back("woodwork")
-	if !player.abilities.has("cooking"):
+	if "cooking" not in player.abilities:
 		valid.push_back("cooking")
 	
 	if valid.size() == 0:
-		for k in Skills.ABILITIES.keys():
-			if !player.abilities.has(k):
+		for k in Skills.ABILITIES:
+			if k not in player.abilities:
 				valid.push_back(k)
 	
 	if valid.size() > 0:
 		return valid.pick_random()
 	return ""
 
-func learn_new_ability(type := ""):
+func learn_new_ability(type := "") -> void:
 	if type.length() == 0:
 		type = pick_ability()
 	if type.length() == 0:
-		for ability in player.abilities.keys():
+		for ability in player.abilities:
 			player.abilities[ability].level_up()
 		return
 	
-	var text:= tr("LEARNED_ABIlITY_LOG").format({"ability": tr(Skills.ABILITIES[type].name.to_upper())})
+	var text:= tr("LEARNED_ABIlITY_LOG").format({
+		"ability": tr((Skills.ABILITIES[type].name as String).to_upper()),
+	})
 	player.abilities[type] = Ability.new({
 		"name": Skills.ABILITIES[type].name,
 		"level": 1,
 		"experience": 0,
 	})
-	#player_ability_exp[type] = 0
 	learn_new_skill()
 	print_log_msg(text)
 	print_summary_msg(text)
@@ -399,7 +407,7 @@ func learn_new_ability(type := ""):
 	store_historical_data("abilities", 1, type)
 	emit_signal("abilities_updated")
 
-func join_guild():
+func join_guild() -> void:
 	var guild := Guilds.create_guild(self.current_region, player)
 	var text:= tr("JOIN_GUILD").format({"guild": guild.name, "rank": guild.ranks[0]})
 	print_log_msg(text)
@@ -412,95 +420,96 @@ func get_preference_bonus(type: String) -> float:
 	var multiplier:= 1.0
 	if type in ["infuse_elemental", "infuse_nature", "cleric"]:
 		multiplier *= 1.5
-	if type in ["light_weapons", "heavy_weapons", "archery"] and (player.abilities.has("infuse_elemental") or player.abilities.has("infuse_nature") or player.abilities.has("cleric")):
+	if type in ["light_weapons", "heavy_weapons", "archery"] and ("infuse_elemental" in player.abilities or "infuse_nature" in player.abilities or "cleric" in player.abilities):
 		multiplier *= 1.5
 	return multiplier
 
 func get_attribute_preference() -> Dictionary:
-	var dict:= {}
+	var dict: Dictionary[String, float] = {}
 	var sum:= 0.0
-	for k in player.attributes.keys():
+	for k: String in player.attributes:
 		dict[k] = 0.0
-	for stat in player_stat_preference.keys():
-		if !STAT_ATTRIBUTES.has(stat):
+	for stat: String in player_stat_preference:
+		if stat not in STAT_ATTRIBUTES:
 			continue
-		for k in STAT_ATTRIBUTES[stat].keys():
+		for k: String in STAT_ATTRIBUTES[stat]:
 			dict[k] += STAT_ATTRIBUTES[stat][k]*player_stat_preference[stat]
-	for ability in player_ability_preference.keys():
-		for k in dict.keys():
-			if Skills.ABILITIES[ability].has(k):
+	for ability in player_ability_preference:
+		for k in dict:
+			if k in Skills.ABILITIES[ability]:
 				dict[k] += player_ability_preference[ability]*Skills.ABILITIES[ability][k]
-	if player.abilities.has("armour") or player.abilities.has("shield"):
+	if "armour" in player.abilities or "shield" in player.abilities:
 		dict.armour *= 2.0
-	if player.abilities.has("evasion"):
+	if "evasion" in player.abilities:
 		dict.evasion *= 2.0
-	dict.penetration *= 1.0 + 0.5*float(player.abilities.has("light_weapon")) + 0.5*float(player.abilities.has("dirty_fighting"))
-	for k in dict.keys():
+	dict.penetration *= 1.0 + 0.5 * float("light_weapon" in player.abilities) + \
+		0.5 * float("dirty_fighting" in player.abilities)
+	for k in dict:
 		sum += dict[k]
-	for k in dict.keys():
-		dict[k] = 1.0 + 4.0*dict[k]/sum
-	if !player.abilities.has("elemental_magic") and !player.abilities.has("nature_magic") and !player.abilities.has("celestial_magic"):
+	for k in dict:
+		dict[k] = 1.0 + 4.0 * dict[k] / sum
+	if "elemental_magic" not in player.abilities and "nature_magic" not in player.abilities and "celestial_magic" not in player.abilities and "blood_magic" not in player.abilities:
 		dict.magic -= 1.0
-	if !player.abilities.has("light_weapons") and !player.abilities.has("heavy_weapons") and !player.abilities.has("archery") and !player.abilities.has("shield"):
+	if "light_weapons" not in player.abilities and "heavy_weapons" not in player.abilities and "archery" not in player.abilities and "shield" not in player.abilities:
 		dict.attack -= 1.0
-	if !player.abilities.has("healing") and !player.abilities.has("summoning") and !player.abilities.has("necromancy"):
+	if "healing" not in player.abilities and "summoning" not in player.abilities and "necromancy" not in player.abilities:
 		dict.willpower -= 0.5
-	dict.speed *= (0.5 + (0.025-0.005*float(player.abilities.has("armour"))) * (dict.attack*player.attributes.attack + dict.magic*player.attributes.magic))
+	dict.speed *= (0.5 + (0.025 - 0.005 * float("armour" in player.abilities)) * (dict.attack * player.attributes.attack + dict.magic * player.attributes.magic))
 	return dict
 
-func add_item(item: Dictionary, amount:= 1):
+func add_item(item: Item, amount:= 1) -> void:
 	for i in range(amount):
 		player_inventory.push_back(item)
 	emit_signal("inventory_changed", player_inventory)
 
-func remove_item(item: Dictionary, amount:= 1):
+func remove_item(item: Item, amount:= 1) -> void:
 	for i in range(amount):
 		player_inventory.erase(item)
 	emit_signal("inventory_changed", player_inventory)
 
-func sell_item(item: Dictionary, amount:= 1) -> int:
+func sell_item(item: Item, amount:= 1) -> int:
 	if !(item in player_inventory):
 		return 0
 	var price: int
 	if item.type=="material":
-		price = max(item.price*amount*MATERIAL_SELLING_PRICE, 1)
+		@warning_ignore("narrowing_conversion")
+		price = maxi(item.price * amount * MATERIAL_SELLING_PRICE, 1)
 	else:
-		price = max(item.price*amount*SELLING_PRICE, 1)
+		@warning_ignore("narrowing_conversion")
+		price = maxi(item.price * amount * SELLING_PRICE, 1)
 	player_gold += price
 	remove_item(item, amount)
 	emit_signal("gold_changed", player_gold)
 	return price
 
-func buy_item(item: Dictionary, amount:= 1) -> bool:
-	if player_gold<item.price*amount:
+func buy_item(item: Item, amount:= 1) -> bool:
+	if player_gold < item.price * amount:
 		return false
 	player_gold -= item.price*amount
 	emit_signal("gold_changed", player_gold)
 	return true
 
 func unequip(type: String) -> bool:
-	if !player.equipment.has(type):
+	if type not in player.equipment:
 		return false
 	add_item(player.equipment[type])
 	player.equipment.erase(type)
 	return true
 
-func equip(item: Dictionary) -> bool:
-	if !item.has("type"):
-		return false
-	if item.has("2h") and item["2h"]:
+func equip(item: ItemEquipment) -> bool:
+	if item.is_2h:
 		unequip("offweapon")
-	if player.equipment.has(item.type):
-		if item.type=="weapon":
-			if !(item.has("2h") and item["2h"]):
-				if !player.equipment.has("weapon"):
+	if item.type in player.equipment:
+		if item.type == "weapon":
+			if not item.is_2h:
+				if "weapon" not in player.equipment:
 					player.equipment.weapon = item
 					return true
-				elif !player.equipment.has("offweapon") and !(player.equipment.weapon.has("2h") and player.equipment.weapon["2h"]):
+				elif "offweapon" not in player.equipment and not player.equipment.weapon.is_2h:
 					player.equipment.offweapon = item
 					return true
 				else:
-					if player.equipment.has("offweapon") and player.equipment.offweapon.base_type==item.base_type:
+					if "offweapon" in player.equipment and player.equipment.offweapon.base_name == item.base_name:
 						unequip("offweapon")
 						player.equipment.offweapon = item
 					else:
@@ -508,17 +517,17 @@ func equip(item: Dictionary) -> bool:
 						player.equipment.weapon = item
 					return true
 			else:
-				if player.equipment.has("weapon"):
+				if "weapon" in player.equipment:
 					unequip("weapon")
 					player.equipment.weapon = item
 					return true
 	if item.type in EQUIPMENT_LR_TYPES:
 		var l: String = item.type + "_left"
 		var r: String = item.type + "_right"
-		if !player.equipment.has(l):
+		if l not in player.equipment:
 			player.equipment[l] = item
 			return true
-		if !player.equipment.has(r):
+		if r not in player.equipment:
 			player.equipment[r] = item
 			return true
 		if compare_items([item], [player.equipment[l]])>0:
@@ -534,10 +543,10 @@ func equip(item: Dictionary) -> bool:
 
 func get_equipment_quality(type: String) -> float:
 	var search_type:= type
-	for t in player.equipment.keys():
+	for t in player.equipment:
 		if t != search_type:
 			continue
-		var item: Dictionary = player.equipment[t]
+		var item := player.equipment[t]
 		return item.quality
 	return 0.0
 
@@ -545,7 +554,7 @@ func get_worst_equipment_type() -> String:
 	var valid:= []
 	var min_quality:= 1e99
 	for k in EQUIPMENT_SLOTS:
-		if EQUIPMENT_LEVEL_RESTRICTION.has(k) and player.level < EQUIPMENT_LEVEL_RESTRICTION[k]:
+		if k in EQUIPMENT_LEVEL_RESTRICTION and player.level < EQUIPMENT_LEVEL_RESTRICTION[k]:
 			continue
 		var quality:= get_equipment_quality(k) * randf_range(0.95, 1.05)
 		if quality == min_quality:
@@ -560,15 +569,15 @@ func get_worst_equipment_type() -> String:
 
 func pick_random_potion_type(type:= "health") -> String:
 	var valid:= []
-	for t in Items.potion_recipes.keys():
+	for t in Items.potion_recipes:
 		if Items.potion_recipes[t].effect == type:
 			valid.push_back(t)
 	if valid.size() > 0:
 		return valid.pick_random()
 	return Items.potion_recipes.keys().pick_random()
 
-func create_shop_equipment(type: String, quality_mod:= 1.0) -> Dictionary:
-	var item: Dictionary
+func create_shop_equipment(type: String, quality_mod:= 1.0) -> ItemEquipment:
+	var item: ItemEquipment
 	var num_enchantments:= 0
 	item = Items.create_random_standard_equipment(type, self.current_region, 0, quality_mod)
 	for i in range(3):
@@ -584,22 +593,30 @@ func create_shop_equipment(type: String, quality_mod:= 1.0) -> Dictionary:
 		elif self.current_region.tier > 0:
 			tier_multiplier = sqrt(1.5 * self.current_region.tier)
 		quality = int(100*level_multiplier * tier_multiplier)
-		item = Items.enchant_equipment(item, Items.Enchantment.enchantments_by_tier.regular.pick_random(), quality)
+		item.enchant_equipment(
+			Items.Enchantment.enchantments_by_tier.regular.pick_random() as String,
+			quality,
+		)
 		if randf() < 0.02:
-			item = Items.enchant_equipment(item, Items.Enchantment.enchantments_by_tier.curse.pick_random(), quality)
+			item.enchant_equipment(
+				Items.Enchantment.enchantments_by_tier.curse.pick_random() as String,
+				quality,
+			)
 	if num_enchantments > 0:
 		item.source += "\n" + tr("NPC_ENCHANTED").format({
-			"name": Names.create_name(self.current_region.race.pick_random(), randi_range(-1, 1)),
+			"name": Names.create_name(
+				self.current_region.race.pick_random() as String,
+				randi_range(-1, 1),
+			),
 		})
 	item.source = tr("BOUGHT_FROM_SHOP").format({"location": current_location})
-	item.description = Items.create_tooltip(item)
-	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+	item.description = item.create_tooltip()
 	return item
 
-func create_shop_potion(type:="") -> Dictionary:
-	var item: Dictionary
+func create_shop_potion(type:="") -> ItemPotion:
+	var item: ItemPotion
 	var dict: Dictionary
-	var material: Dictionary = self.current_region.local_materials.alchemy.pick_random().duplicate(true)
+	var material := (self.current_region.local_materials.alchemy.pick_random() as Dictionary).duplicate(true)
 	var quality: int
 	var tier_multiplier:= 1.0
 	var level_multiplier: float = 1.0 + 0.05 * (self.current_region.level + player.level - 2)
@@ -610,24 +627,25 @@ func create_shop_potion(type:="") -> Dictionary:
 	quality = int(100 * level_multiplier * tier_multiplier)
 	if type == "":
 		if player_settings.valid_potion_types.size() > 0 and randf() < 0.25:
-			type = pick_random_potion_type(player_settings.valid_potion_types.pick_random())
+			type = pick_random_potion_type(player_settings.valid_potion_types.pick_random() as String)
 		else:
 			type = pick_random_potion_type()
 	dict = Items.potion_recipes[type]
-	for m in dict.material_types[0]:
-		if !self.current_region.local_materials.has(m):
+	for m: String in dict.material_types[0]:
+		if m not in self.current_region.local_materials:
 			continue
-		material = self.current_region.local_materials[m].pick_random().duplicate(true)
+		material = (self.current_region.local_materials[m].pick_random() as Dictionary).duplicate(true)
 		break
 	material.quality *= quality
-	item = Items.craft_potion(type, [material])
+	
+	var mats: Array[ItemMaterial] = [ItemMaterial.new(material)]
+	item = Items.craft_potion(type, mats)
 	item.source = tr("BOUGHT_FROM_SHOP").format({"location": current_location})
-	item.description = Items.create_tooltip(item)
-	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+	item.description = item.create_tooltip()
 	return item
 
-func create_shop_material(material:= "") -> Dictionary:
-	var item: Dictionary
+func create_shop_material(material:= "") -> ItemMaterial:
+	var item: ItemMaterial
 	var valid_abilities:= []
 	var recipe: String
 	
@@ -635,24 +653,24 @@ func create_shop_material(material:= "") -> Dictionary:
 		var valid:= []
 		var type: String
 		for k in player.abilities:
-			if Skills.ABILITIES[k].has("recipes"):
+			if "recipes" in Skills.ABILITIES[k]:
 				valid_abilities.push_back(k)
 		if valid_abilities.size() == 0:
-			return {}
-		recipe = Skills.ABILITIES[valid_abilities.pick_random()].recipes.pick_random()
-		if Items.equipment_recipes.has(recipe):
-			type = Items.equipment_components[
-				Items.equipment_recipes[recipe].components.pick_random()].material.pick_random()
-		elif Items.potion_recipes.has(recipe):
-			type = Items.potion_recipes[recipe].material_types.pick_random().pick_random()
-		elif Items.food_recipes.has(recipe):
-			type = Items.food_recipes[recipe].material_types.pick_random().pick_random()
-		elif Items.Enchantment.enchantments.has(recipe):
-			type = Items.Enchantment.enchantments[recipe].material_types.pick_random().pick_random()
-		for mat in Items.materials.keys():
+			return null
+		recipe = (Skills.ABILITIES[valid_abilities.pick_random()].recipes as Array).pick_random()
+		if recipe in Items.equipment_recipes:
+			type = (Items.equipment_components[
+				(Items.equipment_recipes[recipe].components as Array).pick_random()].material as Array).pick_random()
+		elif recipe in Items.potion_recipes:
+			type = ((Items.potion_recipes[recipe].material_types as Array).pick_random() as Array).pick_random()
+		elif recipe in Items.food_recipes:
+			type = ((Items.food_recipes[recipe].material_types as Array).pick_random() as Array).pick_random()
+		elif recipe in Items.Enchantment.enchantments:
+			type = ((Items.Enchantment.enchantments[recipe].material_types as Array).pick_random() as Array).pick_random()
+		for mat in Items.materials:
 			if type in Items.materials[mat].tags:
 				valid.push_back(mat)
-		if player.abilities.has("soul_binding"):
+		if "soul_binding" in player.abilities:
 			valid.push_back("empty_soul_stone")
 		if valid.size()>0:
 			material = valid.pick_random()
@@ -663,55 +681,54 @@ func create_shop_material(material:= "") -> Dictionary:
 	item.source = tr("BOUGHT_FROM_SHOP").format({
 		"location": current_location,
 	})
-	item.description = Items.create_tooltip(item)
-	item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+	item.description = item.create_tooltip()
 	return item
 
 func can_do_damage_type(type: String) -> bool:
 	for skill in player.skills:
-		if !skill.combat.has("damage"):
+		if "damage" not in skill.combat:
 			continue
-		for array in skill.combat.damage:
-			for dict in array:
-				if dict.has("type") and dict.type==type:
+		for array: Array in skill.combat.damage:
+			for dict: Dictionary in array:
+				if "type" in dict and dict.type == type:
 					return true
 	return false
 
-func calc_item_score(item: Dictionary, preference: Dictionary) -> int:
-	var score:= 0
-	var multiplier := 1.0 + 1.0*float(player.abilities.has("archery") and item.has("ranged") and item.ranged) - 0.75*float(!player.abilities.has("archery") and item.has("ranged") and item.ranged) + 0.25*float(player.abilities.has("shield") and item.has("subtype") and "shield" in item.subtype)
-	for k in player.attributes.keys():
-		if item.has(k):
-			score += item[k]*preference[k]
-	for k in player.stats.keys():
-		if !item.has(k):
+func calc_item_score(item: ItemEquipment, preference: Dictionary[String, float]) -> int:
+	var score := 0
+	var multiplier := 1.0 + 1.0 * float("archery" in player.abilities and item.is_ranged) - \
+		0.75 * float("archery" not in player.abilities and item.is_ranged) + \
+		0.25 * float("shield" in player.abilities and "shield" in item.subtype)
+	for k in player.attributes:
+		if k in item.attributes:
+			score += floori(item.attributes[k] * preference[k])
+	for k in player.stats:
+		if k not in item.stats:
 			continue
-		if Characters.STATS_ATTRIBUTES.has(k):
-			for attr in Characters.STATS_ATTRIBUTES[k]:
-				score += item[k]*Characters.STATS_ATTRIBUTES[k][attr]*preference[attr]
-		if Characters.STATS_METERS.has(k):
-			for meter in Characters.STATS_METERS[k]:
+		if k in Characters.STATS_ATTRIBUTES:
+			for attr: String in Characters.STATS_ATTRIBUTES[k]:
+				score += item.stats[k] * Characters.STATS_ATTRIBUTES[k][attr] * preference[attr]
+		if k in Characters.STATS_METERS:
+			for meter: String in Characters.STATS_METERS[k]:
 				var factor:= 0.2
 				if "regen" in meter:
 					factor = 0.5
-				score += item[k]*Characters.STATS_METERS[k][meter]*factor
-	for k in ["health", "stamina", "mana"]:
-		if item.has(k):
-			score += item[k]/5.0
-		if item.has(k+"_regen"):
-			score += item[k+"_regen"]/2.0
-	if item.has("focus"):
-		score += item.focus*2
-	if item.has("resistance"):
-		for c in item.resistance.keys():
-			score += 15.0*item.resistance[c]
-	if item.has("damage"):
-		for c in item.damage.keys():
-			if can_do_damage_type(c):
-				score += 30.0*item.damage[c]
+				score += item.stats[k] * Characters.STATS_METERS[k][meter] * factor
+	for k: String in ["health", "stamina", "mana"]:
+		if k in item.resources:
+			score += floori(item.resources[k] / 5.0)
+		if k in item.resource_regen:
+			score += floori(item.resource_regen[k] / 2.0)
+	if "focus" in item.resources:
+		score += floori(2.0 * item.resources.focus)
+	for c in item.resistance:
+		score += floori(15.0 * item.resistance[c])
+	for c in item.damage:
+		if can_do_damage_type(c):
+			score += floori(30.0 * item.damage[c])
 	return int(score*multiplier)
 
-func compare_items(new_items: Array, old_items: Array) -> int:
+func compare_items(new_items: Array[ItemEquipment], old_items: Array[ItemEquipment]) -> int:
 	var diff:= 0
 	var preference := get_attribute_preference()
 	for item in new_items:
@@ -737,66 +754,61 @@ func get_slot_type(slot: String) -> String:
 		return "bracelet"
 	return slot
 
-func optimize_equipment():
-	var i:= 0
-	while i<player_inventory.size():
-		var item: Dictionary = player_inventory[i]
-		if item.has("2h") and item["2h"]:
+func optimize_equipment() -> void:
+	var i := 0
+	while i < player_inventory.size():
+		if player_inventory[i] is not ItemEquipment:
+			i += 1
+			continue
+		
+		var item := player_inventory[i] as ItemEquipment
+		if item.is_2h:
 			if !player_settings.weapon_2h_alowed:
 				i += 1
 				continue
 		elif !player_settings.weapon_1h_alowed:
 			i += 1
 			continue
-		if item.has("subtype"):
-			if typeof(item.subtype) == TYPE_ARRAY:
-				var valid:= false
-				for k in item.subtype:
-					if k in player_settings.valid_weapon_types or k in player_settings.valid_armour_types:
-						valid = true
-						break
-				if !valid:
-					i += 1
-					continue
-			elif !(item.subtype in player_settings.valid_weapon_types or item.subtype in player_settings.valid_armour_types or (player_settings.valid_weapon_types.size() == 0 and item.type == "weapon")):
-				i += 1
-				continue
+		if !(item.subtype in player_settings.valid_weapon_types or item.subtype in player_settings.valid_armour_types or (player_settings.valid_weapon_types.size() == 0 and item.type == "weapon")):
+			i += 1
+			continue
 		for k in EQUIPMENT_SLOTS:
 			if get_slot_type(k) != item.type:
 				continue
-			if !player.equipment.has(k) and !(item.has("2h") and item["2h"]) and player_inventory.has(item):
+			if k not in player.equipment and not item.is_2h and item in player_inventory:
 				equip(item)
 				player_inventory.erase(item)
 				break
-			elif item.has("2h") and item["2h"]:
+			elif item.is_2h:
 				if k == "weapon" or k == "offweapon":
-					if player.equipment.has("offweapon") and player_inventory.has(item) and compare_items([item], [player.equipment[k], player.equipment.offweapon]) > 0:
+					if "offweapon" in player.equipment and item in player_inventory and compare_items([item], [player.equipment[k], player.equipment.offweapon]) > 0:
 						equip(item)
 						player_inventory.erase(item)
 						break
-			elif player.equipment[k].has("2h") and player.equipment[k]["2h"] and player_settings.weapon_1h_alowed:
+			elif player.equipment[k].is_2h and player_settings.weapon_1h_alowed:
 				for j in range(player_inventory.size()):
-					var it: Dictionary = player_inventory[j]
-					if item==it:
+					if player_inventory[j] is not ItemEquipment:
 						continue
-					if it.has("2h") and it["2h"]:
+					var it := player_inventory[j] as ItemEquipment
+					if item == it:
 						continue
-					if it.has("subtype"):
-						if !(it.subtype in player_settings.valid_weapon_types or it.subtype in player_settings.valid_armour_types or (player_settings.valid_weapon_types.size() == 0 and it.type == "weapon")):
-							continue
+					if it.is_2h:
+						continue
+					if !(it.subtype in player_settings.valid_weapon_types or it.subtype in player_settings.valid_armour_types or (player_settings.valid_weapon_types.size() == 0 and it.type == "weapon")):
+						continue
 					if it.type != "weapon":
 						continue
-					if compare_items([player.equipment[k]], [item, it]) < 0 and player_inventory.has(item) and player_inventory.has(it):
+					if compare_items([player.equipment[k]], [item, it]) < 0 and item in player_inventory and it in player_inventory:
 						equip(item)
 						equip(it)
 						player_inventory.erase(item)
 						player_inventory.erase(it)
 						break
-			elif k == "weapon" and !player.equipment.has("offweapon") and player_inventory.has(item):
+			elif k == "weapon" and "offweapon" not in player.equipment and item in player_inventory:
 				equip(item)
 				player_inventory.erase(item)
 				break
-			elif compare_items([item], [player.equipment[k]]) > 0 and player_inventory.has(item):
+			elif compare_items([item], [player.equipment[k]]) > 0 and item in player_inventory:
 				equip(item)
 				player_inventory.erase(item)
 				break
@@ -816,9 +828,6 @@ func get_material_gold_limit() -> int:
 func get_max_exp(lvl: int) -> int:
 	return 50 + 50 * lvl * lvl
 
-#func get_ability_exp(lvl: int) -> int:
-#	return 100 + 75 * lvl + 25 * lvl * lvl
-
 func get_delay_scale(speed: int) -> float:
 	var s := Characters.get_resistance(speed / 10.0) * 10
 	return 20.0 / max(10.0 + s, 1.0)
@@ -834,41 +843,41 @@ func get_min_character_dist(character: Characters.Character, opponents: Array[Ch
 	return min_dist
 
 func get_soul_stone_drop_chance() -> float:
-	if player.abilities.has("soul_binding"):
-		return min(0.05 + 0.005 * player.abilities.soul_binding.level, 0.25)
+	if "soul_binding" in player.abilities:
+		return minf(0.05 + 0.005 * player.abilities.soul_binding.level, 0.25)
 	return 0.05
 
-func get_empty_soul_stone():
+func get_empty_soul_stone() -> ItemMaterial:
 	for item in player_inventory:
-		if item.type == "material" and item.has("tags") and "cage" in item.tags:
+		if item is ItemMaterial and "cage" in item.tags:
 			return item
+	return null
 
 func extract_soul() -> float:
 	for item in player_inventory:
-		if item.type == "material" and item.has("tags") and "soul" in item.tags:
-			var scaling: float = max(sqrt(1.0 + float(item.quality) / 200.0 + 0.01*player.abilities.soul_binding.level) - 1.0, 0.0)
-			item.name = Items.materials.empty_soul_stone.name.pick_random().capitalize()
+		if item is ItemMaterial and "soul" in item.tags:
+			var scaling := maxf(sqrt(1.0 + float(item.quality) / 200.0 + 0.01 * player.abilities.soul_binding.level) - 1.0, 0.0)
+			item.name = ((Items.materials.empty_soul_stone.name as Array).pick_random() as String).capitalize()
 			item.tags = ["cage"]
 			item.quality = int(item.quality * 0.75)
 			item.price /= 4
-			item.erase("add")
-			item.description = Items.create_tooltip(item)
-			item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+			(item as ItemMaterial).add.clear()
+			item.description = item.create_tooltip()
 			emit_signal("inventory_changed", player_inventory)
 			use_ability("soul_binding", 2.0)
 			add_ability_exp("soul_binding", 10.0)
 			return scaling
 	return 0.0
 
-func pick_enchantment(item: Dictionary) -> String:
+func pick_enchantment(item: ItemEquipment) -> String:
 	if "enchantments" in item:
 		if "minor" in item.enchantments and "greator" not in item.enchantments:
-			return Items.Enchantment.enchantments_by_tier_and_slot.regular.greater.pick_random()
+			return (Items.Enchantment.enchantments_by_tier_and_slot.regular.greater as Array).pick_random() as String
 		elif "greater" in item.enchantments and "minor" not in item.enchantments:
-			return Items.Enchantment.enchantments_by_tier_and_slot.regular.minor.pick_random()
+			return (Items.Enchantment.enchantments_by_tier_and_slot.regular.minor as Array).pick_random() as String
 	return Items.Enchantment.enchantments_by_tier.regular.pick_random()
 
-func level_up():
+func level_up() -> void:
 	var text: String
 	player.experience -= get_max_exp(player.level)
 	player.level += 1
@@ -886,7 +895,7 @@ func level_up():
 		for skill in player.skills:
 			if "cost" not in skill:
 				continue
-			for k in skill.cost.keys():
+			for k: String in skill.cost:
 				if k == "focus":
 					continue
 				if k not in player_settings.valid_potion_types:
@@ -895,13 +904,13 @@ func level_up():
 	
 	store_historical_data("level", player.level)
 
-func add_exp(amount: int):
+func add_exp(amount: int) -> void:
 	player.experience += amount
 	player_exp += amount
 	if player.experience >= get_max_exp(player.level):
 		level_up()
 
-func add_guild_exp(type: String, exp_scale := 1.0):
+func add_guild_exp(type: String, exp_scale := 1.0) -> void:
 	for guild_id in self.available_guilds:
 		if guild_id not in Guilds.guilds:
 			continue
@@ -909,7 +918,7 @@ func add_guild_exp(type: String, exp_scale := 1.0):
 			Guilds.guilds[guild_id].add_exp(exp_scale, type)
 	emit_signal("guilds_updated", self.available_guilds)
 
-func guild_level_up(guild_id: String):
+func guild_level_up(guild_id: String) -> void:
 	if guild_id not in Guilds.guilds:
 		return
 	
@@ -970,7 +979,7 @@ func guild_level_up(guild_id: String):
 			#amount = randi_range(10, 14)
 	#item.source = tr("GUILD_REWARD").format({"guild": tr(Guilds.GUILDS[guild].name.to_upper())})
 	#item.description = Items.create_tooltip(item)
-	#item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+	#item.description_plain = Utils.tooltip_remove_bb_code(item.description)
 	#add_item(item, amount)
 	#optimize_equipment()
 	#print_log_msg(tr("GUILD_ITEM_REWARD").format(item))
@@ -985,13 +994,10 @@ func pick_random_resource() -> String:
 		return Items.materials.keys().pick_random()
 
 
-func recalc_attributes():
-	player.recalc_attributes()
-
-func distribute_stat_points():
-	var dict := {}
+func distribute_stat_points() -> void:
+	var dict: Dictionary[String, float] = {}
 	var sum := 0.0
-	for k in player_stat_preference.keys():
+	for k in player_stat_preference:
 		sum += player_stat_preference[k]
 		dict[k] = sum
 	for i in range(Characters.STAT_POINTS_PER_LEVEL):
@@ -999,7 +1005,7 @@ func distribute_stat_points():
 			player.stats.constitution += 1
 			continue
 		var rnd := randf()*sum
-		for k in dict.keys():
+		for k in dict:
 			if rnd <= dict[k]:
 				player.stats[k] += 1
 				break
@@ -1011,20 +1017,20 @@ func get_max_potions() -> int:
 
 func get_task_ID() -> int:
 	var time_zone := Time.get_time_zone_from_system()
-	var data := Time.get_time_dict_from_unix_time(int(current_time + 60 * time_zone.bias))
-	var hour: int = posmod(data.hour + time_offset, 24)
+	var data := Time.get_time_dict_from_unix_time(floori(current_time + 60 * time_zone.get("bias", 0.0) as float))
+	var hour := posmod((data.get("hour", 0) as int) + time_offset, 24)
 	var index := timetable.size()
 	for i in range(timetable.size() - 1, -1, -1):
 		if timetable.keys()[i] >= hour and i <= index:
 			index = i
 	if index >= timetable.size():
-		index = timetable.size()-2
+		index = timetable.size() - 2
 	return index
 
 func pick_random_materials(dict: Dictionary) -> Array:
 	var materials := []
-	if dict.has("components"):
-		for c in dict.components:
+	if "components" in dict:
+		for c: String in dict.components:
 			var valid_materials:= []
 			var mat_types: Array = Items.equipment_components[c].material
 			for item in player_inventory:
@@ -1036,8 +1042,8 @@ func pick_random_materials(dict: Dictionary) -> Array:
 						break
 			if valid_materials.size() > 0:
 				materials.push_back(valid_materials.pick_random())
-	elif dict.has("material_types"):
-		for mat_types in dict.material_types:
+	elif "material_types" in dict:
+		for mat_types: Array in dict.material_types:
 			var valid_materials := []
 			for item in player_inventory:
 				if item.type != "material":
@@ -1056,11 +1062,11 @@ func pick_recipe() -> String:
 		if ability == "alchemy":
 			continue
 		
-		var ability_data:= Skills.ABILITIES[ability]
+		var ability_data := Skills.ABILITIES[ability]
 		if "recipes" not in ability_data:
 			continue
 		
-		for recipe in ability_data.recipes:
+		for recipe: String in ability_data.recipes:
 			if recipe in player_settings.disabled_recipes:
 				continue
 			
@@ -1094,16 +1100,16 @@ func get_recipe_level(recipe: String) -> int:
 	return level
 
 
-func next_chapter():
+func next_chapter() -> void:
 	var title:= Story.get_title(quest_chapter + 1)
 	var pos:= quest_log.rfind("[center]Chapter")
-	var npcs:= {}
+	var npcs: Dictionary[String, Dictionary] = {}
 	quest_progress = 0
 	quest_chapter += 1
 	for _i in range(min(randi_range(2, 5),Story.persons.size())):
 		var k: String = Story.persons.keys().pick_random()
 		npcs[k] = Story.persons[k]
-	for k in Story.persons.keys():
+	for k in Story.persons:
 		if "story" in Story.persons[k].tags and randf() < 0.5:
 			npcs[k] = Story.persons[k]
 	Story.persons = npcs
@@ -1135,65 +1141,62 @@ func next_chapter():
 		var region:= Regions.select_next_region(player.level)
 		do_action("wander", {"region":region, "region_type":tr(region.to_upper())}, QUICKTRAVEL_DELAY)
 
-func start_quest():
+func start_quest() -> void:
 	var quest:= Story.next_quest(self.current_region)
 	print_log_msg(tr("QUEST_ACCEPTED")+"\n"+quest.name)
-	if quest.has("npc"):
+	if "npc" in quest:
 		if quest.npc.location == current_location:
 			print_log_msg("[color=blue][hint=" + Story.get_person_description(quest.npc) + "]" + quest.npc.name + '[/hint][/color]: "' + Names.GREETINGS[quest.npc.personality].pick_random() + '"')
 		else:
 			quest.npc.location = current_location
 	quest_log += "\n• " + quest.name
 	current_quest = quest
-	if quest.requires.has("loot"):
+	if "loot" in quest.requires:
 		for k in quest.requires.loot:
-			var item:= create_shop_equipment(k, randf_range(0.9,1.1))
+			var item := create_shop_equipment(k, randf_range(0.9,1.1))
 			item.source = tr("FOUND_IN_LOCATION").format({"location": current_location})
-			item.description = Items.create_tooltip(item)
-			item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+			item.description = item.create_tooltip()
 			loot.push_back(item)
 	update_quest_log()
 
 func quest_done():
 	var pos:= quest_log.rfind('•') + 1
-	if current_quest.has("log"):
+	if "log" in current_quest:
 		print_log_msg(current_quest.log)
-	if current_quest.has("npc") and current_quest.npc.location == current_location:
+	if "npc" in current_quest and current_quest.npc.location == current_location:
 		print_log_msg("[color=blue][hint=" + Story.get_person_description(current_quest.npc) + "]" + current_quest.npc.name + '[/hint][/color]: "' + Names.QUEST_DONE[current_quest.npc.personality].pick_random() + '"')
 	quest_progress += 1
-	if current_quest.has("guild") and current_quest.guild in Guilds.guilds:
+	if "guild" in current_quest and current_quest.guild in Guilds.guilds:
 		Guilds.guilds[current_quest.guild].add_exp(50.0)
 		emit_signal("guilds_updated", self.available_guilds)
-	if current_quest.has("reward"):
-		if current_quest.reward.has("exp"):
+	if "reward" in current_quest:
+		if "exp" in current_quest.reward:
 			add_exp(current_quest.exp)
-		if current_quest.has("equipment_chance") and randf() < current_quest.equipment_chance:
-			var item:= create_shop_equipment(player.equipment.values().pick_random().base_type)
-			if current_quest.has("person"):
+		if "equipment_chance" in current_quest and randf() < current_quest.equipment_chance:
+			var item := create_shop_equipment(player.equipment.values().pick_random().base_type)
+			if "person" in current_quest:
 				item.source = tr("QUEST_REWARD_PERSON").format(current_quest)
-			elif current_quest.has("location"):
+			elif "location" in current_quest:
 				item.source = tr("QUEST_REWARD_LOCATION").format(current_quest)
 			else:
 				item.source = tr("QUEST_REWARD")
-			item.description = Items.create_tooltip(item)
-			item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+			item.description = item.create_tooltip()
 			print_log_msg(tr("QUEST_ITEM_REWARD").format(item))
 			add_item(item)
 			optimize_equipment()
-		elif current_quest.has("potion_chance") and randf()<current_quest.potion_chance:
+		elif "potion_chance" in current_quest and randf()<current_quest.potion_chance:
 			var item:= create_shop_potion()
-			if current_quest.has("person"):
+			if "person" in current_quest:
 				item.source = tr("QUEST_REWARD_PERSON").format(current_quest)
-			elif current_quest.has("location"):
+			elif "location" in current_quest:
 				item.source = tr("QUEST_REWARD_LOCATION").format(current_quest)
 			else:
 				item.source = tr("QUEST_REWARD")
-			item.description = Items.create_tooltip(item)
-			item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+			item.description = item.create_tooltip()
 			print_log_msg(tr("QUEST_ITEM_REWARD").format(item))
 			player_potions.push_back(item)
 			emit_signal("potion_inventory_changed", player_potions)
-		elif current_quest.reward.has("gold"):
+		elif "gold" in current_quest.reward:
 			player_gold += current_quest.reward.gold
 			emit_signal("gold_changed", player_gold)
 	current_quest.clear()
@@ -1205,27 +1208,27 @@ func quest_done():
 	do_action("questing", {}, QUESTING_DELAY)
 
 
-func use_stat(stat: String, amount:= 1.0):
-	if player_stat_preference.has(stat):
+func use_stat(stat: String, amount:= 1.0) -> void:
+	if stat in player_stat_preference:
 		player_stat_preference[stat] += amount
 	else:
 		player_stat_preference[stat] = amount
 
-func use_ability(ability: String, amount:= 1.0):
-	if player_ability_preference.has(ability):
+func use_ability(ability: String, amount:= 1.0) -> void:
+	if ability in player_ability_preference:
 		player_ability_preference[ability] += amount
 	else:
 		player_ability_preference[ability] = amount
 
-func add_ability_exp(ability: String, amount: float):
-	var a:= player.abilities[ability]
-	var ability_level_up:= a.add_exp(ceili(amount))
+func add_ability_exp(ability: String, amount: float) -> void:
+	var a := player.abilities[ability]
+	var ability_level_up: = a.add_exp(ceili(amount))
 	if ability_level_up:
 		if a.level > 10:
 			upgrade_skill()
-		store_historical_data("abilities", a.name, ability)
+		store_historical_data("abilities", a.level, ability)
 
-func do_action(action: String, args: Dictionary, delay: float, string:=""):
+func do_action(action: String, args: Dictionary, delay: float, string:="") -> void:
 	player.delay = delay
 	player_delay = delay
 	player.action_duration = delay
@@ -1238,7 +1241,7 @@ func do_action(action: String, args: Dictionary, delay: float, string:=""):
 	current_action_text = string
 	player.current_action = string
 
-func action_done(action: Dictionary):
+func action_done(action: Dictionary) -> void:
 	match action.action:
 		"goto":
 			current_location = action.args.location
@@ -1264,10 +1267,9 @@ func action_done(action: Dictionary):
 		"find_enemies":
 			if randf() < self.current_region.resource_chance:
 				for i in range(randi_range(self.current_region.resource_amount[0], self.current_region.resource_amount[1])):
-					var item:= Items.create_regional_material(pick_random_resource(), self.current_region)
+					var item := Items.create_regional_material(pick_random_resource(), self.current_region)
 					item.source = tr("HARVESTED_IN_LOCATION").format({"location": current_location})
-					item.description = Items.create_tooltip(item)
-					item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+					item.description = item.create_tooltip()
 					loot.push_back(item)
 				print_log_msg("\n"+tr("FIND_RESOURCE_LOG"))
 				add_guild_exp("harvest",loot.size())
@@ -1292,14 +1294,14 @@ func action_done(action: Dictionary):
 				action.args.enemy_list = make_desc_list(enemies)
 				print_log_msg("\n"+tr("FIND_ENEMIES_LOG").format(action.args))
 				update_characters()
-				if player.abilities.has("trapping"):
+				if "trapping" in player.abilities:
 					var trap: Dictionary = Skills.TRAPS.values().pick_random().duplicate(true)
 					var target: Characters.Enemy = enemies.pick_random()
 					var status:= Characters.create_status(trap, player, target, 1.0 + 0.2 * (player.abilities.trapping.level - 1))
 					var dict:= status.duplicate()
 					trap.level = 2 * player.abilities.trapping.level - 1
 					dict.name = dict.name.capitalize()
-					dict.description = Skills.tooltip_remove_bb_code(Skills.create_tooltip(trap))
+					dict.description = Utils.tooltip_remove_bb_code(Skills.create_tooltip(trap))
 					print_log_msg(tr("TRAPPING_LOG").format(dict))
 					target.add_status(status)
 					use_ability("trapping", 1.0)
@@ -1322,7 +1324,7 @@ func action_done(action: Dictionary):
 			action.args.enemy_list = make_desc_list(enemies)
 			print_log_msg("\n"+tr("FIND_ENEMIES_LOG").format(action.args))
 			update_characters()
-			if player.abilities.has("trapping"):
+			if "trapping" in player.abilities:
 				var trap: Dictionary = Skills.TRAPS.values().pick_random()
 				var target: Characters.Enemy = enemies.pick_random()
 				var status:= Characters.create_status(trap, player, target, 1.0 + 0.2 * (player.abilities.trapping.level - 1))
@@ -1330,7 +1332,7 @@ func action_done(action: Dictionary):
 				target.add_status(status)
 				use_ability("trapping", 1.0)
 				if typeof(trap.effect_stat)==TYPE_ARRAY:
-					for k in trap.effect_stat:
+					for k: String in trap.effect_stat:
 						use_stat(k, 0.5)
 				else:
 					use_stat(trap.effect_stat, 0.5)
@@ -1344,7 +1346,7 @@ func action_done(action: Dictionary):
 			action.args.enemy_list = make_desc_list(enemies)
 			print_log_msg("\n"+tr("FIND_DUMMY_LOG").format(action.args))
 			update_characters()
-			if player.abilities.has("trapping"):
+			if "trapping" in player.abilities:
 				var trap: Dictionary = Skills.TRAPS.values().pick_random()
 				var target: Characters.Enemy = enemies.pick_random()
 				var status:= Characters.create_status(trap, player, target, 1.0 + 0.2 * (player.abilities.trapping.level - 1))
@@ -1353,14 +1355,14 @@ func action_done(action: Dictionary):
 				use_ability("trapping", 1.0)
 				add_ability_exp("trapping", 2.0)
 				if typeof(trap.effect_stat)==TYPE_ARRAY:
-					for k in trap.effect_stat:
+					for k: String in trap.effect_stat:
 						use_stat(k, 0.5)
 				else:
 					use_stat(trap.effect_stat, 0.5)
 		"loot":
 			for item in loot:
 				add_item(item)
-				if item.has("enchanted") and item.enchanted:
+				if item is ItemEquipment and item.is_enchanted:
 					add_guild_exp("identifiy")
 				elif item.type!="material":
 					add_guild_exp("identifiy", 0.1)
@@ -1369,10 +1371,10 @@ func action_done(action: Dictionary):
 			print_log_msg(tr("LOOT_LOG").format(action.args))
 			add_guild_exp("loot")
 		"quaff_potion":
-			var item
-			if action.args.has("type"):
-				item = pick_potion(action.args.type)
-			if item==null or !player_potions.has(item):
+			var item: ItemPotion
+			if "type" in action.args:
+				item = pick_potion(action.args.type as String)
+			if item == null or item not in player_potions:
 				item = player_potions.pick_random()
 			print_log_msg(tr("QUAFF_POTION_LOG").format(item))
 			quaff_potion(item)
@@ -1384,7 +1386,7 @@ func action_done(action: Dictionary):
 			player.position = 1
 			update_characters()
 			print_log_msg("\n"+tr("RETREAT_LOG").format(action.args))
-			do_action("recover", {}, RECOVER_DELAY/(1.0 + float(player.abilities.has("healing"))))
+			do_action("recover", {}, RECOVER_DELAY/(1.0 + float("healing" in player.abilities)))
 			use_stat("constitution", 6)
 			player_battles_lost += 1
 			return
@@ -1398,9 +1400,9 @@ func action_done(action: Dictionary):
 			use_stat("constitution", 2)
 		"selling":
 			if player_inventory.size() > 0:
-				var item: Dictionary = player_inventory.pick_random()
+				var item: Item = player_inventory.pick_random()
 				var price:= sell_item(item)
-				var description: String = item.get("description_plain", item.get("description", ""))
+				var description: String = item.get_plain_description()
 				print_log_msg(tr("SOLD_LOG").format({"name": item.name, "description": description, "amount": 1, "price": price}))
 				add_guild_exp("sell")
 			else:
@@ -1410,7 +1412,7 @@ func action_done(action: Dictionary):
 			for potion in player_potions:
 				if !(potion.effect in player_settings.valid_potion_types) or player_potions.size() > get_max_potions():
 					var price:= sell_item(potion)
-					var description: String = potion.get("description_plain", potion.get("description", ""))
+					var description: String = potion.get_plain_description()
 					player_potions.erase(potion)
 					print_log_msg(tr("SOLD_LOG").format({"name": potion.name, "description": description, "amount": 1, "price": price}))
 					sold = true
@@ -1434,14 +1436,14 @@ func action_done(action: Dictionary):
 				else:
 					type = get_slot_type(type)
 				
-				if player.equipment.has(replace):
+				if replace in player.equipment:
 					type = player.equipment[replace].base_type
 				else:
 					type = Items.pick_random_equipment(type)
 			if type == "":
 				var item: Dictionary
 				type = Items.equipment_recipes.keys().pick_random()
-				while EQUIPMENT_LEVEL_RESTRICTION.has(Items.equipment_recipes[type].type) and \
+				while Items.equipment_recipes[type].type in EQUIPMENT_LEVEL_RESTRICTION and \
 					player.level < EQUIPMENT_LEVEL_RESTRICTION[Items.equipment_recipes[type].type]:
 						type = Items.equipment_recipes.keys().pick_random()
 				item = Items.equipment_recipes[type]
@@ -1453,7 +1455,7 @@ func action_done(action: Dictionary):
 				elif replace in EQUIPMENT_LR_TYPES:
 					replace += ["_left", "_right"][randi() % 2]
 			if type != "":
-				var item: Dictionary
+				var item: ItemEquipment
 				if type not in Items.equipment_recipes:
 					type = Items.pick_random_equipment(type)
 				if type == "":
@@ -1519,11 +1521,11 @@ func action_done(action: Dictionary):
 		"craft":
 			var materials:= pick_random_materials(Items.equipment_recipes[action.args.recipe])
 			if materials.size() == Items.equipment_recipes[action.args.recipe].components.size():
-				var item: Dictionary
-				item = Items.craft_equipment(action.args.recipe, materials, 10.0 * (action.args.level - 1.0))
+				var item := Items.craft_equipment(action.args.recipe, materials,
+					10.0 * (action.args.level - 1.0))
 				item.source += "\n" + tr("PLAYER_CREATION")
 				item.description = Items.create_tooltip(item)
-				item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+				item.description_plain = Utils.tooltip_remove_bb_code(item.description)
 				add_item(item)
 				print_log_msg(tr("CRAFT_EQUIPMENT_LOG").format({"name":item.name, "description":item.description_plain, "quality":str(int(item.quality))}))
 				for ability in get_recipe_abilities(action.args.recipe):
@@ -1536,19 +1538,18 @@ func action_done(action: Dictionary):
 				print_log_msg(tr("MISSING_MATERIALS_LOG"))
 		"enchanting":
 			var crafted:= false
-			for k in player.equipment.keys():
-				if player.equipment[k].has("enchantment_potential") and player.equipment[k].enchantment_potential <= 0:
+			for k in player.equipment:
+				if "enchantment_potential" in player.equipment[k] and player.equipment[k].enchantment_potential <= 0:
 					continue
-				var item: Dictionary = player.equipment[k]
+				var item: ItemEquipment = player.equipment[k]
 				var enchantment:= pick_enchantment(item)
 				var dict: Dictionary = Items.Enchantment.enchantments[enchantment]
 				var materials:= pick_random_materials(dict)
-				if materials.size()==dict.material_types.size():
-					item = Items.enchant_equipment_material(item, enchantment, materials, 10.0*(action.args.level-1.0))
+				if materials.size() == dict.material_types.size():
+					item = Items.enchant_equipment_material(item, enchantment, materials, 10.0 * (action.args.level - 1.0))
 					if tr("PLAYER_ENCHANTED") not in item.source:
 						item.source += "\n" + tr("PLAYER_ENCHANTED")
-					item.description = Items.create_tooltip(item)
-					item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+					item.description = item.create_tooltip()
 					player.equipment[k] = item
 					print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({"name":item.name, "description":item.description_plain, "quality":str(int(item.quality))}))
 					add_ability_exp(action.args.ability, 50.0)
@@ -1562,18 +1563,18 @@ func action_done(action: Dictionary):
 				break
 			if !crafted:
 				for item in player_inventory:
-					if item.type=="material" or (item.has("enchanted") and item.enchanted):
+					if item.type == "material" or (item is ItemEquipment and item.is_enchanted):
 						continue
-					var enchantment:= pick_enchantment(item)
+					var enchantment := pick_enchantment(item)
 					var dict: Dictionary = Items.Enchantment.enchantments[enchantment]
-					var materials:= pick_random_materials(dict)
+					var materials := pick_random_materials(dict)
 					if materials.size()==dict.material_types.size():
 						remove_item(item)
 						item = Items.enchant_equipment_material(item, enchantment, materials,
 							10.0 * (action.args.level - 1.0))
 						item.source += "\n" + tr("PLAYER_ENCHANTED")
 						item.description = Items.create_tooltip(item)
-						item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+						item.description_plain = Utils.tooltip_remove_bb_code(item.description)
 						add_item(item)
 						print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({
 							"name": item.name,
@@ -1593,11 +1594,9 @@ func action_done(action: Dictionary):
 			var type: String = Skills.ABILITIES[action.args.ability].recipes.pick_random()
 			var materials:= pick_random_materials(Items.potion_recipes[type])
 			if materials.size() == Items.potion_recipes[type].material_types.size():
-				var item: Dictionary
-				item = Items.craft_potion(type, materials, 10.0 * (action.args.level - 1.0))
+				var item := Items.craft_potion(type, materials, 10.0 * (action.args.level - 1.0))
 				item.source += "\n" + tr("PLAYER_CREATION")
 				item.description = Items.create_tooltip(item)
-				item.description_plain = Skills.tooltip_remove_bb_code(item.description)
 				player_potions.push_back(item)
 				emit_signal("potion_inventory_changed", player_potions)
 				print_log_msg(tr("CRAFT_POTION_LOG").format({"name":item.name, "description":item.description_plain, "quality":str(int(item.quality))}))
@@ -1612,16 +1611,15 @@ func action_done(action: Dictionary):
 			var type: String = Items.food_recipes.keys().pick_random()
 			var materials:= pick_random_materials(Items.food_recipes[type])
 			if materials.size() == Items.food_recipes[type].material_types.size():
-				var item: Dictionary
-				item = Items.cook(type, materials, 10.0 * (action.args.level - 1.0))
+				var item := Items.cook(type, materials, 10.0 * (action.args.level - 1.0))
 				print_log_msg(tr("COOKING_LOG").format({
 					"name": item.name,
 					"description": item.description_plain,
 					"quality": str(int(item.quality)),
 				}))
 				add_ability_exp("cooking", 40.0)
-				if item.has("status"):
-					var status:= Characters.create_status(item.status, player, player)
+				if item.status.size() > 0:
+					var status := Characters.create_status(item.status, player, player)
 					player.status.push_back(status)
 					update_characters()
 				for mat in materials:
@@ -1647,16 +1645,16 @@ func action_done(action: Dictionary):
 			player.recover()
 			print_log_msg(tr("VISIT_LOG").format(action.args))
 		"visit_church":
-			if action.args.has("god_dict"):
-				var status:= Characters.create_status(action.args.god_dict, player, player)
+			if "god_dict" in action.args:
+				var status := Characters.create_status(action.args.god_dict, player, player)
 				for dict in player.status:
 					if dict.type=="blessing":
 						player.remove_status(dict)
-				for k in status.keys():
-					if typeof(status[k]) == TYPE_FLOAT and !("duration" in k):
+				for k: String in status:
+					if typeof(status[k]) == TYPE_FLOAT and "duration" not in k:
 						status[k] *= 1.0 + 0.1 * (player.level - 1)
-				if status.has("attributes"):
-					for k in status.attributes.keys():
+				if "attributes" in status:
+					for k: String in status.attributes:
 						status.attributes[k] *= 1.0 + 0.1 * (player.level - 1)
 				player.add_status(status)
 			player.recover()
@@ -1664,87 +1662,85 @@ func action_done(action: Dictionary):
 			add_guild_exp("visit_church")
 		"craft_quest":
 			var item_types:= []
-			for k in player.abilities.keys():
+			for k in player.abilities:
 				if k in Skills.CRAFTING_ABILITIES:
 					add_ability_exp(k, 10.0)
-				if Skills.ABILITIES.has(k) and Skills.ABILITIES[k].has("recipes"):
+				if k in Skills.ABILITIES and "recipes" in Skills.ABILITIES[k]:
 					item_types += Skills.ABILITIES[k].recipes
-			if item_types.size()==0:
+			if item_types.size() == 0:
 				print_log_msg(tr("CRAFT_QUEST_LOG"))
 			else:
 				var dict: Dictionary
 				var type: String = item_types.pick_random()
-				if Items.EQUIPMENT.has(type):
-					dict = Items.EQUIPMENT[type]
-				elif type in Items.potion_recipes:
+				if type in Items.potion_recipes:
 					dict = Items.potion_recipes[type]
-				if dict.size()==0:
+				if dict.size() == 0:
 					print_log_msg(tr("CRAFT_QUEST_LOG"))
 				else:
 					print_log_msg(Story.sanitize_string(tr("CRAFT_QUEST_ITEM_LOG").format(dict)))
 		"steal":
-			player_gold += int(action.args.amount * 5.0 * (1.0 + 0.1 * (player.level - 1) * (player.level - 1)))
+			player_gold += floori(action.args.amount * 5.0 * (1.0 + 0.1 * (player.level - 1) * (player.level - 1)))
 			emit_signal("gold_changed", player_gold)
 		"wander":
 			var text:= tr("TRAVEL_LOG").format({"region_type": self.current_region.name})
-			for k in player_ability_preference.keys():
+			for k in player_ability_preference:
 				player_ability_preference[k] *= 0.5
-			for k in player_stat_preference.keys():
+			for k in player_stat_preference:
 				player_stat_preference[k] *= 0.5
 			set_region(action.args.region)
 			print_log_msg(text)
 			print_summary_msg(text)
 	
 	# Next action.
-	var new_task:= get_task_ID()
-	if new_task!=current_task_ID:
+	var new_task := get_task_ID()
+	if new_task != current_task_ID:
 		current_task_ID = new_task
 		start_task(current_task_ID)
 		return
-	if enemies.size()>0:
+	if enemies.size() > 0:
 		turn_counter += 1
 		
-		if player.health<=RETREAT_THRESHOLD*player.max_health or action_failures>50 or turn_counter > 1000:
+		if player.health <= RETREAT_THRESHOLD*player.max_health or action_failures > 50 or turn_counter > 1000:
 			enemies.clear()
 			player_summons.clear()
 			update_characters()
 			loot.clear()
 			action_failures = 0
 			turn_counter = 0
-			do_action("retreat", {}, RETREAT_DELAY/(1.0 + float(player.abilities.has("trapping"))))
+			do_action("retreat", {}, RETREAT_DELAY/(1.0 + float("trapping" in player.abilities)))
 			return
-		elif player.health<=POTION_THRESHOLD*player.max_health and player_potions.size()>0 and player_potion_delay<=0.0:
+		elif player.health <= POTION_THRESHOLD * player.max_health and player_potions.size() > 0 and player_potion_delay <= 0.0:
 			do_action("quaff_potion", {"type": "health"}, POTION_DELAY)
 			return
-		elif player.mana<=0.5*POTION_THRESHOLD*player.max_mana and player_potions.size()>0 and player_potion_delay<=0.0:
+		elif player.mana <= 0.5 * POTION_THRESHOLD * player.max_mana and player_potions.size() > 0 and player_potion_delay <= 0.0:
 			do_action("quaff_potion", {"type": "mana"}, POTION_DELAY)
 			return
-		elif player.stamina<=0.5*POTION_THRESHOLD*player.max_stamina and player_potions.size()>0 and player_potion_delay<=0.0:
+		elif player.stamina <= 0.5 * POTION_THRESHOLD * player.max_stamina and player_potions.size() > 0 and player_potion_delay <= 0.0:
 			do_action("quaff_potion", {"type": "stamina"}, POTION_DELAY)
 			return
 	elif enemies.size() == 0:
 		turn_counter = 0
-		if loot.size()>0:
+		if loot.size() > 0:
 			do_action("loot", {}, LOOT_DELAY)
 			return
-		elif player.health<=RECOVER_THRESHOLD*player.max_health:
-			do_action("recover", {}, RECOVER_DELAY/(1.0 + float(player.abilities.has("healing"))))
+		elif player.health <= RECOVER_THRESHOLD * player.max_health:
+			do_action("recover", {}, RECOVER_DELAY / (1.0 + float("healing" in player.abilities)))
 			return
-		elif player.health<=POTION_THRESHOLD*player.max_health or player.stamina<0.25*player.max_stamina or player.mana<0.25*player.max_mana:
-			do_action("recover", {}, RECOVER_DELAY/(1.0 + float(player.abilities.has("healing")))/2.0)
+		elif player.health <= POTION_THRESHOLD * player.max_health or player.stamina < 0.25 * player.max_stamina or player.mana < 0.25 * player.max_mana:
+			do_action("recover", {}, RECOVER_DELAY / (1.0 + float("healing" in player.abilities)) / 2.0)
 			return
 	match current_task:
 		"training":
 			if enemies.size() == 0:
-				if player.health<player.max_health or player.stamina<0.25*player.max_stamina or player.mana<0.25*player.max_mana:
-					do_action("recover", {}, RECOVER_DELAY/(1.0 + float(player.abilities.has("healing"))))
+				if player.health < player.max_health or player.stamina < 0.25 * player.max_stamina or player.mana < 0.25 * player.max_mana:
+					do_action("recover", {}, RECOVER_DELAY / (1.0 + float("healing" in player.abilities)))
 				else:
 					do_action("find_dummy", {}, SEARCH_DELAY)
 			else:
 				fight()
 		"grinding":
 			if enemies.size() == 0:
-				if player.abilities.has("cooking") and player_cooking_delay<=0.0:
+				if "cooking" in player.abilities and player_cooking_delay <= 0.0:
 					do_action("cook", {"level": player.abilities.cooking.level}, CRAFTING_DELAY)
 				else:
 					do_action("find_enemies", {}, SEARCH_DELAY)
@@ -1761,7 +1757,7 @@ func action_done(action: Dictionary):
 				return
 			else:
 				current_quest.stage += 1
-			if current_quest.has("location") and current_location != current_quest.location:
+			if "location" in current_quest and current_location != current_quest.location:
 				do_action("goto", {"location": current_quest.location}, TRAVEL_DELAY)
 				return
 			match current_quest.action:
@@ -1779,7 +1775,7 @@ func action_done(action: Dictionary):
 					return
 				"look_for_clues":
 					if current_quest.stage<current_quest.amount:
-						if !current_quest.has("location"):
+						if "location" not in current_quest:
 							current_quest.location = current_location
 						do_action("look_for_clues", {"location": current_quest.location}, QUESTING_DELAY)
 					else:
@@ -1793,7 +1789,7 @@ func action_done(action: Dictionary):
 					return
 				"dig":
 					if current_quest.stage < 1:
-						if !current_quest.has("location"):
+						if "location" not in current_quest:
 							current_quest.location = current_location
 						do_action("dig", {"location": current_quest.location}, QUESTING_DELAY)
 					else:
@@ -1831,10 +1827,10 @@ func action_done(action: Dictionary):
 						quest_done()
 					return
 				"fight", "kill":
-					if player.abilities.has("cooking") and player_cooking_delay <= 0.0:
+					if "cooking" in player.abilities and player_cooking_delay <= 0.0:
 						do_action("cook", {"level": player.abilities.cooking.level}, CRAFTING_DELAY)
 					elif current_quest.stage < current_quest.amount and enemies.size() == 0:
-						if player.abilities.has("cooking") and player_cooking_delay<=0.0:
+						if "cooking" in player.abilities and player_cooking_delay<=0.0:
 							current_quest.stage -= 1
 							do_action("cook", {"level": player.abilities.cooking.level}, CRAFTING_DELAY)
 						else:
@@ -1843,17 +1839,16 @@ func action_done(action: Dictionary):
 						quest_done()
 					return
 				"explore":
-					if player.abilities.has("cooking") and player_cooking_delay <= 0.0:
+					if "cooking" in player.abilities and player_cooking_delay <= 0.0:
 						do_action("cook", {"level": player.abilities.cooking.level}, CRAFTING_DELAY)
 					elif current_quest.stage < 1 + current_quest.amount:
 						match randi()%4:
 							0:
 								do_action("find_quest_enemies", {"enemy": Enemies.base_enemies.keys().pick_random(), "amount": 1}, QUESTING_DELAY)
 							1:
-								var item:= Items.create_regional_material(Items.materials.keys().pick_random(), self.current_region, 1.1)
+								var item := Items.create_regional_material(Items.materials.keys().pick_random(), self.current_region, 1.1)
 								item.source = tr("FOUND_IN_LOCATION").format({"location": current_location})
-								item.description = Items.create_tooltip(item)
-								item.description_plain = Skills.tooltip_remove_bb_code(item.description)
+								item.description = item.create_tooltip()
 								loot.push_back(item)
 								do_action("loot", {}, QUESTING_DELAY)
 							2:
@@ -1905,7 +1900,7 @@ func action_done(action: Dictionary):
 				start_task(current_task_ID, "grinding")
 		"crafting":
 			if player.health<player.max_health:
-				do_action("recover", {}, RECOVER_DELAY/(1.0 + float(player.abilities.has("healing"))))
+				do_action("recover", {}, RECOVER_DELAY / (1.0 + float("healing" in player.abilities)))
 			elif action_failures>25:
 				start_task(current_task_ID, "shopping")
 			else:
@@ -1913,13 +1908,13 @@ func action_done(action: Dictionary):
 				var crafting_abilities:= []
 				var recipe:= pick_recipe()
 				for ability in Skills.CRAFTING_ABILITIES:
-					if player.abilities.has(ability):
+					if ability in player.abilities:
 						crafting_abilities.push_back(ability)
 				if crafting_abilities.size() > 0 and recipe != "":
 					valid_tasks.push_back("crafting")
-				if player.abilities.has("enchanting"):
+				if "enchanting" in player.abilities:
 					valid_tasks.push_back("enchanting")
-				if player.abilities.has("alchemy"):
+				if "alchemy" in player.abilities:
 					valid_tasks.push_back("alchemy")
 				if valid_tasks.size()>0:
 					match valid_tasks.pick_random():
@@ -1934,32 +1929,28 @@ func action_done(action: Dictionary):
 				else:
 					start_task(current_task_ID, "shopping")
 		"resting":
-			match randi()%4:
-				0:
-					var god_dict:= Names.get_god()
-					do_action("visit_church", {"god": god_dict.god, "god_dict": god_dict}, REST_DELAY / 2.0)
+			match randi() % 4:
 				_:
 					do_action("visit", {"type": tr(HANGOUT_LOCATIONS.pick_random())}, REST_DELAY / 2.0)
 		"sleeping":
-			var time_zone:= Time.get_time_zone_from_system()
-			var time_data:= Time.get_time_dict_from_unix_time(int(current_time + 60 * time_zone.bias))
-			do_action("sleep", {}, min(SLEEP_DELAY, 60 * 60 * abs(5.0 - time_data.hour)))
-	
+			var time_zone := Time.get_time_zone_from_system()
+			var time_data := Time.get_time_dict_from_unix_time(floori(current_time + 60 * time_zone.bias))
+			do_action("sleep", {}, min(SLEEP_DELAY, 60 * 60 * absf(5.0 - time_data.hour)))
 	
 
-func pick_skill(actor: Characters.Character):
-	var valid_skills := []
+func pick_skill(actor: Characters.Character) -> Dictionary:
+	var valid_skills: Array[Dictionary] = []
 	for skill in actor.skills:
 		if skill.current_cooldown > 0.0:
 			continue
-		if skill.has("cost"):
+		if "cost" in skill:
 			var valid:= true
-			for k in skill.cost.keys():
+			for k: String in skill.cost:
 				if actor.get(k) < skill.cost[k]:
 					valid = false
 					if actor == player:
-						for s in Characters.STATS_METERS.keys():
-							if Characters.STATS_METERS[s].has("max_" + k):
+						for s in Characters.STATS_METERS:
+							if "max_" + k in Characters.STATS_METERS[s]:
 								use_stat(s, Characters.STATS_METERS[s]["max_" + k])
 					else:
 						break
@@ -2024,31 +2015,33 @@ func pick_skill(actor: Characters.Character):
 	
 	if valid_skills.size() > 0:
 		return valid_skills.pick_random()
+	return {}
 
-func chose_engagement_target(actor: Characters.Character):
-	var min_dist:= 10
+func chose_engagement_target(actor: Characters.Character) -> Characters.Character:
+	var min_dist := 10
 	var closest_target: Characters.Character
 	if actor is Characters.Enemy:
-		min_dist = abs(player.position - actor.position)
+		min_dist = absi(player.position - actor.position)
 		closest_target = player
 		for c in player_summons:
-			var dist: int = abs(c.position - actor.position)
+			var dist := absi(c.position - actor.position)
 			if dist < min_dist:
 				min_dist = dist
 				closest_target = c
 	else:
 		for c in enemies:
-			var dist: int = abs(c.position - actor.position)
+			var dist := absi(c.position - actor.position)
 			if dist < min_dist:
 				min_dist = dist
 				closest_target = c
-	if min_dist>0:
+	if min_dist > 0:
 		return closest_target
+	return null
 
 func create_damage_info(damage: Dictionary) -> String:
 	var text: String = tr("ATTACK") + ": " + str(damage.attack)
 	if damage.critical > 0:
-		text += " (" + str(int(100*damage.critical)) + "% " + tr("CRITICAL_HIT") + ")"
+		text += " (" + str(floori(100 * damage.critical)) + "% " + tr("CRITICAL_HIT") + ")"
 	if damage.absorbed > 0:
 		text += "\n" + tr("ABSORBED") + ": " + str(damage.absorbed)
 	if damage.blocked_armour > 0:
@@ -2067,14 +2060,14 @@ func create_damage_info(damage: Dictionary) -> String:
 func summarize_heal(data: Dictionary) -> String:
 	var text:= ""
 	for i in range(data.size()):
-		text += str(int(data.values()[i])) + " " + tr(data.keys()[i].to_upper())
+		text += str(floori(data.values()[i])) + " " + tr(data.keys()[i].to_upper())
 		if i < data.size() - 1:
 			text += ", "
 	return text
 
 func merge_dicts(dict: Dictionary, add: Dictionary) -> Dictionary:
-	for k in add.keys():
-		if dict.has(k):
+	for k: String in add:
+		if k in dict:
 			if typeof(dict[k]) == TYPE_ARRAY:
 				dict[k].push_back(add[k])
 			else:
@@ -2113,9 +2106,9 @@ func use_attack(skill: Dictionary, actor: Characters.Character, target: Characte
 		result.total_damage += damage.damage
 		result.damage_info = create_damage_info(damage)
 		target.health -= damage.damage
-		if skill.has("health_steal"):
+		if "health_steal" in skill:
 			var heal: int = skill.health_steal*damage.damage
-			if result.total_heal.has("health"):
+			if "health" in result.total_heal:
 				result.total_heal.health += heal
 			else:
 				result.total_heal.health = heal
@@ -2123,21 +2116,21 @@ func use_attack(skill: Dictionary, actor: Characters.Character, target: Characte
 		if target.health<=0.0:
 			result.kill += 1
 		else:
-			for st in skill.combat.status:
-				var status:= Characters.create_status(st, actor, target)
+			for st: Dictionary in skill.combat.status:
+				var status := Characters.create_status(st, actor, target)
 				target.add_status(status)
 				result.debuff += 1
-		if skill.has("push"):
+		if "push" in skill:
 			target.position -= skill.push*sign(actor.position-target.position)
-	if result.has("reflected"):
+	if "reflected" in result:
 		actor.health -= result.reflected
-	result.total_damage = int(result.total_damage)
-	for k in result.total_heal.keys():
-		result.total_heal[k] = int(result.total_heal[k])
+	result.total_damage = floori(result.total_damage)
+	for k in result.total_heal:
+		result.total_heal[k] = floori(result.total_heal[k])
 	return result
 
 func use_heal(skill: Dictionary, actor: Characters.Character, target: Characters.Character, heal_multiplier:= 1.0, splash:= false) -> Dictionary:
-	var result:= {
+	var result := {
 		"skill": skill.name,
 		"skill_description": skill.description_plain,
 		"actor": actor.name,
@@ -2161,14 +2154,14 @@ func use_heal(skill: Dictionary, actor: Characters.Character, target: Characters
 		if target is Characters.Enemy or target is Characters.Summon:
 			result.target_description = target.description
 	result.total_heal = heal
-	for k in heal.keys():
+	for k in heal:
 		target.add_meter(k, heal[k])
 	for st in skill.combat.status:
 		var status:= Characters.create_status(st, actor, target)
 		target.add_status(status)
 		result.buff += 1
 	result.total_damage = int(result.total_damage)
-	for k in result.total_heal.keys():
+	for k in result.total_heal:
 		result.total_heal[k] = int(result.total_heal[k])
 	return result
 
@@ -2193,7 +2186,7 @@ func use_buff(skill: Dictionary, actor: Characters.Character, target: Characters
 			result.buff += 1
 		elif st.type == "debuff":
 			result.debuff += 1
-	if skill.combat.has("shielding"):
+	if "shielding" in skill.combat:
 		for array in skill.combat.shielding:
 			var dict: Dictionary = {
 				"type": "buff",
@@ -2204,19 +2197,19 @@ func use_buff(skill: Dictionary, actor: Characters.Character, target: Characters
 			var status:= Characters.create_status(dict, actor, target, duration_multiplier)
 			target.add_status(status)
 			result.buff += 1
-	if skill.has("push"):
+	if "push" in skill:
 		target.position -= skill.push*sign(actor.position - target.position)
 	if actor is Characters.Enemy or actor is Characters.Summon:
 		result.actor_description = actor.description
 	if target is Characters.Enemy or actor is Characters.Summon:
 		result.target_description = target.description
 	result.total_damage = int(result.total_damage)
-	for k in result.total_heal.keys():
+	for k in result.total_heal:
 		result.total_heal[k] = int(result.total_heal[k])
 	return result
 
 func use_summon(skill: Dictionary, actor: Characters.Character, attribute_scale:= 1.0) -> Dictionary:
-	var result:= {
+	var result := {
 		"skill": skill.name,
 		"skill_description": skill.description_plain,
 		"actor": actor.name,
@@ -2276,20 +2269,20 @@ func use_skill(actor: Characters.Character, skill: Dictionary) -> Dictionary:
 			else:
 				target = enemies.pick_random()
 	
-	if skill.has("cost"):
-		for k in skill.cost.keys():
+	if "cost" in skill:
+		for k: String in skill.cost:
 			actor.set(k, max(actor.get(k) - skill.cost[k], 0))
 	
-	if actor is Characters.Character and actor.abilities.has("soul_binding") and randf() < min(0.01 + 0.005 * actor.abilities.soul_binding.level, 0.2):
+	if actor is Characters.Character and "soul_binding" in actor.abilities and randf() < minf(0.01 + 0.005 * actor.abilities.soul_binding.level, 0.2):
 		effectiveness_bonus += extract_soul()
 		result.soul_enchantment = true
 		result.soul_bonus = effectiveness_bonus
 	
-	for st in skill.combat.status_self:
-		var status:= Characters.create_status(st, actor, actor)
+	for st: Dictionary in skill.combat.status_self:
+		var status := Characters.create_status(st, actor, actor)
 		actor.add_status(status)
 		result.buff += 1
-	if skill.has("move"):
+	if "move" in skill:
 		var to_pos:= 0
 		if typeof(target)==TYPE_ARRAY:
 			for t in target:
@@ -2314,7 +2307,7 @@ func use_skill(actor: Characters.Character, skill: Dictionary) -> Dictionary:
 				var rr:= use_attack(skill, actor, target, 1.0 + effectiveness_bonus)
 				result = merge_dicts(result, rr)
 				result.effectiveness = float(result.total_damage) / max(float(target.max_health), 1.0)
-				if skill.has("splash_damage"):
+				if "splash_damage" in skill:
 					if actor is Characters.Enemy:
 						for t in [player] + player_summons:
 							if t==target:
@@ -2341,73 +2334,73 @@ func use_skill(actor: Characters.Character, skill: Dictionary) -> Dictionary:
 					if target.get("max_"+k)==null:
 						continue
 					result.effectiveness += float(result.total_heal[k]) / max(float(target.get("max_"+k)), 1.0)
-				if skill.has("splash_damage"):
+				if "splash_damage" in skill:
 					if actor is Characters.Enemy:
 						for t in [player]+player_summons:
 							if t==target:
 								continue
-							var r:= use_heal(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25) + 0.5*effectiveness_bonus)
+							var r := use_heal(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25) + 0.5*effectiveness_bonus)
 							result = merge_dicts(result, r)
 					else:
 						for t in enemies:
 							if t==target:
 								continue
-							var r:= use_heal(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25) + 0.5*effectiveness_bonus)
+							var r := use_heal(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25) + 0.5*effectiveness_bonus)
 							result = merge_dicts(result, r)
 		"buff":
 			if typeof(target)==TYPE_ARRAY:
 				for t in target:
-					var r:= use_buff(skill, actor, t, 1.0 + effectiveness_bonus)
+					var r := use_buff(skill, actor, t, 1.0 + effectiveness_bonus)
 					result = merge_dicts(result, r)
 			else:
-				var rr:= use_buff(skill, actor, target, 1.0 + effectiveness_bonus)
+				var rr := use_buff(skill, actor, target, 1.0 + effectiveness_bonus)
 				result = merge_dicts(result, rr)
-				if skill.has("splash_damage"):
+				if "splash_damage" in skill:
 					if actor is Characters.Enemy:
 						for t in [player] + player_summons:
 							if t==target:
 								continue
-							var r:= use_buff(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25) + 0.5*effectiveness_bonus)
+							var r := use_buff(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25) + 0.5*effectiveness_bonus)
 							result = merge_dicts(result, r)
 					else:
 						for t in enemies:
 							if t==target:
 								continue
-							var r:= use_buff(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25) + 0.5*effectiveness_bonus)
+							var r := use_buff(skill, actor, t, skill.splash_damage*randf_range(0.75,1.25) + 0.5*effectiveness_bonus)
 							result = merge_dicts(result, r)
 			result.effectiveness = 0.5
 		"summon":
 			result = use_summon(skill, actor, 1.0 + effectiveness_bonus)
 	result.target_data = target
-	if !result.has("actor_description"):
+	if "actor_description" not in result:
 		if actor is Characters.Enemy or actor is Characters.Summon:
 			result.actor_description = actor.description
 		else:
 			result.actor_description = ""
-	if skill.has("cooldown"):
+	if "cooldown" in skill:
 		skill.current_cooldown = skill.cooldown
 	return result
 
-func fight():
-	var skill = pick_skill(player)
+func fight() -> void:
+	var skill := pick_skill(player)
 	var delay: float = get_delay_scale(player.attributes.speed)
-	if skill==null:
+	if skill.size() == 0:
 		var target: Characters.Character = chose_engagement_target(player)
-		if target==null:
+		if target == null:
 			skill = player.skills.pick_random()
 		else:
 			do_action("engage", {"target": target.name, "target_description": target.description}, delay)
 			return
 	
 	var result:= use_skill(player, skill)
-	if skill.has("delay_multiplier"):
+	if "delay_multiplier" in skill:
 		delay *= 1.0 + skill.delay_multiplier
 	for n in result.buff:
 		if n>0:
 			update_characters()
 			break
-	if result.has("soul_enchantment") and result.soul_enchantment:
-		print_log_msg(tr("SKILL_SOUL_ENCHANTMENT").format({"soul_bonus": int(100 * result.soul_bonus)}))
+	if "soul_enchantment" in result and result.soul_enchantment:
+		print_log_msg(tr("SKILL_SOUL_ENCHANTMENT").format({"soul_bonus": floori(100 * result.soul_bonus)}))
 	match skill.usage:
 		"attack":
 			add_guild_exp("attack")
@@ -2422,7 +2415,7 @@ func fight():
 						"total_damage": result.total_damage[i],
 						"debuff": result.debuff[i],
 					}
-					if result.has("damage_info"):
+					if "damage_info" in result:
 						if typeof(result.damage_info) == TYPE_ARRAY and result.damage_info.size() > i:
 							dict.damage_info = result.damage_info[i]
 						else:
@@ -2456,8 +2449,8 @@ func fight():
 					else:
 						action_failures = 0
 				
-				for s in Characters.STATS_ATTRIBUTES.keys():
-					if Characters.STATS_ATTRIBUTES[s].has(skill.attribute):
+				for s in Characters.STATS_ATTRIBUTES:
+					if skill.attribute in Characters.STATS_ATTRIBUTES[s]:
 						use_stat(s, Characters.STATS_ATTRIBUTES[s][skill.attribute]*delay)
 				
 				if result.debuff>0:
@@ -2473,7 +2466,7 @@ func fight():
 				else:
 					result.total_heal = summarize_heal(result.total_heal)
 					print_log_msg(tr("HEAL_LOG").format(result))
-			if result.has("reflected") and result.reflected>0:
+			if "reflected" in result and result.reflected>0:
 				print_log_msg(tr("REFLECTED_DAMAGE_LOG").format(result))
 		"heal":
 			if typeof(result.target)==TYPE_ARRAY:
@@ -2521,39 +2514,39 @@ func fight():
 			print_log_msg(tr("SUMMON_LOG").format(result))
 			add_guild_exp("summon")
 	
-	var num:= 0
-	if !result.has("effectiveness"):
+	var num := 0
+	if "effectiveness" not in result:
 		result.effectiveness = 1.0
-	for s in skill.slots.keys():
+	for s in skill.slots:
 		for t in skill.slots[s]:
-			for a in player.abilities.keys():
-				if !Skills.ABILITY_MODULES.has(a) or !Skills.ABILITY_MODULES[a].has(s) or !Skills.ABILITY_MODULES[a][s].has(t):
+			for a in player.abilities:
+				if a not in Skills.ABILITY_MODULES or s not in Skills.ABILITY_MODULES[a] or t not in Skills.ABILITY_MODULES[a][s]:
 					continue
-				use_ability(a, result.effectiveness/delay*(1.0 + float(skill.usage=="attack") + float(skill.usage=="summon")))
+				use_ability(a, result.effectiveness / delay * (1.0 + float(skill.usage == "attack") + float(skill.usage == "summon")))
 				num += 1
-	for s in skill.slots.keys():
+	for s in skill.slots:
 		for t in skill.slots[s]:
-			for a in player.abilities.keys():
-				if !Skills.ABILITY_MODULES.has(a) or !Skills.ABILITY_MODULES[a].has(s) or !Skills.ABILITY_MODULES[a][s].has(t):
+			for a in player.abilities:
+				if a not in Skills.ABILITY_MODULES or s not in Skills.ABILITY_MODULES[a] or t not in Skills.ABILITY_MODULES[a][s]:
 					continue
-				add_ability_exp(a, 1.0/float(num))
+				add_ability_exp(a, 1.0 / float(num))
 	
 	do_action("fight", result, delay, skill.name)
 
-func pick_potion(type: String):
-	var valid:= []
+func pick_potion(type: String) -> ItemPotion:
+	var valid: Array[ItemPotion] = []
 	for potion in player_potions:
-		if potion.effect==type:
+		if potion.effect == type:
 			valid.push_back(potion)
-	if valid.size()>0:
-		return valid.pick_random()
-	return
+	if valid.size() > 0:
+		return valid.pick_random() as ItemPotion
+	return null
 
-func quaff_potion(potion: Dictionary):
+func quaff_potion(potion: ItemPotion) -> void:
 	player_potion_delay = POTION_USE_DELAY
-	if potion.has("healing"):
+	if potion.healing > 0:
 		player[potion.effect] = min(player[potion.effect] + potion.healing, player["max_" + potion.effect])
-	if potion.has("status"):
+	if potion.status.size() > 0:
 		var status: Dictionary = potion.status.duplicate()
 		status.max_duration = status.duration
 		player.status.push_back(status)
@@ -2564,19 +2557,19 @@ func quaff_potion(potion: Dictionary):
 		player_potions_used[potion.effect] += 1
 	store_historical_data("potions", player_potions_used[potion.effect], potion.effect)
 
-func enemy_attack(enemy: Characters.Enemy):
+func enemy_attack(enemy: Characters.Enemy) -> void:
 	if enemy.skills.size() == 0:
 		enemy.delay = 1.0
 		enemy.action_duration = 1.0
 		print_log_msg(tr("ENEMY_NO_ACTION_LOG").format({"actor":enemy.name, "actor_description":enemy.description}))
 		return
 	
-	var skill = pick_skill(enemy)
+	var skill := pick_skill(enemy)
 	var delay: float = get_delay_scale(enemy.attributes.speed)
 	
-	if skill==null:
+	if skill.size() == 0:
 		var target: Characters.Character = chose_engagement_target(enemy)
-		if target==null:
+		if target == null:
 			skill = enemy.skills.pick_random()
 		else:
 			enemy.position += sign(target.position-enemy.position)
@@ -2601,18 +2594,18 @@ func enemy_attack(enemy: Characters.Enemy):
 						"total_damage":result.total_damage[i],
 						"debuff":result.debuff[i],
 					}
-					if result.has("damage_info"):
+					if "damage_info" in result:
 						if typeof(result.damage_info)==TYPE_ARRAY and result.damage_info.size()>i:
 							dict.damage_info = result.damage_info[i]
 						else:
 							dict.damage_info = result.damage_info
 					if result.target_data is Characters.Character and result.target_data==player:
 						print_log_msg(tr("ENEMY_ATTACK_LOG").format(dict))
-						if player.abilities.has("evasion"):
+						if "evasion" in player.abilities:
 							add_ability_exp("evasion", 0.5/float(result.target.size()))
 					else:
 						print_log_msg(tr("ENEMY_ATTACK_ALLY_LOG").format(dict))
-						if player.abilities.has("armour"):
+						if "armour" in player.abilities:
 							add_ability_exp("armour", 0.5/float(result.target.size()))
 					if dict.hit==0:
 						print_log_msg(tr("ENEMY_MISS_LOG").format(dict))
@@ -2621,28 +2614,28 @@ func enemy_attack(enemy: Characters.Enemy):
 			else:
 				if result.target_data is Characters.Character and result.target_data==player:
 					print_log_msg(tr("ENEMY_ATTACK_LOG").format(result))
-					if player.abilities.has("evasion"):
+					if "evasion" in player.abilities:
 						add_ability_exp("evasion", 0.5)
 				else:
 					print_log_msg(tr("ENEMY_ATTACK_ALLY_LOG").format(result))
-					if player.abilities.has("armour"):
+					if "armour" in player.abilities:
 						add_ability_exp("armour", 0.5)
 				if result.hit==0:
 					print_log_msg(tr("ENEMY_MISS_LOG").format(result))
 				else:
 					print_log_msg(tr("ENEMY_HIT_LOG").format(result))
-			if result.total_heal.size()>0:
-				if typeof(result.total_heal)==TYPE_ARRAY:
+			if result.total_heal.size() > 0:
+				if typeof(result.total_heal) == TYPE_ARRAY:
 					var dict:= result.duplicate(true)
 					for heal_dict in result.total_heal:
-						if heal_dict.size()>0:
+						if heal_dict.size() > 0:
 							dict.total_heal = summarize_heal(heal_dict)
 							print_log_msg(tr("ENEMY_HEAL_LOG").format(dict))
 				else:
 					result.total_heal = summarize_heal(result.total_heal)
 					print_log_msg(tr("ENEMY_HEAL_LOG").format(result))
 		"heal":
-			if typeof(result.target)==TYPE_ARRAY:
+			if typeof(result.target) == TYPE_ARRAY:
 				for i in range(result.target.size()):
 					var dict:= {
 						"actor":result.actor[i],
@@ -2655,7 +2648,7 @@ func enemy_attack(enemy: Characters.Enemy):
 						"total_damage":result.total_damage[i],
 						"buff":result.buff[i],
 					}
-					if result.total_heal[i].size()>0:
+					if result.total_heal[i].size() > 0:
 						dict.total_heal = summarize_heal(result.total_heal[i])
 						print_log_msg(tr("ENEMY_BUFF_LOG").format(dict))
 						print_log_msg(tr("ENEMY_HEAL_LOG").format(dict))
@@ -2664,7 +2657,7 @@ func enemy_attack(enemy: Characters.Enemy):
 				print_log_msg(tr("ENEMY_BUFF_LOG").format(result))
 				print_log_msg(tr("ENEMY_HEAL_LOG").format(result))
 		"buff":
-			if typeof(result.target)==TYPE_ARRAY:
+			if typeof(result.target) == TYPE_ARRAY:
 				for i in range(result.target.size()):
 					var dict:= {
 						"actor":result.actor[i],
@@ -2682,24 +2675,24 @@ func enemy_attack(enemy: Characters.Enemy):
 		"summon":
 			print_log_msg(tr("ENEMY_SUMMON_LOG").format(result))
 	
-	if skill.has("delay_multiplier"):
+	if "delay_multiplier" in skill:
 		delay *= 1.0 + skill.delay_multiplier
 	enemy.delay = delay
 	enemy.action_duration = delay
 
-func summon_attack(summon: Characters.Character):
-	if summon.skills.size()==0:
+func summon_attack(summon: Characters.Character) -> void:
+	if summon.skills.size() == 0:
 		summon.delay = 1.0
 		summon.action_duration = 1.0
 		print_log_msg(tr("ENEMY_NO_ACTION_LOG").format({"actor":summon.name}))
 		return
 	
-	var skill = pick_skill(summon)
+	var skill := pick_skill(summon)
 	var delay: float = get_delay_scale(summon.attributes.speed)
 	
-	if skill==null:
+	if skill.size() == 0:
 		var target: Characters.Character = chose_engagement_target(summon)
-		if target==null:
+		if target == null:
 			skill = summon.skills.pick_random()
 		else:
 			summon.position += sign(target.position-summon.position)
@@ -2723,8 +2716,8 @@ func summon_attack(summon: Characters.Character):
 						"total_damage":result.total_damage[i],
 						"debuff":result.debuff[i],
 					}
-					if result.has("damage_info"):
-						if typeof(result.damage_info)==TYPE_ARRAY and result.damage_info.size()>i:
+					if "damage_info" in result:
+						if typeof(result.damage_info) == TYPE_ARRAY and result.damage_info.size() > i:
 							dict.damage_info = result.damage_info[i]
 						else:
 							dict.damage_info = result.damage_info
@@ -2739,31 +2732,31 @@ func summon_attack(summon: Characters.Character):
 					print_log_msg(tr("SUMMON_MISS_LOG").format(result))
 				else:
 					print_log_msg(tr("SUMMON_HIT_LOG").format(result))
-			if result.total_heal.size()>0:
-				if typeof(result.total_heal)==TYPE_ARRAY:
+			if result.total_heal.size() > 0:
+				if typeof(result.total_heal) == TYPE_ARRAY:
 					var dict:= result.duplicate(true)
 					for heal_dict in result.total_heal:
-						if heal_dict.size()>0:
+						if heal_dict.size() > 0:
 							dict.total_heal = summarize_heal(heal_dict)
 							print_log_msg(tr("SUMMON_HEAL_LOG").format(dict))
 				else:
 					result.total_heal = summarize_heal(result.total_heal)
 					print_log_msg(tr("SUMMON_HEAL_LOG").format(result))
 		"heal":
-			if typeof(result.target)==TYPE_ARRAY:
+			if typeof(result.target) == TYPE_ARRAY:
 				for i in range(result.target.size()):
 					var dict:= {
-						"actor":result.actor[i],
-						"actor_description":result.actor_description[i],
-						"target":result.target[i],
-						"target_description":result.target_description[i],
-						"skill":result.skill[i],
-						"skill_description":result.skill_description[i],
-						"hit":result.hit[i],
-						"total_damage":result.total_damage[i],
-						"buff":result.buff[i],
+						"actor": result.actor[i],
+						"actor_description": result.actor_description[i],
+						"target": result.target[i],
+						"target_description": result.target_description[i],
+						"skill": result.skill[i],
+						"skill_description": result.skill_description[i],
+						"hit": result.hit[i],
+						"total_damage": result.total_damage[i],
+						"buff": result.buff[i],
 					}
-					if result.total_heal[i].size()>0:
+					if result.total_heal[i].size() > 0:
 						dict.total_heal = summarize_heal(result.total_heal[i])
 						print_log_msg(tr("SUMMON_BUFF_LOG").format(dict))
 						print_log_msg(tr("SUMMON_HEAL_LOG").format(dict))
@@ -2772,17 +2765,17 @@ func summon_attack(summon: Characters.Character):
 				print_log_msg(tr("SUMMON_BUFF_LOG").format(result))
 				print_log_msg(tr("SUMMON_HEAL_LOG").format(result))
 		"buff":
-			if typeof(result.target)==TYPE_ARRAY:
+			if typeof(result.target) == TYPE_ARRAY:
 				for i in range(result.target.size()):
 					var dict:= {
-						"actor":result.actor[i],
-						"actor_description":result.actor_description[i],
-						"target":result.target[i],
-						"target_description":result.target_description[i],
-						"skill":result.skill[i],
-						"skill_description":result.skill_description[i],
-						"hit":result.hit[i],
-						"total_damage":result.total_damage[i],
+						"actor": result.actor[i],
+						"actor_description": result.actor_description[i],
+						"target": result.target[i],
+						"target_description": result.target_description[i],
+						"skill": result.skill[i],
+						"skill_description": result.skill_description[i],
+						"hit": result.hit[i],
+						"total_damage": result.total_damage[i],
 					}
 					print_log_msg(tr("SUMMON_SELF_BUFF_LOG").format(dict))
 			else:
@@ -2791,47 +2784,44 @@ func summon_attack(summon: Characters.Character):
 			result = use_summon(skill, summon)
 			print_log_msg(tr("ENEMY_SUMMON_LOG").format(result))
 	
-	if skill.has("delay_multiplier"):
+	if "delay_multiplier" in skill:
 		delay *= 1.0 + skill.delay_multiplier
 	summon.delay = delay
 	summon.action_duration = delay
 
-func die(enemy: Characters.Enemy):
-	if not enemies.has(enemy):
+func die(enemy: Characters.Enemy) -> void:
+	if enemy not in enemies:
 		return
 	
-	var dict:= enemy.to_dict()
-	var soul_rng:= randf()
-	var soul_chance:= get_soul_stone_drop_chance()
-	var soul_cage = get_empty_soul_stone()
+	var dict := enemy.to_dict()
+	var soul_rng := randf()
+	var soul_chance := get_soul_stone_drop_chance()
+	var soul_cage := get_empty_soul_stone()
 	print_log_msg(tr("DIE_LOG").format(dict))
 	add_exp(enemy.experience)
 	add_guild_exp("kill")
-	if enemy.materials.size()>0:
+	if enemy.materials.size() > 0:
 		loot.push_back(Items.create_material_drop(enemy.materials.pick_random(), dict))
-	if randf()<enemy.equipment_drop_chance:
+	if randf() < enemy.equipment_drop_chance:
 		var item:= Items.create_equipment_drop(dict)
-		if !EQUIPMENT_LEVEL_RESTRICTION.has(item.type) or player.level>=EQUIPMENT_LEVEL_RESTRICTION[item.type]:
+		if item.type not in EQUIPMENT_LEVEL_RESTRICTION or player.level >= EQUIPMENT_LEVEL_RESTRICTION[item.type]:
 			loot.push_back(item)
 	if soul_rng<soul_chance:
-		if player.abilities.has("soul_binding"):
+		if "soul_binding" not in player.abilities:
 			use_ability("soul_binding", soul_rng/soul_chance)
 			add_ability_exp("soul_binding", 8.0*soul_rng/soul_chance)
 		loot.push_back(Items.create_soul_stone_drop(dict))
-	if player.abilities.has("soul_binding") and soul_cage!=null and soul_cage is Dictionary:
-		var charge: int = max(4 + enemy.soul_rarity, 1)
-		if player.abilities.has("soul_binding"):
+	if "soul_binding" in player.abilities and soul_cage != null:
+		var charge := maxi(4 + enemy.soul_rarity, 1)
+		if "soul_binding" not in player.abilities:
 			charge += round(randf_range(0.05, 0.2) * player.abilities.soul_binding.level)
-		if soul_cage.has("charges"):
-			soul_cage.charges += charge
-		else:
-			soul_cage.charges = charge
-		if soul_cage.charges>=33 + randi()%25 + randi()%25 + randi()%25:
+		soul_cage.charges += charge
+		if soul_cage.charges >= 33 + randi() % 25 + randi() % 25 + randi() % 25:
 			remove_item(soul_cage)
-			dict.soul_rarity = int(clamp(round(soul_cage.charges/15.0 - 2.75), -1, 2))
+			dict.soul_rarity = clampi(roundi(soul_cage.charges / 15.0 - 2.75), -1, 2)
 			add_item(Items.create_soul_stone_drop(dict))
 			use_ability("soul_binding", 2.0)
-			add_ability_exp("soul_binding", 5.0 + 2.0*max(dict.soul_rarity, 0.0))
+			add_ability_exp("soul_binding", 5.0 + 2.0 * maxf(dict.soul_rarity, 0.0))
 		else:
 			add_ability_exp("soul_binding", 0.25)
 	
@@ -2842,22 +2832,22 @@ func die(enemy: Characters.Enemy):
 		player_battles_won += 1
 		player.reset_focus()
 
-func start_task(task_ID: int, task:= ""):
-	if task=="":
+func start_task(task_ID: int, task:= "") -> void:
+	if task == "":
 		task = timetable.values()[task_ID]
-	if task==current_task:
+	if task == current_task:
 		return
 	turn_counter = 0
 	
-	if task=="crafting":
-		if player_inventory.size()<2:
+	if task == "crafting":
+		if player_inventory.size() < 2:
 			if player_gold > get_potion_gold_limit() or player_inventory.size() > 50:
 				task = "shopping"
 			else:
 				task = "grinding"
 		else:
-			var has_crafting_ability:= player.abilities.has("enchanting") or player.abilities.has("alchemy")
-			for k in player.abilities.keys():
+			var has_crafting_ability := "enchanting" in player.abilities or "alchemy" in player.abilities
+			for k in player.abilities:
 				if k in Skills.CRAFTING_ABILITIES:
 					has_crafting_ability = true
 					break
@@ -2876,8 +2866,11 @@ func start_task(task_ID: int, task:= ""):
 		for attribute in player.attributes:
 			store_historical_data("attributes", player.attributes[attribute], attribute)
 		for type in player.equipment:
-			var base_type: String = player.equipment[type].get("base_type", type)
-			store_historical_data("equipment_quality", player.equipment[type].quality, base_type)
+			store_historical_data(
+				"equipment_quality",
+				player.equipment[type].quality,
+				player.equipment[type].base_name,
+			)
 		if current_time - player_creation_time < 12 * 60 * 60:
 			task = "grinding"
 	current_task = task
@@ -2908,7 +2901,7 @@ func make_desc_list(array: Array) -> String:
 	if "description_plain" in array[0]:
 		description = array[0].description_plain
 	elif "description" in array[0]:
-		description = Skills.tooltip_remove_bb_code(array[0].description)
+		description = Utils.tooltip_remove_bb_code(array[0].description)
 	else:
 		description = ""
 	if array.size()==1:
@@ -2917,7 +2910,7 @@ func make_desc_list(array: Array) -> String:
 		if "description_plain" in array[1]:
 			description = array[1].description_plain
 		elif "description" in array[1]:
-			description = Skills.tooltip_remove_bb_code(array[1].description)
+			description = Utils.tooltip_remove_bb_code(array[1].description)
 		else:
 			description = ""
 		string = Story.get_a_an(array[0].name) + "[hint=" + description + "]" + array[0].name + "[/hint] and " + Story.get_a_an(array[1].name) + "[hint=" + description + "]" + array[1].name + "[/hint]"
@@ -2926,7 +2919,7 @@ func make_desc_list(array: Array) -> String:
 			if "description_plain" in array[i]:
 				description = array[i].description_plain
 			elif "description" in array[i]:
-				description = Skills.tooltip_remove_bb_code(array[i].description)
+				description = Utils.tooltip_remove_bb_code(array[i].description)
 			else:
 				description = ""
 			string += Story.get_a_an(array[i].name) + "[hint=" + description + "]" + array[i].name + "[/hint]"
@@ -2936,22 +2929,22 @@ func make_desc_list(array: Array) -> String:
 				string += ", and "
 	return string
 
-func update_characters():
+func update_characters() -> void:
 	var player_array: Array = Array([player] + player_summons, TYPE_OBJECT, &"RefCounted", Characters.Character)
 	var enemy_array: Array = Array(enemies, TYPE_OBJECT, &"RefCounted", Characters.Character)
 	emit_signal("characters_updated", player_array, enemy_array)
 
-func update_quest_log():
+func update_quest_log() -> void:
 	emit_signal("quest_log_updated", quest_log)
 
-func print_log_msg(text: String):
+func print_log_msg(text: String) -> void:
 	if abs(current_time - Time.get_unix_time_from_system()) > 8 * 60 * 60:
 		return
 	
 	text[0] = text[0].to_upper()
 	emit_signal("text_printed", text + "\n")
 
-func print_summary_msg(text: String):
+func print_summary_msg(text: String) -> void:
 	var time_zone:= Time.get_time_zone_from_system()
 	var time_data:= Time.get_datetime_dict_from_unix_time(int(current_time + 60 * time_zone.bias))
 	if summary_text.length() > 10000:
@@ -2975,15 +2968,15 @@ func find_log_middle_position(text: String) -> int:
 	return text.length()
 
 
-func time_step(delta: float, time: float):
+func time_step(delta: float, time: float) -> void:
 	if current_task == "training" and abs(time - current_time) > 10*60:
 		var _exp:= 5.0 * 60.0 / float(player.skills.size())
 		current_time += 10*60
 		for skill in player.skills:
-			for s in skill.slots.keys():
+			for s in skill.slots:
 				for t in skill.slots[s]:
-					for a in player.abilities.keys():
-						if !Skills.ABILITY_MODULES.has(a) or !Skills.ABILITY_MODULES[a].has(s) or !Skills.ABILITY_MODULES[a][s].has(t):
+					for a in player.abilities:
+						if a not in Skills.ABILITY_MODULES or s not in Skills.ABILITY_MODULES[a] or t not in Skills.ABILITY_MODULES[a][s]:
 							continue
 						add_ability_exp(a, _exp / float(skill.slots[s].size()))
 		action_done(current_action)
@@ -2997,7 +2990,7 @@ func time_step(delta: float, time: float):
 	player_cooking_delay -= delta
 	
 	if player.delay <= 0.0:
-		recalc_attributes()
+		player.recalc_attributes()
 		player.reset_focus()
 		action_done(current_action)
 	
@@ -3029,7 +3022,7 @@ func time_step(delta: float, time: float):
 	
 	return
 
-func _process(delta: float):
+func _process(delta: float) -> void:
 	var steps:= 0
 	var time:= Time.get_unix_time_from_system()
 	
@@ -3065,7 +3058,7 @@ func get_dict_text(file: FileAccess) -> String:
 		printt("EOF reached unexpectedly", brackets)
 	return text
 
-func _save():
+func _save() -> void:
 	var dir:= DirAccess.open("user://saves")
 	if dir == null or DirAccess.get_open_error() != OK:
 		var error: int
@@ -3078,19 +3071,32 @@ func _save():
 	
 	var file: FileAccess
 	var player_data := player.to_dict()
-	var enemy_data := []
-	var summon_data := []
+	var enemy_data: Array[Dictionary] = []
+	var summon_data: Array[Dictionary] = []
 	var guild_data := Guilds.to_dict()
+	var inventory_data: Array[Dictionary] = []
+	var potion_inventory_data: Array[Dictionary] = []
+	var quest_inventory_data: Array[Dictionary] = []
+	var loot_data: Array[Dictionary] = []
 	for enemy in enemies:
 		enemy_data.push_back(enemy.to_dict())
 	for summon in player_summons:
 		summon_data.push_back(summon.to_dict())
-	var data:= {
+	for item in player_inventory:
+		inventory_data.push_back(item.to_dict())
+	for item in player_potions:
+		potion_inventory_data.push_back(item.to_dict())
+	for item in Story.inventory:
+		quest_inventory_data.push_back(item.to_dict())
+	for item in self.loot:
+		loot_data.push_back(item.to_dict())
+	
+	var data := {
 		"player_name": player_name.replace("{", "").replace("}", ""),
 		"player_gender": player_gender,
 		"player_race": player_race,
-		"player_inventory": player_inventory,
-		"player_potions": player_potions,
+		"player_inventory": inventory_data,
+		"player_potions": potion_inventory_data,
 		"player_stat_preference": player_stat_preference,
 		"player_ability_preference": player_ability_preference,
 		"player_gold": player_gold,
@@ -3122,7 +3128,7 @@ func _save():
 		"weapon_2h_alowed": player_settings.weapon_2h_alowed,
 		"disabled_skill_modules": player_settings.disabled_skill_modules,
 		"auto_update_options": player_settings.auto_update_options,
-		"loot": loot,
+		"loot": loot_data,
 		"player_summons": summon_data,
 		"enemies": enemy_data,
 		"progress_delay": player_delay,
@@ -3143,7 +3149,7 @@ func _save():
 	file.store_line(JSON.stringify({
 		"persons": Story.persons,
 		"story": Story.story,
-		"inventory": Story.inventory,
+		"inventory": quest_inventory_data,
 		"current_state": Story.current_state
 	}, "\t"))
 	file.store_line(JSON.stringify(guild_data, "\t"))
@@ -3165,11 +3171,11 @@ class Version:
 		if version_data.size() > 1:
 			self.minor = int(version_data[1])
 
-func _load():
+func _load() -> bool:
 	var file:= FileAccess.open("user://saves/" + player_name + ".dat", FileAccess.READ)
 	if FileAccess.get_open_error() != OK:
 		print("Can't open save file " + player_name + ".dat!")
-		return
+		return false
 	
 	var data: Dictionary
 	var version_string: String
@@ -3177,119 +3183,77 @@ func _load():
 	data = JSON.parse_string(get_dict_text(file)) as Dictionary
 	version_string = data.get("version", "0.0") as String
 	version_data = Version.new(version_string)
-	# TODO: check version info
+	if version_data.minor < 2:
+		# Do not support old versions
+		print("Version incompatible: has version " + version_string + ", required >= 0.2")
+		#self.quit_to_main_menu()
+		return false
+	
 	data = JSON.parse_string(get_dict_text(file)) as Dictionary
 	if data == null:
 		print("Can't load save file " + player_name + ".dat!")
 	data.delay = minf(data.get("delay", 0.0), 6.0 * 60.0 * 60.0)
 	
-	# compatibility with older versions: update skill descriptions
-	for skill in data.skills:
-		if skill.has("description_plain"):
-			continue
-		skill.description = Skills.create_tooltip(skill)
-		skill.description_plain = Skills.tooltip_remove_bb_code(skill.description)
-		skill.module_description = Skills.create_module_tooltip(skill)
-	for item in data.equipment.values():
-		if item.has("description_plain") and item.has("component_description"):
-			continue
-		item.description = Items.create_tooltip(item)
-		item.description_plain = Skills.tooltip_remove_bb_code(item.description)
-		item.component_description = Items.create_component_tooltip(item)
-	for ability_id in data.abilities:
-		if typeof(data.abilities[ability_id]) != TYPE_DICTIONARY:
-			data.abilities[ability_id] = {
-				"name": str(ability_id),
-				"level": int(data.abilities[ability_id]),
-				"experience": 0.0,
-			}
-	
 	player = Characters.Character.new(data)
 	data = JSON.parse_string(get_dict_text(file)) as Dictionary
-	if data.has("timetable"):
+	if "timetable" in data:
 		var dict:= {}
-		for t in data.timetable.keys():
+		for t in data.timetable:
 			dict[int(t)] = data.timetable[t]
 		data.timetable = dict
-	for k in data.keys():
+	for k in data:
 		if k in player_settings:
 			player_settings.set(k, data[k])
 		else:
 			match k:
 				"current_region":
 					self.current_region = Region.new(data[k])
+				"player_inventory":
+					self.player_inventory
+					# TODO
+				"enemy":
+					enemies.clear()
+					for dict in data[k]:
+						enemies.push_back(Characters.Enemy.new(dict))
+				"summon":
+					player_summons.clear()
+					for dict in data[k]:
+						player_summons.push_back(Characters.Summon.new(dict))
+				"loot":
+					self.loot.clear()
+					for dict in data[k]:
+						match dict.get("type", ""):
+							"material":
+								self.loot.push_back(ItemMaterial.new(dict))
+							"potion":
+								self.loot.push_back(ItemPotion.new(dict))
+							_:
+								self.loot.push_back(ItemEquipment.new(dict))
 				_:
 					set(k, data[k])
-	for i in range(enemies.size()):
-		for skill in enemies[i].skills:
-			if skill.has("description_plain"):
-				continue
-			skill.description = Skills.create_tooltip(skill)
-			skill.description_plain = Skills.tooltip_remove_bb_code(skill.description)
-		enemies[i] = Characters.Enemy.new(enemies[i])
-	for i in range(player_summons.size()):
-		for skill in player_summons[i].skills:
-			if skill.has("description_plain"):
-				continue
-			skill.description = Skills.create_tooltip(skill)
-			skill.description_plain = Skills.tooltip_remove_bb_code(skill.description)
-		player_summons[i] = Characters.Summon.new(player_summons[i])
 	Items.is_vegan = player_vegan
-	recalc_attributes()
-	
-	# fix broken vectors
-	for item in player_inventory + player.equipment.values():
-		if "card_set" not in item:
-			continue
-		var card_set:= {}
-		for key in item.card_set:
-			var card: Dictionary = item.card_set[key]
-			card.position = Vector2i(Utils.parse_vector2(card.position))
-			card_set[card.position] = card
-		item.card_set = card_set
-	
-	# compatibility with older versions: update item descriptions
-	for item in player_inventory + player.equipment.values():
-		if item.has("description_plain") and item.has("component_description"):
-			continue
-		item.description = Items.create_tooltip(item)
-		item.description_plain = Skills.tooltip_remove_bb_code(item.description)
-		item.component_description = Items.create_component_tooltip(item)
-	
-	# compatibility fixes
-	if typeof(self.current_region.cities) != TYPE_DICTIONARY:
-		var dict:= {}
-		for city_name in self.current_region.cities:
-			dict[city_name] = {"name": city_name, "type": "town"}
-		self.current_region.cities = dict
-	if typeof(self.current_region.locations) != TYPE_DICTIONARY:
-		var dict:= {}
-		for location_name in self.current_region.locations:
-			dict[location_name] = {"name": location_name, "type": "field"}
-		self.current_region.locations = dict
+	player.recalc_attributes()
 	
 	data = JSON.parse_string(get_dict_text(file)) as Dictionary
-	Story.persons = data.persons
-	Story.story = data.story
-	Story.inventory = data.inventory
+	Story.persons = Dictionary(data.persons as Dictionary, TYPE_STRING, "", null, TYPE_DICTIONARY, "", null)
+	Story.story = Array(data.story as Array, TYPE_DICTIONARY, "", null)
+	Story.inventory.clear()
+	for item: Dictionary in data.inventory:
+		Story.inventory.push_back(ItemQuest.new(item))
 	Story.current_state = data.current_state
-	Story.locations = self.current_region.locations
-	Story.cities = self.current_region.cities
+	Story.locations.clear()
+	for location in self.current_region.locations:
+		Story.locations[location] = self.current_region.locations[location].name
+	Story.cities.clear()
+	for city in self.current_region.cities:
+		Story.cities[city] = self.current_region.cities[city].name
 	Story.factions = self.current_region.race
-	# compatibility fixes
-	if "enemy" not in self.current_region:
-		self.current_region.enemy = ["goblin"]
 	Story.hostile_factions = self.current_region.enemy
 	
-	if version_data.minor >= 2:
-		var guild_data: Variant = JSON.parse_string(get_dict_text(file))
-		if guild_data != null and typeof(guild_data) == TYPE_DICTIONARY:
-			for guild_id in guild_data:
-				Guilds.guilds[guild_id] = Guild.new(guild_data[guild_id])
-	else:
-		# Compatibility: join some new guilds
-		for i in range(1 + sqrt(self.player.level / 10.0)):
-			self.join_guild()
+	var guild_data: Variant = JSON.parse_string(get_dict_text(file))
+	if guild_data != null and typeof(guild_data) == TYPE_DICTIONARY:
+		for guild_id: String in guild_data:
+			Guilds.guilds[guild_id] = Guild.new(guild_data[guild_id] as Dictionary)
 	
 	self.available_guilds.clear()
 	for guild_id in Guilds.guilds:
@@ -3301,8 +3265,10 @@ func _load():
 	var hist_data: Variant = JSON.parse_string(get_dict_text(file))
 	if hist_data != null and typeof(hist_data) == TYPE_DICTIONARY:
 		historical_data = hist_data
+	
+	return true
 
-func gui_ready():
+func gui_ready() -> void:
 	update_characters()
 	emit_signal("gold_changed", player_gold)
 	emit_signal("inventory_changed", player_inventory)
@@ -3316,7 +3282,7 @@ func gui_ready():
 	emit_signal("guilds_updated", self.available_guilds)
 
 
-func store_historical_data(type: String, value: Variant, sub := ""):
+func store_historical_data(type: String, value: Variant, sub := "") -> void:
 	if type not in historical_data:
 		if sub == "":
 			historical_data[type] = [
@@ -3328,25 +3294,31 @@ func store_historical_data(type: String, value: Variant, sub := ""):
 			}
 	else:
 		if sub == "":
-			if historical_data[type].size() > 200:
+			if (historical_data[type] as Array).size() > 200:
 				# remove the first 10 entries
-				historical_data[type] = historical_data[type].slice(10, historical_data[type].size())
-			historical_data[type].append([current_time, value])
+				historical_data[type] = (historical_data[type] as Array).slice(
+					10,
+					(historical_data[type] as Array).size(),
+				)
+			(historical_data[type] as Array).append([current_time, value])
 		else:
 			if sub not in historical_data[type]:
 				historical_data[type][sub] = [[current_time, value]]
 			else:
-				if historical_data[type][sub].size() > 100:
+				if (historical_data[type][sub] as Array).size() > 100:
 					# remove the first 10 entries
-					historical_data[type][sub] = historical_data[type][sub].slice(10, historical_data[type][sub].size())
-				historical_data[type][sub].append([current_time, value])
+					historical_data[type][sub] = (historical_data[type][sub] as Array).slice(
+						10,
+						(historical_data[type][sub] as Array).size(),
+					)
+				(historical_data[type][sub] as Array).append([current_time, value])
 
 
-func _set_timetable(ID: int, index: int):
+func _set_timetable(ID: int, index: int) -> void:
 	var type: String = ACTIONS[ID]
 	index += 5
 	for i in range(1, index - 4):
-		if timetable.has(index - i):
+		if index - i in timetable:
 			if timetable[index - i] == type:
 				timetable.erase(index)
 				return
@@ -3354,38 +3326,41 @@ func _set_timetable(ID: int, index: int):
 	timetable[index] = type
 	autosave_delay = 10.0
 
-func _set_time_offset(value: int):
+func _set_time_offset(value: int) -> void:
 	time_offset = value
 	autosave_delay = 10.0
 
 
-func _settings_changed():
+func _settings_changed() -> void:
 	# queue an autosave if a setting has been changed
 	autosave_delay = min(autosave_delay, 10.0)
 
 
-func _notification(what: int):
-	if what==NOTIFICATION_WM_CLOSE_REQUEST:
-		_save()
-		get_tree().quit()
+func quit_to_main_menu() -> void:
+	self.get_tree().change_scene_to_file("res://gui/menu.tscn")
+	self.emit_signal("freed")
+	self.queue_free()
 
-func _input(event: InputEvent):
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		self._save()
+		self.get_tree().quit()
+
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		_save()
-		get_tree().change_scene_to_file("res://gui/menu.tscn")
-		emit_signal("freed")
-		queue_free()
+		self._save()
+		self.quit_to_main_menu()
 
-func _ready():
+func _ready() -> void:
 	randomize()
 	
 #	debug
 	#current_time -= 7*24*60*60
 	
-	if player_settings.valid_weapon_types.size() == 0:
-		player_settings.valid_weapon_types = player.valid_weapon_subtypes
-	if player_settings.valid_armour_types.size() == 0:
-		player_settings.valid_armour_types = player.valid_armour_subtypes
+	if self.player_settings.valid_weapon_types.size() == 0:
+		self.player_settings.valid_weapon_types = self.player.valid_weapon_subtypes
+	if self.player_settings.valid_armour_types.size() == 0:
+		self.player_settings.valid_armour_types = self.player.valid_armour_subtypes
 	
 	if current_task_ID == -1:
 		current_task_ID = 0

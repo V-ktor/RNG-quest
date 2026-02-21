@@ -1,476 +1,17 @@
 extends Node
 
-const CONS = ["b","c","d","f","g","h","j","k","l","m","n","p","r","s","t","v","w","x","y","z"]
-const VOVELS = ["a","e","o","u","i"]
-const ONLY_CENTRAL = ["-","'"]
+const CONS: Array[String] = ["b","c","d","f","g","h","j","k","l","m","n","p","r","s","t","v","w","x","y","z"]
+const VOVELS: Array[String] = ["a","e","o","u","i"]
+const ONLY_CENTRAL: Array[String] = ["-","'"]
 
-const GOD_PREFIX = {
-	"War": {
-		"attack":4,
-	},
-	"Weapon": {
-		"attack":4,
-	},
-	"Doom": {
-		"attack":2,
-		"magic":2,
-	},
-	"Death": {
-		"attack":2,
-		"magic":2,
-	},
-	"fierce": {
-		"attack":2,
-		"critical":2,
-	},
-	"ferocious": {
-		"attack":2,
-		"critical":2,
-	},
-	"wild": {
-		"attack":4,
-		"critical":4,
-		"evasion":-2,
-		"accuracy":-2,
-	},
-	"grumpy": {
-		"armour":2,
-		"critical":2,
-	},
-	"dumb": {
-		"attack":-2,
-		"magic":-2,
-		"armour":4,
-		"evasion":4,
-	},
-	"blind": {
-		"accuracy":-4,
-		"evasion":-4,
-		"armour":4,
-		"willpower":8,
-	},
-	"almighty": {
-		"attack":1,
-		"magic":1,
-		"willpower":2,
-	},
-	"ugly": {
-		"willpower":-4,
-		"magic":4,
-		"evasion":4,
-	},
-	"beautiful": {
-		"willpower":4,
-	},
-	"cruel": {
-		"attack":4,
-		"magic":4,
-		"willpower":-4,
-	},
-	"hated": {
-		"willpower":-4,
-		"magic":4,
-		"critical":4,
-	},
-	"forbidden": {
-		"willpower":-4,
-		"attack":2,
-		"magic":2,
-		"critical":4,
-	},
-	"shackled": {
-		"willpower":-2,
-		"armour":-2,
-		"evasion":4,
-		"critical":4,
-	},
-	"auxiliary": {
-		"health":40,
-	},
-	"temporary": {
-		"stamina":20,
-		"mana":20,
-	},
-	"dead": {
-		"health":-20,
-		"willpower":6,
-		"magic":2,
-	},
-	"Science": {
-		"stamina":20,
-		"attack":2,
-	},
-	"Magic": {
-		"magic":4,
-	},
-	"arcane": {
-		"magic":4,
-	},
-	"illuminated": {
-		"willpower":4,
-	},
-	"dreaming": {
-		"willpower":4,
-	},
-	"sleeping": {
-		"willpower":6,
-		"speed":-1,
-	},
-	"hibernating": {
-		"willpower":8,
-		"evasion":-2,
-		"speed":-1,
-	},
-	"banned": {
-		"stamina":20,
-		"mana":20,
-	},
-	"Light": {
-		"health":40,
-	},
-	"Shadow": {
-		"stamina":20,
-		"mana":20,
-	},
-	"Life": {
-		"health_regen":10,
-	},
-	"Fire": {
-		"magic":4,
-	},
-	"Ice": {
-		"willpower":4,
-	},
-	"Water": {
-		"health_regen":10,
-	},
-	"Earth": {
-		"health":20,
-		"armour":2,
-	},
-	"forgotten": {
-		"stamina":-20,
-		"mana":-20,
-		"attack":4,
-		"magic":4,
-	},
-	"mossy": {
-		"health_regen":10,
-	},
-	"golden": {
-		"armour":4,
-	},
-	"shining": {
-		"willpower":2,
-		"armour":2,
-	},
-	"Random Number": {
-		"critical":4,
-	},
-	"procedurally generated": {
-		"accuracy":2,
-		"evasion":2,
-	},
-	"Vegetarian": {
-		"health":20,
-		"health_regen":5,
-	},
-	"Vegan": {
-		"health":20,
-		"health_regen":5,
-	},
-	"rural": {
-		"health":40,
-	},
-	"knowledgeable": {
-		"stamina":20,
-		"mana":20,
-	},
-	"wise": {
-		"mana":20,
-		"willpower":2,
-	},
-	"the one and only": {
-		"stamina_regen":10,
-		"mana_regen":10,
-	},
-	"beloved": {
-		"stamina_regen":10,
-		"mana_regen":10,
-	},
-	"wicked": {
-		"health_regen":10,
-		"stamina_regen":10,
-		"mana_regen":10,
-		"willpower":-4,
-	},
-	"Demon": {
-		"stamina_regen":10,
-		"mana_regen":10,
-	},
-	"praised": {
-		"stamina":20,
-		"mana":20,
-	},
-	"Prime": {
-		"health":40,
-	},
-	"censored": {
-		"penetration":6,
-	},
-}
-const GOD_SUFFIX = {
-	"War": {
-		"attack":4,
-	},
-	"Warfare": {
-		"attack":2,
-		"critical":2,
-	},
-	"Conflict": {
-		"accuracy":2,
-		"critical":2,
-	},
-	"Violence": {
-		"evasion":-2,
-		"accuracy":2,
-		"critical":4,
-	},
-	"Death": {
-		"evasion":-2,
-		"accuracy":2,
-		"critical":4,
-	},
-	"Murder": {
-		"evasion":-2,
-		"attack":2,
-		"critical":4,
-	},
-	"Harm": {
-		"evasion":-4,
-		"attack":2,
-		"magic":2,
-		"critical":4,
-	},
-	"Peace": {
-		"attack":-2,
-		"magic":-2,
-		"willpower":4,
-		"armour":4,
-	},
-	"Altruism": {
-		"willpower":2,
-		"armour":2,
-	},
-	"Prosperity": {
-		"health":40,
-	},
-	"Technology": {
-		"stamina":20,
-		"attack":2,
-	},
-	"Ingenuity": {
-		"stamina":20,
-		"mana":20,
-	},
-	"Construction": {
-		"stamina":20,
-		"stamina_regen":10,
-	},
-	"Nature": {
-		"health":20,
-		"health_regen":5,
-	},
-	"Hell": {
-		"health":-40,
-		"stamina":40,
-		"mana":40,
-	},
-	"Heaven": {
-		"health":40,
-	},
-	"Science": {
-		"attack":2,
-		"willpower":2,
-	},
-	"Knowledge": {
-		"willpower":2,
-		"magic":2,
-	},
-	"Life": {
-		"health":20,
-		"health_regen":5,
-	},
-	"Healing": {
-		"health_regen":10,
-	},
-	"Destruction": {
-		"attack":2,
-		"magic":2,
-	},
-	"Love": {
-		"attack":-2,
-		"magic":-2,
-		"health_regen":10,
-	},
-	"Hate": {
-		"health":-40,
-		"attack":4,
-		"magic":4,
-	},
-	"Birth": {
-		"health":20,
-		"health_regen":5,
-	},
-	"Fertility": {
-		"health_regen":10
-	},
-	"Fortitude": {
-		"armour":4,
-	},
-	"Virtuosity": {
-		"willpower":4,
-	},
-	"Rebirth": {
-		"health":40
-	},
-	"Wisdom": {
-		"willpower":4,
-	},
-	"Magic": {
-		"magic":4,
-	},
-	"Dedication": {
-		"accuracy":2,
-		"evasion":2,
-	},
-	"Passion": {
-		"critical":4,
-	},
-	"Light": {
-		"health":40,
-	},
-	"Darkness": {
-		"health":-40,
-		"stamina":40,
-		"mana":40,
-	},
-	"Fire": {
-		"magic":4,
-	},
-	"Ice": {
-		"willpower":4,
-	},
-	"Water": {
-		"health_regen":10,
-	},
-	"Earth": {
-		"health":20,
-		"armour":2,
-	},
-	"Art": {
-		"accuracy":2,
-		"evasion":2,
-	},
-	"Shadows": {
-		"evasion":4,
-	},
-	"Void": {
-		"accuracy":2,
-		"evasion":2,
-	},
-	"the Dead": {
-		"health":-40,
-		"critical":8,
-	},
-	"Space": {
-		"stamina":20,
-		"mana":20,
-	},
-	"Time": {
-		"speed":2,
-	},
-	"Fashion": {
-		"speed":1,
-		"evasion":2,
-	},
-	"Agriculture": {
-		"health":40,
-	},
-	"Power": {
-		"stamina_regen":10,
-		"mana_regen":10,
-	},
-	"Beauty": {
-		"health":20,
-		"stamina":10,
-		"mana":10,
-	},
-	"Cards": {
-		"attack":1,
-		"mana":1,
-		"accuracy":1,
-		"evasion":1,
-	},
-	"Random Numbers": {
-		"critical":4,
-	},
-	"Procedural Generation": {
-		"health":20,
-		"stamina":10,
-		"mana":10,
-	},
-	"Segmentation Fault": {
-		"critical":4,
-	},
-	"Bugs": {
-		"willpower":4,
-	},
-	"Curses": {
-		"willpower":-8,
-		"attack":4,
-		"magic":4,
-		"critical":4,
-	},
-	"Doom": {
-		"willpower":-2,
-		"armour":-4,
-		"attack":4,
-		"magic":4,
-		"critical":2,
-	},
-	"Flora": {
-		"health":20,
-		"health_regen":5,
-	},
-	"Fauna": {
-		"health":40,
-	},
-	"Sleep": {
-		"willpower":6,
-		"speed":-1,
-	},
-	"Dreams": {
-		"willpower":4,
-		"armour":2,
-		"speed":-1,
-	},
-	"Gold": {
-		"accuracy":2,
-		"evasion":2,
-	},
-	"Contemplation": {
-		"focus":3,
-	}
-}
-const MATERIALS = [
+const MATERIALS: Array[String] = [
 	"iron","steel","titanium","silver","gold","platinum","mithril","vanadium","palladium",
 	"thorium","uranium","quicksilver","mercury","tungsten",
 	"aramid","leather","wood","redwood","blackwood","whitewood","silk","velvet","carbon",
 	"stone","basalt","graphite","granite","marble",
 	"diamond","saphire","ruby","emerald","amber",
 ]
-const NAME_DATA = {
+const NAME_DATA: Dictionary[String, Dictionary] = {
 	"human": {
 		"phrases_male": ["or","esh","us","car","end","rus","har"],
 		"phrases_female": ["ia","as","el","icy","bec","ate","sal"],
@@ -619,15 +160,15 @@ const NAME_DATA = {
 		"phrases": [2,2],
 	},
 }
-const RACE_ADJECTIVE = {
+const RACE_ADJECTIVE: Dictionary[String, String] = {
 	"elf": "elven",
 	"dwarf": "dwarven",
 	"orc": "orcish",
 }
-const EMPIRE_GENERIC_NAME = [
+const EMPIRE_GENERIC_NAME: Array[String] = [
 	"empire", "kingdom", "state", "realm", "division", "republic",
 ]
-const EMPIRE_RACE_NAME = {
+const EMPIRE_RACE_NAME: Dictionary[String, Array] = {
 	"human": [
 		"guild","republic","kingdom","empire",
 	],
@@ -649,7 +190,7 @@ const EMPIRE_RACE_NAME = {
 		"army","warband","division",
 	],
 }
-const EMPIRE_RACE_ADJECTIVE = {
+const EMPIRE_RACE_ADJECTIVE: Dictionary[String, Array] = {
 	"human": [
 		"trader","golden","iron",
 	],
@@ -666,7 +207,7 @@ const EMPIRE_RACE_ADJECTIVE = {
 		"feral","wild",
 	],
 }
-const EMPIRE_RACE_TOPIC = {
+const EMPIRE_RACE_TOPIC: Dictionary[String, Array] = {
 	"elf": [
 		"wisdom","elders","woods",
 	],
@@ -677,13 +218,13 @@ const EMPIRE_RACE_TOPIC = {
 		"warlords","bannerlord","warfare",
 	],
 }
-const DISEASE_NAME = [
+const DISEASE_NAME: Array[String] = [
 	"flu", "pox", "rot", "virus",
 ]
-const DISEASE_PREFIX = [
+const DISEASE_PREFIX: Array[String] = [
 	"chicken", "cow", "black",
 ]
-const PREFIX = [
+const PREFIX: Array[String] = [
 	"holo", "homo", "hetero", "mono", "bi", "tri", "quattro", "penta", "hexa", "octo", "deca",
 	"multi", "omni", "spatio", "gravo", "pyro", "cryo", "electro", "hydro", "aeoro", "terra", "bio",
 	"necro", "micro", "macro", "toxo", "ethero", "sui", "somni", "ferro", "xeno", "xylo", "tetra",
@@ -695,7 +236,7 @@ const PREFIX = [
 	"poly", "plasto", "endo", "soli", "arcano", "thermo", "crypto", "mero", "meso", "digi", "ana",
 	"hyper", "anthropo", "cata",
 ]
-const SUFFIX = [
+const SUFFIX: Array[String] = [
 	"chrome", "chromatic", "synthetic", "syntactic", "phil", "phobe", "phantastic", "tic",
 	"spatial", "temporal", "metric", "gravitational", "genic", "genetic", "mimetic", "nematic",
 	"phosphatic", "phonetic", "scopic", "cidal", "phasic", "pheral", "morphic", "metallic",
@@ -703,14 +244,14 @@ const SUFFIX = [
 	"elastic", "tal", "centric", "mous", "static", "dynamic", "mite", "nautic", "nomic", "cryptic",
 	"active", "logical", "septic", "cistic", "directional", "mimic", "phoric", "plasmonic",
 ]
-const SUBJECT = [
+const SUBJECT: Array[String] = [
 	"phobia", "philia", "cide", "laxis", "scope", "mount", "graph", "phone", "borg", "maly",
 	"noun", "void", "mancy", "maniac", "thesis", "matter", "cality", "cracy", "nomy", "phase",
 	"gel", "synthesis", "tron", "logy", "vision", "centrism", "pluralism", "sepsis", "nol", "mere",
 	"hedron", "phantasia", "enigma", "glyph", "nosis", "script", "chemical", "clysm", "cyst",
 	"sphere", "gram",
 ]
-const GREETINGS = {
+const GREETINGS: Dictionary[String, Array] = {
 	"neutral": [
 		"Hello!","Hey!","Hi!","Good day!","Greetings!",
 	],
@@ -757,7 +298,7 @@ const GREETINGS = {
 		"You may enter.",
 	],
 }
-const QUEST_DONE = {
+const QUEST_DONE: Dictionary[String, Array] = {
 	"neutral": [
 		"Well done!","Great work!","Thank you!",
 	],
@@ -807,37 +348,7 @@ const QUEST_DONE = {
 		"Transient parent has another exclusive child.",
 	],
 }
-var dual_magic_names = {}
-
-
-func get_god() -> Dictionary:
-	var prefix: String = GOD_PREFIX.keys().pick_random()
-	var suffix: String = GOD_SUFFIX.keys().pick_random()
-	var string: String = prefix + " " + tr("GOD_OF") + " "
-	var dict:= {"type": "blessing","duration":24*60*60}
-	while string.to_lower().similarity(suffix.to_lower())>0.5:
-		suffix = GOD_SUFFIX.keys().pick_random()
-	string = string + suffix
-	dict.god = string
-	dict.name = tr("BLESSING_OF").format({"name":string})
-	dict.attributes = {}
-	for k in GOD_PREFIX[prefix].keys():
-		if "health" in k || "stamina" in k || "mana" in k || "focus" in k:
-			dict[k] = GOD_PREFIX[prefix][k]
-		else:
-			dict.attributes[k] = GOD_PREFIX[prefix][k]
-	for k in GOD_SUFFIX[suffix].keys():
-		if "health" in k || "stamina" in k || "mana" in k || "focus" in k:
-			if dict.attributes.has(k):
-				dict[k] += GOD_SUFFIX[suffix][k]
-			else:
-				dict[k] = GOD_SUFFIX[suffix][k]
-		else:
-			if dict.attributes.has(k):
-				dict.attributes[k] += GOD_SUFFIX[suffix][k]
-			else:
-				dict.attributes[k] = GOD_SUFFIX[suffix][k]
-	return dict
+var dual_magic_names := {}
 
 
 func make_list(array: Array) -> String:
@@ -858,12 +369,12 @@ func make_list(array: Array) -> String:
 
 func replace_syllable(_name: String, phrases: Array, vovels:= VOVELS, cons:= CONS) -> String:
 	# Replace a syllable of name by a random one from phrases.
-	var pos:= 0
+	var pos := 0
 	var phrase: String = phrases[randi()%phrases.size()]
-	var length:= phrase.length()
-	var v:= false
-	var c:= 0
-	var start:= 0
+	var length := phrase.length()
+	var v := false
+	var c := 0
+	var start := 0
 	# Chose a random syllable to replace.
 	for i in range(_name.length()):
 		pos = i
@@ -871,7 +382,7 @@ func replace_syllable(_name: String, phrases: Array, vovels:= VOVELS, cons:= CON
 			if v:
 				v = false
 				c = 0
-				if randf()<0.5:
+				if randf() < 0.5:
 					break
 				else:
 					start = i
@@ -879,89 +390,89 @@ func replace_syllable(_name: String, phrases: Array, vovels:= VOVELS, cons:= CON
 				v = true
 		else:
 			c += 1
-			if c>2:
+			if c > 2:
 				v = false
 				c = 0
-				if randf()<0.5:
+				if randf() < 0.5:
 					break
 				else:
 					start = i
-	length = int(abs(start-pos))+randi()%2
+	length = absi(start - pos) + randi() % 2
 	pos = start
-	if _name.length()>4+randi()%4:
+	if _name.length() > 4 + randi() % 4:
 		length += 1
-	if pos+length>_name.length()-1:
-		pos -= pos+length-_name.length()+1
-	_name = _name.substr(0,pos)+phrase+_name.substr(pos+length,_name.length()-pos-length)
+	if pos + length > _name.length() - 1:
+		pos -= pos + length - _name.length() + 1
+	_name = _name.substr(0, pos) + phrase + _name.substr(pos + length, _name.length() - pos - length)
 	# Replace a vovel by a consonant if there are too many in a row or vice versa.
-	for i in range(max(pos-1,0),min(pos+length+1,_name.length()-1)):
-		if !(_name[clamp(i,0,_name.length()-1)] in vovels) && !(_name[clamp(i-1,0,_name.length()-1)] in vovels) && !(_name[clamp(i+1,0,_name.length()-1)] in vovels):
-			_name[i] = vovels[randi()%vovels.size()]
-		elif (_name[clamp(i,0,_name.length()-1)] in vovels) && (_name[clamp(i-1,0,_name.length()-1)] in vovels) && (_name[clamp(i+1,0,_name.length()-1)] in vovels):
-			_name[i] = cons[randi()%cons.size()]
-	if _name.length()>2 && (_name[_name.length()-1] in cons and _name[_name.length()-2] in cons):
-		_name[_name.length()-1] = vovels[randi()%vovels.size()]
+	for i in range(maxi(pos - 1, 0), mini(pos + length + 1, _name.length() - 1)):
+		if _name[clampi(i, 0, _name.length() - 1)] not in vovels && _name[clampi(i - 1, 0, _name.length() - 1)] not in vovels && _name[clampi(i + 1, 0, _name.length() - 1)] not in vovels:
+			_name[i] = vovels.pick_random()
+		elif (_name[clampi(i, 0, _name.length() - 1)] in vovels) && (_name[clampi(i - 1, 0, _name.length() - 1)] in vovels) && (_name[clampi(i + 1, 0, _name.length() - 1)] in vovels):
+			_name[i] = cons.pick_random()
+	if _name.length() > 2 && (_name[_name.length() - 1] in cons and _name[_name.length() - 2] in cons):
+		_name[_name.length() - 1] = vovels.pick_random()
 	pos = -3
 	for i in range(_name.length()):
-		if _name.length()>i && _name[i] in ONLY_CENTRAL:
-			if abs(i-pos)<=2:
-				_name = _name.left(i-1) + _name.substr(i+1, _name.length()-i-1)
+		if _name.length() > i && _name[i] in ONLY_CENTRAL:
+			if absi(i - pos) <= 2:
+				_name = _name.left(i - 1) + _name.substr(i + 1, _name.length() - i - 1)
 			else:
 				pos = i
 	if _name[0] in ONLY_CENTRAL:
-		phrase = phrases[randi()%phrases.size()]
+		phrase = phrases[randi() % phrases.size()]
 		while phrase[0] in ONLY_CENTRAL:
-			phrase = phrases[randi()%phrases.size()]
-		_name = phrase+_name
-	if _name[_name.length()-1] in ONLY_CENTRAL:
-		_name = _name.left(_name.length()-1)
+			phrase = phrases[randi() % phrases.size()]
+		_name = phrase + _name
+	if _name[_name.length() - 1] in ONLY_CENTRAL:
+		_name = _name.left(_name.length() - 1)
 	return _name
 
-func random_syllable(_name: String, vovels:=VOVELS) -> String:
+func random_syllable(_name: String, vovels := VOVELS) -> String:
 	var pos: int
 	var dir: int
 	var length: int
 	for _i in range(20):
-		pos = randi()%(_name.length())
-		if (_name[pos] in vovels):
+		pos = randi() % (_name.length())
+		if _name[pos] in vovels:
 			break
-	if pos==0:
+	if pos == 0:
 		dir = 1
-	elif pos==_name.length()-1:
+	elif pos == _name.length() - 1:
 		dir = -1
 	else:
-		dir = 2*(randi()%2)-1
-	length = randi()%3
-	if pos+dir*length<0:
-		length += pos+dir*length
-	elif pos+dir*length>_name.length()-1:
-		length -= pos+dir*length-_name.length()+1
-	for i in range(pos,pos+dir*length,dir):
-		_name = _name.substr(0,i)+CONS[randi()%CONS.size()]+_name.substr(i+1,_name.length()-1-i)
+		dir = 2 * (randi() % 2) - 1
+	length = randi() % 3
+	if pos + dir * length < 0:
+		length += pos + dir * length
+	elif pos + dir * length > _name.length() - 1:
+		length -= pos + dir * length - _name.length() + 1
+	for i in range(pos, pos + dir * length, dir):
+		_name = _name.substr(0, i) + CONS.pick_random() + _name.substr(i + 1, _name.length() - 1 - i)
 	for i in range(_name.length()):
-		if !(_name[clamp(i,0,_name.length()-1)] in vovels) && !(_name[clamp(i-1,0,_name.length()-1)] in vovels) && !(_name[clamp(i+1,0,_name.length()-1)] in vovels):
-			_name[i] = vovels[randi()%vovels.size()]
+		if _name[clampi(i, 0, _name.length() - 1)] not in vovels && _name[clampi(i - 1, 0, _name.length() - 1)] not in vovels && _name[clampi(i + 1, 0, _name.length() - 1)] not in vovels:
+			_name[i] = vovels.pick_random()
 	return _name
 
-func create_from_phrases(length: int, phrases: Array, endings: Array, vovels:= VOVELS, cons:= CONS) -> String:
+func create_from_phrases(length: int, phrases: Array[String], endings: Array[String], vovels := VOVELS, cons := CONS) -> String:
 	var _name:= ""
-	var ending_first:= false
+	var ending_first := false
 	var last_char: String
-	if randf()<0.1:
+	if randf() < 0.1:
 		ending_first = true
-	for _i in range(length-1):
-		_name += phrases[randi()%phrases.size()]
+	for _i in range(length - 1):
+		_name += phrases.pick_random()
 	if ending_first:
-		_name += endings[randi()%endings.size()]
-	for _i in range(randi()%int(1+0.25*_name.length())+1):
+		_name += endings.pick_random()
+	for _i in range(randi() % floori(1 + 0.25 * _name.length()) + 1):
 		_name = replace_syllable(_name, phrases, vovels, cons)
-	if !ending_first:
-		_name += endings[randi()%endings.size()]
+	if not ending_first:
+		_name += endings.pick_random()
 	last_char = _name[0]
-	for i in range(1,_name.length()):
-		if _name[i]==last_char && last_char in vovels:
-			_name = _name.left(i-1) + _name.substr(i)
-		if i+1>=_name.length():
+	for i in range(1, _name.length()):
+		if _name[i] == last_char && last_char in vovels:
+			_name = _name.left(i - 1) + _name.substr(i)
+		if i + 1 >= _name.length():
 			break
 		else:
 			last_char = _name[i]
@@ -971,29 +482,35 @@ func create_from_phrases(length: int, phrases: Array, endings: Array, vovels:= V
 func create_name(race: String, gender: int) -> String:
 	var dict: Dictionary
 	var _name: String
-	var phrases:= []
-	var endings:= []
-	var vovels: Array
-	if NAME_DATA.has(race):
+	var phrases: Array[String] = []
+	var endings: Array[String] = []
+	var vovels: Array[String]
+	if race in NAME_DATA:
 		dict = NAME_DATA[race]
 	else:
 		dict = NAME_DATA.values().pick_random().duplicate(true)
-		for k in dict.keys():
+		for k: String in dict:
 			var d: Dictionary = NAME_DATA.values().pick_random()
-			if d.has(k):
+			if k in d:
 				dict[k] += d[k]
 	if gender <= 0:
-		phrases += dict.phrases_male
-		endings += dict.endings_male
+		phrases += Array(dict.phrases_male as Array, TYPE_STRING, "", null)
+		endings += Array(dict.endings_male as Array, TYPE_STRING, "", null)
 	if gender >= 0:
-		phrases += dict.phrases_female
-		endings += dict.endings_female
-	if dict.has("vovels"):
-		vovels = dict.vovels
+		phrases += Array(dict.phrases_female as Array, TYPE_STRING, "", null)
+		endings += Array(dict.endings_female as Array, TYPE_STRING, "", null)
+	if "vovels" in dict:
+		vovels = Array(dict.vovels, TYPE_STRING, "", null)
 	else:
 		vovels = VOVELS
 	
-	_name = create_from_phrases(randi_range(dict.phrases[0], dict.phrases[1]), phrases, endings, vovels, CONS)
+	_name = create_from_phrases(
+		randi_range(dict.phrases[0] as int, dict.phrases[1] as int),
+		phrases,
+		endings,
+		vovels,
+		CONS,
+	)
 	
 	return _name
 
@@ -1002,14 +519,14 @@ func get_disease_name() -> String:
 
 func get_empire_name(race: String) -> String:
 	var rnd:= randf()
-	if rnd<0.075:
+	if rnd < 0.075:
 		if RACE_ADJECTIVE.has(race):
 			return (RACE_ADJECTIVE[race] + " " + EMPIRE_GENERIC_NAME.pick_random()).capitalize()
 		else:
-			return (race + " " + EMPIRE_GENERIC_NAME.pick_random()).capitalize()
-	elif rnd<0.15:
+			return ((race + " " + EMPIRE_GENERIC_NAME.pick_random()) as String).capitalize()
+	elif rnd < 0.15:
 		return EMPIRE_GENERIC_NAME.pick_random().capitalize() + " " + tr("OF") + " " + race.capitalize() + "s"
-	elif rnd<0.35:
+	elif rnd < 0.35:
 		var base: String
 		if EMPIRE_RACE_NAME.has(race):
 			base = EMPIRE_RACE_NAME[race].pick_random()
@@ -1021,7 +538,7 @@ func get_empire_name(race: String) -> String:
 			return (RACE_ADJECTIVE[race] + " " + base).capitalize()
 		else:
 			return (race + " " + base).capitalize()
-	elif rnd<0.55:
+	elif rnd < 0.55:
 		var base: String
 		if EMPIRE_RACE_NAME.has(race):
 			base = EMPIRE_RACE_NAME[race].pick_random()

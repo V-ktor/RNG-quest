@@ -1,7 +1,9 @@
 {
 	"name": "adventure",
 	"prefixes": [
-		"adventure", "explorer", "scout"
+		"adventure",
+		"explorer",
+		"scout"
 	],
 	"ranks": {
 		"0": [
@@ -53,5 +55,10 @@
 		"salvation",
 		"versatility",
 		"education"
+	],
+	"vocation": [
+		"adventurer",
+		"wanderer",
+		"explorer"
 	]
 }

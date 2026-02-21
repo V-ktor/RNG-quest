@@ -1,58 +1,58 @@
 extends Node
 
-const STAT_POINTS_PER_LEVEL = 4
-const DEFAULT_STATS = {
-	"strength":10,
-	"constitution":10,
-	"dexterity":10,
-	"intelligence":10,
-	"wisdom":10,
-	"cunning":10,
+const STAT_POINTS_PER_LEVEL := 4
+const DEFAULT_STATS: Dictionary[String, int] = {
+	"strength": 10,
+	"constitution": 10,
+	"dexterity": 10,
+	"intelligence": 10,
+	"wisdom": 10,
+	"cunning": 10,
 }
-const STATS_ATTRIBUTES = {
-	"strength":{
-		"attack":1,
-		"armour":0.5,
+const STATS_ATTRIBUTES: Dictionary[String, Dictionary] = {
+	"strength": {
+		"attack": 1,
+		"armour": 0.5,
 	},
-	"constitution":{
-		"armour":0.5,
+	"constitution": {
+		"armour": 0.5,
 	},
-	"dexterity":{
-		"accuracy":1,
-		"evasion":1,
+	"dexterity": {
+		"accuracy": 1,
+		"evasion": 1,
 	},
-	"intelligence":{
-		"magic":1,
+	"intelligence": {
+		"magic": 1,
 	},
-	"wisdom":{
-		"willpower":1,
+	"wisdom": {
+		"willpower": 1,
 	},
-	"cunning":{
-		"penetration":0.25,
-		"critical":1,
-	},
-}
-const STATS_METERS = {
-	"strength":{
-		"stamina_regen":1,
-	},
-	"constitution":{
-		"max_health":10,
-		"max_stamina":3,
-		"stamina_regen":1,
-	},
-	"intelligence":{
-		"mana_regen":1,
-	},
-	"wisdom":{
-		"max_mana":3,
-		"mana_regen":1,
-	},
-	"cunning":{
-		"max_focus":0.5,
+	"cunning": {
+		"penetration": 0.25,
+		"critical": 1,
 	},
 }
-const ATTRIBUTES = [
+const STATS_METERS: Dictionary[String, Dictionary] = {
+	"strength": {
+		"stamina_regen": 1,
+	},
+	"constitution": {
+		"max_health": 10,
+		"max_stamina": 3,
+		"stamina_regen": 1,
+	},
+	"intelligence": {
+		"mana_regen": 1,
+	},
+	"wisdom": {
+		"max_mana": 3,
+		"mana_regen": 1,
+	},
+	"cunning": {
+		"max_focus": 0.5,
+	},
+}
+const ATTRIBUTES: Array[String] = [
 	"attack",
 	"magic",
 	"willpower",
@@ -63,13 +63,13 @@ const ATTRIBUTES = [
 	"speed",
 	"critical",
 ]
-const RESOURCES = [
+const RESOURCES: Array[String] = [
 	"health",
 	"stamina",
 	"mana",
 	"focus",
 ]
-const CRITICAL_DAMAGE = 0.5
+const CRITICAL_DAMAGE := 0.5
 
 class Character:
 	var name: String
@@ -87,256 +87,257 @@ class Character:
 	var stamina_regen: int
 	var focus: int
 	var max_focus: int
-	var stats: Dictionary
-	var effective_stats: Dictionary
-	var base_attributes: Dictionary
-	var attributes: Dictionary
+	var stats: Dictionary[String, int]
+	var effective_stats: Dictionary[String, int]
+	var base_attributes: Dictionary[String, int]
+	var attributes: Dictionary[String, int]
 	var abilities: Dictionary[String, Ability]
-	var skills: Array
-	var damage: Dictionary
-	var resistance: Dictionary
-	var equipment: Dictionary
-	var status: Array
+	var skills: Array[Dictionary]
+	var damage: Dictionary[String, float]
+	var resistance: Dictionary[String, float]
+	var equipment: Dictionary[String, ItemEquipment]
+	var status: Array[Dictionary]
 	var delay: float
-	var position:= 1
-	var min_dist:= 0
+	var position := 1
+	var min_dist := 0
 	var action_duration: float
 	var current_action: String
 	var valid_weapon_subtypes: Array[String] = []
 	var valid_armour_subtypes: Array[String] = []
 	
-	func _init(dict: Dictionary):
-		# compatibility with old versions
-		if dict.has("abilities"):
-			if typeof(dict.abilities) == TYPE_ARRAY:
-				var ab_dict:= {}
-				dict = dict.duplicate(false)
-				for k in dict.abilities:
-					ab_dict[k] = 1
-				dict.abilities = ab_dict
-			elif typeof(dict.abilities) == TYPE_DICTIONARY and dict.abilities.size() > 0 and \
-				typeof(dict.abilities.values()[0]) != TYPE_DICTIONARY:
-				for ability_id in dict.abilities:
-					dict.abilities[ability_id] = {
-						"name": ability_id,
-						"level": int(dict.abilities[ability_id]),
-						"experience": 0,
-					}
-		
-		for k in dict.keys():
+	func _init(dict: Dictionary) -> void:
+		for k: String in dict:
 			match k:
+				"stats":
+					self.stats.clear()
+					for stat: String in dict.stats:
+						self.stats[stat] = dict.stats[stat] as int
 				"abilities":
-					self.abilities = {}
-					for ability_id in dict.abilities:
-						self.abilities[ability_id] = Ability.new(dict.abilities[ability_id])
+					self.abilities.clear()
+					for ability_id: String in dict.abilities:
+						self.abilities[ability_id] = Ability.new(dict.abilities[ability_id] as Dictionary)
+				"skills":
+					self.skills.clear()
+					for skill: Dictionary in dict.skills:
+						self.skills.push_back(skill as Dictionary)
+				"equipment":
+					self.equipment.clear()
+					for equipment_id: String in dict.equipment:
+						self.equipment[equipment_id] = ItemEquipment.new(dict.equipment[equipment_id] as Dictionary)
+				"status":
+					self.status.clear()
+					for s: Dictionary in dict.status:
+						self.status.push_back(s)
 				_:
 					if typeof(dict[k]) == TYPE_DICTIONARY || typeof(dict[k]) == TYPE_ARRAY:
-						set(k, dict[k].duplicate(true))
+						self.set(k, dict[k].duplicate(true))
 					else:
-						set(k, dict[k])
-		recalc_attributes()
+						self.set(k, dict[k])
+		self.recalc_attributes()
 	
-	func recalc_attributes():
-		max_health = 0
-		max_mana = 0
-		max_stamina = 0
-		max_focus = 0
-		health_regen = 0
-		stamina_regen = 0
-		mana_regen = 0
-		resistance.clear()
-		damage.clear()
-		attributes.clear()
-		valid_weapon_subtypes.clear()
-		valid_armour_subtypes.clear()
-		effective_stats = stats.duplicate(true)
+	func recalc_attributes() -> void:
+		self.max_health = 0
+		self.max_mana = 0
+		self.max_stamina = 0
+		self.max_focus = 0
+		self.health_regen = 0
+		self.stamina_regen = 0
+		self.mana_regen = 0
+		self.resistance.clear()
+		self.damage.clear()
+		self.attributes.clear()
+		self.valid_weapon_subtypes.clear()
+		self.valid_armour_subtypes.clear()
+		self.effective_stats = stats.duplicate(true)
 		
 		for k in ATTRIBUTES:
-			attributes[k] = 0
-			base_attributes[k] = 0
-		attributes.accuracy = 10
+			self.attributes[k] = 0
+			self.base_attributes[k] = 0
+		self.attributes.accuracy = 10
 		
-		for ability in abilities.keys():
-			if !Skills.ABILITIES.has(ability):
+		for ability in self.abilities:
+			if ability not in Skills.ABILITIES:
 				continue
 			
 			var dict: Dictionary = Skills.ABILITIES[ability]
+			for k in self.attributes:
+				if k in dict:
+					self.attributes[k] = ceili(self.attributes[k] + \
+						(dict[k] as int) * self.abilities[ability].level)
+					self.base_attributes[k] = self.attributes[k]
+			for k in RESOURCES:
+				if k in dict:
+					self.set("max_" + k, self.get("max_" + k) + dict[k])
+				if k + "_regen" in dict:
+					self.set(k + "_regen", self.get(k + "_regen") + dict[k + "_regen"])
+			if "resistance" in dict:
+				for k: String in dict.resistance:
+					if self.resistance.has(k):
+						self.resistance[k] += dict.resistance[k] * self.abilities[ability].level
+					else:
+						self.resistance[k] = dict.resistance[k] * self.abilities[ability].level
+			if "damage" in dict:
+				for k: String in dict.damage:
+					if self.damage.has(k):
+						self.damage[k] += dict.damage[k] * self.abilities[ability].level
+					else:
+						self.damage[k] = dict.damage[k] * self.abilities[ability].level
+			if "weapon_subtypes" in dict:
+				for t: String in dict.weapon_subtypes:
+					if t not in self.valid_weapon_subtypes:
+						self.valid_weapon_subtypes.push_back(t)
+			if "armour_subtypes" in dict:
+				for t: String in dict.armour_subtypes:
+					if t not in self.valid_armour_subtypes:
+						self.valid_armour_subtypes.push_back(t)
+			for k in stats:
+				if k in dict:
+					effective_stats[k] += dict[k] as int
+		
+		for equipment_id in self.equipment:
+			var item := self.equipment[equipment_id]
 			for k in attributes:
-				if dict.has(k):
-					attributes[k] = int(ceil(attributes[k] + dict[k] * abilities[ability].level))
-					base_attributes[k] = attributes[k]
+				if k in item.attributes:
+					self.attributes[k] += item.attributes[k]
 			for k in RESOURCES:
-				if dict.has(k):
-					set("max_" + k, get("max_" + k) + dict[k])
-				if dict.has(k + "_regen"):
-					set(k + "_regen", get(k + "_regen") + dict[k + "_regen"])
-			if dict.has("resistance"):
-				for k in dict.resistance:
-					if resistance.has(k):
-						resistance[k] += dict.resistance[k] * abilities[ability].level
-					else:
-						resistance[k] = dict.resistance[k] * abilities[ability].level
-			if dict.has("damage"):
-				for k in dict.damage:
-					if damage.has(k):
-						damage[k] += dict.damage[k] * abilities[ability].level
-					else:
-						damage[k] = dict.damage[k] * abilities[ability].level
-			if dict.has("weapon_subtypes"):
-				for t in dict.weapon_subtypes:
-					if !valid_weapon_subtypes.has(t):
-						valid_weapon_subtypes.push_back(t)
-			if dict.has("armour_subtypes"):
-				for t in dict.armour_subtypes:
-					if !valid_armour_subtypes.has(t):
-						valid_armour_subtypes.push_back(t)
-			for k in stats:
-				if dict.has(k):
-					effective_stats[k] += int(dict[k])
-		
-		for item in equipment.values():
-			for k in attributes:
-				if item.has(k):
-					attributes[k] = int(attributes[k] + item[k])
-			for k in RESOURCES:
-				if item.has(k):
-					set("max_"+k, get("max_"+k) + item[k])
-				if item.has(k+"_regen"):
-					set(k+"_regen", get(k+"_regen") + item[k+"_regen"])
-			if item.has("resistance"):
-				for k in item.resistance:
-					if resistance.has(k):
-						resistance[k] += item.resistance[k]
-					else:
-						resistance[k] = item.resistance[k]
-			if item.has("damage"):
-				for k in item.damage:
-					if damage.has(k):
-						damage[k] += item.damage[k]
-					else:
-						damage[k] = item.damage[k]
-			for k in stats:
-				if item.has(k):
-					effective_stats[k] += int(item[k])
-		
-		for dict in status:
-			if dict.has("attributes"):
-				for k in dict.attributes:
-					if typeof(dict.attributes[k])==TYPE_DICTIONARY:
-						attributes[k] = int(attributes[k] + dict.attributes[k].value)
-					else:
-						attributes[k] = int(attributes[k] + dict.attributes[k])
-			for k in stats:
-				if dict.has(k):
-					effective_stats[k] += int(dict[k])
-			for k in RESOURCES:
-				if dict.has(k):
-					set("max_"+k, get("max_"+k) + dict[k])
-				if dict.has(k+"_regen"):
-					set(k+"_regen", get(k+"_regen") + dict[k+"_regen"])
-		
-		for s in STATS_ATTRIBUTES.keys():
-			for k in STATS_ATTRIBUTES[s].keys():
-				attributes[k] += int(effective_stats[s]*STATS_ATTRIBUTES[s][k])
-				base_attributes[k] += int(stats[s]*STATS_ATTRIBUTES[s][k])
-		
-		for s in STATS_METERS.keys():
-			for k in STATS_METERS[s].keys():
-				set(k, get(k) + effective_stats[s]*STATS_METERS[s][k])
-		
-		for k in attributes:
-			attributes[k] = max(attributes[k], 1)
-		
-		if health>max_health:
-			health = max_health
-		if mana>max_mana:
-			mana = max_mana
-		if stamina>max_stamina:
-			stamina = max_stamina
-		if focus>max_focus:
-			focus = max_focus
-		if valid_armour_subtypes.size()==0:
-			valid_armour_subtypes = ["medium"]
-		reset_focus()
-	
-	func recover():
-		recalc_attributes()
-		health = max_health
-		mana = max_mana
-		stamina = max_stamina
-		focus = max_focus
-	
-	func add_health(value: int):
-		health = clamp(health + value, 0, max_health)
-	
-	func add_mana(value: int):
-		mana = clamp(mana + value, 0, max_mana)
-	
-	func add_stamina(value: int):
-		stamina = clamp(stamina + value, 0, max_stamina)
-	
-	func add_focus(value: int):
-		focus = clamp(focus + value, 0, max_focus)
-	
-	func add_meter(type: String, value: int):
-		set(type, clamp(get(type) + value, 0, get("max_"+type)))
-	
-	func reset_focus():
-		focus = max_focus
-		for s in status:
-			if s.has("focus"):
-				focus -= s.focus
-		focus = max(focus, 0)
-	
-	func add_status(dict: Dictionary):
-		if dict.has("attributes"):
-			for k in dict.attributes.keys():
-				if typeof(dict.attributes[k])==TYPE_DICTIONARY:
-					attributes[k] += dict.attributes[k].value
+				if k in item.resources:
+					self.set("max_" + k, self.get("max_" + k) + item[k])
+				if k in item.resource_regen:
+					self.set(k + "_regen", self.get(k + "_regen") + item.resource_regen[k])
+			for k in item.resistance:
+				if k in self.resistance:
+					self.resistance[k] += item.resistance[k]
 				else:
-					attributes[k] += dict.attributes[k]
-		status.push_back(dict)
-		recalc_attributes()
-	
-	func remove_status(dict: Dictionary):
-		if dict.has("attributes"):
-			for k in dict.attributes.keys():
-				if typeof(dict.attributes[k])==TYPE_DICTIONARY:
-					attributes[k] -= dict.attributes[k].value
+					self.resistance[k] = item.resistance[k]
+			for k in item.damage:
+				if k in self.damage:
+					self.damage[k] += item.damage[k]
 				else:
-					attributes[k] -= dict.attributes[k]
-		status.erase(dict)
-		recalc_attributes()
+					self.damage[k] = item.damage[k]
+			for k in item.stats:
+				effective_stats[k] += item.stats[k]
+		
+		for dict in self.status:
+			if "attributes" in dict:
+				for k: String in dict.attributes:
+					if typeof(dict.attributes[k]) == TYPE_DICTIONARY:
+						self.attributes[k] = self.attributes[k] + (dict.attributes[k].value as int)
+					else:
+						self.attributes[k] = self.attributes[k] + (dict.attributes[k] as int)
+			for k in self.stats:
+				if k in dict:
+					self.effective_stats[k] += dict[k] as int
+			for k in RESOURCES:
+				if k in dict:
+					self.set("max_" + k, self.get("max_" + k) + dict[k])
+				if k + "_regen" in dict:
+					self.set(k + "_regen", self.get(k + "_regen") + dict[k + "_regen"])
+		
+		for s in STATS_ATTRIBUTES:
+			for k: String in STATS_ATTRIBUTES[s]:
+				self.attributes[k] += floori(self.effective_stats[s] * (STATS_ATTRIBUTES[s][k] as float))
+				self.base_attributes[k] += floori(self.stats[s] * (STATS_ATTRIBUTES[s][k] as float))
+		
+		for s in STATS_METERS:
+			for k: String in STATS_METERS[s]:
+				self.set(k, self.get(k) + effective_stats[s]*STATS_METERS[s][k])
+		
+		for k in self.attributes:
+			self.attributes[k] = maxi(self.attributes[k], 1)
+		
+		if self.health > self.max_health:
+			self.health = self.max_health
+		if self.mana > self.max_mana:
+			self.mana = self.max_mana
+		if self.stamina > self.max_stamina:
+			self.stamina = self.max_stamina
+		if self.focus > self.max_focus:
+			self.focus = self.max_focus
+		if self.valid_armour_subtypes.size() == 0:
+			self.valid_armour_subtypes = ["medium"]
+		self.reset_focus()
+	
+	func recover() -> void:
+		self.recalc_attributes()
+		self.health = self.max_health
+		self.mana = self.max_mana
+		self.stamina = self.max_stamina
+		self.focus = self.max_focus
+	
+	func add_health(value: int) -> void:
+		self.health = clampf(self.health + value, 0.0, self.max_health)
+	
+	func add_mana(value: int) -> void:
+		self.mana = clampf(self.mana + value, 0.0, self.max_mana)
+	
+	func add_stamina(value: int) -> void:
+		self.stamina = clampf(self.stamina + value, 0.0, self.max_stamina)
+	
+	func add_focus(value: int) -> void:
+		self.focus = clampi(self.focus + value, 0, self.max_focus)
+	
+	func add_meter(type: String, value: int) -> void:
+		self.set(type, clampf((self.get(type) as float) + value, 0, self.get("max_" + type) as int))
+	
+	func reset_focus() -> void:
+		self.focus = self.max_focus
+		for s in self.status:
+			if "focus" in s:
+				self.focus -= s.focus
+		self.focus = maxi(self.focus, 0)
+	
+	func add_status(dict: Dictionary) -> void:
+		if "attributes" in dict:
+			for k: String in dict.attributes:
+				if typeof(dict.attributes[k]) == TYPE_DICTIONARY:
+					self.attributes[k] += dict.attributes[k].value
+				else:
+					self.attributes[k] += dict.attributes[k]
+		self.status.push_back(dict)
+		self.recalc_attributes()
+	
+	func remove_status(dict: Dictionary) -> void:
+		if "attributes" in dict:
+			for k: String in dict.attributes:
+				if typeof(dict.attributes[k]) == TYPE_DICTIONARY:
+					self.attributes[k] -= dict.attributes[k].value
+				else:
+					self.attributes[k] -= dict.attributes[k]
+		self.status.erase(dict)
+		self.recalc_attributes()
 	
 	func get_max_exp() -> int:
-		return 50 + 25*level + 25*level*level
+		return 50 + 25 * self.level + 25 * self.level * self.level
 	
-	func update(delta: float):
+	func update(delta: float) -> void:
 		var stun:= 0.0
-		health = clamp(health + delta*float(health_regen)/100.0, 0, max_health)
-		stamina = clamp(stamina + delta*float(stamina_regen)/100.0, 0, max_stamina)
-		mana = clamp(mana + delta*float(mana_regen)/100.0, 0, max_mana)
-		for st in status:
+		self.health = clampf(self.health + delta * float(self.health_regen) / 100.0, 0.0, self.max_health)
+		self.stamina = clampf(self.stamina + delta * float(self.stamina_regen) / 100.0, 0.0, self.max_stamina)
+		self.mana = clampf(self.mana + delta * float(self.mana_regen) / 100.0, 0.0, self.max_mana)
+		for st in self.status:
 			st.duration -= delta
 			if st.duration<=0.0:
 				status.erase(st)
 				continue
-			if st.has("damage"):
-				add_health(-st.damage*delta)
-			if st.has("healing"):
-				for k in st.healing.keys():
-					add_meter(k, st.healing[k]*delta)
-			if st.has("stun"):
+			if "damage" in st:
+				self.add_health(-st.damage * delta)
+			if "healing" in st:
+				for k: String in st.healing:
+					self.add_meter(k, st.healing[k] * delta)
+			if "stun" in st:
 				stun += st.stun
-		stun = clamp(Characters.get_resistance(stun), 0.0, 1.0)
-		delay -= delta*(1.0 - stun)
-		for skill in skills:
-			skill.current_cooldown -= delta*(1.0 - stun)
+		stun = clampf(Characters.get_resistance(stun), 0.0, 1.0)
+		self.delay -= delta * (1.0 - stun)
+		for skill in self.skills:
+			skill.current_cooldown -= delta * (1.0 - stun)
 	
 	func to_dict() -> Dictionary:
-		var ability_dict:= {}
+		var ability_dict := {}
+		var equipment_dict := {}
 		for ability_id in self.abilities:
 			ability_dict[ability_id] = self.abilities[ability_id].to_dict()
+		for equipment_id in self.equipment:
+			equipment_dict[equipment_id] = self.equipment[equipment_id].to_dict()
 		return {
 			"name": self.name,
 			"race": self.race,
@@ -346,12 +347,12 @@ class Character:
 			"mana": self.mana,
 			"stamina": self.stamina,
 			"stats": self.stats,
-			"attributes": self.attributes,
+			#"attributes": self.attributes,
 			"abilities": ability_dict,
 			"skills": self.skills,
 			"damage": self.damage,
 			"resistance": self.resistance,
-			"equipment": self.equipment,
+			"equipment": equipment_dict,
 			"status": self.status,
 			"delay": self.delay,
 			"action_duration": self.action_duration,
@@ -367,7 +368,7 @@ class Enemy:
 	var name_suffix: String
 	var soul_prefix: String
 	var description: String
-	var attributes_add: Dictionary
+	var attributes_add: Dictionary[String, int]
 	var tier: int
 	var soul_rarity: int
 	var soul_add: Dictionary
@@ -376,56 +377,56 @@ class Enemy:
 	var equipment_quality: float
 	var equipment_enchantment_chance: float
 	
-	func recalc_attributes():
-		max_health = 0
-		max_mana = 0
-		max_stamina = 0
-		max_focus = 0
-		health_regen = 0
-		stamina_regen = 0
-		mana_regen = 0
-		resistance.clear()
-		damage.clear()
-		attributes.clear()
-		valid_weapon_subtypes.clear()
-		valid_armour_subtypes.clear()
+	func recalc_attributes() -> void:
+		self.max_health = 0
+		self.max_mana = 0
+		self.max_stamina = 0
+		self.max_focus = 0
+		self.health_regen = 0
+		self.stamina_regen = 0
+		self.mana_regen = 0
+		self.resistance.clear()
+		self.damage.clear()
+		self.attributes.clear()
+		self.valid_weapon_subtypes.clear()
+		self.valid_armour_subtypes.clear()
 		
 		for k in ATTRIBUTES:
 			attributes[k] = 0
-		for k in attributes_add.keys():
-			attributes[k] += attributes_add[k]
+		for k in self.attributes_add:
+			attributes[k] += self.attributes_add[k]
 		
-		for s in STATS_ATTRIBUTES.keys():
-			for k in STATS_ATTRIBUTES[s].keys():
-				attributes[k] += int(stats[s]*STATS_ATTRIBUTES[s][k])
+		for s in STATS_ATTRIBUTES:
+			for k: String in STATS_ATTRIBUTES[s]:
+				self.attributes[k] += stats[s] * (STATS_ATTRIBUTES[s][k] as int)
 		
-		for s in STATS_METERS.keys():
-			for k in STATS_METERS[s].keys():
-				set(k, get(k) + stats[s]*STATS_METERS[s][k])
+		for s in STATS_METERS:
+			for k: String in STATS_METERS[s]:
+				self.set(k, self.get(k) + stats[s] * (STATS_METERS[s][k] as int))
 		
-		for dict in status:
-			if dict.has("attributes"):
-				for k in dict.attributes:
+		for dict in self.status:
+			if "attributes" in dict:
+				for k: String in dict.attributes:
 					if typeof(dict.attributes[k])==TYPE_DICTIONARY:
-						attributes[k] = int(attributes[k] + dict.attributes[k].value)
+						self.attributes[k] = self.attributes[k] + (dict.attributes[k].value as int)
 					else:
-						attributes[k] = int(attributes[k] + dict.attributes[k])
+						self.attributes[k] = self.attributes[k] + (dict.attributes[k] as int)
 		
-		for k in attributes:
-			attributes[k] = max(attributes[k], 1)
-			base_attributes[k] = attributes[k]
+		for k in self.attributes:
+			self.attributes[k] = max(self.attributes[k], 1)
+			self.base_attributes[k] = self.attributes[k]
 		
-		if health>max_health:
-			health = max_health
-		if mana>max_mana:
-			mana = max_mana
-		if stamina>max_stamina:
-			stamina = max_stamina
-		if focus>max_focus:
-			focus = max_focus
-		if valid_armour_subtypes.size()==0:
-			valid_armour_subtypes = ["medium"]
-		reset_focus()
+		if self.health > self.max_health:
+			self.health = self.max_health
+		if self.mana > self.max_mana:
+			self.mana = self.max_mana
+		if self.stamina > self.max_stamina:
+			self.stamina = self.max_stamina
+		if self.focus > self.max_focus:
+			self.focus = self.max_focus
+		if self.valid_armour_subtypes.size() == 0:
+			self.valid_armour_subtypes = ["medium"]
+		self.reset_focus()
 	
 	func to_dict() -> Dictionary:
 		var ability_dict:= {}
@@ -447,7 +448,7 @@ class Enemy:
 			"mana": self.mana,
 			"stamina": self.stamina,
 			"stats": self.stats,
-			"attributes": self.attributes,
+			#"attributes": self.attributes,
 			"attributes_add": self.attributes_add,
 			"abilities": ability_dict,
 			"skills": self.skills,
@@ -467,61 +468,61 @@ class Summon:
 	extends Character
 	
 	var description: String
-	var attributes_add: Dictionary
+	var attributes_add: Dictionary[String, int]
 	var duration: float
 	var tier:= 1
 	var base_name:= tr("SUMMON")
 	
-	func recalc_attributes():
-		max_health = 0
-		max_mana = 0
-		max_stamina = 0
-		max_focus = 0
-		health_regen = 0
-		stamina_regen = 0
-		mana_regen = 0
-		resistance.clear()
-		damage.clear()
-		attributes.clear()
-		valid_weapon_subtypes.clear()
-		valid_armour_subtypes.clear()
+	func recalc_attributes() -> void:
+		self.max_health = 0
+		self.max_mana = 0
+		self.max_stamina = 0
+		self.max_focus = 0
+		self.health_regen = 0
+		self.stamina_regen = 0
+		self.mana_regen = 0
+		self.resistance.clear()
+		self.damage.clear()
+		self.attributes.clear()
+		self.valid_weapon_subtypes.clear()
+		self.valid_armour_subtypes.clear()
 		
 		for k in ATTRIBUTES:
-			attributes[k] = 0
-		for k in attributes_add.keys():
-			attributes[k] += attributes_add[k]
+			self.attributes[k] = 0
+		for k in attributes_add:
+			self.attributes[k] += self.attributes_add[k]
 		
-		for s in STATS_ATTRIBUTES.keys():
-			for k in STATS_ATTRIBUTES[s].keys():
-				attributes[k] += int(stats[s]*STATS_ATTRIBUTES[s][k])
+		for s in STATS_ATTRIBUTES:
+			for k: String in STATS_ATTRIBUTES[s]:
+				self.attributes[k] += self.stats[s] * (STATS_ATTRIBUTES[s][k] as int)
 		
-		for s in STATS_METERS.keys():
-			for k in STATS_METERS[s].keys():
-				set(k, get(k) + stats[s]*STATS_METERS[s][k])
+		for s in STATS_METERS:
+			for k: String in STATS_METERS[s]:
+				self.set(k, self.get(k) + self.stats[s] * (STATS_METERS[s][k] as int))
 		
 		for dict in status:
-			if dict.has("attributes"):
-				for k in dict.attributes:
-					if typeof(dict.attributes[k])==TYPE_DICTIONARY:
-						attributes[k] = int(attributes[k] + dict.attributes[k].value)
+			if "attributes" in dict:
+				for k: String in dict.attributes:
+					if typeof(dict.attributes[k]) == TYPE_DICTIONARY:
+						self.attributes[k] = self.attributes[k] + (dict.attributes[k].value as int)
 					else:
-						attributes[k] = int(attributes[k] + dict.attributes[k])
+						self.attributes[k] = self.attributes[k] + (dict.attributes[k] as int)
 		
-		for k in attributes:
-			attributes[k] = max(attributes[k], 1)
-			base_attributes[k] = attributes[k]
+		for k in self.attributes:
+			self.attributes[k] = maxi(self.attributes[k], 1)
+			self.base_attributes[k] = self.attributes[k]
 		
-		if health>max_health:
-			health = max_health
-		if mana>max_mana:
-			mana = max_mana
-		if stamina>max_stamina:
-			stamina = max_stamina
-		if focus>max_focus:
-			focus = max_focus
-		if valid_armour_subtypes.size()==0:
-			valid_armour_subtypes = ["medium"]
-		reset_focus()
+		if self.health > self.max_health:
+			self.health = self.max_health
+		if self.mana > self.max_mana:
+			self.mana = self.max_mana
+		if self.stamina > self.max_stamina:
+			self.stamina = self.max_stamina
+		if self.focus > self.max_focus:
+			self.focus = self.max_focus
+		if self.valid_armour_subtypes.size() == 0:
+			self.valid_armour_subtypes = ["medium"]
+		self.reset_focus()
 	
 	func to_dict() -> Dictionary:
 		var ability_dict:= {}
@@ -535,7 +536,7 @@ class Summon:
 			"mana": self.mana,
 			"stamina": self.stamina,
 			"stats": self.stats,
-			"attributes": self.attributes,
+			#"attributes": self.attributes,
 			"abilities": ability_dict,
 			"skills": self.skills,
 			"damage": self.damage,
@@ -557,9 +558,9 @@ class CharacterSettings:
 	var disabled_recipes: Array[String] = []
 	var auto_update_options:= true
 	
-	func _init(dict: Dictionary = {}):
-		for k in dict.keys():
-			set(k, dict[k])
+	func _init(dict: Dictionary = {}) -> void:
+		for k: String in dict:
+			self.set(k, dict[k])
 	
 	func to_dict() -> Dictionary:
 		return {
@@ -577,82 +578,85 @@ class CharacterSettings:
 
 
 func get_resistance(raw: float) -> float:
-	return (1.0 - exp(-abs(raw)))*sign(raw)
+	return (1.0 - exp(-absf(raw))) * signf(raw)
 
 
 # battle related #
 
 func check_hit(actor: Character, target: Character, skill:= {}) -> bool:
 	var accuracy: int = actor.attributes.accuracy
-	if skill.has("attributes") && skill.attributes.has("accuracy"):
+	if "attributes" in skill and "accuracy" in skill.attributes:
 		var add_acc: float = skill.attributes.accuracy
 		accuracy += int(add_acc)
-	return randi()%max(accuracy, 1) >= randi()%int(max(target.attributes.evasion, 1))
+	return randi() % maxi(accuracy, 1) >= randi() % maxi(target.attributes.evasion, 1)
 
 func check_crit(actor: Character, target: Character, skill:= {}) -> bool:
 	var critical: int = actor.attributes.critical
-	if skill.has("attributes") && skill.attributes.has("critical"):
+	if "attributes" in skill and "critical" in skill.attributes:
 		var add_crit: float = skill.attributes.critical
 		critical += int(add_crit)
-	return randi()%max(critical, 1) >= randi()%int(max(target.attributes.evasion + target.attributes.critical, 1))
+	return randi() % maxi(critical, 1) >= randi() % maxi(target.attributes.evasion + target.attributes.critical, 1)
 
 func calc_combat_damage(data: Dictionary, actor: Character, mod:={}, damage_multiplier:= 1.0) -> Dictionary:
 	var value:= 0
-	if data.has("scaling"):
+	if "scaling" in data:
 		if actor.attributes.has(data.scaling):
 			value = actor.attributes[data.scaling]
-			if mod.has("attributes") && mod.attributes.has(data.scaling):
+			if "attributes" in mod and data.scaling in mod.attributes:
 				value += mod.attributes[data.scaling]
 		elif actor.stats.has(data.scaling):
 			value = actor.stats[data.scaling]
-			if mod.has("stats") && mod.stats.has(data.scaling):
+			if "stats" in mod && data.scaling in mod.stats:
 				value += mod.stats[data.scaling]
 	else:
 		value = 1
-	return {"value":int(data.value*float(value)*damage_multiplier), "type":data.type}
+	return {
+		"value": floori((data.value as float) * float(value) * damage_multiplier),
+		"type": data.type,
+	}
 
 func calc_damage(skill: Dictionary, actor: Character, target: Character, dam_multiplier:= 1.0) -> Dictionary:
 	var result:= {
-		"attack":0,
-		"damage":0,
-		"critical":0,
-		"absorbed":0,
-		"blocked_armour":0,
-		"blocked_willpower":0,
-		"resisted":0,
-		"enhanced":0,
-		"penetrated":0,
-		"reflected":0,
+		"attack": 0,
+		"damage": 0,
+		"critical": 0,
+		"absorbed": 0,
+		"blocked_armour": 0,
+		"blocked_willpower": 0,
+		"resisted": 0,
+		"enhanced": 0,
+		"penetrated": 0,
+		"reflected": 0,
 	}
 	var penetration: int = actor.attributes.penetration
 	var armour_penetration:= 0.0
 	var total_damage_instances:= 0
-	if skill.has("attributes") && skill.attributes.has("penetration"):
+	if "attributes" in skill and "penetration" in skill.attributes:
 		penetration = max(penetration + skill.attributes.penetration, 0)
-	if skill.has("armour_penetration"):
-		armour_penetration = get_resistance(skill.armour_penetration)
-	for combat_array in skill.combat.damage:
+	if "armour_penetration" in skill:
+		armour_penetration = get_resistance(skill.armour_penetration as float)
+	for combat_array: Array in skill.combat.damage:
 		var dam_instances:= []
 		var total_attack:= 0
 		var attack: int
-		for c in combat_array:
+		for c: Dictionary in combat_array:
 			var attack_multiplier:= 1.0
 			if check_crit(actor, target, skill):
-				attack_multiplier += max(CRITICAL_DAMAGE + (actor.attributes.critical - target.attributes.critical)/100.0, 0.0)
+				attack_multiplier += max(CRITICAL_DAMAGE + (actor.attributes.critical - target.attributes.critical) / 100.0, 0.0)
 				result.critical += 1
 			var dict:= calc_combat_damage(c, actor, skill, attack_multiplier)
 			dam_instances.push_back(dict)
 			total_attack += dict.value
-		attack = int(dam_multiplier*total_attack)
+		attack = int(dam_multiplier * total_attack)
 		total_damage_instances += combat_array.size()
 		result.attack += total_attack
 		
 		for status in target.status:
 			if !status.has("shielding"):
 				continue
-			for c in dam_instances:
-				for shield in status.shielding:
-					var fraction:= 0.5 + 0.5*float(c.type==shield.type)
+			for c: Dictionary in dam_instances:
+				for shield: Dictionary in status.shielding:
+					var fraction := 0.5 + 0.5 * float(c.type == shield.type)
 					var absorbed: int = fraction*min(c.value, shield.value)
 					c.value -= absorbed
 					attack -= absorbed
@@ -661,7 +665,7 @@ func calc_damage(skill: Dictionary, actor: Character, target: Character, dam_mul
 					if status.has("reflect_damage"):
 						result.reflected += status.reflect_damage*absorbed
 		
-		for c in dam_instances:
+		for c: Dictionary in dam_instances:
 			var armour_type: String
 			var blocked: int
 			var blocked_individual: int
@@ -675,13 +679,13 @@ func calc_damage(skill: Dictionary, actor: Character, target: Character, dam_mul
 			c.value = int(c.value - (1.0-armour_penetration)*blocked_individual)
 			result["blocked_"+armour_type] += int((1.0-armour_penetration)*blocked_individual)
 			result.penetrated += int(armour_penetration*blocked_individual)
-		for c in dam_instances:
+		for c: Dictionary in dam_instances:
 			if c.value<=0:
 				dam_instances.erase(c)
 		if dam_instances.size()==0:
 			return result
 		
-		for c in dam_instances:
+		for c: Dictionary in dam_instances:
 			var resistance:= 0.0
 			if target.resistance.has(c.type):
 				resistance = target.resistance[c.type]
@@ -690,35 +694,35 @@ func calc_damage(skill: Dictionary, actor: Character, target: Character, dam_mul
 			resistance = get_resistance(resistance)
 			c.value = int(c.value*(1.0-resistance))
 			if resistance>=0.0:
-				result.resisted += int(ceil(c.value*resistance))
+				result.resisted += ceili(c.value * resistance)
 			else:
-				result.enhanced += int(floor(-c.value*resistance))
+				result.enhanced += floori(-c.value * resistance)
 			
 			result.damage += c.value
-	result.critical /= max(float(total_damage_instances), 1.0)
+	result.critical /= maxf(total_damage_instances, 1.0)
 	return result
 
 func _calc_damage(skill: Dictionary, actor: Character, target: Character) -> Dictionary:
-	var result:= {
+	var result := {
 		"type":skill.damage_type,
-		"damage":0,
-		"critical":0,
-		"absorbed":0,
-		"blocked_armour":0,
-		"blocked_willpower":0,
-		"resisted":0,
-		"penetrated":0,
+		"damage": 0,
+		"critical": 0,
+		"absorbed": 0,
+		"blocked_armour": 0,
+		"blocked_willpower": 0,
+		"resisted": 0,
+		"penetrated": 0,
 	}
-	var base_attack:= 0
-	var resistance:= 0.0
-	var damage:= 0
-	if target.resistance.has(skill.damage_type):
+	var base_attack := 0
+	var resistance := 0.0
+	var damage := 0
+	if skill.damage_type in target.resistance:
 		resistance += target.resistance[skill.damage_type]
-	if actor.damage.has(skill.damage_type):
+	if skill.damage_type in actor.damage:
 		resistance -= actor.damage[skill.damage_type]
 	resistance = get_resistance(resistance)
-	if typeof(skill.damage_stat)==TYPE_ARRAY:
-		for k in skill.damage_stat:
+	if typeof(skill.damage_stat) == TYPE_ARRAY:
+		for k: String in skill.damage_stat:
 			base_attack += actor.stats[k]
 	else:
 		base_attack += actor.stats[skill.damage_stat]
@@ -728,53 +732,53 @@ func _calc_damage(skill: Dictionary, actor: Character, target: Character) -> Dic
 	for status in target.status:
 		if !status.has("absorb_damage") || status.absorb_damage<=0.0:
 			continue
-		var absorbed: int = min(base_attack, status.absorb_damage/max(1.0 - max(resistance, 0.0), 1e-3))
+		var absorbed := mini(base_attack, floori((status.absorb_damage as float) / maxf(1.0 - maxf(resistance, 0.0), 1e-3)))
 		base_attack -= absorbed
-		status.absorb_damage -= absorbed*(1.0 - max(resistance, 0.0))
+		status.absorb_damage -= absorbed * (1.0 - maxf(resistance, 0.0))
 		if status.absorb_damage<=0:
 			status.duration = 0.0
 			status.absorb_damage = 0
 		result.absorbed += absorbed
 	result.attack = base_attack
-	if base_attack<=0:
+	if base_attack <= 0:
 		return result
 	if typeof(skill.attack_type)==TYPE_ARRAY:
-		for k in skill.attack_type:
+		for k: String in skill.attack_type:
 			if k=="magic" || k=="willpower":
 				var blocked: int = max(target.attributes.willpower - actor.attributes.penetration, 0)
-				damage += int(max(max(base_attack + actor.attributes[k] - blocked, 0) - base_attack, 0))
+				damage += maxi(maxi(base_attack + actor.attributes[k] - blocked, 0) - base_attack, 0)
 				result.blocked_willpower += blocked
 			else:
-				var blocked: int = max(target.attributes.armour - actor.attributes.penetration, 0.0)
-				damage += int(max(max(base_attack + actor.attributes[k] - blocked, 0.0) - base_attack, 0.0))
+				var blocked := maxi(target.attributes.armour - actor.attributes.penetration, 0)
+				damage += maxi(maxi(base_attack + actor.attributes[k] - blocked, 0) - base_attack, 0)
 				result.blocked_armour += blocked
-		damage /= max(skill.attack_type.size(), 1.0)
-		result.blocked_willpower /= max(skill.attack_type.size(), 1.0)
-		result.blocked_armour /= max(skill.attack_type.size(), 1.0)
+		damage /= maxf(skill.attack_type.size(), 1.0)
+		result.blocked_willpower /= maxf(skill.attack_type.size(), 1.0)
+		result.blocked_armour /= maxf(skill.attack_type.size(), 1.0)
 	else:
-		if skill.attack_type=="magic" || skill.attack_type=="willpower":
-			var blocked: int = max(target.attributes.willpower - actor.attributes.penetration, 0)
-			damage = max(base_attack + actor.attributes[skill.attack_type] - max(target.attributes.willpower - actor.attributes.penetration, 0.0), 0.0)
+		if skill.attack_type == "magic" or skill.attack_type == "willpower":
+			var blocked: int = maxi(target.attributes.willpower - actor.attributes.penetration, 0)
+			damage = maxi(base_attack + actor.attributes[skill.attack_type] - maxi(target.attributes.willpower - actor.attributes.penetration, 0), 0)
 			result.blocked_willpower = blocked
 		else:
-			var blocked: int = max(target.attributes.armour - actor.attributes.penetration, 0.0)
-			damage = max(base_attack + actor.attributes[skill.attack_type] - max(target.attributes.armour - actor.attributes.penetration, 0.0), 0.0)
+			var blocked := maxi(target.attributes.armour - actor.attributes.penetration, 0)
+			damage = maxi(base_attack + actor.attributes[skill.attack_type] - maxi(target.attributes.armour - actor.attributes.penetration, 0), 0)
 			result.blocked_armour = blocked
 	if skill.has("armour_penetration"):
 		damage = damage*(1.0-skill.armour_penetration) + base_attack*skill.armour_penetration
 		result.penetrated = base_attack*skill.armour_penetration
 	if skill.has("damage_scale"):
 		damage *= skill.damage_scale
-	damage = int(max(damage*(1.0-resistance), 0))
+	damage = maxi(floori(damage * (1.0 - resistance)), 0)
 	result.damage = damage
-	result.resisted = int(ceil(damage*resistance))
+	result.resisted = ceili(damage * resistance)
 	return result
 
 func calc_heal(skill: Dictionary, actor: Character, heal_multiplier:= 1.0) -> Dictionary:
 	var total_heal:= {}
-	for combat_array in skill.combat.healing:
-		for c in combat_array:
-			var dict:= calc_combat_damage(c, actor, skill)
+	for combat_array: Array in skill.combat.healing:
+		for c: Dictionary in combat_array:
+			var dict := calc_combat_damage(c, actor, skill)
 			if total_heal.has(dict.type):
 				total_heal[dict.type] += heal_multiplier*dict.value
 			else:
@@ -783,7 +787,7 @@ func calc_heal(skill: Dictionary, actor: Character, heal_multiplier:= 1.0) -> Di
 
 func _calc_heal(skill: Dictionary, actor: Character) -> int:
 	var heal: int = actor.attributes[skill.healing_type] + actor.stats[skill.healing_stat]
-	if skill.has("healing_scale"):
+	if "healing_scale" in skill:
 		heal *= skill.healing_scale
 	return heal
 

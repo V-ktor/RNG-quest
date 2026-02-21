@@ -1,7 +1,8 @@
 {
 	"name": "hunt",
 	"prefixes": [
-		"hunter", "woodsman"
+		"hunter",
+		"woodsman"
 	],
 	"ranks": {
 		"0": [
@@ -55,5 +56,10 @@
 		"trapping",
 		"archery",
 		"dexterity"
+	],
+	"vocation": [
+		"hunter",
+		"pathfinder",
+		"scout"
 	]
 }

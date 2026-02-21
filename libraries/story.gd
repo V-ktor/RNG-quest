@@ -1,667 +1,889 @@
 extends Node
 
-const INITIAL_STATES = [
-	"adventurer_guild_commission","fetch_rumours","spy_hostile_camp",
+const INITIAL_STATES: Array[String] = [
+	"adventurer_guild_commission",
+	"fetch_rumours",
+	"spy_hostile_camp",
 ]
-const QUEST_PERSONS = [
+const QUEST_PERSONS: Array[Dictionary] = [
 	{
-		"position":["peasant","farmer"],
-		"personality":["peasant"],
-		"tags":["worker"],
-		"home":true,
+		"position": [
+			"peasant",
+			"farmer",
+		],
+		"personality": [
+			"peasant",
+		],
+		"tags": [
+			"worker",
+		],
+		"home": true,
 	},
 	{
-		"position":["preacher"],
-		"personality":["pious"],
-		"tags":["pious"],
+		"position": [
+			"preacher",
+		],
+		"personality": [
+			"pious",
+		],
+		"tags": [
+			"pious",
+		],
 	},
 	{
-		"position":["hunter","marksman","archer"],
-		"personality":["cold"],
-		"tags":["hunter"],
+		"position": [
+			"hunter",
+			"marksman",
+			"archer",
+		],
+		"personality": [
+			"cold",
+		],
+		"tags": [
+			"hunter",
+		],
 	},
 	{
-		"position":["thief","rogue"],
-		"personality":["rogue"],
-		"tags":["criminal"],
+		"position": [
+			"thief",
+			"rogue",
+		],
+		"personality": [
+			"rogue",
+		],
+		"tags": [
+			"criminal",
+		],
 	},
 	{
-		"position":["soldier","guard"],
-		"personality":["harsh"],
-		"tags":["soldier","military"],
+		"position": [
+			"soldier",
+			"guard",
+		],
+		"personality": [
+			"harsh",
+		],
+		"tags": [
+			"soldier",
+			"military",
+		],
 	},
 	{
-		"position":["scout","spy"],
-		"personality":["harsh"],
-		"tags":["military"],
+		"position": [
+			"scout",
+			"spy",
+		],
+		"personality": [
+			"harsh",
+		],
+		"tags": [
+			"military",
+		],
 	},
 	{
-		"position":["citizen"],
-		"personality":["friendly"],
-		"home":true,
+		"position": [
+			"citizen",
+		],
+		"personality": [
+			"friendly",
+		],
+		"home": true,
 	},
 	{
-		"position":["miner","wood cutter"],
-		"personality":["cold","harsh"],
-		"tags":["worker"],
-		"home":true,
+		"position": [
+			"miner",
+			"wood cutter",
+		],
+		"personality": [
+			"cold",
+			"harsh",
+		],
+		"tags": [
+			"worker",
+		],
+		"home": true,
 	},
 	{
-		"position":["worker"],
-		"personality":["peasant"],
-		"tags":["worker"],
-		"home":true,
+		"position": [
+			"worker",
+		],
+		"personality": [
+			"peasant",
+		],
+		"tags": [
+			"worker",
+		],
+		"home": true,
 	},
 	{
-		"position":["smith"],
-		"personality":["friendly"],
-		"tags":["worker"],
-		"home":true,
+		"position": [
+			"smith",
+		],
+		"personality": [
+			"friendly",
+		],
+		"tags": [
+			"worker",
+		],
+		"home": true,
 	},
 	{
-		"position":["advisor","supervisor"],
-		"personality":["curious"],
-		"tags":["quest_giver"],
+		"position": [
+			"advisor",
+		"supervisor",
+	],
+		"personality": [
+			"curious",
+		],
+		"tags": [
+			"quest_giver",
+		],
 	},
 	{
-		"position":["mage","wizard"],
-		"personality":["arcane"],
-		"tags":["mage"],
-		"home":true,
+		"position": [
+			"mage",
+			"wizard",
+		],
+		"personality": [
+			"arcane",
+		],
+		"tags": [
+			"mage",
+		],
+		"home": true,
 	},
 	{
-		"position":["sage","wizard"],
-		"personality":["arcane"],
-		"tags":["mage","quest_giver"],
-		"home":true,
+		"position": [
+			"sage",
+			"wizard",
+		],
+		"personality": [
+			"arcane",
+		],
+		"tags": [
+			"mage",
+			"quest_giver",
+		],
+		"home": true,
 	},
 	{
-		"position":["fighter","mercenary"],
-		"personality":["harsh"],
-		"tags":["soldier"],
-		"home":true,
+		"position": [
+			"fighter",
+			"mercenary",
+		],
+		"personality": [
+			"harsh",
+		],
+		"tags": [
+			"soldier",
+		],
+		"home": true,
 	},
 	{
-		"position":["philosopher"],
-		"personality":["philosopher"],
-		"home":true,
+		"position": [
+			"philosopher",
+		],
+		"personality": [
+			"philosopher",
+		],
+		"home": true,
 	},
 	{
-		"position":["researcher","scientist"],
-		"personality":["curious"],
-		"tags":["researcher"],
-		"home":true,
+		"position": [
+			"researcher",
+			"scientist",
+		],
+		"personality": [
+			"curious",
+		],
+		"tags": [
+			"researcher",
+		],
+		"home": true,
 	},
 	{
-		"position":["adventurer","wanderer"],
-		"personality":["friendly"],
-		"tags":["adventurer"],
+		"position": [
+			"adventurer",
+			"wanderer",
+		],
+		"personality": [
+			"friendly",
+		],
+		"tags": [
+			"adventurer",
+		],
 	},
 	{
-		"position":["oracle"],
-		"personality":["oracle"],
-		"tags":["oracle","story"],
-		"home":true,
+		"position": [
+			"oracle",
+		],
+		"personality": [
+			"oracle",
+		],
+		"tags": [
+			"oracle",
+			"story",
+		],
+		"home": true,
 	},
 	{
-		"position":["saint"],
-		"personality":["pious"],
-		"tags":["pious","story"],
-		"home":true,
+		"position": [
+			"saint",
+		],
+		"personality": [
+			"pious",
+		],
+		"tags": [
+			"pious",
+			"story",
+		],
+		"home": true,
 	},
 	{
-		"position":["mayor"],
-		"personality":["polite"],
-		"tags":["quest_giver"],
-		"home":true,
+		"position": [
+			"mayor",
+		],
+		"personality": [
+			"polite",
+		],
+		"tags": [
+			"quest_giver",
+		],
+		"home": true,
 	},
 	{
-		"position":["count","earl"],
-		"personality":["royal"],
-		"tags":["royal","quest_giver"],
-		"home":true,
-		"title":true,
+		"position": [
+			"count",
+			"earl",
+		],
+		"personality": [
+			"royal",
+		],
+		"tags": [
+			"royal",
+			"quest_giver",
+		],
+		"home": true,
+		"title": true,
 	},
 	{
-		"position":["king"],
-		"personality":["royal"],
-		"tags":["royal","story"],
-		"home":true,
-		"title":true,
+		"position": [
+			"king",
+		],
+		"personality": [
+			"royal",
+		],
+		"tags": [
+			"royal",
+			"story",
+		],
+		"home": true,
+		"title": true,
 		"gender":-1,
 	},
 	{
-		"position":["queen"],
-		"personality":["royal"],
-		"tags":["royal","story"],
-		"home":true,
-		"title":true,
+		"position": [
+			"queen",
+		],
+		"personality": [
+			"royal",
+		],
+		"tags": [
+			"royal",
+			"story",
+		],
+		"home": true,
+		"title": true,
 		"gender":1,
 	},
 	{
-		"position":["prince"],
-		"personality":["arrogant"],
-		"tags":["royal","quest_giver"],
-		"home":true,
-		"title":true,
+		"position": [
+			"prince",
+		],
+		"personality": [
+			"arrogant",
+		],
+		"tags": [
+			"royal",
+			"quest_giver",
+		],
+		"home": true,
+		"title": true,
 		"gender":-1,
 	},
 	{
-		"position":["princes"],
-		"personality":["arrogant"],
-		"tags":["royal","quest_giver"],
-		"home":true,
-		"title":true,
+		"position": [
+			"princes",
+		],
+		"personality": [
+			"arrogant",
+		],
+		"tags": [
+			"royal",
+			"quest_giver",
+		],
+		"home": true,
+		"title": true,
 		"gender":1,
 	},
 	{
-		"position":["hero"],
-		"personality":["friendly"],
-		"tags":["hero","story"],
+		"position": [
+			"hero",
+		],
+		"personality": [
+			"friendly",
+		],
+		"tags": [
+			"hero",
+			"story",
+		],
 	},
 	{
-		"position":["maiden"],
-		"personality":["shy"],
-		"tags":["hero","story"],
-		"home":true,
+		"position": [
+			"maiden",
+		],
+		"personality": [
+			"shy",
+		],
+		"tags": [
+			"hero",
+			"story",
+		],
+		"home": true,
 		"gender":1,
 	},
 	{
-		"position":["archmage"],
-		"personality":["arcane"],
-		"tags":["mage","story"],
-		"home":true,
-		"title":true,
+		"position": [
+			"archmage",
+		],
+		"personality": [
+			"arcane",
+		],
+		"tags": [
+			"mage",
+			"story",
+		],
+		"home": true,
+		"title": true,
 	},
 	{
-		"position":["high priest"],
-		"personality":["pious"],
-		"tags":["pious","quest_giver"],
-		"home":true,
-		"title":true,
+		"position": [
+			"high priest",
+		],
+		"personality": [
+			"pious",
+		],
+		"tags": [
+			"pious",
+			"quest_giver",
+		],
+		"home": true,
+		"title": true,
 		"gender":-1,
 	},
 	{
-		"position":["high priestess"],
-		"personality":["pious"],
-		"tags":["pious","quest_giver"],
-		"home":true,
-		"title":true,
+		"position": [
+			"high priestess",
+		],
+		"personality": [
+			"pious",
+		],
+		"tags": [
+			"pious",
+			"quest_giver",
+		],
+		"home": true,
+		"title": true,
 		"gender":1,
 	},
 	{
-		"position":["guild master"],
-		"personality":["curious"],
-		"tags":["quest_giver"],
-		"home":true,
-		"title":true,
+		"position": [
+			"guild master",
+		],
+		"personality": [
+			"curious",
+		],
+		"tags": [
+			"quest_giver",
+		],
+		"home": true,
+		"title": true,
 	},
 	{
-		"position":["guard captain","sergeant","spy master"],
-		"personality":["harsh"],
-		"tags":["quest_giver","military"],
-		"home":true,
-		"title":true,
+		"position": [
+			"guard captain",
+			"sergeant",
+			"spy master",
+		],
+		"personality": [
+			"harsh",
+		],
+		"tags": [
+			"quest_giver",
+			"military",
+		],
+		"home": true,
+		"title": true,
 	},
 ]
-var states:= {
-	"adventurer_guild_commission":{
-		"title":"Talk to [color=blue][hint={person_description}]{person-quest_giver}[/hint][/color] in [color=green]{city}[/color].",
-		"task":{
-			"type":"talk",
+var states: Dictionary[String, Dictionary] = {
+	"adventurer_guild_commission": {
+		"title": "Talk to [color=blue][hint={person_description}]{person-quest_giver}[/hint][/color] in [color=green]{city}[/color].",
+		"task": {
+			"type": "talk",
 		},
-		"requires":[
+		"requires": [
 			"person-quest_giver","city",
 		],
-		"story":[
+		"story": [
 			{
-				"type":"commission",
-				"requires":["city"],
+				"type": "commission",
+				"requires": ["city"],
 			},
 		],
-		"log":"You were commissioned by [color=blue][hint={person_description}]{person-quest_giver}[/hint][/color].",
-		"transitions":{
-			"deliver_letter":{
-				"story":[
+		"log": "You were commissioned by [color=blue][hint={person_description}]{person-quest_giver}[/hint][/color].",
+		"transitions": {
+			"deliver_letter": {
+				"story": [
 					{
-						"type":"letter",
-						"requires":["item-letter"],
+						"type": "letter",
+						"requires": ["item-letter"],
 					},
 				],
 			},
-			"treasure_hunt":{},
-			"monster_hunt":{},
-			"explore":{},
+			"treasure_hunt": {},
+			"monster_hunt": {},
+			"explore": {},
 		},
 	},
-	"research_commission":{
-		"title":"Talk to [color=blue][hint={person_description}]{person-researcher}[/hint][/color] in [color=green]{city}[/color].",
-		"task":{
-			"type":"talk",
+	"research_commission": {
+		"title": "Talk to [color=blue][hint={person_description}]{person-researcher}[/hint][/color] in [color=green]{city}[/color].",
+		"task": {
+			"type": "talk",
 		},
-		"requires":[
+		"requires": [
 			"person-researcher",
 		],
-		"story":[
+		"story": [
 			{
-				"type":"commission",
-				"requires":["city"],
+				"type": "commission",
+				"requires": ["city"],
 			},
 		],
-		"log":"You were commissioned by [color=blue][hint={person_description}]{person-researcher}[/hint][/color].",
-		"transitions":{
-			"deliver_letter":{
-				"story":[
+		"log": "You were commissioned by [color=blue][hint={person_description}]{person-researcher}[/hint][/color].",
+		"transitions": {
+			"deliver_letter": {
+				"story": [
 					{
-						"type":"letter",
-						"requires":["item-letter"],
+						"type": "letter",
+						"requires": ["item-letter"],
 					},
 				],
 			},
-			"explore":{},
-			"fetch_item":{},
+			"explore": {},
+			"fetch_item": {},
 		},
 	},
-	"fetch_rumours":{
-		"title":"Fetch some rumours in [color=green]{city}[/color].",
-		"task":{
-			"type":"fetch_rumours",
-			"amount":[2,8],
+	"fetch_rumours": {
+		"title": "Fetch some rumours in [color=green]{city}[/color].",
+		"task": {
+			"type": "fetch_rumours",
+			"amount": [2,8],
 		},
-		"requires":[
+		"requires": [
 			"city",
 		],
-		"transitions":{
-			"treasure_hunt":{},
-			"monster_hunt":{},
-			"fetch_item":{},
+		"transitions": {
+			"treasure_hunt": {},
+			"monster_hunt": {},
+			"fetch_item": {},
 		},
 	},
-	"commission_done":{
-		"title":"Talk to [color=blue][hint={person_description}]{person-quest_giver}[/hint][/color] in [color=green]{city}[/color].",
-		"task":{
-			"type":"talk",
+	"commission_done": {
+		"title": "Talk to [color=blue][hint={person_description}]{person-quest_giver}[/hint][/color] in [color=green]{city}[/color].",
+		"task": {
+			"type": "talk",
 		},
-		"requires":[
+		"requires": [
 			"city","person-quest_giver",
 		],
-		"consumes":{
-			"type":"commission",
+		"consumes": {
+			"type": "commission",
 		},
-		"reward":{
+		"reward": {
 			"exp":20,
 			"gold":20,
 			"potion_chance":0.2,
 			"equipment_chance":0.1,
 		},
-		"log":"You have completed [color=blue][hint={person_description}]{person-quest_giver}'s[/hint][/color] commission.",
+		"log": "You have completed [color=blue][hint={person_description}]{person-quest_giver}'s[/hint][/color] commission.",
 	},
-	"deliver_letter":{
-		"title":"Deliver a letter to [color=blue][hint={person_description}]{person}[/hint][/color] in [color=green]{city}[/color].",
-		"task":{
-			"type":"deliver",
+	"deliver_letter": {
+		"title": "Deliver a letter to [color=blue][hint={person_description}]{person}[/hint][/color] in [color=green]{city}[/color].",
+		"task": {
+			"type": "deliver",
 		},
-		"requires":[
+		"requires": [
 			"city","person-quest_giver","person-story","item-letter",
 		],
-		"consumes":{
-			"type":"letter",
+		"consumes": {
+			"type": "letter",
 		},
-		"reward":{
+		"reward": {
 			"exp":10,
 		},
-		"log":"You have delivered a letter to [color=blue][hint={person_description}]{person-story}[/hint][/color].",
-		"transitions":{
-			"commission_done":{},
+		"log": "You have delivered a letter to [color=blue][hint={person_description}]{person-story}[/hint][/color].",
+		"transitions": {
+			"commission_done": {},
 		},
 	},
-	"treasure_hunt":{
-		"title":"Look for clues about the treasure in [color=green]{location}[/color].",
-		"task":{
-			"type":"look_for_clues",
-			"amount":[2,8],
+	"treasure_hunt": {
+		"title": "Look for clues about the treasure in [color=green]{location}[/color].",
+		"task": {
+			"type": "look_for_clues",
+			"amount": [2,8],
 		},
-		"story":[
+		"story": [
 			{
-				"type":"treasure",
-				"requires":["location"],
+				"type": "treasure",
+				"requires": ["location"],
 			},
 		],
-		"log":"You heard of a trasure hidden somewhere in this region.",
-		"transitions":{
-			"search":{},
+		"log": "You heard of a trasure hidden somewhere in this region.",
+		"transitions": {
+			"search": {},
 		},
 	},
-	"search":{
-		"title":"Search the [color=green]{location}[/color].",
-		"task":{
-			"type":"search",
-			"amount":[2,8],
+	"search": {
+		"title": "Search the [color=green]{location}[/color].",
+		"task": {
+			"type": "search",
+			"amount": [2,8],
 		},
-		"requires":[
+		"requires": [
 			"location",
 		],
-		"transitions":{
-			"dig_up_chest":{
-				"requires":["treasure"],
+		"transitions": {
+			"dig_up_chest": {
+				"requires": ["treasure"],
 			},
-			"track_down_monster":{
-				"requires":["monster"],
+			"track_down_monster": {
+				"requires": ["monster"],
 			},
-			"track_down_criminal":{
-				"requires":["criminal"],
+			"track_down_criminal": {
+				"requires": ["criminal"],
 			},
-			"take_out_hostile_camp":{
-				"requires":["hostile_camp"],
-			},
-		},
-	},
-	"dig_up_chest":{
-		"title":"Dig up the chest.",
-		"task":{
-			"type":"dig",
-		},
-		"log":"You found the treasure chest.",
-		"transitions":{
-			"open_chest":{
-				"requires":["treasure"],
+			"take_out_hostile_camp": {
+				"requires": ["hostile_camp"],
 			},
 		},
 	},
-	"open_chest":{
-		"title":"Open the chest.",
-		"task":{
-			"type":"loot",
+	"dig_up_chest": {
+		"title": "Dig up the chest.",
+		"task": {
+			"type": "dig",
 		},
-		"requires":[
+		"log": "You found the treasure chest.",
+		"transitions": {
+			"open_chest": {
+				"requires": ["treasure"],
+			},
+		},
+	},
+	"open_chest": {
+		"title": "Open the chest.",
+		"task": {
+			"type": "loot",
+		},
+		"requires": [
 			"loot",
 		],
-		"consumes":{
-			"type":"treasure",
+		"consumes": {
+			"type": "treasure",
 		},
-		"reward":{
+		"reward": {
 			"exp":10,
 			"gold":100,
 		},
-		"transitions":{
-			"commission_done":{
-				"requires":["commission"],
+		"transitions": {
+			"commission_done": {
+				"requires": ["commission"],
 			},
 		},
 	},
-	"monster_hunt":{
-		"title":"Look for clues about the monster.",
-		"task":{
-			"type":"look_for_clues",
-			"amount":[2,8],
+	"monster_hunt": {
+		"title": "Look for clues about the monster.",
+		"task": {
+			"type": "look_for_clues",
+			"amount": [2,8],
 		},
-		"story":[
+		"story": [
 			{
-				"type":"monster",
-				"requires":["location","enemy-beast"],
+				"type": "monster",
+				"requires": ["location","enemy-beast"],
 			},
 		],
-		"log":"You heard of a dangerous monster that roams nearby.",
-		"transitions":{
-			"search":{
+		"log": "You heard of a dangerous monster that roams nearby.",
+		"transitions": {
+			"search": {
 				
 			},
 		},
 	},
-	"track_down_monster":{
-		"title":"Track down the monster.",
-		"task":{
-			"type":"look_for_clues",
-			"amount":[2,8],
+	"track_down_monster": {
+		"title": "Track down the monster.",
+		"task": {
+			"type": "look_for_clues",
+			"amount": [2,8],
 		},
-		"log":"You found traces of a monster.",
-		"transitions":{
-			"fight_monster":{},
+		"log": "You found traces of a monster.",
+		"transitions": {
+			"fight_monster": {},
 		},
 	},
-	"fight_monster":{
-		"title":"Kill the [color=red]{enemy-beast}[/color].",
-		"task":{
-			"type":"kill",
+	"fight_monster": {
+		"title": "Kill the [color=red]{enemy-beast}[/color].",
+		"task": {
+			"type": "kill",
 			"amount":1,
 		},
-		"requires":[
+		"requires": [
 			"enemy-beast",
 		],
-		"consumes":{
-			"type":"monster",
+		"consumes": {
+			"type": "monster",
 		},
-		"reward":{
+		"reward": {
 			"exp":10,
 		},
-		"transitions":{
-			"commission_done":{
-				"requires":["commission"],
+		"transitions": {
+			"commission_done": {
+				"requires": ["commission"],
 			},
 		},
 	},
-	"catch_criminal":{
-		"title":"Look for clues about the criminal in [color=green]{city}[/color].",
-		"task":{
-			"type":"look_for_clues",
-			"amount":[2,8],
+	"catch_criminal": {
+		"title": "Look for clues about the criminal in [color=green]{city}[/color].",
+		"task": {
+			"type": "look_for_clues",
+			"amount": [2,8],
 		},
-		"requires":[
+		"requires": [
 			"city",
 		],
-		"story":[
+		"story": [
 			{
-				"type":"criminal",
-				"requires":["location","enemy-criminal"],
+				"type": "criminal",
+				"requires": ["location","enemy-criminal"],
 			},
 		],
-		"log":"You were tasked to catch a criminal in [color=green]{city}[/color].",
-		"transitions":{
-			"search":{},
+		"log": "You were tasked to catch a criminal in [color=green]{city}[/color].",
+		"transitions": {
+			"search": {},
 		},
 	},
-	"track_down_criminal":{
-		"title":"Track down the criminal.",
-		"task":{
-			"type":"look_for_clues",
-			"amount":[2,8],
+	"track_down_criminal": {
+		"title": "Track down the criminal.",
+		"task": {
+			"type": "look_for_clues",
+			"amount": [2,8],
 		},
-		"log":"You the criminal.",
-		"transitions":{
-			"fight_criminal":{},
+		"log": "You the criminal.",
+		"transitions": {
+			"fight_criminal": {},
 		},
 	},
-	"fight_criminal":{
-		"title":"Defeat the [color=red]{enemy-criminal}[/color].",
-		"task":{
-			"type":"kill",
+	"fight_criminal": {
+		"title": "Defeat the [color=red]{enemy-criminal}[/color].",
+		"task": {
+			"type": "kill",
 			"amount":1,
 		},
-		"requires":[
+		"requires": [
 			"enemy-criminal",
 		],
-		"consumes":{
-			"type":"criminal",
+		"consumes": {
+			"type": "criminal",
 		},
-		"reward":{
+		"reward": {
 			"exp":10,
 		},
-		"transitions":{
-			"commission_done":{
-				"requires":["commission"],
+		"transitions": {
+			"commission_done": {
+				"requires": ["commission"],
 			},
 		},
 	},
-	"explore":{
-		"title":"Explore the [color=green]{location}[/color].",
-		"task":{
-			"type":"explore",
-			"amount":[4,10],
+	"explore": {
+		"title": "Explore the [color=green]{location}[/color].",
+		"task": {
+			"type": "explore",
+			"amount": [4,10],
 		},
-		"requires":[
+		"requires": [
 			"location-dungeon",
 		],
-		"reward":{
+		"reward": {
 			"exp":20,
 		},
-		"transitions":{
-			"map_location":{},
-			"search":{
-				"story":[
+		"transitions": {
+			"map_location": {},
+			"search": {
+				"story": [
 					{
-						"type":"treasure",
-						"requires":["location"],
+						"type": "treasure",
+						"requires": ["location"],
 					},
 					{
-						"type":"monster",
-						"requires":["location","enemy-beast"],
+						"type": "monster",
+						"requires": ["location","enemy-beast"],
 					},
 				],
 			},
 			
 		},
 	},
-	"map_location":{
-		"title":"Map out the [color=green]{location}[/color].",
-		"task":{
-			"type":"map_location",
+	"map_location": {
+		"title": "Map out the [color=green]{location}[/color].",
+		"task": {
+			"type": "map_location",
 		},
-		"requires":[
+		"requires": [
 			"location",
 		],
-		"story":[
+		"story": [
 			{
-				"type":"map",
-				"requires":["item-map"],
+				"type": "map",
+				"requires": ["item-map"],
 			},
 		],
-		"transitions":{
-			"commission_done":{
-				"requires":["commission"],
-				"consumes":{
-					"type":"map",
+		"transitions": {
+			"commission_done": {
+				"requires": ["commission"],
+				"consumes": {
+					"type": "map",
 				},
 			},
 		},
 	},
-	"fetch_item":{
-		"title":"Fetch a [color=cyan][hint={item_description}]{item-package}[/hint][/color] in [color=green]{city}[/color].",
-		"task":{
-			"type":"fetch",
+	"fetch_item": {
+		"title": "Fetch a [color=cyan][hint={item_description}]{item-package}[/hint][/color] in [color=green]{city}[/color].",
+		"task": {
+			"type": "fetch",
 		},
-		"story":[
+		"story": [
 			{
-				"type":"delivery_item",
-				"requires":["person","item-package"],
+				"type": "delivery_item",
+				"requires": ["person","item-package"],
 			},
 		],
-		"requires":[
+		"requires": [
 			"city",
 		],
-		"transitions":{
-			"deliver_package":{},
+		"transitions": {
+			"deliver_package": {},
 		},
 	},
-	"deliver_package":{
-		"title":"Deliver [color=cyan][hint={item_description}]{item-package}[/hint][/color] to [color=blue][hint={person_description}]{person}[/hint][/color] in [color=green]{city}[/color].",
-		"task":{
-			"type":"deliver",
+	"deliver_package": {
+		"title": "Deliver [color=cyan][hint={item_description}]{item-package}[/hint][/color] to [color=blue][hint={person_description}]{person}[/hint][/color] in [color=green]{city}[/color].",
+		"task": {
+			"type": "deliver",
 		},
-		"requires":[
+		"requires": [
 			"city","person","item-package",
 		],
-		"consumes":{
-			"type":"delivery_item",
+		"consumes": {
+			"type": "delivery_item",
 		},
-		"reward":{
+		"reward": {
 			"exp":15,
 			"gold":10,
 			"potion_chance":0.3,
 		},
-		"log":"You have delivered a [color=cyan][hint={item_description}]{item-package}[/hint][/color] to [color=blue][hint={person_description}]{person}[/hint][/color].",
+		"log": "You have delivered a [color=cyan][hint={item_description}]{item-package}[/hint][/color] to [color=blue][hint={person_description}]{person}[/hint][/color].",
 	},
-	"spy_hostile_camp":{
-		"title":"[color=blue][hint={person_description}]{person}[/hint][/color] has tasked you to spy the [color=orange]{faction}[/color] camp in [color=green]{location}[/color].",
-		"task":{
-			"type":"search",
+	"spy_hostile_camp": {
+		"title": "[color=blue][hint={person_description}]{person}[/hint][/color] has tasked you to spy the [color=orange]{faction}[/color] camp in [color=green]{location}[/color].",
+		"task": {
+			"type": "search",
 		},
-		"requires":[
+		"requires": [
 			"person-military","city","location",
 		],
-		"story":[
+		"story": [
 			{
-				"type":"hostile_camp",
-				"requires":["location","faction-hostile"],
+				"type": "hostile_camp",
+				"requires": ["location","faction-hostile"],
 			},
 		],
-		"transitions":{
-			"observe_hostile_camp":{},
-			"infiltrate_hostile_camp":{},
-			"take_out_hostile_camp":{},
+		"transitions": {
+			"observe_hostile_camp": {},
+			"infiltrate_hostile_camp": {},
+			"take_out_hostile_camp": {},
 		},
 	},
-	"observe_hostile_camp":{
-		"title":"Keep observing the [color=orange]{faction}[/color] camp.",
-		"task":{
-			"type":"look_for_clues",
+	"observe_hostile_camp": {
+		"title": "Keep observing the [color=orange]{faction}[/color] camp.",
+		"task": {
+			"type": "look_for_clues",
 		},
-		"requires":[
+		"requires": [
 			"hostile_camp",
 		],
-		"transitions":{
-			"report_back":{},
+		"transitions": {
+			"report_back": {},
 		},
 	},
-	"infiltrate_hostile_camp":{
-		"title":"Infiltrate the [color=orange]{faction}[/color] camp.",
-		"task":{
-			"type":"explore",
+	"infiltrate_hostile_camp": {
+		"title": "Infiltrate the [color=orange]{faction}[/color] camp.",
+		"task": {
+			"type": "explore",
 		},
-		"consumes":{
-			"type":"hostile_camp",
+		"consumes": {
+			"type": "hostile_camp",
 		},
-		"transitions":{
-			"report_back":{},
+		"transitions": {
+			"report_back": {},
 		},
 	},
-	"take_out_hostile_camp":{
-		"title":"Defeat the [color=red]{enemy-faction}[/color].",
-		"task":{
-			"type":"kill",
+	"take_out_hostile_camp": {
+		"title": "Defeat the [color=red]{enemy-faction}[/color].",
+		"task": {
+			"type": "kill",
 			"amount":6,
 		},
-		"requires":[
+		"requires": [
 			"enemy-faction",
 		],
-		"consumes":{
-			"type":"hostile_camp",
+		"consumes": {
+			"type": "hostile_camp",
 		},
-		"reward":{
+		"reward": {
 			"exp":40,
 		},
-		"transitions":{
-			"report_back":{},
+		"transitions": {
+			"report_back": {},
 		},
 	},
-	"report_back":{
-		"title":"Report to [color=blue][hint={person_description}]{person-military}[/hint][/color] in [color=green]{city}[/color].",
-		"task":{
-			"type":"talk",
+	"report_back": {
+		"title": "Report to [color=blue][hint={person_description}]{person-military}[/hint][/color] in [color=green]{city}[/color].",
+		"task": {
+			"type": "talk",
 		},
-		"requires":[
+		"requires": [
 			"city","person-military",
 		],
-		"reward":{
+		"reward": {
 			"exp":20,
 			"gold":20,
 			"potion_chance":0.2,
 			"equipment_chance":0.1,
 		},
-		"log":"You have completed [color=blue][hint={person_description}]{person-military}'s[/hint][/color] request.",
+		"log": "You have completed [color=blue][hint={person_description}]{person-military}'s[/hint][/color] request.",
 	},
 	
 }
-const TITLE = [
+const TITLE: Array[Array] = [
 	[
 		"{prefix} Awakening","A {person}'s Awakening","{prefix} Revelation","{prefix} Prophecy",
 		"A {person}'s Prophecy","Prophecy of {theme}","{prefix} Adventure","The {person}'s Rise",
@@ -700,7 +922,7 @@ const TITLE = [
 		"Sealed with {elements}","The Power of {element}","{theme}, Finally","{theme} FTW",
 	],
 ]
-const TITLE_PREFIX = [
+const TITLE_PREFIX: Array[String] = [
 	"Mysterious","Mythical","Ancient","Ominous","Dubious","Critical","Well Timed","Late","Early",
 	"Spontaneous","Unexpected","Forgotten","Relevant","Urgent","Pressing","Night Time","Unilateral",
 	"Spooky","Serious","Light","Heavy","Blighted","Holy","Sacred","Divine","Abysmal","Overwhelming",
@@ -711,7 +933,7 @@ const TITLE_PREFIX = [
 	"Rural","Industrial","Neo","Grand","Undefined","Faithful","Rising","Falling","Determined",
 	"{element}forged",
 ]
-const THEME = [
+const THEME: Array[String] = [
 	"Conflict","War","Destruction","Redemption","Forgiveness","Obliteration","Sky","Aether",
 	"Oblivion","Dawn","Midnight","the End","a New Beginning","Abyss","Underworld","Heaven",
 	"Ocean","Deep Sea","the Woods","Mountaintop","Desert","Torment","Pain","Doom","Termination",
@@ -719,19 +941,19 @@ const THEME = [
 	"Entropy","Chaos","Order","Realm","Hellfire","Coverdice","Turning Back","Determination",
 	"Devastation","Randomness",
 ]
-const ELEMENT = [
+const ELEMENT: Array[String] = [
 	"fire","heat","lava","magma","ash","ice","snow","frost","earth","stone","mud","wind","air",
 	"water","storm","thunder","light","shadow","darkness","aether","void","star","space","time",
 	"soul","entropy","energy","spirit","mind","heart","steam","heaven","hell","death","life",
 	"miasma","radiation","blade",
 ]
-const ELEMENTS = [
+const ELEMENTS: Array[String] = [
 	"fire","heat","lava","magma","ash","ice","snow","frost","earth","stones","mud","wind","air",
 	"water","storms","thunder","light","shadows","darkness","aether","void","stars","space","time",
 	"souls","entropy","energy","spirits","minds","hearts","steam","heaven","hell","death","life",
 	"miasma","radiation","blades",
 ]
-const PERSON = [
+const PERSON: Array[String] = [
 	"sage","wizard","mage","enchantress","oracle","scientist","researcher","philosopher","seraph",
 	"man","women","boy","girl","citizen","human","halfling","elf","dwarf","fairy","hero","demon",
 	"soldier","fighter","knight","mercenary","marksman","spellblade","archer","fencer","villain",
@@ -740,48 +962,48 @@ const PERSON = [
 	"mayor","count","earl","king","queen","prince","princes","lancer","adventurer","wanderer",
 	"adviser","assistant","guild master","hero","friend","fiend","maiden",
 ]
-const POSITIVE_PERSON = [
+const POSITIVE_PERSON: Array[String] = [
 	"wise","elder","old","arch","shy","empathic","enigmatic","mysterious","lonely",
 	"brave","fearless","naive","good","allied","nice","sweet","tolerant","naive","secretive",
 	"faithful","loyal","helpful","useful","resourceful","determined","important",
 	"royal",
 ]
-const NEGATIVE_PERSON = [
+const NEGATIVE_PERSON: Array[String] = [
 	"petty","dubious","vile","mean","dark","brutal","reckless","cynical","toxic","cruel","corrupt",
 	"evil","diabolic","infernal","murderous","pathetic","unsympathetic","half-breed","hidden",
 	"the enemy's","hostile","fishy","bad","menacing","useless","bloody","fiendish","antagonist",
 ]
-const DUNGEON_NAME = [
+const DUNGEON_NAME: Array[String] = [
 	"dungeon","keep","cave","cavern","ruin","temple","rift","domain","island","castle","tower",
 ]
-const DUNGEON_PREFIX = [
+const DUNGEON_PREFIX: Array[String] = [
 	"eerie","creepy","dark","enigmatic","dusty","ancient","forgotten","forbidden","locked","ruined",
 	"demolished","pristine","dangerous","abandoned","heretic","ash","isolated","uncharted","smelly",
 	"overrun","infested","slimy","forsaken","unknown","unnamed","invisible","untouched",
 ]
-const DUNGEON_SUFFIX = [
+const DUNGEON_SUFFIX: Array[String] = [
 	"of danger","of harm","of archfiend",
 ]
-const LETTER_TYPES = [
+const LETTER_TYPES: Array[String] = [
 	"letter","scroll",
 ]
-const LETTER_ADJECTIVE = [
+const LETTER_ADJECTIVE: Array[String] = [
 	"sealed","signed","long","short","plain","ornate",
 ]
-const PACKAGE_TYPES = [
+const PACKAGE_TYPES: Array[String] = [
 	"package","box",
 ]
-const PACKAGE_ADJECTIVE = [
+const PACKAGE_ADJECTIVE: Array[String] = [
 	"heavy","large","small","ordinary","common",
 ]
-var story:= []
-var locations:= {}
-var cities:= {}
-var guilds:= []
-var persons:= {}
-var inventory:= []
-var factions:= []
-var hostile_factions:= []
+var story: Array[Dictionary] = []
+var locations: Dictionary[String, String] = {}
+var cities: Dictionary[String, String] = {}
+var guilds: Array[String] = []
+var persons: Dictionary[String, Dictionary] = {}
+var inventory: Array[ItemQuest] = []
+var factions: Array[String] = []
+var hostile_factions: Array[String] = []
 var current_state: Dictionary
 
 
@@ -892,7 +1114,7 @@ func create_person(race: String, location: String) -> Dictionary:
 	dict.location = location
 	dict.name = Names.create_name(race, gender)
 	dict.position = dict.position.pick_random()
-	for k in dict.keys():
+	for k in dict:
 		if typeof(dict[k])==TYPE_ARRAY:
 			dict[k] = dict[k].pick_random()
 	if dict.has("title") && dict.title:
@@ -913,18 +1135,18 @@ func create_person(race: String, location: String) -> Dictionary:
 	persons[key] = dict
 	return dict
 
-func create_item(type: String, dict: Dictionary) -> Dictionary:
-	var item:= {
-		"name":tr(type.to_upper()),
-		"type":type,
-		"amount":1,
-	}
+func create_item(type: String, dict: Dictionary) -> ItemQuest:
+	var item := ItemQuest.new({
+		"name": tr(type.to_upper()),
+		"type": type,
+		"amount": 1,
+	})
 	
 	match type:
 		"letter", "package":
 			var description:= "A {adjective} {type}"
 			var format_dict:= {}
-			for k in ["person-quest_giver","person-story","person"]:
+			for k: String in ["person-quest_giver", "person-story", "person"]:
 				if dict.has(k):
 					item.name = persons[dict[k]].name + "'s " + item.name
 					if type=="letter":
@@ -941,30 +1163,30 @@ func create_item(type: String, dict: Dictionary) -> Dictionary:
 			description = sanitize_string(description.format(format_dict) + ".")
 			item.description = description
 	
-	if !item.has("description"):
+	if item.description == "":
 		item.description = get_a_an(item.name).capitalize() + " " + item.name + "."
 	
 	return item
 
-func add_quest_item(item: Dictionary, amount:= 1):
-	var index:= inventory.find(item)
-	if index>=0:
+func add_quest_item(item: ItemQuest, amount:= 1) -> void:
+	var index := inventory.find(item)
+	if index >= 0:
 		inventory[index].amount += amount
 	else:
 		inventory.push_back(item)
 
-func remove_quest_item(item: Dictionary, amount:= 0) -> bool:
-	var index:= inventory.find(item)
-	if index<0:
+func remove_quest_item(item: ItemQuest, amount:= 0) -> bool:
+	var index := inventory.find(item)
+	if index < 0:
 		for i in range(inventory.size()):
-			if inventory[i].type==item.type:
+			if inventory[i].type == item.type:
 				index = i
 				break
-	if index>=0:
-		if inventory[index].amount<amount:
+	if index >= 0:
+		if inventory[index].amount < amount:
 			inventory.erase(item)
 			return false
-		elif amount==0 || inventory[index].amount==amount:
+		elif amount == 0 || inventory[index].amount == amount:
 			inventory.erase(item)
 			return true
 		else:
@@ -980,10 +1202,11 @@ func has_required(type: String) -> bool:
 			return true
 	return false
 
-func get_required(type: String):
+func get_required(type: String) -> Dictionary:
 	for dict in story:
-		if dict.type==type:
+		if dict.type == type:
 			return dict
+	return {}
 
 func has_all_required(array: Array) -> bool:
 	for type in array:
@@ -991,7 +1214,7 @@ func has_all_required(array: Array) -> bool:
 			return false
 	return true
 
-func create_required(type: String, dict: Dictionary):
+func create_required(type: String, dict: Dictionary) -> Variant:
 	var array:= type.split('-', false)
 	match array[0]:
 		"location":
@@ -1005,7 +1228,7 @@ func create_required(type: String, dict: Dictionary):
 		"person":
 			if array.size()>0:
 				var valid:= []
-				for p in persons.keys():
+				for p in persons:
 					for i in range(1,array.size()):
 						if array[i] in persons[p].tags:
 							valid.push_back(p)
@@ -1050,7 +1273,7 @@ func create_required(type: String, dict: Dictionary):
 					_:
 						return factions.pick_random()
 			return factions.pick_random()
-		
+	return null
 
 func create_story(story_dict: Dictionary) -> Dictionary:
 	var dict:= {}
@@ -1106,7 +1329,7 @@ func transition_to(new: String, transition_dict:= {}):
 		current_state.story = current_state.story.pick_random()
 		dict = create_story(current_state.story)
 		if dict.has("requires"):
-			for k in dict.requires.keys():
+			for k in dict.requires:
 				current_state.requires[k] = dict.requires[k]
 	if current_state.has("consumes"):
 		for dict in story:
@@ -1116,7 +1339,7 @@ func transition_to(new: String, transition_dict:= {}):
 						format_dict[current_state.consumes.type] = dict.requires.beast
 					elif dict.requires.has("item"):
 						format_dict[current_state.consumes.type] = dict.requires.item
-					for k in dict.requires.keys():
+					for k in dict.requires:
 						current_state.requires[k] = dict.requires[k]
 				story.erase(dict)
 				break
@@ -1143,13 +1366,13 @@ func transition_to(new: String, transition_dict:= {}):
 				format_dict[k] = current_state.requires[k]
 	
 
-func next():
+func next() -> void:
 	if !current_state.has("transitions"):
 		start()
 		return
 	
 	var valid_transitions:= []
-	for k in current_state.transitions.keys():
+	for k in current_state.transitions:
 		if !current_state.transitions[k].has("requires") || has_all_required(current_state.transitions[k].requires):
 			valid_transitions.push_back(k)
 	if valid_transitions.size()>0:
@@ -1161,7 +1384,7 @@ func next():
 	
 	start()
 
-func start():
+func start() -> void:
 	transition_to(INITIAL_STATES.pick_random())
 
 func create_quest(region: Region) -> Dictionary:
@@ -1175,7 +1398,7 @@ func create_quest(region: Region) -> Dictionary:
 		quest.amount = current_state.task.amount
 	else:
 		quest.amount = 1
-	for k in current_state.task.keys():
+	for k in current_state.task:
 		quest[k] = current_state.task[k]
 	quest.action = current_state.task.type
 	quest.stage = 0
@@ -1217,7 +1440,7 @@ func create_quest(region: Region) -> Dictionary:
 	elif quest.requires.has("faction"):
 		quest.faction = quest.requires.faction
 	dict = quest.duplicate(true)
-	for k in quest.requires.keys():
+	for k in quest.requires:
 		if dict.has(k):
 			continue
 		dict[k] = quest.requires[k]

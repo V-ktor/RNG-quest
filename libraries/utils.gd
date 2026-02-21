@@ -2,7 +2,7 @@ extends Node
 
 const VOVELS = ["a", "e", "o", "u", "i"]
 const MAX_DIST = 3
-const DIRECTIONS = [
+const DIRECTIONS: Array[Vector2i] = [
 	Vector2i(-1,-1),
 	Vector2i( 0,-1),
 	Vector2i( 1, 0),
@@ -94,30 +94,30 @@ func get_a_an(string: String) -> String:
 
 func get_distance(pos1: Vector2i, pos2: Vector2i) -> int:
 	# calculate the distance on a hex grid
-	return int(max(max(abs(pos1.x - pos2.x), abs(pos1.y - pos2.y)), abs(pos1.x - pos2.x + pos1.y - pos2.y)))
+	return int(maxi(maxi(absi(pos1.x - pos2.x), absi(pos1.y - pos2.y)), absi(pos1.x - pos2.x + pos1.y - pos2.y)))
 
-func get_min_distance(pos: Vector2i, array: Array) -> int:
+func get_min_distance(pos: Vector2i, array: Array[Vector2i]) -> int:
 	var min_dist:= MAX_DIST + 1
 	for pos2 in array:
-		min_dist = min(min_dist, get_distance(pos, pos2))
+		min_dist = mini(min_dist, get_distance(pos, pos2))
 	return min_dist
 
-func get_closest_position(position: Vector2i, occupied: Array) -> Vector2i:
+func get_closest_position(position: Vector2i, occupied: Array[Vector2i]) -> Vector2i:
 	if position in occupied:
-		var directions:= DIRECTIONS.duplicate()
+		var directions: Array[Vector2i] = Array(DIRECTIONS.duplicate(), TYPE_VECTOR2I, "", null)
 		directions.shuffle()
 		if position == Vector2i(0, 0):
 			for dir in directions:
-				var pos:= get_closest_position(position + dir, occupied)
+				var pos := get_closest_position(position + dir, occupied)
 				if pos != Vector2i(0, 0):
 					return pos
 			return Vector2i(0, 0)
 		
-		var current_dir:= Vector2(position).normalized()
+		var current_dir := Vector2(position).normalized()
 		for dir in directions:
 			if Vector2(dir).normalized().dot(current_dir) < 0.25:
 				continue
-			var pos:= get_closest_position(position + dir, occupied)
+			var pos := get_closest_position(position + dir, occupied)
 			if pos != Vector2i(0, 0):
 				return pos
 		return Vector2i(0, 0)
@@ -136,21 +136,21 @@ func format_number(number: int) -> String:
 	return str(number) + " " + prefix
 
 
-func parse_vector2(text: String) -> Vector2:
+func parse_vector2i(text: String) -> Vector2i:
 	var regex:= RegEx.new()
 	var result: RegExMatch
 	regex.compile("\\(([\\d\\.-])+, ([\\d\\.-]+)\\)")
 	result = regex.search(text)
-	return Vector2(float(result.get_string(0)), float(result.get_string(1)))
+	return Vector2i(int(result.get_string(0)), int(result.get_string(1)))
 
 
 func merge_dicts(dict: Dictionary, add: Dictionary) -> Dictionary:
-	for k in add.keys():
+	for k: String in add.keys():
 		if dict.has(k):
 			if typeof(dict[k]) == TYPE_DICTIONARY:
 				if typeof(add[k]) == TYPE_ARRAY:
-					for s in add[k]:
-						if !dict[k].has(s):
+					for s: String in add[k]:
+						if s not in dict[k]:
 							dict[k][s] = null
 				elif typeof(add[k]) == TYPE_DICTIONARY:
 					dict[k] = merge_dicts(dict[k], add[k])
@@ -175,6 +175,20 @@ func make_list(array: Array[String]) -> String:
 	return string
 
 
+func tooltip_remove_bb_code(input: String) -> String:
+	var output:= ""
+	var pos:= 0
+	var regex:= RegEx.new()
+	var result: Array[RegExMatch]
+	regex.compile(r'\[[\w0-9=",./#]+\]')
+	result = regex.search_all(input)
+	for m in result:
+		output += input.substr(pos, m.get_start() - pos)
+		pos = m.get_end()
+	output += input.substr(pos)
+	return output
+
+
 func get_random_saying() -> String:
 	var rnd := randi()%6
 	match rnd:
@@ -192,10 +206,10 @@ func get_random_saying() -> String:
 				"fruit": FRUITS.pick_random(),
 			})
 		2:
-			return [
+			return ([
 				"a {fruit} a day keeps the {job} away",
 				"9 out of 10 {job}s advice eating a {fruit} each day",
-			].pick_random().format({
+			].pick_random() as String).format({
 				"job": DEATH_RELATED_JOBS.pick_random(),
 				"fruit": FRUITS.pick_random(),
 			})
@@ -205,10 +219,10 @@ func get_random_saying() -> String:
 				"plant": PLANTS.pick_random(),
 			})
 		4:
-			return [
+			return ([
 				"any {people} could be a {job}",
 				"any {people} can become a {job}",
-			].pick_random().format({
+			].pick_random() as String).format({
 				"people": PEOPLE.pick_random(),
 				"job": JOBS.pick_random(),
 			})
@@ -218,9 +232,9 @@ func get_random_saying() -> String:
 				"job2": JOBS.pick_random(),
 			})
 		6:
-			return [
+			return ([
 				"never trust a {person}"
-			].pick_random().format({
+			].pick_random() as String).format({
 				"person": (JOBS + PEOPLE).pick_random(),
 			})
 	return "your advertisement could be here"

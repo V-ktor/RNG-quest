@@ -54,5 +54,12 @@
 		"materials",
 		"weapons",
 		"armour"
+	],
+	"vocation": [
+		"craftsman",
+		"smith",
+		"tailor",
+		"carpenter",
+		"merchant"
 	]
 }

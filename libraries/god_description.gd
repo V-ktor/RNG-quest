@@ -1,4 +1,5 @@
 extends Node
+class_name GodDescriptions
 
 var domain_data: Dictionary[String, Dictionary] = {}
 var attribute_data: Array[Dictionary] = []

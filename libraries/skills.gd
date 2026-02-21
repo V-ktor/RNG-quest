@@ -1,25 +1,25 @@
 extends Node
 
 const RESOURCE_COLOR: Dictionary[String, String] = {
-	"health":"#FF2010",
-	"stamina":"#CCCC30",
-	"focus":"#50FF99",
-	"mana":"#4090FF",
+	"health": "#FF2010",
+	"stamina": "#CCCC30",
+	"focus": "#50FF99",
+	"mana": "#4090FF",
 }
 const DAMAGE_COLOR: Dictionary[String, String] = {
-	"cutting":"#FFBBBB",
-	"piercing":"#FFBBDD",
-	"impact":"#FFEECC",
-	"fire":"#FF5030",
-	"ice":"#99DDFF",
-	"lightning":"#BB66FF",
-	"water":"#4099FF",
-	"wind":"#40EEAA",
-	"earth":"#EEAA40",
-	"poison":"#99EE30",
-	"acid":"#A0FAC0",
-	"light":"#EEEE30",
-	"darkness":"#502580",
+	"cutting": "#FFBBBB",
+	"piercing": "#FFBBDD",
+	"impact": "#FFEECC",
+	"fire": "#FF5030",
+	"ice": "#99DDFF",
+	"lightning": "#BB66FF",
+	"water": "#4099FF",
+	"wind": "#40EEAA",
+	"earth": "#EEAA40",
+	"poison": "#99EE30",
+	"acid": "#A0FAC0",
+	"light": "#EEEE30",
+	"darkness": "#502580",
 }
 const DAMAGE_TYPES: Array[String] = [
 	"cutting",
@@ -44,131 +44,192 @@ const PHYSICAL_DAMAGE_TYPES: Array[String] = [
 	"acid",
 ]
 const ABILITIES: Dictionary[String, Dictionary] = {
-	"light_weapons":{
-		"name":"light_weapons",
-		"penetration":2,
-		"attack":0.5,
-		"weapon_subtypes":["melee"],
-		"armour_subtypes":["medium"],
+	"light_weapons": {
+		"name": "light_weapons",
+		"penetration": 2,
+		"attack": 0.5,
+		"weapon_subtypes": [
+			"melee",
+		],
+		"armour_subtypes": [
+			"medium",
+		],
 	},
-	"heavy_weapons":{
-		"name":"heavy_weapons",
-		"attack":2,
-		"weapon_subtypes":["melee"],
+	"heavy_weapons": {
+		"name": "heavy_weapons",
+		"attack": 2,
+		"weapon_subtypes": [
+			"melee",
+		],
 	},
-	"dirty_fighting":{
-		"name":"dirty_fighting",
+	"dirty_fighting": {
+		"name": "dirty_fighting",
 		"penetration":3,
-		"armour_subtypes":["light","medium"],
+		"armour_subtypes": [
+			"light",
+			"medium",
+		],
 	},
-	"brawling":{
-		"name":"brawling",
-		"penetration":2,
-		"accuracy":0.5,
-		"evasion":0.5,
-		"weapon_subtypes":["melee"],
-		"armour_subtypes":["medium","heavy"],
+	"brawling": {
+		"name": "brawling",
+		"penetration": 2,
+		"accuracy": 0.5,
+		"evasion": 0.5,
+		"weapon_subtypes": [
+			"melee",
+		],
+		"armour_subtypes": [
+			"medium",
+			"heavy",
+		],
 	},
-	"trapping":{
-		"name":"trapping",
-		"evasion":2,
+	"trapping": {
+		"name": "trapping",
+		"evasion": 2,
 	},
-	"archery":{
-		"name":"archery",
-		"attack":2,
-		"weapon_subtypes":["ranged"],
-		"armour_subtypes":["medium"],
+	"archery": {
+		"name": "archery",
+		"attack": 2,
+		"weapon_subtypes": [
+			"ranged",
+		],
+		"armour_subtypes": [
+			"medium",
+		],
 	},
-	"gun_slinging":{
-		"name":"gun_slinging",
-		"attack":2,
-		"weapon_subtypes":["ranged"],
-		"armour_subtypes":["medium"],
+	"gun_slinging": {
+		"name": "gun_slinging",
+		"attack": 2,
+		"weapon_subtypes": [
+			"ranged",
+		],
+		"armour_subtypes": [
+			"medium",
+		],
 	},
-	"shield":{
-		"name":"shields",
-		"armour":2,
-		"weapon_subtypes":["shield"],
-		"armour_subtypes":["heavy"],
+	"shield": {
+		"name": "shields",
+		"armour": 2,
+		"weapon_subtypes": [
+			"shield",
+		],
+		"armour_subtypes": [
+			"heavy",
+		],
 	},
-	"armour":{
-		"name":"armour",
-		"armour":2,
-		"weapon_subtypes":["shield"],
-		"armour_subtypes":["heavy"],
+	"armour": {
+		"name": "armour",
+		"armour": 2,
+		"weapon_subtypes": [
+			"shield",
+		],
+		"armour_subtypes": [
+			"heavy",
+		],
 	},
-	"evasion":{
-		"name":"evasion",
-		"evasion":2,
-		"armour_subtypes":["light","medium"],
+	"evasion": {
+		"name": "evasion",
+		"evasion": 2,
+		"armour_subtypes": [
+			"light",
+			"medium",
+		],
 	},
-	"elemental_magic":{
-		"name":"elemental_magic",
-		"magic":2,
-		"weapon_subtypes":["magic"],
-		"armour_subtypes":["light"],
+	"elemental_magic": {
+		"name": "elemental_magic",
+		"magic": 2,
+		"weapon_subtypes": [
+			"magic",
+		],
+		"armour_subtypes": [
+			"light",
+		],
 	},
-	"nature_magic":{
-		"name":"nature_magic",
-		"magic":2,
-		"weapon_subtypes":["magic"],
-		"armour_subtypes":["light"],
+	"nature_magic": {
+		"name": "nature_magic",
+		"magic": 2,
+		"weapon_subtypes": [
+			"magic",
+		],
+		"armour_subtypes": [
+			"light",
+		],
 	},
-	"celestial_magic":{
-		"name":"celestial_magic",
-		"magic":2,
-		"weapon_subtypes":["magic"],
-		"armour_subtypes":["light"],
+	"celestial_magic": {
+		"name": "celestial_magic",
+		"magic": 2,
+		"weapon_subtypes": [
+			"magic",
+		],
+		"armour_subtypes": [
+			"light",
+		],
 	},
-	"blood_magic":{
+	"blood_magic": {
 		"name": "blood_magic",
 		"health": 4,
-		"weapon_subtypes":["magic"],
-		"armour_subtypes":["light"],
+		"weapon_subtypes": [
+			"magic",
+		],
+		"armour_subtypes": [
+			"light",
+		],
 	},
-	"summoning":{
-		"name":"summoning",
-		"willpower":2,
-		"weapon_subtypes":["magic"],
-		"armour_subtypes":["light"],
+	"summoning": {
+		"name": "summoning",
+		"willpower": 2,
+		"weapon_subtypes": [
+			"magic",
+		],
+		"armour_subtypes": [
+			"light",
+		],
 	},
-	"necromancy":{
-		"name":"necromancy",
-		"willpower":2,
-		"weapon_subtypes":["magic"],
-		"armour_subtypes":["light"],
+	"necromancy": {
+		"name": "necromancy",
+		"willpower": 2,
+		"weapon_subtypes": [
+			"magic",
+		],
+		"armour_subtypes": [
+			"light",
+		],
 	},
-	"defensive_magic":{
-		"name":"defensive_magic",
-		"willpower":2,
-		"weapon_subtypes":["magic"],
+	"defensive_magic": {
+		"name": "defensive_magic",
+		"willpower": 2,
+		"weapon_subtypes": [
+			"magic",
+		],
 	},
-	"healing":{
-		"name":"healing_ability",
-		"willpower":2,
-		"weapon_subtypes":["magic"],
+	"healing": {
+		"name": "healing_ability",
+		"willpower": 2,
+		"weapon_subtypes": [
+			"magic",
+		],
 	},
-	"alchemy":{
-		"name":"alchemy",
-		"willpower":2,
-		"recipes":[
+	"alchemy": {
+		"name": "alchemy",
+		"willpower": 2,
+		"recipes": [
 			"healing_salve","healing_potion","bandage","healing_infusion",
 			"mana_salve","mana_potion","stamina_salve","stamina_potion",
 			"energy_drink"
 		],
 	},
-	"weapon_smithing":{
-		"name":"weapon_smithing",
-		"attack":2,
-		"recipes":[
+	"weapon_smithing": {
+		"name": "weapon_smithing",
+		"attack": 2,
+		"recipes": [
 			"dagger","sword","axe","mace","whip","greatsword","battleaxe",
 			"greatmaul","scythe","morningstar","spear",
 		],
 	},
-	"armour_smithing":{
-		"name":"armour_smithing",
-		"armour":2,
-		"recipes":[
+	"armour_smithing": {
+		"name": "armour_smithing",
+		"armour": 2,
+		"recipes": [
 			"buckler","kite_shield","tower_shield","chain_belt","chain_cuirass",
 			"plate_cuirass","chain_greaves","plate_greaves","chain_coif",
 			"plate_helm","chain_boots","plate_boots","chain_gauntlets",
@@ -176,471 +237,470 @@ const ABILITIES: Dictionary[String, Dictionary] = {
 			"metal_earring","metal_bracelet",
 		],
 	},
-	"woodwork":{
-		"name":"woodwork",
-		"attack":2,
-		"recipes":[
+	"woodwork": {
+		"name": "woodwork",
+		"attack": 2,
+		"recipes": [
 			"spellblade","quarterstaff","magestaff","tome","orb","amplifier",
 			"sling","bow","crossbow","pistol","blunderbuss","wood_bracelet",
 		],
 	},
-	"tayloring":{
-		"name":"tayloring",
-		"armour":2,
-		"recipes":[
+	"tayloring": {
+		"name": "tayloring",
+		"armour": 2,
+		"recipes": [
 			"cloth_shirt","leather_chest","cloth_pants","leather_pants","cloth_hat",
 			"leather_hat","cloth_sandals","leather_boots","cloth_sleeves","leather_gloves",
 			"leather_belt","rope_belt","rope_amulet","leather_ring","gem_earring",
 			"magical_cape","cloth_cape","metal_cape","orb_earring",
 		],
 	},
-	"cooking":{
-		"name":"cooking",
-		"evasion":2,
+	"cooking": {
+		"name": "cooking",
+		"evasion": 2,
 	},
-	"enchanting":{
-		"name":"enchanting",
-		"magic":2,
+	"enchanting": {
+		"name": "enchanting",
+		"magic": 2,
 	},
-	"soul_binding":{
-		"name":"soul_binding",
-		"willpower":2,
+	"soul_binding": {
+		"name": "soul_binding",
+		"willpower": 2,
 	},
-	
 }
 const CRAFTING_ABILITIES: Array[String] = [
 	"weapon_smithing","armour_smithing","woodwork","tayloring",
 ]
 const ABILITY_MODULES: Dictionary[String, Dictionary] = {
-	"light_weapons":{
-		"base_type":["strike","slash","dual_strike","stab"],
-		"melee_mod":["pierce","quick","dual","stunning","rush"],
-		"aim":["body","head","unaimed"],
+	"light_weapons": {
+		"base_type": ["strike","slash","dual_strike","stab"],
+		"melee_mod": ["pierce","quick","dual","stunning","rush"],
+		"aim": ["body","head","unaimed"],
 	},
-	"heavy_weapons":{
-		"base_type":["strike","thrust","bash","cleave"],
-		"melee_mod":["force","brutal","cleaving","reckless","pierce","charged","concussive"],
-		"aim":["body","arms","legs","neck"],
+	"heavy_weapons": {
+		"base_type": ["strike","thrust","bash","cleave"],
+		"melee_mod": ["force","brutal","cleaving","reckless","pierce","charged","concussive"],
+		"aim": ["body","arms","legs","neck"],
 	},
-	"dirty_fighting":{
-		"base_type":["backstab","throwing_knife","sneak"],
-		"melee_mod":["shred","poisoned","penetrating"],
-		"ranged_mod":["vile","sharp"],
-		"defence_mod":["unseen"],
-		"aim":["weakpoint","organs","eyes"],
+	"dirty_fighting": {
+		"base_type": ["backstab","throwing_knife","sneak"],
+		"melee_mod": ["shred","poisoned","penetrating"],
+		"ranged_mod": ["vile","sharp"],
+		"defence_mod": ["unseen"],
+		"aim": ["weakpoint","organs","eyes"],
 	},
-	"brawling":{
-		"base_type":["punch","slam","kick","grapple"],
-		"melee_mod":["force","brutal","cleaving","quick","charged","stunning","rush"],
-		"grapple_mod":["choking","immobilizing","shielding"],
-		"aim":["body","arms","legs"],
+	"brawling": {
+		"base_type": ["punch","slam","kick","grapple"],
+		"melee_mod": ["force","brutal","cleaving","quick","charged","stunning","rush"],
+		"grapple_mod": ["choking","immobilizing","shielding"],
+		"aim": ["body","arms","legs"],
 	},
-	"shield":{
-		"base_type":["bash"],
-		"melee_mod":["force","concussive","shielding"],
-		"defence_mod":["armoured","reflecting"],
-		"aim":["body","arms","legs"],
-	},
-	
-	"archery":{
-		"base_type":["arrow","shot","dual_shot","volley"],
-		"ranged_mod":["aimed","quick","power","heavy_caliber","heavy"],
-		"aim":["body","head","unaimed"],
-	},
-	"gun_slinging":{
-		"base_type":["shot","cannon","barrage"],
-		"ranged_mod":["aimed","trick","bulk_caliber","heavy"],
-		"aim":["body","head","weakpoint"],
+	"shield": {
+		"base_type": ["bash"],
+		"melee_mod": ["force","concussive","shielding"],
+		"defence_mod": ["armoured","reflecting"],
+		"aim": ["body","arms","legs"],
 	},
 	
-	"armour":{
-		"base_type":["shielding_stance"],
-		"melee_mod":["shielding","brutal"],
-		"defence_mod":["defencive","absorbing","reflecting"],
+	"archery": {
+		"base_type": ["arrow","shot","dual_shot","volley"],
+		"ranged_mod": ["aimed","quick","power","heavy_caliber","heavy"],
+		"aim": ["body","head","unaimed"],
 	},
-	"evasion":{
-		"base_type":["evasive_stance","engaging_stance"],
-		"melee_mod":["parry"],
-		"defence_mod":["nimble","engaging","reflecting"],
-	},
-	
-	"elemental_magic":{
-		"base_type":["combat_spell"],
-		"magic":["fire","ice","lightning"],
-		"shape":["bolt","ball","pillar","disc","spiral"],
-		"application":["rocket","chain","explosion"],
-		"magic_mod":["homing","pumped","high_yield","mana_burn","split","fuse"],
-		"melee_mod":["infuse","channeled","flaming","frost","lightning_blade"],
-		"ranged_mod":["infuse","channeled","flaming","frost","lightning_arrow"],
-		"summon_type":["elemental"],
-		"summoning_method":["conjuration"],
-	},
-	"nature_magic":{
-		"base_type":["combat_spell"],
-		"magic":["water","wind","earth"],
-		"shape":["bolt","ball","disc","blade","spiral"],
-		"application":["rocket","beam","chain"],
-		"magic_mod":["homing","pumped","explosive","supersonic","split","fuse"],
-		"melee_mod":["infuse","acidic","water_blade","swift","crag_blade"],
-		"ranged_mod":["infuse","acidic","water_arrow","swift","rock_shot"],
-		"summon_type":["beast"],
-		"summoning_method":["conjuration"],
-	},
-	"celestial_magic":{
-		"base_type":["combat_spell"],
-		"magic":["light","darkness"],
-		"shape":["bolt","sphere","pillar","disc","blade"],
-		"application":["rocket","beam","explosion"],
-		"magic_mod":["vampiric","pumped","restorative","swift","split","fuse"],
-		"melee_mod":["infuse","light_infused","light_blade","shadow_step"],
-		"ranged_mod":["infuse","light_infused","light_arrow","shadow_backstep"],
-		"summon_type":["celestial"],
-		"summoning_method":["conjuration"],
-	},
-	"blood_magic":{
-		"base_type":["combat_spell"],
-		"magic":["blood","acid","poison"],
-		"shape":["bolt","ball","sphere","pillar","blade","spiral"],
-		"application":["rocket","beam","explosion"],
-		"magic_mod":["vampiric","pumped","blood_infused","swift","split","fuse"],
-		"melee_mod":["infuse","blood_blade","shadow_step"],
-		"ranged_mod":["infuse","bone_arrow","shadow_backstep"],
-		"summon_type":["undead"],
-		"summoning_method":["revive"],
-	},
-	"defensive_magic":{
-		"base_type":["shielding_spell"],
-		"magic":["ice"],
-		"magic_mod":["magic_shielding"],
-		"defence_mod":["physical_shielding","spell_shielding","nature_shielding","celestial_shielding"],
-	},
-	"healing":{
-		"base_type":["healing_spell"],
-		"magic":["water"],
-		"application":["rocket","beam","explosion"],
-		"magic_mod":["restorative","vampiric"],
+	"gun_slinging": {
+		"base_type": ["shot","cannon","barrage"],
+		"ranged_mod": ["aimed","trick","bulk_caliber","heavy"],
+		"aim": ["body","head","weakpoint"],
 	},
 	
-	"summoning":{
-		"base_type":["summoning_spell"],
-		"magic":["earth"],
-		"summon_type":["beast"],
-		"summoning_method":["tame"],
+	"armour": {
+		"base_type": ["shielding_stance"],
+		"melee_mod": ["shielding","brutal"],
+		"defence_mod": ["defencive","absorbing","reflecting"],
 	},
-	"necromancy":{
-		"base_type":["summoning_spell"],
-		"magic":["darkness"],
-		"summon_type":["undead"],
-		"summoning_method":["revive"],
+	"evasion": {
+		"base_type": ["evasive_stance","engaging_stance"],
+		"melee_mod": ["parry"],
+		"defence_mod": ["nimble","engaging","reflecting"],
+	},
+	
+	"elemental_magic": {
+		"base_type": ["combat_spell"],
+		"magic": ["fire","ice","lightning"],
+		"shape": ["bolt","ball","pillar","disc","spiral"],
+		"application": ["rocket","chain","explosion"],
+		"magic_mod": ["homing","pumped","high_yield","mana_burn","split","fuse"],
+		"melee_mod": ["infuse","channeled","flaming","frost","lightning_blade"],
+		"ranged_mod": ["infuse","channeled","flaming","frost","lightning_arrow"],
+		"summon_type": ["elemental"],
+		"summoning_method": ["conjuration"],
+	},
+	"nature_magic": {
+		"base_type": ["combat_spell"],
+		"magic": ["water","wind","earth"],
+		"shape": ["bolt","ball","disc","blade","spiral"],
+		"application": ["rocket","beam","chain"],
+		"magic_mod": ["homing","pumped","explosive","supersonic","split","fuse"],
+		"melee_mod": ["infuse","acidic","water_blade","swift","crag_blade"],
+		"ranged_mod": ["infuse","acidic","water_arrow","swift","rock_shot"],
+		"summon_type": ["beast"],
+		"summoning_method": ["conjuration"],
+	},
+	"celestial_magic": {
+		"base_type": ["combat_spell"],
+		"magic": ["light","darkness"],
+		"shape": ["bolt","sphere","pillar","disc","blade"],
+		"application": ["rocket","beam","explosion"],
+		"magic_mod": ["vampiric","pumped","restorative","swift","split","fuse"],
+		"melee_mod": ["infuse","light_infused","light_blade","shadow_step"],
+		"ranged_mod": ["infuse","light_infused","light_arrow","shadow_backstep"],
+		"summon_type": ["celestial"],
+		"summoning_method": ["conjuration"],
+	},
+	"blood_magic": {
+		"base_type": ["combat_spell"],
+		"magic": ["blood","acid","poison"],
+		"shape": ["bolt","ball","sphere","pillar","blade","spiral"],
+		"application": ["rocket","beam","explosion"],
+		"magic_mod": ["vampiric","pumped","blood_infused","swift","split","fuse"],
+		"melee_mod": ["infuse","blood_blade","shadow_step"],
+		"ranged_mod": ["infuse","bone_arrow","shadow_backstep"],
+		"summon_type": ["undead"],
+		"summoning_method": ["revive"],
+	},
+	"defensive_magic": {
+		"base_type": ["shielding_spell"],
+		"magic": ["ice"],
+		"magic_mod": ["magic_shielding"],
+		"defence_mod": ["physical_shielding","spell_shielding","nature_shielding","celestial_shielding"],
+	},
+	"healing": {
+		"base_type": ["healing_spell"],
+		"magic": ["water"],
+		"application": ["rocket","beam","explosion"],
+		"magic_mod": ["restorative","vampiric"],
+	},
+	
+	"summoning": {
+		"base_type": ["summoning_spell"],
+		"magic": ["earth"],
+		"summon_type": ["beast"],
+		"summoning_method": ["tame"],
+	},
+	"necromancy": {
+		"base_type": ["summoning_spell"],
+		"magic": ["darkness"],
+		"summon_type": ["undead"],
+		"summoning_method": ["revive"],
 	},
 	
 	# enemy skills
-	"fangs":{
-		"base_type":["fangs"],
-		"aim":["body","arms","legs"],
-		"melee_mod":["quick","charged","rush"],
+	"fangs": {
+		"base_type": ["fangs"],
+		"aim": ["body","arms","legs"],
+		"melee_mod": ["quick","charged","rush"],
 	},
-	"claws":{
-		"base_type":["claws"],
-		"aim":["body","arms","legs","unaimed"],
-		"melee_mod":["pierce","reckless"],
+	"claws": {
+		"base_type": ["claws"],
+		"aim": ["body","arms","legs","unaimed"],
+		"melee_mod": ["pierce","reckless"],
 	},
-	"horn":{
-		"base_type":["horn"],
-		"aim":["body","head","unaimed"],
-		"melee_mod":["pierce","rush","shred"],
+	"horn": {
+		"base_type": ["horn"],
+		"aim": ["body","head","unaimed"],
+		"melee_mod": ["pierce","rush","shred"],
 	},
-	"lacerating_fangs":{
-		"base_type":["fangs"],
-		"aim":["body","weakpoint"],
-		"melee_mod":["shred"],
+	"lacerating_fangs": {
+		"base_type": ["fangs"],
+		"aim": ["body","weakpoint"],
+		"melee_mod": ["shred"],
 	},
-	"toxic_bite":{
-		"base_type":["fangs"],
-		"aim":["body","weakpoint"],
-		"melee_mod":["poisoned"],
+	"toxic_bite": {
+		"base_type": ["fangs"],
+		"aim": ["body","weakpoint"],
+		"melee_mod": ["poisoned"],
 	},
-	"draining_bite":{
-		"base_type":["fangs"],
-		"aim":["body"],
-		"melee_mod":["vampiric"],
+	"draining_bite": {
+		"base_type": ["fangs"],
+		"aim": ["body"],
+		"melee_mod": ["vampiric"],
 	},
-	"feral_fire_magic":{
-		"base_type":["combat_spell"],
-		"magic":["fire"],
-		"shape":["bolt","ball"],
-		"application":["rocket","beam","explosion"],
-		"magic_mod":[],
+	"feral_fire_magic": {
+		"base_type": ["combat_spell"],
+		"magic": ["fire"],
+		"shape": ["bolt","ball"],
+		"application": ["rocket","beam","explosion"],
+		"magic_mod": [],
 	},
-	"feral_ice_magic":{
-		"base_type":["combat_spell"],
-		"magic":["ice"],
-		"shape":["bolt","ball"],
-		"application":["rocket","beam","explosion"],
-		"magic_mod":[],
+	"feral_ice_magic": {
+		"base_type": ["combat_spell"],
+		"magic": ["ice"],
+		"shape": ["bolt","ball"],
+		"application": ["rocket","beam","explosion"],
+		"magic_mod": [],
 	},
-	"feral_lightning_magic":{
-		"base_type":["combat_spell"],
-		"magic":["lightning"],
-		"shape":["bolt","ball"],
-		"application":["rocket","beam","explosion"],
-		"magic_mod":[],
+	"feral_lightning_magic": {
+		"base_type": ["combat_spell"],
+		"magic": ["lightning"],
+		"shape": ["bolt","ball"],
+		"application": ["rocket","beam","explosion"],
+		"magic_mod": [],
 	},
-	"feral_wind_magic":{
-		"base_type":["combat_spell"],
-		"magic":["wind"],
-		"shape":["bolt","ball"],
-		"application":["rocket","beam","explosion"],
-		"magic_mod":[],
+	"feral_wind_magic": {
+		"base_type": ["combat_spell"],
+		"magic": ["wind"],
+		"shape": ["bolt","ball"],
+		"application": ["rocket","beam","explosion"],
+		"magic_mod": [],
 	},
-	"feral_water_magic":{
-		"base_type":["combat_spell"],
-		"magic":["water"],
-		"shape":["bolt","ball"],
-		"application":["rocket","beam","explosion"],
-		"magic_mod":[],
+	"feral_water_magic": {
+		"base_type": ["combat_spell"],
+		"magic": ["water"],
+		"shape": ["bolt","ball"],
+		"application": ["rocket","beam","explosion"],
+		"magic_mod": [],
 	},
-	"feral_earth_magic":{
-		"base_type":["combat_spell"],
-		"magic":["earth"],
-		"shape":["bolt","ball"],
-		"application":["rocket","beam","explosion"],
-		"magic_mod":[],
+	"feral_earth_magic": {
+		"base_type": ["combat_spell"],
+		"magic": ["earth"],
+		"shape": ["bolt","ball"],
+		"application": ["rocket","beam","explosion"],
+		"magic_mod": [],
 	},
-	"feral_acid_magic":{
-		"base_type":["combat_spell"],
-		"magic":["acid"],
-		"shape":["bolt","ball"],
-		"application":["rocket","beam","explosion"],
-		"magic_mod":[],
+	"feral_acid_magic": {
+		"base_type": ["combat_spell"],
+		"magic": ["acid"],
+		"shape": ["bolt","ball"],
+		"application": ["rocket","beam","explosion"],
+		"magic_mod": [],
 	},
-	"feral_poison_magic":{
-		"base_type":["combat_spell"],
-		"magic":["poison"],
-		"shape":["bolt","ball"],
-		"application":["rocket","beam","explosion"],
-		"magic_mod":[],
+	"feral_poison_magic": {
+		"base_type": ["combat_spell"],
+		"magic": ["poison"],
+		"shape": ["bolt","ball"],
+		"application": ["rocket","beam","explosion"],
+		"magic_mod": [],
 	},
-	"feral_light_magic":{
-		"base_type":["combat_spell"],
-		"magic":["light"],
-		"shape":["bolt","ball"],
-		"application":["rocket","beam","explosion"],
-		"magic_mod":[],
+	"feral_light_magic": {
+		"base_type": ["combat_spell"],
+		"magic": ["light"],
+		"shape": ["bolt","ball"],
+		"application": ["rocket","beam","explosion"],
+		"magic_mod": [],
 	},
-	"feral_darkness_magic":{
-		"base_type":["combat_spell"],
-		"magic":["darkness"],
-		"shape":["bolt","ball"],
-		"application":["rocket","beam","explosion"],
-		"magic_mod":[],
-	},
-	
-	"feral_impact_fire_magic":{
-		"base_type":["feral_impact"],
-		"magic":["fire"],
-		"melee_mod":["infuse"],
-		"aim":["body","legs"],
-	},
-	"feral_impact_ice_magic":{
-		"base_type":["feral_impact"],
-		"magic":["ice"],
-		"melee_mod":["infuse"],
-		"aim":["body","legs"],
-	},
-	"feral_impact_lightning_magic":{
-		"base_type":["feral_impact"],
-		"magic":["lightning"],
-		"melee_mod":["infuse"],
-		"aim":["body","legs"],
-	},
-	"feral_impact_wind_magic":{
-		"base_type":["feral_impact"],
-		"magic":["wind"],
-		"melee_mod":["infuse"],
-		"aim":["body","legs"],
-	},
-	"feral_impact_water_magic":{
-		"base_type":["feral_impact"],
-		"magic":["water"],
-		"melee_mod":["infuse"],
-		"aim":["body","legs"],
-	},
-	"feral_impact_earth_magic":{
-		"base_type":["feral_impact"],
-		"magic":["earth"],
-		"melee_mod":["infuse"],
-		"aim":["body","legs"],
-	},
-	"feral_impact_acid_magic":{
-		"base_type":["feral_impact"],
-		"magic":["acid"],
-		"melee_mod":["infuse"],
-		"aim":["body","legs"],
-	},
-	"feral_impact_poison_magic":{
-		"base_type":["feral_impact"],
-		"magic":["poison"],
-		"melee_mod":["infuse"],
-		"aim":["body","legs"],
-	},
-	"feral_impact_light_magic":{
-		"base_type":["feral_impact"],
-		"magic":["light"],
-		"melee_mod":["infuse"],
-		"aim":["body","legs"],
-	},
-	"feral_impact_darkness_magic":{
-		"base_type":["feral_impact"],
-		"magic":["darkness"],
-		"melee_mod":["infuse"],
-		"aim":["body","legs"],
+	"feral_darkness_magic": {
+		"base_type": ["combat_spell"],
+		"magic": ["darkness"],
+		"shape": ["bolt","ball"],
+		"application": ["rocket","beam","explosion"],
+		"magic_mod": [],
 	},
 	
-	"feral_cutting_fire_magic":{
-		"base_type":["feral_cutting"],
-		"magic":["fire"],
-		"melee_mod":["infuse"],
-		"aim":["body","arms"],
+	"feral_impact_fire_magic": {
+		"base_type": ["feral_impact"],
+		"magic": ["fire"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","legs"],
 	},
-	"feral_cutting_ice_magic":{
-		"base_type":["feral_cutting"],
-		"magic":["ice"],
-		"melee_mod":["infuse"],
-		"aim":["body","arms"],
+	"feral_impact_ice_magic": {
+		"base_type": ["feral_impact"],
+		"magic": ["ice"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","legs"],
 	},
-	"feral_cutting_lightning_magic":{
-		"base_type":["feral_cutting"],
-		"magic":["lightning"],
-		"melee_mod":["infuse"],
-		"aim":["body","arms"],
+	"feral_impact_lightning_magic": {
+		"base_type": ["feral_impact"],
+		"magic": ["lightning"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","legs"],
 	},
-	"feral_cutting_wind_magic":{
-		"base_type":["feral_cutting"],
-		"magic":["wind"],
-		"melee_mod":["infuse"],
-		"aim":["body","arms"],
+	"feral_impact_wind_magic": {
+		"base_type": ["feral_impact"],
+		"magic": ["wind"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","legs"],
 	},
-	"feral_cutting_water_magic":{
-		"base_type":["feral_cutting"],
-		"magic":["water"],
-		"melee_mod":["infuse"],
-		"aim":["body","arms"],
+	"feral_impact_water_magic": {
+		"base_type": ["feral_impact"],
+		"magic": ["water"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","legs"],
 	},
-	"feral_cutting_earth_magic":{
-		"base_type":["feral_cutting"],
-		"magic":["earth"],
-		"melee_mod":["infuse"],
-		"aim":["body","arms"],
+	"feral_impact_earth_magic": {
+		"base_type": ["feral_impact"],
+		"magic": ["earth"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","legs"],
 	},
-	"feral_cutting_acid_magic":{
-		"base_type":["feral_cutting"],
-		"magic":["acid"],
-		"melee_mod":["infuse"],
-		"aim":["body","arms"],
+	"feral_impact_acid_magic": {
+		"base_type": ["feral_impact"],
+		"magic": ["acid"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","legs"],
 	},
-	"feral_cutting_poison_magic":{
-		"base_type":["feral_cutting"],
-		"magic":["poison"],
-		"melee_mod":["infuse"],
-		"aim":["body","arms"],
+	"feral_impact_poison_magic": {
+		"base_type": ["feral_impact"],
+		"magic": ["poison"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","legs"],
 	},
-	"feral_cutting_light_magic":{
-		"base_type":["feral_cutting"],
-		"magic":["light"],
-		"melee_mod":["infuse"],
-		"aim":["body","arms"],
+	"feral_impact_light_magic": {
+		"base_type": ["feral_impact"],
+		"magic": ["light"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","legs"],
 	},
-	"feral_cutting_darkness_magic":{
-		"base_type":["feral_cutting"],
-		"magic":["darkness"],
-		"melee_mod":["infuse"],
-		"aim":["body","arms"],
+	"feral_impact_darkness_magic": {
+		"base_type": ["feral_impact"],
+		"magic": ["darkness"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","legs"],
 	},
 	
-	"high_tech_cutting":{
-		"base_type":["chainsaw"],
-		"aim":["body","arms","legs"],
-		"melee_mod":["fusion","laser","overcharged","grinding","cone","repeated"],
+	"feral_cutting_fire_magic": {
+		"base_type": ["feral_cutting"],
+		"magic": ["fire"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","arms"],
 	},
-	"high_tech_impact":{
-		"base_type":["crusher"],
-		"aim":["body","arms","legs"],
-		"melee_mod":["fusion","laser","overcharged","grinding","cone","repeated"],
+	"feral_cutting_ice_magic": {
+		"base_type": ["feral_cutting"],
+		"magic": ["ice"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","arms"],
 	},
-	"high_tech_ranged":{
-		"base_type":["boltgun"],
-		"aim":["body","head","unaimed"],
-		"ranged_mod":["fusion","laser","overcharged","long_range","cone","repeated"],
+	"feral_cutting_lightning_magic": {
+		"base_type": ["feral_cutting"],
+		"magic": ["lightning"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","arms"],
+	},
+	"feral_cutting_wind_magic": {
+		"base_type": ["feral_cutting"],
+		"magic": ["wind"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","arms"],
+	},
+	"feral_cutting_water_magic": {
+		"base_type": ["feral_cutting"],
+		"magic": ["water"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","arms"],
+	},
+	"feral_cutting_earth_magic": {
+		"base_type": ["feral_cutting"],
+		"magic": ["earth"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","arms"],
+	},
+	"feral_cutting_acid_magic": {
+		"base_type": ["feral_cutting"],
+		"magic": ["acid"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","arms"],
+	},
+	"feral_cutting_poison_magic": {
+		"base_type": ["feral_cutting"],
+		"magic": ["poison"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","arms"],
+	},
+	"feral_cutting_light_magic": {
+		"base_type": ["feral_cutting"],
+		"magic": ["light"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","arms"],
+	},
+	"feral_cutting_darkness_magic": {
+		"base_type": ["feral_cutting"],
+		"magic": ["darkness"],
+		"melee_mod": ["infuse"],
+		"aim": ["body","arms"],
+	},
+	
+	"high_tech_cutting": {
+		"base_type": ["chainsaw"],
+		"aim": ["body","arms","legs"],
+		"melee_mod": ["fusion","laser","overcharged","grinding","cone","repeated"],
+	},
+	"high_tech_impact": {
+		"base_type": ["crusher"],
+		"aim": ["body","arms","legs"],
+		"melee_mod": ["fusion","laser","overcharged","grinding","cone","repeated"],
+	},
+	"high_tech_ranged": {
+		"base_type": ["boltgun"],
+		"aim": ["body","head","unaimed"],
+		"ranged_mod": ["fusion","laser","overcharged","long_range","cone","repeated"],
 	},
 	
 }
 const TRAPS: Dictionary[String, Dictionary] = {
-	"poison":{
-		"ability":"trapping",
-		"type":"debuff",
-		"name":"poison trap",
-		"health_regen":0.2,
-		"effect_stat":"wisdom",
-		"effect_scale":1.0,
+	"poison": {
+		"ability": "trapping",
+		"type": "debuff",
+		"name": "poison trap",
+		"health_regen": 0.2,
+		"effect_stat": "wisdom",
+		"effect_scale": 1.0,
 		"duration":30.0,
 	},
-	"bleeding":{
-		"ability":"trapping",
-		"type":"debuff",
-		"name":"bear trap",
-		"health_regen":0.2,
-		"effect_stat":"dexterity",
-		"effect_scale":1.0,
+	"bleeding": {
+		"ability": "trapping",
+		"type": "debuff",
+		"name": "bear trap",
+		"health_regen": 0.2,
+		"effect_stat": "dexterity",
+		"effect_scale": 1.0,
 		"duration":30.0,
 	},
-	"crippled":{
-		"ability":"trapping",
-		"type":"debuff",
-		"name":"crippling trap",
-		"effect":["attack","accuracy","evasion"],
-		"effect_stat":"wisdom",
-		"effect_scale":0.4,
+	"crippled": {
+		"ability": "trapping",
+		"type": "debuff",
+		"name": "crippling trap",
+		"effect": ["attack","accuracy","evasion"],
+		"effect_stat": "wisdom",
+		"effect_scale": 0.4,
 		"duration":30.0,
 	},
-	"bear_trap":{
-		"ability":"trapping",
-		"type":"debuff",
-		"name":"bear trap",
-		"health_regen":1.0,
-		"effect":["accuracy","evasion"],
-		"effect_stat":"dexterity",
-		"effect_scale":0.6,
+	"bear_trap": {
+		"ability": "trapping",
+		"type": "debuff",
+		"name": "bear trap",
+		"health_regen": 1.0,
+		"effect": ["accuracy","evasion"],
+		"effect_stat": "dexterity",
+		"effect_scale": 0.6,
 		"duration":30.0,
 	},
-	"corrosion":{
-		"ability":"trapping",
-		"type":"debuff",
-		"name":"corrosive trap",
-		"effect":"armour",
-		"effect_stat":"wisdom",
-		"effect_scale":0.6,
+	"corrosion": {
+		"ability": "trapping",
+		"type": "debuff",
+		"name": "corrosive trap",
+		"effect": "armour",
+		"effect_stat": "wisdom",
+		"effect_scale": 0.6,
 		"duration":30.0,
 	},
-	"antimagic_trap":{
-		"ability":"trapping",
-		"type":"debuff",
-		"name":"antimagic trap",
-		"effect":["magic","willpower"],
-		"effect_stat":"wisdom",
-		"effect_scale":0.5,
+	"antimagic_trap": {
+		"ability": "trapping",
+		"type": "debuff",
+		"name": "antimagic trap",
+		"effect": ["magic","willpower"],
+		"effect_stat": "wisdom",
+		"effect_scale": 0.5,
 		"duration":30.0,
 	},
 }
 
 const ROMAN_NUMBERS: Dictionary[String, int] = {
-	"I":1,
+	"I": 1,
 	"V":5,
-	"X":10,
+	"X": 10,
 	"L":50,
-	"C":100,
+	"C": 100,
 	"D":500,
-	"M":1000,
+	"M": 1000,
 }
 
 var module_data: Dictionary[String, Dictionary] = {}
@@ -864,13 +924,13 @@ func add_module(skill: Dictionary, module: Dictionary) -> Dictionary:
 
 func create_skill(type: String) -> Dictionary:
 	var skill:= {
-		"level":1,
-		"slots":{
-			"base_type":[type],
+		"level": 1,
+		"slots": {
+			"base_type": [type],
 		},
-		"cost":{},
-		"current_cooldown":0.0,
-		"range":0,
+		"cost": {},
+		"current_cooldown": 0.0,
+		"range": 0,
 	}
 	var dict: Dictionary = module_data.type[type]
 	skill.usage = dict.usage
@@ -902,8 +962,8 @@ func get_combat(skill: Dictionary) -> Dictionary:
 	if skill.has("hits"):
 		hits = skill.hits
 	var dict:= {
-		"status":[],
-		"status_self":[],
+		"status": [],
+		"status_self": [],
 	}
 	if skill.has("cost") && skill.cost.has("focus"):
 		dict.focus = skill.cost.focus
@@ -1117,7 +1177,7 @@ func format_status(status: Dictionary, attribute: String, left:= "    ") -> Stri
 		text += "\n" + left + "    " + tr("STUN") + ": " + str(int(100*status.stun)) + "%"
 	for type in ["damage","healing","shielding"]:
 		if status.has(type):
-			text += "\n" + left + "    " + tr(type.to_upper()).capitalize() + ":"
+			text += "\n" + left + "    " + tr(type.to_upper()).capitalize() + ": "
 			text += format_damage(status[type], attribute, left + "        ")
 	if status.has("attributes"):
 		for k in status.attributes.keys():
@@ -1193,48 +1253,48 @@ func create_tooltip(skill: Dictionary) -> String:
 	if skill.has("splash_damage"):
 		text += "\n" + tr("SPLASH_DAMAGE") + ": " + str(int(100*skill.splash_damage)) + "% "
 	if skill.has("cost") && skill.cost.size()>0:
-		text += "\n" + tr("COST") + ":"
+		text += "\n" + tr("COST") + ": "
 		for k in skill.cost.keys():
 			text += "\n    " + format_resource(k) + ": " + str(skill.cost[k]).pad_decimals(1)
 	
 	for type in ["damage","healing","shielding"]:
 		if !skill.has("combat") || !skill.combat.has(type):
 			continue
-		text += "\n" + tr(type.to_upper()).capitalize() + ":"
+		text += "\n" + tr(type.to_upper()).capitalize() + ": "
 		for i in range(skill.combat[type].size()):
 			text += format_damage(skill.combat[type][i], skill.attribute)
 	if skill.has("summoning") && skill.summoning.size()>0:
-		text += "\n" + tr("SUMMONING") + ":"
+		text += "\n" + tr("SUMMONING") + ": "
 		for k in skill.summoning.keys():
 			text += "\n    " + str(int(100*skill.summoning[k])) + "% " + tr("OF") + " " + tr(k.to_upper())
-		text += "\n    " + tr("STATS") + ":"
+		text += "\n    " + tr("STATS") + ": "
 		for k in skill.summon_stats.keys():
 			text += "\n        " + tr(k.to_upper()) + ": " + str(int(skill.summon_stats[k]))
-		text += "\n    " + tr("ATTRIBUTES") + ":"
+		text += "\n    " + tr("ATTRIBUTES") + ": "
 		for k in skill.summon_attributes.keys():
 			if skill.summon_attributes[k]==0:
 				continue
 			text += "\n        " + tr(k.to_upper()) + ": " + str(int(skill.summon_attributes[k]))
 		for t in ["damage","resistance"]:
 			if skill.has("summon_"+t):
-				text += "\n    " + tr(t.to_upper()) + ":"
+				text += "\n    " + tr(t.to_upper()) + ": "
 				for k in skill["summon_"+t].keys():
 					if skill["summon_"+t][k]>=0:
 						text += "\n        " + tr(k.to_upper()) + ": +" + str(int(100*skill["summon_"+t][k])) + "%"
 					else:
 						text += "\n        " + tr(k.to_upper()) + ": -" + str(-int(100*skill["summon_"+t][k])) + "%"
-		text += "\n    " + tr("ABILITIES") + ":"
+		text += "\n    " + tr("ABILITIES") + ": "
 		for k in skill.summon_abilities:
 			text += "\n        " + tr(k.to_upper())
 	if skill.has("duration"):
 		text += "\n" + tr("DURATION") + ": " + str(skill.duration).pad_decimals(1)
 	
 	if skill.has("combat") && skill.combat.has("status") && skill.combat.status.size()>0:
-		text += "\n" + tr("STATUS") + ":"
+		text += "\n" + tr("STATUS") + ": "
 		for status in skill.combat.status:
 			text += format_status(status, skill.attribute)
 	if skill.has("combat") && skill.combat.has("status_self") && skill.combat.status_self.size()>0:
-		text += "\n" + tr("STATUS") + " (" + tr("CASTER") + ")" + ":"
+		text += "\n" + tr("STATUS") + " (" + tr("CASTER") + ")" + ": "
 		for status in skill.combat.status_self:
 			text += format_status(status, skill.attribute)
 	
@@ -1271,7 +1331,7 @@ func create_module_tooltip(skill: Dictionary) -> String:
 				text += tr("SKILL")
 	else:
 		text += tr("SKILL")
-	text += "\n\n" + tr("MODULES") + ":"
+	text += "\n\n" + tr("MODULES") + ": "
 	
 	for s in skill.slots.keys():
 		var cat: String = s
@@ -1283,7 +1343,7 @@ func create_module_tooltip(skill: Dictionary) -> String:
 				continue
 			text += "\n  " + tr(cat.to_upper()) + " - " + tr(t.to_upper())
 	
-	text += "\n" + tr("ABILITIES") + ":"
+	text += "\n" + tr("ABILITIES") + ": "
 	for s in skill.slots.keys():
 		for t in skill.slots[s]:
 			for a in ABILITIES.keys():
@@ -1293,19 +1353,6 @@ func create_module_tooltip(skill: Dictionary) -> String:
 				text += "\n  " + tr(ABILITIES[a].name.to_upper())
 	
 	return text
-
-func tooltip_remove_bb_code(input: String) -> String:
-	var output:= ""
-	var pos:= 0
-	var regex:= RegEx.new()
-	var result: Array[RegExMatch]
-	regex.compile(r'\[[\w0-9=",./#]+\]')
-	result = regex.search_all(input)
-	for m in result:
-		output += input.substr(pos, m.get_start() - pos)
-		pos = m.get_end()
-	output += input.substr(pos)
-	return output
 
 
 func create_random_skill(abilities: Array, force_type:= "", basic:= false, invalid_names:= [], exceptions:= []) -> Dictionary:
@@ -1333,7 +1380,7 @@ func create_random_skill(abilities: Array, force_type:= "", basic:= false, inval
 	skill.erase("shielding")
 	skill.erase("auto_naming")
 	skill.description = create_tooltip(skill)
-	skill.description_plain = tooltip_remove_bb_code(skill.description)
+	skill.description_plain = Utils.tooltip_remove_bb_code(skill.description)
 	skill.module_description = create_module_tooltip(skill)
 	return skill
 

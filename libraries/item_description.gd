@@ -1,29 +1,30 @@
 extends Node
+class_name ItemDescription
 
-const MAX_TEXT_LENGTH = 500
-const RANDOM_CARDS = [
+const MAX_TEXT_LENGTH := 500
+const RANDOM_CARDS: Array[String] = [
 	"theme", "shape", "color", "liquid", "element", "curse", "quality", "weakness", "craftmanship",
 	"mental_illness", "stains", "enemy", "prophecy", "emotion", "origin", "force", "care", "crime",
 ]
 
 var texts: Array[Dictionary] = []
-var texts_by_type:= {}
-var cards:= {}
-var attributes:= {}
+var texts_by_type: Dictionary[String, Array] = {}
+var cards: Dictionary[String, Dictionary] = {}
+var properties: Dictionary[String, Array] = {}
 
 
 class TextState:
 	var text: String
-	var card_set: Dictionary
+	var card_set: Dictionary[Vector2i, Dictionary]
 	var state: String
-	var transition: Array
-	var sentence: Array
+	var transition: Array[String]
+	var sentence: Array[String]
 	var plural: bool
 	var subject_gender: int
 	var last_subject: String
 	var last_cards: Array[Vector2i]
 	
-	func _init(_card_set: Dictionary, _transition: Array):
+	func _init(_card_set: Dictionary[Vector2i, Dictionary], _transition: Array[String]) -> void:
 		card_set = _card_set
 		transition = _transition
 		state = "sentence_end"
@@ -31,69 +32,30 @@ class TextState:
 		plural = false
 		subject_gender = -1
 	
-	func reset():
+	func reset() -> void:
 		state = "sentence_end"
 		sentence.clear()
 		plural = false
 		subject_gender = -1
-#		last_cards.clear()
 
 
-func create_item_data() -> Dictionary:
-	var recipe: String = Items.equipment_recipes.keys().pick_random()
-	var recipe_data: Dictionary = Items.equipment_recipes[recipe]
-	var item_name:= tr(recipe.to_upper())
-	var item: Dictionary = Items.create_random_standard_equipment(recipe, Region.new({
-		"level": 1,
-		"tier": 1,
-		"local_materials": Items.DEFAULT_MATERIALS,
-	}))
-	
-	item.attributes = {}
-	if item_name.right(1) == 's' && item_name.right(2) != "ss":
-		item.attributes.plural = item_name
-	else:
-		item.attributes.singular = item_name
-	for i in range(item.components.size()):
-		var component_name: String = tr(recipe_data.components[i].to_upper())
-		item.components[i] = {
-			"name": component_name,
-			"type": recipe_data.components[i],
-			"attributes": {},
-			"material": item.components[i].duplicate(true),
-		}
-		if component_name.right(1) == 's' && component_name.right(2) != "ss":
-			item.components[i].attributes.plural = component_name
-		else:
-			item.components[i].attributes.singular = component_name
-		if "attributes" in item.components[i].material:
-			for key in item.components[i].material.attributes:
-				if typeof(item.components[i].material.attributes[key]) == TYPE_ARRAY:
-					item.components[i].material.attributes[key] = \
-						item.components[i].material.attributes[key].pick_random()
-		else:
-			item.components[i].material.attributes = {}
-		if item.components[i].material.name.right(1) == 's' && \
-			item.components[i].material.name.right(2) != "ss":
-				item.components[i].material.attributes.plural = item.components[i].material.name
-		else:
-				item.components[i].material.attributes.singular = item.components[i].material.name
-	
-	return item
-
-func create_description_data(item: Dictionary, rank: int) -> Dictionary:
-	var card_set:= {}
+func create_description_data(item: ItemEquipment, rank: int) -> Dictionary:
+	var card_set: Dictionary[Vector2i, Dictionary] = {}
 	var craftmanship: Dictionary
-	add_card(card_set, create_card("object", item.get("attributes", {})), Vector2i(0, 0))
+	add_card(
+		card_set,
+		create_card("object", item.properties as Dictionary),
+		Vector2i(0, 0),
+	)
 	
 	if "enchantments" in item:
-		for enchantment in item.enchantments.values():
+		for enchantment: Dictionary in (item.enchantments as Dictionary).values():
 			var quality:= []
 			var elements:= []
 			match enchantment.type:
 				"attack", "accuracy", "armour", "penetration", "physical_resistance", \
 				"physical_damage":
-					match item.get("base_type", ""):
+					match item.base_name:
 						"dagger", "sword", "axe", "spellblade", "greatsword", "battleaxe", \
 						"scythe", "gun_blade":
 							quality.append({
@@ -245,26 +207,54 @@ func create_description_data(item: Dictionary, rank: int) -> Dictionary:
 							},
 						].pick_random())
 			if quality.size() > 0:
-				add_card(card_set, create_card("quality", quality.pick_random()),
-					Utils.get_closest_position(Vector2i(0, 0), card_set.keys()))
+				add_card(
+					card_set,
+					create_card(
+						"quality",
+						quality.pick_random() as Dictionary,
+					),
+					Utils.get_closest_position(Vector2i(0, 0), card_set.keys()),
+				)
 			if elements.size() > 0:
-				add_card(card_set, create_card("element", elements.pick_random()),
-					Utils.get_closest_position(Vector2i(0, 0), card_set.keys()))
+				add_card(
+					card_set,
+					create_card(
+						"element",
+						elements.pick_random() as Dictionary,
+					),
+					Utils.get_closest_position(Vector2i(0, 0), card_set.keys()),
+				)
 	
 	for component in item.components:
 		if typeof(component) != TYPE_DICTIONARY:
 			continue
 		var position:= Utils.get_closest_position(Vector2i(0, 0), card_set.keys())
-		add_card(card_set, create_card("component", component.get("attributes", {})), position)
+		add_card(
+			card_set,
+			create_card(
+				"component",
+				component.properties,
+			),
+			position,
+		)
 		if "material" in component:
-			var mat_pos:= Utils.get_closest_position(position + Utils.DIRECTIONS.pick_random(),
+			var mat_pos:= Utils.get_closest_position(position + Utils.DIRECTIONS.pick_random() as Vector2i,
 				card_set.keys())
-			add_card(card_set, create_card("material", component.material.get("attributes", {})),
-				mat_pos)
+			add_card(
+				card_set,
+				create_card(
+					"material",
+					component.material.properties,
+				),
+				mat_pos,
+			)
 	
 	if rank < 2 or (rank < 6 && randf() < 0.1):
-		add_card(card_set, create_card("weakness"),
-			Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
+		add_card(
+			card_set,
+			create_card("weakness"),
+			Utils.get_closest_position(Utils.DIRECTIONS.pick_random() as Vector2i, card_set.keys()),
+		)
 	
 	if rank < 2:
 		craftmanship = [
@@ -327,10 +317,10 @@ func create_description_data(item: Dictionary, rank: int) -> Dictionary:
 			"adverb": "legendaryly",
 		}
 	add_card(card_set, create_card("craftmanship", craftmanship),
-		Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
+		Utils.get_closest_position(Utils.DIRECTIONS.pick_random() as Vector2i, card_set.keys()))
 	
 	add_card(card_set, create_card("color"),
-		Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
+		Utils.get_closest_position(Utils.DIRECTIONS.pick_random() as Vector2i, card_set.keys()))
 	
 	var care: Dictionary
 	if rank < 2:
@@ -375,7 +365,7 @@ func create_description_data(item: Dictionary, rank: int) -> Dictionary:
 			},
 		].pick_random()
 	add_card(card_set, create_card("care", care),
-		Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
+		Utils.get_closest_position(Utils.DIRECTIONS.pick_random() as Vector2i, card_set.keys()))
 	
 	if "source_race" in item:
 		var enemies:= []
@@ -487,79 +477,82 @@ func create_description_data(item: Dictionary, rank: int) -> Dictionary:
 				})
 			_:
 				add_card(card_set, create_card("enemy"),
-					Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys()))
+					Utils.get_closest_position(Utils.DIRECTIONS.pick_random() as Vector2i, card_set.keys()))
 	
 	if rank > 2:
 		@warning_ignore("integer_division")
 		for i in range(min(int((rank - 1) / 2), 2)):
-			var card_pos:= Utils.get_closest_position(Utils.DIRECTIONS.pick_random(),
+			var card_pos:= Utils.get_closest_position(Utils.DIRECTIONS.pick_random() as Vector2i,
 				card_set.keys())
-			add_card(card_set, create_card(RANDOM_CARDS.pick_random()), card_pos)
+			add_card(card_set, create_card(RANDOM_CARDS.pick_random() as String), card_pos)
 	
 	return card_set
 
 
 func pick_attribute(attribute: String) -> String:
-	var data = attributes[attribute].pick_random()
+	var data: Variant = properties[attribute].pick_random()
 	if typeof(data) == TYPE_DICTIONARY:
 		if "adjective" in data:
-			return tr(data.adjective)
+			return tr(data.adjective as String)
 		else:
-			return tr(data.values()[0])
+			return tr((data as Dictionary).values()[0] as String)
 	else:
-		return tr(data)
+		return tr(data as String)
 
 func create_card(type: String, attributes_override:= {}) -> Dictionary:
-	var card:= {
+	var card := {
 		"type": type,
-		"attributes": attributes_override.duplicate(true),
+		"properties": attributes_override.duplicate(true),
 	}
 	if type in cards:
 		var definition: Dictionary = cards[type]
-		for attribute in definition.get("attributes", []):
+		for attribute: String in definition.get("properties", []):
 			if attribute in attributes_override:
-				card.attributes[attribute] = tr(attributes_override[attribute])
-			elif attribute in attributes:
-				var data = attributes[attribute].pick_random()
+				card.properties[attribute] = tr(attributes_override[attribute] as String)
+			elif attribute in properties:
+				var data: Variant = properties[attribute].pick_random()
 				if typeof(data) == TYPE_DICTIONARY:
-					card.attributes[attribute] = tr(
-						data.get("default", data.values().pick_random()))
-					for key in data.keys():
+					card.properties[attribute] = tr(
+						(data as Dictionary).get("default", (data as Dictionary).values().pick_random()) as String,
+					)
+					for key: String in (data as Dictionary).keys():
 						if key == "default":
 							continue
-						if key not in card.attributes or key == attribute:
-							card.attributes[key] = tr(data[key])
+						if key not in card.properties or key == attribute:
+							card.properties[key] = tr(data[key] as String)
 				else:
-					card.attributes[attribute] = tr(data)
+					card.properties[attribute] = tr(data as String)
 			else:
 				# fallback: just use some random word lol
-				card.attributes[attribute] = pick_attribute(attributes.keys().pick_random())
-	if "singular" not in card.attributes && "plural" not in card.attributes:
+				card.properties[attribute] = pick_attribute(properties.keys().pick_random() as String)
+	if "singular" not in card.properties && "plural" not in card.properties:
 		if "name" in attributes_override:
-			card.attributes.singular = tr(attributes.name)
+			card.properties.singular = tr(card.properties.name as String)
 		elif "recipe" in attributes_override:
-			card.attributes.singular = tr(attributes.recipe)
-		elif type in attributes:
-			var data = attributes[type].pick_random()
+			card.properties.singular = tr(card.properties.recipe as String)
+		elif type in properties:
+			var data: Variant = properties[type].pick_random()
 			if typeof(data) == TYPE_DICTIONARY:
 				if "singular" in data:
-					card.attributes.singular = tr(data.singular)
+					card.properties.singular = tr(data.singular as String)
 				if "plural" in data:
-					card.attributes.plural = tr(data.plural)
+					card.properties.plural = tr(data.plural as String)
 				if "singular" not in data && "plural" not in data:
-					card.attributes.singular = tr(data.get("default", data.values().pick_random()))
-				for key in data.keys():
+					card.properties.singular = tr(
+						(data as Dictionary).get("default", (data as Dictionary).values().pick_random()) as String,
+					)
+				for key: String in (data as Dictionary).keys():
 					if key == "default":
 						continue
-					if key in data && key not in card.attributes:
-						card.attributes[key] = tr(data[key])
+					if key in data && key not in card.properties:
+						card.properties[key] = tr(data[key] as String)
 			else:
-				card.attributes.singular = tr(data)
-	if "adjective" not in card.attributes:
-		if "singular" in card.attributes:
-			card.attributes.adjective = card.attributes.singular.replace(" ", "-") + "-like"
-		elif "plural" in card.attributes:
-			card.attributes.adjective = card.attributes.plural.replace(" ", "-") + "-like"
+				card.properties.singular = tr(data as String)
+	if "adjective" not in card.properties:
+		if "singular" in card.properties:
+			card.properties.adjective = (card.properties.singular as String).replace(" ", "-") + "-like"
+		elif "plural" in card.properties:
+			card.properties.adjective = (card.properties.plural as String).replace(" ", "-") + "-like"
 	return card
 
 func add_card(dict: Dictionary, card: Dictionary, position: Vector2i) -> Dictionary:
@@ -570,37 +563,45 @@ func add_card(dict: Dictionary, card: Dictionary, position: Vector2i) -> Diction
 
 
 
-func create_card_set(item: Dictionary) -> Dictionary:
+func create_card_set(item: ItemEquipment) -> Dictionary:
 	var card_set:= {}
-	add_card(card_set, create_card("object", item.get("attributes", {})), Vector2i(0, 0))
-	add_card(card_set, create_card(RANDOM_CARDS.pick_random()), Utils.DIRECTIONS.pick_random())
+	add_card(
+		card_set,
+		create_card("object", item.properties),
+		Vector2i(0, 0),
+	)
+	add_card(
+		card_set,
+		create_card(RANDOM_CARDS.pick_random() as String),
+		Utils.DIRECTIONS.pick_random() as Vector2i,
+	)
 	
 	for component in item.components:
 		var position:= Utils.get_closest_position(Vector2i(0, 0), card_set.keys())
-		# card_set[position] = create_card(component.type, component.get("attributes", {}))
-		add_card(card_set, create_card("component", component.get("attributes", {})), position)
-		if "material" in component:
-			var mat_pos:= Utils.get_closest_position(position + Utils.DIRECTIONS.pick_random(),
-				card_set.keys())
-			add_card(card_set, create_card("material", component.material.get("attributes", {})),
-				mat_pos)
+		add_card(card_set, create_card("component", component.properties), position)
+		
+		var mat_pos:= Utils.get_closest_position(
+			position + Utils.DIRECTIONS.pick_random() as Vector2i,
+			card_set.keys(),
+		)
+		add_card(card_set, create_card("material", component.material.properties), mat_pos)
 			
-			var card_pos:= Utils.get_closest_position(mat_pos, card_set.keys())
-			add_card(card_set, create_card(RANDOM_CARDS.pick_random()), card_pos)
+		var card_pos:= Utils.get_closest_position(mat_pos, card_set.keys())
+		add_card(card_set, create_card(RANDOM_CARDS.pick_random() as String), card_pos)
 	
 	for i in range(3):
-		var card_pos:= Utils.get_closest_position(Utils.DIRECTIONS.pick_random(), card_set.keys())
-		add_card(card_set, create_card(RANDOM_CARDS.pick_random()), card_pos)
+		var card_pos:= Utils.get_closest_position(Utils.DIRECTIONS.pick_random() as Vector2i, card_set.keys())
+		add_card(card_set, create_card(RANDOM_CARDS.pick_random() as String), card_pos)
 	
 	return card_set
 
 func pick_valid_card_set(type_set: Array, current_position: Vector2i,
-		current_cards: Dictionary, card_set:= []) -> Array:
+		current_cards: Dictionary[Vector2i, Dictionary], card_set: Array[Vector2i] = []) -> Array[Vector2i]:
 	var index:= card_set.size()
 	if index >= type_set.size():
 		return card_set
 	if index == 0:
-		for pos in current_cards.keys():
+		for pos in current_cards:
 			if current_cards[pos].type != type_set[index] || \
 				Utils.get_distance(current_position, pos) > Utils.MAX_DIST:
 					continue
@@ -609,20 +610,21 @@ func pick_valid_card_set(type_set: Array, current_position: Vector2i,
 				return array
 	else:
 		for pos in card_set:
-			var directions:= Utils.DIRECTIONS.duplicate(true)
+			var directions: Array[Vector2i] = Array(Utils.DIRECTIONS.duplicate(true), TYPE_VECTOR2I, "", null)
 			directions.shuffle()
 			for offset in directions:
 				if current_cards.has(pos + offset) && \
 					current_cards[pos+offset].type == type_set[index] && \
 					Utils.get_distance(current_position, pos + offset) <= Utils.MAX_DIST:
 						var array:= pick_valid_card_set(type_set, current_position, current_cards,
-							card_set + [pos + offset])
+							Array(card_set + [pos + offset], TYPE_VECTOR2I, "", null))
 						if array.size() == type_set.size():
 							return array
 	# no valid combinations found
 	return []
 
-func pick_valid_text(available_texts: Array, current_card_set: Dictionary) -> Dictionary:
+func pick_valid_text(available_texts: Array[String],
+		current_card_set: Dictionary[Vector2i, Dictionary]) -> Dictionary:
 	if current_card_set.size() == 0:
 		return {}
 	
@@ -630,10 +632,13 @@ func pick_valid_text(available_texts: Array, current_card_set: Dictionary) -> Di
 	for type in available_texts:
 		if type in texts_by_type:
 			texts_by_type[type].shuffle()
-			for text_data in texts_by_type[type]:
-				var required: Array = text_data.get("required", [])
-				var card_pos:= pick_valid_card_set(required, current_card_set.keys().pick_random(),
-					current_card_set)
+			for text_data: Dictionary in texts_by_type[type]:
+				var required: Array[String] = Array(text_data.get("required", []) as Array, TYPE_STRING, "", null)
+				var card_pos:= pick_valid_card_set(
+					required,
+					current_card_set.keys().pick_random() as Vector2i,
+					current_card_set,
+				)
 				if card_pos.size() == required.size():
 					var mapping:= {}
 					for req in required:
@@ -655,11 +660,13 @@ func append_text(text_state: TextState) -> TextState:
 		for i in range(4):
 			var card_pos: Vector2i
 			if text_state.card_set.size() > 0:
-				card_pos = Utils.get_closest_position(text_state.card_set.keys().pick_random(),
-					text_state.card_set.keys())
+				card_pos = Utils.get_closest_position(
+					text_state.card_set.keys().pick_random() as Vector2i,
+					text_state.card_set.keys(),
+				)
 			else:
 				card_pos = Utils.get_closest_position(Vector2(0, 0), text_state.card_set.keys())
-			add_card(text_state.card_set, create_card(RANDOM_CARDS.pick_random()), card_pos)
+			add_card(text_state.card_set, create_card(RANDOM_CARDS.pick_random() as String), card_pos)
 		text_data = pick_valid_text(text_state.transition, text_state.card_set)
 		if text_data.size() == 0:
 			print("Warning: still no valid texts available after adding random cards")
@@ -668,11 +675,11 @@ func append_text(text_state: TextState) -> TextState:
 			text_state.transition = texts_by_type.sentence_end.pick_random().transition
 			return text_state
 	
-	for card in text_data.required.values():
+	for card: Dictionary in (text_data.required as Dictionary).values():
 		if card.position not in text_state.last_cards:
 			text_state.last_cards.push_back(card.position)
 	if text_state.last_cards.size() > 0:
-		for i in range(randi() % int(max(text_state.last_cards.size() / 2.0 - 0.5, 1))):
+		for i in range(randi() % floori(maxf(text_state.last_cards.size() / 2.0 - 0.5, 1.0))):
 			text_state.last_cards.remove_at(randi() % text_state.last_cards.size())
 	
 	var text:= ""
@@ -684,7 +691,7 @@ func append_text(text_state: TextState) -> TextState:
 	var subject_key:= ""
 	var skip:= false
 	if "text" in text_data:
-		text = text_data.text.pick_random()
+		text = (text_data.text as Array).pick_random()
 	re.compile(r"{([\w\.'/]+)}")
 	results = re.search_all(text)
 	if results.size() > 0 && "sentence" in text_data:
@@ -721,10 +728,10 @@ func append_text(text_state: TextState) -> TextState:
 			var attribute:= array[1]
 			if topic not in text_data.required:
 				print("Warning: key " + topic + " missing in text data")
-				format_dict[key] = pick_attribute(attributes.keys().pick_random())
+				format_dict[key] = pick_attribute(properties.keys().pick_random() as String)
 				continue
 			
-			var data: Dictionary = text_data.required[topic].attributes
+			var data: Dictionary = text_data.required[topic].properties
 			if attribute not in data:
 				if attribute == "singular" && "plural" in data:
 					attribute = "plural"
@@ -759,11 +766,11 @@ func append_text(text_state: TextState) -> TextState:
 		else:
 			print("Warning: key " + key +
 				" has invalid format. Use topic.attribute or singular/plural")
-			format_dict[key] = pick_attribute(attributes.keys().pick_random())
+			format_dict[key] = pick_attribute(properties.keys().pick_random() as String)
 			continue
 		
 	
-	for s in text_data.get("sentence", {}):
+	for s: String in text_data.get("sentence", {}):
 		if s in text_state.sentence:
 			if "predicate" in text_data.sentence and "predicate" in text_state.sentence:
 				skip = true
@@ -771,7 +778,7 @@ func append_text(text_state: TextState) -> TextState:
 			if !skip && text_state.text.length() > 0 && \
 				text_state.text[text_state.text.length() - 1] != " ":
 					text_state.text += " "
-	for s in text_data.get("sentence", {}):
+	for s: String in text_data.get("sentence", {}):
 		if s not in text_state.sentence:
 			text_state.sentence.push_back(s)
 	if "termination" in text_state.sentence:
@@ -806,30 +813,28 @@ func append_text(text_state: TextState) -> TextState:
 			text_state.text[max(text_state.text.length() - 2, 0)] not in [',', ':', '-']):
 				add_text[0] = add_text[0].to_upper()
 		text_state.text += add_text
-	text_state.transition = text_data.get("transition",
-		texts_by_type.sentence_end.pick_random().transition)
+	text_state.transition = Array(text_data.get("transition",
+		texts_by_type.sentence_end.pick_random().transition) as Array, TYPE_STRING, "", null,
+	)
 	text_state.state = text_data.type
 	
-	for key in text_data.get("remove", []):
+	for key: String in text_data.get("remove", []):
 		text_state.card_set.erase(text_data.required[key].position)
-	for key in text_data.get("add", []):
+	for key: String in text_data.get("add", []):
 		add_card(text_state.card_set, create_card(key), Utils.get_closest_position(
-			text_state.card_set.keys().pick_random(), text_state.card_set.keys()))
-	for key in text_data.get("replace", {}):
+			text_state.card_set.keys().pick_random() as Vector2i, text_state.card_set.keys()))
+	for key: String in text_data.get("replace", {}):
 		text_state.card_set.erase(text_data.required[key].position)
-		add_card(text_state.card_set, create_card(text_data.replace[key]),
-			text_data.required[key].position)
+		add_card(text_state.card_set, create_card(text_data.replace[key] as String),
+			text_data.required[key].position as Vector2i)
 	
 	return text_state
 
 
-
-func generate_test_description(item: Dictionary, max_sentences:= 3) -> String:
-	var card_set:= create_card_set(item)
-	return generate_description(card_set, max_sentences)
-
-func generate_description(card_set: Dictionary, max_sentences:= 3) -> String:
-	var available_texts: Array = texts_by_type.sentence_end.pick_random().transition
+func generate_description(card_set: Dictionary[Vector2i, Dictionary], max_sentences:= 3) -> String:
+	var available_texts: Array[String] = Array(
+		texts_by_type.sentence_end.pick_random().transition as Array, TYPE_STRING, "", null,
+	)
 	var text_state:= TextState.new(card_set, available_texts)
 	var no_sentences:= 0
 	var failures:= 0
@@ -845,7 +850,7 @@ func generate_description(card_set: Dictionary, max_sentences:= 3) -> String:
 			if pos > 0:
 				var length: int = min(text_state.text.length() - pos - 1, MAX_TEXT_LENGTH)
 				if Utils.compare_strings(text_state.text.right(pos + 1),
-					text_state.text.substr(max(pos - length, 0), length)) > 0.75:
+					text_state.text.substr(maxi(pos - length, 0), length)) > 0.75:
 						print("Warning: text rejected because too repetetive")
 						text_state.text = text_state.text.left(pos + 1)
 						failures += 1
@@ -905,7 +910,7 @@ func sanitize_string(string: String) -> String:
 	return string
 
 
-func load_text_data(path: String):
+func load_text_data(path: String) -> void:
 	for file_name in Utils.get_file_paths(path):
 		var file:= FileAccess.open(file_name, FileAccess.READ)
 		var error:= FileAccess.get_open_error()
@@ -920,7 +925,7 @@ func load_text_data(path: String):
 		if array == null || array.size() == 0:
 			print("Error parsing " + file_name + "!")
 			continue
-		for text_data in array:
+		for text_data: Dictionary in array:
 			texts.push_back(text_data)
 			if "type" in text_data:
 				if text_data.type in texts_by_type:
@@ -929,7 +934,7 @@ func load_text_data(path: String):
 					texts_by_type[text_data.type] = [text_data]
 		file.close()
 
-func load_card_data(path: String):
+func load_card_data(path: String) -> void:
 	for file_name in Utils.get_file_paths(path):
 		var file:= FileAccess.open(file_name, FileAccess.READ)
 		var error:= FileAccess.get_open_error()
@@ -944,11 +949,11 @@ func load_card_data(path: String):
 		if dict == null || dict.size() == 0:
 			print("Error parsing " + file_name + "!")
 			continue
-		for key in dict:
+		for key: String in dict:
 			cards[key] = dict[key]
 		file.close()
 
-func load_attribute_data(path: String):
+func load_attribute_data(path: String) -> void:
 	for file_name in Utils.get_file_paths(path):
 		var file:= FileAccess.open(file_name, FileAccess.READ)
 		var error:= FileAccess.get_open_error()
@@ -963,12 +968,12 @@ func load_attribute_data(path: String):
 		if dict == null || dict.size() == 0:
 			print("Error parsing " + file_name + "!")
 			continue
-		for key in dict:
-			attributes[key] = dict[key]
+		for key: String in dict:
+			properties[key] = dict[key]
 		file.close()
 
 
-func _ready():
+func _ready() -> void:
 	load_text_data("res://data/items/texts")
 	load_card_data("res://data/items/cards")
 	load_attribute_data("res://data/items/attributes")

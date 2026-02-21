@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name MainGui
 
 var main_character: Characters.Character
 var main_character_settings: Characters.CharacterSettings
@@ -43,20 +44,20 @@ var theme: Theme
 signal settings_changed
 
 
-func _settings_changed():
+func _settings_changed() -> void:
 	emit_signal("settings_changed")
 
-func _toggle_1h_weapons(button_pressed: bool):
+func _toggle_1h_weapons(button_pressed: bool) -> void:
 	main_character_settings.auto_update_options = false
 	main_character_settings.weapon_1h_alowed = button_pressed
 	emit_signal("settings_changed")
 
-func _toggle_2h_weapons(button_pressed: bool):
+func _toggle_2h_weapons(button_pressed: bool) -> void:
 	main_character_settings.auto_update_options = false
 	main_character_settings.weapon_2h_alowed = button_pressed
 	emit_signal("settings_changed")
 
-func _toggle_weapon_type(button_pressed: bool, type: String):
+func _toggle_weapon_type(button_pressed: bool, type: String) -> void:
 	main_character_settings.auto_update_options = false
 	if button_pressed:
 		if !main_character_settings.valid_weapon_types.has(type):
@@ -65,7 +66,7 @@ func _toggle_weapon_type(button_pressed: bool, type: String):
 		main_character_settings.valid_weapon_types.erase(type)
 	emit_signal("settings_changed")
 
-func _toggle_armour_type(button_pressed: bool, type: String):
+func _toggle_armour_type(button_pressed: bool, type: String) -> void:
 	main_character_settings.auto_update_options = false
 	if button_pressed:
 		if !main_character_settings.valid_armour_types.has(type):
@@ -74,7 +75,7 @@ func _toggle_armour_type(button_pressed: bool, type: String):
 		main_character_settings.valid_armour_types.erase(type)
 	emit_signal("settings_changed")
 
-func _toggle_potion_type(button_pressed: bool, type: String):
+func _toggle_potion_type(button_pressed: bool, type: String) -> void:
 	main_character_settings.auto_update_options = false
 	if button_pressed:
 		if !main_character_settings.valid_potion_types.has(type):
@@ -84,7 +85,7 @@ func _toggle_potion_type(button_pressed: bool, type: String):
 	emit_signal("settings_changed")
 
 
-func _side_menu_expand_toggled(toggled_on: bool):
+func _side_menu_expand_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		side_menu.offset_right = 128
 		title.offset_left = 128
@@ -96,7 +97,7 @@ func _side_menu_expand_toggled(toggled_on: bool):
 	($SideMenu/VBoxContainer/SpaceTop/Button/Icon as TextureRect).flip_h = toggled_on
 
 
-func _characters_updated(player: Array[Characters.Character], enemy: Array[Characters.Character]):
+func _characters_updated(player: Array[Characters.Character], enemy: Array[Characters.Character]) -> void:
 	# Update all character positions
 	characters_player = player
 	player_panel.characters = player
@@ -106,34 +107,34 @@ func _characters_updated(player: Array[Characters.Character], enemy: Array[Chara
 	enemy_panel.update_characters()
 
 
-func _show_status_tooltip(text: String):
+func _show_status_tooltip(text: String) -> void:
 	tooltip.show_text(text)
 
 
-func _gold_changed(value: int):
+func _gold_changed(value: int) -> void:
 	gold_label.text = Utils.format_number(value) + " " + tr("GOLD")
 
 
-func update_preferences():
+func update_preferences() -> void:
 	weapon_preference_panel.update()
 	armour_preference_panel.update()
 	potion_preference_panel.update()
 
 
-func update_location(region: Region, current_location: String):
+func update_location(region: Region, current_location: String) -> void:
 	var list:= Regions.get_location_list(region, current_location)
 	var description:= Regions.get_region_description(region)
-	$Overview/HBoxContainer/Region.update(list, region.name, description, current_location)
+	($Overview/HBoxContainer/Region as RegionGui).update(list, region.name, description, current_location)
 
 
-func update_quest_log(text: String):
+func update_quest_log(text: String) -> void:
 	quest_log.parse_bbcode(text)
 
-func update_journal_log(text: String):
+func update_journal_log(text: String) -> void:
 	journal_log.parse_bbcode(text)
 
 
-func _show_overview():
+func _show_overview() -> void:
 	page_overview.show()
 	page_character.hide()
 	page_journal.hide()
@@ -142,7 +143,7 @@ func _show_overview():
 	page_statistics.hide()
 	title_label.text = tr("OVERVIEW")
 
-func _show_character():
+func _show_character() -> void:
 	page_overview.hide()
 	page_character.show()
 	page_journal.hide()
@@ -158,7 +159,7 @@ func _show_character():
 	skill_panel.update()
 	equipment_panel.update()
 
-func _show_journal():
+func _show_journal() -> void:
 	page_overview.hide()
 	page_character.hide()
 	page_journal.show()
@@ -176,7 +177,7 @@ func _show_inventory() -> void:
 	page_statistics.hide()
 	title_label.text = tr("INVENTORY")
 
-func _show_options():
+func _show_options() -> void:
 	page_overview.hide()
 	page_character.hide()
 	page_journal.hide()
@@ -200,7 +201,7 @@ func _show_statistics() -> void:
 	statistics.show_level()
 
 
-func connect_to_main(main: Main):
+func connect_to_main(main: Main) -> void:
 	# Connect signals from the main scene
 	var main_log := $Overview/HBoxContainer/Log as Control
 	main.connect("text_printed", Callable(main_log, "print_log_msg"))
@@ -243,7 +244,7 @@ func connect_to_main(main: Main):
 	main.gui_ready()
 	timetable_panel.update(main.timetable, main.time_offset)
 
-func _ready():
+func _ready() -> void:
 	var schedule_option_button:= $Options/Timetable/Timetable/ScrollContainer/VBoxContainer/HBoxContainer0/OptionButton as OptionButton
 	schedule_option_button.set_item_tooltip(0, tr("TRAINING_TOOLTIP"))
 	schedule_option_button.set_item_tooltip(1, tr("GRINDING_TOOLTIP"))

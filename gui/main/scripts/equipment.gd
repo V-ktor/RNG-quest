@@ -34,7 +34,7 @@ func _show_equipment_tooltip(type: String):
 	if tooltip == null:
 		return
 	
-	var item: Dictionary = character.equipment[type]
+	var item := character.equipment[type]
 	if "story" in item:
 		tooltip.show_texts([item.description, item.story, item.component_description], [tr("PROPERTIES"), tr("DESCRIPTION"), tr("COMPONENTS")])
 	else:

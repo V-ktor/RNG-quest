@@ -7,7 +7,9 @@ var specialization_data: Dictionary[String, Dictionary] = {}
 var guilds: Dictionary[String, Guild] = {}
 
 @onready
-var descriptions := $Description
+var descriptions := $Description as GuildDescriptions
+@onready
+var gods := $Gods as GodDescriptions
 
 
 func create_guild(region: Region, player: Characters.Character) -> Guild:
@@ -17,11 +19,14 @@ func create_guild(region: Region, player: Characters.Character) -> Guild:
 	var specialization := specialization_data.keys().pick_random() as String
 	var guild_data := Utils.merge_dicts(Utils.merge_dicts(organization_data[organization].duplicate(true),
 		subject_data[subject].duplicate(true)), specialization_data[specialization].duplicate(true))
-	var guild_name := tr(guild_data.names.pick_random().to_upper()).capitalize()
+	var guild_name := tr(((guild_data.names as Array).pick_random() as String).to_upper()).capitalize()
+	var founder_race := region.race.pick_random() as String
+	var founder_name: String
 	if "suffixes" in guild_data and guild_data.suffixes.size() > 0:
 		guild_name += " " + guild_data.suffixes.pick_random()
 	elif "prefixes" in guild_data and guild_data.prefixes.size() > 0:
 		guild_name = tr(guild_data.prefixes.pick_random().to_upper()).capitalize() + " " + guild_name
+	founder_name = Names.create_name(founder_race, randi_range(-1, 1)) + " " + tr("THE") + " " + founder_race + " " + (guild_data.get("vocation", [founder_race]) as Array).pick_random()
 	
 	data = {
 		"is_available": true,
@@ -44,6 +49,7 @@ func create_guild(region: Region, player: Characters.Character) -> Guild:
 		"exp_gain": guild_data.get("exp_gain", {"quest": 10}),
 		"abilities": guild_data.get("abilities", []),
 		"tags": guild_data.get("tags", []) + [organization, subject, specialization] + region.race,
+		"founder": founder_name,
 	}
 	if data.abilities.size() == 0:
 		data.abilities = [Skills.ABILITIES.keys().pick_random()]
@@ -62,11 +68,11 @@ func create_guild(region: Region, player: Characters.Character) -> Guild:
 	var guild := Guild.new(data)
 	self.guilds[guild.ID] = guild
 	descriptions.format_guild_name(guild, region)
-	if data.addendum.size() > 0:
-		guild.name = data.base_name + " " + data.addendum.pick_random().format({"region": region.name,
+	if guild.addendum.size() > 0:
+		guild.name = guild.base_name + " " + guild.addendum.pick_random().format({"region": region.name,
 			"city": region.cities.values().pick_random().name})
 	else:
-		guild.name = data.base_name
+		guild.name = guild.base_name
 	guild.description = descriptions.create_guild_description(guild, region)
 	return guild
 

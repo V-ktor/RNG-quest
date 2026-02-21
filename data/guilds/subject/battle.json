@@ -1,7 +1,10 @@
 {
 	"name": "battle",
 	"prefixes": [
-		"fighter", "battle", "strife", "brawler"
+		"fighter",
+		"battle",
+		"strife",
+		"brawler"
 	],
 	"ranks": {
 		"0": [
@@ -56,5 +59,11 @@
 		"brutality",
 		"weapons",
 		"armour"
+	],
+	"vocation": [
+		"brawler",
+		"fighter",
+		"warrior",
+		"champion"
 	]
 }
