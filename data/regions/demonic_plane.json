@@ -1,257 +1,409 @@
 {
-	"level":44,
-	"tier":0,
-	"race":["human","demon","ogre"],
-	"enemy":["orc","undead"],
-	"base_name":[" plane"," world","scape"," hell"],
-	"name_prefix":["hellfire","fearfire","demon"],
-	"enemies":["golem","shadow_elemental","imp","demon","skeleton","undead"],
-	"enemy_amount":[1,4],
-	"cities":[
-		{
-			"base":[" town"," city"," village"],
-			"prefix":["ancient","demonic","molten","fierce"],
-			"type":["town"],
-		},
-		{
-			"base":["keep","castle","ville"],
-			"prefix":["ash","shadow","fearfire","blood"],
-			"type":["castle"],
-		},
+	"level": 44,
+	"tier": 0,
+	"setting": "dark fantasy",
+	"race": [
+		"human",
+		"demon",
+		"ogre"
 	],
-	"locations":[
-		{
-			"base":["hills","mountain","peak"],
-			"prefix":["ancient ","deadly ","molten ","barren ","fiery ","pyre","infested ","shadow","blood"],
-			"type":["mountain"],
-		},
-		{
-			"base":["cave","hole"],
-			"prefix":["ancient ","deadly ","molten ","barren ","fiery ","pyre","infested ","shadow","blood"],
-			"type":["cave"],
-			"enemies":["ghost","skeleton","mummy","ghoul","undead","lich","fearfire_golem"],
-			"resources":["mushroom","herb","root","ingot","coin","gem","jewel","dust","foil"],
-		},
-		{
-			"base":["volcano"],
-			"prefix":["ancient ","deadly ","molten ","barren ","fiery ","pyre","infested ","shadow","blood"],
-			"type":["volcano"],
-		},
-		{
-			"base":["sands","dunes"],
-			"prefix":["ancient ","deadly ","molten ","barren ","fiery ","pyre","infested ","shadow","blood"],
-			"type":["dunes"],
-		},
+	"enemy": [
+		"orc",
+		"undead"
 	],
-	"enchantment_chance":0.25,
-	"resources":["mushroom","herb","flower","moss","wood","plank","stone","ingot","gem","jewel","cotton","silk"],
-	"resource_chance":0.1,
-	"resource_amount":[2,4],
-	"local_materials":{
-		"wood":[
+	"base_name": [
+		" plane",
+		" world",
+		"scape",
+		" hell"
+	],
+	"name_prefix": [
+		"hellfire",
+		"fearfire",
+		"demon"
+	],
+	"tags": [
+		"fantasy",
+		"grim",
+		"fire",
+		"mountains",
+		"volcano",
+		"ash",
+		"arid"
+	],
+	"enemies": [
+		"golem",
+		"shadow_elemental",
+		"imp",
+		"demon",
+		"skeleton",
+		"undead"
+	],
+	"enemy_amount": [
+		1,
+		4
+	],
+	"cities": [
+		{
+			"base": [
+				" town",
+				" city",
+				" village"
+			],
+			"prefix": [
+				"ancient",
+				"demonic",
+				"molten",
+				"fierce"
+			],
+			"type": [
+				"town"
+			]
+		},
+		{
+			"base": [
+				"keep",
+				"castle",
+				"ville"
+			],
+			"prefix": [
+				"ash",
+				"shadow",
+				"fearfire",
+				"blood"
+			],
+			"type": [
+				"castle"
+			]
+		}
+	],
+	"locations": [
+		{
+			"base": [
+				"hills",
+				"mountain",
+				"peak"
+			],
+			"prefix": [
+				"ancient ",
+				"deadly ",
+				"molten ",
+				"barren ",
+				"fiery ",
+				"pyre",
+				"infested ",
+				"shadow",
+				"blood"
+			],
+			"type": [
+				"mountain"
+			]
+		},
+		{
+			"base": [
+				"cave",
+				"hole"
+			],
+			"prefix": [
+				"ancient ",
+				"deadly ",
+				"molten ",
+				"barren ",
+				"fiery ",
+				"pyre",
+				"infested ",
+				"shadow",
+				"blood"
+			],
+			"type": [
+				"cave"
+			],
+			"enemies": [
+				"ghost",
+				"skeleton",
+				"mummy",
+				"ghoul",
+				"undead",
+				"lich",
+				"fearfire_golem"
+			],
+			"resources": [
+				"mushroom",
+				"herb",
+				"root",
+				"ingot",
+				"coin",
+				"gem",
+				"jewel",
+				"dust",
+				"foil"
+			]
+		},
+		{
+			"base": [
+				"volcano"
+			],
+			"prefix": [
+				"ancient ",
+				"deadly ",
+				"molten ",
+				"barren ",
+				"fiery ",
+				"pyre",
+				"infested ",
+				"shadow",
+				"blood"
+			],
+			"type": [
+				"volcano"
+			]
+		},
+		{
+			"base": [
+				"sands",
+				"dunes"
+			],
+			"prefix": [
+				"ancient ",
+				"deadly ",
+				"molten ",
+				"barren ",
+				"fiery ",
+				"pyre",
+				"infested ",
+				"shadow",
+				"blood"
+			],
+			"type": [
+				"dunes"
+			]
+		}
+	],
+	"enchantment_chance": 0.25,
+	"resources": [
+		"mushroom",
+		"herb",
+		"flower",
+		"moss",
+		"wood",
+		"plank",
+		"stone",
+		"ingot",
+		"gem",
+		"jewel",
+		"cotton",
+		"silk"
+	],
+	"resource_chance": 0.1,
+	"resource_amount": [
+		2,
+		4
+	],
+	"local_materials": {
+		"wood": [
 			{
-				"name":"charcoal",
-				"quality":0.75,
+				"name": "charcoal",
+				"quality": 0.75
 			},
 			{
-				"name":"crimson",
-				"quality":1.0,
-				"mod":{
-					"attack":0.05,
-					"armour":0.05,
-				},
+				"name": "crimson",
+				"quality": 1.0,
+				"mod": {
+					"attack": 0.05,
+					"armour": 0.05
+				}
 			},
 			{
-				"name":"demon",
-				"quality":1.25,
-				"add":{
-					"damage":{
-						"fire":0.05,
-						"darkness":0.05,
+				"name": "demon",
+				"quality": 1.25,
+				"add": {
+					"damage": {
+						"fire": 0.05,
+						"darkness": 0.05
 					},
-					"resistance":{
-						"fire":0.05,
-						"darkness":0.05,
-					},
-				},
-			},
+					"resistance": {
+						"fire": 0.05,
+						"darkness": 0.05
+					}
+				}
+			}
 		],
-		"metal":[
+		"metal": [
 			{
-				"name":"iron",
-				"quality":0.75,
+				"name": "iron",
+				"quality": 0.75
 			},
 			{
-				"name":"cerium",
-				"quality":1.0,
-				"mod":{
-					"attack":0.05,
-					"magic":0.05,
-				},
+				"name": "cerium",
+				"quality": 1.0,
+				"mod": {
+					"attack": 0.05,
+					"magic": 0.05
+				}
 			},
 			{
-				"name":"plutonium",
-				"quality":1.25,
-				"add":{
-					"damage":{
-						"cutting":0.05,
-						"piercing":0.05,
-						"impact":0.05,
-						"poison":0.06,
-						"acid":0.06,
+				"name": "plutonium",
+				"quality": 1.25,
+				"add": {
+					"damage": {
+						"cutting": 0.05,
+						"piercing": 0.05,
+						"impact": 0.05,
+						"poison": 0.06,
+						"acid": 0.06
 					},
-					"resistance":{
+					"resistance": {
 						"fire":-0.02,
 						"ice":-0.02,
 						"lightning":-0.02,
 						"light":-0.02,
-						"darkness":-0.02,
+						"darkness":-0.02
+					}
+				}
+			}
+		],
+		"leather": [
+			{
+				"name": "imp",
+				"quality": 0.75
+			},
+			{
+				"name": "charcoal",
+				"quality": 1.0,
+				"mod": {
+					"armour": 0.05,
+					"evasion": 0.05
+				}
+			},
+			{
+				"name": "behemoth hide",
+				"quality": 1.25,
+				"add": {
+					"resistance": {
+						"cutting": 0.05,
+						"piercing": 0.05,
+						"impact": 0.05,
+						"fire": 0.05,
+						"earth": 0.05,
+						"light": 0.05
+					}
+				}
+			}
+		],
+		"cloth": [
+			{
+				"name": "wool",
+				"quality": 0.75
+			},
+			{
+				"name": "shadowsilk",
+				"quality": 1.0,
+				"mod": {
+					"magic": 0.05,
+					"willpower": 0.05
+				}
+			},
+			{
+				"name": "aramid",
+				"quality": 1.25,
+				"add": {
+					"damage": {
+						"fire": 0.05
 					},
-				},
+					"resistance": {
+						"piercing": 0.06,
+						"fire": 0.06,
+						"earth": 0.06,
+						"acid": 0.06
+					}
+				}
+			}
+		],
+		"stone": [
+			{
+				"name": "sandstone",
+				"quality": 0.75,
+			},
+			{
+				"name": "basalt",
+				"quality": 1.0,
+				"mod": {
+					"attack": 0.05,
+					"armour": 0.05
+				}
+			},
+			{
+				"name": "blood",
+				"quality": 1.25,
+				"add": {
+					"damage": {
+						"fire": 0.05,
+						"darkness": 0.05
+					},
+					"resistance": {
+						"fire": 0.05,
+						"darkness": 0.05
+					}
+				}
+			}
+		],
+		"gem": [
+			{
+				"name": "hematite",
+				"quality": 0.75
+			},
+			{
+				"name": "black garnet",
+				"quality": 1.0,
+				"mod": {
+					"health": 0.1,
+					"mana": 0.1,
+					"stamina": 0.1,
+					"critical": 0.05
+				}
+			},
+			{
+				"name": "demonic diamond",
+				"quality": 1.25,
+				"add": {
+					"damage": {
+						"fire": 0.05,
+						"darkness": 0.05
+					},
+					"resistance": {
+						"fire": 0.05,
+						"darkness": 0.05
+					}
+				}
+			}
+		],
+		"alchemy": [
+			{
+				"name": "charcoal",
+				"quality": 0.75
+			},
+			{
+				"name": "bitter",
+				"quality": 1.0
+			},
+			{
+				"name": "soul-infused",
+				"quality": 1.25
 			},
 		],
-		"leather":[
+		"cooking": [
 			{
-				"name":"imp",
-				"quality":0.75,
+				"name": "charcoal",
+				"quality": 0.75
 			},
 			{
-				"name":"charcoal",
-				"quality":1.0,
-				"mod":{
-					"armour":0.05,
-					"evasion":0.05,
-				},
+				"name": "dried",
+				"quality": 1.0
 			},
 			{
-				"name":"behemoth hide",
-				"quality":1.25,
-				"add":{
-					"resistance":{
-						"cutting":0.05,
-						"piercing":0.05,
-						"impact":0.05,
-						"fire":0.05,
-						"earth":0.05,
-						"light":0.05,
-					},
-				},
-			},
-		],
-		"cloth":[
-			{
-				"name":"wool",
-				"quality":0.75,
-			},
-			{
-				"name":"shadowsilk",
-				"quality":1.0,
-				"mod":{
-					"magic":0.05,
-					"willpower":0.05,
-				},
-			},
-			{
-				"name":"aramid",
-				"quality":1.25,
-				"add":{
-					"damage":{
-						"fire":0.05,
-					},
-					"resistance":{
-						"piercing":0.06,
-						"fire":0.06,
-						"earth":0.06,
-						"acid":0.06,
-					},
-				},
-			},
-		],
-		"stone":[
-			{
-				"name":"sandstone",
-				"quality":0.75,
-			},
-			{
-				"name":"basalt",
-				"quality":1.0,
-				"mod":{
-					"attack":0.05,
-					"armour":0.05,
-				},
-			},
-			{
-				"name":"blood",
-				"quality":1.25,
-				"add":{
-					"damage":{
-						"fire":0.05,
-						"darkness":0.05,
-					},
-					"resistance":{
-						"fire":0.05,
-						"darkness":0.05,
-					},
-				},
-			},
-		],
-		"gem":[
-			{
-				"name":"hematite",
-				"quality":0.75,
-			},
-			{
-				"name":"black garnet",
-				"quality":1.0,
-				"mod":{
-					"health":0.1,
-					"mana":0.1,
-					"stamina":0.1,
-					"critical":0.05,
-				},
-			},
-			{
-				"name":"demonic diamond",
-				"quality":1.25,
-				"add":{
-					"damage":{
-						"fire":0.05,
-						"darkness":0.05,
-					},
-					"resistance":{
-						"fire":0.05,
-						"darkness":0.05,
-					},
-				},
-			},
-		],
-		"alchemy":[
-			{
-				"name":"charcoal",
-				"quality":0.75,
-			},
-			{
-				"name":"bitter",
-				"quality":1.0,
-			},
-			{
-				"name":"soul-infused",
-				"quality":1.25,
-			},
-		],
-		"cooking":[
-			{
-				"name":"charcoal",
-				"quality":0.75,
-			},
-			{
-				"name":"dried",
-				"quality":1.0,
-			},
-			{
-				"name":"living",
-				"quality":1.25,
-			},
-		],
-	},
+				"name": "living",
+				"quality": 1.25
+			}
+		]
+	}
 }

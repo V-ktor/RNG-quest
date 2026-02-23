@@ -1,60 +1,58 @@
 {
-	"level": 22,
+	"level": 36,
 	"tier": 0,
-	"setting": "post apocalyptic",
+	"setting": "grim fantasy",
 	"race": [
-		"orc",
+		"dwarf",
 		"ogre"
 	],
 	"enemy": [
-		"gnoll",
-		"undead",
+		"orc",
 		"demon"
 	],
 	"base_name": [
-		" wasteland",
-		" badlands"
+		" vulcano",
+		" plains",
+		" scape"
 	],
 	"name_prefix": [
-		"dry",
-		"barren",
-		"deadly",
-		"forgotten",
-		"molten",
-		"singed"
+		"hellfire",
+		"fearfire",
+		"demonic",
+		"ash"
 	],
 	"tags": [
-		"arid",
-		"desert",
-		"poverty"
+		"fantasy",
+		"grim",
+		"fire",
+		"volcano",
+		"ash",
+		"arid"
 	],
 	"enemies": [
 		"golem",
+		"lava_elemental",
 		"scorpion",
 		"goblin",
 		"gnoll",
-		"drake",
-		"thug",
-		"skeleton",
-		"ogre"
+		"imp",
+		"demon"
 	],
 	"enemy_amount": [
 		1,
-		3
+		4
 	],
 	"cities": [
 		{
 			"base": [
 				" settlement",
-				" outpost",
-				" oasis"
+				" village"
 			],
 			"prefix": [
 				"barren",
 				"forgotten",
 				"run-down",
-				"dusty",
-				"hot"
+				"ash-covered"
 			],
 			"type": [
 				"settlement"
@@ -62,15 +60,13 @@
 		},
 		{
 			"base": [
-				" outpost",
-				" garrison"
+				" outpost"
 			],
 			"prefix": [
 				"barren",
 				"forgotten",
 				"run-down",
-				"dusty",
-				"hot"
+				"ash-covered"
 			],
 			"type": [
 				"outpost"
@@ -78,16 +74,29 @@
 		},
 		{
 			"base": [
-				"post",
-				"well",
-				"town"
+				"keep",
+				"fortress",
+				"ville"
 			],
 			"prefix": [
-				"dry",
-				"singe",
-				"heat",
-				"pyre",
-				"cool"
+				"ash",
+				"fire",
+				"lava",
+				"magma"
+			],
+			"type": [
+				"castle"
+			]
+		},
+		{
+			"base": [
+				"ville"
+			],
+			"prefix": [
+				"ash",
+				"fire",
+				"lava",
+				"magma"
 			],
 			"type": [
 				"town"
@@ -97,17 +106,36 @@
 	"locations": [
 		{
 			"base": [
-				"canyon",
-				"peak"
+				"cave",
+				"cavern"
 			],
 			"prefix": [
 				"dangerous ",
 				"deadly ",
-				"dusty ",
 				"barren ",
-				"uncharted ",
-				"pyre",
-				"singed "
+				"fiery ",
+				"ash",
+				"lava",
+				"pyre"
+			],
+			"type": [
+				"cave"
+			]
+		},
+		{
+			"base": [
+				"canyon",
+				"mountain"
+			],
+			"prefix": [
+				"dangerous ",
+				"deadly ",
+				"burning ",
+				"barren ",
+				"fiery ",
+				"ash",
+				"lava",
+				"pyre"
 			],
 			"type": [
 				"mountain"
@@ -115,104 +143,61 @@
 		},
 		{
 			"base": [
-				"dunes",
+				"volcano",
+				"peak"
+			],
+			"prefix": [
+				"dangerous ",
+				"deadly ",
+				"burning ",
+				"barren ",
+				"fiery ",
+				"ash",
+				"lava",
+				"pyre"
+			],
+			"type": [
+				"volcano"
+			]
+		},
+		{
+			"base": [
 				"sands"
 			],
 			"prefix": [
 				"dangerous ",
 				"deadly ",
-				"dusty ",
+				"burning ",
 				"barren ",
-				"dry ",
-				"uncharted ",
-				"pyre",
-				"singed "
+				"fiery ",
+				"ash",
+				"lava",
+				"pyre"
 			],
 			"type": [
 				"dunes"
 			]
-		},
-		{
-			"base": [
-				"oasis"
-			],
-			"prefix": [
-				"the last ",
-				"dusty ",
-				"barren ",
-				"dried-up ",
-				"uncharted ",
-				"hidden "
-			],
-			"type": [
-				"sea"
-			],
-			"enemies": [
-				"crab",
-				"gnoll",
-				"troll",
-				"thug",
-				"plant"
-			],
-			"resources": [
-				"herb",
-				"flower",
-				"carrot",
-				"root",
-				"wood",
-				"cotton"
-			]
-		},
-		{
-			"base": [
-				"cave",
-				"cavern"
-			],
-			"prefix": [
-				"dangerous ",
-				"deadly ",
-				"dusty ",
-				"barren ",
-				"uncharted ",
-				"pyre",
-				"singed "
-			],
-			"type": [
-				"cave"
-			],
-			"enemies": [
-				"elemental",
-				"zombie",
-				"ghoul",
-				"skeleton",
-				"bat",
-				"spider"
-			],
-			"resources": [
-				"pebble",
-				"stone",
-				"ore",
-				"ingot",
-				"gem",
-				"mushroom"
-			]
 		}
 	],
-	"enchantment_chance": 0.1,
+	"enchantment_chance": 0.25,
 	"resources": [
+		"mushroom",
+		"flower",
+		"moss",
 		"wood",
 		"pebble",
 		"stone",
 		"ore",
 		"ingot",
-		"gem"
+		"gem",
+		"jewel"
 	],
 	"resource_chance": 0.1,
 	"resource_amount": [
-		1,
+		2,
 		4
 	],
-	"local_materials":  {
+	"local_materials": {
 		"wood": [
 			{
 				"name": "charcoal",
@@ -220,16 +205,20 @@
 			},
 			{
 				"name": "cactus",
-				"quality": 1.0
+				"quality": 1.0,
+				"mod": {
+					"attack": 0.05,
+					"critical": 0.1
+				}
 			},
 			{
 				"name": "blaze",
 				"quality": 1.25,
-				"add":  {
-					"attack": 0.5,
-					"damage":  {
-						"fire": 0.06,
-						"earth": 0.06
+				"add": {
+					"attack": 1,
+					"damage": {
+						"fire": 0.05,
+						"earth": 0.05
 					}
 				}
 			}
@@ -241,12 +230,16 @@
 			},
 			{
 				"name": "corrundum",
-				"quality": 1.0
+				"quality": 1.0,
+				"mod": {
+					"attack": 0.05,
+					"magic": 0.05
+				}
 			},
 			{
 				"name": "mercury",
 				"quality": 1.25,
-				"add":  {
+				"add": {
 					"accuracy": 0.5,
 					"evasion": 0.5
 				}
@@ -259,16 +252,20 @@
 			},
 			{
 				"name": "leather",
-				"quality": 1.0
+				"quality": 1.0,
+				"mod": {
+					"accuracy": 0.05,
+					"evasion": 0.05
+				}
 			},
 			{
 				"name": "blaze hide",
 				"quality": 1.25,
-				"add":  {
-					"attack": 0.5,
-					"damage":  {
-						"fire": 0.06,
-						"earth": 0.06
+				"add": {
+					"attack": 1,
+					"damage": {
+						"fire": 0.05,
+						"earth": 0.05
 					}
 				}
 			}
@@ -279,15 +276,19 @@
 				"quality": 0.75
 			},
 			{
-				"name": "linen",
-				"quality": 1.0
+				"name": "crimson linen",
+				"quality": 1.0,
+				"mod": {
+					"magic": 0.05,
+					"willpower": 0.05
+				}
 			},
 			{
 				"name": "aramid",
 				"quality": 1.25,
-				"add":  {
+				"add": {
 					"willpower": 0.5,
-					"resistance":  {
+					"resistance": {
 						"fire": 0.07
 					}
 				}
@@ -300,13 +301,17 @@
 			},
 			{
 				"name": "basalt",
-				"quality": 1.0
+				"quality": 1.0,
+				"mod": {
+					"armour": 0.05,
+					"critical": 0.1
+				}
 			},
 			{
-				"name": "granite",
+				"name": "red granite",
 				"quality": 1.25,
-				"add":  {
-					"resistance":  {
+				"add": {
+					"resistance": {
 						"cutting": 0.04,
 						"piercing": 0.04,
 						"impact": 0.04
@@ -320,15 +325,22 @@
 				"quality": 0.75
 			},
 			{
-				"name": "ruby",
-				"quality": 1.0
+				"name": "fiery ruby",
+				"quality": 1.0,
+				"mod": {
+					"health": 0.1,
+					"mana": 0.1,
+					"stamina": 0.1,
+					"magic": 0.05
+				}
 			},
 			{
-				"name": "diamond",
+				"name": "crimson diamond",
 				"quality": 1.25,
-				"add":  {
-					"magic": 0.5,
-					"damage":  {
+				"add": {
+					"attack": 0.5,
+					"damage": {
+						"fire": 0.07,
 						"earth": 0.07
 					}
 				}

@@ -1,176 +1,375 @@
 {
 	"level": 1,
 	"tier": -1,
-	"race": ["dwarf"],
-	"enemy": ["goblin", "undead"],
-	"base_name": ["mine", "fortress"],
-	"name_prefix": ["prosperous ", "rich ", "calm ", "dwarven ", "gold", "silver", "copper"],
-	"enemies": ["elemental", "goblin", "wolf", "spider", "plant"],
-	"enemy_amount": [1, 2],
-	"description": ["cave_entrance", "cave", "cave_floor", "rock_wall", "stalagmites", "shadow", "vegetation_underground", "ceiling", "bridge", "web", "darkness"],
+	"setting": "industrial fantasy",
+	"race": [
+		"dwarf"
+	],
+	"enemy": [
+		"goblin",
+		"undead"
+	],
+	"base_name": [
+		"mine",
+		"fortress"
+	],
+	"name_prefix": [
+		"prosperous ",
+		"rich ",
+		"calm ",
+		"dwarven ",
+		"gold",
+		"silver",
+		"copper"
+	],
+	"tags": [
+		"fantasy",
+		"industrial",
+		"mining",
+		"prosperity"
+	],
+	"enemies": [
+		"elemental",
+		"goblin",
+		"wolf",
+		"spider",
+		"plant"
+	],
+	"enemy_amount": [
+		1,
+		2
+	],
+	"description": [
+		"cave_entrance",
+		"cave",
+		"cave_floor",
+		"rock_wall",
+		"stalagmites",
+		"shadow",
+		"vegetation_underground",
+		"ceiling",
+		"bridge",
+		"web",
+		"darkness"
+	],
 	"cities": [
 		{
-			"base": [" town", "dale", "ton"],
-			"prefix": ["ore", "crystal", "gem", "rock", "stone", "rich", "carl"],
-			"type": ["town"],
+			"base": [
+				" town",
+				"dale",
+				"ton"
+			],
+			"prefix": [
+				"ore",
+				"crystal",
+				"gem",
+				"rock",
+				"stone",
+				"rich",
+				"carl"
+			],
+			"type": [
+				"town"
+			]
 		},
 		{
-			"base": ["post"],
-			"prefix": ["ore", "crystal", "gem", "rock", "stone", "out"],
-			"type": ["outpost"],
+			"base": [
+				"post"
+			],
+			"prefix": [
+				"ore",
+				"crystal",
+				"gem",
+				"rock",
+				"stone",
+				"out"
+			],
+			"type": [
+				"outpost"
+			]
 		},
 		{
-			"base": ["keep"],
-			"prefix": ["ore", "crystal", "gem", "stone", "marble"],
-			"type": ["castle"],
-		},
+			"base": [
+				"keep"
+			],
+			"prefix": [
+				"ore",
+				"crystal",
+				"gem",
+				"stone",
+				"marble"
+			],
+			"type": [
+				"castle"
+			]
+		}
 	],
 	"locations": [
 		{
-			"base": ["river"],
-			"prefix": ["calm ", "crystal", "deep ", "safe ", "quicksilver"],
-			"type": ["river"],
-			"enemies": ["crab", "wolf", "elemental"],
-			"resources": ["herb", "flower", "wood", "gem", "pebble", "cotton"],
-			"description": ["cave_entrance", "cave", "cave_floor", "rock_wall", "chasm", "stalagmites", "shadow", "vegetation_underground", "ceiling", "river", "river_bed", "bridge", "web", "darkness"],
+			"base": [
+				"river"
+			],
+			"prefix": [
+				"calm ",
+				"crystal",
+				"deep ",
+				"safe ",
+				"quicksilver"
+			],
+			"type": [
+				"river"
+			],
+			"enemies": [
+				"crab",
+				"wolf",
+				"elemental"
+			],
+			"resources": [
+				"herb",
+				"flower",
+				"wood",
+				"gem",
+				"pebble",
+				"cotton"
+			],
+			"description": [
+				"cave_entrance",
+				"cave",
+				"cave_floor",
+				"rock_wall",
+				"chasm",
+				"stalagmites",
+				"shadow",
+				"vegetation_underground",
+				"ceiling",
+				"river",
+				"river_bed",
+				"bridge",
+				"web",
+				"darkness"
+			]
 		},
 		{
-			"base": ["cave", "shaft", "cavern"],
-			"prefix": ["calm ", "illuminated ", "mineral-rich ", "crystal", "deep", "safe ", "ore", "silver", "copper"],
-			"type": ["cave"],
-			"enemies": ["goblin", "wolf", "bat", "spider", "zombie"],
-			"resources": ["stone", "ore", "gem", "mushroom", "moss"],
+			"base": [
+				"cave",
+				"shaft",
+				"cavern"
+			],
+			"prefix": [
+				"calm ",
+				"illuminated ",
+				"mineral-rich ",
+				"crystal",
+				"deep",
+				"safe ",
+				"ore",
+				"silver",
+				"copper"
+			],
+			"type": [
+				"cave"
+			],
+			"enemies": [
+				"goblin",
+				"wolf",
+				"bat",
+				"spider",
+				"zombie"
+			],
+			"resources": [
+				"stone",
+				"ore",
+				"gem",
+				"mushroom",
+				"moss"
+			]
 		},
 		{
-			"base": ["hills"],
-			"prefix": ["calm ", "crystal", "safe ", "ore", "silver", "tungsten"],
-			"type": ["mountain"],
+			"base": [
+				"hills"
+			],
+			"prefix": [
+				"calm ",
+				"crystal",
+				"safe ",
+				"ore",
+				"silver",
+				"tungsten"
+			],
+			"type": [
+				"mountain"
+			]
 		},
 		{
-			"base": ["forest"],
-			"prefix": ["calm ", "illuminated ", "mineral-rich ", "crystal", "deep ", "safe "],
-			"type": ["forest"],
-			"enemies": ["elemental", "wolf", "boar", "plant"],
-			"resources": ["herb", "fruit", "wood", "cotton", "mushroom"],
-			"description": ["cave_entrance", "vegetation", "vegetation_forest", "vegetation_underground", "landscape", "sky", "cloud", "sun", "moon"],
-		},
+			"base": [
+				"forest"
+			],
+			"prefix": [
+				"calm ",
+				"illuminated ",
+				"mineral-rich ",
+				"crystal",
+				"deep ",
+				"safe "
+			],
+			"type": [
+				"forest"
+			],
+			"enemies": [
+				"elemental",
+				"wolf",
+				"boar",
+				"plant"
+			],
+			"resources": [
+				"herb",
+				"fruit",
+				"wood",
+				"cotton",
+				"mushroom"
+			],
+			"description": [
+				"cave_entrance",
+				"vegetation",
+				"vegetation_forest",
+				"vegetation_underground",
+				"landscape",
+				"sky",
+				"cloud",
+				"sun",
+				"moon"
+			]
+		}
 	],
 	"enchantment_chance": 0.1,
-	"resources": ["herb", "flower", "fruit", "root", "wood", "stone", "ore", "ingot", "cotton"],
+	"resources": [
+		"herb",
+		"flower",
+		"fruit",
+		"root",
+		"wood",
+		"stone",
+		"ore",
+		"ingot",
+		"cotton"
+	],
 	"resource_chance": 0.1,
-	"resource_amount": [1,3],
+	"resource_amount": [
+		1,
+		3
+	],
 	"local_materials": {
 		"wood": [
 			{
 				"name": "pine",
-				"quality": 0.75,
+				"quality": 0.75
 			},
 			{
 				"name": "birch",
-				"quality": 1.0,
+				"quality": 1.0
 			},
 			{
 				"name": "oak",
-				"quality": 1.25,
-			},
+				"quality": 1.25
+			}
 		],
 		"metal": [
 			{
 				"name": "copper",
-				"quality": 0.75,
+				"quality": 0.75
 			},
 			{
 				"name": "bronze",
-				"quality": 1.0,
+				"quality": 1.0
 			},
 			{
 				"name": "iron",
-				"quality": 1.25,
-			},
+				"quality": 1.25
+			}
 		],
 		"leather": [
 			{
 				"name": "rough",
-				"quality": 0.75,
+				"quality": 0.75
 			},
 			{
 				"name": "wolf skin",
-				"quality": 1.0,
+				"quality": 1.0
 			},
 			{
 				"name": "reinforced",
-				"quality": 1.25,
-			},
+				"quality": 1.25
+			}
 		],
 		"cloth": [
 			{
 				"name": "wool",
-				"quality": 0.75,
+				"quality": 0.75
 			},
 			{
 				"name": "velvet",
-				"quality": 1.0,
+				"quality": 1.0
 			},
 			{
 				"name": "silk",
-				"quality": 1.25,
-			},
+				"quality": 1.25
+			}
 		],
 		"stone": [
 			{
 				"name": "rock",
-				"quality": 0.75,
+				"quality": 0.75
 			},
 			{
 				"name": "quartz",
-				"quality": 1.0,
+				"quality": 1.0
 			},
 			{
 				"name": "crystal",
-				"quality": 1.25,
-			},
+				"quality": 1.25
+			}
 		],
 		"gem": [
 			{
 				"name": "quartz",
-				"quality": 0.75,
+				"quality": 0.75
 			},
 			{
 				"name": "peridot",
-				"quality": 1.0,
+				"quality": 1.0
 			},
 			{
 				"name": "ruby",
-				"quality": 1.25,
-			},
+				"quality": 1.25
+			}
 		],
 		"alchemy": [
 			{
 				"name": "bitter",
-				"quality": 0.75,
+				"quality": 0.75
 			},
 			{
 				"name": "sweet",
-				"quality": 1.0,
+				"quality": 1.0
 			},
 			{
 				"name": "crimson",
-				"quality": 1.25,
-			},
+				"quality": 1.25
+			}
 		],
 		"cooking": [
 			{
 				"name": "bitter",
-				"quality": 0.75,
+				"quality": 0.75
 			},
 			{
 				"name": "fungus",
-				"quality": 1.0,
+				"quality": 1.0
 			},
 			{
 				"name": "deep",
-				"quality": 1.25,
-			},
-		],
-	},
+				"quality": 1.25
+			}
+		]
+	}
 }

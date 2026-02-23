@@ -1,249 +1,460 @@
 {
-	"level":44,
-	"tier":0,
-	"race":["human","halfling","elf"],
-	"enemy":["orc","naga","demon"],
-	"base_name":[" sky sea"," sky land"," skies"],
-	"name_prefix":["floating","levitating","heavenly","cloudy","astral"],
-	"enemies":["cloud_elemental","drake","sky_shark","sky_snake","wale"],
-	"enemy_amount":[2,3],
-	"cities":[
-		{
-			"base":["town","ville","ton"],
-			"prefix":["sky","cloud","rise","rain","star"],
-			"type":["town"],
-		},
-		{
-			"base":["camp","post"],
-			"prefix":["sky","cloud","rain","star"],
-			"type":["outpost"],
-		},
-		{
-			"base":["town"],
-			"prefix":["skyward ","floating ","skybound ","aerial ","astral ","space","air"],
-			"type":["town"],
-		},
-		{
-			"base":[" keep"," fort"],
-			"prefix":["skyward","floating","skybound","aerial","astral","space"],
-			"type":["castle"],
-		},
+	"level": 44,
+	"tier": 0,
+	"setting": "high fantasy",
+	"race": [
+		"human",
+		"halfling",
+		"elf"
 	],
-	"locations":[
-		{
-			"base":["river","fall"],
-			"prefix":["sky","space","astral ","vertical ","cloud","floating ","rising ","skybound "],
-			"type":["river"],
-		},
-		{
-			"base":["island","rift"],
-			"prefix":["sky","space","astral ","vertical ","cloud","floating ","rising ","skybound "],
-			"type":["floating_island"],
-			"enemies":["crab","elemental","golem","harpy","naga","snap_turtle","ogre"],
-			"resources":["herb","flower","wood","cotton","silk","pebble","stone"],
-		},
-		{
-			"base":["sea","pond"],
-			"prefix":["sky","space","astral ","vertical ","cloud","floating ","rising ","skybound "],
-			"type":["sea"],
-			"enemies":["crab","elemental","golem","harpy","naga","snap_turtle"],
-			"resources":["herb","flower","wood","cotton","silk","pebble","stone"],
-		},
-		{
-			"base":["stairway","cloud"],
-			"prefix":["sky","space","astral ","vertical ","cloud","floating ","rising ","skybound "],
-			"type":["cloud"],
-			"enemies":["elemental","harpy","cloud_elemental","wale"],
-			"resources":["condensate","residue","plasma","dust","mold","algae","plankton","sand"],
-		},
-		{
-			"base":["forest"],
-			"prefix":["sky","space","astral ","helium tree ","cloud","floating ","rising ","skybound "],
-			"type":["forest"],
-		},
+	"enemy": [
+		"orc",
+		"naga",
+		"demon"
 	],
-	"enchantment_chance":0.25,
-	"resources":["flower","herb","cabbage","mushroom","root","wood","plank","pebble","ore","cotton","silk"],
-	"resource_chance":0.1,
-	"resource_amount":[2,4],
-	"local_materials":{
-		"wood":[
+	"base_name": [
+		" sky sea",
+		" sky land",
+		" skies"
+	],
+	"name_prefix": [
+		"floating",
+		"levitating",
+		"heavenly",
+		"cloudy",
+		"astral"
+	],
+	"tags": [
+		"fantasy",
+		"idyllic",
+		"gravity_anomalies",
+		"islands",
+		"river",
+		"warm"
+	],
+	"enemies": [
+		"cloud_elemental",
+		"drake",
+		"sky_shark",
+		"sky_snake",
+		"wale"
+	],
+	"enemy_amount": [
+		2,
+		3
+	],
+	"cities": [
+		{
+			"base": [
+				"town",
+				"ville",
+				"ton"
+			],
+			"prefix": [
+				"sky",
+				"cloud",
+				"rise",
+				"rain",
+				"star"
+			],
+			"type": [
+				"town"
+			]
+		},
+		{
+			"base": [
+				"camp",
+				"post"
+			],
+			"prefix": [
+				"sky",
+				"cloud",
+				"rain",
+				"star"
+			],
+			"type": [
+				"outpost"
+			]
+		},
+		{
+			"base": [
+				"town"
+			],
+			"prefix": [
+				"skyward ",
+				"floating ",
+				"skybound ",
+				"aerial ",
+				"astral ",
+				"space",
+				"air"
+			],
+			"type": [
+				"town"
+			]
+		},
+		{
+			"base": [
+				" keep",
+				" fort"
+			],
+			"prefix": [
+				"skyward",
+				"floating",
+				"skybound",
+				"aerial",
+				"astral",
+				"space"
+			],
+			"type": [
+				"castle"
+			]
+		}
+	],
+	"locations": [
+		{
+			"base": [
+				"river",
+				"fall"
+			],
+			"prefix": [
+				"sky",
+				"space",
+				"astral ",
+				"vertical ",
+				"cloud",
+				"floating ",
+				"rising ",
+				"skybound "
+			],
+			"type": [
+				"river"
+			]
+		},
+		{
+			"base": [
+				"island",
+				"rift"
+			],
+			"prefix": [
+				"sky",
+				"space",
+				"astral ",
+				"vertical ",
+				"cloud",
+				"floating ",
+				"rising ",
+				"skybound "
+			],
+			"type": [
+				"floating_island"
+			],
+			"enemies": [
+				"crab",
+				"elemental",
+				"golem",
+				"harpy",
+				"naga",
+				"snap_turtle",
+				"ogre"
+			],
+			"resources": [
+				"herb",
+				"flower",
+				"wood",
+				"cotton",
+				"silk",
+				"pebble",
+				"stone"
+			]
+		},
+		{
+			"base": [
+				"sea",
+				"pond"
+			],
+			"prefix": [
+				"sky",
+				"space",
+				"astral ",
+				"vertical ",
+				"cloud",
+				"floating ",
+				"rising ",
+				"skybound "
+			],
+			"type": [
+				"sea"
+			],
+			"enemies": [
+				"crab",
+				"elemental",
+				"golem",
+				"harpy",
+				"naga",
+				"snap_turtle"
+			],
+			"resources": [
+				"herb",
+				"flower",
+				"wood",
+				"cotton",
+				"silk",
+				"pebble",
+				"stone"
+			]
+		},
+		{
+			"base": [
+				"stairway",
+				"cloud"
+			],
+			"prefix": [
+				"sky",
+				"space",
+				"astral ",
+				"vertical ",
+				"cloud",
+				"floating ",
+				"rising ",
+				"skybound "
+			],
+			"type": [
+				"cloud"
+			],
+			"enemies": [
+				"elemental",
+				"harpy",
+				"cloud_elemental",
+				"wale"
+			],
+			"resources": [
+				"condensate",
+				"residue",
+				"plasma",
+				"dust",
+				"mold",
+				"algae",
+				"plankton",
+				"sand"
+			]
+		},
+		{
+			"base": [
+				"forest"
+			],
+			"prefix": [
+				"sky",
+				"space",
+				"astral ",
+				"helium tree ",
+				"cloud",
+				"floating ",
+				"rising ",
+				"skybound "
+			],
+			"type": [
+				"forest"
+			]
+		}
+	],
+	"enchantment_chance": 0.25,
+	"resources": [
+		"flower",
+		"herb",
+		"cabbage",
+		"mushroom",
+		"root",
+		"wood",
+		"plank",
+		"pebble",
+		"ore",
+		"cotton",
+		"silk"
+	],
+	"resource_chance": 0.1,
+	"resource_amount": [
+		2,
+		4
+	],
+	"local_materials": {
+		"wood": [
 			{
-				"name":"coral",
-				"quality":0.75,
+				"name": "coral",
+				"quality": 0.75
 			},
 			{
-				"name":"helium wood",
+				"name": "helium wood",
 				"quality":1.0,
-				"mod":{
-					"speed":0.125,
-					"evasion":0.05,
-				},
+				"mod": {
+					"speed": 0.125,
+					"evasion": 0.05
+				}
 			},
 			{
-				"name":"astral",
+				"name": "astral",
 				"quality":1.25,
-				"add":{
+				"add": {
 					"mana_regen":2.5,
-					"resistance":{
-						"light":0.05,
-						"wind":0.05,
-					},
-				},
-			},
+					"resistance": {
+						"light": 0.05,
+						"wind": 0.05
+					}
+				}
+			}
 		],
-		"metal":[
+		"metal": [
 			{
-				"name":"coral",
-				"quality":0.75,
+				"name": "coral",
+				"quality": 0.75
 			},
 			{
-				"name":"aluminum",
+				"name": "aluminum",
 				"quality":1.0,
-				"mod":{
-					"speed":0.125,
-					"evasion":0.05,
-				},
+				"mod": {
+					"speed": 0.125,
+					"evasion": 0.05
+				}
 			},
 			{
-				"name":"mithril",
+				"name": "mithril",
 				"quality":1.25,
-				"add":{
-					"armour":0.5,
-					"resistance":{
-						"cutting":0.025,
-						"piercing":0.025,
-						"impact":0.025,
-					},
-				},
-			},
+				"add": {
+					"armour": 0.5,
+					"resistance": {
+						"cutting": 0.025,
+						"piercing": 0.025,
+						"impact": 0.025
+					}
+				}
+			}
 		],
-		"leather":[
+		"leather": [
 			{
-				"name":"hydro hide",
-				"quality":0.75,
+				"name": "hydro hide",
+				"quality": 0.75
 			},
 			{
-				"name":"leather",
+				"name": "leather",
 				"quality":1.0,
-				"mod":{
-					"evasion":0.05,
+				"mod": {
+					"evasion": 0.05
 				},
 			},
 			{
-				"name":"astral leather",
+				"name": "astral leather",
 				"quality":1.25,
-				"add":{
-					"resistance":{
-						"light":0.05,
-						"wind":0.05,
-					},
-				},
-			},
+				"add": {
+					"resistance": {
+						"light": 0.05,
+						"wind": 0.05
+					}
+				}
+			}
 		],
-		"cloth":[
+		"cloth": [
 			{
-				"name":"papyrus",
-				"quality":0.75,
+				"name": "papyrus",
+				"quality": 0.75
 			},
 			{
-				"name":"wool",
+				"name": "wool",
 				"quality":1.0,
-				"mod":{
-					"accuracy":0.05,
-					"evasion":0.05,
-				},
+				"mod": {
+					"accuracy": 0.05,
+					"evasion": 0.05
+				}
 			},
 			{
-				"name":"space velvet",
+				"name": "space velvet",
 				"quality":1.25,
-				"add":{
-					"magic":0.5,
-					"willpower":0.5,
-				},
-			},
+				"add": {
+					"magic": 0.5,
+					"willpower": 0.5
+				}
+			}
 		],
-		"stone":[
+		"stone": [
 			{
-				"name":"void",
-				"quality":0.75,
+				"name": "void",
+				"quality": 0.75
 			},
 			{
-				"name":"air rock",
+				"name": "air rock",
 				"quality":1.0,
-				"mod":{
-					"speed":0.125,
-					"accuracy":0.05,
-					"evasion":0.05,
-				},
+				"mod": {
+					"speed": 0.125,
+					"accuracy": 0.05,
+					"evasion": 0.05
+				}
 			},
 			{
-				"name":"meteorite",
+				"name": "meteorite",
 				"quality":1.25,
-				"add":{
+				"add": {
 					"stamina":5,
-					"damage":{
-						"earth":0.05,
-						"fire":0.05,
-					},
-				},
-			},
+					"damage": {
+						"earth": 0.05,
+						"fire": 0.05
+					}
+				}
+			}
 		],
-		"gem":[
+		"gem": [
 			{
-				"name":"quartzite",
-				"quality":0.75,
+				"name": "quartzite",
+				"quality": 0.75
 			},
 			{
-				"name":"aquamarine",
+				"name": "aquamarine",
 				"quality":1.0,
-				"mod":{
-					"magic":0.05,
-					"willpower":0.05,
-				},
+				"mod": {
+					"magic": 0.05,
+					"willpower": 0.05
+				}
 			},
 			{
-				"name":"diamond",
+				"name": "diamond",
 				"quality":1.25,
-				"add":{
-					"damage":{
-						"light":0.05,
-						"water":0.05,
+				"add": {
+					"damage": {
+						"light": 0.05,
+						"water": 0.05
 					},
-					"resistance":{
-						"wind":0.05,
-						"darkness":0.05,
-					},
-				},
-			},
+					"resistance": {
+						"wind": 0.05,
+						"darkness": 0.05
+					}
+				}
+			}
 		],
-		"alchemy":[
+		"alchemy": [
 			{
-				"name":"cyan",
-				"quality":0.75,
+				"name": "cyan",
+				"quality": 0.75
 			},
 			{
-				"name":"hydro",
-				"quality":1.0,
+				"name": "hydro",
+				"quality":1.0
 			},
 			{
-				"name":"astral",
-				"quality":1.25,
-			},
+				"name": "astral",
+				"quality":1.25
+			}
 		],
-		"cooking":[
+		"cooking": [
 			{
-				"name":"floaty",
-				"quality":0.75,
+				"name": "floaty",
+				"quality": 0.75
 			},
 			{
-				"name":"hydro",
-				"quality":1.0,
+				"name": "hydro",
+				"quality":1.0
 			},
 			{
-				"name":"sky",
-				"quality":1.25,
-			},
-		],
-	},
+				"name": "sky",
+				"quality":1.25
+			}
+		]
+	}
 }

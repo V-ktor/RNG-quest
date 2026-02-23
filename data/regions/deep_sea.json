@@ -1,225 +1,345 @@
 {
-	"level":36,
-	"tier":0,
-	"race":["halfling"],
-	"enemy":["naga"],
-	"base_name":[" sea"," ocean"," depths"],
-	"name_prefix":["deep","dark","blue","azur"],
-	"enemies":["golem","water_elemental","water_snake","snap_turtle","gnoll","imp","naga"],
-	"enemy_amount":[1,4],
-	"cities":[
+	"level": 36,
+	"tier": 0,
+	"setting": "high fantasy",
+	"race": [
+		"halfling"
+	],
+	"enemy": [
+		"naga"
+	],
+	"base_name": [
+		" sea",
+		" ocean",
+		" depths"
+	],
+	"name_prefix": [
+		"deep",
+		"dark",
+		"blue",
+		"azur"
+	],
+	"tags": [
+		"fantasy",
+		"underwater",
+		"ocean",
+		"water"
+	],
+	"enemies": [
+		"golem",
+		"water_elemental",
+		"water_snake",
+		"snap_turtle",
+		"gnoll",
+		"imp",
+		"naga"
+	],
+	"enemy_amount": [
+		1,
+		4
+	],
+	"cities": [
 		{
-			"base":[" city"],
-			"prefix":["rock","sea","salt","azur"],
-			"type":["town"],
+			"base": [
+				" city"
+			],
+			"prefix": [
+				"rock",
+				"sea",
+				"salt",
+				"azur"
+			],
+			"type": [
+				"town"
+			],
 		},
 		{
-			"base":["bottom","post"],
-			"prefix":["flood","rock","sea","salt","azur"],
-			"type":["settlement"],
+			"base": [
+				"bottom",
+				"post"
+			],
+			"prefix": [
+				"flood",
+				"rock",
+				"sea",
+				"salt",
+				"azur"
+			],
+			"type": [
+				"settlement"
+			],
 		},
 		{
-			"base":["keep"],
-			"prefix":["flood","rock","sea","salt","azur"],
-			"type":["castle"],
+			"base": [
+				"keep"
+			],
+			"prefix": [
+				"flood",
+				"rock",
+				"sea",
+				"salt",
+				"azur"
+			],
+			"type": [
+				"castle"
+			],
 		},
 	],
-	"locations":[
+	"locations": [
 		{
-			"base":["cave","cavern"],
-			"prefix":["under-water ","flooded ","deep ","rockbed","sea","salt","azur"],
-			"type":["cave"],
+			"base": [
+				"cave",
+				"cavern"
+			],
+			"prefix": [
+				"under-water ",
+				"flooded ",
+				"deep ",
+				"rockbed",
+				"sea",
+				"salt",
+				"azur"
+			],
+			"type": [
+				"cave"
+			],
 		},
 		{
-			"base":["beach","ground"],
-			"prefix":["under-water ","flooded ","deep ","rockbed","sea","salt","azur"],
-			"type":["coast"],
+			"base": [
+				"beach",
+				"ground"
+			],
+			"prefix": [
+				"under-water ",
+				"flooded ",
+				"deep ",
+				"rockbed",
+				"sea",
+				"salt",
+				"azur"
+			],
+			"type": [
+				"coast"
+			],
 		},
 		{
-			"base":["sea","ocean"],
-			"prefix":["deep ","salt","azur","aqua","dark ","black"],
-			"type":["sea"],
-			"enemies":["water_elemental","water_snake","snap_turtle","shark","naga"],
+			"base": [
+				"sea",
+				"ocean"
+			],
+			"prefix": [
+				"deep ",
+				"salt",
+				"azur",
+				"aqua",
+				"dark ",
+				"black"
+			],
+			"type": [
+				"sea"
+			],
+			"enemies": [
+				"water_elemental",
+				"water_snake",
+				"snap_turtle",
+				"shark",
+				"naga"
+			],
 		},
 	],
-	"enchantment_chance":0.25,
-	"resources":["algae","plankton","moss","shell","wood","plank","pebble","stone","ore","gem","jewel"],
-	"location_resources":{},
-	"resource_chance":0.1,
-	"resource_amount":[2,4],
-	"local_materials":{
-		"wood":[
+	"enchantment_chance": 0.25,
+	"resources": [
+		"algae",
+		"plankton",
+		"moss",
+		"shell",
+		"wood",
+		"plank",
+		"pebble",
+		"stone",
+		"ore",
+		"gem",
+		"jewel"
+	],
+	"location_resources": {},
+	"resource_chance": 0.1,
+	"resource_amount": [
+		2,
+		4
+	],
+	"local_materials": {
+		"wood": [
 			{
-				"name":"wet",
-				"quality":0.75,
+				"name": "wet",
+				"quality": 0.75
 			},
 			{
-				"name":"hydro",
-				"quality":1.0,
-				"mod":{
-					"health":0.1,
-					"stamina":0.1,
-					"mana":0.1,
-					"willpower":0.05,
-				},
+				"name": "hydro",
+				"quality": 1.0,
+				"mod": {
+					"health": 0.1,
+					"stamina": 0.1,
+					"mana": 0.1,
+					"willpower": 0.05
+				}
 			},
 			{
-				"name":"aqua",
-				"quality":1.25,
-				"add":{
-					"health_regen":2.5,
-					"resistance":{
-						"water":0.1,
-					},
-				},
-			},
+				"name": "aqua",
+				"quality": 1.25,
+				"add": {
+					"health_regen": 2.5,
+					"resistance": {
+						"water": 0.1
+					}
+				}
+			}
 		],
-		"metal":[
+		"metal": [
 			{
-				"name":"tin",
-				"quality":0.75,
+				"name": "tin",
+				"quality": 0.75
 			},
 			{
-				"name":"aqua",
-				"quality":1.0,
-				"mod":{
-					"health":0.1,
-					"stamina":0.1,
-					"mana":0.1,
-					"willpower":0.05,
-				},
+				"name": "aqua",
+				"quality": 1.0,
+				"mod": {
+					"health": 0.1,
+					"stamina": 0.1,
+					"mana": 0.1,
+					"willpower": 0.05
+				}
 			},
 			{
-				"name":"mercury",
-				"quality":1.25,
-				"add":{
-					"accuracy":0.5,
-					"evasion":0.5,
-				},
-			},
+				"name": "mercury",
+				"quality": 1.25,
+				"add": {
+					"accuracy": 0.5,
+					"evasion": 0.5
+				}
+			}
 		],
-		"leather":[
+		"leather": [
 			{
-				"name":"wet leather",
-				"quality":0.75,
+				"name": "wet leather",
+				"quality": 0.75
 			},
 			{
-				"name":"leather",
-				"quality":1.0,
-				"mod":{
-					"accuracy":0.05,
-					"evasion":0.05,
-				},
+				"name": "leather",
+				"quality": 1.0,
+				"mod": {
+					"accuracy": 0.05,
+					"evasion": 0.05
+				}
 			},
 			{
-				"name":"impregnated",
-				"quality":1.25,
-				"add":{
-					"health":5,
-					"resistance":{
-						"water":0.1,
-					},
-				},
-			},
+				"name": "impregnated",
+				"quality": 1.25,
+				"add": {
+					"health": 5,
+					"resistance": {
+						"water": 0.1
+					}
+				}
+			}
 		],
-		"cloth":[
+		"cloth": [
 			{
-				"name":"wool",
-				"quality":0.75,
+				"name": "wool",
+				"quality": 0.75
 			},
 			{
-				"name":"linen",
-				"quality":1.0,
-				"mod":{
-					"accuracy":0.05,
-					"evasion":0.05,
-				},
+				"name": "linen",
+				"quality": 1.0,
+				"mod": {
+					"accuracy": 0.05,
+					"evasion": 0.05
+				}
 			},
 			{
-				"name":"impregnated",
-				"quality":1.25,
-				"add":{
-					"health":5,
-					"resistance":{
-						"water":0.1,
-					},
-				},
-			},
+				"name": "impregnated",
+				"quality": 1.25,
+				"add": {
+					"health": 5,
+					"resistance": {
+						"water": 0.1
+					}
+				}
+			}
 		],
-		"stone":[
+		"stone": [
 			{
-				"name":"aqua",
-				"quality":0.75,
+				"name": "aqua",
+				"quality": 0.75
 			},
 			{
-				"name":"azur basalt",
-				"quality":1.0,
-				"mod":{
-					"armour":0.05,
-				},
+				"name": "azur basalt",
+				"quality": 1.0,
+				"mod": {
+					"armour": 0.05
+				}
 			},
 			{
-				"name":"blue granite",
-				"quality":1.25,
-				"add":{
-					"resistance":{
-						"cutting":0.03,
-						"piercing":0.03,
-						"impact":0.03,
-					},
-				},
-			},
+				"name": "blue granite",
+				"quality": 1.25,
+				"add": {
+					"resistance": {
+						"cutting": 0.03,
+						"piercing": 0.03,
+						"impact": 0.03
+					}
+				}
+			}
 		],
-		"gem":[
+		"gem": [
 			{
-				"name":"quartz",
-				"quality":0.75,
+				"name": "quartz",
+				"quality": 0.75
 			},
 			{
-				"name":"peridot",
-				"quality":1.0,
-				"mod":{
-					"willpower":0.1,
-				},
+				"name": "peridot",
+				"quality": 1.0,
+				"mod": {
+					"willpower": 0.1
+				}
 			},
 			{
-				"name":"azur sapphire",
-				"quality":1.25,
-				"add":{
-					"mana":5,
-					"damage":{
-						"water":0.1,
-					},
-				},
-			},
+				"name": "azur sapphire",
+				"quality": 1.25,
+				"add": {
+					"mana": 5,
+					"damage": {
+						"water": 0.1
+					}
+				}
+			}
 		],
-		"alchemy":[
+		"alchemy": [
 			{
-				"name":"plankton",
-				"quality":0.75,
+				"name": "plankton",
+				"quality": 0.75
 			},
 			{
-				"name":"salt",
-				"quality":1.0,
+				"name": "salt",
+				"quality": 1.0
 			},
 			{
-				"name":"algae",
-				"quality":1.25,
-			},
+				"name": "algae",
+				"quality": 1.25
+			}
 		],
-		"cooking":[
+		"cooking": [
 			{
-				"name":"salt",
-				"quality":0.75,
+				"name": "salt",
+				"quality": 0.75,
 			},
 			{
-				"name":"hydro",
-				"quality":1.0,
+				"name": "hydro",
+				"quality": 1.0
 			},
 			{
-				"name":"algae",
-				"quality":1.25,
-			},
-		],
-	},
+				"name": "algae",
+				"quality": 1.25
+			}
+		]
+	}
 }

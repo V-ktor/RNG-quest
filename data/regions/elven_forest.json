@@ -1,182 +1,381 @@
 {
-	"level":1,
-	"tier":-1,
-	"race":["elf"],
-	"enemy":["goblin","undead"],
-	"base_name":[" forest"," woods"],
-	"name_prefix":["peaceful","calm","elven","bright"],
-	"enemies":["elemental","goblin","wolf","boar","plant"],
-	"enemy_amount":[1,2],
-	"cities":[
-		{
-			"base":["rise","fall","ville","dale"],
-			"prefix":["spring","summer","flower","leaf","wind"],
-			"type":["settlement","town"],
-		},
-		{
-			"base":["sanctum"],
-			"prefix":["spring","summer","flower","leaf","wind"],
-			"type":["castle"],
-		},
+	"level": 1,
+	"tier": -1,
+	"setting": "high fantasy",
+	"race": [
+		"elf"
 	],
-	"locations":[
-		{
-			"base":["river"],
-			"prefix":["calm ","grand ","azure ","safe ","clear "],
-			"type":["river"],
-			"enemies":["crab","wolf","boar"],
-			"resources":["herb","flower","wood","gem","pebble","cotton"],
-		},
-		{
-			"base":["clearing","fields"],
-			"prefix":["calm ","fresh ","green ","flat ","safe ","golden "],
-			"type":["field"],
-			"enemies":["goblin","wolf","boar"],
-			"resources":["herb","flower","berry","stone","wood","cotton"],
-		},
-		{
-			"base":["cavern","cave"],
-			"prefix":["calm ","deep ","fresh ","green ","flat ","safe ","illuminated "],
-			"type":["cave"],
-			"enemies":["goblin","bat","spider","zombie"],
-			"resources":["herb","moss","stone","ore","gem","wood","mushroom"],
-		},
-		{
-			"base":["hills","mountain foot"],
-			"prefix":["calm ","deep ","fresh ","green ","flat ","safe ","overgrown "],
-			"type":["mountain"],
-		},
-		{
-			"base":["forest","woods"],
-			"prefix":["calm ","deep","fresh ","green ","flat ","safe ","emerald"],
-			"type":["forest"],
-			"enemies":["elemental","wolf","boar","plant"],
-			"resources":["herb","moss","fruit","wood","cotton","mushroom"],
-		},
-		{
-			"base":["forest","woods"],
-			"prefix":["elven ","emerald","azure","spirit ","jade"],
-			"type":["forest"],
-			"enemies":["elemental","wolf","boar","plant","spirit"],
-			"resources":["herb","moss","fruit","wood","cotton","mushroom"],
-		},
+	"enemy": [
+		"goblin",
+		"undead"
 	],
-	"enchantment_chance":0.1,
-	"resources":["herb","flower","fruit","berry","wood","plank","pebble","ore","cotton"],
-	"resource_chance":0.1,
-	"resource_amount":[1,3],
-	"local_materials":{
-		"wood":[
+	"base_name": [
+		" forest",
+		" woods"
+	],
+	"name_prefix": [
+		"peaceful",
+		"calm",
+		"elven",
+		"bright"
+	],
+	"tags": [
+		"fantasy",
+		"mystical",
+		"forest",
+		"sanctuary",
+		"isolated"
+	],
+	"enemies": [
+		"elemental",
+		"goblin",
+		"wolf",
+		"boar",
+		"plant"
+	],
+	"enemy_amount": [
+		1,
+		2
+	],
+	"cities": [
+		{
+			"base": [
+				"rise",
+				"fall",
+				"ville",
+				"dale"
+			],
+			"prefix": [
+				"spring",
+				"summer",
+				"flower",
+				"leaf",
+				"wind"
+			],
+			"type": [
+				"settlement",
+				"town"
+			]
+		},
+		{
+			"base": [
+				"sanctum"
+			],
+			"prefix": [
+				"spring",
+				"summer",
+				"flower",
+				"leaf",
+				"wind"
+			],
+			"type": [
+				"castle"
+			]
+		}
+	],
+	"locations": [
+		{
+			"base": [
+				"river"
+			],
+			"prefix": [
+				"calm ",
+				"grand ",
+				"azure ",
+				"safe ",
+				"clear "
+			],
+			"type": [
+				"river"
+			],
+			"enemies": [
+				"crab",
+				"wolf",
+				"boar"
+			],
+			"resources": [
+				"herb",
+				"flower",
+				"wood",
+				"gem",
+				"pebble",
+				"cotton"
+			]
+		},
+		{
+			"base": [
+				"clearing",
+				"fields"
+			],
+			"prefix": [
+				"calm ",
+				"fresh ",
+				"green ",
+				"flat ",
+				"safe ",
+				"golden "
+			],
+			"type": [
+				"field"
+			],
+			"enemies": [
+				"goblin",
+				"wolf",
+				"boar"
+			],
+			"resources": [
+				"herb",
+				"flower",
+				"berry",
+				"stone",
+				"wood",
+				"cotton"
+			]
+		},
+		{
+			"base": [
+				"cavern",
+				"cave"
+			],
+			"prefix": [
+				"calm ",
+				"deep ",
+				"fresh ",
+				"green ",
+				"flat ",
+				"safe ",
+				"illuminated "
+			],
+			"type": [
+				"cave"
+			],
+			"enemies": [
+				"goblin",
+				"bat",
+				"spider",
+				"zombie"
+			],
+			"resources": [
+				"herb",
+				"moss",
+				"stone",
+				"ore",
+				"gem",
+				"wood",
+				"mushroom"
+			]
+		},
+		{
+			"base": [
+				"hills",
+				"mountain foot"
+			],
+			"prefix": [
+				"calm ",
+				"deep ",
+				"fresh ",
+				"green ",
+				"flat ",
+				"safe ",
+				"overgrown "
+			],
+			"type": [
+				"mountain"
+			],
+		},
+		{
+			"base": [
+				"forest",
+				"woods"
+			],
+			"prefix": [
+				"calm ",
+				"deep",
+				"fresh ",
+				"green ",
+				"flat ",
+				"safe ",
+				"emerald"
+			],
+			"type": [
+				"forest"
+			],
+			"enemies": [
+				"elemental",
+				"wolf",
+				"boar",
+				"plant"
+			],
+			"resources": [
+				"herb",
+				"moss",
+				"fruit",
+				"wood",
+				"cotton",
+				"mushroom"
+			]
+		},
+		{
+			"base": [
+				"forest",
+				"woods"
+			],
+			"prefix": [
+				"elven ",
+				"emerald",
+				"azure",
+				"spirit ",
+				"jade"
+			],
+			"type": [
+				"forest"
+			],
+			"enemies": [
+				"elemental",
+				"wolf",
+				"boar",
+				"plant",
+				"spirit"
+			],
+			"resources": [
+				"herb",
+				"moss",
+				"fruit",
+				"wood",
+				"cotton",
+				"mushroom"
+			]
+		}
+	],
+	"enchantment_chance": 0.1,
+	"resources": [
+		"herb",
+		"flower",
+		"fruit",
+		"berry",
+		"wood",
+		"plank",
+		"pebble",
+		"ore",
+		"cotton"
+	],
+	"resource_chance": 0.1,
+	"resource_amount": [
+		1,
+		3
+	],
+	"local_materials": {
+		"wood": [
 			{
-				"name":"pine",
-				"quality":0.75,
+				"name": "pine",
+				"quality": 0.75
 			},
 			{
-				"name":"birch",
-				"quality":1.0,
+				"name": "birch",
+				"quality": 1.0
 			},
 			{
-				"name":"oak",
-				"quality":1.25,
+				"name": "oak",
+				"quality": 1.25
+			}
+		],
+		"metal": [
+			{
+				"name": "copper",
+				"quality": 0.75
+			},
+			{
+				"name": "bronze",
+				"quality": 1.0
+			},
+			{
+				"name": "iron",
+				"quality": 1.25
+			}
+		],
+		"leather": [
+			{
+				"name": "rough",
+				"quality": 0.75
+			},
+			{
+				"name": "wolf skin",
+				"quality": 1.0
+			},
+			{
+				"name": "reinforced",
+				"quality": 1.25
+			}
+		],
+		"cloth": [
+			{
+				"name": "wool",
+				"quality": 0.75
+			},
+			{
+				"name": "velvet",
+				"quality": 1.0
+			},
+			{
+				"name": "silk",
+				"quality": 1.25
 			},
 		],
-		"metal":[
+		"stone": [
 			{
-				"name":"copper",
-				"quality":0.75,
+				"name": "rock",
+				"quality": 0.75
 			},
 			{
-				"name":"bronze",
-				"quality":1.0,
+				"name": "quartz",
+				"quality": 1.0
 			},
 			{
-				"name":"iron",
-				"quality":1.25,
-			},
+				"name": "crystal",
+				"quality": 1.25
+			}
 		],
-		"leather":[
+		"gem": [
 			{
-				"name":"rough",
-				"quality":0.75,
+				"name": "quartz",
+				"quality": 0.75
 			},
 			{
-				"name":"wolf skin",
-				"quality":1.0,
+				"name": "peridot",
+				"quality": 1.0
 			},
 			{
-				"name":"reinforced",
-				"quality":1.25,
-			},
+				"name": "ruby",
+				"quality": 1.25
+			}
 		],
-		"cloth":[
+		"alchemy": [
 			{
-				"name":"wool",
-				"quality":0.75,
+				"name": "bitter",
+				"quality": 0.75
 			},
 			{
-				"name":"velvet",
-				"quality":1.0,
+				"name": "sweet",
+				"quality": 1.0
 			},
 			{
-				"name":"silk",
-				"quality":1.25,
-			},
+				"name": "crimson",
+				"quality": 1.25
+			}
 		],
-		"stone":[
+		"cooking": [
 			{
-				"name":"rock",
-				"quality":0.75,
+				"name": "bitter",
+				"quality": 0.75
 			},
 			{
-				"name":"quartz",
-				"quality":1.0,
+				"name": "straw",
+				"quality": 1.0
 			},
 			{
-				"name":"crystal",
-				"quality":1.25,
-			},
-		],
-		"gem":[
-			{
-				"name":"quartz",
-				"quality":0.75,
-			},
-			{
-				"name":"peridot",
-				"quality":1.0,
-			},
-			{
-				"name":"ruby",
-				"quality":1.25,
-			},
-		],
-		"alchemy":[
-			{
-				"name":"bitter",
-				"quality":0.75,
-			},
-			{
-				"name":"sweet",
-				"quality":1.0,
-			},
-			{
-				"name":"crimson",
-				"quality":1.25,
-			},
-		],
-		"cooking":[
-			{
-				"name":"bitter",
-				"quality":0.75,
-			},
-			{
-				"name":"straw",
-				"quality":1.0,
-			},
-			{
-				"name":"juicy",
-				"quality":1.25,
-			},
-		],
-	},
+				"name": "juicy",
+				"quality": 1.25
+			}
+		]
+	}
 }

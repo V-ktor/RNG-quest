@@ -1,207 +1,347 @@
 {
-	"level":30,
-	"tier":0,
-	"race":["human","halfling"],
-	"enemy":["cyborg"],
-	"base_name":[" lands"," wasteland"," zone"],
-	"name_prefix":["robotic","nanite","nanite-infested","steel","rusted"],
-	"enemies":["elemental","scorpion","nanite_slime","robot","drone","mech","cyborg"],
-	"enemy_amount":[2,3],
-	"cities":[
-		{
-			"base":["city","town"],
-			"prefix":["scrap","rust","steel","deviance","synth","steam"],
-			"type":["town"],
-		},
-		{
-			"base":["keep","fort","hold"],
-			"prefix":["scrap","rust","steel","deviance","synth","steam"],
-			"type":["castle"],
-		},
-		{
-			"base":["spire","watch"],
-			"prefix":["scrap","rust","steel","synth","steam"],
-			"type":["outpost"],
-		},
+	"level": 30,
+	"tier": 0,
+	"setting": "cyberpunk",
+	"race": [
+		"human",
+		"halfling"
 	],
-	"locations":[
-		{
-			"base":["scrapyard","yard","field"],
-			"prefix":["rust","iron","steel","titanium","nanite","robotic ","lifeless "],
-			"type":["field"],
-		},
-		{
-			"base":["pit","hole"],
-			"prefix":["scrap","rust","iron","steel","titanium","nanite","robotic "],
-			"type":["cave"],
-		},
-		{
-			"base":["forest","woods"],
-			"prefix":["scrap","rust","iron","steel","titanium","nanite","robotic ","artificial "],
-			"type":["forest"],
-		},
-		{
-			"base":["hive","complex"],
-			"prefix":["scrap","rust","iron","steel","titanium","nanite","robotic "],
-			"type":["factory"],
-		},
+	"enemy": [
+		"cyborg"
 	],
-	"enchantment_chance":0.2,
-	"resources":["moss","herb","carrot","wood","pebble","stone","scrap","ore","ingot","cotton","silk","gem"],
-	"resource_chance":0.1,
-	"resource_amount":[1,4],
-	"local_materials":{
-		"wood":[
+	"base_name": [
+		" lands",
+		" wasteland",
+		" zone"
+	],
+	"name_prefix": [
+		"robotic",
+		"nanite",
+		"nanite-infested",
+		"steel",
+		"rusted"
+	],
+	"tags": [
+		"sci-fi",
+		"artificial",
+		"ruins",
+		"river",
+		"hhumid"
+	],
+	"enemies": [
+		"elemental",
+		"scorpion",
+		"nanite_slime",
+		"robot",
+		"drone",
+		"mech",
+		"cyborg"
+	],
+	"enemy_amount": [
+		2,
+		3
+	],
+	"cities": [
+		{
+			"base": [
+				"city",
+				"town"
+			],
+			"prefix": [
+				"scrap",
+				"rust",
+				"steel",
+				"deviance",
+				"synth",
+				"steam"
+			],
+			"type": [
+				"town"
+			]
+		},
+		{
+			"base": [
+				"keep",
+				"fort",
+				"hold"
+			],
+			"prefix": [
+				"scrap",
+				"rust",
+				"steel",
+				"deviance",
+				"synth",
+				"steam"
+			],
+			"type": [
+				"castle"
+			]
+		},
+		{
+			"base": [
+				"spire",
+				"watch"
+			],
+			"prefix": [
+				"scrap",
+				"rust",
+				"steel",
+				"synth",
+				"steam"
+			],
+			"type": [
+				"outpost"
+			]
+		}
+	],
+	"locations": [
+		{
+			"base": [
+				"scrapyard",
+				"yard",
+				"field"
+			],
+			"prefix": [
+				"rust",
+				"iron",
+				"steel",
+				"titanium",
+				"nanite",
+				"robotic ",
+				"lifeless "
+			],
+			"type": [
+				"field"
+			]
+		},
+		{
+			"base": [
+				"pit",
+				"hole"
+			],
+			"prefix": [
+				"scrap",
+				"rust",
+				"iron",
+				"steel",
+				"titanium",
+				"nanite",
+				"robotic "
+			],
+			"type": [
+				"cave"
+			]
+		},
+		{
+			"base": [
+				"forest",
+				"woods"
+			],
+			"prefix": [
+				"scrap",
+				"rust",
+				"iron",
+				"steel",
+				"titanium",
+				"nanite",
+				"robotic ",
+				"artificial "
+			],
+			"type": [
+				"forest"
+			]
+		},
+		{
+			"base": [
+				"hive",
+				"complex"
+			],
+			"prefix": [
+				"scrap",
+				"rust",
+				"iron",
+				"steel",
+				"titanium",
+				"nanite",
+				"robotic "
+			],
+			"type": [
+				"factory"
+			]
+		}
+	],
+	"enchantment_chance": 0.2,
+	"resources": [
+		"moss",
+		"herb",
+		"carrot",
+		"wood",
+		"pebble",
+		"stone",
+		"scrap",
+		"ore",
+		"ingot",
+		"cotton",
+		"silk",
+		"gem"
+	],
+	"resource_chance": 0.1,
+	"resource_amount": [
+		1,
+		4
+	],
+	"local_materials": {
+		"wood": [
 			{
-				"name":"cedar",
-				"quality":0.75,
+				"name": "cedar",
+				"quality": 0.75
 			},
 			{
-				"name":"oak",
-				"quality":1.0,
+				"name": "oak",
+				"quality": 1.0
 			},
 			{
-				"name":"steelwood",
-				"quality":1.25,
-				"add":{
+				"name": "steelwood",
+				"quality": 1.25,
+				"add": {
 					"armour":2,
-					"resistance":{
-						"cutting":0.04,
-						"piercing":0.04,
-						"impact":0.04,
-					},
-				},
-			},
+					"resistance": {
+						"cutting": 0.04,
+						"piercing": 0.04,
+						"impact": 0.04
+					}
+				}
+			}
 		],
-		"metal":[
+		"metal": [
 			{
-				"name":"aluminum",
-				"quality":0.75,
+				"name": "aluminum",
+				"quality": 0.75
 			},
 			{
-				"name":"iron",
-				"quality":1.0,
+				"name": "iron",
+				"quality": 1.0
 			},
 			{
-				"name":"titanium",
-				"quality":1.25,
-				"add":{
-					"resistance":{
-						"cutting":0.04,
-						"piercing":0.04,
-						"impact":0.04,
-					},
-				},
-			},
+				"name": "titanium",
+				"quality": 1.25,
+				"add": {
+					"resistance": {
+						"cutting": 0.04,
+						"piercing": 0.04,
+						"impact": 0.04
+					}
+				}
+			}
 		],
-		"leather":[
+		"leather": [
 			{
-				"name":"leather",
-				"quality":0.75,
+				"name": "leather",
+				"quality": 0.75
 			},
 			{
-				"name":"polymere",
-				"quality":1.0,
+				"name": "polymere",
+				"quality": 1.0
 			},
 			{
-				"name":"synth skin",
-				"quality":1.25,
-				"add":{
-					"accuracy":0.5,
-					"evasion":0.5,
-				},
-			},
+				"name": "synth skin",
+				"quality": 1.25,
+				"add": {
+					"accuracy": 0.5,
+					"evasion": 0.5
+				}
+			}
 		],
-		"cloth":[
+		"cloth": [
 			{
-				"name":"wool",
-				"quality":0.75,
+				"name": "wool",
+				"quality": 0.75
 			},
 			{
-				"name":"polyester",
-				"quality":1.0,
+				"name": "polyester",
+				"quality": 1.0
 			},
 			{
-				"name":"aramid",
-				"quality":1.25,
-				"add":{
-					"willpower":0.5,
-					"resistance":{
-						"fire":0.07,
-					},
-				},
-			},
+				"name": "aramid",
+				"quality": 1.25,
+				"add": {
+					"willpower": 0.5,
+					"resistance": {
+						"fire": 0.07
+					}
+				}
+			}
 		],
-		"stone":[
+		"stone": [
 			{
-				"name":"scrap",
-				"quality":0.75,
+				"name": "scrap",
+				"quality": 0.75
 			},
 			{
-				"name":"graphite",
-				"quality":1.0,
+				"name": "graphite",
+				"quality": 1.0
 			},
 			{
-				"name":"granite",
-				"quality":1.25,
-				"add":{
-					"resistance":{
-						"cutting":0.04,
-						"piercing":0.04,
-						"impact":0.04,
-					},
-				},
-			},
+				"name": "granite",
+				"quality": 1.25,
+				"add": {
+					"resistance": {
+						"cutting": 0.04,
+						"piercing": 0.04,
+						"impact": 0.04
+					}
+				}
+			}
 		],
-		"gem":[
+		"gem": [
 			{
-				"name":"turquoise",
-				"quality":0.75,
+				"name": "turquoise",
+				"quality": 0.75
 			},
 			{
-				"name":"garnet",
-				"quality":1.0,
+				"name": "garnet",
+				"quality": 1.0
 			},
 			{
-				"name":"sapphire",
-				"quality":1.25,
-				"add":{
-					"attack":1,
-					"damage":{
-						"cutting":0.03,
-						"piercing":0.03,
-						"impact":0.03,
-					},
-				},
-			},
+				"name": "sapphire",
+				"quality": 1.25,
+				"add": {
+					"attack": 1,
+					"damage": {
+						"cutting": 0.03,
+						"piercing": 0.03,
+						"impact": 0.03
+					}
+				}
+			}
 		],
-		"alchemy":[
+		"alchemy": [
 			{
-				"name":"brown",
-				"quality":0.75,
+				"name": "brown",
+				"quality": 0.75
 			},
 			{
-				"name":"iron",
-				"quality":1.0,
+				"name": "iron",
+				"quality": 1.0
 			},
 			{
-				"name":"synthetic",
-				"quality":1.25,
-			},
+				"name": "synthetic",
+				"quality": 1.25
+			}
 		],
-		"cooking":[
+		"cooking": [
 			{
-				"name":"dried",
-				"quality":0.75,
+				"name": "dried",
+				"quality": 0.75
 			},
 			{
-				"name":"rehydrated",
-				"quality":1.0,
+				"name": "rehydrated",
+				"quality": 1.0
 			},
 			{
-				"name":"artificial",
-				"quality":1.25,
-			},
-		],
-	},
+				"name": "artificial",
+				"quality": 1.25
+			}
+		]
+	}
 }

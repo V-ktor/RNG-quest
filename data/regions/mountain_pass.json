@@ -1,171 +1,328 @@
 {
-	"level":22,
-	"tier":0,
-	"race":["human"],
-	"enemy":["orc","gnoll","undead"],
-	"base_name":["pass","road","hills"],
-	"name_prefix":["mountain","frost","frozen ","glacier"],
-	"enemies":["elemental","yeti","goblin","gnoll","drake","elemental_wolf"],
-	"enemy_amount":[1,3],
-	"cities":[
-		{
-			"base":["settlement","inn"],
-			"prefix":["frozen ","cozy ","winter","frost","warm "],
-			"type":["settlement"],
-		},
-		{
-			"base":["keep","wall"],
-			"prefix":["frozen ","winter","frost","rock"],
-			"type":["outpost"],
-		},
-		{
-			"base":["well"],
-			"prefix":["spring","winter","frost"],
-			"type":["town"],
-		},
+	"level": 22,
+	"tier": 0,
+	"setting": "fantasy",
+	"race": [
+		"human"
 	],
-	"locations":[
-		{
-			"base":["cave"],
-			"prefix":["dangerous ","deadly ","frozen ","glacial ","glazier","white ","ice","frost","frostbite "],
-			"type":["cave"],
-			"enemies":["elemental","zombie","ghoul","skeleton","bat","spider"],
-			"resources":["pebble","stone","ore","ingot","gem","mushroom"],
-		},
-		{
-			"base":["mountain","hills","peak"],
-			"prefix":["dangerous ","deadly ","frozen ","glacial ","glazier","white ","ice","frost","frostbite "],
-			"type":["mountain"],
-		},
-		{
-			"base":["glacier"],
-			"prefix":["dangerous ","deadly ","white ","cyan ","frost","frostbite "],
-			"type":["mountain"],
-		},
-		{
-			"base":["forest"],
-			"prefix":["dangerous ","deadly ","frozen ","glacial ","glazier","white ","ice","frost","frostbite "],
-			"type":["forest"],
-			"enemies":["wolf","strong_wolf","elemental_wolf","boar","golem","troll","plant"],
-			"resources":["flower","wood","plank","cotton","mushroom"],
-		},
+	"enemy": [
+		"orc",
+		"gnoll",
+		"undead"
 	],
-	"enchantment_chance":0.1,
-	"resources":["carrot","wood","plank","pebble","ore","cotton","cloth","mushroom"],
-	"resource_chance":0.1,
-	"resource_amount":[1,4],
-	"local_materials":{
-		"wood":[
+	"base_name": [
+		"pass",
+		"road",
+		"hills"
+	],
+	"name_prefix": [
+		"mountain",
+		"frost",
+		"frozen ",
+		"glacier"
+	],
+	"tags": [
+		"fantasy",
+		"mountains",
+		"snow",
+		"cold",
+		"trading"
+	],
+	"enemies": [
+		"elemental",
+		"yeti",
+		"goblin",
+		"gnoll",
+		"drake",
+		"elemental_wolf"
+	],
+	"enemy_amount": [
+		1,
+		3
+	],
+	"cities": [
+		{
+			"base": [
+				"settlement",
+				"inn"
+			],
+			"prefix": [
+				"frozen ",
+				"cozy ",
+				"winter",
+				"frost",
+				"warm "
+			],
+			"type": [
+				"settlement"
+			]
+		},
+		{
+			"base": [
+				"keep",
+				"wall"
+			],
+			"prefix": [
+				"frozen ",
+				"winter",
+				"frost",
+				"rock"
+			],
+			"type": [
+				"outpost"
+			]
+		},
+		{
+			"base": [
+				"well"
+			],
+			"prefix": [
+				"spring",
+				"winter",
+				"frost"
+			],
+			"type": [
+				"town"
+			]
+		}
+	],
+	"locations": [
+		{
+			"base": [
+				"cave"
+			],
+			"prefix": [
+				"dangerous ",
+				"deadly ",
+				"frozen ",
+				"glacial ",
+				"glazier",
+				"white ",
+				"ice",
+				"frost",
+				"frostbite "
+			],
+			"type": [
+				"cave"
+			],
+			"enemies": [
+				"elemental",
+				"zombie",
+				"ghoul",
+				"skeleton",
+				"bat",
+				"spider"
+			],
+			"resources": [
+				"pebble",
+				"stone",
+				"ore",
+				"ingot",
+				"gem",
+				"mushroom"
+			]
+		},
+		{
+			"base": [
+				"mountain",
+				"hills",
+				"peak"
+			],
+			"prefix": [
+				"dangerous ",
+				"deadly ",
+				"frozen ",
+				"glacial ",
+				"glazier",
+				"white ",
+				"ice",
+				"frost",
+				"frostbite "
+			],
+			"type": [
+				"mountain"
+			]
+		},
+		{
+			"base": [
+				"glacier"
+			],
+			"prefix": [
+				"dangerous ",
+				"deadly ",
+				"white ",
+				"cyan ",
+				"frost",
+				"frostbite "
+			],
+			"type": [
+				"mountain"
+			]
+		},
+		{
+			"base": [
+				"forest"
+			],
+			"prefix": [
+				"dangerous ",
+				"deadly ",
+				"frozen ",
+				"glacial ",
+				"glazier",
+				"white ",
+				"ice",
+				"frost",
+				"frostbite "
+			],
+			"type": [
+				"forest"
+			],
+			"enemies": [
+				"wolf",
+				"strong_wolf",
+				"elemental_wolf",
+				"boar",
+				"golem",
+				"troll",
+				"plant"
+			],
+			"resources": [
+				"flower",
+				"wood",
+				"plank",
+				"cotton",
+				"mushroom"
+			]
+		}
+	],
+	"enchantment_chance": 0.1,
+	"resources": [
+		"carrot",
+		"wood",
+		"plank",
+		"pebble",
+		"ore",
+		"cotton",
+		"cloth",
+		"mushroom"
+	],
+	"resource_chance": 0.1,
+	"resource_amount": [
+		1,
+		4
+	],
+	"local_materials": {
+		"wood": [
 			{
-				"name":"cedar",
-				"quality":0.75,
+				"name": "cedar",
+				"quality": 0.75
 			},
 			{
-				"name":"pine",
-				"quality":1.0,
+				"name": "pine",
+				"quality": 1.0
 			},
 			{
-				"name":"frost wood",
-				"quality":1.25,
-			},
+				"name": "frost wood",
+				"quality": 1.25
+			}
 		],
-		"metal":[
+		"metal": [
 			{
-				"name":"bronze",
-				"quality":0.75,
+				"name": "bronze",
+				"quality": 0.75
 			},
 			{
-				"name":"steel",
-				"quality":1.0,
+				"name": "steel",
+				"quality": 1.0
 			},
 			{
-				"name":"silver",
-				"quality":1.25,
-			},
+				"name": "silver",
+				"quality": 1.25
+			}
 		],
-		"leather":[
+		"leather": [
 			{
-				"name":"frozen hide",
-				"quality":0.75,
+				"name": "frozen hide",
+				"quality": 0.75
 			},
 			{
-				"name":"leather",
-				"quality":1.0,
+				"name": "leather",
+				"quality": 1.0
 			},
 			{
-				"name":"frost leather",
-				"quality":1.25,
-			},
+				"name": "frost leather",
+				"quality": 1.25
+			}
 		],
-		"cloth":[
+		"cloth": [
 			{
-				"name":"linen",
-				"quality":0.75,
+				"name": "linen",
+				"quality": 0.75
 			},
 			{
-				"name":"wool",
-				"quality":1.0,
+				"name": "wool",
+				"quality": 1.0
 			},
 			{
-				"name":"polyester",
-				"quality":1.25,
-			},
+				"name": "polyester",
+				"quality": 1.25
+			}
 		],
-		"stone":[
+		"stone": [
 			{
-				"name":"graphite",
-				"quality":0.75,
+				"name": "graphite",
+				"quality": 0.75
 			},
 			{
-				"name":"rock",
-				"quality":1.0,
+				"name": "rock",
+				"quality": 1.0
 			},
 			{
-				"name":"granite",
-				"quality":1.25,
-			},
+				"name": "granite",
+				"quality": 1.25
+			}
 		],
-		"gem":[
+		"gem": [
 			{
-				"name":"quartz",
-				"quality":0.75,
+				"name": "quartz",
+				"quality": 0.75
 			},
 			{
-				"name":"sapphire",
-				"quality":1.0,
+				"name": "sapphire",
+				"quality": 1.0
 			},
 			{
-				"name":"diamond",
-				"quality":1.25,
-			},
+				"name": "diamond",
+				"quality": 1.25
+			}
 		],
-		"alchemy":[
+		"alchemy": [
 			{
-				"name":"frostbearer",
-				"quality":0.75,
+				"name": "frostbearer",
+				"quality": 0.75
 			},
 			{
-				"name":"sour",
-				"quality":1.0,
+				"name": "sour",
+				"quality": 1.0
 			},
 			{
-				"name":"cooling",
-				"quality":1.25,
-			},
+				"name": "cooling",
+				"quality": 1.25
+			}
 		],
-		"cooking":[
+		"cooking": [
 			{
-				"name":"frost",
-				"quality":0.75,
+				"name": "frost",
+				"quality": 0.75
 			},
 			{
-				"name":"white",
-				"quality":1.0,
+				"name": "white",
+				"quality": 1.0
 			},
 			{
-				"name":"glacial",
-				"quality":1.25,
-			},
-		],
-	},
+				"name": "glacial",
+				"quality": 1.25
+			}
+		]
+	}
 }

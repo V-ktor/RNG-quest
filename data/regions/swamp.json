@@ -1,171 +1,331 @@
 {
-	"level":22,
-	"tier":0,
-	"race":["elf","halfling"],
-	"enemy":["orc","gnoll","undead"],
-	"base_name":["swamp","badlands"],
-	"name_prefix":["humid ","toxic ","poison","orcish ","polluted ","backwater"],
-	"enemies":["elemental","zombie","ghoul","skeleton","orc","plant","snap_turtle"],
-	"enemy_amount":[1,3],
-	"cities":[
-		{
-			"base":[" settlement"," outpost"],
-			"prefix":["cleansed","clean","ruined","run-down","wet"],
-			"type":["settlement"],
-		},
-		{
-			"base":[" town"," city ruins"],
-			"prefix":["cleansed","clean","ruined","run-down","wet"],
-			"type":["town"],
-		},
-		{
-			"base":["post","keep","ruins"],
-			"prefix":["poison","swamp","clearwater "],
-			"type":["castle"],
-		},
+	"level": 22,
+	"tier": 0,
+	"setting": "fantasy",
+	"race": [
+		"elf",
+		"halfling"
 	],
-	"locations":[
-		{
-			"base":["swamp"],
-			"prefix":["dangerous ","deadly ","poison","backwater","purple","dark","pulp"],
-			"type":["swamp"],
-		},
-		{
-			"base":["forest"],
-			"prefix":["dead ","deadly ","poisonous ","purple","dark","rot","decaying "],
-			"type":["forest"],
-			"resources":["moss","wood","plank","herb","mushroom","root"],
-		},
-		{
-			"base":["river"],
-			"prefix":["dangerous ","deadly ","poisonous ","backwater","purple","dark","pulp"],
-			"type":["river"],
-			"enemies":["crab","zombie","ghoul","skeleton","troll","orc"],
-			"resources":["herb","flower","cabbage","wood","cotton","pebble"],
-		},
-		{
-			"base":["lake","pond"],
-			"prefix":["death","deadly ","poison","backwater","purple","dark ","pulp"],
-			"type":["sea"],
-			"enemies":["elemental","crab","zombie","ghoul","skeleton","orc","snap_turtle"],
-		},
+	"enemy": [
+		"orc",
+		"gnoll",
+		"undead"
 	],
-	"enchantment_chance":0.1,
-	"resources":["flower","herb","cabbage","mushroom","root","wood","pebble","ore","cotton"],
-	"resource_chance":0.1,
-	"resource_amount":[1,4],
-	"local_materials":{
-		"wood":[
+	"base_name": [
+		"swamp",
+		"badlands"
+	],
+	"name_prefix": [
+		"humid ",
+		"toxic ",
+		"poison",
+		"orcish ",
+		"polluted ",
+		"backwater"
+	],
+	"tags": [
+		"fantasy",
+		"grim",
+		"toxic",
+		"swamp",
+		"humid"
+	],
+	"enemies": [
+		"elemental",
+		"zombie",
+		"ghoul",
+		"skeleton",
+		"orc",
+		"plant",
+		"snap_turtle"
+	],
+	"enemy_amount": [
+		1,
+		3
+	],
+	"cities": [
+		{
+			"base": [
+				" settlement",
+				" outpost"
+			],
+			"prefix": [
+				"cleansed",
+				"clean",
+				"ruined",
+				"run-down",
+				"wet"
+			],
+			"type": [
+				"settlement"
+			]
+		},
+		{
+			"base": [
+				" town",
+				" city ruins"
+			],
+			"prefix": [
+				"cleansed",
+				"clean",
+				"ruined",
+				"run-down",
+				"wet"
+			],
+			"type": [
+				"town"
+			]
+		},
+		{
+			"base": [
+				"post",
+				"keep",
+				"ruins"
+			],
+			"prefix": [
+				"poison",
+				"swamp",
+				"clearwater "
+			],
+			"type": [
+				"castle"
+			]
+		}
+	],
+	"locations": [
+		{
+			"base": [
+				"swamp"
+			],
+			"prefix": [
+				"dangerous ",
+				"deadly ",
+				"poison",
+				"backwater",
+				"purple",
+				"dark",
+				"pulp"
+			],
+			"type": [
+				"swamp"
+			]
+		},
+		{
+			"base": [
+				"forest"
+			],
+			"prefix": [
+				"dead ",
+				"deadly ",
+				"poisonous ",
+				"purple",
+				"dark",
+				"rot",
+				"decaying "
+			],
+			"type": [
+				"forest"
+			],
+			"resources": [
+				"moss",
+				"wood",
+				"plank",
+				"herb",
+				"mushroom",
+				"root"
+			]
+		},
+		{
+			"base": [
+				"river"
+			],
+			"prefix": [
+				"dangerous ",
+				"deadly ",
+				"poisonous ",
+				"backwater",
+				"purple",
+				"dark",
+				"pulp"
+			],
+			"type": [
+				"river"
+			],
+			"enemies": [
+				"crab",
+				"zombie",
+				"ghoul",
+				"skeleton",
+				"troll",
+				"orc"
+			],
+			"resources": [
+				"herb",
+				"flower",
+				"cabbage",
+				"wood",
+				"cotton",
+				"pebble"
+			]
+		},
+		{
+			"base": [
+				"lake",
+				"pond"
+			],
+			"prefix": [
+				"death",
+				"deadly ",
+				"poison",
+				"backwater",
+				"purple",
+				"dark ",
+				"pulp"
+			],
+			"type": [
+				"sea"
+			],
+			"enemies": [
+				"elemental",
+				"crab",
+				"zombie",
+				"ghoul",
+				"skeleton",
+				"orc",
+				"snap_turtle"
+			]
+		}
+	],
+	"enchantment_chance": 0.1,
+	"resources": [
+		"flower",
+		"herb",
+		"cabbage",
+		"mushroom",
+		"root",
+		"wood",
+		"pebble",
+		"ore",
+		"cotton"
+	],
+	"resource_chance": 0.1,
+	"resource_amount": [
+		1,
+		4
+	],
+	"local_materials": {
+		"wood": [
 			{
 				"name":"rotten",
-				"quality":0.75,
+				"quality": 0.75
 			},
 			{
 				"name":"bamboo",
-				"quality":1.0,
+				"quality": 1.0
 			},
 			{
 				"name":"green cedar",
-				"quality":1.25,
-			},
+				"quality": 1.25
+			}
 		],
-		"metal":[
+		"metal": [
 			{
 				"name":"silicon",
-				"quality":0.75,
+				"quality": 0.75
 			},
 			{
 				"name":"iron",
-				"quality":1.0,
+				"quality": 1.0
 			},
 			{
 				"name":"shadow steel",
-				"quality":1.25,
-			},
+				"quality": 1.25
+			}
 		],
-		"leather":[
+		"leather": [
 			{
 				"name":"rotten",
-				"quality":0.75,
+				"quality": 0.75
 			},
 			{
 				"name":"rough",
-				"quality":1.0,
+				"quality": 1.0
 			},
 			{
 				"name":"necrotic",
-				"quality":1.25,
-			},
+				"quality": 1.25
+			}
 		],
-		"cloth":[
+		"cloth": [
 			{
 				"name":"rotten",
-				"quality":0.75,
+				"quality": 0.75
 			},
 			{
 				"name":"linen",
-				"quality":1.0,
+				"quality": 1.0
 			},
 			{
 				"name":"swamp silk",
-				"quality":1.25,
-			},
+				"quality": 1.25
+			}
 		],
-		"stone":[
+		"stone": [
 			{
 				"name":"mud",
-				"quality":0.75,
+				"quality": 0.75
 			},
 			{
 				"name":"sand",
-				"quality":1.0,
+				"quality": 1.0
 			},
 			{
 				"name":"basalt",
-				"quality":1.25,
-			},
+				"quality": 1.25
+			}
 		],
-		"gem":[
+		"gem": [
+
 			{
 				"name":"turquoise",
-				"quality":0.75,
+				"quality": 0.75
 			},
 			{
 				"name":"black",
-				"quality":1.0,
+				"quality": 1.0
 			},
 			{
 				"name":"hematite",
-				"quality":1.25,
-			},
+				"quality": 1.25
+			}
 		],
-		"alchemy":[
+		"alchemy": [
 			{
 				"name":"swamp",
-				"quality":0.75,
+				"quality": 0.75
 			},
 			{
 				"name":"necrotic",
-				"quality":1.0,
+				"quality": 1.0
 			},
 			{
 				"name":"cleansing",
-				"quality":1.25,
-			},
+				"quality": 1.25
+			}
 		],
-		"cooking":[
+		"cooking": [
 			{
 				"name":"swamp",
-				"quality":0.75,
+				"quality": 0.75
 			},
 			{
 				"name":"clean",
-				"quality":1.0,
+				"quality": 1.0
 			},
 			{
 				"name":"wine",
-				"quality":1.25,
-			},
-		],
-	},
+				"quality": 1.25
+			}
+		]
+	}
 }

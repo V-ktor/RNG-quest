@@ -1,216 +1,371 @@
 {
-	"level":30,
-	"tier":0,
-	"race":["human","elf","dwarf"],
-	"enemy":["undead"],
-	"base_name":[" lands"," wasteland"," netherland","area"],
-	"name_prefix":["forbidden","necrotic","vampire","infested","undead","revenant"],
-	"enemies":["shadow_elemental","zombie","ghoul","skeleton","vampire","spirit","ghost"],
-	"enemy_amount":[2,3],
-	"cities":[
-		{
-			"base":["keep","fortress","hold"],
-			"prefix":["crimson","shadow","blessed "],
-			"type":["castle"],
-		},
-		{
-			"base":["citadel","chapel","town"],
-			"prefix":["holy ","unholy ","sacred ","last "],
-			"type":["town"],
-		},
-		{
-			"base":["shelter","town"],
-			"prefix":["holy ","unholy ","sacred ","last "],
-			"type":["settlement"],
-		},
-		{
-			"base":["shelter","chapel","bastion"],
-			"suffix":[" of Light"," of Life"," of the Savior"],
-			"type":["town"],
-		},
+	"level": 30,
+	"tier": 0,
+	"setting": "dark fantasy",
+	"race": [
+		"human",
+		"elf",
+		"dwarf"
 	],
-	"locations":[
-		{
-			"base":["river"],
-			"prefix":["pitch black ","infested ","necrotic ","deadly ","blood","crimson ","poison"],
-			"type":["river"],
-			"enemies":["shadow_elemental","zombie","ghoul","skeleton","imp","undead_shark"],
-		},
-		{
-			"base":["woods"],
-			"prefix":["black","infested ","cursed ","necrotic ","deadly ","blood","crimson"],
-			"type":["forest"],
-		},
-		{
-			"base":["pit","dungeon","hole"],
-			"prefix":["pitch black ","infested ","undead ","necrotic ","deadly ","blood","crimson","death","ruined "],
-			"type":["cave"],
-		},
-		{
-			"base":["field","yard","graveyard"],
-			"prefix":["pitch black ","infested ","undead ","necrotic ","deadly ","blood","crimson","necro"],
-			"type":["graveyard"],
-		},
+	"enemy": [
+		"undead"
 	],
-	"enchantment_chance":0.2,
-	"resources":["mold","moss","mushroom","wood","pebble","ore","cotton","gem","jewel"],
-	"resource_chance":0.1,
-	"resource_amount":[1,4],
-	"local_materials":{
-		"wood":[
+	"base_name": [
+		" lands",
+		" wasteland",
+		" netherland",
+		"area"
+	],
+	"name_prefix": [
+		"forbidden",
+		"necrotic",
+		"vampire",
+		"infested",
+		"undead",
+		"revenant"
+	],
+	"tags": [
+		"fantasy",
+		"grim",
+		"necrotic",
+		"haunted",
+		"river",
+		"humid",
+		"swamp"
+	],
+	"enemies": [
+		"shadow_elemental",
+		"zombie",
+		"ghoul",
+		"skeleton",
+		"vampire",
+		"spirit",
+		"ghost"
+	],
+	"enemy_amount": [
+		2,
+		3
+	],
+	"cities": [
+		{
+			"base": [
+				"keep",
+				"fortress",
+				"hold"
+			],
+			"prefix": [
+				"crimson",
+				"shadow",
+				"blessed "
+			],
+			"type": [
+				"castle"
+			]
+		},
+		{
+			"base": [
+				"citadel",
+				"chapel",
+				"town"
+			],
+			"prefix": [
+				"holy ",
+				"unholy ",
+				"sacred ",
+				"last "
+			],
+			"type": [
+				"town"
+			]
+		},
+		{
+			"base": [
+				"shelter",
+				"town"
+			],
+			"prefix": [
+				"holy ",
+				"unholy ",
+				"sacred ",
+				"last "
+			],
+			"type": [
+				"settlement"
+			]
+		},
+		{
+			"base": [
+				"shelter",
+				"chapel",
+				"bastion"
+			],
+			"suffix": [
+				" of Light",
+				" of Life",
+				" of the Savior"
+			],
+			"type": [
+				"town"
+			]
+		}
+	],
+	"locations": [
+		{
+			"base": [
+				"river"
+			],
+			"prefix": [
+				"pitch black ",
+				"infested ",
+				"necrotic ",
+				"deadly ",
+				"blood",
+				"crimson ",
+				"poison"
+			],
+			"type": [
+				"river"
+			],
+			"enemies": [
+				"shadow_elemental",
+				"zombie",
+				"ghoul",
+				"skeleton",
+				"imp",
+				"undead_shark"
+			]
+		},
+		{
+			"base": [
+				"woods"
+			],
+			"prefix": [
+				"black",
+				"infested ",
+				"cursed ",
+				"necrotic ",
+				"deadly ",
+				"blood",
+				"crimson"
+			],
+			"type": [
+				"forest"
+			]
+		},
+		{
+			"base": [
+				"pit",
+				"dungeon",
+				"hole"
+			],
+			"prefix": [
+				"pitch black ",
+				"infested ",
+				"undead ",
+				"necrotic ",
+				"deadly ",
+				"blood",
+				"crimson",
+				"death",
+				"ruined "
+			],
+			"type": [
+				"cave"
+			]
+		},
+		{
+			"base": [
+				"field",
+				"yard",
+				"graveyard"
+			],
+			"prefix": [
+				"pitch black ",
+				"infested ",
+				"undead ",
+				"necrotic ",
+				"deadly ",
+				"blood",
+				"crimson",
+				"necro"
+			],
+			"type": [
+				"graveyard"
+			]
+		}
+	],
+	"enchantment_chance": 0.2,
+	"resources": [
+		"mold",
+		"moss",
+		"mushroom",
+		"wood",
+		"pebble",
+		"ore",
+		"cotton",
+		"gem",
+		"jewel"
+	],
+	"resource_chance": 0.1,
+	"resource_amount": [
+		1,
+		4
+	],
+	"local_materials": {
+		"wood": [
 			{
-				"name":"rotten",
-				"quality":0.75,
+				"name": "rotten",
+				"quality": 0.75
 			},
 			{
-				"name":"bamboo",
-				"quality":1.0,
+				"name": "bamboo",
+				"quality":1.0
 			},
 			{
-				"name":"black cedar",
+				"name": "black cedar",
 				"quality":1.25,
-				"add":{
+				"add": {
 					"health_regen":2.5,
-					"resistance":{
-						"darkness":0.05,
+					"resistance": {
+						"darkness": 0.05
 					},
-					"damage":{
-						"darkness":0.04,
-					},
-				},
-			},
+					"damage": {
+						"darkness": 0.04
+					}
+				}
+			}
 		],
-		"metal":[
+		"metal": [
 			{
-				"name":"silicon",
-				"quality":0.75,
+				"name": "silicon",
+				"quality": 0.75
 			},
 			{
-				"name":"iron",
-				"quality":1.0,
+				"name": "iron",
+				"quality":1.0
 			},
 			{
-				"name":"shadow steel",
+				"name": "shadow steel",
 				"quality":1.25,
-				"add":{
+				"add": {
 					"health_regen":2.5,
-					"resistance":{
-						"darkness":0.05,
+					"resistance": {
+						"darkness": 0.05
 					},
-					"damage":{
-						"darkness":0.04,
-					},
-				},
-			},
+					"damage": {
+						"darkness": 0.04
+					}
+				}
+			}
 		],
-		"leather":[
+		"leather": [
 			{
-				"name":"rotten",
-				"quality":0.75,
+				"name": "rotten",
+				"quality": 0.75
 			},
 			{
-				"name":"rough",
-				"quality":1.0,
+				"name": "rough",
+				"quality":1.0
 			},
 			{
-				"name":"necrotic",
+				"name": "necrotic",
 				"quality":1.25,
-				"add":{
-					"attack":0.5,
-					"magic":0.5,
-				},
-			},
+				"add": {
+					"attack": 0.5,
+					"magic": 0.5
+				}
+			}
 		],
-		"cloth":[
+		"cloth": [
 			{
-				"name":"rotten",
-				"quality":0.75,
+				"name": "rotten",
+				"quality": 0.75
 			},
 			{
-				"name":"linen",
-				"quality":1.0,
+				"name": "linen",
+				"quality":1.0
 			},
 			{
-				"name":"black silk",
+				"name": "black silk",
 				"quality":1.25,
-				"add":{
-					"magic":0.4,
-					"willpower":0.4,
-					"resistance":{
-						"darkness":0.04,
+				"add": {
+					"magic": 0.4,
+					"willpower": 0.4,
+					"resistance": {
+						"darkness": 0.04
 					},
-					"damage":{
-						"darkness":0.03,
-					},
-				},
-			},
+					"damage": {
+						"darkness": 0.03
+					}
+				}
+			}
 		],
-		"stone":[
+		"stone": [
 			{
-				"name":"graphite",
-				"quality":0.75,
+				"name": "graphite",
+				"quality": 0.75
 			},
 			{
-				"name":"sand",
-				"quality":1.0,
+				"name": "sand",
+				"quality":1.0
 			},
 			{
-				"name":"basalt",
+				"name": "basalt",
 				"quality":1.25,
-				"add":{
-					"attack":0.4,
-					"magic":0.4,
-					"damage":{
-						"fire":0.05,
-					},
-				},
-			},
+				"add": {
+					"attack": 0.4,
+					"magic": 0.4,
+					"damage": {
+						"fire": 0.05
+					}
+				}
+			}
 		],
-		"gem":[
+		"gem": [
 			{
-				"name":"turquoise",
-				"quality":0.75,
+				"name": "turquoise",
+				"quality": 0.75
 			},
 			{
-				"name":"black",
-				"quality":1.0,
+				"name": "black",
+				"quality":1.0
 			},
 			{
-				"name":"hematite",
+				"name": "hematite",
 				"quality":1.25,
-				"add":{
+				"add": {
 					"health":5,
-					"health_regen":2.5,
-				},
-			},
+					"health_regen":2.5
+				}
+			}
 		],
-		"alchemy":[
+		"alchemy": [
 			{
-				"name":"necrotic",
-				"quality":0.75,
+				"name": "necrotic",
+				"quality": 0.75
 			},
 			{
-				"name":"night",
-				"quality":1.0,
+				"name": "night",
+				"quality":1.0
 			},
 			{
-				"name":"cleansing",
-				"quality":1.25,
-			},
+				"name": "cleansing",
+				"quality":1.25
+			}
 		],
-		"cooking":[
+		"cooking": [
 			{
-				"name":"night",
-				"quality":0.75,
+				"name": "night",
+				"quality": 0.75
 			},
 			{
-				"name":"clean",
-				"quality":1.0,
+				"name": "clean",
+				"quality":1.0
 			},
 			{
-				"name":"wine",
-				"quality":1.25,
-			},
-		],
-	},
+				"name": "wine",
+				"quality":1.25
+			}
+		]
+	}
 }

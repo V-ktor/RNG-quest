@@ -1,169 +1,330 @@
 {
-	"level":10,
-	"tier":0,
-	"race":["human"],
-	"enemy":["gnoll","naga"],
-	"base_name":[" coast"," shoals"," coastline"],
-	"name_prefix":["blue","bright","golden","aquamarine","azur"],
-	"enemies":["elemental","water_elemental","goblin","gnoll","crab","snap_turtle"],
-	"enemy_amount":[1,3],
-	"cities":[
+	"level": 10,
+	"tier": 0,
+	"setting": "idyllic fantasy",
+	"race": [
+		"human"
+	],
+	"enemy": [
+		"gnoll",
+		"naga"
+	],
+	"base_name": [
+		" coast",
+		" shoals",
+		" coastline"
+	],
+	"name_prefix": [
+		"blue",
+		"bright",
+		"golden",
+		"aquamarine",
+		"azur"
+	],
+	"tags": [
+		"fantasy",
+		"idyllic",
+		"ocean",
+		"water",
+		"beach",
+		"warm"
+	],
+	"enemies": [
+		"elemental",
+		"water_elemental",
+		"goblin",
+		"gnoll",
+		"crab",
+		"snap_turtle"
+	],
+	"enemy_amount": [
+		1,
+		3
+	],
+	"cities": [
 		{
-			"base":["town","harbour"],
-			"prefix":["golden ","trading","coast","pearl","dune","quite "],
-			"type":["town"],
+			"base": [
+				"town",
+				"harbour"
+			],
+			"prefix": [
+				"golden ",
+				"trading",
+				"coast",
+				"pearl",
+				"dune",
+				"quite "
+			],
+			"type": [
+				"town"
+			]
 		},
 		{
-			"base":["post"],
-			"prefix":["trading","coastal ","pearl","dune","sea"],
-			"type":["outpost"],
-		},
+			"base": [
+				"post"
+			],
+			"prefix": [
+				"trading",
+				"coastal ",
+				"pearl",
+				"dune",
+				"sea"
+			],
+			"type": [
+				"outpost"
+			]
+		}
 	],
 	"locations":[
 		{
-			"base":["river"],
-			"prefix":["aquamarine","blue","golden ","dangerous ","sandy ","white"],
-			"type":["river"],
-			"enemies":["crab","crab","goblin","hobgoblin","wolf","elemental"],
-			"resources":["herb","flower","wood","gem","pebble"],
+			"base": [
+				"river"
+			],
+			"prefix": [
+				"aquamarine",
+				"blue",
+				"golden ",
+				"dangerous ",
+				"sandy ",
+				"white"
+			],
+			"type": [
+				"river"
+			],
+			"enemies": [
+				"crab",
+				"crab",
+				"goblin",
+				"hobgoblin",
+				"wolf",
+				"elemental"
+			],
+			"resources": [
+				"herb",
+				"flower",
+				"wood",
+				"gem",
+				"pebble"
+			]
 		},
 		{
-			"base":["cavern","cave"],
-			"prefix":["aquamarine","blue","golden ","dangerous ","sandy ","white"],
-			"type":["cave"],
-			"enemies":["elemental","goblin","hobgoblin","gnoll","bat","spider"],
-			"resources":["herb","pebble","ore","gem","mushroom"],
+			"base": [
+				"cavern",
+				"cave"
+			],
+			"prefix": [
+				"aquamarine",
+				"blue",
+				"golden ",
+				"dangerous ",
+				"sandy ",
+				"white"
+			],
+			"type": [
+				"cave"
+			],
+			"enemies": [
+				"elemental",
+				"goblin",
+				"hobgoblin",
+				"gnoll",
+				"bat",
+				"spider"
+			],
+			"resources": [
+				"herb",
+				"pebble",
+				"ore",
+				"gem",
+				"mushroom"
+			]
 		},
 		{
-			"base":["dunes"],
-			"prefix":["aquamarine","blue","golden ","dangerous ","sandy ","white","crab"],
-			"type":["dunes"],
-			"enemies":["goblin","hobgoblin","gnoll","troll","wolf","strong_wolf","bat"],
-			"resources":["pebble","shell","plank","cotton"],
+			"base": [
+				"dunes"
+			],
+			"prefix": [
+				"aquamarine",
+				"blue",
+				"golden ",
+				"dangerous ",
+				"sandy ",
+				"white",
+				"crab"
+			],
+			"type": [
+				"dunes"
+			],
+			"enemies": [
+				"goblin",
+				"hobgoblin",
+				"gnoll",
+				"troll",
+				"wolf",
+				"strong_wolf",
+				"bat"
+			],
+			"resources": [
+				"pebble",
+				"shell",
+				"plank",
+				"cotton"
+			]
 		},
 		{
-			"base":["coast","shoal"],
-			"prefix":["aquamarine","blue","golden ","dangerous ","sandy ","white","crab"],
-			"type":["coast"],
-			"enemies":["elemental","water_elemental","crab","snap_turtle","shark"],
-		},
+			"base": [
+				"coast",
+				"shoal"
+			],
+			"prefix": [
+				"aquamarine",
+				"blue",
+				"golden ",
+				"dangerous ",
+				"sandy ",
+				"white",
+				"crab"
+			],
+			"type": [
+				"coast"
+			],
+			"enemies": [
+				"elemental",
+				"water_elemental",
+				"crab",
+				"snap_turtle",
+				"shark"
+			]
+		}
 	],
-	"enchantment_chance":0.1,
-	"resources":["herb","flower","fruit","wood","pebble","shell","ore","cotton"],
-	"resource_chance":0.1,
-	"resource_amount":[1,3],
-	"local_materials":{
-		"wood":[
+	"enchantment_chance": 0.1,
+	"resources": [
+		"herb",
+		"flower",
+		"fruit",
+		"wood",
+		"pebble",
+		"shell",
+		"ore",
+		"cotton"
+	],
+	"resource_chance": 0.1,
+	"resource_amount": [
+		1,
+		3
+	],
+	"local_materials": {
+		"wood": [
 			{
-				"name":"pine",
-				"quality":0.75,
+				"name": "pine",
+				"quality": 0.75
 			},
 			{
-				"name":"birch",
-				"quality":1.0,
+				"name": "birch",
+				"quality": 1.0
 			},
 			{
-				"name":"oak",
-				"quality":1.25,
-			},
-		],
-		"metal":[
-			{
-				"name":"copper",
-				"quality":0.75,
-			},
-			{
-				"name":"iron",
-				"quality":1.0,
-			},
-			{
-				"name":"steel",
-				"quality":1.25,
+				"name": "oak",
+				"quality": 1.25
 			},
 		],
-		"leather":[
+		"metal": [
 			{
-				"name":"rough",
-				"quality":0.75,
+				"name": "copper",
+				"quality": 0.75
 			},
 			{
-				"name":"reinforced",
-				"quality":1.0,
+				"name": "iron",
+				"quality": 1.0
 			},
 			{
-				"name":"troll hide",
-				"quality":1.25,
-			},
+				"name": "steel",
+				"quality": 1.25
+			}
 		],
-		"cloth":[
+		"leather": [
 			{
-				"name":"wool",
-				"quality":0.75,
+				"name": "rough",
+				"quality": 0.75
 			},
 			{
-				"name":"velvet",
-				"quality":1.0,
+				"name": "reinforced",
+				"quality": 1.0
 			},
 			{
-				"name":"silk",
-				"quality":1.25,
-			},
+				"name": "troll hide",
+				"quality": 1.25
+			}
 		],
-		"stone":[
+		"cloth": [
 			{
-				"name":"rock",
-				"quality":0.75,
+				"name": "wool",
+				"quality": 0.75
 			},
 			{
-				"name":"quartz",
-				"quality":1.0,
+				"name": "velvet",
+				"quality": 1.0
 			},
 			{
-				"name":"crystal",
-				"quality":1.25,
-			},
+				"name": "silk",
+				"quality": 1.25
+			}
 		],
-		"gem":[
+		"stone": [
 			{
-				"name":"quartz",
-				"quality":0.75,
+				"name": "rock",
+				"quality": 0.75
 			},
 			{
-				"name":"sapphire",
-				"quality":1.0,
+				"name": "quartz",
+				"quality": 1.0
 			},
 			{
-				"name":"ruby",
-				"quality":1.25,
-			},
+				"name": "crystal",
+				"quality": 1.25
+			}
 		],
-		"alchemy":[
+		"gem": [
 			{
-				"name":"sour",
-				"quality":0.75,
+				"name": "quartz",
+				"quality": 0.75
 			},
 			{
-				"name":"sweet",
-				"quality":1.0,
+				"name": "sapphire",
+				"quality": 1.0
 			},
 			{
-				"name":"potent",
-				"quality":1.25,
-			},
+				"name": "ruby",
+				"quality": 1.25
+			}
 		],
-		"cooking":[
+		"alchemy": [
 			{
-				"name":"green",
-				"quality":0.75,
+				"name": "sour",
+				"quality": 0.75
 			},
 			{
-				"name":"rasp",
-				"quality":1.0,
+				"name": "sweet",
+				"quality": 1.0
 			},
 			{
-				"name":"wine",
-				"quality":1.25,
-			},
+				"name": "potent",
+				"quality": 1.25
+			}
 		],
-	},
+		"cooking": [
+			{
+				"name": "green",
+				"quality": 0.75
+			},
+			{
+				"name": "rasp",
+				"quality": 1.0
+			},
+			{
+				"name": "wine",
+				"quality": 1.25
+			}
+		]
+	}
 }

@@ -1,180 +1,363 @@
 {
-	"level":1,
-	"tier":-1,
-	"race":["human","halfling"],
-	"enemy":["goblin","gnoll"],
-	"base_name":[" meadows"," farmland"," planes"],
-	"name_prefix":["idylic","peaceful","calm"],
-	"enemies":["elemental","goblin","wolf","boar","plant"],
-	"enemy_amount":[1,2],
-	"cities":[
-		{
-			"base":["town","ville","dale"],
-			"prefix":["spring","summer","autumn","flower"],
-			"type":["settlement","town"],
-		},
-		{
-			"base":[" town"," village"],
-			"prefix":["peaceful","quite","prosperous"],
-			"type":["settlement","town"],
-		},
-		{
-			"base":["post","tower"],
-			"prefix":["spring","summer","autumn","trading"],
-			"type":["camp","outpost"],
-		},
+	"level": 1,
+	"tier": -1,
+	"setting": "idyllic fantasy",
+	"race": [
+		"human",
+		"halfling"
 	],
-	"locations":[
-		{
-			"base":["river"],
-			"prefix":["calm ","grand ","cyan ","safe ","clear "],
-			"type":["river"],
-			"enemies":["crab","wolf","boar"],
-			"resources":["herb","flower","wood","gem","pebble","cotton"],
-		},
-		{
-			"base":["cavern","cave"],
-			"prefix":["calm ","deep ","light-flooded ","safe ","illuminated "],
-			"type":["cave"],
-			"enemies":["goblin","bat","spider","zombie"],
-			"resources":["herb","moss","stone","ore","gem","wood","mushroom"],
-		},
-		{
-			"base":["clearing","fields"],
-			"prefix":["calm ","fresh ","fertile ","flat ","safe ","golden "],
-			"type":["field"],
-			"enemies":["goblin","wolf","boar"],
-			"resources":["herb","flower","berry","stone","wood","cotton"],
-		},
-		{
-			"base":["hills","mountain foot"],
-			"prefix":["calm ","deep ","fresh ","green ","flat ","safe ","golden "],
-			"type":["mountain"],
-		},
-		{
-			"base":["forest","woods"],
-			"prefix":["calm ","deep","fresh ","green ","flat ","safe ","emerald"],
-			"type":["forest"],
-			"enemies":["elemental","wolf","boar","plant"],
-			"resources":["herb","moss","fruit","wood","cotton","mushroom"],
-		},
+	"enemy": [
+		"goblin",
+		"gnoll"
 	],
-	"enchantment_chance":0.1,
-	"resources":["herb","flower","fruit","carrot","wood","pebble","ore","cotton","cloth"],
-	"resource_chance":0.1,
-	"resource_amount":[1,3],
-	"local_materials":{
-		"wood":[
+	"base_name": [
+		" meadows",
+		" farmland",
+		" planes"
+	],
+	"name_prefix": [
+		"idylic",
+		"peaceful",
+		"calm"
+	],
+	"tags": [
+		"fantasy",
+		"idyllic",
+		"farmland",
+		"river",
+		"warm"
+	],
+	"enemies": [
+		"elemental",
+		"goblin",
+		"wolf",
+		"boar",
+		"plant"
+	],
+	"enemy_amount": [
+		1,
+		2
+	],
+	"cities": [
+		{
+			"base": [
+				"town",
+				"ville",
+				"dale"
+			],
+			"prefix": [
+				"spring",
+				"summer",
+				"autumn",
+				"flower"
+			],
+			"type": [
+				"settlement",
+				"town"
+			]
+		},
+		{
+			"base": [
+				" town",
+				" village"
+			],
+			"prefix": [
+				"peaceful",
+				"quite",
+				"prosperous"
+			],
+			"type": [
+				"settlement",
+				"town"
+			]
+		},
+		{
+			"base": [
+				"post",
+				"tower"
+			],
+			"prefix": [
+				"spring",
+				"summer",
+				"autumn",
+				"trading"
+			],
+			"type": [
+				"camp",
+				"outpost"
+			]
+		}
+	],
+	"locations": [
+		{
+			"base": [
+				"river"
+			],
+			"prefix": [
+				"calm ",
+				"grand ",
+				"cyan ",
+				"safe ",
+				"clear "
+			],
+			"type": [
+				"river"
+			],
+			"enemies": [
+				"crab",
+				"wolf",
+				"boar"
+			],
+			"resources": [
+				"herb",
+				"flower",
+				"wood",
+				"gem",
+				"pebble",
+				"cotton"
+			]
+		},
+		{
+			"base": [
+				"cavern",
+				"cave"
+			],
+			"prefix": [
+				"calm ",
+				"deep ",
+				"light-flooded ",
+				"safe ",
+				"illuminated "
+			],
+			"type": [
+				"cave"
+			],
+			"enemies": [
+				"goblin",
+				"bat",
+				"spider",
+				"zombie"
+			],
+			"resources": [
+				"herb",
+				"moss",
+				"stone",
+				"ore",
+				"gem",
+				"wood",
+				"mushroom"
+			]
+		},
+		{
+			"base": [
+				"clearing",
+				"fields"
+			],
+			"prefix": [
+				"calm ",
+				"fresh ",
+				"fertile ",
+				"flat ",
+				"safe ",
+				"golden "
+			],
+			"type": [
+				"field"
+			],
+			"enemies": [
+				"goblin",
+				"wolf",
+				"boar"
+			],
+			"resources": [
+				"herb",
+				"flower",
+				"berry",
+				"stone",
+				"wood",
+				"cotton"
+			]
+		},
+		{
+			"base": [
+				"hills",
+				"mountain foot"
+			],
+			"prefix": [
+				"calm ",
+				"deep ",
+				"fresh ",
+				"green ",
+				"flat ",
+				"safe ",
+				"golden "
+			],
+			"type": [
+				"mountain"
+			]
+		},
+		{
+			"base": [
+				"forest",
+				"woods"
+			],
+			"prefix": [
+				"calm ",
+				"deep",
+				"fresh ",
+				"green ",
+				"flat ",
+				"safe ",
+				"emerald"
+			],
+			"type": [
+				"forest"
+			],
+			"enemies": [
+				"elemental",
+				"wolf",
+				"boar",
+				"plant"
+			],
+			"resources": [
+				"herb",
+				"moss",
+				"fruit",
+				"wood",
+				"cotton",
+				"mushroom"
+			]
+		}
+	],
+	"enchantment_chance": 0.1,
+	"resources": [
+		"herb",
+		"flower",
+		"fruit",
+		"carrot",
+		"wood",
+		"pebble",
+		"ore",
+		"cotton",
+		"cloth"
+	],
+	"resource_chance": 0.1,
+	"resource_amount": [
+		1,
+		3
+	],
+	"local_materials": {
+		"wood": [
 			{
-				"name":"pine",
-				"quality":0.75,
+				"name": "pine",
+				"quality": 0.75
 			},
 			{
-				"name":"birch",
-				"quality":1.0,
+				"name": "birch",
+				"quality": 1.0
 			},
 			{
-				"name":"oak",
-				"quality":1.25,
-			},
+				"name": "oak",
+				"quality": 1.25
+			}
 		],
-		"metal":[
+		"metal": [
 			{
-				"name":"copper",
-				"quality":0.75,
+				"name": "copper",
+				"quality": 0.75
 			},
 			{
-				"name":"bronze",
-				"quality":1.0,
+				"name": "bronze",
+				"quality": 1.0
 			},
 			{
-				"name":"iron",
-				"quality":1.25,
-			},
+				"name": "iron",
+				"quality": 1.25
+			}
 		],
-		"leather":[
+		"leather": [
 			{
-				"name":"rough",
-				"quality":0.75,
+				"name": "rough",
+				"quality": 0.75
 			},
 			{
-				"name":"wolf skin",
-				"quality":1.0,
+				"name": "wolf skin",
+				"quality": 1.0
 			},
 			{
-				"name":"reinforced",
-				"quality":1.25,
-			},
+				"name": "reinforced",
+				"quality": 1.25
+			}
 		],
-		"cloth":[
+		"cloth": [
 			{
-				"name":"wool",
-				"quality":0.75,
+				"name": "wool",
+				"quality": 0.75
 			},
 			{
-				"name":"velvet",
-				"quality":1.0,
+				"name": "velvet",
+				"quality": 1.0
 			},
 			{
-				"name":"silk",
-				"quality":1.25,
-			},
+				"name": "silk",
+				"quality": 1.25
+			}
 		],
-		"stone":[
+		"stone": [
 			{
-				"name":"rock",
-				"quality":0.75,
+				"name": "rock",
+				"quality": 0.75
 			},
 			{
-				"name":"quartz",
-				"quality":1.0,
+				"name": "quartz",
+				"quality": 1.0
 			},
 			{
-				"name":"crystal",
-				"quality":1.25,
-			},
+				"name": "crystal",
+				"quality": 1.25
+			}
 		],
-		"gem":[
+		"gem": [
 			{
-				"name":"quartz",
-				"quality":0.75,
+				"name": "quartz",
+				"quality": 0.75
 			},
 			{
-				"name":"peridot",
-				"quality":1.0,
+				"name": "peridot",
+				"quality": 1.0
 			},
 			{
-				"name":"ruby",
-				"quality":1.25,
-			},
+				"name": "ruby",
+				"quality": 1.25
+			}
 		],
-		"alchemy":[
+		"alchemy": [
 			{
-				"name":"bitter",
-				"quality":0.75,
+				"name": "bitter",
+				"quality": 0.75
 			},
 			{
-				"name":"sweet",
-				"quality":1.0,
+				"name": "sweet",
+				"quality": 1.0
 			},
 			{
-				"name":"crimson",
-				"quality":1.25,
-			},
+				"name": "crimson",
+				"quality": 1.25
+			}
 		],
-		"cooking":[
+		"cooking": [
 			{
-				"name":"bitter",
-				"quality":0.75,
+				"name": "bitter",
+				"quality": 0.75
 			},
 			{
-				"name":"fresh",
-				"quality":1.0,
+				"name": "fresh",
+				"quality": 1.0
 			},
 			{
-				"name":"juicy",
-				"quality":1.25,
-			},
-		],
-	},
+				"name": "juicy",
+				"quality": 1.25
+			}
+		]
+	}
 }

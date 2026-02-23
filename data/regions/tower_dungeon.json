@@ -1,265 +1,450 @@
 {
-	"level":33,
-	"tier":0,
-	"race":["dwarf","halfling","ogre"],
-	"enemy":["goblin","gnoll","undead"],
-	"base_name":[" dungeon"," tower"," mace"],
-	"name_prefix":["deepest","darkest","endless","eternal","vile"],
-	"enemies":["skeleton","mummy","vampire","undead","lich","elemental_wolf","yeti","minotaur"],
-	"enemy_amount":[1,3],
-	"cities":[
-		{
-			"base":["post","bane","barrier"],
-			"prefix":["shadow","light","flame","safe","blood","bone"],
-			"type":["outpost"],
-		},
-		{
-			"base":["keep","gate","sanctum"],
-			"prefix":["light","flame","safe","holy","sky"],
-			"type":["castle"],
-		},
-		{
-			"base":["refuge","outpost"],
-			"prefix":["last ","run-down ","crimson ","remote ","great "],
-			"type":["settlement"],
-		},
-		{
-			"base":["barrier","barricade","tower"],
-			"prefix":["last ","run-down ","crimson ","remote ","great "],
-			"type":["outpost"],
-		},
+	"level": 33,
+	"tier": 0,
+	"setting": "fantasy",
+	"race": [
+		"dwarf",
+		"halfling",
+		"ogre"
 	],
-	"locations":[
-		{
-			"base":["tower"],
-			"prefix":["blood","shadow","vile ","bone","necro","clouded ","dark ","crimson "],
-			"type":["outpost"],
-		},
-		{
-			"base":["maze","dungeon"],
-			"prefix":["blood","shadow","vile ","bone","necro","dark "],
-			"type":["dungeon"],
-			"enemies":["skeleton","mummy","ghoul","undead","lich","yeti","minotaur"],
-		},
-		{
-			"base":["library","keep"],
-			"prefix":["blood","shadow","vile ","bone","necrotic ","clouded ","fear"],
-			"type":["castle"],
-			"enemies":["skeleton","mummy","ghost","spirit","paper_golem","vampire"],
-		},
-		{
-			"base":["yard","outskirts"],
-			"prefix":["blood","shadow","vile ","bone","necrotic ","bloody ","death"],
-			"type":["outpost"],
-			"enemies":["zombie","skeleton","mummy","ghoul","undead","minotaur","thug"],
-			"resources":["herb","flower","moss","fruit","cabbage","carrot","wood","pebble","ore","cotton"],
-		},
+	"enemy": [
+		"goblin",
+		"gnoll",
+		"undead"
 	],
-	"enchantment_chance":0.25,
-	"resources":["herb","mushroom","moss","root","wood","pebble","stone","ore","ingot","cotton","silk"],
-	"resource_chance":0.1,
-	"resource_amount":[2,4],
-	"local_materials":{
-		"wood":[
+	"base_name": [
+		" dungeon",
+		" tower",
+		" mace"
+	],
+	"name_prefix": [
+		"deepest",
+		"darkest",
+		"endless",
+		"eternal",
+		"vile"
+	],
+	"tags": [
+		"fantasy",
+		"grim",
+		"dungeon",
+		"dark"
+	],
+	"enemies": [
+		"skeleton",
+		"mummy",
+		"vampire",
+		"undead",
+		"lich",
+		"elemental_wolf",
+		"yeti",
+		"minotaur"
+	],
+	"enemy_amount": [
+		1,
+		3
+	],
+	"cities": [
+		{
+			"base": [
+				"post",
+				"bane",
+				"barrier"
+			],
+			"prefix": [
+				"shadow",
+				"light",
+				"flame",
+				"safe",
+				"blood",
+				"bone"
+			],
+			"type": [
+				"outpost"
+			]
+		},
+		{
+			"base": [
+				"keep",
+				"gate",
+				"sanctum"
+			],
+			"prefix": [
+				"light",
+				"flame",
+				"safe",
+				"holy",
+				"sky"
+			],
+			"type": [
+				"castle"
+			]
+		},
+		{
+			"base": [
+				"refuge",
+				"outpost"
+			],
+			"prefix": [
+				"last ",
+				"run-down ",
+				"crimson ",
+				"remote ",
+				"great "
+			],
+			"type": [
+				"settlement"
+			],
+		},
+		{
+			"base": [
+				"barrier",
+				"barricade",
+				"tower"
+			],
+			"prefix": [
+				"last ",
+				"run-down ",
+				"crimson ",
+				"remote ",
+				"great "
+			],
+			"type": [
+				"outpost"
+			]
+		}
+	],
+	"locations": [
+		{
+			"base": [
+				"tower"
+			],
+			"prefix": [
+				"blood",
+				"shadow",
+				"vile ",
+				"bone",
+				"necro",
+				"clouded ",
+				"dark ",
+				"crimson "
+			],
+			"type": [
+				"outpost"
+			]
+		},
+		{
+			"base": [
+				"maze",
+				"dungeon"
+			],
+			"prefix": [
+				"blood",
+				"shadow",
+				"vile ",
+				"bone",
+				"necro",
+				"dark "
+			],
+			"type": [
+				"dungeon"
+			],
+			"enemies": [
+				"skeleton",
+				"mummy",
+				"ghoul",
+				"undead",
+				"lich",
+				"yeti",
+				"minotaur"
+			]
+		},
+		{
+			"base": [
+				"library",
+				"keep"
+			],
+			"prefix": [
+				"blood",
+				"shadow",
+				"vile ",
+				"bone",
+				"necrotic ",
+				"clouded ",
+				"fear"
+			],
+			"type": [
+				"castle"
+			],
+			"enemies": [
+				"skeleton",
+				"mummy",
+				"ghost",
+				"spirit",
+				"paper_golem",
+				"vampire"
+			]
+		},
+		{
+			"base": [
+				"yard",
+				"outskirts"
+			],
+			"prefix": [
+				"blood",
+				"shadow",
+				"vile ",
+				"bone",
+				"necrotic ",
+				"bloody ",
+				"death"
+			],
+			"type": [
+				"outpost"
+			],
+			"enemies": [
+				"zombie",
+				"skeleton",
+				"mummy",
+				"ghoul",
+				"undead",
+				"minotaur",
+				"thug"
+			],
+			"resources": [
+				"herb",
+				"flower",
+				"moss",
+				"fruit",
+				"cabbage",
+				"carrot",
+				"wood",
+				"pebble",
+				"ore",
+				"cotton"
+			]
+		}
+	],
+	"enchantment_chance": 0.25,
+	"resources": [
+		"herb",
+		"mushroom",
+		"moss",
+		"root",
+		"wood",
+		"pebble",
+		"stone",
+		"ore",
+		"ingot",
+		"cotton",
+		"silk"
+	],
+	"resource_chance": 0.1,
+	"resource_amount": [
+		2,
+		4
+	],
+	"local_materials": {
+		"wood": [
 			{
-				"name":"rotten",
-				"quality":0.75,
+				"name": "rotten",
+				"quality": 0.75
 			},
 			{
-				"name":"bamboo",
-				"quality":1.0,
-				"mod":{
-					"accuracy":0.05,
-					"evasion":0.05,
-				},
+				"name": "bamboo",
+				"quality": 1.0,
+				"mod": {
+					"accuracy": 0.05,
+					"evasion": 0.05
+				}
 			},
 			{
-				"name":"blackwood",
-				"quality":1.25,
-				"add":{
+				"name": "blackwood",
+				"quality": 1.25,
+				"add": {
 					"stamina_regen":2.5,
-					"resistance":{
-						"darkness":0.05,
+					"resistance": {
+						"darkness": 0.05
 					},
-					"damage":{
-						"darkness":0.05,
-					},
-				},
-			},
+					"damage": {
+						"darkness": 0.05
+					}
+				}
+			}
 		],
-		"metal":[
+		"metal": [
 			{
-				"name":"iron",
-				"quality":0.75,
+				"name": "iron",
+				"quality": 0.75
 			},
 			{
-				"name":"lead",
-				"quality":1.0,
-				"mod":{
+				"name": "lead",
+				"quality": 1.0,
+				"mod": {
 					"evasion":-0.05,
-					"armour":0.1,
-					"willpower":0.05,
-				},
+					"armour": 0.1,
+					"willpower": 0.05
+				}
 			},
 			{
-				"name":"shadow steel",
-				"quality":1.25,
-				"add":{
-					"resistance":{
-						"light":0.05,
-						"darkness":0.05,
+				"name": "shadow steel",
+				"quality": 1.25,
+				"add": {
+					"resistance": {
+						"light": 0.05,
+						"darkness": 0.05
 					},
-					"damage":{
-						"light":0.05,
-						"darkness":0.05,
-					},
-				},
-			},
+					"damage": {
+						"light": 0.05,
+						"darkness": 0.05
+					}
+				}
+			}
 		],
-		"leather":[
+		"leather": [
 			{
-				"name":"blood-stained",
-				"quality":0.75,
+				"name": "blood-stained",
+				"quality": 0.75
 			},
 			{
-				"name":"preserved",
-				"quality":1.0,
-				"mod":{
-					"evasion":0.05,
-					"armour":0.05,
-				},
+				"name": "preserved",
+				"quality": 1.0,
+				"mod": {
+					"evasion": 0.05,
+					"armour": 0.05
+				}
 			},
 			{
-				"name":"necrotic",
-				"quality":1.25,
-				"add":{
-					"resistance":{
-						"light":0.05,
-						"darkness":0.05,
+				"name": "necrotic",
+				"quality": 1.25,
+				"add": {
+					"resistance": {
+						"light": 0.05,
+						"darkness": 0.05
 					},
-					"damage":{
-						"acid":0.05,
-						"poison":0.05,
-					},
-				},
-			},
+					"damage": {
+						"acid": 0.05,
+						"poison": 0.05
+					}
+				}
+			}
 		],
-		"cloth":[
+		"cloth": [
 			{
-				"name":"blood-soaked",
-				"quality":0.75,
+				"name": "blood-soaked",
+				"quality": 0.75
 			},
 			{
-				"name":"linen",
-				"quality":1.0,
-				"mod":{
-					"willpower":0.05,
-					"evasion":0.05,
-				},
+				"name": "linen",
+				"quality": 1.0,
+				"mod": {
+					"willpower": 0.05,
+					"evasion": 0.05
+				}
 			},
 			{
-				"name":"crimson velvet",
-				"quality":1.25,
-				"add":{
-					"resistance":{
-						"fire":0.05,
-						"ice":0.05,
+				"name": "crimson velvet",
+				"quality": 1.25,
+				"add": {
+					"resistance": {
+						"fire": 0.05,
+						"ice": 0.05
 					},
-					"damage":{
-						"fire":0.05,
-						"ice":0.05,
-					},
-				},
-			},
+					"damage": {
+						"fire": 0.05,
+						"ice": 0.05
+					}
+				}
+			}
 		],
-		"stone":[
+		"stone": [
 			{
-				"name":"blood",
-				"quality":0.75,
+				"name": "blood",
+				"quality": 0.75
 			},
 			{
-				"name":"gravestone",
-				"quality":1.0,
-				"mod":{
+				"name": "gravestone",
+				"quality": 1.0,
+				"mod": {
 					"willpower":-0.05,
-					"accuracy":0.05,
-					"armour":0.1,
-				},
+					"accuracy": 0.05,
+					"armour": 0.1
+				}
 			},
 			{
-				"name":"basalt",
-				"quality":1.25,
-				"add":{
-					"damage":{
-						"cutting":0.04,
-						"piercing":0.04,
-						"fire":0.04,
+				"name": "basalt",
+				"quality": 1.25,
+				"add": {
+					"damage": {
+						"cutting": 0.04,
+						"piercing": 0.04,
+						"fire": 0.04
 					},
-					"resistance":{
-						"impact":0.04,
-						"fire":0.04,
-						"earth":0.04,
+					"resistance": {
+						"impact": 0.04,
+						"fire": 0.04,
+						"earth": 0.04
+					}
+				}
+			}
+		],
+		"gem": [
+			{
+				"name": "garnet",
+				"quality": 0.75
+			},
+			{
+				"name": "hematite",
+				"quality": 1.0,
+				"mod": {
+					"attack": 0.05,
+					"magic": 0.05
+				}
+			},
+			{
+				"name": "blood",
+				"quality": 1.25,
+				"add": {
+					"damage": {
+						"fire": 0.04,
+						"earth": 0.04,
+						"darkness": 0.04
 					},
-				},
-			},
+					"resistance": {
+						"fire": 0.04,
+						"earth": 0.04,
+						"light": 0.04
+					}
+				}
+			}
 		],
-		"gem":[
+		"alchemy": [
 			{
-				"name":"garnet",
-				"quality":0.75,
+				"name": "necrotic",
+				"quality": 0.75
 			},
 			{
-				"name":"hematite",
-				"quality":1.0,
-				"mod":{
-					"attack":0.05,
-					"magic":0.05,
-				},
+				"name": "shadow",
+				"quality": 1.0
 			},
 			{
-				"name":"blood",
-				"quality":1.25,
-				"add":{
-					"damage":{
-						"fire":0.04,
-						"earth":0.04,
-						"darkness":0.04,
-					},
-					"resistance":{
-						"fire":0.04,
-						"earth":0.04,
-						"light":0.04,
-					},
-				},
-			},
+				"name": "daylight",
+				"quality": 1.25
+			}
 		],
-		"alchemy":[
+		"cooking": [
 			{
-				"name":"necrotic",
-				"quality":0.75,
+				"name": "night",
+				"quality": 0.75
 			},
 			{
-				"name":"shadow",
-				"quality":1.0,
+				"name": "black",
+				"quality": 1.0
 			},
 			{
-				"name":"daylight",
-				"quality":1.25,
-			},
-		],
-		"cooking":[
-			{
-				"name":"night",
-				"quality":0.75,
-			},
-			{
-				"name":"black",
-				"quality":1.0,
-			},
-			{
-				"name":"fresh",
-				"quality":1.25,
-			},
-		],
-	},
+				"name": "fresh",
+				"quality": 1.25
+			}
+		]
+	}
 }
