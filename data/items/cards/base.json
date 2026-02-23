@@ -4,7 +4,7 @@
 	"component": {
 	},
 	"material": {
-		"attributes": [
+		"properties": [
 			"adjective",
 		],
 	},
@@ -15,7 +15,7 @@
 	"color": {
 	},
 	"liquid": {
-		"attributes": [
+		"properties": [
 			"color",
 			"thickness",
 		],

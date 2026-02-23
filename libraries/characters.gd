@@ -201,7 +201,7 @@ class Character:
 					self.attributes[k] += item.attributes[k]
 			for k in RESOURCES:
 				if k in item.resources:
-					self.set("max_" + k, self.get("max_" + k) + item[k])
+					self.set("max_" + k, self.get("max_" + k) + item.resources[k])
 				if k in item.resource_regen:
 					self.set(k + "_regen", self.get(k + "_regen") + item.resource_regen[k])
 			for k in item.resistance:

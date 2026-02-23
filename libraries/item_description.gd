@@ -13,9 +13,103 @@ var cards: Dictionary[String, Dictionary] = {}
 var properties: Dictionary[String, Array] = {}
 
 
+class Card:
+	var type: String
+	var properties: Property
+	var position: Vector2i
+	
+	func _init(data: Dictionary) -> void:
+		self.type = data.get("type", "") as String
+		match typeof(data.get("properties", null)):
+			TYPE_DICTIONARY:
+				self.properties = Property.new(data.get("properties", null) as Dictionary)
+			TYPE_OBJECT:
+				self.properties = data.get("properties", null) as Property
+		self.position = data.get("position", Vector2i()) as Vector2i
+	
+	func to_dict() -> Dictionary:
+		return {
+			"type": self.type,
+			"properties": self.properties.to_dict(),
+			"position": self.position,
+		}
+
+class Property:
+	var _singular: String
+	var _plural: String
+	var _adjective: String
+	var _prefix: String
+	var _suffix: String
+	var is_name: bool
+	
+	func _init(data: Dictionary) -> void:
+		self._singular = data.get("singular", "") as String
+		self._plural = data.get("plural", "") as String
+		self._adjective = data.get("adjective", "") as String
+		self._prefix = data.get("prefix", "") as String
+		self._suffix = data.get("suffix", "") as String
+		self.is_name = data.get("is_name", false) as bool
+	
+	func to_dict() -> Dictionary:
+		var dict := {
+			"is_name": self.is_name,
+		}
+		if self._singular != "":
+			dict.singular = self._singular
+		if self._plural != "":
+			dict.plural = self._plural
+		if self._adjective != "":
+			dict.adjective = self._adjective
+		if self._prefix != "":
+			dict.prefix = self._prefix
+		if self._suffix != "":
+			dict.suffix = self._suffix
+		return dict
+	
+	func is_plural() -> bool:
+		return self._plural != ""
+	
+	func get_singular() -> String:
+		if self._singular == "":
+			return self._plural
+		return self._singular
+	
+	func get_plural() -> String:
+		if self._plural == "":
+			return self._singular
+		return self._plural
+	
+	func get_adjective() -> String:
+		if self._adjective == "":
+			print("Warning: adjective missing for " + self._singular + " / " + self._plural)
+			return self._singular
+		return self._adjective
+	
+	func get_prefix() -> String:
+		return self._prefix
+	
+	func get_suffix() -> String:
+		return self._suffix
+	
+	func get_by_attribute(attribute: String) -> String:
+		match attribute:
+			"singular":
+				return self.get_singular()
+			"plural":
+				return self.get_plural()
+			"adjective":
+				return self.get_adjective()
+			"prefix":
+				return self.get_prefix()
+			"suffix":
+				return self.get_suffix()
+			_:
+				return self.get_singular()
+
+
 class TextState:
 	var text: String
-	var card_set: Dictionary[Vector2i, Dictionary]
+	var card_set: Dictionary[Vector2i, Card]
 	var state: String
 	var transition: Array[String]
 	var sentence: Array[String]
@@ -24,7 +118,7 @@ class TextState:
 	var last_subject: String
 	var last_cards: Array[Vector2i]
 	
-	func _init(_card_set: Dictionary[Vector2i, Dictionary], _transition: Array[String]) -> void:
+	func _init(_card_set: Dictionary[Vector2i, Card], _transition: Array[String]) -> void:
 		card_set = _card_set
 		transition = _transition
 		state = "sentence_end"
@@ -40,7 +134,7 @@ class TextState:
 
 
 func create_description_data(item: ItemEquipment, rank: int) -> Dictionary:
-	var card_set: Dictionary[Vector2i, Dictionary] = {}
+	var card_set: Dictionary[Vector2i, Card] = {}
 	var craftmanship: Dictionary
 	add_card(
 		card_set,
@@ -499,7 +593,7 @@ func pick_attribute(attribute: String) -> String:
 	else:
 		return tr(data as String)
 
-func create_card(type: String, attributes_override:= {}) -> Dictionary:
+func create_card(type: String, attributes_override:= {}) -> Card:
 	var card := {
 		"type": type,
 		"properties": attributes_override.duplicate(true),
@@ -525,7 +619,7 @@ func create_card(type: String, attributes_override:= {}) -> Dictionary:
 			else:
 				# fallback: just use some random word lol
 				card.properties[attribute] = pick_attribute(properties.keys().pick_random() as String)
-	if "singular" not in card.properties && "plural" not in card.properties:
+	if "singular" not in card.properties and "plural" not in card.properties:
 		if "name" in attributes_override:
 			card.properties.singular = tr(card.properties.name as String)
 		elif "recipe" in attributes_override:
@@ -553,9 +647,9 @@ func create_card(type: String, attributes_override:= {}) -> Dictionary:
 			card.properties.adjective = (card.properties.singular as String).replace(" ", "-") + "-like"
 		elif "plural" in card.properties:
 			card.properties.adjective = (card.properties.plural as String).replace(" ", "-") + "-like"
-	return card
+	return Card.new(card)
 
-func add_card(dict: Dictionary, card: Dictionary, position: Vector2i) -> Dictionary:
+func add_card(dict: Dictionary[Vector2i, Card], card: Card, position: Vector2i) -> Card:
 	dict[position] = card
 	card.position = position
 	return card
@@ -596,13 +690,13 @@ func create_card_set(item: ItemEquipment) -> Dictionary:
 	return card_set
 
 func pick_valid_card_set(type_set: Array, current_position: Vector2i,
-		current_cards: Dictionary[Vector2i, Dictionary], card_set: Array[Vector2i] = []) -> Array[Vector2i]:
+		current_cards: Dictionary[Vector2i, Card], card_set: Array[Vector2i] = []) -> Array[Vector2i]:
 	var index:= card_set.size()
 	if index >= type_set.size():
 		return card_set
 	if index == 0:
 		for pos in current_cards:
-			if current_cards[pos].type != type_set[index] || \
+			if current_cards[pos].type != type_set[index] or \
 				Utils.get_distance(current_position, pos) > Utils.MAX_DIST:
 					continue
 			var array:= pick_valid_card_set(type_set, current_position, current_cards, [pos])
@@ -613,8 +707,8 @@ func pick_valid_card_set(type_set: Array, current_position: Vector2i,
 			var directions: Array[Vector2i] = Array(Utils.DIRECTIONS.duplicate(true), TYPE_VECTOR2I, "", null)
 			directions.shuffle()
 			for offset in directions:
-				if current_cards.has(pos + offset) && \
-					current_cards[pos+offset].type == type_set[index] && \
+				if current_cards.has(pos + offset) and \
+					current_cards[pos + offset].type == type_set[index] and \
 					Utils.get_distance(current_position, pos + offset) <= Utils.MAX_DIST:
 						var array:= pick_valid_card_set(type_set, current_position, current_cards,
 							Array(card_set + [pos + offset], TYPE_VECTOR2I, "", null))
@@ -624,7 +718,7 @@ func pick_valid_card_set(type_set: Array, current_position: Vector2i,
 	return []
 
 func pick_valid_text(available_texts: Array[String],
-		current_card_set: Dictionary[Vector2i, Dictionary]) -> Dictionary:
+		current_card_set: Dictionary[Vector2i, Card]) -> Dictionary:
 	if current_card_set.size() == 0:
 		return {}
 	
@@ -672,10 +766,10 @@ func append_text(text_state: TextState) -> TextState:
 			print("Warning: still no valid texts available after adding random cards")
 			text_state.reset()
 			text_state.state = "error"
-			text_state.transition = texts_by_type.sentence_end.pick_random().transition
+			text_state.transition = Array(texts_by_type.sentence_end.pick_random().transition, TYPE_STRING, "", null)
 			return text_state
 	
-	for card: Dictionary in (text_data.required as Dictionary).values():
+	for card: Card in (text_data.required as Dictionary).values():
 		if card.position not in text_state.last_cards:
 			text_state.last_cards.push_back(card.position)
 	if text_state.last_cards.size() > 0:
@@ -723,34 +817,26 @@ func append_text(text_state: TextState) -> TextState:
 			else:
 				format_dict[key] = array[0]
 		elif '.' in key:
-			var array:= key.split('.')
-			var topic:= array[0]
-			var attribute:= array[1]
+			var array := key.split('.')
+			var topic := array[0]
+			var attribute := array[1]
 			if topic not in text_data.required:
 				print("Warning: key " + topic + " missing in text data")
 				format_dict[key] = pick_attribute(properties.keys().pick_random() as String)
 				continue
 			
-			var data: Dictionary = text_data.required[topic].properties
-			if attribute not in data:
-				if attribute == "singular" && "plural" in data:
-					attribute = "plural"
-					text_state.plural = true
-				elif attribute == "plural" && "singular" in data:
-					attribute = "singular"
-			if attribute in data:
-				format_dict[key] = data[attribute]
-				if "sentence" in text_data && "subject" in text_data.sentence && \
-					text_data.sentence.subject == topic:
-						if data[attribute] == text_state.last_subject:
-							repeated_subject = true
-						subject_key = key
-						text_state.last_subject = data[attribute]
-			else:
-				print("Warning: key " + key + " missing in text data")
-				format_dict[key] = data.values().pick_random()
-			if "is_name" in data and data.is_name && attribute in ["singular", "plural"]:
-				var pos:= result.get_start(1)
+			var property := text_data.required[topic].properties as Property
+			var prop := property.get_by_attribute(attribute)
+			text_state.plural = property.is_plural()
+			format_dict[key] = prop
+			if "sentence" in text_data && "subject" in text_data.sentence && \
+				text_data.sentence.subject == topic:
+					if prop == text_state.last_subject:
+						repeated_subject = true
+					subject_key = key
+					text_state.last_subject = prop
+			if property.is_name and attribute in ["singular", "plural"]:
+				var pos := result.get_start(1)
 				if text.substr(pos - 3, 1) == 'a':
 					text = text.left(pos - 4) + text.substr(pos - 1)
 				elif text.substr(pos - 4, 1) == 'an':
@@ -831,7 +917,7 @@ func append_text(text_state: TextState) -> TextState:
 	return text_state
 
 
-func generate_description(card_set: Dictionary[Vector2i, Dictionary], max_sentences:= 3) -> String:
+func generate_description(card_set: Dictionary[Vector2i, Card], max_sentences:= 3) -> String:
 	var available_texts: Array[String] = Array(
 		texts_by_type.sentence_end.pick_random().transition as Array, TYPE_STRING, "", null,
 	)

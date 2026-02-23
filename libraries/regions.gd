@@ -1,8 +1,8 @@
 extends Node
 
-const NUM_CITIES = 4
-const NUM_LOCATIONS = 12
-const REGION_TIERS = [
+const NUM_CITIES := 4
+const NUM_LOCATIONS := 12
+const REGION_TIERS: Array[String] = [
 	"SAFE",
 	"TRANQUIL",
 	"AVERAGE",
@@ -12,7 +12,7 @@ const REGION_TIERS = [
 	"HOSTILE",
 ]
 
-var regions := {}
+var regions: Dictionary[String, Dictionary] = {}
 
 @onready
 var Descriptions:= $RegionDescription
@@ -61,12 +61,12 @@ func get_location_list(region: Region, current_location: String) -> Array[Dictio
 func get_region_description(region: Region) -> String:
 	var text: String = region.name
 	text += "\n" + tr("LVL") + " " + str(region.level) + " " + \
-		tr(REGION_TIERS[clamp(region.tier + 2, 0, REGION_TIERS.size() - 1)]) + " " + tr("REGION")
+		tr(REGION_TIERS[clampi(region.tier + 2, 0, REGION_TIERS.size() - 1)]) + " " + tr("REGION")
 	if region.race.size()>0:
 		text += "\n" + tr("RACE") + ": " + Names.make_list(region.race)
 	return text
 
-func get_city_data(array: Array) -> Dictionary:
+func get_city_data(array: Array[Dictionary]) -> Dictionary:
 	var dict: Dictionary = array.pick_random()
 	var city_name: String = dict.base.pick_random()
 	if dict.has("prefix"):
@@ -112,7 +112,7 @@ func create_region(ID: String, level:= 0, tier:= 0) -> Region:
 	for i in range(NUM_CITIES):
 		var city_data: Dictionary
 		for _j in range(20):
-			city_data = get_city_data(dict.cities)
+			city_data = get_city_data(Array(dict.cities as Array, TYPE_DICTIONARY, "", null))
 			if city_data.name not in data.cities:
 				break
 		data.cities[city_data.name] = city_data
@@ -130,8 +130,8 @@ func create_region(ID: String, level:= 0, tier:= 0) -> Region:
 			"enemies": location_data.get("enemies", []),
 			"resources": location_data.get("resources", []),
 		}
-	for array in data.local_materials.values():
-		for mat in array:
+	for array: Array in data.local_materials.values():
+		for mat: Dictionary in array:
 			mat.quality *= tier_multiplier * level_multiplier
 	var region:= Region.new(data)
 	region.description = get_region_description(region)
@@ -143,7 +143,7 @@ func select_next_region(level: int) -> String:
 	var level_cap:= 5
 	
 	while valid.size() == 0:
-		for k in regions.keys():
+		for k in regions:
 			if abs(regions[k].level - level) < level_cap:
 				valid.push_back(k)
 		level_cap += randi_range(4, 8)
@@ -153,10 +153,10 @@ func select_next_region(level: int) -> String:
 	return regions.keys().pick_random()
 
 
-func load_data(paths: Array):
+func load_data(paths: Array[String]) -> void:
 	for file_name in paths:
-		var file:= FileAccess.open(file_name, FileAccess.READ)
-		var error:= FileAccess.get_open_error()
+		var file := FileAccess.open(file_name, FileAccess.READ)
+		var error := FileAccess.get_open_error()
 		if error != OK:
 			print("Can't open file " + file_name + "!")
 			continue
@@ -175,6 +175,6 @@ func load_data(paths: Array):
 		regions[ID] = data
 		file.close()
 
-func _ready():
+func _ready() -> void:
 	load_data(Utils.get_file_paths("res://data/regions"))
 	

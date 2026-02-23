@@ -1202,11 +1202,11 @@ func has_required(type: String) -> bool:
 			return true
 	return false
 
-func get_required(type: String) -> Dictionary:
+func get_required(type: String) -> Variant:
 	for dict in story:
 		if dict.type == type:
 			return dict
-	return {}
+	return null
 
 func has_all_required(array: Array) -> bool:
 	for type in array:
@@ -1234,23 +1234,23 @@ func create_required(type: String, dict: Dictionary) -> Variant:
 							valid.push_back(p)
 				if valid.size()>0:
 					return valid.pick_random()
-			if persons.size()<20:
+			if persons.size() < 20:
 				create_person(Names.NAME_DATA.keys().pick_random(), cities.keys().pick_random())
 			return persons.keys().pick_random()
 		"loot":
-			var loot:= []
+			var loot := []
 			for i in range(randi_range(1,3)):
 				loot.push_back(Items.equipment_recipes.keys().pick_random())
 			return loot
 		"item":
-			if array.size()>1:
+			if array.size() > 1:
 				for item in inventory:
 					if item.type==array[1]:
 						return item
 				return create_item(array[1], dict)
 			return create_item("item", dict)
 		"enemy":
-			if array.size()>1:
+			if array.size() > 1:
 				match array[1]:
 					"beast":
 						return ["boar","wolf","strong_wolf","elemental_wolf","crab","scorpion","drake","yeti"].pick_random()
@@ -1276,17 +1276,17 @@ func create_required(type: String, dict: Dictionary) -> Variant:
 	return null
 
 func create_story(story_dict: Dictionary) -> Dictionary:
-	var dict:= {}
+	var dict := {}
 	dict.type = story_dict.type
 	if story_dict.has("requires"):
 		dict.requires = {}
-		for k in story_dict.requires:
-			var data = get_required(k)
+		for k: String in story_dict.requires:
+			var data: Variant = get_required(k)
 			var array: Array = k.split('-', false)
-			if data==null:
+			if data == null:
 				data = create_required(k, dict)
 			dict.requires[k] = data
-			if array[0]!=k:
+			if array[0] != k:
 				if dict.requires.has(array[0]):
 					if typeof(dict.requires[array[0]])==TYPE_ARRAY:
 						dict.requires[array[0]].push_back(data)
@@ -1306,11 +1306,11 @@ func transition_to(new: String, transition_dict:= {}):
 		for t in current_state.requires:
 			var array: Array = t.split('-', false)
 			dict[t] = get_required(t)
-			if dict[t]==null:
+			if dict[t] == null:
 				dict[t] = create_required(t, dict)
 			if array[0]!=t:
 				if dict.has(array[0]):
-					if typeof(dict[array[0]])==TYPE_ARRAY:
+					if typeof(dict[array[0]]) == TYPE_ARRAY:
 						dict[array[0]].push_back(dict[t])
 					else:
 						dict[array[0]] = [dict[array[0]], dict[t]]
@@ -1318,7 +1318,7 @@ func transition_to(new: String, transition_dict:= {}):
 					dict[array[0]] = dict[t]
 			if "enemy" in t:
 				current_state.enemy = dict[t]
-			if typeof(dict[t])==TYPE_DICTIONARY && dict[t].has("requires"):
+			if typeof(dict[t]) == TYPE_DICTIONARY and dict[t].has("requires"):
 				for k in dict[t].requires:
 					dict[k] = dict[t].requires[k]
 		current_state.requires = dict
@@ -1333,7 +1333,7 @@ func transition_to(new: String, transition_dict:= {}):
 				current_state.requires[k] = dict.requires[k]
 	if current_state.has("consumes"):
 		for dict in story:
-			if current_state.consumes.has("type") && current_state.consumes.type==dict.type:
+			if current_state.consumes.has("type") and current_state.consumes.type == dict.type:
 				if dict.has("requires"):
 					if dict.requires.has("beast"):
 						format_dict[current_state.consumes.type] = dict.requires.beast

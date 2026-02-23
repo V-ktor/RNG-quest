@@ -219,7 +219,7 @@ func pick_skill_upgrade() -> Dictionary:
 		if "cost" in skill and "focus" in skill.cost and player.max_focus - skill.cost.focus <= 1.0:
 			continue
 		for s: String in skill.slots:
-			for t: String in skill.slots[s]:
+			for t in skill.slots[s]:
 				for a in player.abilities:
 					if a not in Skills.ABILITY_MODULES or s not in Skills.ABILITY_MODULES[a] or t not in Skills.ABILITY_MODULES[a][s]:
 						continue
@@ -1121,7 +1121,7 @@ func next_chapter() -> void:
 	if quest_chapter > 0:
 		@warning_ignore("integer_division")
 		var item:= Items.create_legendary_equipment(player.equipment.values().pick_random().base_type, maxi(10 * (self.current_region.tier + 1) + (player.level + self.current_region.level) / 2, 1))
-		var log_text:= tr("QUEST_ARTIFACT_REWARD").format({"item":item.name, "description":item.description_plain, "chapter":quest_chapter})
+		var log_text:= tr("QUEST_ARTIFACT_REWARD").format({"item":item.name, "description":item.get_plain_description(), "chapter":quest_chapter})
 		var journal_text:= tr("CHAPTER_CONCLUDED").format({"chapter":quest_chapter})
 		print_log_msg(log_text)
 		print_summary_msg(journal_text)
@@ -1437,7 +1437,7 @@ func action_done(action: Dictionary) -> void:
 					type = get_slot_type(type)
 				
 				if replace in player.equipment:
-					type = player.equipment[replace].base_type
+					type = player.equipment[replace].base_name
 				else:
 					type = Items.pick_random_equipment(type)
 			if type == "":
@@ -1467,7 +1467,7 @@ func action_done(action: Dictionary) -> void:
 						if bought:
 							print_log_msg(tr("BUY_LOG").format({
 								"name": item.name,
-								"description": item.description_plain,
+								"description": item.get_plain_description(),
 								"amount": 1,
 								"price": item.price,
 							}))
@@ -1486,7 +1486,7 @@ func action_done(action: Dictionary) -> void:
 			var item:= create_shop_potion()
 			var bought:= buy_item(item)
 			if bought:
-				print_log_msg(tr("BUY_LOG").format({"name": item.name, "description": item.description_plain, "amount": 1, "price": item.price}))
+				print_log_msg(tr("BUY_LOG").format({"name": item.name, "description": item.get_plain_description(), "amount": 1, "price": item.price}))
 				player_potions.push_back(item)
 				emit_signal("potion_inventory_changed", player_potions)
 				add_guild_exp("buy")
@@ -1494,8 +1494,8 @@ func action_done(action: Dictionary) -> void:
 				print_log_msg(tr("BUY_NOTHING_PRICE_TOO_HIGH_LOG"))
 				action_failures += 1
 		"buy_materials":
-			var item:= create_shop_material()
-			if item.size() == 0:
+			var item := create_shop_material()
+			if item == null:
 				print_log_msg(tr("BUY_NOTHING_LOG"))
 				action_failures += 5
 			else:
@@ -1503,7 +1503,7 @@ func action_done(action: Dictionary) -> void:
 				if bought:
 					print_log_msg(tr("BUY_LOG").format({
 						"name": item.name,
-						"description": item.description_plain,
+						"description": item.get_plain_description(),
 						"amount": 1, 
 						"price": item.price,
 					}))
@@ -1524,10 +1524,9 @@ func action_done(action: Dictionary) -> void:
 				var item := Items.craft_equipment(action.args.recipe, materials,
 					10.0 * (action.args.level - 1.0))
 				item.source += "\n" + tr("PLAYER_CREATION")
-				item.description = Items.create_tooltip(item)
-				item.description_plain = Utils.tooltip_remove_bb_code(item.description)
+				item.description = item.create_tooltip()
 				add_item(item)
-				print_log_msg(tr("CRAFT_EQUIPMENT_LOG").format({"name":item.name, "description":item.description_plain, "quality":str(int(item.quality))}))
+				print_log_msg(tr("CRAFT_EQUIPMENT_LOG").format({"name":item.name, "description":item.get_plain_description(), "quality":str(int(item.quality))}))
 				for ability in get_recipe_abilities(action.args.recipe):
 					add_ability_exp(ability, 20.0)
 				for mat in materials:
@@ -1551,7 +1550,7 @@ func action_done(action: Dictionary) -> void:
 						item.source += "\n" + tr("PLAYER_ENCHANTED")
 					item.description = item.create_tooltip()
 					player.equipment[k] = item
-					print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({"name":item.name, "description":item.description_plain, "quality":str(int(item.quality))}))
+					print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({"name":item.name, "description":item.get_plain_description(), "quality":str(int(item.quality))}))
 					add_ability_exp(action.args.ability, 50.0)
 					for mat in materials:
 						remove_item(mat)
@@ -1573,12 +1572,11 @@ func action_done(action: Dictionary) -> void:
 						item = Items.enchant_equipment_material(item, enchantment, materials,
 							10.0 * (action.args.level - 1.0))
 						item.source += "\n" + tr("PLAYER_ENCHANTED")
-						item.description = Items.create_tooltip(item)
-						item.description_plain = Utils.tooltip_remove_bb_code(item.description)
+						item.description = item.create_tooltip()
 						add_item(item)
 						print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({
 							"name": item.name,
-							"description": item.description_plain,
+							"description": item.get_plain_description(),
 							"quality": str(int(item.quality)),
 						}))
 						optimize_equipment()
@@ -1596,10 +1594,10 @@ func action_done(action: Dictionary) -> void:
 			if materials.size() == Items.potion_recipes[type].material_types.size():
 				var item := Items.craft_potion(type, materials, 10.0 * (action.args.level - 1.0))
 				item.source += "\n" + tr("PLAYER_CREATION")
-				item.description = Items.create_tooltip(item)
+				item.description = item.create_tooltip()
 				player_potions.push_back(item)
 				emit_signal("potion_inventory_changed", player_potions)
-				print_log_msg(tr("CRAFT_POTION_LOG").format({"name":item.name, "description":item.description_plain, "quality":str(int(item.quality))}))
+				print_log_msg(tr("CRAFT_POTION_LOG").format({"name":item.name, "description":item.get_plain_description(), "quality":str(int(item.quality))}))
 				add_ability_exp(action.args.ability, 20.0)
 				for mat in materials:
 					remove_item(mat)
@@ -1614,7 +1612,7 @@ func action_done(action: Dictionary) -> void:
 				var item := Items.cook(type, materials, 10.0 * (action.args.level - 1.0))
 				print_log_msg(tr("COOKING_LOG").format({
 					"name": item.name,
-					"description": item.description_plain,
+					"description": item.get_plain_description(),
 					"quality": str(int(item.quality)),
 				}))
 				add_ability_exp("cooking", 40.0)
@@ -2806,8 +2804,8 @@ func die(enemy: Characters.Enemy) -> void:
 		var item:= Items.create_equipment_drop(dict)
 		if item.type not in EQUIPMENT_LEVEL_RESTRICTION or player.level >= EQUIPMENT_LEVEL_RESTRICTION[item.type]:
 			loot.push_back(item)
-	if soul_rng<soul_chance:
-		if "soul_binding" not in player.abilities:
+	if soul_rng < soul_chance:
+		if "soul_binding" in player.abilities:
 			use_ability("soul_binding", soul_rng/soul_chance)
 			add_ability_exp("soul_binding", 8.0*soul_rng/soul_chance)
 		loot.push_back(Items.create_soul_stone_drop(dict))
@@ -2896,7 +2894,7 @@ func start_task(task_ID: int, task:= "") -> void:
 func make_desc_list(array: Array) -> String:
 	if array.size()==0:
 		return ""
-	var string:= ""
+	var string := ""
 	var description: String
 	if "description_plain" in array[0]:
 		description = array[0].description_plain

@@ -16,7 +16,7 @@ var is_ranged: bool
 var story: String
 var component_description: String
 var components: Array[Component]
-var card_set: Dictionary[Vector2i, Dictionary]
+var card_set: Dictionary[Vector2i, ItemDescription.Card]
 
 
 func _init(data: Dictionary) -> void:
@@ -56,9 +56,9 @@ func _init(data: Dictionary) -> void:
 		if card_set_dict[p].position is String:
 			card_set_dict[p].position = Utils.parse_vector2i(card_set_dict[p].position as String)
 		if p is String:
-			self.card_set[Utils.parse_vector2i(p as String)] = card_set_dict[p]
+			self.card_set[Utils.parse_vector2i(p as String)] = ItemDescription.Card.new(card_set_dict[p] as Dictionary)
 		else:
-			self.card_set[p] = card_set_dict[p]
+			self.card_set[p] = ItemDescription.Card.new(card_set_dict[p] as Dictionary)
 
 func enchant_equipment(enchantment_type: String, q: int, enchantment_slot:= "",
 		add_data:= {}) -> void:
@@ -259,5 +259,7 @@ func to_dict() -> Dictionary:
 	for component in self.components:
 		@warning_ignore("unsafe_method_access")
 		data.components.push_back(component.to_dict())
-	data.card_set = self.card_set
+	data.card_set = {}
+	for pos in self.card_set:
+		data.card_set[pos] = self.card_set[pos].to_dict()
 	return data

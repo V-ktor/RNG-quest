@@ -991,7 +991,7 @@ func create_equipment(type: String, components: Array[String], material_list: Ar
 		item_data.properties.plural = (item_data.name as String).to_lower()
 	else:
 		item_data.properties.singular = (item_data.name as String).to_lower()
-	if typeof(item_data.subtype) != TYPE_ARRAY:
+	if "subtype" in item_data and typeof(item_data.subtype) != TYPE_ARRAY:
 		item_data.subtype = [item_data.subtype]
 	if material_list.size()>0:
 		var prefix: String = material_list.pick_random().name
