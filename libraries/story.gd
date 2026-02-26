@@ -881,7 +881,6 @@ var states: Dictionary[String, Dictionary] = {
 		},
 		"log": "You have completed [color=blue][hint={person_description}]{person-military}'s[/hint][/color] request.",
 	},
-	
 }
 const TITLE: Array[Array] = [
 	[

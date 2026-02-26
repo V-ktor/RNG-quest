@@ -3,8 +3,24 @@ class_name ItemDescription
 
 const MAX_TEXT_LENGTH := 500
 const RANDOM_CARDS: Array[String] = [
-	"theme", "shape", "color", "liquid", "element", "curse", "quality", "weakness", "craftmanship",
-	"mental_illness", "stains", "enemy", "prophecy", "emotion", "origin", "force", "care", "crime",
+	"theme",
+	"shape",
+	"color",
+	"liquid",
+	"element",
+	"curse",
+	"quality",
+	"weakness",
+	"craftmanship",
+	"mental_illness",
+	"stains",
+	"enemy",
+	"prophecy",
+	"emotion",
+	"origin",
+	"force",
+	"care",
+	"crime",
 ]
 
 var texts: Array[Dictionary] = []
@@ -38,6 +54,7 @@ class Property:
 	var _singular: String
 	var _plural: String
 	var _adjective: String
+	var _adverb: String
 	var _prefix: String
 	var _suffix: String
 	var is_name: bool
@@ -46,6 +63,7 @@ class Property:
 		self._singular = data.get("singular", "") as String
 		self._plural = data.get("plural", "") as String
 		self._adjective = data.get("adjective", "") as String
+		self._adverb = data.get("adverb", "") as String
 		self._prefix = data.get("prefix", "") as String
 		self._suffix = data.get("suffix", "") as String
 		self.is_name = data.get("is_name", false) as bool
@@ -60,6 +78,8 @@ class Property:
 			dict.plural = self._plural
 		if self._adjective != "":
 			dict.adjective = self._adjective
+		if self._adverb != "":
+			dict.adverb = self._adverb
 		if self._prefix != "":
 			dict.prefix = self._prefix
 		if self._suffix != "":
@@ -85,6 +105,11 @@ class Property:
 			return self._singular
 		return self._adjective
 	
+	func get_adverb() -> String:
+		if self._adverb == "":
+			return self.get_adjective() + "ish"
+		return self._adverb
+	
 	func get_prefix() -> String:
 		return self._prefix
 	
@@ -99,6 +124,8 @@ class Property:
 				return self.get_plural()
 			"adjective":
 				return self.get_adjective()
+			"adverb":
+				return self.get_adverb()
 			"prefix":
 				return self.get_prefix()
 			"suffix":
@@ -143,7 +170,7 @@ func create_description_data(item: ItemEquipment, rank: int) -> Dictionary:
 	)
 	
 	if "enchantments" in item:
-		for enchantment: Dictionary in (item.enchantments as Dictionary).values():
+		for enchantment: Item.Enchantment in (item.enchantments as Dictionary).values():
 			var quality:= []
 			var elements:= []
 			match enchantment.type:
@@ -766,7 +793,7 @@ func append_text(text_state: TextState) -> TextState:
 			print("Warning: still no valid texts available after adding random cards")
 			text_state.reset()
 			text_state.state = "error"
-			text_state.transition = Array(texts_by_type.sentence_end.pick_random().transition, TYPE_STRING, "", null)
+			text_state.transition = Array(texts_by_type.sentence_end.pick_random().transition as Array, TYPE_STRING, "", null)
 			return text_state
 	
 	for card: Card in (text_data.required as Dictionary).values():

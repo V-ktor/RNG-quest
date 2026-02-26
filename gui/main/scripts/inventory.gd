@@ -7,13 +7,13 @@ var main_inventory: Array
 var potion_inventory: Array
 var story_inventory: Array
 
-@onready var inventory_panel:= $ScrollContainer/VBoxContainer/Inventory as VBoxContainer
-@onready var potion_inventory_panel:= $ScrollContainer/VBoxContainer/Potions as VBoxContainer
-@onready var story_inventory_panel:= $ScrollContainer/VBoxContainer/Quest as VBoxContainer
+@onready var inventory_panel := $ScrollContainer/VBoxContainer/Inventory as VBoxContainer
+@onready var potion_inventory_panel := $ScrollContainer/VBoxContainer/Potions as VBoxContainer
+@onready var story_inventory_panel := $ScrollContainer/VBoxContainer/Quest as VBoxContainer
 
 
 func summarize_inventory(array: Array) -> Dictionary:
-	var dict:= {}
+	var dict := {}
 	for item in array:
 		if item.name in dict:
 			dict[item.name] += 1
@@ -21,8 +21,8 @@ func summarize_inventory(array: Array) -> Dictionary:
 			dict[item.name] = 1
 	return dict
 
-func update_inventory(inventory: Array[Item]):
-	var items:= summarize_inventory(inventory)
+func update_inventory(inventory: Array[Item]) -> void:
+	var items := summarize_inventory(inventory)
 	main_inventory = inventory
 	
 	for c in inventory_panel.get_children():
@@ -49,8 +49,8 @@ func update_inventory(inventory: Array[Item]):
 		label.add_theme_color_override("font_color", Items.RANK_COLORS[item.rank])
 		label.show()
 
-func update_potion_inventory(inventory: Array[Item]):
-	var potions:= summarize_inventory(inventory)
+func update_potion_inventory(inventory: Array[ItemPotion]) -> void:
+	var potions := summarize_inventory(inventory)
 	potion_inventory = inventory
 	
 	for c in potion_inventory_panel.get_children():
@@ -76,7 +76,7 @@ func update_potion_inventory(inventory: Array[Item]):
 		label.add_theme_color_override("font_color", Items.RANK_COLORS[item.rank])
 		label.show()
 
-func update_story_inventory(inventory: Array[Item]):
+func update_story_inventory(inventory: Array[ItemQuest]) -> void:
 	for c in story_inventory_panel.get_children():
 		(c as Control).hide()
 	story_inventory = inventory
@@ -99,7 +99,7 @@ func update_story_inventory(inventory: Array[Item]):
 
 # Tooltips
 
-func _show_inventory_tooltip(item: Dictionary):
+func _show_inventory_tooltip(item: Dictionary) -> void:
 	if tooltip == null:
 		return
 	
@@ -113,14 +113,14 @@ func _show_inventory_tooltip(item: Dictionary):
 	else:
 		tooltip.show_text(item.description)
 
-func _show_potion_tooltip(index: int):
+func _show_potion_tooltip(index: int) -> void:
 	if tooltip == null or index >= potion_inventory.size():
 		return
 	
 	var item: Dictionary = potion_inventory[index]
 	tooltip.show_text(item.description)
 
-func _show_story_inventory_tooltip(index: int):
+func _show_story_inventory_tooltip(index: int) -> void:
 	if tooltip == null or index >= story_inventory.size():
 		return
 	

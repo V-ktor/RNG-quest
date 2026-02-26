@@ -226,7 +226,7 @@ const DISEASE_PREFIX: Array[String] = [
 ]
 const PREFIX: Array[String] = [
 	"holo", "homo", "hetero", "mono", "bi", "tri", "quattro", "penta", "hexa", "octo", "deca",
-	"multi", "omni", "spatio", "gravo", "pyro", "cryo", "electro", "hydro", "aeoro", "terra", "bio",
+	"multi", "omni", "spatio", "gravi", "pyro", "cryo", "electro", "hydro", "aeoro", "terra", "bio",
 	"necro", "micro", "macro", "toxo", "ethero", "sui", "somni", "ferro", "xeno", "xylo", "tetra",
 	"video", "audio", "lingui", "para", "zoo", "crystallo", "cyber", "propa", "paci", "pan", "eso",
 	"theo", "anti", "phas", "spectro", "cis", "elasto", "galacto", "metro", "verti", "horizon",
@@ -234,7 +234,7 @@ const PREFIX: Array[String] = [
 	"radio", "lepto", "hypno", "stellar", "sonar", "bureau", "archeo", "astro", "meno", "grammo",
 	"phantas", "trans", "luna", "semi", "ego", "tyranno", "dyna", "panto", "contro", "pro", "idio",
 	"poly", "plasto", "endo", "soli", "arcano", "thermo", "crypto", "mero", "meso", "digi", "ana",
-	"hyper", "anthropo", "cata",
+	"hyper", "anthropo", "cata", "loco", "rheo", "stochio", "titano", "mega", "mini",
 ]
 const SUFFIX: Array[String] = [
 	"chrome", "chromatic", "synthetic", "syntactic", "phil", "phobe", "phantastic", "tic",
@@ -243,13 +243,14 @@ const SUFFIX: Array[String] = [
 	"graphic", "gonic", "sive", "mantic", "galactic", "scence", "theric", "thereal", "mal",
 	"elastic", "tal", "centric", "mous", "static", "dynamic", "mite", "nautic", "nomic", "cryptic",
 	"active", "logical", "septic", "cistic", "directional", "mimic", "phoric", "plasmonic",
+	"motive", "colossal", "lucent",
 ]
 const SUBJECT: Array[String] = [
 	"phobia", "philia", "cide", "laxis", "scope", "mount", "graph", "phone", "borg", "maly",
 	"noun", "void", "mancy", "maniac", "thesis", "matter", "cality", "cracy", "nomy", "phase",
 	"gel", "synthesis", "tron", "logy", "vision", "centrism", "pluralism", "sepsis", "nol", "mere",
 	"hedron", "phantasia", "enigma", "glyph", "nosis", "script", "chemical", "clysm", "cyst",
-	"sphere", "gram",
+	"sphere", "gram", "humanism", "colossus", "cism", "fication", "collaps", "nova", "genesis",
 ]
 const GREETINGS: Dictionary[String, Array] = {
 	"neutral": [

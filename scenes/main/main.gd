@@ -769,9 +769,10 @@ func optimize_equipment() -> void:
 		elif !player_settings.weapon_1h_alowed:
 			i += 1
 			continue
-		if !(item.subtype in player_settings.valid_weapon_types or item.subtype in player_settings.valid_armour_types or (player_settings.valid_weapon_types.size() == 0 and item.type == "weapon")):
-			i += 1
-			continue
+		for subtype in item.subtype:
+			if !(subtype in player_settings.valid_weapon_types or subtype in player_settings.valid_armour_types or (player_settings.valid_weapon_types.size() == 0 and item.type == "weapon")):
+				i += 1
+				continue
 		for k in EQUIPMENT_SLOTS:
 			if get_slot_type(k) != item.type:
 				continue
@@ -1142,7 +1143,7 @@ func next_chapter() -> void:
 		do_action("wander", {"region":region, "region_type":tr(region.to_upper())}, QUICKTRAVEL_DELAY)
 
 func start_quest() -> void:
-	var quest:= Story.next_quest(self.current_region)
+	var quest := Story.next_quest(self.current_region)
 	print_log_msg(tr("QUEST_ACCEPTED")+"\n"+quest.name)
 	if "npc" in quest:
 		if quest.npc.location == current_location:
@@ -1181,7 +1182,7 @@ func quest_done():
 			else:
 				item.source = tr("QUEST_REWARD")
 			item.description = item.create_tooltip()
-			print_log_msg(tr("QUEST_ITEM_REWARD").format(item))
+			print_log_msg(tr("QUEST_ITEM_REWARD").format(item.to_dict()))
 			add_item(item)
 			optimize_equipment()
 		elif "potion_chance" in current_quest and randf()<current_quest.potion_chance:
@@ -1193,9 +1194,9 @@ func quest_done():
 			else:
 				item.source = tr("QUEST_REWARD")
 			item.description = item.create_tooltip()
-			print_log_msg(tr("QUEST_ITEM_REWARD").format(item))
+			print_log_msg(tr("QUEST_ITEM_REWARD").format(item.to_dict()))
 			player_potions.push_back(item)
-			emit_signal("potion_inventory_changed", player_potions)
+			emit_signal("potion_inventory_changed", Array(player_potions, TYPE_OBJECT, "RefCounted", ItemPotion))
 		elif "gold" in current_quest.reward:
 			player_gold += current_quest.reward.gold
 			emit_signal("gold_changed", player_gold)
@@ -1376,10 +1377,10 @@ func action_done(action: Dictionary) -> void:
 				item = pick_potion(action.args.type as String)
 			if item == null or item not in player_potions:
 				item = player_potions.pick_random()
-			print_log_msg(tr("QUAFF_POTION_LOG").format(item))
+			print_log_msg(tr("QUAFF_POTION_LOG").format(item.to_dict()))
 			quaff_potion(item)
 			player_potions.erase(item)
-			emit_signal("potion_inventory_changed", player_potions)
+			emit_signal("potion_inventory_changed", Array(player_potions, TYPE_OBJECT, "RefCounted", ItemPotion))
 		"retreat":
 			enemies.clear()
 			player_summons.clear()
@@ -1416,7 +1417,7 @@ func action_done(action: Dictionary) -> void:
 					player_potions.erase(potion)
 					print_log_msg(tr("SOLD_LOG").format({"name": potion.name, "description": description, "amount": 1, "price": price}))
 					sold = true
-					emit_signal("potion_inventory_changed", player_potions)
+					emit_signal("potion_inventory_changed", Array(player_potions, TYPE_OBJECT, "RefCounted", ItemPotion))
 					break
 			if !sold:
 				print_log_msg(tr("POTIONS_SORTED_LOG"))
@@ -1488,7 +1489,7 @@ func action_done(action: Dictionary) -> void:
 			if bought:
 				print_log_msg(tr("BUY_LOG").format({"name": item.name, "description": item.get_plain_description(), "amount": 1, "price": item.price}))
 				player_potions.push_back(item)
-				emit_signal("potion_inventory_changed", player_potions)
+				emit_signal("potion_inventory_changed", Array(player_potions, TYPE_OBJECT, "RefCounted", ItemPotion))
 				add_guild_exp("buy")
 			else:
 				print_log_msg(tr("BUY_NOTHING_PRICE_TOO_HIGH_LOG"))
@@ -1526,7 +1527,7 @@ func action_done(action: Dictionary) -> void:
 				item.source += "\n" + tr("PLAYER_CREATION")
 				item.description = item.create_tooltip()
 				add_item(item)
-				print_log_msg(tr("CRAFT_EQUIPMENT_LOG").format({"name":item.name, "description":item.get_plain_description(), "quality":str(int(item.quality))}))
+				print_log_msg(tr("CRAFT_EQUIPMENT_LOG").format({"name": item.name, "description": item.get_plain_description(), "quality": str(floori(item.quality))}))
 				for ability in get_recipe_abilities(action.args.recipe):
 					add_ability_exp(ability, 20.0)
 				for mat in materials:
@@ -1550,7 +1551,7 @@ func action_done(action: Dictionary) -> void:
 						item.source += "\n" + tr("PLAYER_ENCHANTED")
 					item.description = item.create_tooltip()
 					player.equipment[k] = item
-					print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({"name":item.name, "description":item.get_plain_description(), "quality":str(int(item.quality))}))
+					print_log_msg(tr("ENCHANT_EQUIPMENT_LOG").format({"name": item.name, "description": item.get_plain_description(), "quality": str(floori(item.quality))}))
 					add_ability_exp(action.args.ability, 50.0)
 					for mat in materials:
 						remove_item(mat)
@@ -1596,8 +1597,8 @@ func action_done(action: Dictionary) -> void:
 				item.source += "\n" + tr("PLAYER_CREATION")
 				item.description = item.create_tooltip()
 				player_potions.push_back(item)
-				emit_signal("potion_inventory_changed", player_potions)
-				print_log_msg(tr("CRAFT_POTION_LOG").format({"name":item.name, "description":item.get_plain_description(), "quality":str(int(item.quality))}))
+				emit_signal("potion_inventory_changed", Array(player_potions, TYPE_OBJECT, "RefCounted", ItemPotion))
+				print_log_msg(tr("CRAFT_POTION_LOG").format({"name": item.name, "description": item.get_plain_description(), "quality": str(floori(item.quality))}))
 				add_ability_exp(action.args.ability, 20.0)
 				for mat in materials:
 					remove_item(mat)
@@ -1613,7 +1614,7 @@ func action_done(action: Dictionary) -> void:
 				print_log_msg(tr("COOKING_LOG").format({
 					"name": item.name,
 					"description": item.get_plain_description(),
-					"quality": str(int(item.quality)),
+					"quality": str(floori(item.quality)),
 				}))
 				add_ability_exp("cooking", 40.0)
 				if item.status.size() > 0:
@@ -2559,7 +2560,7 @@ func enemy_attack(enemy: Characters.Enemy) -> void:
 	if enemy.skills.size() == 0:
 		enemy.delay = 1.0
 		enemy.action_duration = 1.0
-		print_log_msg(tr("ENEMY_NO_ACTION_LOG").format({"actor":enemy.name, "actor_description":enemy.description}))
+		print_log_msg(tr("ENEMY_NO_ACTION_LOG").format({"actor": enemy.name, "actor_description": enemy.description}))
 		return
 	
 	var skill := pick_skill(enemy)
@@ -2571,7 +2572,7 @@ func enemy_attack(enemy: Characters.Enemy) -> void:
 			skill = enemy.skills.pick_random()
 		else:
 			enemy.position += sign(target.position-enemy.position)
-			print_log_msg(tr("ENEMY_ENGAGE_LOG").format({"actor":enemy.name, "actor_description":enemy.description}))
+			print_log_msg(tr("ENEMY_ENGAGE_LOG").format({"actor": enemy.name, "actor_description": enemy.description}))
 			return
 	
 	var result:= use_skill(enemy, skill)
@@ -2604,13 +2605,13 @@ func enemy_attack(enemy: Characters.Enemy) -> void:
 					else:
 						print_log_msg(tr("ENEMY_ATTACK_ALLY_LOG").format(dict))
 						if "armour" in player.abilities:
-							add_ability_exp("armour", 0.5/float(result.target.size()))
+							add_ability_exp("armour", 0.5 / float(result.target.size()))
 					if dict.hit==0:
 						print_log_msg(tr("ENEMY_MISS_LOG").format(dict))
 					else:
 						print_log_msg(tr("ENEMY_HIT_LOG").format(dict))
 			else:
-				if result.target_data is Characters.Character and result.target_data==player:
+				if result.target_data is Characters.Character and result.target_data == player:
 					print_log_msg(tr("ENEMY_ATTACK_LOG").format(result))
 					if "evasion" in player.abilities:
 						add_ability_exp("evasion", 0.5)
@@ -2678,7 +2679,7 @@ func enemy_attack(enemy: Characters.Enemy) -> void:
 	enemy.delay = delay
 	enemy.action_duration = delay
 
-func summon_attack(summon: Characters.Character) -> void:
+func summon_attack(summon: Characters.Summon) -> void:
 	if summon.skills.size() == 0:
 		summon.delay = 1.0
 		summon.action_duration = 1.0
@@ -2689,12 +2690,12 @@ func summon_attack(summon: Characters.Character) -> void:
 	var delay: float = get_delay_scale(summon.attributes.speed)
 	
 	if skill.size() == 0:
-		var target: Characters.Character = chose_engagement_target(summon)
+		var target: Characters.Enemy = chose_engagement_target(summon)
 		if target == null:
 			skill = summon.skills.pick_random()
 		else:
-			summon.position += sign(target.position-summon.position)
-			print_log_msg(tr("SUMMON_ENGAGE_LOG").format({"actor":summon.name, "actor_description":summon.description, "target":target.name, "target_description":target.description}))
+			summon.position += sign(target.position - summon.position)
+			print_log_msg(tr("SUMMON_ENGAGE_LOG").format({"actor": summon.name, "actor_description": summon.description, "target": target.name, "target_description": target.description}))
 			return
 	
 	var result:= use_skill(summon, skill)
@@ -3270,7 +3271,7 @@ func gui_ready() -> void:
 	update_characters()
 	emit_signal("gold_changed", player_gold)
 	emit_signal("inventory_changed", player_inventory)
-	emit_signal("potion_inventory_changed", player_potions)
+	emit_signal("potion_inventory_changed", Array(player_potions, TYPE_OBJECT, "RefCounted", ItemPotion))
 	emit_signal("story_inventory_changed", Story.inventory)
 	emit_signal("location_changed", self.current_region, current_location)
 	emit_signal("quest_log_updated", quest_log)

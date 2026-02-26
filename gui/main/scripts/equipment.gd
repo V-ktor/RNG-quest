@@ -10,7 +10,7 @@ var character: Characters.Character
 @onready var eq_accessoire_panel:= $ScrollContainer/VBoxContainer/Accessoires/VBoxContainer as VBoxContainer
 
 
-func update(_inventory:= []):
+func update(_inventory:= []) -> void:
 	if not visible or not get_parent().visible:
 		return
 	
@@ -30,7 +30,7 @@ func update(_inventory:= []):
 
 # Tooltips
 
-func _show_equipment_tooltip(type: String):
+func _show_equipment_tooltip(type: String) -> void:
 	if tooltip == null:
 		return
 	

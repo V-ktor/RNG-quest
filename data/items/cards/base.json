@@ -1,53 +1,33 @@
 {
-	"object": {
-	},
-	"component": {
-	},
+	"object": {},
+	"component": {},
 	"material": {
 		"properties": [
 			"adjective",
-		],
+		]
 	},
-	"shape": {
-	},
-	"quality": {
-	},
-	"color": {
-	},
+	"shape": {},
+	"quality": {},
+	"color": {},
 	"liquid": {
 		"properties": [
 			"color",
 			"thickness",
-		],
+		]
 	},
-	"theme": {
-	},
-	"element": {
-	},
-	"curse": {
-	},
-	"mental_illness": {
-	},
-	"weakness": {
-	},
-	"craftmanship": {
-	},
-	"stains": {
-	},
-	"enemy": {
-	},
-	"prophecy": {
-	},
-	"emotion": {
-	},
-	"origin": {
-	},
-	"force": {
-	},
-	"care": {
-	},
-	"crime": {
-	},
-	"science": {
-	},
+	"theme": {},
+	"element": {},
+	"curse": {},
+	"mental_illness": {},
+	"weakness": {},
+	"craftmanship": {},
+	"stains": {},
+	"enemy": {},
+	"prophecy": {},
+	"emotion": {},
+	"origin": {},
+	"force": {},
+	"care": {},
+	"crime": {},
+	"science": {}
 }

@@ -855,7 +855,7 @@ func create_random_equipment(type: String, components: Array[String], region: Re
 	item = create_equipment(type, components, create_random_materials(
 		create_material_list(components), region, quality_mod), info, quality_bonus)
 	item.quality = int(item.quality / quality_scale)
-	if tier==1:
+	if tier == 1:
 		item.name = tr("UNCOMMON").capitalize() + " " + item.name.split(' ')[0] + " "
 		if info.has("name"):
 			item.name += tr((info.get("name", "") as String).to_upper()).capitalize()
@@ -863,7 +863,7 @@ func create_random_equipment(type: String, components: Array[String], region: Re
 			item.name += tr((info.get("type", "") as String).to_upper()).capitalize()
 		else:
 			item.name += tr(type.to_upper()).capitalize()
-	elif tier>=2:
+	elif tier >= 2:
 		item.name = item.name.split(' ')[0] + " " + tr("PROTO").capitalize() + " "
 		if info.has("name"):
 			item.name += tr((info.get("name", "") as String).to_upper()).capitalize()
@@ -921,6 +921,7 @@ func create_equipment(type: String, components: Array[String], material_list: Ar
 	var item: ItemEquipment
 	var item_data := info.duplicate(true)
 	var component_list := []
+	item_data.attributes = {}
 	if item_data.has("name"):
 		item_data.name = tr((item_data.get("name", "") as String).to_upper()).capitalize()
 	elif item_data.has("base_type"):
@@ -973,19 +974,18 @@ func create_equipment(type: String, components: Array[String], material_list: Ar
 		if not mat.mod.size() > 0:
 			continue
 		for k: String in mat.mod:
-			if item_data.has(k):
-				item_data[k] *= 1.0 + mat.mod[k]
+			if item_data.attributes.has(k):
+				item_data.attributes[k] *= 1.0 + mat.mod[k]
 	if EQUIPMENT_ATTRIBUTE_MULTIPLIER.has(type):
 		var multiplier: float = EQUIPMENT_ATTRIBUTE_MULTIPLIER[type]
-		for k: String in item_data:
-			if typeof(item_data[k]) == TYPE_FLOAT:
-				item_data[k] = roundi(multiplier * (item_data.get(k, 0.0) as float))
+		for k: String in item_data.attributes:
+			if typeof(item_data.attributes[k]) == TYPE_FLOAT:
+				item_data.attributes[k] = roundi(multiplier * (item_data.get(k, 0.0) as float))
 	else:
-		for k: String in item_data:
-			if typeof(item_data[k]) == TYPE_FLOAT:
-				item_data[k] = roundi(item_data.get(k, 0.0) as float)
+		for k: String in item_data.attributes:
+			if typeof(item_data.attributes[k]) == TYPE_FLOAT:
+				item_data.attributes[k] = roundi(item_data.attributes.get(k, 0.0) as float)
 	item_data.components = component_list
-	item_data.erase("material")
 	item_data.properties = {}
 	if (item_data.name as String).right(1) == 's' and (item_data.name as String).right(2) != "ss":
 		item_data.properties.plural = (item_data.name as String).to_lower()
@@ -1101,11 +1101,11 @@ func create_legendary_equipment(type: String, level: int, quality:= 150) -> Item
 	if randf() < 0.75:
 		var prefixes:= []
 		var suffixes:= []
-		for card: Dictionary in item.card_set.values():
+		for card: ItemDescription.Card in item.card_set.values():
 			if "prefix" in card.properties:
-				prefixes.append(card.properties.prefix)
+				prefixes.append(card.properties.get_prefix())
 			if "suffix" in card.properties:
-				suffixes.append(card.properties.suffix)
+				suffixes.append(card.properties.get_suffix())
 		
 		item.name = base_name
 		if prefixes.size() > 0:
@@ -1141,8 +1141,7 @@ func create_legendary_equipment(type: String, level: int, quality:= 150) -> Item
 	
 	for pos in item.card_set:
 		if item.card_set[pos].type == "craftmanship":
-			#item.card_set.erase(pos)
-			item.card_set[pos].properties.singular = creator
+			item.card_set[pos].properties._singular = creator
 	Description.add_card(item.card_set, Description.create_card("theme"),
 	Utils.get_closest_position(Vector2i(0, 0), item.card_set.keys()))
 	Description.add_card(item.card_set, Description.create_card("craftmanship", {
@@ -1160,11 +1159,11 @@ func create_legendary_equipment(type: String, level: int, quality:= 150) -> Item
 func create_material_drop(type: String, creature: Dictionary, add_data:= {}) -> ItemMaterial:
 	var material: ItemMaterial
 	var material_data: Dictionary = materials[type].duplicate(true)
-	var quality:= get_creature_quality(creature)
-	if !creature.has("name_prefix"):
+	var quality := get_creature_quality(creature)
+	if "name_prefix" not in creature:
 		creature.name_prefix = creature.base_name
 	material_data.type = "material"
-	if is_vegan && material_data.has("veggie_name"):
+	if is_vegan && "veggie_name" in material_data:
 		material_data.name = sanitize_name(
 			((material_data.veggie_name as Array).pick_random() as String).format(creature),
 		).capitalize()
@@ -1206,7 +1205,7 @@ func create_regional_material(type: String, region: Region, quality_mod:= 1.0) -
 	var material: ItemMaterial
 	var material_data: Dictionary = materials[type].duplicate(true)
 	var quality: int
-	var named:= false
+	var named := false
 	var base_mat:= {}
 	quality = int(get_creature_quality({
 		"level":region.level,
@@ -1219,12 +1218,12 @@ func create_regional_material(type: String, region: Region, quality_mod:= 1.0) -
 		if k in material_data.tags:
 			base_mat = region.local_materials[k].pick_random()
 			break
-	if base_mat.size()==0:
+	if base_mat.size() == 0:
 		for k in DEFAULT_MATERIALS:
 			if k in material_data.tags:
 				base_mat = DEFAULT_MATERIALS[k].pick_random()
 				break
-	if base_mat.size()>0:
+	if base_mat.size() > 0:
 		quality *= base_mat.quality
 		material_data.name = sanitize_name(((material_data.name as Array).pick_random() as String).format({
 			"base_name":base_mat.name,
@@ -1254,7 +1253,7 @@ func create_regional_material(type: String, region: Region, quality_mod:= 1.0) -
 			elif typeof(material_data.add[s]) == TYPE_FLOAT:
 				material_data.add[s] *= float(quality) / 100.0
 	
-	if !named:
+	if not named:
 		var dict: Dictionary = DEFAULT_MATERIAL_TYPES.pick_random()
 		material_data.name = sanitize_name(
 			((material_data.name as Array).pick_random() as String).format({
@@ -1263,7 +1262,7 @@ func create_regional_material(type: String, region: Region, quality_mod:= 1.0) -
 			}),
 		).capitalize()
 	material_data.price = floori((material_data.price as float) * (0.5 +
-		0.5*float(quality) / 100.0 * float(quality) / 100.0))
+		0.5 * float(quality) / 100.0 * float(quality) / 100.0))
 	material_data.quality = quality
 	
 	material = ItemMaterial.new(material_data)
@@ -1278,24 +1277,13 @@ func create_soul_stone_drop(creature: Dictionary) -> ItemMaterial:
 
 func enchant_equipment_material(item: ItemEquipment, enchantment_type: String, material_list: Array[ItemMaterial],
 		quality_bonus:= 0, enchantment_slot:= "") -> ItemEquipment:
-	var add_data:= {}
+	var add_data := {}
 	for material in material_list:
 		if material.add.size() > 0:
 			merge_dicts(add_data, material.add)
 	item.enchant_equipment(enchantment_type, get_material_quality(material_list) + quality_bonus,
 		enchantment_slot, add_data)
 	return item
-
-
-#func create_relic() -> Dictionary:
-	#var info := {
-		#"type": "relic",
-		#"name": "relic",
-		#"components":[]
-	#}
-	#var equipment := create_equipment("relic", [], [], info)
-	#
-	#return equipment
 
 
 func craft_potion(type: String, material_list: Array[ItemMaterial], quality_bonus:= 0) -> ItemPotion:
@@ -1375,16 +1363,16 @@ func sanitize_name(string: String) -> String:
 	string.replace("{", "").replace("}", "")
 	for s in string.split(" ", false):
 		while string.find(s) != string.rfind(s):
-			var pos:= string.find(s)
-			var pos2:= string.find(s, pos + s.length())
+			var pos := string.find(s)
+			var pos2 := string.find(s, pos + s.length())
 			string = string.substr(0, pos) + s + string.substr(pos2 + s.length())
 	return string
 
 
 func load_material_data(path: String) -> void:
 	for file_name in Utils.get_file_paths(path):
-		var file:= FileAccess.open(file_name, FileAccess.READ)
-		var error:= FileAccess.get_open_error()
+		var file := FileAccess.open(file_name, FileAccess.READ)
+		var error := FileAccess.get_open_error()
 		if error != OK:
 			print("Can't open file " + file_name + "!")
 			continue
@@ -1402,8 +1390,8 @@ func load_material_data(path: String) -> void:
 
 func load_component_data(path: String) -> void:
 	for file_name in Utils.get_file_paths(path):
-		var file:= FileAccess.open(file_name, FileAccess.READ)
-		var error:= FileAccess.get_open_error()
+		var file := FileAccess.open(file_name, FileAccess.READ)
+		var error := FileAccess.get_open_error()
 		if error != OK:
 			print("Can't open file " + file_name + "!")
 			continue
@@ -1421,8 +1409,8 @@ func load_component_data(path: String) -> void:
 
 func load_recipe_data(path: String) -> void:
 	for file_name in Utils.get_file_paths(path):
-		var file:= FileAccess.open(file_name, FileAccess.READ)
-		var error:= FileAccess.get_open_error()
+		var file := FileAccess.open(file_name, FileAccess.READ)
+		var error := FileAccess.get_open_error()
 		if error != OK:
 			print("Can't open file " + file_name + "!")
 			continue
@@ -1440,8 +1428,8 @@ func load_recipe_data(path: String) -> void:
 
 func load_potion_data(path: String) -> void:
 	for file_name in Utils.get_file_paths(path):
-		var file:= FileAccess.open(file_name, FileAccess.READ)
-		var error:= FileAccess.get_open_error()
+		var file := FileAccess.open(file_name, FileAccess.READ)
+		var error := FileAccess.get_open_error()
 		if error != OK:
 			print("Can't open file " + file_name + "!")
 			continue
@@ -1459,8 +1447,8 @@ func load_potion_data(path: String) -> void:
 
 func load_food_data(path: String) -> void:
 	for file_name in Utils.get_file_paths(path):
-		var file:= FileAccess.open(file_name, FileAccess.READ)
-		var error:= FileAccess.get_open_error()
+		var file := FileAccess.open(file_name, FileAccess.READ)
+		var error := FileAccess.get_open_error()
 		if error != OK:
 			print("Can't open file " + file_name + "!")
 			continue

@@ -4,6 +4,7 @@ class_name Item
 var name: String
 var base_name: String
 var type: String
+var base_type: String
 var subtype: Array[String]
 var description: String
 var source: String
@@ -75,6 +76,7 @@ func _init(data: Dictionary) -> void:
 	self.name = data.get("name", "unknown") as String
 	self.base_name = data.get("base_name", "unknown") as String
 	self.type = data.get("type", "") as String
+	self.base_type = data.get("base_type", "") as String
 	self.subtype = Array(data.get("subtype", []) as Array, TYPE_STRING, "", null)
 	self.description = data.get("description", "") as String
 	self.source = data.get("source", tr("UNKNOWN_ORIGIN")) as String
@@ -124,6 +126,7 @@ func to_dict() -> Dictionary:
 		"name": self.name,
 		"base_name": self.base_name,
 		"type": self.type,
+		"base_type": self.base_type,
 		"subtype": self.subtype,
 		"description": self.description,
 		"source": self.source,
