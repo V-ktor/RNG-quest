@@ -1,37 +1,37 @@
 {
-	"level": 30,
+	"level": 44,
 	"tier": 0,
-	"setting": "cyberpunk",
+	"setting": "high sci-fi",
 	"race": [
 		"human",
+		"dwarf",
 		"halfling"
 	],
 	"enemy": [
 		"cyborg"
 	],
 	"base_name": [
-		" lands",
-		" wasteland",
-		" zone"
+		"heart",
+		"zone",
+		"core"
 	],
 	"name_prefix": [
-		"robotic",
+		"computronic ",
 		"nanite",
-		"nanite-infested",
 		"steel",
-		"rusted"
+		"positronic "
 	],
 	"tags": [
 		"sci-fi",
 		"artificial",
-		"ruins",
-		"river",
-		"hhumid"
+		"industrial",
+		"buildings",
+		"arid"
 	],
 	"enemies": [
-		"elemental",
-		"scorpion",
 		"nanite_slime",
+		"nanite_swarm",
+		"nanite_golem",
 		"robot",
 		"drone",
 		"mech",
@@ -51,9 +51,9 @@
 				"scrap",
 				"rust",
 				"steel",
-				"deviance",
 				"synth",
-				"steam"
+				"memory",
+				"processor"
 			],
 			"type": [
 				"town"
@@ -62,16 +62,16 @@
 		{
 			"base": [
 				"keep",
-				"fort",
-				"hold"
+				"hold",
+				"center"
 			],
 			"prefix": [
 				"scrap",
 				"rust",
 				"steel",
-				"deviance",
 				"synth",
-				"steam"
+				"memory",
+				"processor"
 			],
 			"type": [
 				"castle"
@@ -79,15 +79,15 @@
 		},
 		{
 			"base": [
-				"spire",
-				"watch"
+				"tower"
 			],
 			"prefix": [
 				"scrap",
 				"rust",
 				"steel",
 				"synth",
-				"steam"
+				"memory",
+				"processor"
 			],
 			"type": [
 				"outpost"
@@ -97,18 +97,16 @@
 	"locations": [
 		{
 			"base": [
-				"scrapyard",
 				"yard",
 				"field"
 			],
 			"prefix": [
-				"rust",
-				"iron",
 				"steel",
 				"titanium",
 				"nanite",
-				"robotic ",
-				"lifeless "
+				"robot",
+				"computronic ",
+				"memory"
 			],
 			"type": [
 				"field"
@@ -117,61 +115,46 @@
 		{
 			"base": [
 				"pit",
-				"hole"
+				"hideout"
 			],
 			"prefix": [
-				"scrap",
-				"rust",
-				"iron",
 				"steel",
 				"titanium",
 				"nanite",
-				"robotic "
+				"robot",
+				"artificial ",
+				"computronic ",
+				"memory",
+				"processing"
 			],
 			"type": [
-				"cave"
-			]
-		},
-		{
-			"base": [
-				"forest",
-				"woods"
+				"outpost"
 			],
-			"prefix": [
-				"scrap",
-				"rust",
-				"iron",
-				"steel",
-				"titanium",
-				"nanite",
-				"robotic ",
-				"artificial "
-			],
-			"type": [
-				"forest"
-			]
 		},
 		{
 			"base": [
 				"hive",
-				"complex"
+				"factory",
+				"core",
+				"pillars"
 			],
 			"prefix": [
-				"scrap",
-				"rust",
-				"iron",
 				"steel",
 				"titanium",
 				"nanite",
-				"robotic "
+				"robot",
+				"artificial ",
+				"computronic ",
+				"memory",
+				"processing"
 			],
 			"type": [
 				"factory"
 			]
 		}
 	],
-	"enchantment_chance": 0.2,
-	"resources": [
+	"enchantment_chance": 0.25,
+	"resources":  [
 		"moss",
 		"herb",
 		"carrot",
@@ -193,39 +176,53 @@
 	"local_materials": {
 		"wood": [
 			{
-				"name": "cedar",
+				"name": "oak",
 				"quality": 0.75
 			},
 			{
-				"name": "oak",
-				"quality": 1.0
+				"name": "nanite",
+				"quality": 1.0,
+				"mod": {
+					"attack": 0.05,
+					"magic": 0.05
+				},
 			},
 			{
-				"name": "steelwood",
+				"name": "synth",
 				"quality": 1.25,
 				"add": {
-					"armour":2,
+					"damage": {
+						"fire": 0.05,
+						"lightning": 0.05,
+					},
 					"resistance": {
-						"cutting": 0.04,
-						"piercing": 0.04,
-						"impact": 0.04
+						"fire": 0.05,
+						"lightning": 0.05,
 					}
 				}
 			}
 		],
 		"metal": [
 			{
-				"name": "aluminum",
+				"name": "silicon",
 				"quality": 0.75
 			},
 			{
-				"name": "iron",
-				"quality": 1.0
+				"name": "aluminum",
+				"quality": 1.0,
+				"mod": {
+					"speed": 0.125,
+					"evasion": 0.05
+				},
 			},
 			{
-				"name": "titanium",
+				"name": "smart",
 				"quality": 1.25,
 				"add": {
+					"damage": {
+						"fire": 0.05,
+						"lightning": 0.05
+					},
 					"resistance": {
 						"cutting": 0.04,
 						"piercing": 0.04,
@@ -241,33 +238,52 @@
 			},
 			{
 				"name": "polymere",
-				"quality": 1.0
+				"quality": 1.0,
+				"mod": {
+					"evasion": 0.05,
+					"armour": 0.05
+				},
 			},
 			{
-				"name": "synth skin",
+				"name": "synth",
 				"quality": 1.25,
 				"add": {
-					"accuracy": 0.5,
-					"evasion": 0.5
+					"damage": {
+						"poison": 0.06,
+						"acid": 0.06,
+					},
+					"resistance": {
+						"poison": 0.06,
+						"acid": 0.06
+					}
 				}
 			}
 		],
 		"cloth": [
 			{
-				"name": "wool",
-				"quality": 0.75
+				"name": "cotton",
+				"quality": 0.75,
 			},
 			{
 				"name": "polyester",
-				"quality": 1.0
+				"quality": 1.0,
+				"mod": {
+					"evasion": 0.05,
+					"armour": 0.05,
+				}
 			},
 			{
 				"name": "aramid",
 				"quality": 1.25,
 				"add": {
-					"willpower": 0.5,
+					"damage": {
+						"earth": 0.05,
+					},
 					"resistance": {
-						"fire": 0.07
+						"piercing": 0.06,
+						"fire": 0.06,
+						"earth": 0.06,
+						"acid": 0.06
 					}
 				}
 			}
@@ -279,63 +295,90 @@
 			},
 			{
 				"name": "graphite",
-				"quality": 1.0
+				"quality": 1.0,
+				"mod": {
+					"magic": 0.05,
+					"willpower": 0.05
+				}
 			},
 			{
-				"name": "granite",
+				"name": "circuit",
 				"quality": 1.25,
 				"add": {
+					"damage": {
+						"fire": 0.05,
+						"ice": 0.05,
+						"lightning": 0.05,
+						"poison": 0.05
+					},
 					"resistance": {
-						"cutting": 0.04,
-						"piercing": 0.04,
-						"impact": 0.04
+						"water": 0.06,
+						"wind": 0.06,
+						"earth": 0.06,
+						"poison": 0.06,
+						"acid": -0.025,
+						"lightning": -0.025,
+						"water": -0.025
 					}
 				}
 			}
 		],
 		"gem": [
 			{
-				"name": "turquoise",
+				"name": "circuit",
 				"quality": 0.75
 			},
 			{
-				"name": "garnet",
-				"quality": 1.0
+				"name": "sapphire",
+				"quality": 1.0,
+				"mod": {
+					"magic": 0.05,
+					"willpower": 0.05
+				}
 			},
 			{
-				"name": "sapphire",
+				"name": "processing",
 				"quality": 1.25,
 				"add": {
-					"attack": 1,
 					"damage": {
-						"cutting": 0.03,
-						"piercing": 0.03,
-						"impact": 0.03
+						"fire": 0.05,
+						"ice": 0.05,
+						"lightning": 0.05,
+						"poison": 0.05
+					},
+					"resistance": {
+						"water": 0.06,
+						"wind": 0.06,
+						"earth": 0.06,
+						"poison": 0.06,
+						"acid": -0.025,
+						"lightning": -0.025,
+						"water": -0.025
 					}
 				}
 			}
 		],
 		"alchemy": [
 			{
-				"name": "brown",
+				"name": "dried",
 				"quality": 0.75
 			},
 			{
-				"name": "iron",
+				"name": "synth",
 				"quality": 1.0
 			},
 			{
-				"name": "synthetic",
+				"name": "nanite",
 				"quality": 1.25
 			}
 		],
 		"cooking": [
 			{
-				"name": "dried",
+				"name": "circuit",
 				"quality": 0.75
 			},
 			{
-				"name": "rehydrated",
+				"name": "dried",
 				"quality": 1.0
 			},
 			{

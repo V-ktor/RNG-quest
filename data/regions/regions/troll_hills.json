@@ -1,88 +1,75 @@
 {
-	"level": 1,
-	"tier": -1,
-	"setting": "industrial fantasy",
+	"level": 10,
+	"tier": 0,
+	"setting": "fantasy",
 	"race": [
-		"dwarf"
+		"halfling"
 	],
 	"enemy": [
-		"goblin",
-		"undead"
+		"orc",
+		"gnoll",
+		"goblin"
 	],
 	"base_name": [
-		"mine",
-		"fortress"
+		"hills",
+		"plains",
+		" outskirt"
 	],
 	"name_prefix": [
-		"prosperous ",
-		"rich ",
-		"calm ",
-		"dwarven ",
-		"gold",
-		"silver",
-		"copper"
+		"troll",
+		"goblin",
+		"wild ",
+		"green "
 	],
 	"tags": [
 		"fantasy",
-		"industrial",
-		"mining",
-		"prosperity"
+		"mountains",
+		"hills",
+		"warm",
+		"isolated"
 	],
 	"enemies": [
-		"elemental",
+		"golem",
 		"goblin",
+		"gnoll",
 		"wolf",
-		"spider",
-		"plant"
+		"spider"
 	],
 	"enemy_amount": [
 		1,
-		2
-	],
-	"description": [
-		"cave_entrance",
-		"cave",
-		"cave_floor",
-		"rock_wall",
-		"stalagmites",
-		"shadow",
-		"vegetation_underground",
-		"ceiling",
-		"bridge",
-		"web",
-		"darkness"
+		3
 	],
 	"cities": [
 		{
 			"base": [
 				" town",
-				"dale",
-				"ton"
+				"ville",
+				" outpost",
+				" farm",
+				" farmland"
 			],
 			"prefix": [
-				"ore",
-				"crystal",
-				"gem",
-				"rock",
-				"stone",
-				"rich",
-				"carl"
+				"crop",
+				"sunset",
+				"mountain",
+				"green",
+				"quite "
 			],
 			"type": [
-				"town"
+				"settlement"
 			]
 		},
 		{
 			"base": [
-				"post"
+				" outpost",
+				" tower"
 			],
 			"prefix": [
-				"ore",
-				"crystal",
-				"gem",
-				"rock",
-				"stone",
-				"out"
+				"crop",
+				"sunset",
+				"mountain",
+				"green",
+				"quite "
 			],
 			"type": [
 				"outpost"
@@ -90,17 +77,18 @@
 		},
 		{
 			"base": [
-				"keep"
+				"town",
+				"farm",
+				"ton"
 			],
 			"prefix": [
-				"ore",
-				"crystal",
-				"gem",
-				"stone",
-				"marble"
+				"crop",
+				"gold",
+				"hill",
+				"calm"
 			],
 			"type": [
-				"castle"
+				"town"
 			]
 		}
 	],
@@ -110,134 +98,115 @@
 				"river"
 			],
 			"prefix": [
-				"calm ",
-				"crystal",
-				"deep ",
-				"safe ",
-				"quicksilver"
+				"blue ",
+				"golden ",
+				"dangerous ",
+				"great ",
+				"troll",
+				"goblin"
 			],
 			"type": [
 				"river"
 			],
 			"enemies": [
 				"crab",
+				"crab",
+				"elemental",
+				"troll",
 				"wolf",
-				"elemental"
+				"boar",
+				"ogre"
 			],
 			"resources": [
 				"herb",
 				"flower",
 				"wood",
 				"gem",
-				"pebble",
-				"cotton"
-			],
-			"description": [
-				"cave_entrance",
-				"cave",
-				"cave_floor",
-				"rock_wall",
-				"chasm",
-				"stalagmites",
-				"shadow",
-				"vegetation_underground",
-				"ceiling",
-				"river",
-				"river_bed",
-				"bridge",
-				"web",
-				"darkness"
+				"pebble"
 			]
 		},
 		{
 			"base": [
-				"cave",
-				"shaft",
-				"cavern"
+				"cave"
 			],
 			"prefix": [
-				"calm ",
-				"illuminated ",
-				"mineral-rich ",
-				"crystal",
-				"deep",
-				"safe ",
-				"ore",
-				"silver",
-				"copper"
+				"dark ",
+				"golden ",
+				"dangerous ",
+				"great ",
+				"troll",
+				"goblin"
 			],
 			"type": [
 				"cave"
 			],
 			"enemies": [
 				"goblin",
-				"wolf",
+				"goblin",
+				"hobgoblin",
+				"gnoll",
+				"elemental",
 				"bat",
-				"spider",
-				"zombie"
+				"spider"
 			],
 			"resources": [
-				"stone",
+				"pebble",
 				"ore",
-				"gem",
-				"mushroom",
-				"moss"
+				"ore",
+				"gem"
 			]
 		},
 		{
 			"base": [
-				"hills"
+				"hills",
+				"hill"
 			],
 			"prefix": [
-				"calm ",
-				"crystal",
-				"safe ",
-				"ore",
-				"silver",
-				"tungsten"
+				"green ",
+				"golden ",
+				"steep ",
+				"dangerous ",
+				"great ",
+				"troll",
+				"goblin"
 			],
 			"type": [
 				"mountain"
+			],
+			"enemies": [
+				"goblin",
+				"hobgoblin",
+				"gnoll",
+				"troll",
+				"wolf",
+				"strong_wolf",
+				"bat",
+				"ogre"
 			]
 		},
 		{
 			"base": [
-				"forest"
+				"fields"
 			],
 			"prefix": [
-				"calm ",
-				"illuminated ",
-				"mineral-rich ",
-				"crystal",
-				"deep ",
-				"safe "
+				"green ",
+				"golden ",
+				"steep ",
+				"dangerous ",
+				"great ",
+				"troll",
+				"goblin"
 			],
 			"type": [
-				"forest"
-			],
-			"enemies": [
-				"elemental",
-				"wolf",
-				"boar",
-				"plant"
+				"field"
 			],
 			"resources": [
 				"herb",
+				"flower",
 				"fruit",
 				"wood",
 				"cotton",
-				"mushroom"
-			],
-			"description": [
-				"cave_entrance",
-				"vegetation",
-				"vegetation_forest",
-				"vegetation_underground",
-				"landscape",
-				"sky",
-				"cloud",
-				"sun",
-				"moon"
+				"cabbage"
 			]
 		}
 	],
@@ -246,12 +215,12 @@
 		"herb",
 		"flower",
 		"fruit",
-		"root",
+		"cabbage",
 		"wood",
-		"stone",
+		"pebble",
 		"ore",
-		"ingot",
-		"cotton"
+		"cotton",
+		"cloth"
 	],
 	"resource_chance": 0.1,
 	"resource_amount": [
@@ -279,11 +248,11 @@
 				"quality": 0.75
 			},
 			{
-				"name": "bronze",
+				"name": "iron",
 				"quality": 1.0
 			},
 			{
-				"name": "iron",
+				"name": "steel",
 				"quality": 1.25
 			}
 		],
@@ -293,11 +262,11 @@
 				"quality": 0.75
 			},
 			{
-				"name": "wolf skin",
+				"name": "reinforced",
 				"quality": 1.0
 			},
 			{
-				"name": "reinforced",
+				"name": "troll hide",
 				"quality": 1.25
 			}
 		],
@@ -335,7 +304,7 @@
 				"quality": 0.75
 			},
 			{
-				"name": "peridot",
+				"name": "sapphire",
 				"quality": 1.0
 			},
 			{
@@ -345,7 +314,7 @@
 		],
 		"alchemy": [
 			{
-				"name": "bitter",
+				"name": "sour",
 				"quality": 0.75
 			},
 			{
@@ -353,21 +322,21 @@
 				"quality": 1.0
 			},
 			{
-				"name": "crimson",
+				"name": "potent",
 				"quality": 1.25
 			}
 		],
 		"cooking": [
 			{
-				"name": "bitter",
+				"name": "green",
 				"quality": 0.75
 			},
 			{
-				"name": "fungus",
+				"name": "troll",
 				"quality": 1.0
 			},
 			{
-				"name": "deep",
+				"name": "wine",
 				"quality": 1.25
 			}
 		]

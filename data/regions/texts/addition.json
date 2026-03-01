@@ -1,0 +1,86 @@
+[
+	{
+		"type": "addition",
+		"sentence":[],
+		"text": [
+			"like {particles.singular} on the {horizon.singular}"
+		],
+		"required": [
+			"particles",
+			"horizon"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "addition",
+		"sentence":[],
+		"text": [
+			"like {particles.singular} on the {ground.singular}"
+		],
+		"required": [
+			"particles",
+			"ground"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "addition",
+		"sentence":[],
+		"text": [
+			"like {particles.singular} on the {vegetation.plural}"
+		],
+		"required": [
+			"particles",
+			"vegetation"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "addition",
+		"sentence":[],
+		"text": [
+			"like the {celestial_body.singular} on the {sky.singular}"
+		],
+		"required": [
+			"celestial_body",
+			"sky"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "addition",
+		"sentence":[],
+		"text": [
+			"like the {celestial_body.singular} rising on the {horizon.singular}"
+		],
+		"required": [
+			"celestial_body",
+			"horizon"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "addition",
+		"sentence":[],
+		"text": [
+			"as {particles.singular} blocks out the {celestial_body.singular}"
+		],
+		"required": [
+			"celestial_body",
+			"particles"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	}
+]

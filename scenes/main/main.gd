@@ -594,12 +594,12 @@ func create_shop_equipment(type: String, quality_mod:= 1.0) -> ItemEquipment:
 			tier_multiplier = sqrt(1.5 * self.current_region.tier)
 		quality = int(100*level_multiplier * tier_multiplier)
 		item.enchant_equipment(
-			Items.Enchantment.enchantments_by_tier.regular.pick_random() as String,
+			Items.enchantments.enchantments_by_tier.regular.pick_random() as String,
 			quality,
 		)
 		if randf() < 0.02:
 			item.enchant_equipment(
-				Items.Enchantment.enchantments_by_tier.curse.pick_random() as String,
+				Items.enchantments.enchantments_by_tier.curse.pick_random() as String,
 				quality,
 			)
 	if num_enchantments > 0:
@@ -665,8 +665,8 @@ func create_shop_material(material:= "") -> ItemMaterial:
 			type = ((Items.potion_recipes[recipe].material_types as Array).pick_random() as Array).pick_random()
 		elif recipe in Items.food_recipes:
 			type = ((Items.food_recipes[recipe].material_types as Array).pick_random() as Array).pick_random()
-		elif recipe in Items.Enchantment.enchantments:
-			type = ((Items.Enchantment.enchantments[recipe].material_types as Array).pick_random() as Array).pick_random()
+		elif recipe in Items.enchantments.enchantments:
+			type = ((Items.enchantments.enchantments[recipe].material_types as Array).pick_random() as Array).pick_random()
 		for mat in Items.materials:
 			if type in Items.materials[mat].tags:
 				valid.push_back(mat)
@@ -873,10 +873,10 @@ func extract_soul() -> float:
 func pick_enchantment(item: ItemEquipment) -> String:
 	if "enchantments" in item:
 		if "minor" in item.enchantments and "greator" not in item.enchantments:
-			return (Items.Enchantment.enchantments_by_tier_and_slot.regular.greater as Array).pick_random() as String
+			return (Items.enchantments.enchantments_by_tier_and_slot.regular.greater as Array).pick_random() as String
 		elif "greater" in item.enchantments and "minor" not in item.enchantments:
-			return (Items.Enchantment.enchantments_by_tier_and_slot.regular.minor as Array).pick_random() as String
-	return Items.Enchantment.enchantments_by_tier.regular.pick_random()
+			return (Items.enchantments.enchantments_by_tier_and_slot.regular.minor as Array).pick_random() as String
+	return Items.enchantments.enchantments_by_tier.regular.pick_random()
 
 func level_up() -> void:
 	var text: String
@@ -1543,7 +1543,7 @@ func action_done(action: Dictionary) -> void:
 					continue
 				var item: ItemEquipment = player.equipment[k]
 				var enchantment:= pick_enchantment(item)
-				var dict: Dictionary = Items.Enchantment.enchantments[enchantment]
+				var dict: Dictionary = Items.enchantments.enchantments[enchantment]
 				var materials:= pick_random_materials(dict)
 				if materials.size() == dict.material_types.size():
 					item = Items.enchant_equipment_material(item, enchantment, materials, 10.0 * (action.args.level - 1.0))
@@ -1566,7 +1566,7 @@ func action_done(action: Dictionary) -> void:
 					if item.type == "material" or (item is ItemEquipment and item.is_enchanted):
 						continue
 					var enchantment := pick_enchantment(item)
-					var dict: Dictionary = Items.Enchantment.enchantments[enchantment]
+					var dict: Dictionary = Items.enchantments.enchantments[enchantment]
 					var materials := pick_random_materials(dict)
 					if materials.size()==dict.material_types.size():
 						remove_item(item)
@@ -2944,12 +2944,15 @@ func print_log_msg(text: String) -> void:
 	emit_signal("text_printed", text + "\n")
 
 func print_summary_msg(text: String) -> void:
-	var time_zone:= Time.get_time_zone_from_system()
-	var time_data:= Time.get_datetime_dict_from_unix_time(int(current_time + 60 * time_zone.bias))
+	var time_zone := Time.get_time_zone_from_system()
+	var time_string := Calender.get_date_by_race(
+		floori(current_time + 60 * time_zone.get("bias", 0) as int),
+		player.race,
+	)
 	if summary_text.length() > 10000:
 		summary_text = summary_text.right(summary_text.length() - find_log_middle_position(summary_text) - 1)
 	text[0] = text[0].to_upper()
-	text = "\n" + Time.get_datetime_string_from_datetime_dict(time_data, true) + ": " + text
+	text = "\n" + time_string + ": " + text
 	summary_text += text
 	emit_signal("summary_updated", summary_text)
 
@@ -3208,8 +3211,19 @@ func _load() -> bool:
 				"current_region":
 					self.current_region = Region.new(data[k])
 				"player_inventory":
-					self.player_inventory
-					# TODO
+					self.player_inventory.clear()
+					for dict in data[k]:
+						match dict.get("type", ""):
+							"material":
+								self.player_inventory.push_back(ItemMaterial.new(dict))
+							"potion":
+								self.player_inventory.push_back(ItemPotion.new(dict))
+							_:
+								self.player_inventory.push_back(ItemEquipment.new(dict))
+				"player_potions":
+					self.player_potions.clear()
+					for dict in data[k]:
+						self.player_potions.push_back(ItemPotion.new(dict))
 				"enemy":
 					enemies.clear()
 					for dict in data[k]:

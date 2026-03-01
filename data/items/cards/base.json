@@ -3,7 +3,7 @@
 	"component": {},
 	"material": {
 		"properties": [
-			"adjective",
+			"adjective"
 		]
 	},
 	"shape": {},
@@ -12,7 +12,7 @@
 	"liquid": {
 		"properties": [
 			"color",
-			"thickness",
+			"thickness"
 		]
 	},
 	"theme": {},

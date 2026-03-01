@@ -16,7 +16,7 @@ var is_ranged: bool
 var story: String
 var component_description: String
 var components: Array[Component]
-var card_set: Dictionary[Vector2i, ItemDescription.Card]
+var card_set: Dictionary[Vector2i, Descriptions.Card]
 
 
 func _init(data: Dictionary) -> void:
@@ -56,13 +56,13 @@ func _init(data: Dictionary) -> void:
 		if card_set_dict[p].position is String:
 			card_set_dict[p].position = Utils.parse_vector2i(card_set_dict[p].position as String)
 		if p is String:
-			self.card_set[Utils.parse_vector2i(p as String)] = ItemDescription.Card.new(card_set_dict[p] as Dictionary)
+			self.card_set[Utils.parse_vector2i(p as String)] = Descriptions.Card.new(card_set_dict[p] as Dictionary)
 		else:
-			self.card_set[p] = ItemDescription.Card.new(card_set_dict[p] as Dictionary)
+			self.card_set[p] = Descriptions.Card.new(card_set_dict[p] as Dictionary)
 
 func enchant_equipment(enchantment_type: String, q: int, enchantment_slot:= "",
 		add_data:= {}) -> void:
-	var dict: Dictionary = Items.Enchantment.enchantments[enchantment_type].duplicate(true)
+	var dict: Dictionary = Items.enchantments.enchantments[enchantment_type].duplicate(true)
 	var scale:= float(q) / 100.0
 	var total_quality:= q
 	var slot: String = dict.slot + enchantment_slot
@@ -150,12 +150,12 @@ func create_description(max_sentences:= 0) -> String:
 	text += self.source + "\n\n"
 	
 	if self.card_set.size() == 0:
-		self.card_set = Items.Description.create_description_data(self, r)
+		self.card_set = Items.descriptions.create_description_data(self, r)
 	
 	if max_sentences == 0:
 		@warning_ignore("integer_division")
 		max_sentences = clampi((r + randi_range(0, 2)) / 2, 1, 4)
-	text += Items.Description.generate_description(self.card_set, max_sentences)
+	text += Items.descriptions.generate_description(self.card_set, max_sentences)
 	
 	return text
 

@@ -7,7 +7,7 @@ var character: Characters.Character
 var vbox_container:= $ScrollContainer/VBoxContainer
 
 
-func _add_mod(index: int, type: String, value: float):
+func _add_mod(index: int, type: String, value: float) -> void:
 	var container: HBoxContainer
 	var color: Color
 	if value <= 0.0:
@@ -27,15 +27,15 @@ func _add_mod(index: int, type: String, value: float):
 	(container.get_node("Label") as Label).add_theme_color_override("font_color", color)
 	container.show()
 
-func update():
+func update() -> void:
 	var index:= 0
 	
 	for c in vbox_container.get_children():
 		(c as Control).hide()
 	
-	for type in character.damage.keys():
+	for type in character.damage:
 		_add_mod(index, tr(type.to_upper()) + " " + tr("DAMAGE"), character.damage[type])
 		index += 1
-	for type in character.resistance.keys():
+	for type in character.resistance:
 		_add_mod(index, tr(type.to_upper()) + " " + tr("RESISTANCE"), character.resistance[type])
 		index += 1

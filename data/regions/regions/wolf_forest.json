@@ -1,39 +1,43 @@
 {
-	"level": 15,
+	"level": 10,
 	"tier": 0,
-	"setting": "medieval",
+	"setting": "dark fantasy",
 	"race": [
-		"human"
+		"elf"
 	],
 	"enemy": [
 		"orc",
 		"gnoll",
-		"undead"
+		"goblin"
 	],
 	"base_name": [
-		" capital",
-		" metropolis",
-		" cradle"
+		"forest",
+		"woods",
+		" woodland"
 	],
 	"name_prefix": [
-		"kingdom's",
-		"imperial",
-		"grand",
-		"humanity's"
+		"deep",
+		"wolf",
+		"haunted ",
+		"dark",
+		"cursed ",
+		"spirit",
+		"feral "
 	],
 	"tags": [
-		"medieval",
-		"city",
-		"capital",
-		"prosperity",
-		"trade",
-		"slums"
+		"fantasy",
+		"forest",
+		"wilderness",
+		"dark"
 	],
 	"enemies": [
-		"elemental",
-		"bat",
-		"thug",
-		"guard"
+		"spirit",
+		"goblin",
+		"gnoll",
+		"wolf",
+		"strong_wolf",
+		"elemental_wolf",
+		"plant"
 	],
 	"enemy_amount": [
 		1,
@@ -42,16 +46,15 @@
 	"cities": [
 		{
 			"base": [
-				" district",
-				" market",
-				" bazar"
+				"village",
+				"town"
 			],
 			"prefix": [
-				"golden",
-				"trading",
-				"great",
-				"central",
-				"royal"
+				"green ",
+				"deepwood",
+				"forest",
+				"leaf",
+				"elven "
 			],
 			"type": [
 				"town"
@@ -59,167 +62,181 @@
 		},
 		{
 			"base": [
-				" gate",
-				" bridge",
-				" tower"
+				"keep"
 			],
 			"prefix": [
-				"golden",
-				"great",
-				"north",
-				"south",
-				"west",
-				"east",
-				"central"
+				"green ",
+				"deepwood",
+				"forest",
+				"leaf",
+				"elven "
 			],
 			"type": [
-				"outpost"
+				"castle"
 			]
 		},
 		{
 			"base": [
-				" castle",
-				"keep"
+				"ville",
+				"dale",
+				"post",
+				"keep",
+				" outpost"
 			],
 			"prefix": [
-				"golden",
-				"great",
-				"north",
-				"south",
-				"west",
-				"east",
-				"central",
-				"royal",
-				"imperial"
+				"green",
+				"brightwood",
+				"deepwood",
+				"leaf"
+			],
+					"type": [
+				"town"
+			]
+		},
+		{
+			"base": [
+				"post",
+				" outpost"
+			],
+			"prefix": [
+				"green",
+				"brightwood",
+				"deepwood",
+				"leaf"
 			],
 			"type": [
-				"castle"
+				"outpost"
 			]
 		}
 	],
 	"locations": [
 		{
 			"base": [
-				"slums",
-				"alleyways"
+				"river"
 			],
 			"prefix": [
-				"dirty ",
-				"hell's ",
-				"forbidden ",
-				"locked down ",
-				"cursed ",
-				"infested ",
-				"dangerous "
+				"blue ",
+				"moss",
+				"dangerous ",
+				"great ",
+				"dark",
+				"witching ",
+				"haunted "
 			],
 			"type": [
-				"slum"
-			]
-		},
-		{
-			"base": [
-				"outskirt"
+				"river"
 			],
-			"prefix": [
-				"dirty ",
-				"forbidden ",
-				"locked down ",
-				"cursed ",
-				"infested ",
-				"dangerous "
-			],
-			"type": [
-				"outpost"
+			"tags": [
+				"river",
+				"forest",
+				"idyllic"
 			],
 			"enemies": [
-				"elemental",
+				"crab",
+				"crab",
 				"goblin",
-				"gnoll",
-				"boar",
+				"hobgoblin",
 				"wolf",
-				"strong_wolf",
-				"ogre"
+				"elemental"
 			],
 			"resources": [
 				"herb",
 				"flower",
-				"moss",
-				"fruit",
-				"cabbage",
-				"carrot",
 				"wood",
-				"pebble",
-				"ore",
-				"cotton"
+				"gem",
+				"pebble"
 			]
 		},
 		{
 			"base": [
-				"graveyard",
-				"zone"
+				"forest",
+				"woods"
 			],
 			"prefix": [
-				"dirty ",
-				"hell's ",
-				"forbidden ",
-				"locked down ",
-				"skull",
-				"cursed ",
-				"slum",
-				"infested ",
-				"dangerous "
+				"green ",
+				"moss",
+				"dangerous ",
+				"great ",
+				"dark",
+				"witching ",
+				"haunted ",
+				"overgrown "
 			],
 			"type": [
-				"graveyard"
+				"forest"
 			],
-			"enemies": [
-				"zombie",
-				"skeleton",
-				"ghoul",
-				"spirit",
-				"ghost"
+			"tags": [
+				"forest",
+				"dark",
+				"haunted"
 			]
 		},
 		{
 			"base": [
-				"dungeon",
-				"zone"
+				"hills"
 			],
 			"prefix": [
-				"dirty ",
-				"hell's ",
-				"forbidden ",
-				"locked down ",
-				"skull",
-				"cursed ",
-				"slum",
-				"infested ",
-				"dangerous "
+				"green ",
+				"moss",
+				"dangerous ",
+				"great ",
+				"dark",
+				"witching ",
+				"haunted ",
+				"overgrown "
 			],
 			"type": [
-				"dungeon"
+				"mountain"
+			],
+			"tags": [
+				"hills",
+				"mountains",
+				"dark"
 			],
 			"enemies": [
-				"elemental",
 				"goblin",
+				"hobgoblin",
 				"gnoll",
-				"crab",
-				"bat",
-				"spider"
+				"troll",
+				"wolf",
+				"strong_wolf",
+				"bat"
+			]
+		},
+		{
+			"base": [
+				"swamp"
+			],
+			"prefix": [
+				"black ",
+				"moss",
+				"dangerous ",
+				"putrid ",
+				"dark ",
+				"witching ",
+				"haunted ",
+				"overgrown "
+			],
+			"type": [
+				"swamp"
+			],
+			"tags": [
+				"swamp",
+				"dark",
+				"haunted"
 			]
 		}
 	],
 	"enchantment_chance": 0.1,
 	"resources": [
-		"flower",
-		"carrot",
+		"herb",
+		"moss",
+		"fruit",
 		"wood",
+		"plank",
 		"pebble",
 		"ore",
-		"cotton",
-		"coin",
-		"scrap",
-		"paper"
+		"cotton"
 	],
 	"resource_chance": 0.1,
 	"resource_amount": [
@@ -335,7 +352,7 @@
 				"quality": 1.0
 			},
 			{
-				"name": "wine",
+				"name": "rasp",
 				"quality": 1.25
 			}
 		]

@@ -252,6 +252,16 @@ const SUBJECT: Array[String] = [
 	"hedron", "phantasia", "enigma", "glyph", "nosis", "script", "chemical", "clysm", "cyst",
 	"sphere", "gram", "humanism", "colossus", "cism", "fication", "collaps", "nova", "genesis",
 ]
+const QUALIFIER: Array[String] = [
+	"aware", "based", "infused", "inspired", "derived", "optimized",
+]
+const THEORY_TYPE: Array[String] = [
+	"effect", "phenomenon", "theory", "conjecture", "force", "principle", "spell", "weave",
+]
+const TECHNOLOGY: Array[String] = [
+	"artificer", "analyzer", "cascade", "rune", "glyph",
+	"engine", "drive", "reactor", "battery", "incubator", "inducer", "augmentation", "rectifiers",
+]
 const GREETINGS: Dictionary[String, Array] = {
 	"neutral": [
 		"Hello!","Hey!","Hi!","Good day!","Greetings!",
@@ -501,7 +511,7 @@ func create_name(race: String, gender: int) -> String:
 		phrases += Array(dict.phrases_female as Array, TYPE_STRING, "", null)
 		endings += Array(dict.endings_female as Array, TYPE_STRING, "", null)
 	if "vovels" in dict:
-		vovels = Array(dict.vovels, TYPE_STRING, "", null)
+		vovels = Array(dict.vovels as Array, TYPE_STRING, "", null)
 	else:
 		vovels = VOVELS
 	
@@ -519,7 +529,7 @@ func get_disease_name() -> String:
 	return (DISEASE_PREFIX.pick_random() + " " + DISEASE_NAME.pick_random()).capitalize()
 
 func get_empire_name(race: String) -> String:
-	var rnd:= randf()
+	var rnd := randf()
 	if rnd < 0.075:
 		if RACE_ADJECTIVE.has(race):
 			return (RACE_ADJECTIVE[race] + " " + EMPIRE_GENERIC_NAME.pick_random()).capitalize()
@@ -552,3 +562,20 @@ func get_empire_name(race: String) -> String:
 	if EMPIRE_RACE_NAME.has(race):
 		return EMPIRE_RACE_NAME[race].pick_random().capitalize() + " " + tr("OF") + " " + create_name(race, 0).capitalize()
 	return EMPIRE_GENERIC_NAME.pick_random().capitalize() + " " + tr("OF") + " " + create_name(race, 0).capitalize()
+
+func get_science_name() -> String:
+	var prefix := (PREFIX.pick_random() as String).capitalize()
+	var subject: String
+	var rnd := randf()
+	if rnd < 0.5:
+		if randf() < 0.333:
+			prefix += "-" + Names.PREFIX.pick_random()
+		subject = prefix + Names.SUFFIX.pick_random() + " " + THEORY_TYPE.pick_random()
+	elif rnd < 0.8:
+		subject = prefix + Names.SUBJECT.pick_random()
+	else:
+		if randf() < 0.5:
+			subject = prefix + Names.SUFFIX.pick_random() + "-" + QUALIFIER.pick_random() + " " + TECHNOLOGY.pick_random()
+		else:
+			subject = prefix + Names.SUBJECT.pick_random() + " " + TECHNOLOGY.pick_random()
+	return subject

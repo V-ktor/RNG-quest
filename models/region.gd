@@ -17,6 +17,7 @@ var resource_amount: Array[int]
 var resources: Array[String]
 var local_materials: Dictionary[String, Array]
 var setting: String
+var tags: Array[String]
 
 
 func _init(dict: Dictionary) -> void:
@@ -71,6 +72,9 @@ func _init(dict: Dictionary) -> void:
 	for key in material_dict:
 		self.local_materials[key] = material_dict[key]
 	self.setting = dict.get("setting", "fantasy") as String
+	self.tags = []
+	for tag in dict.get("tags", []) as Array:
+		self.tags.push_back(tag)
 
 func to_dict() -> Dictionary[String, Variant]:
 	var city_dict: Dictionary[String, Dictionary] = {}
@@ -96,4 +100,5 @@ func to_dict() -> Dictionary[String, Variant]:
 		"resources": self.resources,
 		"local_materials": self.local_materials,
 		"setting": self.setting,
+		"tags": self.tags,
 	}

@@ -1,0 +1,257 @@
+{
+	"river": {
+		"tags": [
+			"warm",
+			"idyllic",
+			"water",
+			"volcano",
+			"artificial",
+			"sci-fi",
+			"slums",
+			"poverty",
+			"underwater"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"river",
+						"brook",
+						"stream"
+					],
+					"tags": [
+						"warm",
+						"idyllic",
+						"water"
+					]
+				},
+				{
+					"names": [
+						"lava"
+					],
+					"tags": [
+						"volcano"
+					]
+				},
+				{
+					"names": [
+						"canal"
+					],
+					"tags": [
+						"artificial",
+						"sci-fi"
+					]
+				},
+				{
+					"names": [
+						"sever"
+					],
+					"tags": [
+						"slums",
+						"poverty"
+					]
+				},
+				{
+					"names": [
+						"torrent"
+					],
+					"tags": [
+						"dark"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"currents"
+					],
+					"tags": [
+						"underwater"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"winding"
+					],
+					"tags": [
+						"idyllic"
+					]
+				},
+				{
+					"names": [
+						"broad"
+					],
+					"tags": [
+						"fantasy"
+					]
+				},
+				{
+					"names": [
+						"raging"
+					],
+					"tags": [
+						"dark"
+					]
+				},
+				{
+					"names": [
+						"straight"
+					],
+					"tags": [
+						"artificial"
+					]
+				}
+			]
+		}
+	},
+	"sea": {
+		"tags": [
+			"ocean",
+			"gravity_anomalies"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"ocean",
+						"sea"
+					],
+					"tags": [
+						"ocean"
+					]
+				},
+				{
+					"name": [
+						"lake"
+					],
+					"tags": [
+						"water",
+						"river"
+					]
+				},
+				{
+					"names": [
+						"water body"
+					],
+					"tags": [
+						"gravity_anomalies"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"seas"
+					],
+					"tags": [
+						"ocean"
+					]
+				},
+				{
+					"name": [
+						"lakes"
+					],
+					"tags": [
+						"water",
+						"river"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"calm",
+						"tranquil"
+					],
+					"tags": [
+						"idyllic",
+						"fantasy"
+					]
+				},
+				{
+					"names": [
+						"stormy"
+					],
+					"tags": [
+						"grim"
+					]
+				},
+				{
+					"names": [
+						"dark"
+					],
+					"tags": [
+						"dark"
+					]
+				},
+				{
+					"names": [
+						"crimson"
+					],
+					"tags": [
+						"necrotic"
+					]
+				},
+				{
+					"names": [
+						"floating",
+						"levitating"
+					],
+					"tags": [
+						"gravity_anomalies"
+					]
+				}
+			]
+		}
+	},
+	"waterfall": {
+		"tags": [
+			"water",
+			"river"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"waterfall"
+					],
+					"tags": [
+						"water",
+						"river"
+					]
+				},
+				{
+					"names": [
+						"upside-down waterfall",
+						"inverse waterfall"
+					],
+					"tags": [
+						"gravity_anomalies"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"waterfalls"
+					],
+					"tags": [
+						"water",
+						"river"
+					]
+				},
+				{
+					"names": [
+						"upside-down waterfalls",
+						"inverse waterfalls"
+					],
+					"tags": [
+						"gravity_anomalies"
+					]
+				}
+			]
+		}
+	}
+}

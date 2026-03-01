@@ -739,9 +739,9 @@ var potion_recipes: Dictionary[String, Dictionary] = {}
 var food_recipes: Dictionary[String, Dictionary] = {}
 
 @onready
-var Description:= $Description as ItemDescription
+var descriptions := $Description as ItemDescription
 @onready
-var Enchantment:= $Enchantment as ItemEnchantment
+var enchantments := $Enchantment as ItemEnchantment
 
 
 func pick_random_equipment(type: String) -> String:
@@ -1055,9 +1055,9 @@ func create_equipment_drop(creature: Dictionary) -> ItemEquipment:
 		for i in range(num_enchantments):
 			var enchantment: String
 			if randf() < 0.05:
-				enchantment = Enchantment.enchantments_by_tier.curse.pick_random()
+				enchantment = enchantments.enchantments_by_tier.curse.pick_random()
 			else:
-				enchantment = Enchantment.enchantments_by_tier.regular.pick_random()
+				enchantment = enchantments.enchantments_by_tier.regular.pick_random()
 			item.enchant_equipment(enchantment, int(quality * randf_range(0.75, 1.25)))
 	item.source = Story.sanitize_string(tr("DROPPED_BY").format({
 		"creature":creature.name,
@@ -1088,20 +1088,20 @@ func create_legendary_equipment(type: String, level: int, quality:= 150) -> Item
 	item.recipe = type
 	item.name = base_name
 	item.enchant_equipment(
-		(Enchantment.enchantments_by_tier_and_slot.legendary.minor as Array).pick_random() as String,
+		(enchantments.enchantments_by_tier_and_slot.legendary.minor as Array).pick_random() as String,
 		quality + add_quality + 10 * level, "1")
 	item.enchant_equipment(
-		(Enchantment.enchantments_by_tier_and_slot.legendary.greater as Array).pick_random() as String,
+		(enchantments.enchantments_by_tier_and_slot.legendary.greater as Array).pick_random() as String,
 		quality + add_quality + 10 * level, "2")
 	item.enchantment_potential = 0
 	item.is_legendary = true
 	
-	item.card_set = Description.create_description_data(item, 6)
+	item.card_set = descriptions.create_description_data(item, 6)
 	
 	if randf() < 0.75:
 		var prefixes:= []
 		var suffixes:= []
-		for card: ItemDescription.Card in item.card_set.values():
+		for card: Descriptions.Card in item.card_set.values():
 			if "prefix" in card.properties:
 				prefixes.append(card.properties.get_prefix())
 			if "suffix" in card.properties:
@@ -1129,7 +1129,7 @@ func create_legendary_equipment(type: String, level: int, quality:= 150) -> Item
 			item.name = adjective + " " + base_name + " " + tr("OF") + " " + creator
 		else:
 			item.name = base_name + " " + tr("OF") + " " + subject
-		Description.add_card(item.card_set, Description.create_card("science", {
+		Descriptions.add_card(item.card_set, descriptions.create_card("science", {
 			"singular": subject.to_lower(),
 			"adjective": adjective.to_lower(),
 		}), Utils.get_closest_position(Vector2i(0, 0), item.card_set.keys()))
@@ -1142,9 +1142,9 @@ func create_legendary_equipment(type: String, level: int, quality:= 150) -> Item
 	for pos in item.card_set:
 		if item.card_set[pos].type == "craftmanship":
 			item.card_set[pos].properties._singular = creator
-	Description.add_card(item.card_set, Description.create_card("theme"),
+	Descriptions.add_card(item.card_set, descriptions.create_card("theme"),
 	Utils.get_closest_position(Vector2i(0, 0), item.card_set.keys()))
-	Description.add_card(item.card_set, Description.create_card("craftmanship", {
+	Descriptions.add_card(item.card_set, descriptions.create_card("craftmanship", {
 		"singular": creator,
 		"adjective": ["legendary", "epic"].pick_random(),
 		"adverb": ["legendaryly", "masterfully"].pick_random(),

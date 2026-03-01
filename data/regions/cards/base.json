@@ -1,0 +1,771 @@
+{
+	"vegetation": {
+		"tags": [
+			"idyllic",
+			"forest",
+			"desert",
+			"warm",
+			"cold",
+			"humid"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"tree",
+						"oak",
+						"willow"
+					],
+					"tags": [
+						"warm",
+						"forest"
+					]
+				},
+				{
+					"names": [
+						"pine"
+					],
+					"tags": [
+						"cold"
+					]
+				},
+				{
+					"names": [
+						"cactus"
+					],
+					"tags": [
+						"desert"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"trees",
+						"oaks",
+						"willows"
+					],
+					"tags": [
+						"warm",
+						"forest"
+					]
+				},
+				{
+					"names": [
+						"pines"
+					],
+					"tags": [
+						"cold"
+					]
+				},
+				{
+					"names": [
+						"cacti"
+					],
+					"tags": [
+						"desert"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"lush",
+						"emerald"
+					],
+					"tags": [
+						"warm",
+						"forest"
+					]
+				},
+				{
+					"names": [
+						"hardy"
+					],
+					"tags": [
+						"cold"
+					]
+				},
+				{
+					"names": [
+						"scarce"
+					],
+					"tags": [
+						"desert"
+					]
+				}
+			]
+		}
+	},
+	"landmark": {
+		"tags": [
+			"medieval",
+			"capital",
+			"beach",
+			"mining",
+			"volcano",
+			"buildings",
+			"gravity_anomalies"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"tower"
+					],
+					"tags": [
+						"medieval"
+					]
+				},
+				{
+					"names": [
+						"cathedral",
+						"castle"
+					],
+					"tags": [
+						"capital"
+					]
+				},
+				{
+					"names": [
+						"ocean",
+						"sea"
+					],
+					"tags": [
+						"ocean"
+					]
+				},
+				{
+					"names": [
+						"coastline"
+					],
+					"tags": [
+						"beach"
+					]
+				},
+				{
+					"names": [
+						"mining shaft"
+					],
+					"tags": [
+						"mining"
+					]
+				},
+				{
+					"names": [
+						"volcano"
+					],
+					"tags": [
+						"volcano"
+					]
+				},
+				{
+					"names": [
+						"peak"
+					],
+					"tags": [
+						"mountains",
+						"hills"
+					]
+				},
+				{
+					"names": [
+						"skyscraper"
+					],
+					"tags": [
+						"buildings"
+					]
+				},
+				{
+					"names": [
+						"levitating mountain"
+					],
+					"tags": [
+						"gravity_anomalies"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"stone"
+					],
+					"tags": [
+						"medieval",
+						"city"
+					]
+				},
+				{
+					"names": [
+						"grand",
+						"golden"
+					],
+					"tags": [
+						"prosperous",
+						"fantasy"
+					]
+				},
+				{
+					"names": [
+						"steel",
+						"metallic"
+					],
+					"tags": [
+						"artificial"
+					]
+				},
+				{
+					"names": [
+						"wide"
+					],
+					"tags": [
+						"ocean",
+						"beach"
+					]
+				},
+				{
+					"names": [
+						"deep"
+					],
+					"tags": [
+						"mining"
+					]
+				},
+				{
+					"names": [
+						"tall"
+					],
+					"tags": [
+						"mountains",
+						"hills",
+						"buildings"
+					]
+				},
+				{
+					"names": [
+						"magical"
+					],
+					"tags": [
+						"gravity_anomalies"
+					]
+				}
+			]
+		}
+	},
+	"ground": {
+		"tags": [
+			"forest",
+			"desert",
+			"beach",
+			"cold",
+			"warm",
+			"ocean"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"ground"
+					]
+				},
+				{
+					"names": [
+						"forest floor"
+					],
+					"tags": [
+						"forest"
+					]
+				},
+				{
+					"names": [
+						"sand"
+					],
+					"tags": [
+						"desert",
+						"beach"
+					]
+				},
+				{
+					"names": [
+						"snow"
+					],
+					"tags": [
+						"cold"
+					]
+				},
+				{
+					"names": [
+						"grass"
+					],
+					"tags": [
+						"warm"
+					]
+				},
+				{
+					"names": [
+						"ocean",
+						"sea"
+					],
+					"tags": [
+						"ocean"
+					]
+				},
+				{
+					"names": [
+						"farmland",
+						"field",
+						"soil"
+					],
+					"tags": [
+						"farmland"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"plains"
+					],
+					"tags": [
+						"warm"
+					]
+				},
+				{
+					"names": [
+						"oceans",
+						"seas"
+					],
+					"tags": [
+						"ocean"
+					]
+				},
+				{
+					"names": [
+						"sands"
+					],
+					"tags": [
+						"desert",
+						"beach"
+					]
+				},
+				{
+					"names": [
+						"fields"
+					],
+					"tags": [
+						"farmland"
+					]
+				},
+				{
+					"names": [
+						"snow plains"
+					],
+					"tags": [
+						"cold"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"fertile",
+						"emerald"
+					],
+					"tags": [
+						"farmland"
+					]
+				},
+				{
+					"names": [
+						"brown"
+					],
+					"tags": [
+						"forest"
+					]
+				},
+				{
+					"names": [
+						"muddy"
+					],
+					"tags": [
+						"humid"
+					]
+				},
+				{
+					"names": [
+						"scarce"
+					],
+					"tags": [
+						"desert"
+					]
+				},
+				{
+					"names": [
+						"golden"
+					],
+					"tags": [
+						"beach"
+					]
+				},
+				{
+					"names": [
+						"cold",
+						"white"
+					],
+					"tags": [
+						"cold"
+					]
+				},
+				{
+					"names": [
+						"blue",
+						"azure"
+					],
+					"tags": [
+						"ocean"
+					]
+				}
+			]
+		}
+	},
+	"hills": {
+		"tags": [
+			"hills"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"hill"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"hills"
+					]
+				}
+			]
+		}
+	},
+	"mountains": {
+		"tags": [
+			"mountains"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"mountain",
+						"peak",
+						"mountain range"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"mountains"
+					]
+				}
+			]
+		}
+	},
+	"rift": {},
+	"bridge": {
+		"tags": [
+			"river"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"bridge"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"bridges"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"bridging"
+					]
+				}
+			]
+		}
+	},
+	"crops": {
+		"tags": [
+			"idyllic",
+			"warm",
+			"prosperity",
+			"farmland"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"wheat",
+						"barley"
+					]
+				}
+			]
+		}
+	},
+	"scent": {
+		"tags": [
+			"idyllic"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"honey"
+					],
+					"tags": [
+						"idyllic"
+					]
+				},
+				{
+					"names": [
+						"garbage"
+					],
+					"tags": [
+						"slums"
+					]
+				},
+				{
+					"names": [
+						"sea water"
+					],
+					"tags": [
+						"ocean",
+						"islands"
+					]
+				},
+				{
+					"names": [
+						"wet soil"
+					],
+					"tags": [
+						"humid",
+						"forest"
+					]
+				},
+				{
+					"names": [
+						"coal"
+					],
+					"tags": [
+						"industrial"
+					]
+				},
+				{
+					"names": [
+						"rust"
+					],
+					"tags": [
+						"ruins"
+					]
+				},
+				{
+					"names": [
+						"sulphur"
+					],
+					"tags": [
+						"volcano",
+						"fire"
+					]
+				},
+				{
+					"names": [
+						"ash"
+					],
+					"tags": [
+						"ash"
+					]
+				},
+				{
+					"names":[
+						"blood"
+					],
+					"tags": [
+						"grim"
+					]
+				},
+				{
+					"names": [
+						"decay"
+					],
+					"tags": [
+						"necrotic",
+						"swamp"
+					]
+				},
+				{
+					"names": [
+						"spectral residue"
+					],
+					"tags": [
+						"haunted"
+					]
+				},
+				{
+					"names": [
+						"stale air"
+					],
+					"tags": [
+						"dungeon"
+					]
+				},
+				{
+					"names": [
+						"perfume"
+					],
+					"tags": [
+						"prosperity"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"wildflowers"
+					],
+					"tags": [
+						"idyllic",
+						"sanctuary"
+					]
+				},
+				{
+					"names": [
+						"feces"
+					],
+					"tags": [
+						"slums"
+					]
+				},
+				{
+					"names": [
+						"spice"
+					],
+					"tags": [
+						"trade"
+					]
+				},
+				{
+					"names": [
+						"algae"
+					],
+					"tags": [
+						"underwater"
+					]
+				},
+				{
+					"names":[
+						"pines"
+					],
+					"tags": [
+						"snow"
+					]
+				},
+				{
+					"names": [
+						"chemicals"
+					],
+					"tags": [
+						"toxic"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"fragrant",
+						"comforting"
+					],
+					"tags": [
+						"fantasy",
+						"sanctuary"
+					]
+				},
+				{
+					"names": [
+						"disturbing"
+					],
+					"tags": [
+						"grim"
+					]
+				},
+				{
+					"names": [
+						"artificial"
+					],
+					"tags": [
+						"artificial"
+					]
+				},
+				{
+					"names": [
+						"sweet"
+					],
+					"tags": [
+						"idyllic"
+					]
+				},
+				{
+					"names": [
+						"pungent"
+					],
+					"tags": [
+						"slums",
+						"toxic"
+					]
+				},
+				{
+					"names": [
+						"salty"
+					],
+					"tags": [
+						"ocean",
+						"islands"
+					]
+				},
+				{
+					"names": [
+						"heavy"
+					],
+					"tags": [
+						"humid",
+						"industrial",
+						"volcano"
+					]
+				},
+				{
+					"names": [
+						"rotten"
+					],
+					"tags": [
+						"necrotic",
+						"swamp"
+					]
+				},
+				{
+					"names": [
+						"exotic"
+					],
+					"tags": [
+						"trade"
+					]
+				}
+			]
+		}
+	}
+}

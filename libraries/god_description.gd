@@ -1,6 +1,17 @@
 extends Node
 class_name GodDescriptions
 
+const GOD_NAMES: Array[String] = [
+	"god",
+	"goddess",
+	"deity"
+]
+const PROPERTIES: Array[String] = [
+	"adjective",
+	"predicate",
+	"concept"
+]
+
 var domain_data: Dictionary[String, Dictionary] = {}
 var attribute_data: Array[Dictionary] = []
 
@@ -37,7 +48,7 @@ func create_god(tags: Array[String], tier:= 2) -> God:
 	return god
 
 func get_valid_domains(tags: Array[String]) -> Array[String]:
-	var contains:= func contains(tag: String):
+	var contains := func contains(tag: String) -> bool:
 		return tag in tags
 	
 	var valid_domains: Array[String] = []
@@ -59,7 +70,7 @@ func pick_domains(tags: Array[String], number: int) -> Array[String]:
 	return domains
 
 func get_properties(tags: Array[String], property: String) -> Array[String]:
-	var contains:= func contains(tag: String):
+	var contains := func contains(tag: String) -> bool:
 		return tag in tags
 	
 	var properties: Array[String] = []
@@ -90,18 +101,16 @@ func generate_name(domain: Dictionary, tags: Array[String]) -> String:
 	else:
 		base_name = Names.create_name("human_god", randi_range(-1, 1))
 	
-	if rnd < 0.15 and "suffix" in domain:
+	if rnd < 0.1 and "suffix" in domain:
 		return "the One " + domain.get("suffix", ["who is generic"]).pick_random()
 	if (rnd < 0.3 or ("title" not in domain and "prefix" not in domain)) and "suffix" in domain:
-		return "the God " + domain.get("suffix", ["who is generic"]).pick_random()
+		return "the " + GOD_NAMES.pick_random() + " " + domain.get("suffix", ["who is generic"]).pick_random()
 	if rnd < 0.45 and "title" in domain and "prefix" in domain:
 		return "the " + domain.get("prefix", ["undefined"]).pick_random() + " One"
 	if (rnd < 0.6 or ("suffix" not in domain and "title" not in domain)) and "prefix" in domain:
-		return "the " + domain.get("prefix", ["undefined"]).pick_random() + " God"
+		return "the " + domain.get("prefix", ["undefined"]).pick_random() + " " + GOD_NAMES.pick_random()
 	if rnd < 0.75 and "title" in domain:
 		return base_name + " the " + domain.get("title", ["unknown"]).pick_random()
-	#if rnd < 0.8 and "title" in domain and "suffix" in domain:
-		#return base_name + " the " + domain.get("title", ["unknown"]).pick_random() + " " + domain.get("suffix", ["who is generic"]).pick_random()
 	if "title" in domain:
 		return "the " + domain.get("title", ["unknown"]).pick_random()
 	if "suffix" in domain:
@@ -111,7 +120,7 @@ func generate_name(domain: Dictionary, tags: Array[String]) -> String:
 func pick_property(god_id: String, attribute: String) -> String:
 	var god := self.gods[god_id]
 	if god.tmp_properties.size() == 0:
-		for p in ["adjective", "predicate", "concept"]:
+		for p in PROPERTIES:
 			god.tmp_properties[p] = get_properties(god.tags, p)
 	
 	if attribute == "domain":
@@ -121,7 +130,7 @@ func pick_property(god_id: String, attribute: String) -> String:
 
 ### Loading ###
 
-func load_domain_data(paths: Array[String]):
+func load_domain_data(paths: Array[String]) -> void:
 	for file_name in paths:
 		var file:= FileAccess.open(file_name, FileAccess.READ)
 		var error:= FileAccess.get_open_error()
@@ -141,7 +150,7 @@ func load_domain_data(paths: Array[String]):
 			self.domain_data[type] = data[type]
 			file.close()
 
-func load_attribute_data(paths: Array[String]):
+func load_attribute_data(paths: Array[String]) -> void:
 	for file_name in paths:
 		var file:= FileAccess.open(file_name, FileAccess.READ)
 		var error:= FileAccess.get_open_error()

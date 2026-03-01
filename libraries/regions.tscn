@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba5opu7oene6u"]
+[gd_scene format=3 uid="uid://ba5opu7oene6u"]
 
 [ext_resource type="Script" uid="uid://235k4nrghqna" path="res://libraries/regions.gd" id="1_h1ibj"]
-[ext_resource type="Script" uid="uid://bqdmllw7rhq6t" path="res://libraries/region_description.gd" id="2_nvttf"]
+[ext_resource type="Script" uid="uid://dd2c5hhm86qg4" path="res://libraries/region_description.gd" id="2_nvttf"]
 
-[node name="Regions" type="Node"]
+[node name="Regions" type="Node" unique_id=1211216842]
 script = ExtResource("1_h1ibj")
 
-[node name="RegionDescription" type="Node" parent="."]
+[node name="RegionDescription" type="Node" parent="." unique_id=1558682681]
 script = ExtResource("2_nvttf")

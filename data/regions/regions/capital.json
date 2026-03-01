@@ -1,38 +1,38 @@
 {
-	"level": 10,
+	"level": 15,
 	"tier": 0,
-	"setting": "fantasy",
+	"setting": "medieval",
 	"race": [
-		"halfling"
+		"human"
 	],
 	"enemy": [
 		"orc",
 		"gnoll",
-		"goblin"
+		"undead"
 	],
 	"base_name": [
-		"hills",
-		"plains",
-		" outskirt"
+		" capital",
+		" metropolis",
+		" cradle"
 	],
 	"name_prefix": [
-		"troll",
-		"goblin",
-		"wild ",
-		"green "
+		"kingdom's",
+		"imperial",
+		"grand",
+		"humanity's"
 	],
 	"tags": [
-		"fantasy",
-		"mountains",
-		"hills",
-		"isolated"
+		"medieval",
+		"city",
+		"capital",
+		"prosperity",
+		"trade"
 	],
 	"enemies": [
-		"golem",
-		"goblin",
-		"gnoll",
-		"wolf",
-		"spider"
+		"elemental",
+		"bat",
+		"thug",
+		"guard"
 	],
 	"enemy_amount": [
 		1,
@@ -41,34 +41,35 @@
 	"cities": [
 		{
 			"base": [
-				" town",
-				"ville",
-				" outpost",
-				" farm",
-				" farmland"
+				" district",
+				" market",
+				" bazar"
 			],
 			"prefix": [
-				"crop",
-				"sunset",
-				"mountain",
-				"green",
-				"quite "
+				"golden",
+				"trading",
+				"great",
+				"central",
+				"royal"
 			],
 			"type": [
-				"settlement"
+				"town"
 			]
 		},
 		{
 			"base": [
-				" outpost",
+				" gate",
+				" bridge",
 				" tower"
 			],
 			"prefix": [
-				"crop",
-				"sunset",
-				"mountain",
-				"green",
-				"quite "
+				"golden",
+				"great",
+				"north",
+				"south",
+				"west",
+				"east",
+				"central"
 			],
 			"type": [
 				"outpost"
@@ -76,150 +77,148 @@
 		},
 		{
 			"base": [
-				"town",
-				"farm",
-				"ton"
+				" castle",
+				"keep"
 			],
 			"prefix": [
-				"crop",
-				"gold",
-				"hill",
-				"calm"
+				"golden",
+				"great",
+				"north",
+				"south",
+				"west",
+				"east",
+				"central",
+				"royal",
+				"imperial"
 			],
 			"type": [
-				"town"
+				"castle"
 			]
 		}
 	],
 	"locations": [
 		{
 			"base": [
-				"river"
+				"slums",
+				"alleyways"
 			],
 			"prefix": [
-				"blue ",
-				"golden ",
-				"dangerous ",
-				"great ",
-				"troll",
-				"goblin"
+				"dirty ",
+				"hell's ",
+				"forbidden ",
+				"locked down ",
+				"cursed ",
+				"infested ",
+				"dangerous "
 			],
 			"type": [
-				"river"
+				"slum"
+			]
+		},
+		{
+			"base": [
+				"outskirt"
+			],
+			"prefix": [
+				"dirty ",
+				"forbidden ",
+				"locked down ",
+				"cursed ",
+				"infested ",
+				"dangerous "
+			],
+			"type": [
+				"outpost"
 			],
 			"enemies": [
-				"crab",
-				"crab",
 				"elemental",
-				"troll",
-				"wolf",
+				"goblin",
+				"gnoll",
 				"boar",
-				"ogre"
-			],
-			"resources": [
-				"herb",
-				"flower",
-				"wood",
-				"gem",
-				"pebble"
-			]
-		},
-		{
-			"base": [
-				"cave"
-			],
-			"prefix": [
-				"dark ",
-				"golden ",
-				"dangerous ",
-				"great ",
-				"troll",
-				"goblin"
-			],
-			"type": [
-				"cave"
-			],
-			"enemies": [
-				"goblin",
-				"goblin",
-				"hobgoblin",
-				"gnoll",
-				"elemental",
-				"bat",
-				"spider"
-			],
-			"resources": [
-				"pebble",
-				"ore",
-				"ore",
-				"gem"
-			]
-		},
-		{
-			"base": [
-				"hills",
-				"hill"
-			],
-			"prefix": [
-				"green ",
-				"golden ",
-				"steep ",
-				"dangerous ",
-				"great ",
-				"troll",
-				"goblin"
-			],
-			"type": [
-				"mountain"
-			],
-			"enemies": [
-				"goblin",
-				"hobgoblin",
-				"gnoll",
-				"troll",
 				"wolf",
 				"strong_wolf",
-				"bat",
 				"ogre"
-			]
-		},
-		{
-			"base": [
-				"fields"
-			],
-			"prefix": [
-				"green ",
-				"golden ",
-				"steep ",
-				"dangerous ",
-				"great ",
-				"troll",
-				"goblin"
-			],
-			"type": [
-				"field"
 			],
 			"resources": [
 				"herb",
 				"flower",
+				"moss",
 				"fruit",
+				"cabbage",
+				"carrot",
 				"wood",
-				"cotton",
-				"cabbage"
+				"pebble",
+				"ore",
+				"cotton"
+			]
+		},
+		{
+			"base": [
+				"graveyard",
+				"zone"
+			],
+			"prefix": [
+				"dirty ",
+				"hell's ",
+				"forbidden ",
+				"locked down ",
+				"skull",
+				"cursed ",
+				"slum",
+				"infested ",
+				"dangerous "
+			],
+			"type": [
+				"graveyard"
+			],
+			"enemies": [
+				"zombie",
+				"skeleton",
+				"ghoul",
+				"spirit",
+				"ghost"
+			]
+		},
+		{
+			"base": [
+				"dungeon",
+				"zone"
+			],
+			"prefix": [
+				"dirty ",
+				"hell's ",
+				"forbidden ",
+				"locked down ",
+				"skull",
+				"cursed ",
+				"slum",
+				"infested ",
+				"dangerous "
+			],
+			"type": [
+				"dungeon"
+			],
+			"enemies": [
+				"elemental",
+				"goblin",
+				"gnoll",
+				"crab",
+				"bat",
+				"spider"
 			]
 		}
 	],
 	"enchantment_chance": 0.1,
 	"resources": [
-		"herb",
 		"flower",
-		"fruit",
-		"cabbage",
+		"carrot",
 		"wood",
 		"pebble",
 		"ore",
 		"cotton",
-		"cloth"
+		"coin",
+		"scrap",
+		"paper"
 	],
 	"resource_chance": 0.1,
 	"resource_amount": [
@@ -331,7 +330,7 @@
 				"quality": 0.75
 			},
 			{
-				"name": "troll",
+				"name": "straw",
 				"quality": 1.0
 			},
 			{

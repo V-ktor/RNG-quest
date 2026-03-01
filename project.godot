@@ -23,6 +23,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Utils="*res://libraries/utils.gd"
+Calender="*uid://reorpdjoyti6"
+Descriptions="*uid://cvgcehv534ma"
 Items="*res://libraries/items.tscn"
 Skills="*res://libraries/skills.gd"
 Enemies="*res://libraries/enemies.gd"
@@ -70,7 +72,7 @@ show_summary={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translations/actions.en.translation", "res://translations/ui.en.translation", "res://translations/items.en.translation", "res://translations/skills.en.translation", "res://translations/texts.en.translation", "res://translations/colors.en.translation")
+locale/translations=PackedStringArray("res://translations/actions.en.translation", "res://translations/ui.en.translation", "res://translations/items.en.translation", "res://translations/skills.en.translation", "res://translations/texts.en.translation", "res://translations/colors.en.translation", "res://translations/calender.en.translation")
 
 [rendering]
 

@@ -30,7 +30,8 @@
 		"gravity_anomalies",
 		"islands",
 		"river",
-		"warm"
+		"warm",
+		"water"
 	],
 	"enemies": [
 		"cloud_elemental",

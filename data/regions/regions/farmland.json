@@ -103,6 +103,12 @@
 			"type": [
 				"river"
 			],
+			"tags": [
+				"river",
+				"meadow",
+				"idyllic",
+				"bright"
+			],
 			"enemies": [
 				"crab",
 				"wolf",
@@ -131,6 +137,11 @@
 			],
 			"type": [
 				"cave"
+			],
+			"tags": [
+				"cave",
+				"shallow",
+				"bright"
 			],
 			"enemies": [
 				"goblin",
@@ -164,6 +175,12 @@
 			"type": [
 				"field"
 			],
+			"tags": [
+				"meadow",
+				"fertile",
+				"idyllic",
+				"bright"
+			],
 			"enemies": [
 				"goblin",
 				"wolf",
@@ -194,7 +211,13 @@
 			],
 			"type": [
 				"mountain"
-			]
+			],
+			"tags": [
+				"hills",
+				"fertile",
+				"idyllic",
+				"bright"
+			],
 		},
 		{
 			"base": [
@@ -212,6 +235,11 @@
 			],
 			"type": [
 				"forest"
+			],
+			"tags": [
+				"forest",
+				"idyllic",
+				"bright"
 			],
 			"enemies": [
 				"elemental",

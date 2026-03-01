@@ -211,10 +211,15 @@ func start_game() -> void:
 	player_abilities += player_combat_abilities
 	
 	var main_instance := main.instantiate() as Main
-	var player_stats:= Characters.DEFAULT_STATS.duplicate()
+	var player_stats := Characters.DEFAULT_STATS.duplicate()
 	var player_equipment: Array[String] = []
-	var magical:= "elemental_magic" in player_abilities || "nature_magic" in player_abilities || "celestial_magic" in player_abilities || "defensive_magic" in player_abilities
-	var healer:= "healing" in player_abilities && !magical
+	var magical := "elemental_magic" in player_abilities || "nature_magic" in player_abilities || "celestial_magic" in player_abilities || "defensive_magic" in player_abilities
+	var healer := "healing" in player_abilities && !magical
+	var race := player_race
+	if "elf" in race:
+		race = "elf"
+	if "dwarf" in race:
+		race = "dwarf"
 	main_instance.version = version
 	main_instance.player_name = player_name
 	main_instance.current_time = Time.get_unix_time_from_system()
@@ -286,6 +291,7 @@ func start_game() -> void:
 	
 	main_instance.player = Characters.Character.new({
 		"name": player_name,
+		"race": race,
 		"level": 1,
 		"experience": 0,
 		"stats": player_stats,

@@ -1,0 +1,418 @@
+{
+	"air": {
+		"tags": [
+			"idyllic",
+			"grim",
+			"forest",
+			"desert",
+			"beach",
+			"cold",
+			"warm",
+			"underwater",
+			"artificial",
+			"sci-fi",
+			"snow"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"air"
+					]
+				},
+				{
+					"names": [
+						"breeze"
+					],
+					"tags": [
+						"idyllic"
+					]
+				},
+				{
+					"names": [
+						"water"
+					],
+					"tags": [
+						"underwater"
+					]
+				},
+				{
+					"names": [
+						"wind"
+					],
+					"tags": [
+						"grim"
+					]
+				},
+				{
+					"names": [
+						"atmosphere"
+					],
+					"tags": [
+						"artificial",
+						"sci-fi"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"calm",
+						"gentle"
+					],
+					"tags": [
+						"idyllic"
+					]
+				},
+				{
+					"names": [
+						"stormy",
+						"harsh"
+					],
+					"tags": [
+						"grim"
+					]
+				},
+				{
+					"names": [
+						"scorching"
+					],
+					"tags": [
+						"volcano",
+						"fire"
+					]
+				},
+				{
+					"names": [
+						"dry"
+					],
+					"tags": [
+						"arid"
+					]
+				},
+				{
+					"names": [
+						"humid"
+					],
+					"tags": [
+						"humid"
+					]
+				}
+			],
+			"temperature": [
+				{
+					"names": [
+						"warm"
+					],
+					"tags": [
+						"warm",
+						"idyllic"
+					]
+				},
+				{
+					"names": [
+						"cold",
+						"freezing"
+					],
+					"tags": [
+						"cold",
+						"grim"
+					]
+				},
+				{
+					"names": [
+						"hot",
+						"scorching"
+					],
+					"tags": [
+						"volcano",
+						"fire"
+					]
+				}
+			]
+		}
+	},
+	"sky": {
+		"tags": [
+			"idyllic",
+			"forest",
+			"desert",
+			"ruins",
+			"city",
+			"slums",
+			"farmland",
+			"snow"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"sky"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"skies"
+					]
+				}
+			],
+			"color": [
+				{
+					"names": [
+						"cyan",
+						"orange",
+						"golden"
+					],
+					"tags": [
+						"idyllic"
+					]
+				},
+				{
+					"names": [
+						"dark",
+						"black",
+						"purple"
+					],
+					"tags": [
+						"dark"
+					]
+				},
+				{
+					"names": [
+						"dark",
+						"black",
+						"grey"
+					],
+					"tags": [
+						"volcanic"
+					]
+				},
+				{
+					"names": [
+						"grey"
+					],
+					"tags": [
+						"industrial"
+					]
+				},
+				{
+					"names": [
+						"cyan"
+					],
+					"tags": [
+						"cold"
+					]
+				},
+				{
+					"names": [
+						"orange"
+					],
+					"tags": [
+						"warm"
+					]
+				}
+			]
+		}
+	},
+	"horizon": {
+		"tags": [
+			"idyllic",
+			"forest",
+			"desert",
+			"ruins",
+			"city",
+			"slums",
+			"farmland",
+			"snow"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"horizon"
+					]
+				}
+			]
+		}
+	},
+	"particles": {
+		"tags": [
+			"warm",
+			"water",
+			"cold",
+			"volcano",
+			"desert",
+			"snow"
+		],
+		"properties": [
+			"density"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"rain"
+					],
+					"tags": [
+						"warm",
+						"water"
+					]
+				},
+				{
+					"names": [
+						"snow"
+					],
+					"tags": [
+						"cold",
+						"snow"
+					]
+				},
+				{
+					"names": [
+						"ash"
+					],
+					"tags": [
+						"volcano"
+					]
+				},
+				{
+					"names": [
+						"sand"
+					],
+					"tags": [
+						"desert"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"wet",
+						"hazy"
+					],
+					"tags": [
+						"warm"
+					]
+				},
+				{
+					"names": [
+						"snow-covered"
+					],
+					"tags": [
+						"cold"
+					]
+				},
+				{
+					"names": [
+						"ash-covered"
+					],
+					"tags": [
+						"volcano"
+					]
+				},
+				{
+					"names": [
+						"sand-covered"
+					],
+					"tags": [
+						"desert"
+					]
+				}
+			],
+			"verb": [
+				{
+					"names": [
+						"rains",
+						"falls"
+					],
+					"tags": [
+						"warm"
+					]
+				},
+				{
+					"names": [
+						"snows",
+						"floats"
+					],
+					"tags": [
+						"cold"
+					]
+				},
+				{
+					"names": [
+						"falls",
+						"floats"
+					],
+					"tags": [
+						"volcano"
+					]
+				},
+				{
+					"names": [
+						"falls"
+					],
+					"tags": [
+						"desert"
+					]
+				}
+			]
+		}
+	},
+	"celestial_body": {
+		"tags": [
+			"idyllic",
+			"warm",
+			"prosperity",
+			"grim",
+			"cold",
+			"sci-fi",
+			"artificial",
+			"fire"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"sun"
+					],
+					"tags": [
+						"idyllic",
+						"warm",
+						"prosperity"
+					]
+				},
+				{
+					"names": [
+						"moon"
+					],
+					"tags": [
+						"grim",
+						"cold"
+					]
+				},
+				{
+					"names": [
+						"water surface"
+					],
+					"tags": [
+						"underwater"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"stars"
+					],
+					"tags": [
+						"sci-fi",
+						"artificial",
+						"fire"
+					]
+				}
+			]
+		}
+	}
+}

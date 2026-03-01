@@ -1,0 +1,405 @@
+[
+	{
+		"type": "sentence_full",
+		"text": [
+			"{particles.singular} {particles.verb} down the {sky.color} {sky.singular}",
+		],
+		"sentence": {
+			"subject": "particles",
+			"object": "sky",
+			"predicate": "particles"
+		},
+		"required": [
+			"particles",
+			"sky"
+		],
+		"replace": {
+			"particles": "air"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {sky.singular} {is/are} clouded by {particles.density} {particles.singular}",
+		],
+		"sentence": {
+			"subject": "sky",
+			"object": "particles",
+			"predicate": ""
+		},
+		"required": [
+			"particles",
+			"sky"
+		],
+		"replace": {
+			"particles": "air"
+		},
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {landmark.singular} {rises/rise} to the {sky.singular}",
+			"the {landmark.adjective} {landmark.singular} {rises/rise} to the {sky.singular}",
+			"the {landmark.singular} {dominates/dominate} the skyline",
+			"the {landmark.adjective} {landmark.singular} {dominates/dominate} the skyline"
+		],
+		"sentence": {
+			"subject": "landmark",
+			"object": "sky",
+			"predicate": ""
+		},
+		"required": [
+			"landmark",
+			"sky"
+		],
+		"replace": {
+			"sky": "air"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {air.singular} {is/are} {air.temperature}",
+		],
+		"sentence": {
+			"subject": "air",
+			"predicate": ""
+		},
+		"required": [
+			"air"
+		],
+		"replace": {
+			"air": "sky"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{crops.singular} {sways/sway} in the {air.adjective} wind",
+		],
+		"sentence": {
+			"subject": "crops",
+			"predicate": ""
+		},
+		"required": [
+			"crops",
+			"air"
+		],
+		"replace": {
+			"crops": "ground"
+		},
+		"transition": [
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{crops.singular} {grows/grow} on the {ground.singular}",
+		],
+		"sentence": {
+			"subject": "crops",
+			"object": "ground",
+			"predicate": ""
+		},
+		"required": [
+			"crops",
+			"ground"
+		],
+		"replace": {
+			"ground": "horizon"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {crops.singular} {is/are} is exposed to {particles.adjective} {particles.singular}",
+		],
+		"sentence": {
+			"subject": "crops",
+			"object": "particles",
+			"predicate": ""
+		},
+		"required": [
+			"crops",
+			"particles"
+		],
+		"replace": {
+			"crops": "ground"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{ground.plural} filled with {crops.singular} {stretches/stretch} to the {horizon.singular}",
+			"{ground.plural} of {crops.singular} {stretches/stretch} to the {horizon.singular}"
+		],
+		"sentence": {
+			"subject": "ground",
+			"object": "horizon",
+			"predicate": ""
+		},
+		"required": [
+			"ground",
+			"crops",
+			"horizon"
+		],
+		"replace": {
+			"horizon": "sky"
+		},
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"a {river.singular} {winds/wind} through the {ground.plural}",
+			"a {river.singular} {winds/wind} through the {ground.adjective} {ground.plural}"
+		],
+		"sentence": {
+			"subject": "river",
+			"object": "ground",
+			"predicate": ""
+		},
+		"required": [
+			"river",
+			"ground"
+		],
+		"replace": {
+			"river": "waterfall"
+		},
+		"transition": [
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"a {river.singular} {winds/wind} through the {vegetation.adjective} {ground.plural}",
+		],
+		"sentence": {
+			"subject": "river",
+			"object": "ground",
+			"predicate": ""
+		},
+		"required": [
+			"river",
+			"ground",
+			"vegetation"
+		],
+		"replace": {
+			"river": "crops"
+		},
+		"transition": [
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the scent of {scent.singular} {lingers/linger} on the {air.singular}",
+			"the {scent.adjective} scent of {scent.singular} {lingers/linger} on the {air.singular}",
+			"the scent of {scent.singular} {lingers/linger} on the {air.adjective} {air.singular}"
+		],
+		"sentence": {
+			"subject": "",
+			"object": "air",
+			"predicate": ""
+		},
+		"required": [
+			"scent",
+			"air"
+		],
+		"remove": [
+			"scent"
+		],
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {ground.singular} {smells/smell} of {scent.singular}",
+			"the {ground.singular} {smells/smell} of {scent.adjective} {scent.singular}",
+			"the {ground.adjective} {ground.singular} {smells/smell} of {scent.singular}"
+		],
+		"sentence": {
+			"subject": "ground",
+			"object": "scent",
+			"predicate": ""
+		},
+		"required": [
+			"scent",
+			"ground"
+		],
+		"remove": [
+			"scent"
+		],
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {celestial_body.singular} {reflects/reflect} on the {sea.singular}",
+			"the {celestial_body.singular} {reflects/reflect} on the {sea.adjective} {sea.singular}"
+		],
+		"sentence": {
+			"subject": "celestial_body",
+			"object": "sea",
+			"predicate": ""
+		},
+		"required": [
+			"celestial_body",
+			"sea"
+		],
+		"replace": {
+			"celestial_body": "sky"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {hills.plural} {transitions/transition} to {mountains.plural}"
+		],
+		"sentence": {
+			"subject": "hills",
+			"object": "mountains",
+			"predicate": ""
+		},
+		"required": [
+			"hills",
+			"mountains"
+		],
+		"replace": {
+			"hills": "ground"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {hills.plural} {grows/grow} steeper and"
+		],
+		"sentence": {
+			"subject": "hills",
+			"predicate": ""
+		},
+		"required": [
+			"hills",
+			"mountains"
+		],
+		"replace": {
+			"hills": "horizon"
+		},
+		"transition": [
+			"sentence_start",
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {mountains.plural} {stretches/stretch} across the {horizon.singular}"
+		],
+		"sentence": {
+			"subject": "mountains",
+			"object": "horizon",
+			"predicate": ""
+		},
+		"required": [
+			"mountains",
+			"horizon"
+		],
+		"replace": {
+			"mountains": "hills"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {ground.singular} {covers/cover} the {mountains.singular}"
+		],
+		"sentence": {
+			"subject": "ground",
+			"object": "mountains",
+			"predicate": ""
+		},
+		"required": [
+			"ground",
+			"mountains"
+		],
+		"replace": {
+			"ground": "particles"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"a {bridge.singular} {crosses/cross} the {river.singular}",
+			"a {bridge.singular} {crosses/cross} the {river.adjective} {river.singular}",
+			"a {bridge.singular} {leads/lead} over the {river.adjective} {river.singular}"
+		],
+		"sentence": {
+			"subject": "bridge",
+			"object": "river",
+			"predicate": ""
+		},
+		"required": [
+			"bridge",
+			"river"
+		],
+		"remove": [
+			"bridge"
+		],
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	}
+]

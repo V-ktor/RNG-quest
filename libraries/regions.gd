@@ -15,7 +15,7 @@ const REGION_TIERS: Array[String] = [
 var regions: Dictionary[String, Dictionary] = {}
 
 @onready
-var Descriptions:= $RegionDescription
+var descriptions := $RegionDescription as RegionDescription
 
 
 func get_location_list(region: Region, current_location: String) -> Array[Dictionary]:
@@ -96,6 +96,7 @@ func create_region(ID: String, level:= 0, tier:= 0) -> Region:
 		"resource_chance": dict.resource_chance,
 		"resource_amount": dict.resource_amount,
 		"setting": dict.get("setting", "fantasy") as String,
+		"tags": dict.get("tags", "") as Array,
 	}
 	var tier_multiplier:= 1.0
 	var level_multiplier:= 1.0 + 0.1 * (level - 1)
@@ -176,5 +177,4 @@ func load_data(paths: Array[String]) -> void:
 		file.close()
 
 func _ready() -> void:
-	load_data(Utils.get_file_paths("res://data/regions"))
-	
+	load_data(Utils.get_file_paths("res://data/regions/regions"))

@@ -1,0 +1,62 @@
+[
+	{
+		"type": "sentence_start",
+		"text": [
+			"beneath the {landmark.adjective} {landmark.singular},"
+		],
+		"sentence": {
+			"subject": "landmark"
+		},
+		"required": [
+			"landmark"
+		],
+		"remove": [
+			"landmark"
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full"
+		]
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"under a {sky.color} {sky.singular},"
+		],
+		"sentence": {
+			"subject": "sky"
+		},
+		"required": [
+			"sky"
+		],
+		"remove": [
+			"sky"
+		],
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full"
+		]
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"covered in {particles.adjective} {particles.singular},"
+		],
+		"sentence": {
+			"subject": "particles"
+		},
+		"required": [
+			"particles"
+		],
+		"replace": {
+			"particles": "sky"
+		},
+		"transition": [
+			"sentence_subject",
+			"sentence_subject_predicate",
+			"sentence_full"
+		]
+	}
+]
