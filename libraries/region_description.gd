@@ -8,6 +8,8 @@ const RANDOM_CARDS: Array[String] = [
 	"ground",
 	"air",
 	"scent",
+	"sea",
+	"hills",
 ]
 
 var texts: Array[Dictionary] = []
@@ -22,13 +24,20 @@ func check_tags_overlap(tags: Array[String], valid_tags: Array[String]) -> bool:
 			return true
 	return false
 
-func get_valid_cards_for_region(region: Region) -> Array[String]:
+func get_valid_cards_for_region(region: Region, location := "") -> Array[String]:
 	var valid_cards: Array[String] = []
+	var tags: Array[String]
+	if location in region.locations:
+		tags = region.locations[location].tags
+	elif location in region.cities:
+		tags = region.cities[location].tags
+	else:
+		tags = region.tags
 	for card_id in self.cards:
-		if self.check_tags_overlap(Array(self.cards[card_id].get("tags", []) as Array, TYPE_STRING, "", null), region.tags):
+		if self.check_tags_overlap(Array(self.cards[card_id].get("tags", []) as Array, TYPE_STRING, "", null), tags):
 			valid_cards.push_back(card_id)
 	if valid_cards.size() == 0:
-		print("Warning: no valid cards found for region " + region.name)
+		print("Warning: no valid cards found for region " + region.name + "(" + location + ")")
 		return self.cards.keys()
 	return valid_cards
 
@@ -90,17 +99,24 @@ func create_card(type: String, region: Region, attributes_override := {}) -> Des
 	return Descriptions.Card.new(card)
 
 
-func create_card_set(region: Region) -> Dictionary[Vector2i, Descriptions.Card]:
+func create_card_set(region: Region, location := "") -> Dictionary[Vector2i, Descriptions.Card]:
 	var card_set: Dictionary[Vector2i, Descriptions.Card] = {}
-	var valid_cards := self.get_valid_cards_for_region(region)
+	var valid_cards := self.get_valid_cards_for_region(region, location)
+	var location_name := region.name
+	if location in region.locations:
+		location_name = region.locations[location].name
+	elif location in region.cities:
+		location_name = region.cities[location].name
 	Descriptions.add_card(
 		card_set,
-		self.create_card(self.RANDOM_CARDS.pick_random() as String, region),
+		self.create_card("region", region, {
+			"singular": location_name,
+		}),
 		Vector2i(0, 0),
 	)
 	
-	for i in range(12):
-		var position := Utils.get_closest_position(Vector2i(0, 0), card_set.keys())
+	for i in range(16):
+		var position := Utils.get_closest_position(Vector2i(floori(i / 5.0), 0), card_set.keys())
 		Descriptions.add_card(
 			card_set,
 			self.create_card(valid_cards.pick_random() as String, region),
@@ -110,7 +126,7 @@ func create_card_set(region: Region) -> Dictionary[Vector2i, Descriptions.Card]:
 	return card_set
 
 func generate_description(card_set: Dictionary[Vector2i, Descriptions.Card], region: Region,
-		max_sentences:= 3) -> String:
+		max_sentences := 3) -> String:
 	var cc := func(type: String, attributes_override := {}) -> Descriptions.Card:
 		return self.create_card(type, region, attributes_override)
 	return Descriptions.generate_description(

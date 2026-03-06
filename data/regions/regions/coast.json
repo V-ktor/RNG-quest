@@ -57,6 +57,15 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"city",
+				"ocean",
+				"water",
+				"beach",
+				"warm"
 			]
 		},
 		{
@@ -72,6 +81,15 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"water",
+				"beach",
+				"warm",
+				"trading",
+				"prosperity"
 			]
 		}
 	],
@@ -105,6 +123,13 @@
 				"wood",
 				"gem",
 				"pebble"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"river",
+				"warm",
+				"water"
 			]
 		},
 		{
@@ -137,7 +162,14 @@
 				"ore",
 				"gem",
 				"mushroom"
-			]
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"water",
+				"warm",
+				"dungeon"
+			],
 		},
 		{
 			"base": [
@@ -169,7 +201,15 @@
 				"shell",
 				"plank",
 				"cotton"
-			]
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"water",
+				"beach",
+				"warm",
+				"desert"
+			],
 		},
 		{
 			"base": [
@@ -194,6 +234,14 @@
 				"crab",
 				"snap_turtle",
 				"shark"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"ocean",
+				"water",
+				"beach",
+				"warm"
 			]
 		}
 	],

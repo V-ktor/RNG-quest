@@ -57,6 +57,12 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"sci-fi",
+				"ruins",
+				"city",
+				"warm"
 			]
 		},
 		{
@@ -75,6 +81,12 @@
 			],
 			"type": [
 				"castle"
+			],
+			"tags": [
+				"sci-fi",
+				"artificial",
+				"city",
+				"warm"
 			]
 		},
 		{
@@ -91,6 +103,12 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"sci-fi",
+				"medieval",
+				"city",
+				"warm"
 			]
 		}
 	],
@@ -112,6 +130,13 @@
 			],
 			"type": [
 				"field"
+			],
+			"tags": [
+				"sci-fi",
+				"artificial",
+				"ruins",
+				"hills",
+				"warm"
 			]
 		},
 		{
@@ -130,6 +155,13 @@
 			],
 			"type": [
 				"cave"
+			],
+			"tags": [
+				"sci-fi",
+				"artificial",
+				"ruins",
+				"cave",
+				"dark"
 			]
 		},
 		{
@@ -149,6 +181,13 @@
 			],
 			"type": [
 				"forest"
+			],
+			"tags": [
+				"sci-fi",
+				"artificial",
+				"ruins",
+				"forest",
+				"humid"
 			]
 		},
 		{
@@ -167,6 +206,13 @@
 			],
 			"type": [
 				"factory"
+			],
+			"tags": [
+				"sci-fi",
+				"artificial",
+				"ruins",
+				"buildings",
+				"humid"
 			]
 		}
 	],

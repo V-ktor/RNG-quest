@@ -52,6 +52,12 @@
 			"type": [
 				"town"
 			],
+			"tags": [
+				"fantasy",
+				"underwater",
+				"city",
+				"water"
+			]
 		},
 		{
 			"base": [
@@ -83,6 +89,13 @@
 			"type": [
 				"castle"
 			],
+			"tags": [
+				"medieval",
+				"fantasy",
+				"underwater",
+				"city",
+				"water"
+			]
 		},
 	],
 	"locations": [
@@ -103,6 +116,12 @@
 			"type": [
 				"cave"
 			],
+			"tags": [
+				"fantasy",
+				"underwater",
+				"cave",
+				"water"
+			]
 		},
 		{
 			"base": [
@@ -121,6 +140,12 @@
 			"type": [
 				"coast"
 			],
+			"tags": [
+				"fantasy",
+				"underwater",
+				"beach",
+				"water"
+			]
 		},
 		{
 			"base": [
@@ -145,6 +170,12 @@
 				"shark",
 				"naga"
 			],
+			"tags": [
+				"fantasy",
+				"underwater",
+				"ocean",
+				"water"
+			]
 		},
 	],
 	"enchantment_chance": 0.25,

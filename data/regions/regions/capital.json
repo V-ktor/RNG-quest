@@ -54,6 +54,13 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"medieval",
+				"fantasy",
+				"city",
+				"trade",
+				"prosperity"
 			]
 		},
 		{
@@ -73,6 +80,13 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"medieval",
+				"fantasy",
+				"city",
+				"bridge",
+				"river"
 			]
 		},
 		{
@@ -93,6 +107,13 @@
 			],
 			"type": [
 				"castle"
+			],
+			"tags": [
+				"medieval",
+				"fantasy",
+				"capital",
+				"city",
+				"prosperity"
 			]
 		}
 	],
@@ -113,6 +134,12 @@
 			],
 			"type": [
 				"slum"
+			],
+			"tags": [
+				"medieval",
+				"grim",
+				"city",
+				"poverty"
 			]
 		},
 		{
@@ -150,6 +177,12 @@
 				"pebble",
 				"ore",
 				"cotton"
+			],
+			"tags": [
+				"medieval",
+				"grim",
+				"forest",
+				"hills"
 			]
 		},
 		{
@@ -177,6 +210,13 @@
 				"ghoul",
 				"spirit",
 				"ghost"
+			],
+			"tags": [
+				"medieval",
+				"grim",
+				"city",
+				"necrotic",
+				"haunted"
 			]
 		},
 		{
@@ -205,6 +245,12 @@
 				"crab",
 				"bat",
 				"spider"
+			],
+			"tags": [
+				"medieval",
+				"grim",
+				"haunted",
+				"dungeon"
 			]
 		}
 	],

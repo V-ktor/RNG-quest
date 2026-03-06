@@ -1,0 +1,14 @@
+{
+	"name": "bureaucracy",
+	"relics": [
+		"notebook"
+	],
+	"abilities": [
+	],
+	"exp_gain": {
+		"exploration": 40
+	},
+	"tags": [
+		"bureaucracy"
+	]
+}

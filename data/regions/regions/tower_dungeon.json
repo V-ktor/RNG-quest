@@ -61,6 +61,12 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"city",
+				"dark"
 			]
 		},
 		{
@@ -78,6 +84,12 @@
 			],
 			"type": [
 				"castle"
+			],
+			"tags": [
+				"medieval",
+				"sanctuary",
+				"city",
+				"dark"
 			]
 		},
 		{
@@ -95,6 +107,13 @@
 			"type": [
 				"settlement"
 			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"city",
+				"dark",
+				"trading"
+			]
 		},
 		{
 			"base": [
@@ -111,6 +130,12 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"medieval",
+				"grim",
+				"city",
+				"dark"
 			]
 		}
 	],
@@ -131,6 +156,12 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"medieval",
+				"grim",
+				"dungeon",
+				"dark"
 			]
 		},
 		{
@@ -157,6 +188,13 @@
 				"lich",
 				"yeti",
 				"minotaur"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"dungeon",
+				"dark",
+				"ruins"
 			]
 		},
 		{
@@ -183,6 +221,13 @@
 				"spirit",
 				"paper_golem",
 				"vampire"
+			],
+			"tags": [
+				"medieval",
+				"grim",
+				"dungeon",
+				"dark",
+				"necrotic"
 			]
 		},
 		{
@@ -222,6 +267,13 @@
 				"pebble",
 				"ore",
 				"cotton"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"ruins",
+				"haunted",
+				"warm"
 			]
 		}
 	],

@@ -55,6 +55,13 @@
 			"type": [
 				"settlement",
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"mystical",
+				"forest",
+				"city",
+				"isolated"
 			]
 		},
 		{
@@ -70,6 +77,13 @@
 			],
 			"type": [
 				"castle"
+			],
+			"tags": [
+				"fantasy",
+				"mystical",
+				"sanctuary",
+				"city",
+				"isolated"
 			]
 		}
 	],
@@ -100,6 +114,13 @@
 				"gem",
 				"pebble",
 				"cotton"
+			],
+			"tags": [
+				"fantasy",
+				"mystical",
+				"forest",
+				"idyllic",
+				"river"
 			]
 		},
 		{
@@ -130,6 +151,13 @@
 				"stone",
 				"wood",
 				"cotton"
+			],
+			"tags": [
+				"fantasy",
+				"mystical",
+				"warm",
+				"idyllic",
+				"river"
 			]
 		},
 		{
@@ -163,6 +191,13 @@
 				"gem",
 				"wood",
 				"mushroom"
+			],
+			"tags": [
+				"fantasy",
+				"mystical",
+				"forest",
+				"idyllic",
+				"cave"
 			]
 		},
 		{
@@ -182,6 +217,13 @@
 			"type": [
 				"mountain"
 			],
+			"tags": [
+				"fantasy",
+				"mystical",
+				"forest",
+				"idyllic",
+				"hills"
+			]
 		},
 		{
 			"base": [
@@ -213,6 +255,12 @@
 				"wood",
 				"cotton",
 				"mushroom"
+			],
+			"tags": [
+				"fantasy",
+				"mystical",
+				"forest",
+				"idyllic"
 			]
 		},
 		{
@@ -244,6 +292,13 @@
 				"wood",
 				"cotton",
 				"mushroom"
+			],
+			"tags": [
+				"fantasy",
+				"mystical",
+				"forest",
+				"idyllic",
+				"haunted"
 			]
 		}
 	],

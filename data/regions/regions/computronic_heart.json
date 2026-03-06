@@ -57,6 +57,12 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"sci-fi",
+				"buildings",
+				"arid",
+				"city"
 			]
 		},
 		{
@@ -75,6 +81,13 @@
 			],
 			"type": [
 				"castle"
+			],
+			"tags": [
+				"sci-fi",
+				"medieval",
+				"city",
+				"buildings",
+				"arid"
 			]
 		},
 		{
@@ -91,6 +104,13 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"sci-fi",
+				"medieval",
+				"buildings",
+				"arid",
+				"dungeon"
 			]
 		}
 	],
@@ -110,6 +130,13 @@
 			],
 			"type": [
 				"field"
+			],
+			"tags": [
+				"sci-fi",
+				"artificial",
+				"industrial",
+				"arid",
+				"warm"
 			]
 		},
 		{
@@ -130,6 +157,13 @@
 			"type": [
 				"outpost"
 			],
+			"tags": [
+				"sci-fi",
+				"artificial",
+				"industrial",
+				"dark",
+				"cave"
+			]
 		},
 		{
 			"base": [
@@ -150,6 +184,13 @@
 			],
 			"type": [
 				"factory"
+			],
+			"tags": [
+				"sci-fi",
+				"artificial",
+				"industrial",
+				"buildings",
+				"arid"
 			]
 		}
 	],

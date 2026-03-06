@@ -190,5 +190,14 @@
 		"tags": [
 			"cooking"
 		]
+	},
+	{
+		"texts": [
+			"documentation",
+			"paper work"
+		],
+		"tags": [
+			"bureaucracy"
+		]
 	}
 ]

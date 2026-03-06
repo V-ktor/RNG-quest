@@ -29,6 +29,7 @@ class Property:
 	var _plural: String
 	var _adjective: String
 	var _adverb: String
+	var _verb: String
 	var _prefix: String
 	var _suffix: String
 	var _color: String
@@ -41,6 +42,7 @@ class Property:
 		self._plural = data.get("plural", "") as String
 		self._adjective = data.get("adjective", "") as String
 		self._adverb = data.get("adverb", "") as String
+		self._verb = data.get("verb", "") as String
 		self._prefix = data.get("prefix", "") as String
 		self._suffix = data.get("suffix", "") as String
 		self._color = data.get("color", "") as String
@@ -60,6 +62,8 @@ class Property:
 			dict.adjective = self._adjective
 		if self._adverb != "":
 			dict.adverb = self._adverb
+		if self._verb != "":
+			dict.verb = self._verb
 		if self._prefix != "":
 			dict.prefix = self._prefix
 		if self._suffix != "":
@@ -96,6 +100,11 @@ class Property:
 			return self.get_adjective() + "ish"
 		return self._adverb
 	
+	func get_verb() -> String:
+		if self._verb == "":
+			return self.get_singular()
+		return self._verb
+	
 	func get_prefix() -> String:
 		return self._prefix
 	
@@ -127,6 +136,8 @@ class Property:
 				return self.get_adjective()
 			"adverb":
 				return self.get_adverb()
+			"verb":
+				return self.get_verb()
 			"prefix":
 				return self.get_prefix()
 			"suffix":
@@ -183,6 +194,17 @@ func pick_attribute(attributes: Array) -> String:
 			return tr(data.adjective as String)
 		else:
 			return tr((data as Dictionary).values()[0] as String)
+	elif typeof(data) == TYPE_ARRAY:
+		data = data.pick_random()
+		if typeof(data) == TYPE_ARRAY:
+			return self.pick_attribute(data as Array)
+		elif typeof(data) == TYPE_DICTIONARY:
+			if "adjective" in data:
+				return tr(data.adjective as String)
+			else:
+				return tr((data as Dictionary).values()[0] as String)
+		else:
+			return tr(data as String)
 	else:
 		return tr(data as String)
 
@@ -216,9 +238,12 @@ func pick_valid_card_set(type_set: Array, current_position: Vector2i,
 
 func pick_valid_text(available_texts: Array[String],
 		current_card_set: Dictionary[Vector2i, Card],
-		texts_by_type: Dictionary[String, Array]) -> Dictionary:
+		texts_by_type: Dictionary[String, Array], last_positions: Array[Vector2i]) -> Dictionary:
 	if current_card_set.size() == 0:
 		return {}
+	
+	if last_positions.size() == 0:
+		last_positions = current_card_set.keys()
 	
 	available_texts.shuffle()
 	for type in available_texts:
@@ -228,7 +253,7 @@ func pick_valid_text(available_texts: Array[String],
 				var required: Array[String] = Array(text_data.get("required", []) as Array, TYPE_STRING, "", null)
 				var card_pos := self.pick_valid_card_set(
 					required,
-					current_card_set.keys().pick_random() as Vector2i,
+					last_positions.pick_random() as Vector2i,
 					current_card_set,
 				)
 				if card_pos.size() == required.size():
@@ -247,7 +272,8 @@ func pick_valid_text(available_texts: Array[String],
 func append_text(text_state: TextState, create_card: Callable, random_cards: Array[String],
 		properties: Dictionary[String, Array]) -> TextState:
 	var card_set := text_state.card_set.duplicate()
-	var text_data := self.pick_valid_text(text_state.transition, card_set, text_state.texts_by_type)
+	var text_data := self.pick_valid_text(text_state.transition, card_set, text_state.texts_by_type,
+		text_state.last_cards)
 	if text_data.size() == 0:
 		print("Warning: no valid texts available.")
 		for i in range(4):
@@ -259,13 +285,17 @@ func append_text(text_state: TextState, create_card: Callable, random_cards: Arr
 				)
 			else:
 				card_pos = Utils.get_closest_position(Vector2(0, 0), text_state.card_set.keys())
-			add_card(text_state.card_set, create_card.call(random_cards.pick_random() as String) as Card, card_pos)
-		text_data = pick_valid_text(text_state.transition, text_state.card_set, text_state.texts_by_type)
+			add_card(text_state.card_set,
+				create_card.call(random_cards.pick_random() as String) as Card, card_pos)
+		text_data = pick_valid_text(text_state.transition, text_state.card_set,
+			text_state.texts_by_type, text_state.last_cards)
 		if text_data.size() == 0:
 			print("Warning: still no valid texts available after adding random cards")
 			text_state.reset()
 			text_state.state = "error"
-			text_state.transition = Array(text_state.texts_by_type.sentence_end.pick_random().transition as Array, TYPE_STRING, "", null)
+			text_state.transition = Array(
+				text_state.texts_by_type.sentence_end.pick_random().transition as Array,
+				TYPE_STRING, "", null)
 			return text_state
 	
 	for card: Card in (text_data.required as Dictionary).values():
@@ -287,7 +317,7 @@ func append_text(text_state: TextState, create_card: Callable, random_cards: Arr
 		text = (text_data.text as Array).pick_random()
 	re.compile(r"{([\w\.'/]+)}")
 	results = re.search_all(text)
-	if results.size() > 0 && "sentence" in text_data:
+	if results.size() > 0 and "sentence" in text_data:
 		var has_subject := false
 		if "subject" in text_data:
 			for result in results:
@@ -300,7 +330,7 @@ func append_text(text_state: TextState, create_card: Callable, random_cards: Arr
 					elif "singular" in res_str:
 						text_state.plural = false
 						break
-		if not has_subject && "object" in text_data:
+		if not has_subject and "object" in text_data:
 			for result in results:
 				var res_str:= result.get_string(1)
 				if text_data.object in res_str:
@@ -311,7 +341,7 @@ func append_text(text_state: TextState, create_card: Callable, random_cards: Arr
 		var key := result.get_string(1)
 		if "/" in key:
 			var array:= key.split("/")
-			if text_state.plural && array.size() > 1:
+			if text_state.plural and array.size() > 1:
 				format_dict[key] = array[1]
 			else:
 				format_dict[key] = array[0]
@@ -326,14 +356,15 @@ func append_text(text_state: TextState, create_card: Callable, random_cards: Arr
 			
 			var property := text_data.required[topic].properties as Descriptions.Property
 			var prop := property.get_by_attribute(attribute)
-			text_state.plural = property.is_plural()
+			#text_state.plural = property.is_plural()
+			text_state.plural = attribute == "plural" and property.is_plural()
 			format_dict[key] = prop
-			if "sentence" in text_data && "subject" in text_data.sentence && \
-				text_data.sentence.subject == topic:
-					if prop == text_state.last_subject:
-						repeated_subject = true
-					subject_key = key
-					text_state.last_subject = prop
+			if "sentence" in text_data and "subject" in text_data.sentence and \
+					text_data.sentence.subject == topic:
+				if prop == text_state.last_subject:
+					repeated_subject = true
+				subject_key = key
+				text_state.last_subject = prop
 			if property.is_name and attribute in ["singular", "plural"]:
 				var pos := result.get_start(1)
 				if text.substr(pos - 3, 1) == 'a':
@@ -360,7 +391,7 @@ func append_text(text_state: TextState, create_card: Callable, random_cards: Arr
 			if "predicate" in text_data.sentence and "predicate" in text_state.sentence:
 				skip = true
 				print("Info: skipping text part")
-			if !skip && text_state.text.length() > 0 && \
+			if not skip and text_state.text.length() > 0 and \
 				text_state.text[text_state.text.length() - 1] != " ":
 					text_state.text += " "
 	for s: String in text_data.get("sentence", {}):
@@ -373,28 +404,28 @@ func append_text(text_state: TextState, create_card: Callable, random_cards: Arr
 			else:
 				text_state.text += '.'
 		text_state.reset()
-	if text_state.text.length() > 0 && text_state.text[text_state.text.length() - 1] != " " && \
-		text.length() > 0 && text[0] != '.' && !skip:
+	if text_state.text.length() > 0 and text_state.text[text_state.text.length() - 1] != " " and \
+		text.length() > 0 and text[0] != '.' and not skip:
 			text_state.text += " "
-	if repeated_subject && !skip:
+	if repeated_subject and not skip:
 		var pos:= text.find(subject_key) - 1
 		var lpos:= text.rfind(" ", pos - 2)
 		var sub_str: String
 		if lpos < 0:
 			lpos = 0
 		sub_str = text.substr(lpos, pos - lpos)
-		if "the " in sub_str || "The " in sub_str || "a " in sub_str || "A " in sub_str || \
-			"an " in sub_str || "An " in sub_str:
+		if "the " in sub_str or "The " in sub_str or "a " in sub_str or "A " in sub_str or \
+			"an " in sub_str or "An " in sub_str:
 			text = text.substr(0, lpos) + text.substr(pos)
 			if text_state.plural:
 				format_dict[subject_key] = "they"
 			else:
 				format_dict[subject_key] = "it"
 			text_state.last_subject = ""
-	if !skip:
+	if not skip:
 		add_text = text.format(format_dict)
-		if text_state.state == "sentence_end" && add_text.length() > 0 && \
-			(text_state.text.length() == 0 || \
+		if text_state.state == "sentence_end" and add_text.length() > 0 and \
+			(text_state.text.length() == 0 or \
 			text_state.text[max(text_state.text.length() - 2, 0)] not in [',', ':', '-']):
 				add_text[0] = add_text[0].to_upper()
 		text_state.text += add_text
@@ -424,22 +455,23 @@ func generate_description(card_set: Dictionary[Vector2i, Card], create_card: Cal
 	var text_state := TextState.new(card_set, available_texts, texts_by_type)
 	var no_sentences := 0
 	var failures := 0
+	text_state.last_cards = [Vector2i()]
 	
 	while no_sentences < max_sentences:
-		text_state = append_text(
+		text_state = self.append_text(
 			text_state,
 			create_card,
 			random_cards,
 			properties,
 		)
 		if text_state.state == "error":
-			var pos: int = max(max(text_state.text.rfind('.'), text_state.text.rfind('!')),
+			var pos := maxi(maxi(text_state.text.rfind('.'), text_state.text.rfind('!')),
 				text_state.text.rfind('?')) + 1
 			text_state.text = text_state.text.left(pos)
 		elif text_state.state == "sentence_end":
-			var pos:= text_state.text.rfind('.', text_state.text.length() - 2)
+			var pos := text_state.text.rfind('.', text_state.text.length() - 2)
 			if pos > 0:
-				var length: int = min(text_state.text.length() - pos - 1, MAX_TEXT_LENGTH)
+				var length := mini(text_state.text.length() - pos - 1, MAX_TEXT_LENGTH)
 				if Utils.compare_strings(text_state.text.right(pos + 1),
 					text_state.text.substr(maxi(pos - length, 0), length)) > 0.75:
 						print("Warning: text rejected because too repetetive")
@@ -467,19 +499,19 @@ func sanitize_string(string: String) -> String:
 	var pos:= 0
 	var start:= true
 	string[0] = string[0].to_upper()
-	if string[0] == 'A' && string[1] == ' ':
+	if string[0] == 'A' and string[1] == ' ':
 		var pos2:= string.find(' ', 2)
 		if string[pos2 - 1] == 's':
 			string = "The" + string.substr(1)
 		elif string[2].to_lower() in Names.VOVELS:
 			string = "An" + string.substr(1)
 	
-	while pos >= 0 && pos < string.length():
+	while pos >= 0 and pos < string.length():
 		var pos2: int
 		pos = string.findn(" a ", pos)
 		if pos == -1:
 			break
-		pos2 = string.find(' ', pos+3)
+		pos2 = string.find(' ', pos + 3)
 		if string[pos2 - 1] == 's':
 			string = string.left(pos) + " the " + string.substr(pos + 3)
 		elif string[pos + 3].to_lower() in Names.VOVELS:
@@ -492,7 +524,7 @@ func sanitize_string(string: String) -> String:
 	string = string.replace("The the", "The").replace("the the", "the")
 	
 	for p in range(string.length()):
-		if start && string[p] != " ":
+		if start and string[p] != " ":
 			string[p] = string[p].to_upper()
 			start = false
 		if string[p] in ['.', '!', '?']:

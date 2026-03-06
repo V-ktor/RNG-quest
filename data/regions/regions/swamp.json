@@ -58,6 +58,13 @@
 			],
 			"type": [
 				"settlement"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"swamp",
+				"humid",
+				"city"
 			]
 		},
 		{
@@ -74,6 +81,13 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"ruins",
+				"humid",
+				"city"
 			]
 		},
 		{
@@ -89,6 +103,12 @@
 			],
 			"type": [
 				"castle"
+			],
+			"tags": [
+				"medieval",
+				"trading",
+				"humid",
+				"city"
 			]
 		}
 	],
@@ -108,6 +128,14 @@
 			],
 			"type": [
 				"swamp"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"toxic",
+				"swamp",
+				"humid",
+				"water"
 			]
 		},
 		{
@@ -133,6 +161,14 @@
 				"herb",
 				"mushroom",
 				"root"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"toxic",
+				"swamp",
+				"humid",
+				"forest"
 			]
 		},
 		{
@@ -166,6 +202,14 @@
 				"wood",
 				"cotton",
 				"pebble"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"toxic",
+				"swamp",
+				"humid",
+				"river"
 			]
 		},
 		{
@@ -193,6 +237,14 @@
 				"skeleton",
 				"orc",
 				"snap_turtle"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"toxic",
+				"swamp",
+				"humid",
+				"water"
 			]
 		}
 	],

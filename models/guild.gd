@@ -29,7 +29,7 @@ var exp_gain: Dictionary[String, int]
 var founder: String
 
 
-func on_travel(region: Region):
+func on_travel(region: Region) -> void:
 	self.distance += 1
 	if self.revival_chance > 0.0 and randf() < self.revival_chance:
 		self.is_available = true
@@ -47,7 +47,7 @@ func on_travel(region: Region):
 
 
 func get_max_exp() -> int:
-	return 600 + 400 * self.level * self.level
+	return 300 + 200 * self.level * self.level
 
 
 func add_exp(amount: float, type: String = "") -> void:

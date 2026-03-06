@@ -57,6 +57,13 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"gravity_anomalies",
+				"city",
+				"warm"
 			]
 		},
 		{
@@ -71,6 +78,14 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"gravity_anomalies",
+				"city",
+				"water",
+				"sky"
 			]
 		},
 		{
@@ -86,6 +101,13 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"medieval",
+				"islands",
+				"gravity_anomalies",
+				"city",
+				"warm"
 			]
 		}
 	],
@@ -122,6 +144,14 @@
 				"silk",
 				"pebble",
 				"stone"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"gravity_anomalies",
+				"islands",
+				"warm",
+				"river"
 			]
 		},
 		{
@@ -158,6 +188,15 @@
 				"silk",
 				"pebble",
 				"stone"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"gravity_anomalies",
+				"islands",
+				"warm",
+				"river",
+				"ocean"
 			]
 		},
 		{
@@ -176,6 +215,15 @@
 			],
 			"type": [
 				"floating_island"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"gravity_anomalies",
+				"islands",
+				"warm",
+				"ocean",
+				"water"
 			]
 		},
 		{
@@ -193,6 +241,15 @@
 			],
 			"type": [
 				"forest"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"gravity_anomalies",
+				"islands",
+				"sky",
+				"forest",
+				"water"
 			]
 		}
 	],

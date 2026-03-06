@@ -1,0 +1,281 @@
+[
+	{
+		"type": "sentence_full",
+		"text": [
+			"{mountains.plural} {floats/float} on {gravity_anomaly.plural}",
+			"{mountains.adjective} {mountains.plural} {floats/float} on {gravity_anomaly.plural}",
+			"{mountains.plural} {drifts/drift} on {gravity_anomaly.plural}",
+			"{mountains.adjective} {mountains.plural} {drifts/drift} on {gravity_anomaly.plural}"
+		],
+		"sentence": {
+			"subject": "mountains",
+			"object": "gravity_anomaly",
+			"predicate": ""
+		},
+		"required": [
+			"mountains",
+			"gravity_anomaly"
+		],
+		"replace": {
+			"mountains": "hills"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {ground.singular} {is/are} stacked on top of each others due to {gravity_anomaly.plural}",
+			"the {ground.adjective} {ground.singular} {is/are} stacked on top of each others due to {gravity_anomaly.plural}"
+		],
+		"sentence": {
+			"subject": "ground",
+			"object": "gravity_anomaly",
+			"predicate": ""
+		},
+		"required": [
+			"ground",
+			"gravity_anomaly"
+		],
+		"replace": {
+			"ground": "particles"
+		},
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {landmark.adjective} {landmark.singular} {floats/float} on {gravity_anomaly.plural}",
+			"the {landmark.adjective} {landmark.singular} {levitates/levitate} thanks to {gravity_anomaly.plural}"
+		],
+		"sentence": {
+			"subject": "landmark",
+			"object": "gravity_anomaly",
+			"predicate": ""
+		},
+		"required": [
+			"landmark",
+			"gravity_anomaly"
+		],
+		"replace": {
+			"gravity_anomaly": "mountains"
+		},
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{particles.plural} {particles.verb} upwards due to {gravity_anomaly.plural}"
+		],
+		"sentence": {
+			"subject": "particles",
+			"object": "gravity_anomaly",
+			"predicate": ""
+		},
+		"required": [
+			"particles",
+			"gravity_anomaly"
+		],
+		"replace": {
+			"particles": "sea"
+		},
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{particles.plural} {particles.verb} to the {sky.singular} due to {gravity_anomaly.plural}"
+		],
+		"sentence": {
+			"subject": "particles",
+			"object": "sky",
+			"predicate": ""
+		},
+		"required": [
+			"particles",
+			"gravity_anomaly",
+			"sky"
+		],
+		"replace": {
+			"particles": "sea"
+		},
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"a {sea.singular} {floats/float} in the {sky.singular}",
+			"a {sea.singular} {floats/float} in the {sky.color} {sky.singular}",
+			"a {sea.adjective} {sea.singular} {floats/float} in the {sky.singular}"
+		],
+		"sentence": {
+			"subject": "sea",
+			"object": "sky",
+			"predicate": ""
+		},
+		"required": [
+			"sea",
+			"gravity_anomaly",
+			"sky"
+		],
+		"replace": {
+			"sea": "river"
+		},
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"a {sea.singular} {floats/float} in the {air.singular}",
+			"a {sea.singular} {floats/float} in the {air.adjective} {air.singular}",
+			"a {sea.adjective} {sea.singular} {floats/float} in the {air.singular}"
+		],
+		"sentence": {
+			"subject": "sea",
+			"object": "air",
+			"predicate": ""
+		},
+		"required": [
+			"sea",
+			"gravity_anomaly",
+			"air"
+		],
+		"replace": {
+			"sea": "river"
+		},
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"a {river.singular} {floats/float} to the {sky.singular}",
+			"a {river.singular} {floats/float} to the {sky.color} {sky.singular}",
+			"a {river.adjective} {river.singular} {floats/float} to the {sky.singular}"
+		],
+		"sentence": {
+			"subject": "river",
+			"object": "sky",
+			"predicate": ""
+		},
+		"required": [
+			"river",
+			"gravity_anomaly",
+			"sky"
+		],
+		"replace": {
+			"river": "waterfall"
+		},
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"a {river.singular} {floats/float} through the {air.singular}",
+			"a {river.singular} {floats/float} through the {air.adjective} {air.singular}",
+			"a {river.adjective} {river.singular} {floats/float} through the {air.singular}"
+		],
+		"sentence": {
+			"subject": "river",
+			"object": "air",
+			"predicate": ""
+		},
+		"required": [
+			"river",
+			"gravity_anomaly",
+			"air"
+		],
+		"replace": {
+			"river": "waterfall"
+		},
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"a {waterfall.singular} {erupts/erupt} upwards to the {sky.singular}",
+			"a {waterfall.adjective} {waterfall.singular} {erupts/erupt} upwards to the {sky.singular}",
+			"a {waterfall.singular} {erupts/erupt} upwards to the {sky.color} {sky.singular}"
+		],
+		"sentence": {
+			"subject": "waterfall",
+			"object": "sky",
+			"predicate": ""
+		},
+		"required": [
+			"waterfall",
+			"gravity_anomaly",
+			"sky"
+		],
+		"replace": {
+			"waterfall": "particles"
+		},
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{region.singular} {is/are} riddled with {gravity_anomaly.plural}",
+			"{region.singular} {is/are} affected by {gravity_anomaly.plural}",
+			"{region.singular} {is/are} distorted by {gravity_anomaly.plural}"
+		],
+		"sentence": {
+			"subject": "region",
+			"object": "gravity_anomaly",
+			"predicate": ""
+		},
+		"required": [
+			"region",
+			"gravity_anomaly"
+		],
+		"replace": {
+			"gravity_anomaly": "mountains"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{region.singular} {is/are} riddled with {rift.adjective} {rift.plural}"
+		],
+		"sentence": {
+			"subject": "region",
+			"object": "rift",
+			"predicate": ""
+		},
+		"required": [
+			"region",
+			"gravity_anomaly",
+			"rift"
+		],
+		"replace": {
+			"rift": "river"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	}
+]

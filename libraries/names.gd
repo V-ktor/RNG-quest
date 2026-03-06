@@ -234,7 +234,7 @@ const PREFIX: Array[String] = [
 	"radio", "lepto", "hypno", "stellar", "sonar", "bureau", "archeo", "astro", "meno", "grammo",
 	"phantas", "trans", "luna", "semi", "ego", "tyranno", "dyna", "panto", "contro", "pro", "idio",
 	"poly", "plasto", "endo", "soli", "arcano", "thermo", "crypto", "mero", "meso", "digi", "ana",
-	"hyper", "anthropo", "cata", "loco", "rheo", "stochio", "titano", "mega", "mini",
+	"hyper", "anthropo", "cata", "loco", "rheo", "stochio", "titano", "mega", "mini", "meta", "exo",
 ]
 const SUFFIX: Array[String] = [
 	"chrome", "chromatic", "synthetic", "syntactic", "phil", "phobe", "phantastic", "tic",
@@ -243,7 +243,7 @@ const SUFFIX: Array[String] = [
 	"graphic", "gonic", "sive", "mantic", "galactic", "scence", "theric", "thereal", "mal",
 	"elastic", "tal", "centric", "mous", "static", "dynamic", "mite", "nautic", "nomic", "cryptic",
 	"active", "logical", "septic", "cistic", "directional", "mimic", "phoric", "plasmonic",
-	"motive", "colossal", "lucent",
+	"motive", "colossal", "lucent", "physical", "chemical", "biological",
 ]
 const SUBJECT: Array[String] = [
 	"phobia", "philia", "cide", "laxis", "scope", "mount", "graph", "phone", "borg", "maly",

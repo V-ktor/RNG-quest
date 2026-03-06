@@ -1,0 +1,17 @@
+{
+	"name": "engineering",
+	"relics": [
+		"schematics"
+	],
+	"abilities": [
+		"gun_slinging"
+	],
+	"exp_gain": {
+		"craft": 4,
+		"loot": 1
+	},
+	"tags": [
+		"craftsman",
+		"technology"
+	]
+}

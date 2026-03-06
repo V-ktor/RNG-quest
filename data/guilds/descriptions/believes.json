@@ -6,7 +6,21 @@
 		"texts": [
 			"the {organization} believes that all people are {personality_qualifier}",
 			"the {organization} believes that most people are {personality_qualifier}",
-			"the {organization} believes that people are {personality_qualifier}",
+			"the {organization} believes that people are {personality_qualifier}"
+		]
+	},
+	{
+		"type": [
+			"convictions"
+		],
+		"texts": [
+			"the {organization} believes that bureaucracy serves a greater purpose",
+			"the {organization} believes that documentation is immensely important",
+			"the {organization} believes that each endeavor must be well documented",
+			"the {organization} believes that the pen is mightier than the sword"
+		],
+		"tags": [
+			"bureaucracy"
 		]
 	}
 ]

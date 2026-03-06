@@ -97,7 +97,7 @@ func get_distance(pos1: Vector2i, pos2: Vector2i) -> int:
 	return int(maxi(maxi(absi(pos1.x - pos2.x), absi(pos1.y - pos2.y)), absi(pos1.x - pos2.x + pos1.y - pos2.y)))
 
 func get_min_distance(pos: Vector2i, array: Array[Vector2i]) -> int:
-	var min_dist:= MAX_DIST + 1
+	var min_dist := MAX_DIST + 1
 	for pos2 in array:
 		min_dist = mini(min_dist, get_distance(pos, pos2))
 	return min_dist

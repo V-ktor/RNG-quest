@@ -1,0 +1,18 @@
+{
+	"name": "honor",
+	"relics": [
+		"banner"
+	],
+	"abilities": [
+		"armour",
+		"shield"
+	],
+	"exp_gain": {
+		"attacked": 2
+	},
+	"tags": [
+		"quests",
+		"salvation",
+		"armour"
+	]
+}

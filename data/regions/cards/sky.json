@@ -11,7 +11,8 @@
 			"underwater",
 			"artificial",
 			"sci-fi",
-			"snow"
+			"snow",
+			"sky"
 		],
 		"properties_by_tags": {
 			"singular": [
@@ -141,7 +142,8 @@
 			"city",
 			"slums",
 			"farmland",
-			"snow"
+			"snow",
+			"sky"
 		],
 		"properties_by_tags": {
 			"singular": [
@@ -166,7 +168,9 @@
 						"golden"
 					],
 					"tags": [
-						"idyllic"
+						"idyllic",
+						"forest",
+						"farmland"
 					]
 				},
 				{
@@ -194,7 +198,9 @@
 						"grey"
 					],
 					"tags": [
-						"industrial"
+						"industrial",
+						"ruins",
+						"slums"
 					]
 				},
 				{
@@ -202,7 +208,9 @@
 						"cyan"
 					],
 					"tags": [
-						"cold"
+						"cold",
+						"snow",
+						"city"
 					]
 				},
 				{
@@ -210,7 +218,16 @@
 						"orange"
 					],
 					"tags": [
-						"warm"
+						"warm",
+						"desert"
+					]
+				},
+				{
+					"names": [
+						"violet"
+					],
+					"tags": [
+						"mysterious"
 					]
 				}
 			]
@@ -225,7 +242,8 @@
 			"city",
 			"slums",
 			"farmland",
-			"snow"
+			"snow",
+			"sky"
 		],
 		"properties_by_tags": {
 			"singular": [
@@ -244,7 +262,8 @@
 			"cold",
 			"volcano",
 			"desert",
-			"snow"
+			"snow",
+			"sky"
 		],
 		"properties": [
 			"density"
@@ -284,6 +303,30 @@
 					"tags": [
 						"desert"
 					]
+				},
+				{
+					"names": [
+						"smog"
+					],
+					"tags": [
+						"industrial"
+					]
+				},
+				{
+					"names": [
+						"dust"
+					],
+					"tags": [
+						"mining"
+					]
+				},
+				{
+					"names": [
+						"shooting star"
+					],
+					"tags": [
+						"sky"
+					]
 				}
 			],
 			"adjective": [
@@ -318,6 +361,23 @@
 					],
 					"tags": [
 						"desert"
+					]
+				},
+				{
+					"names": [
+						"dust-covered"
+					],
+					"tags": [
+						"mining",
+						"industrial"
+					]
+				},
+				{
+					"names": [
+						"sparkling"
+					],
+					"tags": [
+						"sky"
 					]
 				}
 			],
@@ -356,6 +416,23 @@
 					"tags": [
 						"desert"
 					]
+				},
+				{
+					"names": [
+						"floats"
+					],
+					"tags": [
+						"mining",
+						"industrial"
+					]
+				},
+				{
+					"names": [
+						"falls"
+					],
+					"tags": [
+						"sky"
+					]
 				}
 			]
 		}
@@ -369,7 +446,8 @@
 			"cold",
 			"sci-fi",
 			"artificial",
-			"fire"
+			"fire",
+			"sky"
 		],
 		"properties_by_tags": {
 			"singular": [
@@ -409,7 +487,8 @@
 					"tags": [
 						"sci-fi",
 						"artificial",
-						"fire"
+						"fire",
+						"sky"
 					]
 				}
 			]

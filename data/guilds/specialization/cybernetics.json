@@ -1,0 +1,16 @@
+{
+	"name": "cybernetics",
+	"relics": [
+		"artifact"
+	],
+	"abilities": [
+	],
+	"exp_gain": {
+		"craft": 3,
+		"enchant": 3
+	},
+	"tags": [
+		"technology",
+		"research"
+	]
+}

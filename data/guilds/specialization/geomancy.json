@@ -1,0 +1,15 @@
+{
+	"name": "geomancy",
+	"relics": [
+		"crystal"
+	],
+	"abilities": [
+		"nature_magic"
+	],
+	"exp_gain": {
+		"buff": 2
+	},
+	"tags": [
+		"earth"
+	]
+}

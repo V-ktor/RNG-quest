@@ -57,6 +57,13 @@
 			],
 			"type": [
 				"settlement"
+			],
+			"tags": [
+				"fantasy",
+				"city",
+				"hills",
+				"warm",
+				"isolated"
 			]
 		},
 		{
@@ -73,6 +80,13 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"fantasy",
+				"city",
+				"hills",
+				"warm",
+				"trading"
 			]
 		},
 		{
@@ -89,6 +103,13 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"city",
+				"hills",
+				"warm",
+				"idyllic"
 			]
 		}
 	],
@@ -123,6 +144,12 @@
 				"wood",
 				"gem",
 				"pebble"
+			],
+			"tags": [
+				"fantasy",
+				"river",
+				"hills",
+				"warm"
 			]
 		},
 		{
@@ -154,6 +181,13 @@
 				"ore",
 				"ore",
 				"gem"
+			],
+			"tags": [
+				"fantasy",
+				"cave",
+				"hills",
+				"warm",
+				"isolated"
 			]
 		},
 		{
@@ -182,6 +216,12 @@
 				"strong_wolf",
 				"bat",
 				"ogre"
+			],
+			"tags": [
+				"fantasy",
+				"mountains",
+				"hills",
+				"warm"
 			]
 		},
 		{
@@ -207,6 +247,13 @@
 				"wood",
 				"cotton",
 				"cabbage"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"hills",
+				"warm",
+				"isolated"
 			]
 		}
 	],

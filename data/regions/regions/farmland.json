@@ -54,6 +54,12 @@
 			"type": [
 				"settlement",
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"city",
+				"warm"
 			]
 		},
 		{
@@ -69,6 +75,12 @@
 			"type": [
 				"settlement",
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"city",
+				"prosperous"
 			]
 		},
 		{
@@ -85,6 +97,12 @@
 			"type": [
 				"camp",
 				"outpost"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"city",
+				"trading"
 			]
 		}
 	],
@@ -121,6 +139,12 @@
 				"gem",
 				"pebble",
 				"cotton"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"river",
+				"warm"
 			]
 		},
 		{
@@ -157,6 +181,12 @@
 				"gem",
 				"wood",
 				"mushroom"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"cave",
+				"warm"
 			]
 		},
 		{
@@ -193,6 +223,13 @@
 				"stone",
 				"wood",
 				"cotton"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"river",
+				"hills",
+				"warm"
 			]
 		},
 		{
@@ -218,6 +255,13 @@
 				"idyllic",
 				"bright"
 			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"hills",
+				"mountains",
+				"warm"
+			]
 		},
 		{
 			"base": [
@@ -254,6 +298,12 @@
 				"wood",
 				"cotton",
 				"mushroom"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"forest",
+				"warm"
 			]
 		}
 	],

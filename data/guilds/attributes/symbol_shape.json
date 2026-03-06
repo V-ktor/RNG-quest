@@ -259,6 +259,15 @@
 	},
 	{
 		"texts": [
+			"angel"
+		],
+		"tags": [
+			"light",
+			"salvation"
+		]
+	},
+	{
+		"texts": [
 			"whip",
 			"spatula"
 		],
@@ -452,6 +461,14 @@
 			"water",
 			"acid",
 			"poison"
+		]
+	},
+	{
+		"texts": [
+			"pen"
+		],
+		"tags": [
+			"bureaucracy"
 		]
 	}
 ]

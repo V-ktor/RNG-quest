@@ -96,11 +96,20 @@
 	},
 	{
 		"texts": [
+			"willing to learn",
+			"able to learn"
+		],
+		"tags": [
+			"education"
+		]
+	},
+	{
+		"texts": [
 			"crafty"
 		],
 		"tags": [
 			"crafting",
-			"materials",
+			"materials"
 		]
 	},
 	{

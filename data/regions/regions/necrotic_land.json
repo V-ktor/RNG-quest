@@ -60,6 +60,12 @@
 			],
 			"type": [
 				"castle"
+			],
+			"tags": [
+				"medieval",
+				"haunted",
+				"city",
+				"humid"
 			]
 		},
 		{
@@ -76,6 +82,13 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"haunted",
+				"city",
+				"humid"
 			]
 		},
 		{
@@ -91,6 +104,12 @@
 			],
 			"type": [
 				"settlement"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"city",
+				"humid"
 			]
 		},
 		{
@@ -106,6 +125,13 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"swamp",
+				"city",
+				"humid"
 			]
 		}
 	],
@@ -133,6 +159,14 @@
 				"skeleton",
 				"imp",
 				"undead_shark"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"necrotic",
+				"swamp",
+				"river",
+				"humid"
 			]
 		},
 		{
@@ -150,6 +184,14 @@
 			],
 			"type": [
 				"forest"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"haunted",
+				"necrotic",
+				"forest",
+				"humid"
 			]
 		},
 		{
@@ -171,6 +213,14 @@
 			],
 			"type": [
 				"cave"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"haunted",
+				"necrotic",
+				"cave",
+				"humid"
 			]
 		},
 		{
@@ -191,6 +241,15 @@
 			],
 			"type": [
 				"graveyard"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"haunted",
+				"necrotic",
+				"swamp",
+				"hills",
+				"humid"
 			]
 		}
 	],

@@ -26,6 +26,7 @@
 	"tags": [
 		"arid",
 		"desert",
+		"ruins",
 		"poverty"
 	],
 	"enemies": [
@@ -58,6 +59,13 @@
 			],
 			"type": [
 				"settlement"
+			],
+			"tags": [
+				"fantasy",
+				"arid",
+				"desert",
+				"poverty",
+				"city"
 			]
 		},
 		{
@@ -74,6 +82,13 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"medieval",
+				"arid",
+				"desert",
+				"poverty",
+				"city"
 			]
 		},
 		{
@@ -91,6 +106,12 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"arid",
+				"desert",
+				"trading",
+				"city"
 			]
 		}
 	],
@@ -111,6 +132,12 @@
 			],
 			"type": [
 				"mountain"
+			],
+			"tags": [
+				"arid",
+				"desert",
+				"mountains",
+				"fire"
 			]
 		},
 		{
@@ -130,6 +157,12 @@
 			],
 			"type": [
 				"dunes"
+			],
+			"tags": [
+				"arid",
+				"desert",
+				"ruins",
+				"grim"
 			]
 		},
 		{
@@ -161,6 +194,11 @@
 				"root",
 				"wood",
 				"cotton"
+			],
+			"tags": [
+				"arid",
+				"desert",
+				"water"
 			]
 		},
 		{
@@ -195,6 +233,13 @@
 				"ingot",
 				"gem",
 				"mushroom"
+			],
+			"tags": [
+				"arid",
+				"desert",
+				"cave",
+				"dark",
+				"grim"
 			]
 		}
 	],

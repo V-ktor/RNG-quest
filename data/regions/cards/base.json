@@ -1,4 +1,5 @@
 {
+	"region": {},
 	"vegetation": {
 		"tags": [
 			"idyllic",
@@ -6,7 +7,8 @@
 			"desert",
 			"warm",
 			"cold",
-			"humid"
+			"humid",
+			"underwater"
 		],
 		"properties_by_tags": {
 			"singular": [
@@ -35,6 +37,14 @@
 					],
 					"tags": [
 						"desert"
+					]
+				},
+				{
+					"names": [
+						"coral"
+					],
+					"tags": [
+						"underwater"
 					]
 				}
 			],
@@ -65,6 +75,14 @@
 					"tags": [
 						"desert"
 					]
+				},
+				{
+					"names": [
+						"corals"
+					],
+					"tags": [
+						"underwater"
+					]
 				}
 			],
 			"adjective": [
@@ -75,7 +93,8 @@
 					],
 					"tags": [
 						"warm",
-						"forest"
+						"forest",
+						"idyllic"
 					]
 				},
 				{
@@ -92,6 +111,23 @@
 					],
 					"tags": [
 						"desert"
+					]
+				},
+				{
+					"names": [
+						"colorful"
+					],
+					"tags": [
+						"fantasy",
+						"idyllic"
+					]
+				},
+				{
+					"names": [
+						"monochrome"
+					],
+					"tags": [
+						"grim"
 					]
 				}
 			]
@@ -145,7 +181,8 @@
 				},
 				{
 					"names": [
-						"mining shaft"
+						"mining shaft",
+						"crystal formation"
 					],
 					"tags": [
 						"mining"
@@ -259,7 +296,8 @@
 			"beach",
 			"cold",
 			"warm",
-			"ocean"
+			"ocean",
+			"sky"
 		],
 		"properties_by_tags": {
 			"singular": [
@@ -319,6 +357,14 @@
 					"tags": [
 						"farmland"
 					]
+				},
+				{
+					"names": [
+						"cloud"
+					],
+					"tags": [
+						"sky"
+					]
 				}
 			],
 			"plural": [
@@ -362,6 +408,14 @@
 					],
 					"tags": [
 						"cold"
+					]
+				},
+				{
+					"names": [
+						"clouds"
+					],
+					"tags": [
+						"sky"
 					]
 				}
 			],
@@ -424,6 +478,14 @@
 					"tags": [
 						"ocean"
 					]
+				},
+				{
+					"names": [
+						"fluffy"
+					],
+					"tags": [
+						"sky"
+					]
 				}
 			]
 		}
@@ -444,6 +506,43 @@
 				{
 					"names": [
 						"hills"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"fertile"
+					],
+					"tags": [
+						"farmland"
+					]
+				},
+				{
+					"names": [
+						"flat",
+						"emerald"
+					],
+					"tags": [
+						"idyllic"
+					]
+				},
+				{
+					"names": [
+						"scorched"
+					],
+					"tags": [
+						"desert",
+						"volcanic"
+					]
+				},
+				{
+					"names": [
+						"snow-covered"
+					],
+					"tags": [
+						"snow",
+						"cold"
 					]
 				}
 			]
@@ -469,10 +568,186 @@
 						"mountains"
 					]
 				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"tall",
+						"grand"
+					],
+					"tags": [
+						"fantasy",
+						"idyllic"
+					]
+				},
+				{
+					"names": [
+						"impassable"
+					],
+					"tags": [
+						"grim"
+					]
+				},
+				{
+					"names": [
+						"overgrown"
+					],
+					"tags": [
+						"warm"
+					]
+				},
+				{
+					"names": [
+						"snow-covered"
+					],
+					"tags": [
+						"cold"
+					]
+				},
+				{
+					"names": [
+						"volcanically active"
+					],
+					"tags": [
+						"volcanic"
+					]
+				}
 			]
 		}
 	},
-	"rift": {},
+	"rift": {
+		"tags": [
+			"mountains",
+			"river",
+			"cave"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"river",
+						"stream"
+					],
+					"tags": [
+						"river"
+					]
+				},
+				{
+					"names": [
+						"brook"
+					],
+					"tags": [
+						"idyllic"
+					]
+				},
+				{
+					"names": [
+						"canyon"
+					],
+					"tags": [
+						"mountains"
+					]
+				},
+				{
+					"names": [
+						"chasm",
+						"abyss"
+					],
+					"tags": [
+						"cave"
+					]
+				},
+				{
+					"names": [
+						"stream of lava",
+						"magma pool"
+					],
+					"tags": [
+						"volcano"
+					]
+				},
+				{
+					"names": [
+						"rift"
+					],
+					"tags": [
+						"gravity_anomalies"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"rivers"
+					],
+					"tags": [
+						"river"
+					]
+				},
+				{
+					"names": [
+						"chasms"
+					],
+					"tags": [
+						"cave"
+					]
+				},
+				{
+					"names": [
+						"rifts"
+					],
+					"tags": [
+						"gravity_anomalies"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"winding"
+					],
+					"tags": [
+						"idyllic"
+					]
+				},
+				{
+					"names": [
+						"broad"
+					],
+					"tags": [
+						"fantasy"
+					]
+				},
+				{
+					"names": [
+						"deep",
+						"dark"
+					],
+					"tags": [
+						"dark",
+						"cave"
+					]
+				},
+				{
+					"names": [
+						"dangerous"
+					],
+					"tags": [
+						"volcano"
+					]
+				},
+				{
+					"names": [
+						"spatial",
+						"temporal"
+					],
+					"tags": [
+						"gravity_anomalies"
+					]
+				}
+			]
+		}
+	},
 	"bridge": {
 		"tags": [
 			"river"
@@ -483,12 +758,28 @@
 					"names": [
 						"bridge"
 					]
+				},
+				{
+					"names": [
+						"rainbow"
+					],
+					"tags": [
+						"gravity_anomaly"
+					]
 				}
 			],
 			"plural": [
 				{
 					"names": [
 						"bridges"
+					]
+				},
+				{
+					"names": [
+						"rainbows"
+					],
+					"tags": [
+						"gravity_anomaly"
 					]
 				}
 			],
@@ -515,13 +806,43 @@
 						"wheat",
 						"barley"
 					]
+				},
+				{
+					"names": [
+						"mushrooms"
+					],
+					"tags": [
+						"cave"
+					]
 				}
 			]
 		}
 	},
 	"scent": {
 		"tags": [
-			"idyllic"
+			"idyllic",
+			"slums",
+			"ocean",
+			"islands",
+			"humid",
+			"forest",
+			"industrial",
+			"ruins",
+			"volcano",
+			"fire",
+			"ash",
+			"grim",
+			"necrotic",
+			"swamp",
+			"haunted",
+			"dungeon",
+			"prosperity",
+			"sanctuary",
+			"trade",
+			"snow",
+			"toxic",
+			"sky",
+			"mysterious"
 		],
 		"properties_by_tags": {
 			"singular": [
@@ -683,6 +1004,22 @@
 					"tags": [
 						"toxic"
 					]
+				},
+				{
+					"names": [
+						"sparks"
+					],
+					"tags": [
+						"sky"
+					]
+				},
+				{
+					"names": [
+						"dreams"
+					],
+					"tags": [
+						"mysterious"
+					]
 				}
 			],
 			"adjective": [
@@ -763,6 +1100,237 @@
 					],
 					"tags": [
 						"trade"
+					]
+				},
+				{
+					"names": [
+						"condensed"
+					],
+					"tags": [
+						"sky",
+						"mysterious"
+					]
+				}
+			]
+		}
+	},
+	"gravity_anomaly": {
+		"tags": [
+			"gravity_anomalies"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"gravity inversion field",
+						"gravity bubble",
+						"gravity anomaly",
+						"anti-gravity field"
+					],
+					"tags": [
+						"gravity_anomalies"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"gravity inversion fields",
+						"gravity bubbles",
+						"gravity anomalies",
+						"anti-gravity fields"
+					],
+					"tags": [
+						"gravity_anomalies"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"levitating",
+						"floating"
+					],
+					"tags": [
+						"gravity_anomalies"
+					]
+				}
+			]
+		}
+	},
+	"structures": {
+		"tags": [
+			"mining",
+			"buildings",
+			"artificial",
+			"forest",
+			"sanctuary",
+			"poverty",
+			"sci-fi",
+			"industrial",
+			"beach"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"debris"
+					],
+					"tags": [
+						"ruins"
+					]
+				},
+				{
+					"names": [
+						"junk"
+					],
+					"tags": [
+						"poverty"
+					]
+				},
+				{
+					"names": [
+						"circuitry"
+					],
+					"tags": [
+						"sci-fi"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"crystals",
+						"stalagmites"
+					],
+					"tags": [
+						"mining"
+					]
+				},
+				{
+					"names": [
+						"steel beams"
+					],
+					"tags": [
+						"artificial",
+						"industrial"
+					]
+				},
+				{
+					"names": [
+						"roots",
+						"vines"
+					],
+					"tags": [
+						"forest",
+						"jungle"
+					]
+				},
+				{
+					"names": [
+						"pillars"
+					],
+					"tags": [
+						"sanctuary"
+					]
+				},
+				{
+					"names": [
+						"circuits"
+					],
+					"tags": [
+						"sci-fi"
+					]
+				},
+				{
+					"names": [
+						"seashells"
+					],
+					"tags": [
+						"beach"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"shining",
+						"shiny",
+						"luminescent"
+					],
+					"tags": [
+						"mining"
+					]
+				},
+				{
+					"names": [
+						"strong",
+						"brown",
+						"thick"
+					],
+					"tags": [
+						"forest",
+						"jungle"
+					]
+				},
+				{
+					"names": [
+						"marble"
+					],
+					"tags": [
+						"sanctuary"
+					]
+				},
+				{
+					"names": [
+						"electrical"
+					],
+					"tags": [
+						"sci-fi"
+					]
+				},
+				{
+					"names": [
+						"rusty",
+						"rust-covered"
+					],
+					"tags": [
+						"industrial",
+						"ruins"
+					]
+				},
+				{
+					"names": [
+						"small"
+					],
+					"tags": [
+						"fantasy",
+						"idyllic"
+					]
+				},
+				{
+					"names": [
+						"warm"
+					],
+					"tags": [
+						"warm"
+					]
+				},
+				{
+					"names": [
+						"cold",
+						"frozen"
+					],
+					"tags": [
+						"cold"
+					]
+				},
+				{
+					"names": [
+						"molten"
+					],
+					"tags": [
+						"volcanic"
 					]
 				}
 			]

@@ -14,8 +14,6 @@
 			"landmark"
 		],
 		"transition": [
-			"sentence_subject",
-			"sentence_subject_predicate",
 			"sentence_full"
 		]
 	},
@@ -34,15 +32,13 @@
 			"sky"
 		],
 		"transition": [
-			"sentence_subject",
-			"sentence_subject_predicate",
 			"sentence_full"
 		]
 	},
 	{
 		"type": "sentence_start",
 		"text": [
-			"covered in {particles.adjective} {particles.singular},"
+			"covered in {particles.singular},"
 		],
 		"sentence": {
 			"subject": "particles"
@@ -54,8 +50,82 @@
 			"particles": "sky"
 		},
 		"transition": [
-			"sentence_subject",
-			"sentence_subject_predicate",
+			"sentence_full"
+		]
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"distorted by {gravity_anomaly.adjective} {gravity_anomaly.plural},"
+		],
+		"sentence": {
+			"subject": "gravity_anomaly"
+		},
+		"required": [
+			"gravity_anomaly"
+		],
+		"transition": [
+			"sentence_full"
+		]
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"as the scent of {scent.plural} {fills/fill} the {air.singular},",
+			"as the scent of {scent.adjective} {scent.plural} {fills/fill} the {air.singular},",
+			"as the scent of {scent.singular} {fills/fill} the {air.singular},",
+			"as the scent of {scent.adjective} {scent.singular} {fills/fill} the {air.singular},"
+		],
+		"sentence": {
+			"subject": "scent",
+			"object": "air"
+		},
+		"required": [
+			"scent",
+			"air"
+		],
+		"transition": [
+			"sentence_full"
+		]
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"as the {celestial_body.singular} {rises/rise} on the {horizon.singular},",
+			"as the {celestial_body.singular} {stands/stand} low on the {horizon.singular},"
+		],
+		"sentence": {
+			"subject": "celestial_body",
+			"object": "horizon"
+		},
+		"required": [
+			"celestial_body",
+			"horizon"
+		],
+		"replace": {
+			"celestial_body": "sky"
+		},
+		"transition": [
+			"sentence_full"
+		]
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"like the {celestial_body.singular} in the {sky.singular},"
+		],
+		"sentence": {
+			"subject": "celestial_body",
+			"object": "sky"
+		},
+		"required": [
+			"celestial_body",
+			"sky"
+		],
+		"replace": {
+			"celestial_body": "horizon"
+		},
+		"transition": [
 			"sentence_full"
 		]
 	}

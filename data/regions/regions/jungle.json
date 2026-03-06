@@ -56,6 +56,12 @@
 			"type": [
 				"settlement"
 			],
+			"tags": [
+				"fantasy",
+				"jungle",
+				"city",
+				"humid"
+			]
 		},
 		{
 			"base": [
@@ -70,6 +76,12 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"jungle",
+				"city",
+				"humid"
 			]
 		},
 		{
@@ -84,6 +96,13 @@
 			],
 			"type": [
 				"camp"
+			],
+			"tags": [
+				"medieval",
+				"grim",
+				"jungle",
+				"city",
+				"humid"
 			]
 		},
 		{
@@ -99,6 +118,12 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"medieval",
+				"jungle",
+				"city",
+				"humid"
 			]
 		}
 	],
@@ -120,6 +145,14 @@
 			],
 			"type": [
 				"forest"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"jungle",
+				"wilderness",
+				"humid",
+				"forest"
 			]
 		},
 		{
@@ -136,6 +169,14 @@
 				"overgrown "
 			],
 			"type": [
+				"cave"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"jungle",
+				"wilderness",
+				"humid",
 				"cave"
 			]
 		},
@@ -154,6 +195,14 @@
 			"type": [
 				"forest"
 			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"jungle",
+				"wilderness",
+				"humid",
+				"forest"
+			]
 		},
 		{
 			"base": [
@@ -170,6 +219,15 @@
 			],
 			"type": [
 				"mountain"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"jungle",
+				"wilderness",
+				"humid",
+				"hills",
+				"mountains"
 			]
 		}
 	],

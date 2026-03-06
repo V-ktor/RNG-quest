@@ -433,7 +433,7 @@ var states: Dictionary[String, Dictionary] = {
 			"type": "talk",
 		},
 		"requires": [
-			"person-quest_giver","city",
+			"person-quest_giver", "city",
 		],
 		"story": [
 			{
@@ -505,7 +505,7 @@ var states: Dictionary[String, Dictionary] = {
 			"type": "talk",
 		},
 		"requires": [
-			"city","person-quest_giver",
+			"city", "person-quest_giver",
 		],
 		"consumes": {
 			"type": "commission",
@@ -524,7 +524,7 @@ var states: Dictionary[String, Dictionary] = {
 			"type": "deliver",
 		},
 		"requires": [
-			"city","person-quest_giver","person-story","item-letter",
+			"city", "person-quest_giver", "person-story", "item-letter",
 		],
 		"consumes": {
 			"type": "letter",
@@ -620,7 +620,7 @@ var states: Dictionary[String, Dictionary] = {
 		"story": [
 			{
 				"type": "monster",
-				"requires": ["location","enemy-beast"],
+				"requires": ["location", "enemy-beast"],
 			},
 		],
 		"log": "You heard of a dangerous monster that roams nearby.",
@@ -674,7 +674,7 @@ var states: Dictionary[String, Dictionary] = {
 		"story": [
 			{
 				"type": "criminal",
-				"requires": ["location","enemy-criminal"],
+				"requires": ["location", "enemy-criminal"],
 			},
 		],
 		"log": "You were tasked to catch a criminal in [color=green]{city}[/color].",
@@ -736,7 +736,7 @@ var states: Dictionary[String, Dictionary] = {
 					},
 					{
 						"type": "monster",
-						"requires": ["location","enemy-beast"],
+						"requires": ["location", "enemy-beast"],
 					},
 				],
 			},
@@ -774,7 +774,7 @@ var states: Dictionary[String, Dictionary] = {
 		"story": [
 			{
 				"type": "delivery_item",
-				"requires": ["person","item-package"],
+				"requires": ["person", "item-package"],
 			},
 		],
 		"requires": [
@@ -790,7 +790,7 @@ var states: Dictionary[String, Dictionary] = {
 			"type": "deliver",
 		},
 		"requires": [
-			"city","person","item-package",
+			"city", "person", "item-package",
 		],
 		"consumes": {
 			"type": "delivery_item",
@@ -808,12 +808,12 @@ var states: Dictionary[String, Dictionary] = {
 			"type": "search",
 		},
 		"requires": [
-			"person-military","city","location",
+			"person-military", "city", "location",
 		],
 		"story": [
 			{
 				"type": "hostile_camp",
-				"requires": ["location","faction-hostile"],
+				"requires": ["location", "faction-hostile"],
 			},
 		],
 		"transitions": {
@@ -871,7 +871,7 @@ var states: Dictionary[String, Dictionary] = {
 			"type": "talk",
 		},
 		"requires": [
-			"city","person-military",
+			"city", "person-military",
 		],
 		"reward": {
 			"exp":20,
@@ -884,116 +884,124 @@ var states: Dictionary[String, Dictionary] = {
 }
 const TITLE: Array[Array] = [
 	[
-		"{prefix} Awakening","A {person}'s Awakening","{prefix} Revelation","{prefix} Prophecy",
-		"A {person}'s Prophecy","Prophecy of {theme}","{prefix} Adventure","The {person}'s Rise",
-		"Rise of {theme}","The {person}'s Tale","A Tale of {theme}","Beginning of {theme}",
-		"A {prefix} Beginning","A {prefix} Adventure","{prefix} Prologue","{prefix} Start",
-		"The {person}'s Story","The Story of {theme}","{prefix} Rebirth","A {person}'s Rebirth",
-		"Bound to {element}","A Glimpse of {theme}","{prefix} Revolution","Meet the {person}",
-		"Of {element} and {theme}","{theme} of {element}","Rise of {element}","Bound by {elements}",
-		"Embraced by {elements}","The Road to {theme}","{prefix} {person} Rising",
-		"Exposed to {element}","The Impressive {theme}","The {person} And The {theme}",
-		"{theme} Prelude","{prefix} Prelude"
+		"{prefix} Awakening", "A {person}'s Awakening", "{prefix} Revelation", "{prefix} Prophecy",
+		"A {person}'s Prophecy", "Prophecy of {theme}", "{prefix} Adventure", "The {person}'s Rise",
+		"Rise of {theme}", "The {person}'s Tale", "A Tale of {theme}", "Beginning of {theme}",
+		"A {prefix} Beginning", "A {prefix} Adventure", "{prefix} Prologue", "{prefix} Start",
+		"The {person}'s Story", "The Story of {theme}", "{prefix} Rebirth", "A {person}'s Rebirth",
+		"Bound to {element}", "A Glimpse of {theme}", "{prefix} Revolution", "Meet the {person}",
+		"Of {element} and {theme}", "{theme} of {element}", "Rise of {element}",
+		"Bound by {elements}", "Embraced by {elements}", "The Road to {theme}",
+		"{prefix} {person} Rising", "Exposed to {element}", "The Impressive {theme}",
+		"The {person} And The {theme}", "{theme} Prelude", "{prefix} Prelude", "{prefix} Dusk",
+		"{prefix} Copyright Infringement",
 	],
 	[
-		"{prefix} Matters","A Matter of {theme}","{prefix} Affairs","Affairs of {theme}",
-		"{prefix} Questions","A Question of {theme}","{prefix} Battle","The {prefix} Chase",
-		"{prefix} Pursuit","{prefix} Chivalry","{prefix} Honour","A {person}'s Honour",
-		"The {prefix} Quest","A {person}'s Quest","A Song of {elements}","A Song of {theme}",
-		"{prefix} Investigation","The Investigation of {theme}","{prefix} Engagement",
-		"{prefix} Travels","A {person}'s Travels","{prefix} Journey","{prefix} Frontiers",
-		"The Frontier of {theme}","Into {elements}","Descend into {elements}","Into {theme}",
-		"Melodies of {elements}","The Melody of {theme}","A {person}'s Legacy","{prefix} Legacy",
-		"Legacy of {theme}","The {person} Bathing in {elements}","The {person} of {theme}",
-		"On the Border to {theme}","{prefix} Evolution","Evolution of {theme}","Die for {theme}",
-		"{theme} of {elements}","{element}{person}","Attitude of {theme}","Epiphany of {theme}",
-		"Yet You Remain {person}less","Too Much {theme}","Torn Appart by {elements}",
+		"{prefix} Matters", "A Matter of {theme}", "{prefix} Affairs", "Affairs of {theme}",
+		"{prefix} Questions", "A Question of {theme}", "{prefix} Battle", "The {prefix} Chase",
+		"{prefix} Pursuit", "{prefix} Chivalry", "{prefix} Honour", "A {person}'s Honour",
+		"The {prefix} Quest", "A {person}'s Quest", "A Song of {elements}", "A Song of {theme}",
+		"{prefix} Investigation", "The Investigation of {theme}", "{prefix} Engagement",
+		"{prefix} Travels", "A {person}'s Travels", "{prefix} Journey", "{prefix} Frontiers",
+		"The Frontier of {theme}", "Into {elements}", "Descend into {elements}", "Into {theme}",
+		"Melodies of {elements}", "The Melody of {theme}", "A {person}'s Legacy", "{prefix} Legacy",
+		"Legacy of {theme}", "The {person} Bathing in {elements}", "The {person} of {theme}",
+		"On the Border to {theme}", "{prefix} Evolution", "Evolution of {theme}", "Die for {theme}",
+		"{theme} of {elements}", "{element}{person}", "Attitude of {theme}", "Epiphany of {theme}",
+		"Yet You Remain {person}less", "Too Much {theme}", "Torn Appart by {elements}",
 	],
 	[
-		"The {person}'s Fall","{prefix} Aftermath","{prefix} Crisis","{prefix} Dawn",
-		"{prefix} Fate","Fate of The {person}","{prefix} Destiny","{prefix} End","End of {theme}",
-		"The {person}'s End","{prefix} Epilogue","{prefix} Findings","{prefix} Conclusion",
-		"{prefix} Answers","The {person}'s Answer","{prefix} Whispers","Whispers of {theme}",
-		"A {person}'s Consequences","The {person}'s Death","{theme}'s Consequences",
-		"The Answer to {theme}","Remarks of {theme}","Remarks of a {person}","Eternal {theme}",
-		"The Next Chapter of {theme}","Help! I turned into a {person}!","Divided by {elements}",
-		"Death of The {element}{person}","The Cleansing {elements}","No More {theme}",
-		"Sealed with {elements}","The Power of {element}","{theme}, Finally","{theme} FTW",
+		"The {person}'s Fall", "{prefix} Aftermath", "{prefix} Crisis", "{prefix} Dawn",
+		"{prefix} Fate", "Fate of The {person}", "{prefix} Destiny", "{prefix} End",
+		"End of {theme}", "The {person}'s End", "{prefix} Epilogue", "{prefix} Findings",
+		"{prefix} Conclusion", "{prefix} Answers", "The {person}'s Answer", "{prefix} Whispers",
+		"Whispers of {theme}", "A {person}'s Consequences", "The {person}'s Death",
+		"{theme}'s Consequences", "The Answer to {theme}", "Remarks of {theme}",
+		"Remarks of a {person}", "Eternal {theme}", "The Next Chapter of {theme}",
+		"Help! I turned into a {person}!", "Divided by {elements}",
+		"Death of The {element}{person}", "The Cleansing {elements}", "No More {theme}",
+		"Sealed with {elements}", "The Power of {element}", "{theme}, Finally",
 	],
 ]
 const TITLE_PREFIX: Array[String] = [
-	"Mysterious","Mythical","Ancient","Ominous","Dubious","Critical","Well Timed","Late","Early",
-	"Spontaneous","Unexpected","Forgotten","Relevant","Urgent","Pressing","Night Time","Unilateral",
-	"Spooky","Serious","Light","Heavy","Blighted","Holy","Sacred","Divine","Abysmal","Overwhelming",
-	"Underrated","Overrated","Invisible","Overarching","Bad","Badass","Unbelievable","Unknown",
-	"Lost","Undiscovered","Fateful","Draconic","Feral","Barbaric","New","Old","Renewed","Emotional",
-	"Relentless","Restless","Stressful","Random","Determined","Lucky","Alarming","Heartless",
-	"{element}bound","{element}born","Unholy","Peaceful","Timid","Heroic","Astral","Forged","Deep",
-	"Rural","Industrial","Neo","Grand","Undefined","Faithful","Rising","Falling","Determined",
-	"{element}forged",
+	"Mysterious", "Mythical", "Ancient", "Ominous", "Dubious", "Critical", "Well Timed", "Late",
+	"Early", "Spontaneous", "Unexpected", "Forgotten", "Relevant", "Urgent", "Pressing",
+	"Night Time", "Unilateral", "Spooky", "Serious", "Light", "Heavy", "Blighted", "Holy", "Sacred",
+	"Divine", "Abysmal", "Overwhelming", "Underrated", "Overrated", "Invisible", "Overarching",
+	"Bad", "Badass", "Unbelievable", "Unknown", "Lost", "Undiscovered", "Fateful", "Draconic",
+	"Feral", "Barbaric", "New", "Old", "Renewed", "Emotional", "Relentless", "Restless",
+	"Stressful", "Random", "Determined", "Lucky", "Alarming", "Heartless", "{element}bound",
+	"{element}born", "Unholy", "Peaceful", "Timid", "Heroic", "Astral", "Forged", "Deep",
+	"Rural", "Industrial", "Neo", "Grand", "Undefined", "Faithful", "Rising", "Falling",
+	"Determined", "{element}forged", "Unethical", "Bloody", "Major", "Minor", "Decisive",
 ]
 const THEME: Array[String] = [
-	"Conflict","War","Destruction","Redemption","Forgiveness","Obliteration","Sky","Aether",
-	"Oblivion","Dawn","Midnight","the End","a New Beginning","Abyss","Underworld","Heaven",
-	"Ocean","Deep Sea","the Woods","Mountaintop","Desert","Torment","Pain","Doom","Termination",
-	"Home","Uncertainty","Eternity","Maelstrom","Despair","Depression","Insanity","Stasis",
-	"Entropy","Chaos","Order","Realm","Hellfire","Coverdice","Turning Back","Determination",
-	"Devastation","Randomness",
+	"Conflict", "War", "Destruction", "Redemption", "Forgiveness", "Obliteration", "Sky", "Aether",
+	"Oblivion", "Dawn", "Midnight", "the End", "a New Beginning", "Abyss", "Underworld", "Heaven",
+	"Ocean", "Deep Sea", "the Woods", "Mountaintop", "Desert", "Torment", "Pain", "Doom",
+	"Termination", "Home", "Uncertainty", "Eternity", "Maelstrom", "Despair", "Depression",
+	"Insanity", "Stasis", "Entropy", "Chaos", "Order", "Realm", "Hellfire", "Coverdice",
+	"Determination", "Devastation", "Randomness", "Finality", "Solitude", "Comfort", "Hope",
+	"Absolution", "Salvation", "Peace", "Tears", "Joy",
 ]
 const ELEMENT: Array[String] = [
-	"fire","heat","lava","magma","ash","ice","snow","frost","earth","stone","mud","wind","air",
-	"water","storm","thunder","light","shadow","darkness","aether","void","star","space","time",
-	"soul","entropy","energy","spirit","mind","heart","steam","heaven","hell","death","life",
-	"miasma","radiation","blade",
+	"fire", "heat", "lava", "magma", "ash", "ice", "snow", "frost", "earth", "stone", "mud", "wind",
+	"air", "water", "storm", "thunder", "light", "shadow", "darkness", "aether", "void", "star",
+	"space", "time", "soul", "entropy", "energy", "spirit", "mind", "heart", "steam", "heaven",
+	"hell", "death", "life", "miasma", "radiation", "blade",
 ]
 const ELEMENTS: Array[String] = [
-	"fire","heat","lava","magma","ash","ice","snow","frost","earth","stones","mud","wind","air",
-	"water","storms","thunder","light","shadows","darkness","aether","void","stars","space","time",
-	"souls","entropy","energy","spirits","minds","hearts","steam","heaven","hell","death","life",
-	"miasma","radiation","blades",
+	"fire", "heat", "lava", "magma", "ash", "ice", "snow", "frost", "earth", "stones", "mud",
+	"wind", "air", "water", "storms", "thunder", "light", "shadows", "darkness", "aether", "void",
+	"stars", "space", "time", "souls", "entropy", "energy", "spirits", "minds", "hearts", "steam",
+	"heaven", "hell", "death", "life", "miasma", "radiation", "blades",
 ]
 const PERSON: Array[String] = [
-	"sage","wizard","mage","enchantress","oracle","scientist","researcher","philosopher","seraph",
-	"man","women","boy","girl","citizen","human","halfling","elf","dwarf","fairy","hero","demon",
-	"soldier","fighter","knight","mercenary","marksman","spellblade","archer","fencer","villain",
-	"thief","criminal","hunter","trapper","scout","guard","protector","fool","saint","priest",
-	"peasant","farmer","miner","wood cutter","worker","smith","settler","refugee","pirate","devil",
-	"mayor","count","earl","king","queen","prince","princes","lancer","adventurer","wanderer",
-	"adviser","assistant","guild master","hero","friend","fiend","maiden",
+	"sage", "wizard", "mage", "enchantress", "oracle", "scientist", "researcher", "philosopher",
+	"seraph", "man", "women", "boy", "girl", "citizen", "human", "halfling", "elf", "dwarf",
+	"fairy", "hero", "demon", "soldier", "fighter", "knight", "mercenary", "marksman", "spellblade",
+	"archer", "fencer", "villain", "thief", "criminal", "hunter", "trapper", "scout", "guard",
+	"protector", "fool", "saint", "priest", "peasant", "farmer", "miner", "wood cutter", "worker",
+	"smith", "settler", "refugee", "pirate", "devil", "mayor", "count", "earl", "king", "queen",
+	"prince", "princes", "lancer", "adventurer", "wanderer", "adviser", "assistant", "guild master",
+	"hero", "friend", "fiend", "maiden",
 ]
 const POSITIVE_PERSON: Array[String] = [
-	"wise","elder","old","arch","shy","empathic","enigmatic","mysterious","lonely",
-	"brave","fearless","naive","good","allied","nice","sweet","tolerant","naive","secretive",
-	"faithful","loyal","helpful","useful","resourceful","determined","important",
+	"wise", "elder", "old", "arch", "shy", "empathic", "enigmatic", "mysterious", "lonely",
+	"brave", "fearless", "naive", "good", "allied", "nice", "sweet", "tolerant", "naive",
+	"secretive", "faithful", "loyal", "helpful", "useful", "resourceful", "determined", "important",
 	"royal",
 ]
 const NEGATIVE_PERSON: Array[String] = [
-	"petty","dubious","vile","mean","dark","brutal","reckless","cynical","toxic","cruel","corrupt",
-	"evil","diabolic","infernal","murderous","pathetic","unsympathetic","half-breed","hidden",
-	"the enemy's","hostile","fishy","bad","menacing","useless","bloody","fiendish","antagonist",
+	"petty", "dubious", "vile", "mean", "dark", "brutal", "reckless", "cynical", "toxic", "cruel",
+	"corrupt", "evil", "diabolic", "infernal", "murderous", "pathetic", "unsympathetic",
+	"half-breed", "hidden", "the enemy's", "hostile", "fishy", "bad", "menacing", "useless",
+	"bloody", "fiendish", "antagonist",
 ]
 const DUNGEON_NAME: Array[String] = [
-	"dungeon","keep","cave","cavern","ruin","temple","rift","domain","island","castle","tower",
+	"dungeon", "keep", "cave", "cavern", "ruin", "temple", "rift", "domain", "island", "castle",
+	"tower",
 ]
 const DUNGEON_PREFIX: Array[String] = [
-	"eerie","creepy","dark","enigmatic","dusty","ancient","forgotten","forbidden","locked","ruined",
-	"demolished","pristine","dangerous","abandoned","heretic","ash","isolated","uncharted","smelly",
-	"overrun","infested","slimy","forsaken","unknown","unnamed","invisible","untouched",
+	"eerie", "creepy", "dark", "enigmatic", "dusty", "ancient", "forgotten", "forbidden", "locked",
+	"ruined", "demolished", "pristine", "dangerous", "abandoned", "heretic", "ash", "isolated",
+	"uncharted", "smelly", "overrun", "infested", "slimy", "forsaken", "unknown", "unnamed",
+	"invisible", "untouched",
 ]
 const DUNGEON_SUFFIX: Array[String] = [
-	"of danger","of harm","of archfiend",
+	"of danger", "of harm", "of archfiend",
 ]
 const LETTER_TYPES: Array[String] = [
-	"letter","scroll",
+	"letter", "scroll",
 ]
 const LETTER_ADJECTIVE: Array[String] = [
-	"sealed","signed","long","short","plain","ornate",
+	"sealed", "signed", "long", "short", "plain", "ornate",
 ]
 const PACKAGE_TYPES: Array[String] = [
-	"package","box",
+	"package", "box",
 ]
 const PACKAGE_ADJECTIVE: Array[String] = [
-	"heavy","large","small","ordinary","common",
+	"heavy", "large", "small", "ordinary", "common",
 ]
 var story: Array[Dictionary] = []
 var locations: Dictionary[String, String] = {}
@@ -1252,7 +1260,7 @@ func create_required(type: String, dict: Dictionary) -> Variant:
 			if array.size() > 1:
 				match array[1]:
 					"beast":
-						return ["boar","wolf","strong_wolf","elemental_wolf","crab","scorpion","drake","yeti"].pick_random()
+						return ["boar", "wolf", "strong_wolf", "elemental_wolf", "crab", "scorpion", "drake", "yeti"].pick_random()
 					"criminal":
 						return "thug"
 					"fighter":
@@ -1260,7 +1268,7 @@ func create_required(type: String, dict: Dictionary) -> Variant:
 					"guard":
 						return "guard"
 					"necromancer":
-						return ["zombie","ghoul","skeletton","mummy","vampire"].pick_random()
+						return ["zombie", "ghoul", "skeletton", "mummy", "vampire"].pick_random()
 					"faction":
 						return hostile_factions.pick_random()
 			return Enemies.base_enemies.keys().pick_random()

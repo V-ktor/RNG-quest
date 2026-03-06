@@ -6,8 +6,6 @@
 		],
 		"transition": [
 			"sentence_start",
-			"sentence_subject",
-			"sentence_subject_predicate",
 			"sentence_full"
 		]
 	}

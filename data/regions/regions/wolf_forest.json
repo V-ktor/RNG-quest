@@ -28,7 +28,8 @@
 		"fantasy",
 		"forest",
 		"wilderness",
-		"dark"
+		"dark",
+		"haunted"
 	],
 	"enemies": [
 		"spirit",
@@ -58,6 +59,12 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"city",
+				"wilderness",
+				"forest"
 			]
 		},
 		{
@@ -73,6 +80,12 @@
 			],
 			"type": [
 				"castle"
+			],
+			"tags": [
+				"medieval",
+				"city",
+				"wilderness",
+				"forest"
 			]
 		},
 		{
@@ -91,6 +104,12 @@
 			],
 					"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"city",
+				"trading",
+				"forest"
 			]
 		},
 		{
@@ -145,6 +164,12 @@
 				"wood",
 				"gem",
 				"pebble"
+			],
+			"tags": [
+				"fantasy",
+				"river",
+				"wilderness",
+				"forest"
 			]
 		},
 		{
@@ -168,7 +193,8 @@
 			"tags": [
 				"forest",
 				"dark",
-				"haunted"
+				"haunted",
+				"grim"
 			]
 		},
 		{
@@ -191,7 +217,8 @@
 			"tags": [
 				"hills",
 				"mountains",
-				"dark"
+				"dark",
+				"haunted"
 			],
 			"enemies": [
 				"goblin",
@@ -223,7 +250,8 @@
 			"tags": [
 				"swamp",
 				"dark",
-				"haunted"
+				"haunted",
+				"grim"
 			]
 		}
 	],

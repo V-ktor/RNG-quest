@@ -1,7 +1,7 @@
 [
 	{
 		"texts": [
-			"{god} {god.predicate}s {god.domain}",
+			"{god} {god.predicate}s {god.domain}"
 		],
 		"tags": [
 			"god"
@@ -19,6 +19,15 @@
 		],
 		"tags": [
 			"god"
+		]
+	},
+	{
+		"texts": [
+			"salvation will come",
+			"salvation is near"
+		],
+		"tags": [
+			"salvation"
 		]
 	}
 ]

@@ -55,6 +55,13 @@
 			],
 			"type": [
 				"settlement"
+			],
+			"tags": [
+				"fantasy",
+				"fire",
+				"city",
+				"ash",
+				"poverty"
 			]
 		},
 		{
@@ -69,6 +76,13 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"fantasy",
+				"fire",
+				"city",
+				"ash",
+				"arid"
 			]
 		},
 		{
@@ -85,6 +99,13 @@
 			],
 			"type": [
 				"castle"
+			],
+			"tags": [
+				"medieval",
+				"fire",
+				"city",
+				"ash",
+				"arid"
 			]
 		},
 		{
@@ -99,6 +120,13 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"fire",
+				"city",
+				"ash",
+				"arid"
 			]
 		}
 	],
@@ -119,6 +147,13 @@
 			],
 			"type": [
 				"cave"
+			],
+			"tags": [
+				"fantasy",
+				"fire",
+				"cave",
+				"ash",
+				"arid"
 			]
 		},
 		{
@@ -138,6 +173,14 @@
 			],
 			"type": [
 				"mountain"
+			],
+			"tags": [
+				"fantasy",
+				"fire",
+				"hills",
+				"mountains",
+				"ash",
+				"arid"
 			]
 		},
 		{
@@ -157,6 +200,14 @@
 			],
 			"type": [
 				"volcano"
+			],
+			"tags": [
+				"fantasy",
+				"fire",
+				"volcano",
+				"mountains",
+				"ash",
+				"arid"
 			]
 		},
 		{
@@ -175,6 +226,14 @@
 			],
 			"type": [
 				"dunes"
+			],
+			"tags": [
+				"fantasy",
+				"fire",
+				"volcano",
+				"desert",
+				"ash",
+				"arid"
 			]
 		}
 	],

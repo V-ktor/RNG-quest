@@ -1,0 +1,16 @@
+{
+	"name": "heroism",
+	"relics": [
+		"banner"
+	],
+	"abilities": [
+	],
+	"exp_gain": {
+		"quest": 5,
+		"kill": 1
+	},
+	"tags": [
+		"quests",
+		"salvation"
+	]
+}

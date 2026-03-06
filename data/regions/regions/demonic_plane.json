@@ -58,6 +58,14 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"fire",
+				"city",
+				"ash",
+				"arid"
 			]
 		},
 		{
@@ -74,6 +82,14 @@
 			],
 			"type": [
 				"castle"
+			],
+			"tags": [
+				"medieval",
+				"grim",
+				"fire",
+				"city",
+				"ash",
+				"arid"
 			]
 		}
 	],
@@ -97,6 +113,16 @@
 			],
 			"type": [
 				"mountain"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"fire",
+				"mountain",
+				"hills",
+				"ash",
+				"arid",
+				"volcano"
 			]
 		},
 		{
@@ -137,6 +163,15 @@
 				"jewel",
 				"dust",
 				"foil"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"fire",
+				"cave",
+				"ash",
+				"arid",
+				"volcano"
 			]
 		},
 		{
@@ -155,6 +190,15 @@
 				"blood"
 			],
 			"type": [
+				"volcano"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"fire",
+				"mountain",
+				"ash",
+				"arid",
 				"volcano"
 			]
 		},
@@ -176,6 +220,15 @@
 			],
 			"type": [
 				"dunes"
+			],
+			"tags": [
+				"fantasy",
+				"grim",
+				"fire",
+				"desert",
+				"ash",
+				"arid",
+				"volcano"
 			]
 		}
 	],

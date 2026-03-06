@@ -55,6 +55,14 @@
 			],
 			"type": [
 				"settlement"
+			],
+			"tags": [
+				"fantasy",
+				"snow",
+				"cold",
+				"trading",
+				"prosperous",
+				"city"
 			]
 		},
 		{
@@ -70,6 +78,12 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"medieval",
+				"snow",
+				"cold",
+				"city"
 			]
 		},
 		{
@@ -83,6 +97,12 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"snow",
+				"cold",
+				"city"
 			]
 		}
 	],
@@ -120,6 +140,13 @@
 				"ingot",
 				"gem",
 				"mushroom"
+			],
+			"tags": [
+				"fantasy",
+				"snow",
+				"cold",
+				"cave",
+				"dark"
 			]
 		},
 		{
@@ -141,6 +168,14 @@
 			],
 			"type": [
 				"mountain"
+			],
+			"tags": [
+				"fantasy",
+				"snow",
+				"cold",
+				"trading",
+				"mountains",
+				"hills"
 			]
 		},
 		{
@@ -157,6 +192,13 @@
 			],
 			"type": [
 				"mountain"
+			],
+			"tags": [
+				"fantasy",
+				"snow",
+				"cold",
+				"mountains",
+				"hills"
 			]
 		},
 		{
@@ -192,6 +234,12 @@
 				"plank",
 				"cotton",
 				"mushroom"
+			],
+			"tags": [
+				"fantasy",
+				"snow",
+				"cold",
+				"forest"
 			]
 		}
 	],

@@ -30,7 +30,7 @@
 		"gravity_anomalies",
 		"islands",
 		"river",
-		"warm",
+		"sky",
 		"water"
 	],
 	"enemies": [
@@ -60,6 +60,13 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"gravity_anomalies",
+				"city",
+				"water"
 			]
 		},
 		{
@@ -75,6 +82,14 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"medieval",
+				"idyllic",
+				"gravity_anomalies",
+				"city",
+				"water",
+				"trading"
 			]
 		},
 		{
@@ -92,6 +107,14 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"gravity_anomalies",
+				"city",
+				"trading",
+				"sky"
 			]
 		},
 		{
@@ -109,6 +132,13 @@
 			],
 			"type": [
 				"castle"
+			],
+			"tags": [
+				"medieval",
+				"idyllic",
+				"gravity_anomalies",
+				"city",
+				"water"
 			]
 		}
 	],
@@ -130,6 +160,15 @@
 			],
 			"type": [
 				"river"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"gravity_anomalies",
+				"islands",
+				"river",
+				"warm",
+				"water"
 			]
 		},
 		{
@@ -167,6 +206,15 @@
 				"silk",
 				"pebble",
 				"stone"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"gravity_anomalies",
+				"islands",
+				"river",
+				"warm",
+				"water"
 			]
 		},
 		{
@@ -203,6 +251,14 @@
 				"silk",
 				"pebble",
 				"stone"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"gravity_anomalies",
+				"warm",
+				"water",
+				"ocean"
 			]
 		},
 		{
@@ -238,6 +294,14 @@
 				"algae",
 				"plankton",
 				"sand"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"gravity_anomalies",
+				"islands",
+				"sky",
+				"water"
 			]
 		},
 		{
@@ -256,6 +320,14 @@
 			],
 			"type": [
 				"forest"
+			],
+			"tags": [
+				"fantasy",
+				"idyllic",
+				"gravity_anomalies",
+				"islands",
+				"forest",
+				"sky"
 			]
 		}
 	],

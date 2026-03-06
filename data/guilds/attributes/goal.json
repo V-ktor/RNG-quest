@@ -19,10 +19,19 @@
 	},
 	{
 		"texts": [
-			"to help people"
+			"to help people",
+			"to protect people"
 		],
 		"tags": [
 			"quests"
+		]
+	},
+	{
+		"texts": [
+			"to save the world"
+		],
+		"tags": [
+			"salvation"
 		]
 	},
 	{

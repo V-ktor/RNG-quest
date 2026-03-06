@@ -1,0 +1,16 @@
+{
+	"name": "hydromancy",
+	"relics": [
+		"crystal"
+	],
+	"abilities": [
+		"nature_magic",
+		"healing"
+	],
+	"exp_gain": {
+		"heal": 4
+	},
+	"tags": [
+		"water"
+	]
+}

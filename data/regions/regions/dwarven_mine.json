@@ -26,7 +26,8 @@
 		"fantasy",
 		"industrial",
 		"mining",
-		"prosperity"
+		"prosperity",
+		"cave"
 	],
 	"enemies": [
 		"elemental",
@@ -57,6 +58,13 @@
 			],
 			"type": [
 				"town"
+			],
+			"tags": [
+				"fantasy",
+				"industrial",
+				"mining",
+				"prosperity",
+				"city"
 			]
 		},
 		{
@@ -73,6 +81,12 @@
 			],
 			"type": [
 				"outpost"
+			],
+			"tags": [
+				"fantasy",
+				"trading",
+				"prosperity",
+				"city"
 			]
 		},
 		{
@@ -88,6 +102,12 @@
 			],
 			"type": [
 				"castle"
+			],
+			"tags": [
+				"medieval",
+				"mining",
+				"prosperity",
+				"city"
 			]
 		}
 	],
@@ -134,6 +154,12 @@
 				"bridge",
 				"web",
 				"darkness"
+			],
+			"tags": [
+				"fantasy",
+				"river",
+				"mining",
+				"cave"
 			]
 		},
 		{
@@ -169,6 +195,12 @@
 				"gem",
 				"mushroom",
 				"moss"
+			],
+			"tags": [
+				"fantasy",
+				"dark",
+				"mining",
+				"cave"
 			]
 		},
 		{
@@ -185,6 +217,12 @@
 			],
 			"type": [
 				"mountain"
+			],
+			"tags": [
+				"fantasy",
+				"mining",
+				"hills",
+				"industrial"
 			]
 		},
 		{
@@ -225,6 +263,12 @@
 				"cloud",
 				"sun",
 				"moon"
+			],
+			"tags": [
+				"fantasy",
+				"mining",
+				"forest",
+				"industrial"
 			]
 		}
 	],

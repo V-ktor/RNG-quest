@@ -109,7 +109,8 @@
 	"sea": {
 		"tags": [
 			"ocean",
-			"gravity_anomalies"
+			"gravity_anomalies",
+			"water"
 		],
 		"properties_by_tags": {
 			"singular": [
@@ -138,6 +139,15 @@
 					"tags": [
 						"gravity_anomalies"
 					]
+				},
+				{
+					"names": [
+						"lava lake",
+						"pool of lava"
+					],
+					"tags": [
+						"volcanic"
+					]
 				}
 			],
 			"plural": [
@@ -156,6 +166,15 @@
 					"tags": [
 						"water",
 						"river"
+					]
+				},
+				{
+					"names": [
+						"lava lakes",
+						"pools of lava"
+					],
+					"tags": [
+						"volcanic"
 					]
 				}
 			],
@@ -201,6 +220,23 @@
 					],
 					"tags": [
 						"gravity_anomalies"
+					]
+				},
+				{
+					"names": [
+						"molten"
+					],
+					"tags": [
+						"volcanic"
+					]
+				},
+				{
+					"names": [
+						"calm",
+						"small"
+					],
+					"tags": [
+						"water"
 					]
 				}
 			]
@@ -249,6 +285,61 @@
 					],
 					"tags": [
 						"gravity_anomalies"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"majestic"
+					],
+					"tags": [
+						"idyllic",
+						"fantasy"
+					]
+				},
+				{
+					"names": [
+						"small"
+					],
+					"tags": [
+						"idyllic",
+						"calm",
+						"warm"
+					]
+				},
+				{
+					"names": [
+						"huge"
+					],
+					"tags": [
+						"sci-fi"
+					]
+				},
+				{
+					"names": [
+						"deep"
+					],
+					"tags": [
+						"dark",
+						"grim",
+						"cave"
+					]
+				},
+				{
+					"names": [
+						"frozen"
+					],
+					"tags": [
+						"cold"
+					]
+				},
+				{
+					"names": [
+						"lava"
+					],
+					"tags": [
+						"volcanic"
 					]
 				}
 			]
