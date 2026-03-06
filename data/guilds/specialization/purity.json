@@ -1,0 +1,16 @@
+{
+	"name": "purity",
+	"relics": [
+		"relic"
+	],
+	"abilities": [
+		"celestial_magic"
+	],
+	"exp_gain": {
+		"heal": 2,
+		"buff": 1
+	},
+	"tags": [
+		"worship"
+	]
+}

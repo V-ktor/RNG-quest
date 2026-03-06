@@ -50,9 +50,9 @@
 		"summoning"
 	],
 	"exp_gain": {
-		"heal": 4,
+		"heal": 3,
 		"buff": 1,
-		"summon": 1,
+		"summon": 4
 	},
 	"tags": [
 		"worship",
