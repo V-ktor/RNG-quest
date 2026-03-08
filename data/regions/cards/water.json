@@ -9,7 +9,8 @@
 			"sci-fi",
 			"slums",
 			"poverty",
-			"underwater"
+			"underwater",
+			"river"
 		],
 		"properties_by_tags": {
 			"singular": [
@@ -110,7 +111,8 @@
 		"tags": [
 			"ocean",
 			"gravity_anomalies",
-			"water"
+			"water",
+			"islands"
 		],
 		"properties_by_tags": {
 			"singular": [
@@ -340,6 +342,120 @@
 					],
 					"tags": [
 						"volcanic"
+					]
+				}
+			]
+		}
+	},
+	"mist": {
+		"tags": [
+			"water",
+			"dark",
+			"cold",
+			"grim",
+			"sky",
+			"gravity_anomalies",
+			"cyberpunk",
+			"sci-fi"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"mist"
+					],
+					"tags": [
+						"water"
+					]
+				},
+				{
+					"names": [
+						"steam"
+					],
+					"tags": [
+						"cyberpunk",
+						"sci-fi"
+					]
+				},
+				{
+					"names": [
+						"fog"
+					],
+					"tags": [
+						"dark",
+						"cold",
+						"grim"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"clouds"
+					],
+					"tags": [
+						"sky",
+						"gravity_anomalies"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"colorful"
+					],
+					"tags": [
+						"fantasy"
+					]
+				},
+				{
+					"names": [
+						"dense",
+						"dark",
+						"crimson"
+					],
+					"tags": [
+						"dark",
+						"grim"
+					]
+				},
+				{
+					"names": [
+						"chilling"
+					],
+					"tags": [
+						"cold",
+						"necrotic"
+					]
+				},
+				{
+					"names": [
+						"poisonous"
+					],
+					"tags": [
+						"swamp",
+						"toxic"
+					]
+				},
+				{
+					"names": [
+						"light",
+						"soft"
+					],
+					"tags": [
+						"sky",
+						"gravity_anomalies",
+						"water"
+					]
+				},
+				{
+					"names": [
+						"cold",
+						"scalding"
+					],
+					"tags": [
+						"cyberpunk",
+						"sci-fi"
 					]
 				}
 			]

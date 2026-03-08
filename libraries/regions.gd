@@ -77,7 +77,11 @@ func get_city_data(array: Array[Dictionary]) -> Dictionary:
 			name = (city_prefix + city_name).capitalize()
 	if dict.has("suffix"):
 		name += dict.suffix.pick_random()
-	return {"name": name, "type": dict.type.pick_random()}
+	return {
+		"name": name,
+		"type": dict.type.pick_random(),
+		"tags": dict.get("tags", [])
+	}
 
 func create_region(ID: String, level:= 0, tier:= 0) -> Region:
 	var dict: Dictionary = regions[ID]
@@ -130,6 +134,7 @@ func create_region(ID: String, level:= 0, tier:= 0) -> Region:
 			"type": location_data.type.pick_random(),
 			"enemies": location_data.get("enemies", []),
 			"resources": location_data.get("resources", []),
+			"tags": location_data.get("tags", [])
 		}
 	for array: Array in data.local_materials.values():
 		for mat: Dictionary in array:

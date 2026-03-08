@@ -238,7 +238,7 @@
 						"golden"
 					],
 					"tags": [
-						"prosperous",
+						"prosperity",
 						"fantasy"
 					]
 				},
@@ -297,7 +297,10 @@
 			"cold",
 			"warm",
 			"ocean",
-			"sky"
+			"sky",
+			"islands",
+			"city",
+			"trade"
 		],
 		"properties_by_tags": {
 			"singular": [
@@ -345,7 +348,8 @@
 						"sea"
 					],
 					"tags": [
-						"ocean"
+						"ocean",
+						"islands"
 					]
 				},
 				{
@@ -364,6 +368,15 @@
 					],
 					"tags": [
 						"sky"
+					]
+				},
+				{
+					"names": [
+						"paving"
+					],
+					"tags": [
+						"city",
+						"trade"
 					]
 				}
 			],
@@ -485,6 +498,24 @@
 					],
 					"tags": [
 						"sky"
+					]
+				},
+				{
+					"names": [
+						"slate",
+						"clay"
+					],
+					"tags": [
+						"city",
+						"trade"
+					]
+				},
+				{
+					"names": [
+						"marble"
+					],
+					"tags": [
+						"capital"
 					]
 				}
 			]
@@ -797,14 +828,18 @@
 			"idyllic",
 			"warm",
 			"prosperity",
-			"farmland"
+			"farmland",
+			"ocean",
+			"cave"
 		],
 		"properties_by_tags": {
 			"singular": [
 				{
 					"names": [
 						"wheat",
-						"barley"
+						"barley",
+						"oat",
+						"millet"
 					]
 				},
 				{
@@ -813,6 +848,85 @@
 					],
 					"tags": [
 						"cave"
+					]
+				},
+				{
+					"names": [
+						"seaweed"
+					],
+					"tags": [
+						"ocean"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"helium berries"
+					],
+					"tags": [
+						"sky",
+						"gravity_anomalies"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"wilting"
+					],
+					"tags": [
+						"necrotic",
+						"toxic",
+						"swamp"
+					]
+				},
+				{
+					"names": [
+						"scorched"
+					],
+					"tags": [
+						"volcanic",
+						"fire"
+					]
+				},
+				{
+					"names": [
+						"golden",
+						"blooming"
+					],
+					"tags": [
+						"fantasy",
+						"idyllic"
+					]
+				},
+				{
+					"names": [
+						"ripe"
+					],
+					"tags": [
+						"prosperity",
+						"farmland"
+					]
+				},
+				{
+					"names": [
+						"nutrient-poor",
+						"scarce"
+					],
+					"tags": [
+						"dark",
+						"grim"
+					]
+				},
+				{
+					"names": [
+						"tall",
+						"towering"
+					],
+					"tags": [
+						"sky",
+						"gravity_anomalies"
 					]
 				}
 			]
@@ -1168,7 +1282,12 @@
 			"poverty",
 			"sci-fi",
 			"industrial",
-			"beach"
+			"beach",
+			"swamp",
+			"necrotic",
+			"sky",
+			"capital",
+			"idyllic"
 		],
 		"properties_by_tags": {
 			"singular": [
@@ -1248,6 +1367,40 @@
 					],
 					"tags": [
 						"beach"
+					]
+				},
+				{
+					"names": [
+						"bones",
+						"corpses"
+					],
+					"tags": [
+						"swamp",
+						"necrotic"
+					]
+				},
+				{
+					"names": [
+						"clouds"
+					],
+					"tags": [
+						"sky"
+					]
+				},
+				{
+					"names": [
+						"banners"
+					],
+					"tags": [
+						"capital"
+					]
+				},
+				{
+					"names": [
+						"flowers"
+					],
+					"tags": [
+						"idyllic"
 					]
 				}
 			],
@@ -1331,6 +1484,175 @@
 					],
 					"tags": [
 						"volcanic"
+					]
+				},
+				{
+					"names": [
+						"bleached",
+						"rotten"
+					],
+					"tags": [
+						"swamp",
+						"necrotic"
+					]
+				},
+				{
+					"names": [
+						"floating"
+					],
+					"tags": [
+						"sky"
+					]
+				},
+				{
+					"names": [
+						"royal"
+					],
+					"tags": [
+						"capital"
+					]
+				},
+				{
+					"names": [
+						"beautiful"
+					],
+					"tags": [
+						"mystical",
+						"sanctuary"
+					]
+				}
+			]
+		}
+	},
+	"houses": {
+		"tags": [
+			"city"
+		],
+		"properties_by_tags": {
+			"singular": [
+				{
+					"names": [
+						"castle",
+						"cathedral"
+					],
+					"tags": [
+						"capital",
+						"castle"
+					]
+				},
+				{
+					"names": [
+						"skyscraper"
+					],
+					"tags": [
+						"artificial"
+					]
+				}
+			],
+			"plural": [
+				{
+					"names": [
+						"houses",
+						"buildings"
+					]
+				},
+				{
+					"names": [
+						"shelters"
+					],
+					"tags": [
+						"grim",
+						"poverty"
+					]
+				},
+				{
+					"names": [
+						"giant seashells"
+					],
+					"tags": [
+						"sky"
+					]
+				},
+				{
+					"names": [
+						"ruins"
+					],
+					"tags": [
+						"ruins"
+					]
+				}
+			],
+			"adjective": [
+				{
+					"names": [
+						"noble",
+						"royal"
+					],
+					"tags": [
+						"capital"
+					]
+				},
+				{
+					"names": [
+						"half-timber"
+					],
+					"tags": [
+						"medieval",
+						"trade"
+					]
+				},
+				{
+					"names": [
+						"brick"
+					],
+					"tags": [
+						"trade",
+						"prosperity"
+					]
+				},
+				{
+					"names": [
+						"noble",
+						"luxurious"
+					],
+					"tags": [
+						"prosperity"
+					]
+				},
+				{
+					"names": [
+						"run-down"
+					],
+					"tags": [
+						"poverty",
+						"grim",
+						"ruins"
+					]
+				},
+				{
+					"names": [
+						"flying",
+						"levitating"
+					],
+					"tags": [
+						"gravity_anomalies"
+					]
+				},
+				{
+					"names": [
+						"provisional",
+						"temporary"
+					],
+					"tags": [
+						"ruins"
+					]
+				},
+				{
+					"names": [
+						"steel"
+					],
+					"tags": [
+						"artificial"
 					]
 				}
 			]

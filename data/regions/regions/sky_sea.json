@@ -89,7 +89,7 @@
 				"gravity_anomalies",
 				"city",
 				"water",
-				"trading"
+				"trade"
 			]
 		},
 		{
@@ -113,7 +113,7 @@
 				"idyllic",
 				"gravity_anomalies",
 				"city",
-				"trading",
+				"trade",
 				"sky"
 			]
 		},

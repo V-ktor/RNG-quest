@@ -128,5 +128,49 @@
 		"transition": [
 			"sentence_full"
 		]
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"perpetually draped in {particles.singular},",
+			"eternally draped in {particles.singular},",
+			"perpetually shrouded in {particles.singular},",
+			"eternally shrouded in {particles.singular},"
+		],
+		"sentence": {
+			"subject": "particles"
+		},
+		"required": [
+			"particles"
+		],
+		"replace": {
+			"particles": "sky"
+		},
+		"transition": [
+			"sentence_full"
+		]
+	},
+	{
+		"type": "sentence_start",
+		"text": [
+			"shrouded in {mist.singular},",
+			"shrouded in {mist.adjective} {mist.singular},",
+			"draped in {mist.singular},",
+			"draped in {mist.adjective} {mist.singular},",
+			"obscured by {mist.singular},",
+			"obscured by {mist.adjective} {mist.singular},"
+		],
+		"sentence": {
+			"subject": "mist"
+		},
+		"required": [
+			"mist"
+		],
+		"replace": {
+			"mist": "particles"
+		},
+		"transition": [
+			"sentence_full"
+		]
 	}
 ]

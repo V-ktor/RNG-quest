@@ -19,6 +19,8 @@ var properties: Dictionary[String, Array] = {}
 
 
 func check_tags_overlap(tags: Array[String], valid_tags: Array[String]) -> bool:
+	if tags.size() == 0:
+		return true
 	for tag in tags:
 		if tag in valid_tags:
 			return true
@@ -34,24 +36,28 @@ func get_valid_cards_for_region(region: Region, location := "") -> Array[String]
 	else:
 		tags = region.tags
 	for card_id in self.cards:
-		if self.check_tags_overlap(Array(self.cards[card_id].get("tags", []) as Array, TYPE_STRING, "", null), tags):
+		if card_id == "region":
+			continue
+		if self.check_tags_overlap(
+				Array(self.cards[card_id].get("tags", []) as Array, TYPE_STRING, "", null), tags):
 			valid_cards.push_back(card_id)
 	if valid_cards.size() == 0:
-		print("Warning: no valid cards found for region " + region.name + "(" + location + ")")
+		print("Warning: no valid cards found for region " + region.name + " (" + location + ")")
 		return self.cards.keys()
 	return valid_cards
 
 func get_valid_attribute_for_region(data: Array[Dictionary], region: Region) -> String:
 	var valid_attributes: Array[String] = []
 	for dict in data:
-		if "tags" in dict and not self.check_tags_overlap(Array(dict.tags, TYPE_STRING, "", null), region.tags):
+		if not self.check_tags_overlap(Array(dict.get("tags", []) as Array, TYPE_STRING, "", null),
+			region.tags):
 			continue
 		valid_attributes += Array(dict.get("names", []) as Array, TYPE_STRING, "", null)
 	
 	if valid_attributes.size() > 0:
 		return valid_attributes.pick_random()
 	# Fallback: just use some random word
-	return Descriptions.pick_attribute(self.properties.values().pick_random())
+	return Descriptions.pick_attribute(self.properties.values().pick_random() as Array)
 
 
 func create_card(type: String, region: Region, attributes_override := {}) -> Descriptions.Card:
@@ -80,12 +86,15 @@ func create_card(type: String, region: Region, attributes_override := {}) -> Des
 					card.properties[attribute] = tr(data as String)
 			else:
 				# Fallback: just use some random word
-				card.properties[attribute] = Descriptions.pick_attribute(self.properties.values().pick_random())
+				card.properties[attribute] = Descriptions.pick_attribute(
+					self.properties.values().pick_random() as Array)
 		for attribute: String in definition.get("properties_by_tags", {}):
 			if attribute in attributes_override:
 				card.properties[attribute] = tr(attributes_override[attribute] as String)
 			else:
-				card.properties[attribute] = self.get_valid_attribute_for_region(Array(definition.properties_by_tags[attribute], TYPE_DICTIONARY, "", null), region)
+				card.properties[attribute] = self.get_valid_attribute_for_region(
+					Array(definition.properties_by_tags[attribute] as Array,
+					TYPE_DICTIONARY, "", null), region)
 	if "singular" not in card.properties and "plural" not in card.properties:
 		if "name" in attributes_override:
 			card.properties.singular = tr(card.properties.name as String)

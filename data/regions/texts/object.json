@@ -1,0 +1,175 @@
+[
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {region.singular}"
+		],
+		"sentence": {
+			"object": "region"
+		},
+		"required": [
+			"region"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {vegetation.singular}",
+			"the {vegetation.adjective} {vegetation.singular}"
+		],
+		"sentence": {
+			"object": "vegetation"
+		},
+		"required": [
+			"vegetation"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {landmark.singular}",
+			"the {landmark.adjective} {landmark.singular}"
+		],
+		"sentence": {
+			"object": "landmark"
+		},
+		"required": [
+			"landmark"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {ground.singular}",
+			"the {ground.adjective} {ground.singular}"
+		],
+		"sentence": {
+			"object": "ground"
+		},
+		"required": [
+			"ground"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {hills.plural}",
+			"{hills.adjective} {hills.plural}"
+		],
+		"sentence": {
+			"object": "hills"
+		},
+		"required": [
+			"hills"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {mountains.singular}",
+			"the {mountains.adjective} {mountains.singular}"
+		],
+		"sentence": {
+			"object": "mountains"
+		},
+		"required": [
+			"mountains"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {bridge.singular}"
+		],
+		"sentence": {
+			"object": "bridge"
+		},
+		"required": [
+			"bridge"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {crops.singular}"
+		],
+		"sentence": {
+			"object": "crops"
+		},
+		"required": [
+			"crops"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {structures.plural}",
+			"{structures.adjective} {structures.plural}"
+		],
+		"sentence": {
+			"object": "structures"
+		},
+		"required": [
+			"structures"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {river.singular}",
+			"the {river.adjective} {river.singular}"
+		],
+		"sentence": {
+			"object": "river"
+		},
+		"required": [
+			"river"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	},
+	{
+		"type": "sentence_object",
+		"text": [
+			"the {houses.plural}",
+			"the {houses.adjective} {houses.plural}"
+		],
+		"sentence": {
+			"object": "houses"
+		},
+		"required": [
+			"houses"
+		],
+		"transition": [
+			"sentence_end"
+		]
+	}
+]

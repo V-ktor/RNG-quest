@@ -92,7 +92,7 @@ class Property:
 	func get_adjective() -> String:
 		if self._adjective == "":
 			print("Warning: adjective missing for " + self._singular + " / " + self._plural)
-			return self._singular
+			return self._singular + "-like"
 		return self._adjective
 	
 	func get_adverb() -> String:

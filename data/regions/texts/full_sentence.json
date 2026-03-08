@@ -68,6 +68,7 @@
 		"text": [
 			"the {landmark.singular} {rises/rise} to the {sky.singular}",
 			"the {landmark.adjective} {landmark.singular} {rises/rise} to the {sky.singular}",
+			"the {landmark.singular} {rises/rise} to the {sky.color} {sky.singular}",
 			"the {landmark.singular} {dominates/dominate} the skyline",
 			"the {landmark.adjective} {landmark.singular} {dominates/dominate} the skyline"
 		],
@@ -82,6 +83,53 @@
 		],
 		"replace": {
 			"sky": "air"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {landmark.singular} {dominates/dominate} the skyline",
+			"the {landmark.adjective} {landmark.singular} {dominates/dominate} the skyline"
+		],
+		"sentence": {
+			"subject": "landmark",
+			"object": "horizon",
+			"predicate": ""
+		},
+		"required": [
+			"landmark",
+			"horizon"
+		],
+		"replace": {
+			"horizon": "air"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {landmark.singular} {is/are} shrouded in {mist.singular}",
+			"the {landmark.adjective} {landmark.singular} {is/are} shrouded in {mist.singular}",
+			"the {landmark.singular} {is/are} shrouded in {mist.adjective} {mist.singular}"
+		],
+		"sentence": {
+			"subject": "landmark",
+			"object": "mist",
+			"predicate": ""
+		},
+		"required": [
+			"landmark",
+			"mist"
+		],
+		"replace": {
+			"mist": "air"
 		},
 		"transition": [
 			"sentence_end",
@@ -1032,6 +1080,222 @@
 			"structures"
 		],
 		"transition": [
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{structures.plural} {decorates/decorate} the {houses.plural}",
+			"{structures.adjective} {structures.plural} {decorates/decorate} the {houses.plural}",
+			"{structures.plural} {decorates/decorate} the {houses.adjective} {houses.plural}",
+			"{structures.plural} {hangs/hang} down from the {houses.plural}",
+			"{structures.adjective} {structures.plural} {hangs/hang} from the {houses.plural}",
+			"{structures.plural} {hangs/hang} from {houses.adjective} {houses.plural}"
+		],
+		"sentence": {
+			"subject": "structures",
+			"object": "houses",
+			"predicate": ""
+		},
+		"required": [
+			"structures",
+			"houses"
+		],
+		"remove": [
+			"structures"
+		],
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{houses.plural} {stands/stand} on {ground.singular}",
+			"{houses.adjective} {houses.plural} {stands/stand} on {ground.singular}",
+			"{houses.plural} {stands/stand} on {ground.adjective} {ground.singular}",
+			"{houses.plural} {is/are} constructed on {ground.singular}",
+			"{houses.adjective} {houses.plural} {is/are} constructed on {ground.singular}",
+			"{houses.plural} {is/are} constructed on {ground.adjective} {ground.singular}",
+			"{houses.plural} {is/are} erected on {ground.singular}",
+			"{houses.adjective} {houses.plural} {is/are} erected on {ground.singular}",
+			"{houses.plural} {is/are} erected on {ground.adjective} {ground.singular}"
+		],
+		"sentence": {
+			"subject": "houses",
+			"object": "ground",
+			"predicate": ""
+		},
+		"required": [
+			"ground",
+			"houses"
+		],
+		"replace": {
+			"ground": "structures"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{houses.plural} {stands/stand} on {hills.plural}",
+			"{houses.adjective} {houses.plural} {stands/stand} on {hills.plural}",
+			"{houses.plural} {stands/stand} on {hills.adjective} {hills.plural}",
+			"{houses.plural} {is/are} constructed on {hills.plural}",
+			"{houses.adjective} {houses.plural} {is/are} constructed on {hills.plural}",
+			"{houses.plural} {is/are} constructed on {hills.adjective} {hills.plural}",
+			"{houses.plural} {is/are} erected on {hills.plural}",
+			"{houses.adjective} {houses.plural} {is/are} erected on {hills.plural}",
+			"{houses.plural} {is/are} erected on {hills.adjective} {hills.plural}"
+		],
+		"sentence": {
+			"subject": "houses",
+			"object": "hills",
+			"predicate": ""
+		},
+		"required": [
+			"hills",
+			"houses"
+		],
+		"replace": {
+			"hills": "structures"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{houses.plural} {stands/stand} on {mountains.plural}",
+			"{houses.adjective} {houses.plural} {stands/stand} on {mountains.plural}",
+			"{houses.plural} {stands/stand} on {mountains.adjective} {mountains.plural}",
+			"{houses.plural} {is/are} constructed on {mountains.plural}",
+			"{houses.adjective} {houses.plural} {is/are} constructed on {mountains.plural}",
+			"{houses.plural} {is/are} constructed on {mountains.adjective} {mountains.plural}",
+			"{houses.plural} {is/are} erected on {mountains.plural}",
+			"{houses.adjective} {houses.plural} {is/are} erected on {mountains.plural}",
+			"{houses.plural} {is/are} erected on {mountains.adjective} {mountains.plural}"
+		],
+		"sentence": {
+			"subject": "houses",
+			"object": "mountains",
+			"predicate": ""
+		},
+		"required": [
+			"mountains",
+			"houses"
+		],
+		"replace": {
+			"mountains": "structures"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{houses.plural} {is/are} surrounded by {vegetation.plural}",
+			"{houses.adjective} {houses.plural} {is/are} surrounded by {vegetation.plural}",
+			"{houses.plural} {is/are} surrounded by {vegetation.adjective} {vegetation.plural}",
+			"{houses.plural} {is/are} overgrown by {vegetation.plural}",
+			"{houses.adjective} {houses.plural} {is/are} overgrown by {vegetation.plural}",
+			"{houses.plural} {is/are} overgrown by {vegetation.adjective} {vegetation.plural}"
+		],
+		"sentence": {
+			"subject": "houses",
+			"object": "vegetation",
+			"predicate": ""
+		},
+		"required": [
+			"vegetation",
+			"houses"
+		],
+		"replace": {
+			"vegetation": "ground"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {landmark.singular} {is/are} surrounded by {houses.plural}",
+			"the {landmark.adjective} {landmark.singular} {is/are} surrounded by {houses.plural}",
+			"the {landmark.singular} {is/are} surrounded by {houses.adjective} {houses.plural}"
+		],
+		"sentence": {
+			"subject": "landmark",
+			"object": "houses",
+			"predicate": ""
+		},
+		"required": [
+			"landmark",
+			"houses"
+		],
+		"replace": {
+			"houses": "structures"
+		},
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"{structures.plural} {decorates/decorate} the {landmark.plural}",
+			"{structures.adjective} {structures.plural} {decorates/decorate} the {landmark.plural}",
+			"{structures.plural} {decorates/decorate} the {landmark.adjective} {landmark.plural}"
+		],
+		"sentence": {
+			"subject": "structures",
+			"object": "landmark",
+			"predicate": ""
+		},
+		"required": [
+			"structures",
+			"landmark"
+		],
+		"remove": [
+			"structures"
+		],
+		"transition": [
+			"sentence_end",
+			"addition"
+		]
+	},
+	{
+		"type": "sentence_full",
+		"text": [
+			"the {houses.plural} {is/are} shrouded in {mist.singular}",
+			"the {houses.adjective} {houses.plural} {is/are} shrouded in {mist.singular}",
+			"the {houses.plural} {is/are} shrouded in {mist.adjective} {mist.singular}"
+		],
+		"sentence": {
+			"subject": "houses",
+			"object": "mist",
+			"predicate": ""
+		},
+		"required": [
+			"houses",
+			"mist"
+		],
+		"replace": {
+			"mist": "air"
+		},
+		"transition": [
+			"sentence_end",
 			"addition"
 		]
 	}

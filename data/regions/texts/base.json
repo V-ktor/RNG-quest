@@ -1,0 +1,83 @@
+[
+	{
+		"type": "sentence_subject_predicate",
+		"text": [
+			"{particles.singular} {particles.verb} on"
+		],
+		"sentence":{
+			"subject": "particles",
+			"predicate": "particles",
+		},
+		"required": [
+			"particles"
+		],
+		"replace":{
+			"particles": "ground"
+		},
+		"transition": [
+			"sentence_object"
+		]
+	},
+	{
+		"type": "sentence_subject_predicate",
+		"text": [
+			"{mist.singular} {obscures/obscure}",
+			"{mist.adjective} {mist.singular} {obscures/obscure}",
+			"{mist.singular} {hides/hide}",
+			"{mist.adjective} {mist.singular} {hides/hide}"
+		],
+		"sentence":{
+			"subject": "mist",
+			"predicate": "",
+		},
+		"required": [
+			"mist"
+		],
+		"replace":{
+			"mist": "particles"
+		},
+		"transition": [
+			"sentence_object"
+		]
+	},
+	{
+		"type": "sentence_subject_predicate",
+		"text": [
+			"the {celestial_body.singular} {illuminates/illuminate}",
+			"the {celestial_body.singular} {shines/shine} on"
+		],
+		"sentence":{
+			"subject": "celestial_body",
+			"predicate": "",
+		},
+		"required": [
+			"celestial_body"
+		],
+		"replace":{
+			"celestial_body": "sky"
+		},
+		"transition": [
+			"sentence_object"
+		]
+	},
+	{
+		"type": "sentence_subject_predicate",
+		"text": [
+			"the {mountains.plural} {towers/tower}",
+			"the {mountains.adjective} {mountains.plural} {towers/tower}"
+		],
+		"sentence":{
+			"subject": "mountains",
+			"predicate": "",
+		},
+		"required": [
+			"mountains"
+		],
+		"replace":{
+			"mountains": "hills"
+		},
+		"transition": [
+			"sentence_object"
+		]
+	}
+]

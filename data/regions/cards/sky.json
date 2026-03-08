@@ -243,7 +243,8 @@
 			"slums",
 			"farmland",
 			"snow",
-			"sky"
+			"sky",
+			"swamp"
 		],
 		"properties_by_tags": {
 			"singular": [
@@ -263,7 +264,8 @@
 			"volcano",
 			"desert",
 			"snow",
-			"sky"
+			"sky",
+			"swamp"
 		],
 		"properties": [
 			"density"
@@ -276,7 +278,8 @@
 					],
 					"tags": [
 						"warm",
-						"water"
+						"water",
+						"swamp"
 					]
 				},
 				{
@@ -476,6 +479,14 @@
 					],
 					"tags": [
 						"underwater"
+					]
+				},
+				{
+					"names": [
+						"rainbow"
+					],
+					"tags": [
+						"sky"
 					]
 				}
 			],
