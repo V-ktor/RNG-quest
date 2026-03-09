@@ -42,13 +42,14 @@ func _get_max_line_length(text: String) -> int:
 		max_len = length
 	return max_len
 
-func _set_scale(text: String):
+func _set_scale(text: String) -> void:
+	var line_length := _get_max_line_length(text)
 	position = get_global_mouse_position() + Vector2(8, 0)
-	size.x = clampi(16 + 8 * _get_max_line_length(text), 192, 448)
-	size.y = clampi(56 + 17 * text.count("\n"), 64, 512)
+	size.x = clampi(16 + 8 * line_length, 192, 448)
+	size.y = clampi(56 + 17 * (text.count("\n") + floori(line_length / 200.0)), 64, 512)
 	scaled_window_size =  DisplayServer.window_get_size() / get_tree().root.content_scale_factor
 
-func _set_pos():
+func _set_pos() -> void:
 	# the coordinates are disorted relative to window size due to scaling
 	# Move tooltip to the other side if it it reaches the window border
 	if position.x + size.x > scaled_window_size.x:
@@ -56,21 +57,21 @@ func _set_pos():
 	if position.y + size.y > scaled_window_size.y:
 		position.y -= size.y
 
-func _show_delayed():
+func _show_delayed() -> void:
 	hide()
 	
 	waiting_for_popup = true
 	popup_position = get_local_mouse_position()
 	timer.start()
 
-func show_tooltip():
+func show_tooltip() -> void:
 	if not waiting_for_popup:
 		return
 	_set_pos()
 	show()
 	waiting_for_popup = false
 
-func show_text(text: String):
+func show_text(text: String) -> void:
 	text_label.clear()
 	text_label.parse_bbcode(text)
 	tabs_container.hide()
@@ -78,7 +79,7 @@ func show_text(text: String):
 	_set_pos()
 	_show_delayed()
 
-func show_texts(text_list: Array, category_names: Array):
+func show_texts(text_list: Array, category_names: Array) -> void:
 	current_texts = text_list
 	text_label.clear()
 	text_label.parse_bbcode(text_list[0])
@@ -103,12 +104,12 @@ func show_texts(text_list: Array, category_names: Array):
 	_set_pos()
 	_show_delayed()
 
-func _tab_button_toggled(pressed: bool, index: int):
+func _tab_button_toggled(pressed: bool, index: int) -> void:
 	if pressed:
 		text_label.clear()
 		text_label.parse_bbcode(current_texts[index])
 
-func _process(_delta: float):
+func _process(_delta: float) -> void:
 	if not visible:
 		return
 	

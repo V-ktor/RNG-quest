@@ -18,59 +18,11 @@ var regions: Dictionary[String, Dictionary] = {}
 var descriptions := $RegionDescription as RegionDescription
 
 
-func get_location_list(region: Region, current_location: String) -> Array[Dictionary]:
-	var cities: int = region.cities.size()
-	var locations: int = region.locations.size()
-	var city_index:= 0
-	var list: Array[Dictionary] = []
-	var is_current_location_listed:= false
-	
-	for i in range(locations):
-		var key: String = region.locations.keys()[i]
-		var data: Location = region.locations[key]
-		if key == current_location:
-			is_current_location_listed = true
-		list.push_back({"name": data.name, "type": data.type})
-		if float(i) / float(locations) >= float(city_index) / float(cities) && city_index < cities:
-			key = region.cities.keys()[city_index]
-			data = region.cities[key]
-			if key == current_location:
-				is_current_location_listed = true
-			list.push_back({
-				"name": data.name,
-				"type": data.type,
-			})
-			city_index += 1
-	for i in range(city_index, cities):
-		var key: String = region.cities.keys()[city_index]
-		var data: Location = region.cities[key]
-		if key == current_location:
-			is_current_location_listed = true
-		list.push_back({
-			"name": data.name,
-			"type": data.type,
-		})
-	if not is_current_location_listed:
-		list.push_back({
-			"name": current_location,
-			"type": "dungeon",
-		})
-	
-	return list
-
-func get_region_description(region: Region) -> String:
-	var text: String = region.name
-	text += "\n" + tr("LVL") + " " + str(region.level) + " " + \
-		tr(REGION_TIERS[clampi(region.tier + 2, 0, REGION_TIERS.size() - 1)]) + " " + tr("REGION")
-	if region.race.size()>0:
-		text += "\n" + tr("RACE") + ": " + Names.make_list(region.race)
-	return text
-
 func get_city_data(array: Array[Dictionary]) -> Dictionary:
 	var dict: Dictionary = array.pick_random()
-	var city_name: String = dict.base.pick_random()
+	var city_name := dict.base.pick_random() as String
 	if dict.has("prefix"):
-		var city_prefix: String = dict.prefix.pick_random()
+		var city_prefix := dict.prefix.pick_random() as String
 		if city_prefix[city_prefix.length() - 1] == ' ' && city_name[0] == ' ':
 			name = (city_prefix + city_name.substr(1)).capitalize()
 		else:
@@ -110,9 +62,9 @@ func create_region(ID: String, level:= 0, tier:= 0) -> Region:
 		data.name = (region_prefix + region_name.substr(1)).capitalize()
 	else:
 		data.name = (region_prefix + region_name).capitalize()
-	if tier<0:
+	if tier < 0:
 		tier_multiplier = 1.0 / pow(1.5, -tier)
-	elif tier>0:
+	elif tier > 0:
 		tier_multiplier = pow(1.5, tier)
 	for i in range(NUM_CITIES):
 		var city_data: Dictionary
@@ -139,14 +91,21 @@ func create_region(ID: String, level:= 0, tier:= 0) -> Region:
 	for array: Array in data.local_materials.values():
 		for mat: Dictionary in array:
 			mat.quality *= tier_multiplier * level_multiplier
-	var region:= Region.new(data)
-	region.description = get_region_description(region)
+	var region := Region.new(data)
+	var card_set := self.descriptions.create_card_set(region)
+	region.description = self.descriptions.generate_description(card_set, region)
+	for location in region.locations:
+		card_set = self.descriptions.create_card_set(region, location)
+		region.locations[location].description = self.descriptions.generate_description(card_set, region)
+	for city in region.cities:
+		card_set = self.descriptions.create_card_set(region, city)
+		region.cities[city].description = self.descriptions.generate_description(card_set, region)
 	return region
 
 
 func select_next_region(level: int) -> String:
-	var valid:= []
-	var level_cap:= 5
+	var valid := []
+	var level_cap := 5
 	
 	while valid.size() == 0:
 		for k in regions:

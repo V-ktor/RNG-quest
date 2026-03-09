@@ -122,9 +122,7 @@ func update_preferences() -> void:
 
 
 func update_location(region: Region, current_location: String) -> void:
-	var list:= Regions.get_location_list(region, current_location)
-	var description:= Regions.get_region_description(region)
-	($Overview/HBoxContainer/Region as RegionGui).update(list, region.name, description, current_location)
+	($Overview/HBoxContainer/Region as RegionGui).update(region, current_location)
 
 
 func update_quest_log(text: String) -> void:
